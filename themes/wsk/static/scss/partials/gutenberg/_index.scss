@@ -1,0 +1,56 @@
+@import 'base';
+@import 'alignment';
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Blocks
+// - - - - - - - - - - - - - - - - - - - - - - - - - -
+@import 'block-buttons';
+@import 'block-code';
+@import 'block-cover';
+@import 'block-embeds';
+@import 'block-file';
+@import 'block-gallery';
+@import 'block-group';
+@import 'block-heading';
+@import 'block-image';
+@import 'block-image-layout';
+@import 'block-list';
+@import 'block-paragraph';
+@import 'block-pullquote';
+@import 'block-quote';
+@import 'block-related-articles';
+@import 'block-separator';
+@import 'block-table';
+@import 'block-video';
+
+@mixin block-styles($editor: false) {
+  @if $editor {
+    @include editor-block-alignment;
+  } @else {
+    @include block-alignment;
+  }
+
+  @include base-block-styles;
+  @include button-block;
+  @include code-block;
+  @include cover-block;
+  @include embed-blocks;
+  @include file-block;
+  @include gallery-block;
+  @include group-block;
+  @include heading-block;
+  @include image-block;
+  @include image-layout-block;
+  @include list-block;
+  @include paragraph-block;
+  @include pullquote-block;
+  @include quote-block;
+  @include related-articles-block;
+  @include separator-block;
+  @include table-block;
+  @include video-block;
+}
+
+.gutenberg-content {
+  @include block-styles;
+}

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker compose exec --workdir "/var/www/html/wp-content" wordpress composer "$@"

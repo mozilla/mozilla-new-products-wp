@@ -1,0 +1,72 @@
+{#
+  This block makes it easy to lazyload images without impacting the page layout.
+  It does this by using the image aspect ratio to hold the space for the image
+  before the image is loaded.
+
+  By default, the aspect ratio is calculated from the width and height. This
+  can be overridden by passing a percentage based aspect ratio into the partial
+  (ex: `aspectRatio: 56.25%`). If the aspect ratio is not needed — like in the
+  bg-img-topper where the content determines the size of the image — you can ignore
+  the aspect ratio by passing in `aspectRatio: false`.
+
+
+  Examples
+  *Calculates aspect ratio*
+  {% include 'includes/lazy-img.twig' with {
+    img: post.thumbnail,
+    class: "tease__img",
+  } %}
+  *custom aspect ratio*
+  {% include 'includes/lazy-img.twig' with {
+    img: post.thumbnail,
+    class: "tease__img",
+    aspectRatio: "56.25%"
+  } %}
+  *without aspect ratio*
+  {% include 'includes/lazy-img.twig' with {
+    img: post.thumbnail,
+    class: "tease__img",
+    colorTheme: "white",
+    aspectRatio: false
+  } %}
+#}
+
+{% set caption = caption ?? img.caption|replace({ '"': '&quot;' })|e('html') %}
+{% set credit = credit ?? img.credit|replace({ '"': '&quot;' })|e('html') %}
+{% set aspectRatio = aspectRatio ?? true %}
+
+{# ignore aspect ratio if set to false #}
+{% if aspectRatio == false %}
+  <img
+    class="lazy-img lazyload {{ class }}"
+    data-srcset="{{ img.srcset }}"
+    data-src="{{ img.src }}"
+    data-sizes="auto"
+    alt="{{ img.alt }}"
+    data-caption="{{ caption }}"
+    data-credit="{{ credit }}"
+  />
+{% else %}
+
+  {# calculate aspect ratio using image sizes #}
+  {% set padding = img.height and img.width and img.width != 0 ? img.height / img.width * 100 ~ "%" : '0%' %}
+
+  {# override aspect ratio if a percentage string is used #}
+  {% if aspectRatio|length > 1 %}
+    {% set padding = aspectRatio %}
+  {% endif %}
+
+  <div class="lazy-img__mod {{ class }}{{ colorTheme ? ' lazy-img__mod--' ~ colorTheme }}">
+    <span class="lazy-img__placeholder" style="padding-top: {{ padding }}"></span>
+    <img
+      class="lazy-img lazyload {{ imgClass }}"
+      data-srcset="{{ img.srcset }}"
+      data-src="{{ img.src }}"
+      data-sizes="auto"
+      alt="{{ img.alt }}"
+      data-caption="{{ caption }}"
+      data-credit="{{ credit }}"
+    />
+  </div>
+
+{% endif %}

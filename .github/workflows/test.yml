@@ -1,0 +1,42 @@
+name: Test
+
+on: [pull_request]
+
+jobs:
+  lint:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Add HTTP basic auth credentials
+        env:
+          COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH_JSON }}
+        if: env.COMPOSER_AUTH != null
+        run: echo '${{ secrets.COMPOSER_AUTH_JSON }}' > $GITHUB_WORKSPACE/auth.json
+
+      - name: Install PHP dependencies
+        uses: php-actions/composer@v6
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Lint scripts
+        run: npm run lint:scripts
+
+      - name: Lint PHP
+        run: npm run lint:php
+
+      - name: Check bundlesize
+        run: npm run test:bundlesize
+
+      - name: Run static analysis
+        run: npm run phpstan

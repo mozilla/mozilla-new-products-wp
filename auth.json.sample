@@ -1,0 +1,18 @@
+{
+    "http-basic": {
+      // retrieve from 1PW
+      "composer.deliciousbrains.com": {
+        "username": "####",
+        "password": "####"
+      },
+      // retrieve from 1PW
+      "connect.advancedcustomfields.com": {
+        "username": "####",
+        "password": "####" 
+      }
+    },
+    // generate a token here https://github.com/settings/tokens
+    "github-oauth": {
+      "github.com": "GH_TOKEN_HERE"
+    }
+  }

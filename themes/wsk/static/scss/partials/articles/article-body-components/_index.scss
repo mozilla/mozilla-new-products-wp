@@ -1,0 +1,21 @@
+@import 'article-footer';
+@import 'byline';
+@import 'share-tools';
+@import 'modal-gallery';
+
+.article,
+.page {
+  @include spacing(bottom);
+}
+
+.article-body,
+.basic-page__body {
+  @include grid-parent($article-max);
+  @include spacing(vert);
+}
+
+.article-body-width,
+.basic-page__body-width {
+  @include grid-child;
+  @include spacing(bottom);
+}

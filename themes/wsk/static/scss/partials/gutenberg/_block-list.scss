@@ -1,0 +1,11 @@
+@mixin list-block {
+  ul {
+    &:not(.blocks-gallery-grid):not(.ups-block__related-articles__list):not(.acf-hl) {
+      @include ul;
+    }
+  }
+
+  ol {
+    @include ol;
+  }
+}

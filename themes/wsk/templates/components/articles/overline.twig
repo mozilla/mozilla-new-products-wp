@@ -1,0 +1,5 @@
+{% set overline = article.overline %}
+
+{% if overline %}
+<p class="topper-overline"><a class="topper-overline-link" href="{{ overline.link }}">{{ overline.name }}</a></p>
+{% endif %}

@@ -1,0 +1,34 @@
+$spacing-xxs: 5px;
+$spacing-xs: 8px;
+$spacing-sm: 12px;
+$spacing-md: 18px;
+$spacing-lg: 24px;
+$spacing-xl: 36px;
+$spacing-xxl: 60px;
+$spacing-xxxl: 120px;
+$spacing-xxxxl: 160px;
+
+// Applications
+$font-margin-base: $spacing-md 0 0;
+$font-margin-h6: $spacing-xxl auto 0;
+$font-margin-h5: $spacing-xxl auto 0;
+$font-margin-h4: $spacing-xxl auto 0;
+$font-margin-h3: $spacing-xxl auto 0;
+$font-margin-h2: $spacing-xxl auto 0;
+$font-margin-h1: $spacing-xxl auto 0;
+$font-margin-blockquote: 1em 40px;
+$font-margin-list: $font-margin-base;
+$font-margin-dd: 0 0 0 40px;
+$font-padding-list: 0 0 0 40px;
+$article-asset-spacing: $spacing-sm;
+
+// Store grid config in SCSS since we'll need it for breakpoint calculations
+$site-padding-m: 12px;
+$grid-padding-m: 8px;
+$site-padding-d: 30px;
+$grid-padding-d: 12px;
+
+// Max widths
+$article-max: 730px; // 6 cols once browser reaches $site-max
+$site-max: 1400px;
+$nav-height: 100px;

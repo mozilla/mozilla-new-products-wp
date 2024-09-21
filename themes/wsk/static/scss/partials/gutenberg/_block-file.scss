@@ -1,0 +1,66 @@
+@mixin file-block {
+  .wp-block-file {
+    @include block-spacing-md;
+    @include basic-text;
+    position: relative;
+    padding: $spacing-md;
+    overflow: hidden;
+    z-index: 1;
+    @include mq($bp-tablet-xl) {
+      padding: $spacing-lg;
+    }
+
+    a:not(.wp-block-file__button) {
+      display: block;
+    }
+
+    // styles download button
+    .wp-block-file__button {
+      @include secondary-button($base: $c-bg transparent);
+      float: left;
+      margin-top: $spacing-sm;
+      position: relative;
+      z-index: $z-index-1;
+    }
+
+    // Set hover style on parent. This is usually bad, but the link has
+    // an absolutely positioned after element that makes it work
+    &:hover,
+    &:focus-within {
+      > *:first-child {
+        color: $c-bg;
+        background: transparent;
+        box-shadow: none;
+
+        &::before {
+          background-color: $c-text-80;
+        }
+      }
+    }
+
+    // the primary link has no class, so we have to style like this
+    > *:first-child {
+      color: $c-bg;
+
+      &:active {
+        color: $c-reverse-secondary;
+      }
+
+      // adds before element for bg color z-indexed under everything else
+      &::before {
+        @include absolute(0);
+        content: '';
+        background-color: $c-text;
+        border: 1px solid $c-text;
+        border-radius: 3px;
+        z-index: -1;
+      }
+
+      // adds after element to trigger hover
+      &::after {
+        @include absolute(0);
+        content: '';
+      }
+    }
+  }
+}

@@ -1,0 +1,84 @@
+@mixin pullquote-block {
+  .wp-block-pullquote {
+    border: $border;
+    border-width: 1px 0;
+    font-family: $ff-pullquote;
+    max-width: none;
+
+    p:first-child {
+      margin-top: 0;
+    }
+
+    blockquote {
+      margin: 0;
+    }
+
+    cite {
+      @include small-text;
+      display: block;
+      margin: $font-margin-base;
+      font-style: normal;
+    }
+  }
+
+  // styling everything that isnt floated left or right
+  .wp-block:not([data-align='left']):not([data-align='right']) .wp-block-pullquote,
+  > .wp-block-pullquote:not(.alignleft):not(.alignright) {
+    @include margin($spacing-xl x $spacing-xl x);
+    @include padding($spacing-xl x);
+    clear: both;
+
+    @include mq($bp-tablet-xl) {
+      @include margin($spacing-xxl x);
+      @include padding($spacing-xxl x);
+    }
+
+    p {
+      @include fluid-font($tween-start: $fs-md 400px, $tween-end: $fs-xxxl 1400px);
+      line-height: $lh-small;
+    }
+
+    cite {
+      position: relative;
+
+      @include mq($bp-tablet-xl) {
+        margin-top: $spacing-xl;
+      }
+    }
+  }
+
+  .wp-block[data-align='left'] .wp-block-pullquote,
+  .wp-block[data-align='right'] .wp-block-pullquote,
+  .wp-block-pullquote.alignleft,
+  .wp-block-pullquote.alignright {
+    @include mq(max, $bp-tablet) {
+      @include padding($spacing-md x);
+      border-width: 1px 0;
+    }
+    @include mq($bp-tablet) {
+      border-width: 0;
+    }
+
+    p {
+      font-weight: $fw-bold;
+    }
+
+    blockquote {
+      max-width: 600px;
+    }
+  }
+
+  .wp-block[data-align='right'] .wp-block-pullquote,
+  .wp-block-pullquote.alignright {
+    blockquote {
+      @include mq($bp-tablet) {
+        margin-left: auto;
+      }
+    }
+  }
+
+  .wp-block[data-align='full'] .wp-block-pullquote,
+  .wp-block-pullquote.alignfull {
+    @include spacing(horiz);
+  }
+}

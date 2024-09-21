@@ -1,0 +1,13 @@
+<div class="topper topper--text-only">
+  <div class="topper-hgroup">
+    {% include 'components/articles/overline.twig' %}
+
+    <h1 class="topper-hed">{{ article.title }}</h1>
+
+    {% if article.topper_description %}
+      <p class="topper-dek">
+        {{ article.topper_description }}
+      </p>
+    {% endif %}
+  </div>
+</div>

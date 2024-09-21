@@ -1,0 +1,39 @@
+#!/bin/bash
+
+TIMESTAMP=$(date "+%Y-%m-%d-%H%M%S")
+DEFAULT_FILENAME="backup-$TIMESTAMP"
+FILENAME=${1:-$DEFAULT_FILENAME}
+
+while [ "${1:-}" != "" ]; do
+  case "$1" in
+    "--init")
+      echo "Are you sure you want to create a new project initialization database?"
+      read -s -p "This will overwrite the existing one at docker/conf/mysql/init-ups-dock-sql.gz (n/Y) "  CONFIRMATION
+      echo
+      if [[ "$CONFIRMATION" != 'Y' ]]; then
+        echo
+        echo "Exiting..."
+        exit
+      fi
+
+      echo "OK, generating a new initialization database..."
+      ./bin/wp db export - | gzip -3 > docker/conf/mysql/init-ups-dock.sql.gz
+      echo "Done"
+      exit
+      ;;
+    "-h" | "--help")
+      echo "Usage: backup <filename> [--init]"
+      echo ""
+      echo "FLAGS"
+      echo ""
+      echo "  --init    Save the backup as a new initialization database."
+      exit
+  esac
+  shift
+done
+
+mkdir -p _backups
+
+echo "Creating a database backup to the _backups/ directory..."
+./bin/wp db export - | gzip -3 > _backups/$FILENAME.sql.gz
+echo "Done"

@@ -1,0 +1,25 @@
+.topper--small-img {
+  .topper-hgroup {
+    @include grid-parent($article-max);
+  }
+
+  .topper-hgroup-inner {
+    @include grid-child;
+  }
+
+  .topper-hed {
+    @include fluid-font($tween-start: $fs-lg 400px, $tween-end: 48px 1400px);
+  }
+
+  .topper-asset-mod {
+    @include grid-parent($article-max);
+  }
+
+  .article-asset-mod {
+    @include grid-child;
+  }
+
+  .article-caption-width {
+    @include grid-child;
+  }
+}

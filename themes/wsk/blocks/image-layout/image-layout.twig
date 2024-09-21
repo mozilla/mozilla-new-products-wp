@@ -1,0 +1,76 @@
+{% set imageCountToUse = 6 %}
+
+{% if layout == "asymmetrical" %}
+  {% set imageCountToUse = 3 %}
+{% elseif layout == "row" %}
+  {% set imageCountToUse = 4 %}
+{% endif%}
+
+{% set assets = images|slice(0, imageCountToUse) %}
+
+{% if layout == "row" %}
+
+  <figure class="ups-block__row {{ alignclass }} {{ crop_to_same_ratio ? "is-cropped" : "" }}">
+    <div class="assets asset-count--{{assets|length}}">
+        {% for asset in assets %}
+          <figure class="asset-aspect-ratio">
+            {% include 'components/articles/blocks/asset.twig' with {
+              asset: asset,
+              aspectRatio: crop_to_same_ratio == false
+            } %}
+          </figure>
+        {% endfor %}
+    </div>
+
+    {% include 'components/articles/blocks/caption.twig' with {'caption' : caption} %}
+
+  </figure>
+
+{% elseif layout == "asymmetrical" %}
+
+  <figure class="ups-block__asym-grid {{ alignclass }} {{ crop_to_same_ratio ? "is-cropped" : "" }}">
+    <div class="assets">
+      <div class="lead-asset">
+        {% for asset in assets|slice(0,1) %}
+          {% include 'components/articles/blocks/asset.twig' with {
+            asset: asset,
+            aspectRatio: crop_to_same_ratio == false
+          } %}
+        {% endfor %}
+
+      </div>
+
+      <div class="small-assets">
+        {% for asset in assets|slice(1,2) %}
+          {% include "components/articles/blocks/asset.twig" with {
+            asset: asset,
+            aspectRatio: crop_to_same_ratio == false
+          } %}
+        {% endfor %}
+      </div>
+    </div>
+
+    {% include 'components/articles/blocks/caption.twig' with {'caption' : caption} %}
+
+  </figure>
+
+{% elseif layout == "symmetrical" %}
+
+  <figure class="wp-block-gallery {{ alignclass }} {{ crop_to_same_ratio ? "is-cropped" : "" }}">
+    <ul class="blocks-gallery-grid">
+      {% for asset in assets %}
+        <li class="blocks-gallery-item">
+          <figure>
+            {% include 'components/articles/blocks/asset.twig' with {
+              asset: asset,
+              aspectRatio: crop_to_same_ratio == false
+            } %}
+          </figure>
+        </li>
+      {% endfor %}
+    </ul>
+
+    {% include 'components/articles/blocks/caption.twig' %}
+  </figure>
+
+{% endif %}

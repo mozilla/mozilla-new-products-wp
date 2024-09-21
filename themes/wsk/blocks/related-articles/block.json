@@ -1,0 +1,23 @@
+{
+  "name": "acf/related-articles",
+  "title": "Related Articles",
+  "description": "A custom block for inserting a list of links to other articles.",
+  "category": "widgets",
+  "icon": {
+    "background": "#ecf6f6",
+    "src": "list-view"
+  },
+  "keywords": ["related", "articles"],
+  "acf": {
+    "mode": "edit",
+    "renderTemplate": "related-articles.php"
+  },
+  "attributes": {
+    "align": {
+      "default": "center"
+    }
+  },
+  "supports": {
+    "align": ["center", "left", "right"]
+  }
+}

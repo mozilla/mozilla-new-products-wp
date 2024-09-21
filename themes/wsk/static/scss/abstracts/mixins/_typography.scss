@@ -1,0 +1,468 @@
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+// basic type mixins
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@mixin basic-text($color: inherit, $font: $ff-base, $weight: $fw-reg, $lh: $lh-base) {
+  @include fluid-font($tween-start: $fs-base 400px, $tween-end: $fs-sm 1400px);
+  color: $color;
+  font-weight: $weight;
+  font-family: $font;
+  line-height: $lh;
+}
+
+@mixin article-text($color: inherit, $font: $ff-article, $weight: $fw-reg, $lh: $lh-base) {
+  @include fluid-font($tween-start: $fs-base 400px, $tween-end: $fs-sm 1400px);
+  color: $color;
+  font-weight: $weight;
+  font-family: $font;
+  line-height: $lh;
+}
+
+@mixin small-text($color: inherit, $font: $ff-base, $weight: $fw-reg, $lh: $lh-base) {
+  @include fluid-font($tween-start: $fs-xxs 400px, $tween-end: $fs-base 1400px);
+  color: $color;
+  font-weight: $weight;
+  font-family: $font;
+  line-height: $lh;
+}
+
+@mixin tiny-text($color: inherit, $font: $ff-base, $weight: $fw-reg, $lh: $lh-base) {
+  color: $color;
+  font-family: $font;
+  font-size: $fs-xxs;
+  font-weight: $weight;
+  line-height: $lh;
+}
+
+@mixin smallcaps($color: inherit) {
+  @include fluid-font($tween-start: $fs-smallcap-min 400px, $tween-end: $fs-smallcap-max 1400px);
+  color: $color;
+  line-height: $lh-smallcap;
+  font-family: $ff-heading;
+  font-weight: $fw-bold;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+
+  b,
+  strong {
+    font-weight: $fw-bold;
+  }
+}
+
+@mixin caption {
+  @include tiny-text;
+}
+
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+// link mixins
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@mixin link(
+  $underline: $c-link,
+  $hover: $c-bg $c-text,
+  $active: $c-bg $c-link-active,
+  $target: false
+) {
+  @if $target != false {
+    #{$target} {
+      box-shadow: inset 0 -1px $underline;
+      cursor: pointer;
+    }
+
+    &:hover,
+    &:focus {
+      #{$target} {
+        box-shadow: none;
+        background-color: nth($hover, 2);
+        color: nth($hover, 1);
+      }
+    }
+
+    &:active {
+      #{$target} {
+        box-shadow: none;
+        background-color: nth($active, 2);
+        color: nth($active, 1);
+      }
+    }
+  } @else {
+    box-shadow: inset 0 -1px $underline;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      box-shadow: none;
+      background-color: nth($hover, 2);
+      color: nth($hover, 1);
+    }
+
+    &:active {
+      box-shadow: none;
+      background-color: nth($active, 2);
+      color: nth($active, 1);
+    }
+  }
+}
+
+@mixin subtle-link($hover: currentColor, $active: $c-link-active, $target: false) {
+  @if $target != false {
+    #{$target} {
+      cursor: pointer;
+    }
+
+    &:hover #{$target},
+    &:focus #{$target} {
+      box-shadow: inset 0 -1px $hover;
+    }
+    &:active #{$target} {
+      box-shadow: inset 0 -1px $active;
+      color: $active;
+    }
+  } @else {
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      box-shadow: inset 0 -1px $hover;
+    }
+    &:active {
+      box-shadow: inset 0 -1px $active;
+      color: $active;
+    }
+  }
+}
+
+@mixin color-link($color: currentColor, $hover: $c-link-hover, $active: $c-link-active) {
+  color: $color;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    color: $hover;
+  }
+
+  &:active {
+    color: $active;
+  }
+}
+
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+// Button mixins
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@mixin button(
+  $base: $c-bg $c-text,
+  $hover: $c-reverse $c-spot,
+  $active: $c-reverse-secondary $c-spot
+) {
+  @include reset-input;
+  @include small-text($color: nth($base, 1), $lh: $lh-small);
+  @include padding($spacing-sm $spacing-md);
+  background-color: nth($base, 2);
+  border-radius: 100px;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    background-color: nth($hover, 2);
+    color: nth($hover, 1);
+  }
+
+  &:active {
+    background-color: nth($active, 2);
+    color: nth($active, 1);
+  }
+}
+
+@mixin secondary-button(
+  $base: $c-text $c-bg,
+  $hover: $c-reverse $c-spot,
+  $active: $c-reverse-secondary $c-spot
+) {
+  @include button($base, $hover, $active);
+  border: 1px solid;
+
+  &:hover,
+  &:focus {
+    border-color: nth($hover, 2);
+  }
+
+  &:active {
+    border-color: nth($active, 2);
+  }
+}
+
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+// Heading Mixins
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+@mixin big-h1($color: inherit, $font: $ff-heading, $weight: $fw-bold, $lh: $lh-h1) {
+  @include fluid-font($tween-start: $fs-big-h1-min 400px, $tween-end: $fs-big-h1-max 1400px);
+  color: $color;
+  font-weight: $weight;
+  font-family: $font;
+  line-height: $lh;
+}
+
+@mixin h1($color: inherit, $font: $ff-heading, $weight: $fw-bold, $lh: $lh-h1) {
+  @include fluid-font($tween-start: $fs-h1-min 400px, $tween-end: $fs-h1-max 1400px);
+  color: $color;
+  font-weight: $weight;
+  font-family: $font;
+  line-height: $lh;
+}
+
+@mixin h2($color: inherit, $font: $ff-heading, $weight: $fw-bold, $lh: $lh-h2) {
+  @include fluid-font($tween-start: $fs-h2-min 400px, $tween-end: $fs-h2-max 1400px);
+  color: $color;
+  font-weight: $weight;
+  font-family: $font;
+  line-height: $lh;
+}
+
+@mixin h3($color: inherit, $font: $ff-heading, $weight: $fw-bold, $lh: $lh-h3) {
+  @include fluid-font($tween-start: $fs-h3-min 400px, $tween-end: $fs-h3-max 1400px);
+  color: $color;
+  font-weight: $weight;
+  font-family: $font;
+  line-height: $lh;
+}
+
+@mixin h4($color: inherit, $font: $ff-heading, $weight: $fw-bold, $lh: $lh-h4) {
+  @include fluid-font($tween-start: $fs-h4-min 400px, $tween-end: $fs-h4-max 1400px);
+  color: $color;
+  font-weight: $weight;
+  font-family: $font;
+  line-height: $lh;
+}
+
+@mixin h5($color: inherit, $font: $ff-heading, $weight: $fw-bold, $lh: $lh-h5) {
+  @include fluid-font($tween-start: $fs-h5-min 400px, $tween-end: $fs-h5-max 1400px);
+  color: $color;
+  font-weight: $weight;
+  font-family: $font;
+  line-height: $lh;
+}
+
+@mixin h6 {
+  @include smallcaps;
+}
+
+// headings add space
+
+@mixin article-h1 {
+  @include h1;
+  margin-top: $spacing-xl;
+  @include mq($bp-tablet-xl) {
+    margin: $font-margin-h1;
+  }
+}
+
+@mixin article-h2 {
+  @include h2;
+  margin-top: $spacing-xl;
+  @include mq($bp-tablet-xl) {
+    margin: $font-margin-h2;
+  }
+}
+
+@mixin article-h3 {
+  @include h3;
+  margin-top: $spacing-xl;
+  @include mq($bp-tablet-xl) {
+    margin: $font-margin-h3;
+  }
+}
+
+@mixin article-h4 {
+  @include h4;
+  margin-top: $spacing-xl;
+  @include mq($bp-tablet-xl) {
+    margin: $font-margin-h4;
+  }
+}
+
+@mixin article-h5 {
+  @include h5;
+  margin-top: $spacing-xl;
+  @include mq($bp-tablet-xl) {
+    margin: $font-margin-h5;
+  }
+}
+
+@mixin article-h6 {
+  @include h6;
+  margin-top: $spacing-xl;
+  @include mq($bp-tablet-xl) {
+    margin: $font-margin-h6;
+  }
+}
+
+// lists
+
+@mixin ul-base($level: top) {
+  @if $level == top {
+    @include margin(15px x 30px);
+    list-style: none;
+    font-family: $ff-list;
+    padding-left: 0;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    li {
+      position: relative;
+      margin-top: 10px;
+      padding-left: 1.3em;
+
+      &::before {
+        @include absolute(0.6em x x 0);
+        @include size(8px);
+        content: '';
+        border-radius: 50%;
+        position: absolute;
+        border: 1px solid;
+        background-color: currentColor;
+      }
+    }
+  } @else if $level == one {
+    li::before {
+      background-color: currentColor;
+    }
+  } @else if $level == two {
+    li::before {
+      background: transparent;
+    }
+  }
+}
+
+@mixin ol-base($level: top) {
+  @if $level == top {
+    @include margin(15px x 30px);
+    counter-reset: counter;
+    font-family: $ff-list;
+    list-style: none;
+    padding-left: 0;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    > li {
+      margin-top: 10px;
+      position: relative;
+      padding-left: 1.3em;
+
+      &::before {
+        @include absolute(0 x x 0);
+        content: counter(counter) '.';
+        counter-increment: counter;
+        font-family: $ff-base;
+        font-size: 0.8em;
+        font-weight: $fw-bold;
+        padding-top: 0.2em;
+      }
+    }
+  } @else if $level == one {
+    li::before {
+      content: counter(counter) '.';
+    }
+  } @else if $level == two {
+    li::before {
+      content: counter(counter, lower-alpha) '.';
+    }
+  } @else if $level == three {
+    li::before {
+      content: counter(counter, upper-roman) '.';
+    }
+  }
+}
+
+@mixin ol {
+  @include ol-base;
+  ol {
+    @include ol-base($level: two);
+    ol {
+      @include ol-base($level: three);
+      ol {
+        @include ol-base($level: one);
+        ol {
+          @include ol-base($level: two);
+          ol {
+            @include ol-base($level: three);
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin ul {
+  @include ul-base;
+  ul {
+    @include ul-base(two);
+    ul {
+      @include ul-base(one);
+      ul {
+        @include ul-base(two);
+        ul {
+          @include ul-base(one);
+          ul {
+            @include ul-base(two);
+          }
+        }
+      }
+    }
+  }
+}
+
+// Makes an inline list with any separator you want
+//
+// Example
+// @include inline-list($separator: '👏', $separator-color: inherit);
+@mixin inline-list($li: 'li', $separator: '|', $separator-color: $c-secondary) {
+  list-style: none;
+  padding-left: 0;
+
+  #{$li} {
+    display: inline-block;
+    &:not(:last-child) {
+      &::after {
+        color: $separator-color;
+        content: $separator;
+        padding: 0 $spacing-xs;
+      }
+    }
+  }
+}
+
+@mixin selection($color: $c-select, $bg: $c-select-bg) {
+  /* stylelint-disable */
+  ::-moz-selection {
+    background: $bg;
+    color: $color;
+    text-shadow: none;
+  }
+  /* stylelint-enable */
+
+  ::selection {
+    background: $bg;
+    color: $color;
+    text-shadow: none;
+  }
+}
+
+@mixin reverse {
+  @include selection($color: $c-reverse-select, $bg: $c-reverse-select-bg);
+  background-color: $c-reverse-bg;
+  color: $c-reverse;
+}

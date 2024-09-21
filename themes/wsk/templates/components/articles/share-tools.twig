@@ -1,0 +1,34 @@
+<div class="article__share-tools">
+  <p class="article__share-tools__h visually-hidden">Share</p>
+
+  <ul class="article__share-list">
+    <li class="article__share-item article__share-item--twitter">
+      <a
+        href="https://twitter.com/intent/tweet?url={{ article.link|url_encode }}&amp;text={{ article.post_title|url_encode }}"
+        class="article__share-item--link"
+        target="_blank"
+        rel="noopener"
+        aria-label="Twitter"
+      >
+        <span class="visually-hidden">Twitter</span>
+        <svg class="article__share-item--icon">
+          <use xlink:href="#twitter"></use>
+        </svg>
+      </a>
+    </li>
+    <li class="article__share-item article__share-item--facebook">
+      <a
+        href="https://www.facebook.com/sharer/sharer.php?u={{article.link|url_encode}}"
+        class="article__share-item--link"
+        target="_blank"
+        rel="noopener"
+        aria-label="Facebook"
+      >
+        <span class="visually-hidden">Facebook</span>
+        <svg class="article__share-item--icon">
+          <use xlink:href="#facebook"></use>
+        </svg>
+      </a>
+    </li>
+  </ul>
+</div>

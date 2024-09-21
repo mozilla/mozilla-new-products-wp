@@ -1,0 +1,21 @@
+{% if related_articles is not empty %}
+<div class="ups-block__related-articles {{ alignclass }}">
+  <div class="ups-block__related-articles__inner">
+
+  {% if related_articles_header %}
+    <h3 class="ups-block__related-articles__head">{{ related_articles_header }}</h3>
+  {% endif %}
+
+  {% if related_articles %}
+    <ul class="ups-block__related-articles__list">
+      {% for article in related_articles %}
+        <li class="ups-block__related-articles__item">
+          <a class="ups-block__related-articles__link" href="{{ article.link }}">{{ article.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  </div>
+</div>
+{% endif %}

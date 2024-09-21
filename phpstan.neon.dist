@@ -1,0 +1,15 @@
+includes:
+    - themes/wsk/vendor/szepeviktor/phpstan-wordpress/extension.neon
+parameters:
+    level: max
+    inferPrivatePropertyTypeFromConstructor: true
+    # TODO Add types inside arrays
+    checkMissingIterableValueType: false
+    bootstrapFiles:
+        - tests/phpstan/bootstrap.php
+    scanFiles:
+        - themes/wsk/vendor/php-stubs/acf-pro-stubs/acf-pro-stubs.php
+    paths:
+        - themes/wsk/includes/
+    excludePaths:
+        - */node_modules/*

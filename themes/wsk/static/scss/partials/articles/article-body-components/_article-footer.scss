@@ -1,0 +1,22 @@
+.article-footer {
+  @include grid-child;
+  margin-top: $spacing-xl;
+}
+
+.article-footer__inner {
+  padding-top: $spacing-xl;
+  border-top: 1px solid;
+}
+
+.article-footer__author,
+.article-footer__date {
+  display: inline-block;
+}
+
+.article-footer__author {
+  margin-right: $spacing-sm;
+}
+
+.article-footer__date {
+  color: $c-secondary;
+}

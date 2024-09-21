@@ -1,0 +1,189 @@
+@mixin global($global: true) {
+  /* base
+================================================================= */
+
+  /* Box model
+----------------------------------------------------------------- */
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  /* add selections colors
+----------------------------------------------------------------- */
+
+  * {
+    @include selection;
+  }
+
+  /* HTML5 display definitions
+----------------------------------------------------------------- */
+
+  /* Correct `block` display not defined in IE 6/7/8/9 and Firefox 3. */
+  article,
+  aside,
+  details,
+  figcaption,
+  figure,
+  footer,
+  header,
+  hgroup,
+  main,
+  nav,
+  section,
+  summary {
+    display: block;
+  }
+  /* Correct `inline-block` display not defined in IE 6/7/8/9 and Firefox 3. */
+  audio,
+  canvas,
+  video {
+    display: inline-block;
+    max-width: 100%;
+    *display: inline;
+    *zoom: 1;
+  }
+  /* Prevent modern browsers from displaying `audio` without controls. Remove excess height in iOS 5 devices. */
+  audio:not([controls]) {
+    display: none;
+    height: 0;
+  }
+  /* Address styling not present in IE 7/8/9, Firefox 3, and Safari 4. Known issue:no IE 6 support. */
+  [hidden] {
+    display: none !important;
+  }
+  /* Address margin not present in IE 6/7/8/9, Safari 5, and Opera 11. */
+  figure {
+    margin: 25px 0;
+  }
+
+  /* Base
+----------------------------------------------------------------- */
+
+  /* Address `font-family` inconsistency between `textarea` and other form elements. */
+  button,
+  input,
+  select,
+  textarea {
+    @include reset-input;
+    font-family: inherit;
+  }
+
+  section {
+    margin: 0;
+  }
+
+  /* Embedded content
+----------------------------------------------------------------- */
+
+  /* 1. Remove border when inside `a` element in IE 6/7/8/9 and Firefox 3.
+   2. Improve image quality when scaled in IE 7. */
+  img {
+    border: 0;
+    -ms-interpolation-mode: bicubic; /* stylelint-disable-line property-no-vendor-prefix */
+  }
+
+  img,
+  a img {
+    height: auto;
+    width: 100%;
+  }
+
+  object,
+  embed {
+    height: auto;
+    max-width: 100%;
+  }
+  /* Correct overflow displayed oddly in IE 9. */
+  svg:not(:root) {
+    overflow: hidden;
+  }
+
+  .svg-filters {
+    @include fixed(100% x x 100%);
+    @include size(0);
+  }
+
+  .page-inner {
+    @include nav-space;
+  }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - -
+  // Skip to content link
+  // - - - - - - - - - - - - - - - - - - - - - - - - -
+
+  .skip-to-content {
+    @include admin-bar-offset(0);
+    position: absolute;
+    left: -999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    z-index: -$z-index-10;
+    text-decoration: none;
+    color: $c-bg;
+
+    &:focus,
+    &:active {
+      background-color: $c-text;
+      left: 0;
+      width: auto;
+      height: auto;
+      overflow: auto;
+      padding: 16px 20px;
+      z-index: $z-index-10 + 1;
+    }
+  }
+
+  #content {
+    outline: 0;
+    flex-grow: 1;
+  }
+
+  .hidden {
+    @include hide;
+  }
+
+  @if $global {
+    /* 1. Correct text resizing oddly in IE 6/7 when body `font-size` is set using `em` units.
+   2. Prevent iOS text size adjust after orientation change, without disabling user zoom.
+   3. Normalize font rendering in Firefox */
+    html {
+      font-size: 100%; /* 1 */
+      /* stylelint-disable */
+      -moz-osx-font-smoothing: #666666; /* 3 */
+      -ms-text-size-adjust: 100%; /* 2 */
+      -webkit-text-size-adjust: 100%; /* 2 */
+      /* stylelint-enable */
+      font-family: inherit;
+    }
+
+    /* Address margins handled incorrectly in IE 6/7. */
+    body {
+      @include basic-text($c-text);
+      background-color: $c-bg;
+      margin: 0;
+
+      /* stylelint-disable */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      /* stylelint-enable */
+    }
+
+    *:first-child {
+      margin-top: 0;
+    }
+  } @else {
+    @include basic-text($c-text);
+    background-color: $c-bg;
+    margin: 0;
+    // max-width: $site-max;
+
+    /* stylelint-disable */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* stylelint-enable */
+  }
+}

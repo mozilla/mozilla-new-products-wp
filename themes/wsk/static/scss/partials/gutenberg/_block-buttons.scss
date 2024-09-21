@@ -1,0 +1,42 @@
+@mixin button-block {
+  .wp-block-buttons {
+    margin-top: $spacing-md;
+    margin-bottom: -$spacing-md; // compensate for extra button spacing
+  }
+
+  .wp-block-button {
+    display: inline-block;
+    margin-bottom: $spacing-md;
+    margin-right: $spacing-md;
+
+    a {
+      display: block;
+    }
+  }
+
+  // =========
+  // Button block styles
+  //
+  // Uncomment these rules to enable the outline style for the core/button block.
+  //
+  // Note that if you are using the Upstatement Editorial plugin, the plugin will
+  // disable all core block styles by default. You can re-enable the default block
+  // styles for the button block by adding 'button' to the 'enable_block_styles'
+  // array in the plugin config (see https://github.com/Upstatement/ups-editorial-wp-plugin/blob/main/README.md#theme-configuration)
+
+  // .wp-block-button:not(.is-style-outline) {
+  //   a {
+  //     @include button(
+  //       $base: $c-bg $c-text,
+  //       $hover: $c-reverse $c-spot,
+  //       $active: $c-reverse-secondary $c-spot
+  //     );
+  //   }
+  // }
+
+  // .wp-block-button.is-style-outline {
+  //   a {
+  //     @include secondary-button;
+  //   }
+  // }
+}

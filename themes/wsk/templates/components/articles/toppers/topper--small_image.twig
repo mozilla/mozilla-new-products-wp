@@ -1,0 +1,41 @@
+{% set asset = null %}
+{% set poster = null %}
+{% set overrides = { caption: article.topper_caption } %}
+
+{% if article.topper_image %}
+  {% set asset = Image(article.topper_image) %}
+{% elseif article.thumbnail.id %}
+  {% set asset = Image(article.thumbnail.id) %}
+{% endif %}
+
+{% if article.topper_video_poster %}
+  {% set poster = Image(article.topper_video_poster) %}
+{% endif %}
+
+<div class="topper topper--small-img {{ asset.caption or asset.credit or overrides.caption ? 'topper--caption' }}">
+  <div class="topper-hgroup">
+    <div class="topper-hgroup-inner">
+      {% include 'components/articles/overline.twig' %}
+
+      <h1 class="topper-hed">{{ article.title }}</h1>
+
+      {% if article.topper_description %}
+        <p class="topper-dek">
+          {{ article.topper_description }}
+        </p>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if asset %}
+    <figure class="topper-asset-mod">
+      {% include 'components/articles/blocks/asset.twig' with {
+        asset: asset,
+        poster: poster,
+        overrides: overrides,
+        hidden: article.topper_hide_in_modal_gallery
+      } %}
+      {% include 'components/articles/blocks/caption.twig' with { asset: asset, overrides: overrides } %}
+    </figure>
+  {% endif %}
+</div>

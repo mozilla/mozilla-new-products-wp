@@ -1,0 +1,65 @@
+$c-black: #000000;
+$c-white: #ffffff;
+$c-yellow: #f8cb54;
+$c-red: #e97448;
+
+// Semantically meaningful names
+$c-text: $c-black;
+$c-bg: $c-white;
+$c-spot: $c-red;
+
+// Tints
+$c-text-5: rgba($c-text, 0.05);
+$c-text-10: rgba($c-text, 0.1);
+$c-text-30: rgba($c-text, 0.3);
+$c-text-50: rgba($c-text, 0.5);
+$c-text-60: rgba($c-text, 0.6);
+$c-text-80: rgba($c-text, 0.8);
+
+$c-bg-tint-5: rgba($c-bg, 0.05);
+$c-bg-tint-10: rgba($c-bg, 0.1);
+$c-bg-tint-30: rgba($c-bg, 0.3);
+$c-bg-tint-50: rgba($c-bg, 0.5);
+$c-bg-tint-60: rgba($c-bg, 0.6);
+$c-bg-tint-80: rgba($c-bg, 0.8);
+
+// Applications
+$c-secondary: $c-text-60;
+$c-reverse-secondary: $c-bg-tint-60;
+$c-wrapper-bg: $c-bg;
+$c-border: $c-text;
+$c-border-light: $c-text-30;
+$c-border-reverse: $c-bg;
+$c-border-reverse-light: $c-bg-tint-30;
+$c-highlight-tag: $c-yellow;
+$c-select: $c-bg;
+$c-select-bg: $c-black;
+$c-disabled: $c-secondary;
+
+// Reversed
+$c-reverse: $c-bg;
+$c-reverse-bg: $c-text;
+$c-reverse-spot: $c-yellow;
+$c-reverse-select: $c-black;
+$c-reverse-select-bg: $c-bg;
+
+// Link
+$c-link: $c-text;
+$c-link-hover: $c-spot;
+$c-link-active: $c-secondary;
+
+// Code
+$c-code: $c-bg;
+$c-code-bg: $c-text;
+$c-inline-code: $c-text;
+$c-inline-code-bg: $c-text-10;
+
+// Code
+$c-table-border: $c-border;
+$c-table-head: $c-bg;
+$c-table-head-bg: $c-text;
+$c-table-th-border: $c-border;
+$c-table-stripes: $c-text-5;
+
+// Grid
+$c-grid-color: $c-red;

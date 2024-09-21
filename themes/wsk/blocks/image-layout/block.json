@@ -1,0 +1,20 @@
+{
+  "name": "acf/image-layout",
+  "title": "Image Layout",
+  "description": "A custom image block.",
+  "category": "formatting",
+  "icon": "images-alt",
+  "keywords": ["image", "layout"],
+  "acf": {
+    "mode": "edit",
+    "renderTemplate": "image-layout.php"
+  },
+  "attributes": {
+    "align": {
+      "default": "wide"
+    }
+  },
+  "supports": {
+    "align": ["center", "wide", "full"]
+  }
+}

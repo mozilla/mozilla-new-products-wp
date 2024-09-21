@@ -1,0 +1,31 @@
+{% set is_hidden_class = hidden ? 'js-modal-gallery__hidden' %}
+{% set caption = overrides.caption|default(asset.caption) %}
+{% set data_caption = caption|replace({ '"': '&quot;' })|e('html') %}
+{% set data_credit = asset.credit|replace({ '"': '&quot;' })|e('html') %}
+
+<div class="article-asset-mod">
+  {% if asset.post_mime_type starts with 'video' %}
+    <video
+      class="article-asset {{ is_hidden_class }}"
+      loop="loop"
+      muted="muted"
+      autoplay="autoplay"
+      playsinline=""
+      poster="{{ poster.src }}"
+      data-caption="{{ data_caption }}"
+      data-credit="{{ data_credit }}"
+    >
+      <source src="{{ asset.src }}" type="{{ asset.post_mime_type }}">
+    </video>
+  {% else %}
+    {% include 'templates/components/lazy-img.twig' with {
+      img: asset,
+      caption: data_caption,
+      credit: data_credit,
+      class: "article-asset " ~ is_hidden_class,
+      colorTheme: colorTheme,
+      aspectRatio: aspectRatio ?? true
+    } %}
+
+  {% endif %}
+</div>

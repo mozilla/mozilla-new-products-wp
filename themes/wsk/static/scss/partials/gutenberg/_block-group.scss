@@ -1,0 +1,9 @@
+@mixin group-block {
+  .wp-block-group {
+    max-width: none;
+
+    .wp-block-group__inner-container {
+      @include block-alignment;
+    }
+  }
+}

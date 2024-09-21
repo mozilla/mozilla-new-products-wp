@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+
+{% include "layouts/includes/head.twig" %}
+
+<body class="{{ body_class }}{% if pagename %} page-name-{{ pagename }}{% endif %} {% block custom_body_classes %}{% endblock %}">
+
+  <a href="#content" class="skip-to-content" tabindex="0">Skip to content</a>
+
+  {% include "layouts/includes/svgs.twig" %}
+  {% include "layouts/includes/grid.twig" %}
+
+  <div class="layout--base">
+
+    {% include "components/nav.twig" %}
+    {% include "components/menu.twig" %}
+
+    <main id="content" class="content {% block custom_content_classes %}{% endblock %}" tabindex="-1">
+      {% block pageBody %}
+      {% endblock %}
+    </main>
+
+    {% block footer %}
+      {% include "components/footer.twig" %}
+    {% endblock %}
+
+  </div>
+
+  {{ function('wp_footer') }}
+
+  {% block scripts %}
+  {% endblock %}
+
+</body>
+
+</html>

@@ -1,0 +1,10 @@
+
+<figure class="asset-block asset-block--even-grid alignwide">
+  <div class="assets">
+    {% for asset in assets %}
+      {% include 'components/articles/blocks/asset.twig' %}
+    {% endfor %}
+  </div>
+
+  {% include 'components/articles/blocks/caption.twig' %}
+</figure>

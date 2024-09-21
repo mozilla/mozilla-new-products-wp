@@ -1,0 +1,17 @@
+{% set caption = overrides.caption|default(asset.caption) %}
+
+{% if caption or asset.credit %}
+  <figcaption class="article-caption">
+    <div class="article-caption__inner">
+      <div class="article-caption-width">
+      {% if caption %}
+        <span class="article-caption__description">{{ caption }}</span>
+      {% endif %}
+
+      {% if asset.credit %}
+        <span class="article-caption__credit">{{ asset.credit }}</span>
+      {% endif %}
+      </div>
+    </div>
+  </figcaption>
+{% endif %}

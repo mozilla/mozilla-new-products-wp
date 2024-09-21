@@ -1,0 +1,32 @@
+.form__field {
+  display: flex;
+}
+
+.form__input {
+  @include basic-text;
+  @include padding(15px 20px);
+  border: $border;
+}
+
+.form__submit {
+  @include basic-text;
+  @include padding(15px 20px);
+  border: $border;
+  background-color: $c-black;
+  color: $c-white;
+
+  .form__input + & {
+    border-left: none;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: $c-yellow;
+    color: $c-black;
+  }
+}
+
+.form__error {
+  @include basic-text($c-red);
+  @include margin(10px x x x);
+}

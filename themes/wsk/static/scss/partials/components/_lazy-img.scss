@@ -1,0 +1,32 @@
+.lazy-img__mod {
+  position: relative;
+  background-color: $c-black;
+}
+
+.lazy-img__placeholder {
+  display: block;
+  width: 100%;
+}
+
+.lazy-img {
+  @include size(100%);
+  object-fit: cover;
+  opacity: 0;
+  transition: $transition;
+
+  &.lazyloaded {
+    opacity: 1;
+  }
+
+  .lazy-img__mod & {
+    @include absolute(0);
+  }
+}
+
+.lazy-img__mod--white {
+  background-color: $c-white;
+}
+
+.lazy-img__mod--transparent {
+  background-color: transparent;
+}

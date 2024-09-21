@@ -1,0 +1,13 @@
+@mixin video-block {
+  .wp-block-video {
+    position: relative;
+
+    video {
+      display: block;
+      width: 100%;
+    }
+    .alignfull figcaption {
+      @include grid-parent-child;
+    }
+  }
+}

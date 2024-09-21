@@ -1,0 +1,4 @@
+.archive-page__content {
+  @include grid-parent($site-max);
+  @include spacing(bottom);
+}

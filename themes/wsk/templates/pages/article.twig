@@ -1,0 +1,29 @@
+{% extends "layouts/base.twig" %}
+
+{%- block custom_body_classes -%}
+  {{ article.is_light_nav ? 'light-nav' }}
+{%- endblock -%}
+
+{%- block custom_content_classes -%}
+  js-modal-gallery article
+{%- endblock -%}
+
+{% block pageBody %}
+
+  {% include "components/articles/toppers/topper--" ~ (article.topper_type|default('text_only')) ~ ".twig" %}
+
+  <article class="article-body gutenberg-layout">
+    {% include "components/articles/byline.twig" %}
+    {% include "components/articles/share-tools.twig" %}
+
+    <div class="article-body-width gutenberg-content js-hang-punc">
+
+      {{ article.content }}
+
+    </div>
+    {% include "components/articles/article-footer.twig" %}
+  </article>
+
+  {% include "components/articles/modal-gallery.twig" %}
+
+{% endblock %}

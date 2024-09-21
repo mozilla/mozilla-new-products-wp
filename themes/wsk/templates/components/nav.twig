@@ -1,0 +1,21 @@
+<nav class="nav">
+  <div class="nav__inner">
+    <a href="{{ site.url }}" class="nav__logo-link">
+      <svg class="nav__logo">
+        <use xlink:href="#logo"></use>
+      </svg>
+    </a>
+
+    <ul class="nav__items">
+      {% for item in nav_pages_menu.items %}
+      <li class="nav__item">
+        <a href="{{ item.url }}" class="nav__item-link {% if item.current %}active{% endif %}">{{ item.name }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+
+    <button class="nav__menu-trigger js--menu-toggle">
+      <span class="nav__hamburger"></span>
+    </button>
+  </div>
+</nav>

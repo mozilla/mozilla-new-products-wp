@@ -1,0 +1,29 @@
+.topper--site-width-img {
+  .topper-hgroup {
+    @include grid-parent($site-max);
+  }
+
+  .topper-dek {
+    max-width: 600px;
+  }
+
+  .topper-hgroup-inner {
+    @include grid-child;
+  }
+
+  .topper-asset-mod {
+    @include grid-parent($site-max);
+    .article-asset-mod,
+    .article-caption {
+      @include grid-child;
+    }
+  }
+
+  .article-caption-width {
+    // Override pseudo border from article-toppers/_base.scss
+    &::after {
+      left: 0;
+      right: 0;
+    }
+  }
+}

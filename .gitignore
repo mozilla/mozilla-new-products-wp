@@ -1,0 +1,28 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE and local environment
+/.vscode/
+
+# Packages
+/vendor/
+/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Application
+.env
+/uploads/*
+!/uploads/.gitkeep
+/plugins/*
+!/plugins/.gitkeep
+
+auth.json
+
+# Tests
+.eslintcache
+
+# Local project
+/_backup/

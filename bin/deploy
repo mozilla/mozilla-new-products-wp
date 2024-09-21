@@ -1,0 +1,41 @@
+#!/bin/bash
+
+set -e
+
+HOST=HOST_GOES_HERE
+USER=USER_GOES_HERE
+PORT=PORT_GOES_HERE
+BASEDIR=$(dirname "$0")
+DEPLOYIGNORE=$BASEDIR/../.deployignore
+
+if [ -z $HOST ] || [ -z $USER ]; then
+  echo "Please pass the SFTP host, user name, and port for your site."
+  exit 1
+fi
+
+## NOTE
+## You might need this, depending on your host.
+# echo "Creating temporary directory..."
+# ssh $USER@$HOST -p $PORT -o StrictHostKeyChecking=no "mkdir -p ~/_tmp"
+
+echo "Deploying WordPress theme..."
+rsync \
+  -rlvz \
+  --exclude-from="$DEPLOYIGNORE" \
+  --ipv4 \
+  --delete-after \
+  -e "ssh -p $PORT -o StrictHostKeyChecking=no" \
+  --temp-dir=~/_tmp \
+  themes/wsk \
+  $USER@$HOST:~/public/wp-content/themes/wsk
+
+echo "Deploying WordPress plugins..."
+rsync \
+  -rlvz \
+  --ipv4 \
+  --exclude=".gitignore" \
+  --exclude="node_modules/" \
+  -e "ssh -p $PORT -o StrictHostKeyChecking=no" \
+  --temp-dir=~/_tmp \
+  plugins \
+  $USER@$HOST:~/public/wp-content

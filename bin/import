@@ -1,0 +1,45 @@
+#!/bin/bash
+
+set -e
+
+FULL_FILE_PATH=$1
+
+while [ "${1:-}" != "" ]; do
+  case "$1" in
+    "-h" | "--help")
+      echo "Usage: import <filename>"
+      exit
+  esac
+  shift
+done
+
+if [ -z "$FULL_FILE_PATH" ]; then
+  echo "Usage: import <filename>"
+  echo "ERROR: please provide a filename as the first argument."
+  exit
+fi
+
+if [ ! -f "$FULL_FILE_PATH" ]; then
+    echo "ERROR: There is no file at $FULL_FILE_PATH"
+    exit
+fi
+
+echo "Restoring database from backup ..."
+
+FILENAME=$(basename -- "$FULL_FILE_PATH")
+EXTENSION="${FILENAME##*.}"
+FILENAME="${FILENAME%.*}"
+
+if [ "gz" != "$EXTENSION" ] && [ "sql" != "$EXTENSION" ]; then
+  echo "ERROR: You can only import files with the .sql or .gz extension."
+  exit
+fi
+
+if [ "gz" == "$EXTENSION" ]
+then
+  zcat < $FULL_FILE_PATH | docker compose exec -T db mysql -u root -proot wordpress
+else
+  cat < $FULL_FILE_PATH | docker compose exec -T db mysql -u root -proot wordpress
+fi
+
+echo "Done"
