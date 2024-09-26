@@ -1,8 +1,6 @@
 # Mozilla Builders
 
-Upstatement's WordPress Starter Kit is can get you set up with a locally running WordPress site in minutes.
-
-If you're using this repo as a template for a new project, update this section with some information about the project.
+A WordPress theme for Mozilla Builders.
 
 ## Table of Contents
 
@@ -108,37 +106,27 @@ You'll also need a way to run a LAMP/LEMP (Linux, Apache/nginx, MySQL, PHP) stac
 
 3.  Duplicate the `auth.json.sample` file and rename it to `auth.json`. Find `Wordpress Starter Kit auth.json` on 1PW and copy its contents into this file.
 
-4.  If you're using the Starter Kit as a template for another project, you will want run the rename theme command and follow the prompt, which will set up the project with your desired theme name and metadata:
-
-    ```shell
-    ./bin/rename
-    ```
-
-    If you are looking to contribute to the Starter Kit project, see [👨‍👩‍👧‍👦 Contributing](#-contributing).
-
-5.  In `package.json` and `composer.json`, update repository and author information as needed
-
-6.  Run the install command
+4.  Run the install command
 
     ```shell
     ./bin/install
     ```
 
-7.  Once the installation script has finished, run the start command
+5.  Once the installation script has finished, run the start command
 
     ```shell
     ./bin/start
     ```
 
-8.  In another terminal tab, run the setup theme command, which will activate your theme and update the seed database
+6.  In another terminal tab, run the setup theme command, which will activate your theme and update the seed database
 
     ```shell
     ./bin/setup-theme
     ```
 
-9.  The site should be up and running with BrowserSync at <http://localhost:3000>, which proxies <https://mozilla-builders.ups.dock> if you're using Ups Dock, or <http://localhost:8888> if you're not.
+7.  The site should be up and running with BrowserSync at <http://localhost:3000>, which proxies <https://mozilla-builders.ups.dock> if you're using Ups Dock, or <http://localhost:8888> if you're not.
 
-10. To access WP admin, visit `/wp-admin`. The default credentials are `admin` / `password` (configurable via `docker-compose.yml`) You may need to click on an 'Update Database' button the first time you log in, defaults are fine here.
+8.  To access WP admin, visit `/wp-admin`. The default credentials are `admin` / `password` (configurable via `docker-compose.yml`) You may need to click on an 'Update Database' button the first time you log in, defaults are fine here.
 
 To shut down the container and development server, type `Ctrl+C`.
 
