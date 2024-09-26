@@ -1,12 +1,12 @@
 {
-  "name": "upstatement/wordpress-starter-kit",
+  "name": "upstatement/mozilla-builders",
   "authors": [
     {
       "name": "Upstatement",
       "email": "tech@upstatement.com"
     }
   ],
-  "description": "",
+  "description": "Theme for Mozilla Builders",
   "license": "proprietary",
   "repositories": [
     {
@@ -35,11 +35,11 @@
       "composer/installers": true,
       "dealerdirect/phpcodesniffer-composer-installer": true
     },
-    "vendor-dir": "themes/wsk/vendor"
+    "vendor-dir": "themes/mozilla-builders/vendor"
   },
   "autoload": {
     "psr-4": {
-      "WordPressStarterKit\\": "themes/wsk/includes"
+      "MozillaBuilders\\": "themes/mozilla-builders/includes"
     }
   },
   "require": {

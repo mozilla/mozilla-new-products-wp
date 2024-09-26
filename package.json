@@ -1,13 +1,13 @@
 {
-  "name": "@upstatement/wordpress-starter-kit",
+  "name": "@upstatement/mozilla-builders",
   "version": "0.0.3",
-  "description": "",
+  "description": "Theme for Mozilla Builders",
   "author": "Upstatement",
   "repository": "",
   "license": "ISC",
   "testing": {
     "urls": {
-      "local": "http://wsk.ups.dock",
+      "local": "http://mozilla-builders.ups.dock",
       "staging": "",
       "production": ""
     },
@@ -28,11 +28,11 @@
   },
   "bundlesize": [
     {
-      "path": "./themes/wsk/dist/static/app.js",
+      "path": "./themes/mozilla-builders/dist/static/app.js",
       "maxSize": "10 kB"
     },
     {
-      "path": "./themes/wsk/dist/static/vendor.js",
+      "path": "./themes/mozilla-builders/dist/static/vendor.js",
       "maxSize": "110 kB"
     }
   ],
@@ -41,15 +41,15 @@
     "last 2 versions"
   ],
   "scripts": {
-    "build": "NODE_ENV=production webpack --config ./themes/wsk/webpack.config.js  --progress --mode production && npm run build:wp-blocks",
-    "build:wp-blocks": "wp-scripts build ./themes/wsk/blocks/index.js --output-path=themes/wsk/dist/blocks",
-    "start": "NODE_ENV=development webpack --config ./themes/wsk/webpack.config.js --watch --mode development & npm run start:wp-blocks",
-    "start:ups-dock": "NODE_ENV=development webpack --config ./themes/wsk/webpack.config.js --watch --mode development --env platform=ups-dock & npm run start:wp-blocks",
-    "start:wp-blocks": "wp-scripts start ./themes/wsk/blocks/index.js --output-path=themes/wsk/dist/blocks",
-    "lint:scripts": "eslint ./themes/wsk/static/js/**/*.js --cache",
-    "lint:php": "./themes/wsk/vendor/bin/phpcs --standard=phpcs.xml.dist --error-severity=1 --warning-severity=8 -p",
-    "fix:php": "./themes/wsk/vendor/bin/phpcbf",
-    "phpstan": "./themes/wsk/vendor/bin/phpstan analyze --memory-limit 512M",
+    "build": "NODE_ENV=production webpack --config ./themes/mozilla-builders/webpack.config.js  --progress --mode production && npm run build:wp-blocks",
+    "build:wp-blocks": "wp-scripts build ./themes/mozilla-builders/blocks/index.js --output-path=themes/mozilla-builders/dist/blocks",
+    "start": "NODE_ENV=development webpack --config ./themes/mozilla-builders/webpack.config.js --watch --mode development & npm run start:wp-blocks",
+    "start:ups-dock": "NODE_ENV=development webpack --config ./themes/mozilla-builders/webpack.config.js --watch --mode development --env platform=ups-dock & npm run start:wp-blocks",
+    "start:wp-blocks": "wp-scripts start ./themes/mozilla-builders/blocks/index.js --output-path=themes/mozilla-builders/dist/blocks",
+    "lint:scripts": "eslint ./themes/mozilla-builders/static/js/**/*.js --cache",
+    "lint:php": "./themes/mozilla-builders/vendor/bin/phpcs --standard=phpcs.xml.dist --error-severity=1 --warning-severity=8 -p",
+    "fix:php": "./themes/mozilla-builders/vendor/bin/phpcbf",
+    "phpstan": "./themes/mozilla-builders/vendor/bin/phpstan analyze --memory-limit 512M",
     "test:bundlesize": "bundlesize",
     "test:a11y": "node tests/pa11y.js",
     "prepare": "husky install",

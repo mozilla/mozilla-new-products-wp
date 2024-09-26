@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@src/*": ["themes/wsk/static/js/*"]
+      "@src/*": ["themes/mozilla-builders/static/js/*"]
     }
   }
 }

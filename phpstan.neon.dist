@@ -1,5 +1,5 @@
 includes:
-    - themes/wsk/vendor/szepeviktor/phpstan-wordpress/extension.neon
+    - themes/mozilla-builders/vendor/szepeviktor/phpstan-wordpress/extension.neon
 parameters:
     level: max
     inferPrivatePropertyTypeFromConstructor: true
@@ -8,8 +8,8 @@ parameters:
     bootstrapFiles:
         - tests/phpstan/bootstrap.php
     scanFiles:
-        - themes/wsk/vendor/php-stubs/acf-pro-stubs/acf-pro-stubs.php
+        - themes/mozilla-builders/vendor/php-stubs/acf-pro-stubs/acf-pro-stubs.php
     paths:
-        - themes/wsk/includes/
+        - themes/mozilla-builders/includes/
     excludePaths:
         - */node_modules/*

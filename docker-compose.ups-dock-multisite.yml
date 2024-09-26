@@ -3,7 +3,7 @@ services:
   wordpress:
     environment:
       # WordPress install configuration
-      WORDPRESS_URL: https://wsk.ups.dock
+      WORDPRESS_URL: https://mozilla-builders.ups.dock
 
        # Configure WordPress for multisite
       WORDPRESS_MULTISITE: 1
@@ -15,11 +15,11 @@ services:
 
       # Runtime configuration for upstatement/ups-dock
       # See https://github.com/upstatement/ups-dock
-      UPS_DOCK_NAME: WordPress Starter Kit
+      UPS_DOCK_NAME: Mozilla Builders
 
       # Runtime configuration for jwilder/nginx-proxy
       # See https://github.com/jwilder/nginx-proxy
-      VIRTUAL_HOST: wsk.ups.dock,*.wsk.ups.dock
+      VIRTUAL_HOST: mozilla-builders.ups.dock,*.mozilla-builders.ups.dock
       HTTPS_METHOD: noredirect
 
     networks:

@@ -2,17 +2,17 @@
 
 echo "Activating your WordPress theme..."
 echo
-./bin/wp theme activate "REPLACE_ME_THEMENAME"
+./bin/wp theme activate "mozilla-builders"
 echo
 
 echo "Updating site name..."
 echo
-./bin/wp option update blogname "REPLACE_ME_BLOGNAME"
+./bin/wp option update blogname "Mozilla Builders"
 echo
 
 echo "Updating seed database URLs..."
 echo
-./bin/wp search-replace wsk.ups.dock REPLACE_ME.ups.dock
+./bin/wp search-replace wsk.ups.dock mozilla-builders.ups.dock
 echo
 
 echo "Exporting updated seed database..."
