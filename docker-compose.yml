@@ -22,7 +22,7 @@ services:
       - .env
     environment:
       # WordPress install configuration
-      WORDPRESS_TITLE: 'WordPress Starter Kit'
+      WORDPRESS_TITLE: 'Mozilla Builders'
       WORDPRESS_URL: http://localhost:8888
       WORDPRESS_ADMIN_USER: admin
       WORDPRESS_ADMIN_EMAIL: admin@example.com

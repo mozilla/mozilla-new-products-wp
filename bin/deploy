@@ -26,8 +26,8 @@ rsync \
   --delete-after \
   -e "ssh -p $PORT -o StrictHostKeyChecking=no" \
   --temp-dir=~/_tmp \
-  themes/wsk \
-  $USER@$HOST:~/public/wp-content/themes/wsk
+  themes/mozilla-builders \
+  $USER@$HOST:~/public/wp-content/themes/mozilla-builders
 
 echo "Deploying WordPress plugins..."
 rsync \
