@@ -45,7 +45,9 @@ if ( is_day() ) {
 
 	$author = get_term_by( 'slug', $author_slug, 'author' );
 
-	$context['title'] = 'Latest from ' . $author->name;
+	if ( $author instanceof WP_Term ) {
+		$context['title'] = 'Latest from ' . $author->name;
+	}
 } elseif ( is_post_type_archive() ) { // Post type archive.
 	$context['title'] = post_type_archive_title( '', false );
 } elseif ( is_tax() ) { // Taxonomy archive.

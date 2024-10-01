@@ -3,7 +3,7 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const Dotenv = require('dotenv-webpack');
 
-module.exports = env => ({
+module.exports = () => ({
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
 
   // NOTE: Scripts for blocks are compiled separately using wp-scripts in package.json
@@ -93,11 +93,7 @@ module.exports = env => ({
     new BrowserSyncPlugin({
       host: 'localhost',
       port: 3000,
-      proxy: env
-        ? env.platform === 'ups-dock'
-          ? 'http://mozilla-builders.ups.dock'
-          : 'http://localhost:8888/'
-        : 'http://localhost:8888/',
+      proxy: 'https://mozilla-builders-wp.ddev.site',
       files: ['*.php', 'templates/**/*.twig'],
       open: false,
       ghostMode: false,

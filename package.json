@@ -43,7 +43,7 @@
   "scripts": {
     "setup": "./bin/setup",
     "start": "./bin/start",
-    "lint:js": "eslint --color --no-error-on-unmatched-pattern --format stylish web/wp-content/themes/**/*.js",
+    "lint:js": "eslint --color --no-error-on-unmatched-pattern --format stylish web/wp-content/themes/mozilla-builders/static/**/*.js",
     "lint:php": "composer static-tests",
     "fix:php": "composer fix",
     "fix:js": "eslint --fix web/wp-content/themes/**/*.js",

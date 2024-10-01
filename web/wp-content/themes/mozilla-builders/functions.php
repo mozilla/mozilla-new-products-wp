@@ -26,7 +26,7 @@ define( 'MOZILLA_BUILDERS_THEME_VERSION', wp_get_theme()->get( 'Version' ) );
 /**
  * Use Dotenv to set required environment variables and load .env file when present.
  */
-$dotenv = Dotenv::createImmutable( WP_CONTENT_DIR )->safeLoad();
+$dotenv = Dotenv::createImmutable(ABSPATH . '..')->safeLoad();
 
 /**
  * Set up our global environment constant and load its config first
@@ -57,7 +57,7 @@ add_action( 'after_setup_theme', array( $theme_manager, 'setup_theme' ) );
  *
  * @param array ...$values values to log.
  */
-function print_log( ...$values ) {
+function print_log( ...$values ): void {
 	foreach ( $values as $v ) {
 		error_log( print_r( $v, true ) );
 	}

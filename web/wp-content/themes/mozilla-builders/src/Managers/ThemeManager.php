@@ -58,8 +58,6 @@ class ThemeManager {
 		// Remove default Gutenberg CSS.
 		wp_deregister_style( 'wp-block-library' );
 
-		wp_register_script( 'polyfill', 'https://polyfill.io/v3/polyfill.min.js?features=fetch%2CArray.from%2CElement.prototype.append', array(), MOZILLA_BUILDERS_THEME_VERSION, true );
-
 		wp_enqueue_script( 'vendor', MOZILLA_BUILDERS_THEME_URL . '/dist/static/vendor.js', array(), MOZILLA_BUILDERS_THEME_VERSION, true );
 
 		// Enqueue custom JS file, with cache busting.

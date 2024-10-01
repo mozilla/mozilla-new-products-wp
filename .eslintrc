@@ -12,7 +12,7 @@
   "plugins": ["react"],
   "overrides": [
     {
-      "files": "./blocks/**/*.js",
+      "files": "./web/wp-content/themes/mozilla-builders/blocks/**/*.js",
       "extends": "@upstatement/eslint-config/react",
       "rules": {
         "react/react-in-jsx-scope": "off"

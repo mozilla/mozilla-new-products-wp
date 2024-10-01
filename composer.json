@@ -34,7 +34,8 @@
     "allow-plugins": {
       "composer/installers": true,
       "dealerdirect/phpcodesniffer-composer-installer": true
-    }
+    },
+    "vendor-dir": "web/wp-content/themes/mozilla-builders/vendor"
   },
   "autoload": {
     "psr-4": {
@@ -54,18 +55,18 @@
     "dealerdirect/phpcodesniffer-composer-installer": "^0.7",
     "wp-coding-standards/wpcs": "^2.3",
     "phpcompatibility/phpcompatibility-wp": "^2.1",
-    "szepeviktor/phpstan-wordpress": "^1.0",
-    "php-stubs/acf-pro-stubs": "^5.10"
+    "szepeviktor/phpstan-wordpress": "^1.3",
+    "php-stubs/acf-pro-stubs": "^5.10",
+    "php-stubs/wordpress-stubs": "^6.6"
   },
   "scripts": {
     "static-tests": [
-      "find web/wp-content/themes/mozilla-builders -name '*.php' -exec php -l {} \\;",
-      "./vendor/bin/phpcs --runtime-set ignore_warnings_on_exit true --standard=phpcs.xml.dist --colors --ignore=node_modules,vendor web/wp-content/themes/mozilla-builders",
-      "./vendor/bin/phpstan --memory-limit=2G"
+      "find web/wp-content/themes/mozilla-builders -path 'web/wp-content/themes/mozilla-builders/vendor' -prune -o -name '*.php' -exec php -l {} \\;",
+      "./web/wp-content/themes/mozilla-builders/vendor/bin/phpcs --runtime-set ignore_warnings_on_exit true --standard=phpcs.xml.dist --colors --ignore=node_modules,vendor --error-severity=1 --warning-severity=8 web/wp-content/themes/mozilla-builders",
+      "./web/wp-content/themes/mozilla-builders/vendor/bin/phpstan analyse -l 5 --memory-limit=2G"
     ],
     "fix": [
-      "./vendor/bin/phpcbf --standard=phpcs.xml.dist --colors --ignore=node_modules,vendor web/wp-content/themes/mozilla-builders"
+      "./web/wp-content/themes/mozilla-builders/vendor/bin/phpcbf --standard=phpcs.xml.dist --colors --ignore=node_modules,vendor web/wp-content/themes/mozilla-builders"
     ]
   }
 }
-

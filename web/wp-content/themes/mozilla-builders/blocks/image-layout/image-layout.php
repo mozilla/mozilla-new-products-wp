@@ -18,9 +18,11 @@
 use Timber\Timber;
 use Timber\Image as TimberImage;
 
+$alignment = $block['align'] ?? 'wide';
+
 $context['layout']             = get_field( 'imageLayoutLayout' );
 $context['crop_to_same_ratio'] = get_field( 'imageLayoutCrop' );
-$context['alignclass']         = 'align' . ( $block['align'] ? $block['align'] : 'wide' );
+$context['alignclass']         = "align$alignment";
 
 $images = get_field( 'imageLayoutImages' );
 

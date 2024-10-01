@@ -15,9 +15,11 @@
 use Timber\Timber;
 use Timber\PostQuery;
 
+$alignment = $block['align'] ?? 'center';
+
 $context                            = Timber::context();
 $context['related_articles_header'] = get_field( 'header_text' );
-$context['alignclass']              = 'align' . ( $block['align'] ? $block['align'] : 'center' );
+$context['alignclass']              = "align$alignment";
 $related_articles                   = get_field( 'chosen_articles' );
 $related_articles_ids               = array();
 

@@ -31,7 +31,7 @@ class ContextManager {
 	 * @return array
 	 */
 	public function environment( $context ) {
-		$context['wp_env'] = WP_ENV;
+		$context['wp_env']        = WP_ENV;
 		$context['theme_version'] = MOZILLA_BUILDERS_THEME_VERSION;
 		return $context;
 	}
