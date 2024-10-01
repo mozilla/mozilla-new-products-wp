@@ -3,9 +3,13 @@
 
 {% include "layouts/includes/head.twig" %}
 
-<body class="{{ body_class }}{% if pagename %} page-name-{{ pagename }}{% endif %} {% block custom_body_classes %}{% endblock %}">
+<body class="{{ body_class }} {{ pagename ? 'page-name-' ~ pagename }} {% block custom_body_classes %}{% endblock %}">
 
-  <a href="#content" class="skip-to-content" tabindex="0">Skip to content</a>
+  <a href="#content" class="sr-only focus:not-sr-only !absolute inset-x-0 top-0">
+    <div class="w-full flex items-center justify-center p-1.5 bg-black">
+      <span class="text-white text-center text-sm font-semibold tracking-wide uppercase">Skip to content</span>
+    </div>
+  </a>
 
   {% include "layouts/includes/svgs.twig" %}
   {% include "layouts/includes/grid.twig" %}
@@ -13,7 +17,6 @@
   <div class="layout--base">
 
     {% include "components/nav.twig" %}
-    {% include "components/menu.twig" %}
 
     <main id="content" class="content {% block custom_content_classes %}{% endblock %}" tabindex="-1">
       {% block pageBody %}
