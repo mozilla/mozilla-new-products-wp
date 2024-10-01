@@ -34,12 +34,11 @@
     "allow-plugins": {
       "composer/installers": true,
       "dealerdirect/phpcodesniffer-composer-installer": true
-    },
-    "vendor-dir": "themes/mozilla-builders/vendor"
+    }
   },
   "autoload": {
     "psr-4": {
-      "MozillaBuilders\\": "themes/mozilla-builders/includes"
+      "MozillaBuilders\\": "web/wp-content/themes/mozilla-builders/src"
     }
   },
   "require": {
