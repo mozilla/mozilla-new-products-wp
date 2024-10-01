@@ -2,19 +2,20 @@
 
 set -e
 
-create_containers() {
-  docker compose build --no-cache
-  docker compose up -d
-}
+# Check if ddev command is available
+if ! command -v ddev &> /dev/null; then
+  echo "ddev command not found. Please install ddev and try again."
+  exit 1
+fi
 
-echo "Unzipping database seed scripts..."
+echo "Unzipping seed database..."
 echo
-gunzip -kf docker/conf/mysql/*.sql.gz
+gunzip -kf _backups/init.sql.gz
 echo
 
-echo "Bringing up project containers..."
+echo "Starting environment..."
 echo
-create_containers
+ddev start
 echo
 
 echo "Installing NPM packages..."
@@ -22,9 +23,9 @@ echo
 npm install
 echo
 
-echo "Installing Composer libraries..."
+echo "Installing PHP packages with composer..."
 echo
-./bin/composer install
+ddev composer install
 echo
 
 echo "-------------------------------"
