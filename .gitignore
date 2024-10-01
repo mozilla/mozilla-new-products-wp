@@ -25,7 +25,9 @@ auth.json
 .eslintcache
 
 # Local project
-/_backup/
+_backups/*
+!_backups/.gitkeep
+!_backups/init.sql.gz
 
 # WordPress core
 web/**
