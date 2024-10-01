@@ -28,7 +28,6 @@ A WordPress theme for Mozilla Builders.
 - Code bundling with [Webpack](https://webpack.js.org/), including:
   - [BrowserSync](https://www.npmjs.com/package/browser-sync-webpack-plugin)
   - [Autoprefixer](https://github.com/postcss/autoprefixer)
-  - [PostCSS Easing Gradients](https://github.com/larsenwork/postcss-easing-gradients)
   - [CSS Extraction](https://www.npmjs.com/package/mini-css-extract-plugin)
   - [Environment Variable Injection](https://www.npmjs.com/package/dotenv-webpack)
 - Linting and testing
@@ -63,15 +62,15 @@ Note that these installation steps assume that you're using the DDEV configurati
 
 4. Run the install/setup command
 
-    ```shell
-    npm run setup
-    ```
+   ```shell
+   npm run setup
+   ```
 
 5. Once the installation script has finished, run the start command
 
-    ```shell
-    npm run start
-    ```
+   ```shell
+   npm run start
+   ```
 
 6. The site should be up and running with BrowserSync at <http://localhost:3000>, which proxies <https://mozilla-builders-wp.ddev.site>.
 
@@ -82,7 +81,6 @@ To shut down the container and development server, run `npm run stop`.
 ## Plugins
 
 Plugins are managed with Composer. See the [Wiki entry on plugins](https://github.com/Upstatement/wordpress-starter-kit/wiki/Plugins) for more information on commonly used plugins, including the Upstatement Editorial plugin and ACF.
-
 
 ## Command line
 
@@ -144,7 +142,6 @@ To update the local WordPress version:
 ddev wp core update
 ```
 
-
 ## Debugging
 
 Follow this guide to debug Timber templates: <https://timber.github.io/docs/guides/debugging/#enable-debugging>
@@ -172,7 +169,6 @@ The gitignored `logs/error.log` file is a good place to look when hitting “cri
 ### Debug Bar & Timber Debug Bar Plugins
 
 For more in-depth information like showing query, cache, and other helpful debugging information, you can install and enable the [Debug Bar](https://wordpress.org/plugins/debug-bar/) and [Timber Debug Bar](https://wordpress.org/plugins/debug-bar-timber/) plugins.
-
 
 ## 🚀 Deployment
 
@@ -209,4 +205,3 @@ The `package.json` file has preset configurations for pa11y under `testing.acces
 - `paths` (array): Paths appended to the specified URL.
 - `ignore.codes` (array): WCAG codes to ignore
 - `ignore.selectors` (array): CSS selectors to ignore
-

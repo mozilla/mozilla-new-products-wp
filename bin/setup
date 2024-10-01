@@ -13,11 +13,6 @@ echo
 ddev start
 echo
 
-echo "Importing seed database..."
-echo
-ddev import-db --file=_backups/init.sql.gz
-echo
-
 echo "Installing NPM packages..."
 echo
 npm install
@@ -26,6 +21,11 @@ echo
 echo "Installing PHP packages with composer..."
 echo
 ddev composer install
+echo
+
+echo "Importing seed database..."
+echo
+ddev import-db --file=_backups/init.sql.gz
 echo
 
 echo "-------------------------------"

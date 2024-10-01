@@ -11,5 +11,5 @@ echo
 
 echo "Running start script..."
 echo
-npm start
+npm run develop --prefix web/wp-content/themes/mozilla-builders
 echo
