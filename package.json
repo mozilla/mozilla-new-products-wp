@@ -62,6 +62,8 @@
     ]
   },
   "devDependencies": {
+    "@upstatement/eslint-config": "^1.0.1",
+    "@upstatement/prettier-config": "^1.1.0",
     "bundlesize": "^0.18.1",
     "eslint": "^7.26.0",
     "eslint-config-prettier": "^8.3.0",
