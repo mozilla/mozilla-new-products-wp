@@ -1,3 +1,6 @@
 module.exports = {
-  plugins: [require('autoprefixer')(), require('postcss-easing-gradients')()],
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
 };

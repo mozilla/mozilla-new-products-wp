@@ -1,21 +1,28 @@
-<nav class="nav">
-  <div class="nav__inner">
-    <a href="{{ site.url }}" class="nav__logo-link">
-      <svg class="nav__logo">
-        <use xlink:href="#logo"></use>
-      </svg>
-    </a>
+<nav class="flex items-start justify-between gap-6 p-6">
+  <div class="mt-1 flex-1 flex justify-start">
+    <p class="text-white text-sm">
+      <span class="bg-black py-1">Building in the open with open source AI. Powered by Mozilla.</span>
+    </p>
+  </div>
 
-    <ul class="nav__items">
+  <a href="{{ site.url }}">
+    <svg class="max-w-96 w-[40vw] aspect-logo">
+      <use xlink:href="#logo"></use>
+    </svg>
+  </a>
+
+  <div class="mt-1 flex-1 flex justify-end">
+    <ul class="flex flex-wrap items-center gap-x-6">
       {% for item in nav_pages_menu.items %}
-      <li class="nav__item">
-        <a href="{{ item.url }}" class="nav__item-link {% if item.current %}active{% endif %}">{{ item.name }}</a>
+      <li class"flex">
+        <a
+          href="{{ item.url }}"
+          class="text-sm"
+          {% if item.current %}aria-current="page"{% endif %}>
+          {{ item.name }}
+        </a>
       </li>
       {% endfor %}
     </ul>
-
-    <button class="nav__menu-trigger js--menu-toggle">
-      <span class="nav__hamburger"></span>
-    </button>
   </div>
 </nav>
