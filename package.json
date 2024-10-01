@@ -28,11 +28,11 @@
   },
   "bundlesize": [
     {
-      "path": "./themes/mozilla-builders/dist/static/app.js",
+      "path": "web/wp-content/themes/mozilla-builders/dist/static/app.js",
       "maxSize": "10 kB"
     },
     {
-      "path": "./themes/mozilla-builders/dist/static/vendor.js",
+      "path": "web/wp-content/themes/mozilla-builders/dist/static/vendor.js",
       "maxSize": "110 kB"
     }
   ],
@@ -41,19 +41,16 @@
     "last 2 versions"
   ],
   "scripts": {
-    "build": "NODE_ENV=production webpack --config ./themes/mozilla-builders/webpack.config.js  --progress --mode production && npm run build:wp-blocks",
-    "build:wp-blocks": "wp-scripts build ./themes/mozilla-builders/blocks/index.js --output-path=themes/mozilla-builders/dist/blocks",
-    "start": "NODE_ENV=development webpack --config ./themes/mozilla-builders/webpack.config.js --watch --mode development & npm run start:wp-blocks",
-    "start:ups-dock": "NODE_ENV=development webpack --config ./themes/mozilla-builders/webpack.config.js --watch --mode development --env platform=ups-dock & npm run start:wp-blocks",
-    "start:wp-blocks": "wp-scripts start ./themes/mozilla-builders/blocks/index.js --output-path=themes/mozilla-builders/dist/blocks",
-    "lint:scripts": "eslint ./themes/mozilla-builders/static/js/**/*.js --cache",
-    "lint:php": "./themes/mozilla-builders/vendor/bin/phpcs --standard=phpcs.xml.dist --error-severity=1 --warning-severity=8 -p",
-    "fix:php": "./themes/mozilla-builders/vendor/bin/phpcbf",
-    "phpstan": "./themes/mozilla-builders/vendor/bin/phpstan analyze --memory-limit 512M",
+    "start": "./bin/start",
+    "lint:js": "eslint --color --no-error-on-unmatched-pattern --format stylish web/wp-content/themes/**/*.js",
+    "lint:php": "composer static-tests",
+    "fix:php": "composer fix",
+    "fix:js": "eslint --fix web/wp-content/themes/**/*.js",
     "test:bundlesize": "bundlesize",
     "test:a11y": "node tests/pa11y.js",
     "prepare": "husky install",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "postinstall": "npm install --prefix web/wp-content/themes/mozilla-builders"
   },
   "lint-staged": {
     "*.{js,scss,json,md}": [
@@ -63,46 +60,16 @@
       "eslint --fix"
     ]
   },
-  "dependencies": {
-    "body-scroll-lock": "^3.1.3",
-    "core-js": "^3.33.0",
-    "lazysizes": "^5.3.2",
-    "regenerator-runtime": "^0.14.0"
-  },
   "devDependencies": {
-    "@babel/core": "^7.23.0",
-    "@babel/eslint-parser": "^7.22.15",
-    "@babel/plugin-proposal-optional-chaining": "^7.21.0",
-    "@babel/plugin-transform-react-jsx": "^7.22.15",
-    "@babel/preset-env": "^7.22.20",
-    "@babel/preset-react": "^7.22.15",
-    "@upstatement/eslint-config": "^1.0.1",
-    "@upstatement/prettier-config": "^1.1.0",
-    "@wordpress/blocks": "^12.19.0",
-    "@wordpress/scripts": "26.12.0",
-    "autoprefixer": "^10.4.16",
-    "babel-loader": "^9.1.3",
-    "browser-sync": "^2.29.3",
-    "browser-sync-webpack-plugin": "^2.3.0",
     "bundlesize": "^0.18.1",
-    "css-loader": "^6.8.1",
-    "dotenv-webpack": "^8.0.1",
     "eslint": "^7.26.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.27.1",
-    "file-loader": "^6.2.0",
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
     "lodash.get": "^4.4.2",
-    "mini-css-extract-plugin": "^2.7.6",
     "pa11y": "^6.2.3",
-    "postcss-easing-gradients": "^3.0.1",
-    "postcss-loader": "^7.3.3",
-    "prettier": "^2.3.0",
-    "sass": "^1.68.0",
-    "sass-loader": "13.3.2",
-    "webpack": "^5.88.2",
-    "webpack-cli": "^5.1.4"
+    "prettier": "^2.3.0"
   }
 }

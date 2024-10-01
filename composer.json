@@ -20,7 +20,7 @@
   ],
   "extra": {
     "installer-paths": {
-      "plugins/{$name}/": [
+      "web/wp-content/plugins/{$name}/": [
         "wpackagist-plugin/*",
         "type:wordpress-plugin"
       ]
@@ -56,5 +56,16 @@
     "phpcompatibility/phpcompatibility-wp": "^2.1",
     "szepeviktor/phpstan-wordpress": "^1.0",
     "php-stubs/acf-pro-stubs": "^5.10"
+  },
+  "scripts": {
+    "static-tests": [
+      "find web/wp-content/themes/mozilla-builders -name '*.php' -exec php -l {} \\;",
+      "./vendor/bin/phpcs --runtime-set ignore_warnings_on_exit true --standard=phpcs.xml.dist --colors --ignore=node_modules,vendor web/wp-content/themes/mozilla-builders",
+      "./vendor/bin/phpstan --memory-limit=2G"
+    ],
+    "fix": [
+      "./vendor/bin/phpcbf --standard=phpcs.xml.dist --colors --ignore=node_modules,vendor web/wp-content/themes/mozilla-builders"
+    ]
   }
 }
+

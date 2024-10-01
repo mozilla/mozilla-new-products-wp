@@ -8,14 +8,14 @@ if ! command -v ddev &> /dev/null; then
   exit 1
 fi
 
-echo "Unzipping seed database..."
-echo
-gunzip -kf _backups/init.sql.gz
-echo
-
 echo "Starting environment..."
 echo
 ddev start
+echo
+
+echo "Importing seed database..."
+echo
+ddev import-db --file=_backups/init.sql.gz
 echo
 
 echo "Installing NPM packages..."
