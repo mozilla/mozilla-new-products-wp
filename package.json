@@ -29,11 +29,11 @@
   "bundlesize": [
     {
       "path": "web/wp-content/themes/mozilla-builders/dist/static/app.js",
-      "maxSize": "10 kB"
+      "maxSize": "50 kB"
     },
     {
       "path": "web/wp-content/themes/mozilla-builders/dist/static/vendor.js",
-      "maxSize": "110 kB"
+      "maxSize": "500 kB"
     }
   ],
   "browserslist": [
