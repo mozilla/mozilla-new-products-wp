@@ -98,6 +98,30 @@ npm run setup
 
 #### Start the environment
 
+```shell
+npm run start
+```
+
+#### Lint
+
+```shell
+# Lint or fix JavaScript
+npm run lint:js
+npm run fix:js
+
+# Lint or fix PHP
+npm run lint:php
+npm run fix:php
+```
+
+#### View PHP error logs
+
+```shell
+npm run phplogs
+```
+
+#### Start the environment
+
 This command starts the containers with DDEV and starts the local development server for static assets.
 
 ```shell
