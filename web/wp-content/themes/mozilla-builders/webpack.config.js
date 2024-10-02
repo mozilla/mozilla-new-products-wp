@@ -113,7 +113,7 @@ module.exports = () => ({
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: 'themes/mozilla-builders/static/fonts',
+          from: 'static/fonts',
           to: 'fonts',
         },
       ],
