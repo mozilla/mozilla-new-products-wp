@@ -12,5 +12,5 @@
 
 body {
   @apply bg-white text-black;
-  @apply font-sans font-normal text-base;
+  @apply font-sans font-normal text-base antialiased;
 }

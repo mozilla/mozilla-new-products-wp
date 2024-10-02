@@ -1,6 +1,7 @@
 const path = require('path');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
 module.exports = () => ({
@@ -38,7 +39,12 @@ module.exports = () => ({
         test: /\.scss$/,
         use: [
           MiniCssExtractPlugin.loader,
-          'css-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              url: false,
+            },
+          },
           'postcss-loader',
           {
             loader: 'sass-loader',
@@ -103,6 +109,14 @@ module.exports = () => ({
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css',
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: 'themes/mozilla-builders/static/fonts',
+          to: 'fonts',
+        },
+      ],
     }),
   ],
 
