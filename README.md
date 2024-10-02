@@ -78,6 +78,10 @@ Note that these installation steps assume that you're using the DDEV configurati
 
 To shut down the container and development server, run `npm run stop`.
 
+> Note that DDEV doesn't work very well with other similar packages, like Lando or Ups Dock. If you run into issues with the setup script around a port already being allocated, try stopping other environment tools to see if that clears up the issue.
+>
+> If you'd like to stop the DDEV tool, you can use the command `ddev poweroff`.
+
 ## Plugins
 
 Plugins are managed with Composer. See the [Wiki entry on plugins](https://github.com/Upstatement/wordpress-starter-kit/wiki/Plugins) for more information on commonly used plugins, including the Upstatement Editorial plugin and ACF.
