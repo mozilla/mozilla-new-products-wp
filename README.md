@@ -98,6 +98,8 @@ npm run setup
 
 #### Start the environment
 
+This command starts the containers with DDEV and starts the local development server for static assets.
+
 ```shell
 npm run start
 ```
@@ -120,12 +122,10 @@ npm run fix:php
 npm run phplogs
 ```
 
-#### Start the environment
-
-This command starts the containers with DDEV and starts the local development server for static assets.
+#### Export the database
 
 ```shell
-npm run start
+npm run export-db
 ```
 
 ### DDEV commands
