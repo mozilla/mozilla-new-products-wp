@@ -43,6 +43,7 @@
   "scripts": {
     "setup": "./bin/setup",
     "start": "./bin/start",
+    "build": "npm run build --prefix web/wp-content/themes/mozilla-builders",
     "lint:js": "eslint --color --no-error-on-unmatched-pattern --format stylish web/wp-content/themes/mozilla-builders/static/**/*.js",
     "fix:js": "eslint --fix web/wp-content/themes/**/*.js",
     "lint:php": "composer static-tests",

@@ -29,14 +29,11 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Lint scripts
-        run: npm run lint:scripts
+      - name: Test JavaScript
+        run: npm run lint:js
 
-      - name: Lint PHP
+      - name: Test PHP
         run: npm run lint:php
 
       - name: Check bundlesize
         run: npm run test:bundlesize
-
-      - name: Run static analysis
-        run: npm run phpstan
