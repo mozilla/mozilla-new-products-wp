@@ -13,6 +13,11 @@ echo
 ddev start
 echo
 
+echo "Installing WordPress..."
+echo
+ddev wp core download
+echo
+
 echo "Installing NPM packages..."
 echo
 npm install
