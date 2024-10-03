@@ -17,6 +17,7 @@ error_reporting( E_ALL & ~E_DEPRECATED );
 /** Autoloader */
 require_once 'vendor/autoload.php';
 
+define( 'VITE_DEV_SERVER_URL', 'http://localhost:5173/wp-content/themes/mozilla-builders' );
 define( 'MOZILLA_BUILDERS_THEME_URL', get_stylesheet_directory_uri() );
 define( 'MOZILLA_BUILDERS_THEME_PATH', dirname( __FILE__ ) . '/' );
 define( 'MOZILLA_BUILDERS_DOMAIN', get_site_url() );

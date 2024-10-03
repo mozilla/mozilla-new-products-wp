@@ -1,6 +1,6 @@
 @mixin font-face($family-name, $file-name, $font-weight: normal, $font-style: normal) {
   @font-face {
-    $font-path: 'wp-content/themes/mozilla-builders/static/fonts/#{$file-name}';
+    $font-path: '../fonts/#{$file-name}';
     font-display: swap;
     font-family: '#{$family-name}';
     font-style: $font-style;

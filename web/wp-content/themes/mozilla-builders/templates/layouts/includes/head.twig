@@ -3,9 +3,5 @@
   <meta content="width=device-width, initial-scale=1" name="viewport" />
   <title>{% if wp_title %}{{ wp_title }} | {{ site.name }}{% else %}{{ site.name }}{% endif %}</title>
 
-  <link rel="stylesheet" href="http://localhost:5173/static/scss/app.scss">
-  <script type="module" src="http://localhost:5173/@vite/client"></script>
-  <script type="module" src="http://localhost:5173/static/js/app.js"></script>
-
   {{ function('wp_head') }}
 </head>

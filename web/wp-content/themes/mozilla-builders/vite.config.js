@@ -1,7 +1,17 @@
 import path from 'path';
 import { defineConfig } from 'vite';
 
-export default defineConfig({
+const BASE_PATH = '/wp-content/themes/mozilla-builders';
+function base(mode) {
+  if (mode === 'production') {
+    return `${BASE_PATH}/dist`;
+  } else {
+    return BASE_PATH;
+  }
+}
+
+export default defineConfig(env => ({
+  base: base(env.mode),
   build: {
     manifest: true,
     rollupOptions: {
@@ -17,4 +27,4 @@ export default defineConfig({
       '@src': path.resolve(__dirname, 'static/js'),
     },
   },
-});
+}));
