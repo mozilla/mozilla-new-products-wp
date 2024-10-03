@@ -1,0 +1,39 @@
+#!/bin/bash
+
+set -e
+
+# Check if ddev command is available
+if ! command -v ddev &> /dev/null; then
+  echo "ddev command not found. Please install ddev and try again."
+  exit 1
+fi
+
+echo "Starting environment..."
+echo
+ddev start
+echo
+
+echo "Installing WordPress..."
+echo
+ddev wp core download --path=web
+echo
+
+echo "Installing NPM packages..."
+echo
+npm install
+echo
+
+echo "Installing PHP packages with composer..."
+echo
+ddev composer install
+echo
+
+echo "Importing seed database..."
+echo
+ddev import-db --file=_backups/init.sql.gz
+echo
+
+echo "-------------------------------"
+echo "Install completed successfully!"
+echo "-------------------------------"
+echo

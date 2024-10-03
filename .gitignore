@@ -25,4 +25,25 @@ auth.json
 .eslintcache
 
 # Local project
-/_backup/
+_backups/*
+!_backups/.gitkeep
+!_backups/init.sql.gz
+
+# WordPress core
+web/**
+
+# Unignore the web/wp-content/themes directory and its contents
+!web/wp-content/
+
+# Themes
+!web/wp-content/themes/
+!web/wp-content/themes/**
+web/wp-content/themes/index.php
+
+# Uploads
+!web/wp-content/uploads/
+!web/wp-content/uploads/.gitkeep
+
+# Plugins
+!web/wp-content/plugins/
+!web/wp-content/plugins/.gitkeep

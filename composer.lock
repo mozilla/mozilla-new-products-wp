@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b676253b4d867c77d3b92816c7289955",
+    "content-hash": "c6680aa706245dcf4ea00f87dc032a68",
     "packages": [
         {
             "name": "altorouter/altorouter",
@@ -1499,28 +1499,32 @@
         },
         {
             "name": "php-stubs/wordpress-stubs",
-            "version": "v6.3.0",
+            "version": "v6.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-stubs/wordpress-stubs.git",
-                "reference": "adda7609e71d5f4dc7b87c74f8ec9e3437d2e92c"
+                "reference": "f50fd7ed45894d036e4fef9ab7e5bbbaff6a30cc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-stubs/wordpress-stubs/zipball/adda7609e71d5f4dc7b87c74f8ec9e3437d2e92c",
-                "reference": "adda7609e71d5f4dc7b87c74f8ec9e3437d2e92c",
+                "url": "https://api.github.com/repos/php-stubs/wordpress-stubs/zipball/f50fd7ed45894d036e4fef9ab7e5bbbaff6a30cc",
+                "reference": "f50fd7ed45894d036e4fef9ab7e5bbbaff6a30cc",
                 "shasum": ""
             },
             "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
                 "nikic/php-parser": "^4.13",
-                "php": "^7.4 || ~8.0.0",
+                "php": "^7.4 || ^8.0",
                 "php-stubs/generator": "^0.8.3",
-                "phpdocumentor/reflection-docblock": "^5.3",
-                "phpstan/phpstan": "^1.10.12",
-                "phpunit/phpunit": "^9.5"
+                "phpdocumentor/reflection-docblock": "^5.4.1",
+                "phpstan/phpstan": "^1.10.49",
+                "phpunit/phpunit": "^9.5",
+                "szepeviktor/phpcs-psr-12-neutron-hybrid-ruleset": "^1.0",
+                "wp-coding-standards/wpcs": "3.1.0 as 2.3.0"
             },
             "suggest": {
                 "paragonie/sodium_compat": "Pure PHP implementation of libsodium",
+                "symfony/polyfill-php80": "Symfony polyfill backporting some PHP 8.0+ features to lower PHP versions",
                 "szepeviktor/phpstan-wordpress": "WordPress extensions for PHPStan"
             },
             "type": "library",
@@ -1537,9 +1541,9 @@
             ],
             "support": {
                 "issues": "https://github.com/php-stubs/wordpress-stubs/issues",
-                "source": "https://github.com/php-stubs/wordpress-stubs/tree/v6.3.0"
+                "source": "https://github.com/php-stubs/wordpress-stubs/tree/v6.6.2"
             },
-            "time": "2023-08-10T16:34:11+00:00"
+            "time": "2024-09-30T07:10:48+00:00"
         },
         {
             "name": "phpcompatibility/php-compatibility",
@@ -1717,16 +1721,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.10.35",
+            "version": "1.12.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "e730e5facb75ffe09dfb229795e8c01a459f26c3"
+                "reference": "7e6c6cb7cecb0a6254009a1a8a7d54ec99812b17"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/e730e5facb75ffe09dfb229795e8c01a459f26c3",
-                "reference": "e730e5facb75ffe09dfb229795e8c01a459f26c3",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/7e6c6cb7cecb0a6254009a1a8a7d54ec99812b17",
+                "reference": "7e6c6cb7cecb0a6254009a1a8a7d54ec99812b17",
                 "shasum": ""
             },
             "require": {
@@ -1769,13 +1773,9 @@
                 {
                     "url": "https://github.com/phpstan",
                     "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/phpstan/phpstan",
-                    "type": "tidelift"
                 }
             ],
-            "time": "2023-09-19T15:27:56+00:00"
+            "time": "2024-09-26T12:45:22+00:00"
         },
         {
             "name": "psr/container",
@@ -3281,22 +3281,22 @@
         },
         {
             "name": "szepeviktor/phpstan-wordpress",
-            "version": "v1.3.0",
+            "version": "v1.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/szepeviktor/phpstan-wordpress.git",
-                "reference": "5b5cc77ed51fdaf64efe3f00b5aae4b709d2cfa9"
+                "reference": "7f8cfe992faa96b6a33bbd75c7bace98864161e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/szepeviktor/phpstan-wordpress/zipball/5b5cc77ed51fdaf64efe3f00b5aae4b709d2cfa9",
-                "reference": "5b5cc77ed51fdaf64efe3f00b5aae4b709d2cfa9",
+                "url": "https://api.github.com/repos/szepeviktor/phpstan-wordpress/zipball/7f8cfe992faa96b6a33bbd75c7bace98864161e7",
+                "reference": "7f8cfe992faa96b6a33bbd75c7bace98864161e7",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.2 || ^8.0",
                 "php-stubs/wordpress-stubs": "^4.7 || ^5.0 || ^6.0",
-                "phpstan/phpstan": "^1.10.0",
+                "phpstan/phpstan": "^1.10.31",
                 "symfony/polyfill-php73": "^1.12.0"
             },
             "require-dev": {
@@ -3305,7 +3305,11 @@
                 "php-parallel-lint/php-parallel-lint": "^1.1",
                 "phpstan/phpstan-strict-rules": "^1.2",
                 "phpunit/phpunit": "^8.0 || ^9.0",
-                "szepeviktor/phpcs-psr-12-neutron-hybrid-ruleset": "^0.8"
+                "szepeviktor/phpcs-psr-12-neutron-hybrid-ruleset": "^1.0",
+                "wp-coding-standards/wpcs": "3.1.0 as 2.3.0"
+            },
+            "suggest": {
+                "swissspidy/phpstan-no-private": "Detect usage of internal core functions, classes and methods"
             },
             "type": "phpstan-extension",
             "extra": {
@@ -3334,9 +3338,9 @@
             ],
             "support": {
                 "issues": "https://github.com/szepeviktor/phpstan-wordpress/issues",
-                "source": "https://github.com/szepeviktor/phpstan-wordpress/tree/v1.3.0"
+                "source": "https://github.com/szepeviktor/phpstan-wordpress/tree/v1.3.5"
             },
-            "time": "2023-04-23T06:15:06+00:00"
+            "time": "2024-06-28T22:27:19+00:00"
         },
         {
             "name": "wp-coding-standards/wpcs",

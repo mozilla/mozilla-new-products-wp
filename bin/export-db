@@ -4,11 +4,17 @@ TIMESTAMP=$(date "+%Y-%m-%d-%H%M%S")
 DEFAULT_FILENAME="backup-$TIMESTAMP"
 FILENAME=${1:-$DEFAULT_FILENAME}
 
+# Check if ddev command is available
+if ! command -v ddev &> /dev/null; then
+  echo "This command requires that ddev be installed on your machine. Please install ddev and try again."
+  exit 1
+fi
+
 while [ "${1:-}" != "" ]; do
   case "$1" in
     "--init")
       echo "Are you sure you want to create a new project initialization database?"
-      read -s -p "This will overwrite the existing one at docker/conf/mysql/init-ups-dock-sql.gz (n/Y) "  CONFIRMATION
+      read -s -p "This will overwrite the existing one at _backups/init.sql.gz (n/Y) "  CONFIRMATION
       echo
       if [[ "$CONFIRMATION" != 'Y' ]]; then
         echo
@@ -17,7 +23,7 @@ while [ "${1:-}" != "" ]; do
       fi
 
       echo "OK, generating a new initialization database..."
-      ./bin/wp db export - | gzip -3 > docker/conf/mysql/init-ups-dock.sql.gz
+      ddev export-db --file=_backups/init.sql.gz
       echo "Done"
       exit
       ;;
@@ -35,5 +41,5 @@ done
 mkdir -p _backups
 
 echo "Creating a database backup to the _backups/ directory..."
-./bin/wp db export - | gzip -3 > _backups/$FILENAME.sql.gz
+ddev export-db --file=_backups/$FILENAME.sql.gz
 echo "Done"

@@ -7,33 +7,29 @@ A WordPress theme for Mozilla Builders.
 - [🎁 What's in the Box](#-whats-in-the-box)
 - [💻 System Requirements](#-system-requirements)
 - [🛠 Installation](#-installation)
-- [Activating Plugins](#activating-plugins)
-- [🏃‍ Development Workflow](#-development-workflow)
-  - [Debugging](#debugging)
-  - [Common `wp-cli` commands](#common-wp-cli-commands)
+- [Plugins](#plugins)
+- [Command Line](#command-line)
+  - [Project scripts](#project-scripts)
+  - [DDEV commands](#ddev-commands)
+  - [Using composer](#using-composer)
+  - [Using WP-CLI](#using-wp-cli)
+- [Debugging](#debugging)
+  - [Twig Functions](#twig-functions)
+  - [Error Logs](#error-logs)
+  - [Debug Bar & Timber Debug Bar Plugins](#debug-bar-timber-debug-bar-plugins)
 - [🚀 Deployment](#-deployment)
-- [🔄 Object-Oriented Approach](#-object-oriented-approach)
 - [📰 Gutenberg](#-gutenberg)
 - [♿ Accessibility Testing](#-accessibility-testing)
-  - [Configuring pa11y](#configuring-pa11y)
-- [🌐 Configuring Multisite](#-configuring-multisite)
-  - [For Subdirectory](#for-subdomain)
-  - [Caveats](#caveats)
-- [👨‍👩‍👧‍👦 Contributing](#-contributing)
-- [📗 Code of Conduct](#-code-of-conduct)
-- [About Upstatement](#about-upstatement)
 
 ## 🎁 What's in the Box
 
 - Full [Timber](https://www.upstatement.com/timber/) integration.
-- Built-in support for [Ups Dock](https://github.com/Upstatement/ups-dock), so you can get a full WordPress site up a running with a few commands.
+- Local development setup with [DDEV](https://ddev.com/).
 - Code bundling with [Webpack](https://webpack.js.org/), including:
   - [BrowserSync](https://www.npmjs.com/package/browser-sync-webpack-plugin)
   - [Autoprefixer](https://github.com/postcss/autoprefixer)
-  - [PostCSS Easing Gradients](https://github.com/larsenwork/postcss-easing-gradients)
   - [CSS Extraction](https://www.npmjs.com/package/mini-css-extract-plugin)
   - [Environment Variable Injection](https://www.npmjs.com/package/dotenv-webpack)
-- Plugin management provided by [Composer](https://getcomposer.org/))
 - Linting and testing
   - JS, CSS, and PHP linting thanks to [Prettier](https://github.com/prettier/prettier), [ESLint](https://eslint.org/), and [phpcs](https://github.com/squizlabs/PHP_CodeSniffer)
   - Static analysis of PHP code with [PHPStan](https://phpstan.org/)
@@ -48,101 +44,135 @@ This project assumes that you have the following installed globally:
 
 - [NVM](https://github.com/creationix/nvm) to manage your Node environment.
 
-You'll also need a way to run a LAMP/LEMP (Linux, Apache/nginx, MySQL, PHP) stack on your machine. This Starter Kit comes configured to run with [Ups Dock](https://github.com/upstatement/ups-dock), an nginx proxy and DNS server to allow you to access your site via a custom named host. To install it follow these steps:
-
-> **WARNING:** Ups Dock requires Mac OS Sierra 10.12 or above. If you want to install without Ups Dock, skip these steps.
+You'll also need a way to run a LAMP/LEMP (Linux, Apache/nginx, MySQL, PHP) stack on your machine. This project comes configured to run with [DDEV](https://ddev.com/), a docker-based development environment.
 
 1. Install [Docker Desktop for Mac](https://www.docker.com/docker-mac): >= version 4
 
-2. Install [Ups Dock](https://github.com/upstatement/ups-dock) by following the installation steps in the [README](https://github.com/upstatement/ups-dock#installation)
+2. Install **DDEV** with Homebrew with `brew install ddev/ddev/ddev`. (If you don't have Homebrew, you can also use the [Get Started guide](https://ddev.com/get-started/) on the DDEV website for alternative installation methods.)
 
 ## 🛠 Installation
 
-1.  Run `nvm install` to ensure you're using the correct version of Node.
+Note that these installation steps assume that you're using the DDEV configuration.
 
-2.  Duplicate the contents of `.env.sample` into a new `.env` file.
+1. Run `nvm install` to ensure you're using the correct version of Node.
 
-    - For a **standard single site WordPress instance running in Ups Dock**, the `COMPOSE_FILE` line of your `.env` should be set to:
+2. Duplicate the contents of `.env.sample` into a new `.env` file.
 
-      ```shell
-      COMPOSE_FILE=docker-compose.yml:docker-compose.ups-dock.yml
-      ```
+3. Duplicate the `auth.json.sample` file and rename it to `auth.json`. Search for this project's auth.json entry in 1Password and copy its contents into your `auth.json` file.
 
-    - If you **do not want to use Ups Dock**, change the `COMPOSE_FILE` line in your `.env` to be:
+4. Run the install/setup command
 
-      ```shell
-      COMPOSE_FILE=docker-compose.yml
-      ```
+   ```shell
+   npm run setup
+   ```
 
-      > [!NOTE]
-      > To build out a **multisite instance of WordPress**, Change the `COMPOSE_FILE` line in your `.env` file to be:
-      >
-      > ```shell
-      > COMPOSE_FILE=docker-compose.yml:docker-compose.ups-dock-multisite.yml
-      > ```
-      >
-      > In addition to updating the environment variable above, the SSL certificates generated by [Ups Dock](https://github.com/Upstatement/ups-dock) will need to be updated to include your four level subdomains. To do this:
-      >
-      > a. Navigate to your local copy of [Ups Dock](https://github.com/Upstatement/ups-dock)
-      >
-      > ```shell
-      > cd path/to/ups-dock
-      > ```
-      >
-      > b. Add your wildcard domain to the `[ alternate_names ]` section in `config/openssl.conf`
-      >
-      > ```text
-      > DNS.1 = ups.dock
-      > DNS.2 = *.ups.dock
-      > DNS.3 = *.mozilla-builders.ups.dock
-      > ```
-      >
-      > c. Regenerate certs and restart Ups Dock
-      >
-      > ```shell
-      > ./bin/gen-certs.sh
-      > docker compose up -d
-      > ```
+5. Once the installation script has finished, run the start command
 
-3.  Duplicate the `auth.json.sample` file and rename it to `auth.json`. Find `Wordpress Starter Kit auth.json` on 1PW and copy its contents into this file.
+   ```shell
+   npm run start
+   ```
 
-4.  Run the install command
+6. The site should be up and running with BrowserSync at <http://localhost:3000>, which proxies <https://mozilla-builders-wp.ddev.site>.
 
-    ```shell
-    ./bin/install
-    ```
+7. To access WP admin, visit https://mozilla-builders-wp.ddev.site/wp-admin. The default credentials are `admin` / `password`. You may need to click on an 'Update Database' button the first time you log in; the defaults are fine here.
 
-5.  Once the installation script has finished, run the start command
+To shut down the container and development server, run `npm run stop`.
 
-    ```shell
-    ./bin/start
-    ```
+> Note that DDEV doesn't work very well with other similar packages, like Lando or Ups Dock. If you run into issues with the setup script around a port already being allocated, try stopping other environment tools to see if that clears up the issue.
+>
+> If you'd like to stop the DDEV tool, you can use the command `ddev poweroff`.
 
-6.  In another terminal tab, run the setup theme command, which will activate your theme and update the seed database
-
-    ```shell
-    ./bin/setup-theme
-    ```
-
-7.  The site should be up and running with BrowserSync at <http://localhost:3000>, which proxies <https://mozilla-builders.ups.dock> if you're using Ups Dock, or <http://localhost:8888> if you're not.
-
-8.  To access WP admin, visit `/wp-admin`. The default credentials are `admin` / `password` (configurable via `docker-compose.yml`) You may need to click on an 'Update Database' button the first time you log in, defaults are fine here.
-
-To shut down the container and development server, type `Ctrl+C`.
-
-**(Optional)** If you're running an Ups Dock build and you want to re-export the seed database without Ups Dock URLs, run the following command:
-
-```shell
-./bin/db-to-no-upsdock
-```
-
-## Activating Plugins
+## Plugins
 
 Plugins are managed with Composer. See the [Wiki entry on plugins](https://github.com/Upstatement/wordpress-starter-kit/wiki/Plugins) for more information on commonly used plugins, including the Upstatement Editorial plugin and ACF.
 
+## Command line
+
+This project has a few command line scripts that can be used to perform common actions, like starting all aspects of the development server or exporting/importing the database. In addition, DDEV provides a [number of commands](https://ddev.readthedocs.io/en/stable/users/usage/commands/) that can be used to interact with the local environment directly.
+
+### Project scripts
+
+The following scripts are helpers that wrap a number of commands around a common task.
+
+#### Set up the environment for the first time
+
+```shell
+npm run setup
+```
+
+#### Start the environment
+
+This command starts the containers with DDEV and starts the local development server for static assets.
+
+```shell
+npm run start
+```
+
+#### Lint
+
+```shell
+# Lint or fix JavaScript
+npm run lint:js
+npm run fix:js
+
+# Lint or fix PHP
+npm run lint:php
+npm run fix:php
+```
+
+#### View PHP error logs
+
+```shell
+npm run phplogs
+```
+
+#### Export the database
+
+```shell
+npm run export-db
+```
+
+### DDEV commands
+
+The following lists our a few common DDEV commands that can be useful for developers:
+
+#### SSHing into the container
+
+```shell
+ddev ssh
+```
+
+### Using composer
+
+PHP dependencies, including WordPress plugins available in the public plugin directory, are managed with composer. You can interact with composer via ddev:
+
+#### Install from `composer.json`:
+
+```shell
+ddev composer install
+```
+
+#### Require a new WordPress plugin package:
+
+```shell
+ddev composer require wpackagist-plugin/wordpress-seo
+```
+
+### Using WP-CLI
+
+The environment comes configured with [WP CLI](https://developer.wordpress.org/cli/commands/cli/); you can run WP CLI commands via the [`ddev wp` command](https://ddev.readthedocs.io/en/stable/users/usage/commands/#wp).
+
+Make sure that your container is started with `ddev start`.
+
+To update the local WordPress version:
+
+```shell
+ddev wp core update
+```
+
 ## Debugging
 
-- Follow this guide to debug Timber templates: <https://timber.github.io/docs/guides/debugging/#enable-debugging>
+Follow this guide to debug Timber templates: <https://timber.github.io/docs/guides/debugging/#enable-debugging>
 
 ### Twig Functions
 
@@ -168,40 +198,6 @@ The gitignored `logs/error.log` file is a good place to look when hitting “cri
 
 For more in-depth information like showing query, cache, and other helpful debugging information, you can install and enable the [Debug Bar](https://wordpress.org/plugins/debug-bar/) and [Timber Debug Bar](https://wordpress.org/plugins/debug-bar-timber/) plugins.
 
-## Common `wp-cli` commands
-
-The docker containers come configured with [WP CLI](https://developer.wordpress.org/cli/commands/cli/); you can access WP CLI on the docker container while it is running with the [`wp` script](/blob/main/bin/wp).
-
-Start the Docker containers with `./bin/start` and then run any of the following commands in a separate shell:
-
-```shell
-./bin/wp [command]
-```
-
-To update the local WordPress version:
-
-```shell
-./bin/wp core update
-```
-
-To export the database:
-
-```shell
-./bin/wp db export - > docker/conf/mysql/init-ups-dock.sql
-```
-
-To export the database and gzip it:
-
-```shell
-./bin/wp db export - | gzip -3 > docker/conf/mysql/init-ups-dock.sql.gz
-```
-
-To SSH into the WordPress container:
-
-```shell
-docker compose exec wordpress /bin/bash
-```
-
 ## 🚀 Deployment
 
 When creating a deployment, we recommend generating a new release for your project with an appropriate version bump to the theme's version. This will help facilitate cache-busting for static assets, which receive the theme's version as a query string appended to the end of the path.
@@ -213,10 +209,6 @@ You can use the following script to bump the version numbers in this project's `
 ```
 
 By default, running the script with no arguments will result in a patch version bump (so, from `1.0.1` to `1.0.2`). The script utilizes [`npm-version`](https://docs.npmjs.com/cli/v7/commands/npm-version) behind the scenes to define the new version number; see [those docs](https://docs.npmjs.com/cli/v7/commands/npm-version) for more information on the available version options.
-
-## 🔄 Object-Oriented Approach
-
-This theme utilizes an simple but structured object-oriented approach.
 
 ## 📰 Gutenberg
 
@@ -241,93 +233,3 @@ The `package.json` file has preset configurations for pa11y under `testing.acces
 - `paths` (array): Paths appended to the specified URL.
 - `ignore.codes` (array): WCAG codes to ignore
 - `ignore.selectors` (array): CSS selectors to ignore
-
-## 🌐 Configuring Multisite
-
-In our Starter Kit, multisite is configured to run in subdomain mode:
-
-```text
-site-1.mozilla-builders.ups.dock
-site-2.mozilla-builders.ups.dock
-```
-
-If you would like to run multisite in subdirectory mode
-
-```text
-mozilla-builders.ups.dock/site-1
-mozilla-builders.ups.dock/site-2
-```
-
-Make the following changes:
-
-1. Set the following environment variable in `docker-compose.ups-dock-multisite.yml` to 0, or just remove the line entirely.
-
-   ```yaml
-   WORDPRESS_MULTISITE_SUBDOMAIN_INSTALL: 0
-   ```
-
-2. Update your `VIRTUAL_HOST` environment variable in `docker-compose.ups-dock-multisite.yml` as follows or just remove the line entirely.
-
-   ```yaml
-   VIRTUAL_HOST: mozilla-builders.ups.dock,*.mozilla-builders.ups.dock
-   ```
-
-3. Update the SSL certificates generated by Ups Dock to include your four level subdomains
-
-   a. Navigate to your local copy of [Ups Dock](https://github.com/Upstatement/ups-dock)
-
-   ```shell
-   cd path/to/ups-dock
-   ```
-
-   b. Remove the wildcard domain from the `[ alternate_names ]` section in `config/openssl.conf` (if it was channged) as follows:
-
-   ```text
-   DNS.1 = ups.dock
-   DNS.2 = *.ups.dock
-   ```
-
-   c. Regenerate certs and restart Ups Dock
-
-   ```shell
-   ./bin/gen-certs.sh
-   docker compose up -d
-   ```
-
-### Caveats
-
-- Subdomain installs won't work without Ups Dock (or another tool that allows you to map domains to Docker containers) as it will not work when your base domain is `localhost`
-
-For more details about everything these config vars do under the surface, consult [MULTISITE.md](MULTISITE.md).
-
-## 👨‍👩‍👧‍👦 Contributing
-
-We welcome all contributions to our projects! Filing bugs, feature requests, code changes, docs changes, or anything else you'd like to contribute are all more than welcome! More information about contributing can be found in the [contributing guidelines](.github/CONTRIBUTING.md).
-
-### Setup
-
-If you're installing this repository to contribute to this kit, all you need to do next is:
-
-1. Run `nvm install` to ensure you're using the correct version of Node.
-
-2. Duplicate the contents of `.env.sample` into a new `.env` file (see the step 2 in the [🛠 Installation](#-installation) steps to determine what compose file to use).
-
-3. Run the install script:
-
-   ```shell
-   ./bin/install
-   ```
-
-4. Once the install script succeeds, fire up your site with the start command:
-
-   ```shell
-   ./bin/start
-   ```
-
-## 📗 Code of Conduct
-
-Upstatement strives to provide a welcoming, inclusive environment for all users. To hold ourselves accountable to that mission, we have a strictly-enforced [code of conduct](CODE_OF_CONDUCT.md).
-
-## About Upstatement
-
-[Upstatement](https://www.upstatement.com/) is a digital transformation studio headquartered in Boston, MA that imagines and builds exceptional digital experiences. Make sure to check out our [services](https://www.upstatement.com/services/), [work](https://www.upstatement.com/work/), and [open positions](https://www.upstatement.com/jobs/)!
