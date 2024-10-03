@@ -15,7 +15,7 @@ echo
 
 echo "Installing WordPress..."
 echo
-ddev wp core download
+ddev wp core download --path=web
 echo
 
 echo "Installing NPM packages..."
