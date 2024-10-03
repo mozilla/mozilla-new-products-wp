@@ -1,12 +1,12 @@
-<footer class="mt-10 p-6 flex flex-col gap-3">
+<footer class="mt-10 p-site flex flex-col gap-4">
   <svg class="w-full aspect-logo" aria-label="Builders">
     <use xlink:href="#logo"></use>
   </svg>
 
-  <div class="flex items-center justify-between text-xs uppercase font-semibold">
-    <p><a href="https://mozilla.org/">Mozilla</a> &copy; {{ now|date('Y') }}</p>
+  <div class="flex items-start justify-between text-xs uppercase font-semibold gap-6">
+    <p class="whitespace-nowrap"><a href="https://mozilla.org/">Mozilla</a> &copy; {{ now|date('Y') }}</p>
 
-    <ul class="flex items-center gap-x-6">
+    <ul class="flex flex-wrap items-center justify-end gap-x-6 gap-y-1.5 text-right">
       <li><a href="#">Terms and Services</a></li>
       <li><a href="#">Accessibility</a></li>
       <li><a href="#">Privacy Policy</a></li>

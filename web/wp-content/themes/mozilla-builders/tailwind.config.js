@@ -4,10 +4,6 @@ import theme from 'tailwindcss/defaultTheme';
 module.exports = {
   content: ['./**/*.twig'],
   theme: {
-    aspectRatio: {
-      logo: '446/119',
-    },
-
     colors: {
       current: 'currentColor',
       transparent: 'transparent',
@@ -36,7 +32,15 @@ module.exports = {
       bold: 700,
     },
 
-    extend: {},
+    extend: {
+      aspectRatio: {
+        logo: '446/119',
+      },
+
+      spacing: {
+        'wp-admin-bar': 'var(--wp-admin--admin-bar--height, 0px)',
+      },
+    },
   },
   plugins: [],
 };

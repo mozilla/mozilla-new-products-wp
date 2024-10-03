@@ -14,3 +14,17 @@ body {
   @apply bg-white text-black;
   @apply font-sans font-normal text-base antialiased;
 }
+
+@layer base {
+  .p-site {
+    @apply p-4 md:p-6;
+  }
+
+  .px-site {
+    @apply px-4 md:px-6;
+  }
+
+  .py-site {
+    @apply py-4 md:py-6;
+  }
+}
