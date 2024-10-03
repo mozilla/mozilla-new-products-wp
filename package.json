@@ -40,21 +40,25 @@
     "> 1%",
     "last 2 versions"
   ],
+  "workspaces": [
+    "web/wp-content/themes/*"
+  ],
+  "packageManager": "npm@9.8.1",
   "scripts": {
     "setup": "./bin/setup",
     "start": "./bin/start",
     "export-db": "./bin/export-db",
-    "build": "npm run build --prefix web/wp-content/themes/mozilla-builders",
-    "lint:js": "eslint --color --no-error-on-unmatched-pattern --format stylish web/wp-content/themes/mozilla-builders/static/**/*.js",
-    "fix:js": "eslint --fix web/wp-content/themes/**/*.js",
+    "dev": "turbo run dev:theme dev:blocks",
+    "build": "turbo run build:theme build:blocks",
+    "lint:js": "turbo run lint:js",
+    "fix:js": "turbo run lint:js -- --fix",
     "lint:php": "composer static-tests",
     "fix:php": "composer fix",
     "test:bundlesize": "bundlesize",
     "test:a11y": "node tests/pa11y.js",
     "prepare": "husky install",
     "lint-staged": "lint-staged",
-    "phplogs": "ddev exec tail -f /var/log/php-error.log",
-    "postinstall": "npm install --prefix web/wp-content/themes/mozilla-builders"
+    "phplogs": "ddev exec tail -f /var/log/php-error.log"
   },
   "lint-staged": {
     "*.{js,scss,json,md}": [
@@ -76,6 +80,7 @@
     "lint-staged": "^14.0.1",
     "lodash.get": "^4.4.2",
     "pa11y": "^6.2.3",
-    "prettier": "^2.3.0"
+    "prettier": "^2.3.0",
+    "turbo": "^2.1.3"
   }
 }

@@ -4,6 +4,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
+const THEMES_ROOT = path.resolve(__dirname, '..');
+const MONOREPO_ROOT = path.resolve(THEMES_ROOT, '..', '..', '..');
+
 module.exports = () => ({
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
 
@@ -94,7 +97,9 @@ module.exports = () => ({
 
   plugins: [
     // https://www.npmjs.com/package/dotenv-webpack
-    new Dotenv(),
+    new Dotenv({
+      path: path.resolve(MONOREPO_ROOT, '.env'),
+    }),
     // https://www.npmjs.com/package/browser-sync-webpack-plugin
     new BrowserSyncPlugin({
       host: 'localhost',
