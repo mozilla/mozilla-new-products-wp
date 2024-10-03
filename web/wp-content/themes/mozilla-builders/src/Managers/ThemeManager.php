@@ -58,11 +58,6 @@ class ThemeManager {
 		// Remove default Gutenberg CSS.
 		wp_deregister_style( 'wp-block-library' );
 
-		wp_enqueue_script( 'vendor', MOZILLA_BUILDERS_THEME_URL . '/dist/static/vendor.js', array(), MOZILLA_BUILDERS_THEME_VERSION, true );
-
-		// Enqueue custom JS file, with cache busting.
-		wp_enqueue_script( 'script.js', MOZILLA_BUILDERS_THEME_URL . '/dist/static/app.js', array(), MOZILLA_BUILDERS_THEME_VERSION, true );
-
 		// Remove global inline styles.
 		wp_dequeue_style( 'global-styles' );
 	}
