@@ -47,3 +47,6 @@ web/wp-content/themes/index.php
 # Plugins
 !web/wp-content/plugins/
 !web/wp-content/plugins/.gitkeep
+
+# Turborepo
+.turbo

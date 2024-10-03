@@ -1,0 +1,22 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "tasks": {
+    "dev:theme": {
+      "persistent": true,
+      "cache": false
+    },
+    "dev:blocks": {
+      "persistent": true,
+      "cache": false
+    },
+    "build:theme": {
+      "outputs": ["dist/**"]
+    },
+    "build:blocks": {
+      "outputs": ["dist/**"]
+    },
+    "lint:js": {
+      "cache": false
+    }
+  }
+}
