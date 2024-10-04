@@ -24,6 +24,13 @@ export default defineConfig(env => ({
       },
     },
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'modern',
+      },
+    },
+  },
   resolve: {
     alias: {
       '@src': path.resolve(__dirname, 'static/js'),
