@@ -9,6 +9,31 @@ namespace MozillaBuilders;
 
 /** Class */
 class Vite {
+	/**
+	 * Gets the Vite development server port.
+	 *
+	 * @return int
+	 */
+	public static function dev_server_port() {
+		$port_path = MOZILLA_BUILDERS_THEME_PATH . '.vite/tmp/port';
+		if ( ! file_exists( $port_path ) ) {
+			return 5173;
+		}
+		$port_string = file_get_contents( $port_path );
+		if ( ! $port_string ) {
+			return 5173;
+		}
+		return (int) $port_string;
+	}
+
+	/**
+	 * Gets the Vite development server URL.
+	 *
+	 * @return string
+	 */
+	public static function dev_server_url() {
+		return 'http://localhost:' . self::dev_server_port() . parse_url( get_stylesheet_directory_uri(), PHP_URL_PATH );
+	}
 
 	/**
 	 * Gets the Vite manifest.
@@ -70,12 +95,12 @@ class Vite {
 	public static function development_js_assets() {
 		return array(
 			'app' => array(
-				VITE_DEV_SERVER_URL . '/@vite/client',
-				VITE_DEV_SERVER_URL . '/static/js/app.js',
+				self::dev_server_url() . '/@vite/client',
+				self::dev_server_url() . '/static/js/app.js',
 			),
 			'admin' => array(
-				VITE_DEV_SERVER_URL . '/@vite/client',
-				VITE_DEV_SERVER_URL . '/static/js/admin.js',
+				self::dev_server_url() . '/@vite/client',
+				self::dev_server_url() . '/static/js/admin.js',
 			),
 		);
 	}
@@ -121,8 +146,8 @@ class Vite {
 	 */
 	public static function development_css_assets() {
 		return array(
-			'app' => array( VITE_DEV_SERVER_URL . '/static/scss/app.scss' ),
-			'admin' => array( VITE_DEV_SERVER_URL . '/static/scss/admin.scss' ),
+			'app' => array( self::dev_server_url() . '/static/scss/app.scss' ),
+			'admin' => array( self::dev_server_url() . '/static/scss/admin.scss' ),
 		);
 	}
 }

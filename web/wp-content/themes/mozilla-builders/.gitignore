@@ -3,3 +3,6 @@
 
 # Built files.
 dist
+
+# Vite
+.vite/tmp/port

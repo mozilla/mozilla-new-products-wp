@@ -1,4 +1,5 @@
 import path from 'path';
+import fs from 'fs';
 import { defineConfig } from 'vite';
 
 const BASE_PATH = '/wp-content/themes/mozilla-builders';
@@ -8,6 +9,22 @@ function base(mode) {
   } else {
     return BASE_PATH;
   }
+}
+
+// Prints the hosted port to a tmp file so that PHP can read it.
+function printPortPlugin() {
+  const tmpPath = path.resolve(__dirname, '.vite/tmp');
+  const portPath = path.resolve(tmpPath, 'port');
+  return {
+    name: 'print-port',
+    configureServer(server) {
+      server.httpServer.once('listening', () => {
+        const port = server.config.server.port;
+        fs.mkdirSync(tmpPath, { recursive: true });
+        fs.writeFileSync(portPath, port.toString());
+      });
+    },
+  };
 }
 
 export default defineConfig(env => ({
@@ -36,4 +53,5 @@ export default defineConfig(env => ({
       '@src': path.resolve(__dirname, 'static/js'),
     },
   },
+  plugins: [printPortPlugin()],
 }));
