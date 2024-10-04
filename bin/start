@@ -2,6 +2,12 @@
 
 set -e
 
+stop_containers() {
+    echo "Stopping containers..."
+    ddev stop
+    exit 0
+}
+
 trap stop_containers SIGINT
 
 echo "Starting environment..."
@@ -11,5 +17,5 @@ echo
 
 echo "Running start script..."
 echo
-npm run develop --prefix web/wp-content/themes/mozilla-builders
+npm run dev
 echo

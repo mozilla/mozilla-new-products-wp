@@ -16,7 +16,13 @@ class Vite {
 	 * @return array|null
 	 */
 	public static function manifest() {
-		$manifest_json = file_get_contents( MOZILLA_BUILDERS_THEME_PATH . '/dist/.vite/manifest.json' );
+		// Check if file exists.
+		$manifest_path = MOZILLA_BUILDERS_THEME_PATH . '/dist/.vite/manifest.json';
+		if ( ! file_exists( $manifest_path ) ) {
+			return null;
+		}
+		// Get file contents.
+		$manifest_json = file_get_contents( $manifest_path );
 		if ( ! $manifest_json ) {
 			return null;
 		}

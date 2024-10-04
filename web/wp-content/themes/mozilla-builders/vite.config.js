@@ -12,6 +12,7 @@ function base(mode) {
 
 export default defineConfig(env => ({
   base: base(env.mode),
+  clearScreen: false,
   build: {
     manifest: true,
     rollupOptions: {

@@ -40,6 +40,7 @@ class ThemeManager {
 			}
 		}
 
+		add_filter( 'script_loader_tag', array( $this, 'add_module_to_vite_scripts' ), 10, 2 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ), 999 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin' ) );
 		add_action( 'admin_init', array( $this, 'register_menus' ) );
@@ -49,6 +50,20 @@ class ThemeManager {
 		add_filter( 'admin_footer_text', array( $this, 'add_admin_footer_credit' ) );
 
 		$this->setup_theme_support();
+	}
+
+	/**
+	 * Add `type="module"` to Vite scripts
+	 *
+	 * @param string $tag The script tag.
+	 * @param string $handle The script handle.
+	 * @return string
+	 */
+	public function add_module_to_vite_scripts( $tag, $handle ) {
+		if ( str_starts_with( $handle, 'vite:' ) ) {
+			return str_replace( 'type="text/javascript"', 'type="module"', $tag );
+		}
+		return $tag;
 	}
 
 	/**
@@ -68,7 +83,8 @@ class ThemeManager {
 		if ( array_key_exists( 'app', $js_assets ) ) {
 			foreach ( $js_assets['app'] as $asset ) {
 				$key = pathinfo( basename( $asset ), PATHINFO_FILENAME );
-				wp_enqueue_script_module( $key, $asset, array(), MOZILLA_BUILDERS_THEME_VERSION );
+				$version = 'production' === WP_ENV ? MOZILLA_BUILDERS_THEME_VERSION : null;
+				wp_enqueue_script( 'vite:' . $key, $asset, array(), $version );
 			}
 		}
 
@@ -93,7 +109,7 @@ class ThemeManager {
 		if ( array_key_exists( 'admin', $js_assets ) ) {
 			foreach ( $js_assets['admin'] as $asset ) {
 				$key = pathinfo( basename( $asset ), PATHINFO_FILENAME );
-				wp_enqueue_script_module( $key, $asset, array(), MOZILLA_BUILDERS_THEME_VERSION );
+				wp_enqueue_script_module( 'vite:' . $key, $asset, array(), MOZILLA_BUILDERS_THEME_VERSION );
 			}
 		}
 

@@ -1,5 +1,5 @@
 {
-  "name": "@upstatement/mozilla-builders-wp-theme",
+  "name": "mozilla-builders",
   "version": "0.0.3",
   "description": "Theme for Mozilla Builders",
   "author": {
@@ -8,12 +8,11 @@
   },
   "license": "UNLICENSED",
   "scripts": {
-    "build": "npm run build:theme && npm run build:blocks",
     "build:theme": "vite build",
     "build:blocks": "wp-scripts build ./blocks/index.js --output-path=./dist/blocks",
-    "develop": "npm run develop:theme & npm run develop:blocks",
-    "develop:theme": "vite --force",
-    "develop:blocks": "wp-scripts start ./blocks/index.js --output-path=./dist/blocks"
+    "dev:theme": "vite --force",
+    "dev:blocks": "wp-scripts start ./blocks/index.js --output-path=./dist/blocks",
+    "lint:js": "eslint '**/*.js'"
   },
   "dependencies": {
     "body-scroll-lock": "^3.1.3",
