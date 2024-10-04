@@ -12,7 +12,7 @@
     "build:theme": "vite build",
     "build:blocks": "wp-scripts build ./blocks/index.js --output-path=./dist/blocks",
     "develop": "npm run develop:theme & npm run develop:blocks",
-    "develop:theme": "vite",
+    "develop:theme": "vite --force",
     "develop:blocks": "wp-scripts start ./blocks/index.js --output-path=./dist/blocks"
   },
   "dependencies": {

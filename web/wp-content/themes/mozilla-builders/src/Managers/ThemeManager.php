@@ -7,6 +7,8 @@
 
 namespace MozillaBuilders\Managers;
 
+use MozillaBuilders\Vite;
+
 /** Class */
 class ThemeManager {
 
@@ -39,7 +41,7 @@ class ThemeManager {
 		}
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ), 999 );
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin' ) );
 		add_action( 'admin_init', array( $this, 'register_menus' ) );
 		add_action( 'init', array( $this, 'register_options' ) );
 		add_action( 'pre_get_posts', array( $this, 'filter_posts' ) );
@@ -61,30 +63,22 @@ class ThemeManager {
 		// Remove global inline styles.
 		wp_dequeue_style( 'global-styles' );
 
-		// Enqueue Vite assets.
-		if ( 'production' == WP_ENV ) {
-			// Read manifest.json if it exists.
-			$manifest_json = file_get_contents( MOZILLA_BUILDERS_THEME_PATH . '/dist/.vite/manifest.json' );
-			if ( ! $manifest_json ) {
-				return;
+		// Enqueue JS assets.
+		$js_assets = Vite::js_assets();
+		if ( array_key_exists( 'app', $js_assets ) ) {
+			foreach ( $js_assets['app'] as $asset ) {
+				$key = pathinfo( basename( $asset ), PATHINFO_FILENAME );
+				wp_enqueue_script_module( $key, $asset, array(), MOZILLA_BUILDERS_THEME_VERSION );
 			}
-			// Enqueue Vite assets.
-			$manifest = json_decode( $manifest_json, true );
-			foreach ( $manifest as $file ) {
-				if ( ! array_key_exists( 'isEntry', $file ) || ! array_key_exists( 'src', $file ) ) {
-					continue;
-				}
-				if ( $file['isEntry'] && 'static/js/app.js' == $file['src'] ) {
-					wp_enqueue_script_module( 'vite-js', MOZILLA_BUILDERS_THEME_URL . '/dist/' . $file['file'], array(), MOZILLA_BUILDERS_THEME_VERSION );
-				}
-				if ( $file['isEntry'] && 'static/scss/app.scss' == $file['src'] ) {
-					wp_enqueue_style( 'vite-css', MOZILLA_BUILDERS_THEME_URL . '/dist/' . $file['file'], array(), MOZILLA_BUILDERS_THEME_VERSION );
-				}
+		}
+
+		// Enqueue CSS assets.
+		$css_assets = Vite::css_assets();
+		if ( array_key_exists( 'app', $css_assets ) ) {
+			foreach ( $css_assets['app'] as $asset ) {
+				$key = pathinfo( basename( $asset ), PATHINFO_FILENAME );
+				wp_enqueue_style( $key, $asset, array(), MOZILLA_BUILDERS_THEME_VERSION );
 			}
-		} else {
-			wp_enqueue_script_module( 'vite-client', VITE_DEV_SERVER_URL . '/@vite/client', array(), MOZILLA_BUILDERS_THEME_VERSION );
-			wp_enqueue_script_module( 'vite-js', VITE_DEV_SERVER_URL . '/static/js/app.js', array(), MOZILLA_BUILDERS_THEME_VERSION );
-			wp_enqueue_style( 'vite-css', VITE_DEV_SERVER_URL . '/static/scss/app.scss', array(), MOZILLA_BUILDERS_THEME_VERSION );
 		}
 	}
 
@@ -93,11 +87,24 @@ class ThemeManager {
 	 *
 	 * @return void
 	 */
-	public function enqueue_admin_scripts() {
-		// TODO: fix.
-		// wp_enqueue_style( 'admin-styles', MOZILLA_BUILDERS_THEME_URL . '/dist/static/admin.css', array(), MOZILLA_BUILDERS_THEME_VERSION );
-		// wp_enqueue_script( 'vendor', MOZILLA_BUILDERS_THEME_URL . '/dist/static/vendor.js', array(), MOZILLA_BUILDERS_THEME_VERSION, false );
-		// wp_enqueue_script( 'admin.js', MOZILLA_BUILDERS_THEME_URL . '/dist/static/admin.js', array(), MOZILLA_BUILDERS_THEME_VERSION, false ); .
+	public function enqueue_admin() {
+		// Enqueue JS assets.
+		$js_assets = Vite::js_assets();
+		if ( array_key_exists( 'admin', $js_assets ) ) {
+			foreach ( $js_assets['admin'] as $asset ) {
+				$key = pathinfo( basename( $asset ), PATHINFO_FILENAME );
+				wp_enqueue_script_module( $key, $asset, array(), MOZILLA_BUILDERS_THEME_VERSION );
+			}
+		}
+
+		// Enqueue CSS assets.
+		$css_assets = Vite::css_assets();
+		if ( array_key_exists( 'admin', $css_assets ) ) {
+			foreach ( $css_assets['admin'] as $asset ) {
+				$key = pathinfo( basename( $asset ), PATHINFO_FILENAME );
+				wp_enqueue_style( $key, $asset, array(), MOZILLA_BUILDERS_THEME_VERSION );
+			}
+		}
 	}
 
 	/**

@@ -16,9 +16,10 @@ export default defineConfig(env => ({
     manifest: true,
     rollupOptions: {
       input: {
-        css: path.resolve(__dirname, 'static/scss/app.scss'),
         app: path.resolve(__dirname, 'static/js/app.js'),
+        app_css: path.resolve(__dirname, 'static/scss/app.scss'),
         admin: path.resolve(__dirname, 'static/js/admin.js'),
+        admin_css: path.resolve(__dirname, 'static/scss/admin.scss'),
       },
     },
   },
