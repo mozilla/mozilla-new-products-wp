@@ -21,7 +21,7 @@ class Slide {
    * Creates a new slide for the modal gallery.
    *
    * @param {HTMLImageElement|HTMLVideoElement} ref the original reference to the image or video element
-   * on the page
+   *                                                on the page
    */
   constructor(ref) {
     this.stateManager = new StateMachine(STATE.unmounted, {
@@ -170,7 +170,7 @@ class Slide {
   /**
    * Retrieves the slide's open button or, if it doesn't exist, creates one.
    *
-   * @returns {HTMLButtonElement} the open button, or `null` if the slide isn't mounted
+   * @return {HTMLButtonElement} the open button, or `null` if the slide isn't mounted
    */
   getOrCreateOpenButton() {
     if (this.stateManager.state !== STATE.mounted) {
@@ -190,9 +190,9 @@ class Slide {
   /**
    * Renders the slide to the given element.
    *
-   * @param {HTMLElement} element the element to render to
-   * @param {boolean} [active=false] whether the slide is currently active
-   * @returns {HTMLImageElement|HTMLVideoElement} the rendered slide
+   * @param {HTMLElement} element        the element to render to
+   * @param {boolean}     [active=false] whether the slide is currently active
+   * @return {HTMLImageElement|HTMLVideoElement} the rendered slide
    */
   renderTo(element, active = false) {
     if (this.stateManager.state !== STATE.mounted || !element) {
@@ -220,7 +220,7 @@ class Slide {
   /**
    * Returns overlay div allow video play/pause functionality
    *
-   * @returns {HTMLElement} video overlay div with button
+   * @return {HTMLElement} video overlay div with button
    */
   createVideoOverlayElem() {
     // Add a focusable overlay on top of the video element to allow play/pause functionality
@@ -258,19 +258,18 @@ class Slide {
    * Toggles video play/pause state
    *
    * @param {MouseEvent|KeyboardEvent} e The event from the click or keydown event listeners
-   * @returns void
    */
   toggleVideoPlay(e) {
     const videoOverlay = e.currentTarget;
     // Get the <video> element associated with this video overlay
     const video = videoOverlay.parentNode.querySelector('video');
-    // Get the button associated with this video overlay
-    const videoButton = videoOverlay.querySelector(`.${TARGET_CLASSES.videoButton}`);
 
     if (!video) {
       return;
     }
 
+    // Get the button associated with this video overlay
+    const videoButton = videoOverlay.querySelector(`.${TARGET_CLASSES.videoButton}`);
     // Toggle play/pause
     if (video.paused) {
       video.play();

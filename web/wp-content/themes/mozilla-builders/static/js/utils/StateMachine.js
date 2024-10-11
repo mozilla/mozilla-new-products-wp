@@ -2,8 +2,8 @@ class StateMachine {
   /**
    * Creates a new state machine.
    *
-   * @param {string} initialState the initial state of the machine
-   * @param {Record<string, string[]>} stateMap a map of states to their valid next states
+   * @param {string}                   initialState the initial state of the machine
+   * @param {Record<string, string[]>} stateMap     a map of states to their valid next states
    */
   constructor(initialState, stateMap) {
     /**
@@ -41,7 +41,7 @@ class StateMachine {
    * ```
    *
    * @param {...string} states the different states to check
-   * @returns {boolean} whether the current state is one of the given ones
+   * @return {boolean} whether the current state is one of the given ones
    */
   isStateOneOf(...states) {
     return new Set(states).has(this._state);
