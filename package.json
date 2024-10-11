@@ -61,7 +61,7 @@
       "prettier --write"
     ],
     "*.js": [
-      "eslint --fix"
+      "turbo run lint:js -- --fix"
     ]
   },
   "devDependencies": {
