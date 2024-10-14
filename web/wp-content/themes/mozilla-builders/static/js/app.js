@@ -11,6 +11,15 @@ import { onDocumentReady } from '@src/utils';
 import Menu from '@src/components/menu';
 import Links from '@src/components/links';
 
+import Alpine from 'alpinejs';
+import focus from '@alpinejs/focus';
+
+// Initialize Alpine
+window.Alpine = Alpine;
+Alpine.plugin(focus);
+Alpine.start();
+
+// Initialize custom JS
 onDocumentReady(() => {
   new Links();
 

@@ -39,6 +39,8 @@ module.exports = {
 
       spacing: {
         'wp-admin-bar': 'var(--wp-admin--admin-bar--height, 0px)',
+        // https://modern-fluid-typography.vercel.app/
+        site: 'clamp(1rem, 2vw + 0.25rem, 1.5rem)',
       },
     },
   },

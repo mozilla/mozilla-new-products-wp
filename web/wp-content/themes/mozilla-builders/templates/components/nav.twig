@@ -1,12 +1,14 @@
 <nav class="flex items-center md:items-start justify-between gap-12 p-site">
-  <div class="md:mt-1 flex-1 flex items-start gap-1 justify-start">
+  <div class="md:mt-1 flex-1 flex gap-1 justify-start">
     <svg class="size-5 shrink-0">
       <use xlink:href="#flag"></use>
     </svg>
 
-    <p class="text-white text-sm max-md:hidden">
-      <span class="bg-black py-0.5 px-1 box-decoration-clone">Building in the open with open source AI. Powered by <span class="font-semibold">Mozilla</span>.</span>
-    </p>
+    <div class="flex-1 h-5 relative overflow-hidden">
+      <p class="absolute top-1/2 left-0 -translate-y-1/2 text-white text-sm max-md:hidden">
+        <span class="bg-black py-0.5 px-1 box-decoration-clone whitespace-nowrap">Building in the open with open source AI. Powered by <span class="font-semibold">Mozilla</span>.</span>
+      </p>
+    </div>
   </div>
 
   <a href="{{ site.url }}">
@@ -35,19 +37,83 @@
         Join us
       </a>
 
-      <button class="bg-black size-6 text-white flex items-center justify-center md:hidden">
-        <span class="sr-only">Menu</span>
-        <svg class="size-4">
-          <use xlink:href="#menu"></use>
-        </svg>
-      </button>
+      <div
+        class="md:hidden"
+        x-data="{ open: false }"
+        @keydown.escape.window="open = false"
+      >
+        <button
+          class="bg-black size-6 text-white flex items-center justify-center"
+          @click="open = !open"
+          :aria-expanded="open"
+          aria-haspopup="true"
+          aria-controls="menu"
+        >
+          <span class="sr-only">Open menu</span>
+          <svg class="size-4">
+            <use xlink:href="#menu"></use>
+          </svg>
+        </button>
 
-      <a href="#" class="bg-black size-6 text-white flex items-center justify-center">
-        <span class="sr-only">Search</span>
-        <svg class="size-4">
-          <use xlink:href="#search"></use>
-        </svg>
-      </a>
+        <template x-teleport="body">
+          <div
+            id="menu"
+            class="fixed inset-0 h-100vh w-full flex flex-col flex-1 pt-wp-admin-bar bg-black text-white"
+            x-show="open"
+            x-trap.noscroll="open"
+            :aria-hidden="!open"
+            aria-modal="true"
+            aria-labelledby="menu-label"
+            role="dialog"
+          >
+            <h2 id="menu-label" class="sr-only">Menu</h2>
+
+            <header class="flex items-center md:items-start justify-between gap-12 p-site">
+              <svg class="size-5 shrink-0">
+                <use xlink:href="#flag"></use>
+              </svg>
+
+              <div>
+                <span class="sr-only">Mozilla Builders</span>
+                <svg class="max-w-96 min-w-36 w-[25vw] md:w-[40vw] aspect-logo">
+                  <use xlink:href="#logo"></use>
+                </svg>
+              </div>
+
+              <button
+                class="bg-white size-6 text-black flex items-center justify-center"
+                @click="open = false"
+              >
+                <span class="sr-only">Close menu</span>
+                <svg class="size-4">
+                  <use xlink:href="#x-close"></use>
+                </svg>
+              </button>
+            </header>
+
+            <div class="border-b-2 border-white mx-site"></div>
+
+            <div class="p-site flex-1 flex flex-col justify-end gap-4">
+              <ul class="flex flex-col items-start gap-3">
+                {% for item in nav_pages_menu.items %}
+                <li class="text-right">
+                  <a
+                    href="{{ item.url }}"
+                    class="text-3xl"
+                    {% if item.current %}aria-current="page"{% endif %}>
+                    {{ item.name }}
+                  </a>
+                </li>
+                {% endfor %}
+              </ul>
+
+              <a href="#" class="text-2xl uppercase bg-white text-center p-3 text-black whitespace-nowrap">
+                Join us
+              </a>
+            </div>
+          </div>
+        </template>
+      </div>
     </div>
   </div>
 </nav>
