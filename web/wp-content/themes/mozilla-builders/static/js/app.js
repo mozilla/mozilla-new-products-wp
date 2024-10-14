@@ -3,6 +3,8 @@ import LazySizes from 'lazysizes';
 import Unveilhooks from 'lazysizes/plugins/unveilhooks/ls.unveilhooks';
 /* eslint-enable */
 
+import '../scss/app.scss';
+
 import { onDocumentReady } from '@src/utils';
 
 // Components

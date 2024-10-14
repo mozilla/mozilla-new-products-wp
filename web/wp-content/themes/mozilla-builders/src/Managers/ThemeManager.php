@@ -7,6 +7,8 @@
 
 namespace MozillaBuilders\Managers;
 
+use MozillaBuilders\Vite;
+
 /** Class */
 class ThemeManager {
 
@@ -38,8 +40,9 @@ class ThemeManager {
 			}
 		}
 
+		add_filter( 'script_loader_tag', array( $this, 'add_module_to_vite_scripts' ), 10, 2 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ), 999 );
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin' ) );
 		add_action( 'admin_init', array( $this, 'register_menus' ) );
 		add_action( 'init', array( $this, 'register_options' ) );
 		add_action( 'pre_get_posts', array( $this, 'filter_posts' ) );
@@ -47,6 +50,20 @@ class ThemeManager {
 		add_filter( 'admin_footer_text', array( $this, 'add_admin_footer_credit' ) );
 
 		$this->setup_theme_support();
+	}
+
+	/**
+	 * Add `type="module"` to Vite scripts
+	 *
+	 * @param string $tag The script tag.
+	 * @param string $handle The script handle.
+	 * @return string
+	 */
+	public function add_module_to_vite_scripts( $tag, $handle ) {
+		if ( str_starts_with( $handle, 'vite:' ) ) {
+			return str_replace( 'type="text/javascript"', 'type="module"', $tag );
+		}
+		return $tag;
 	}
 
 	/**
@@ -58,13 +75,27 @@ class ThemeManager {
 		// Remove default Gutenberg CSS.
 		wp_deregister_style( 'wp-block-library' );
 
-		wp_enqueue_script( 'vendor', MOZILLA_BUILDERS_THEME_URL . '/dist/static/vendor.js', array(), MOZILLA_BUILDERS_THEME_VERSION, true );
-
-		// Enqueue custom JS file, with cache busting.
-		wp_enqueue_script( 'script.js', MOZILLA_BUILDERS_THEME_URL . '/dist/static/app.js', array(), MOZILLA_BUILDERS_THEME_VERSION, true );
-
 		// Remove global inline styles.
 		wp_dequeue_style( 'global-styles' );
+
+		// Enqueue JS assets.
+		$js_assets = Vite::js_assets();
+		if ( array_key_exists( 'app', $js_assets ) ) {
+			foreach ( $js_assets['app'] as $asset ) {
+				$key = pathinfo( basename( $asset ), PATHINFO_FILENAME );
+				$version = 'production' === WP_ENV ? MOZILLA_BUILDERS_THEME_VERSION : null;
+				wp_enqueue_script( 'vite:' . $key, $asset, array(), $version );
+			}
+		}
+
+		// Enqueue CSS assets.
+		$css_assets = Vite::css_assets();
+		if ( array_key_exists( 'app', $css_assets ) ) {
+			foreach ( $css_assets['app'] as $asset ) {
+				$key = pathinfo( basename( $asset ), PATHINFO_FILENAME );
+				wp_enqueue_style( $key, $asset, array(), MOZILLA_BUILDERS_THEME_VERSION );
+			}
+		}
 	}
 
 	/**
@@ -72,10 +103,24 @@ class ThemeManager {
 	 *
 	 * @return void
 	 */
-	public function enqueue_admin_scripts() {
-		wp_enqueue_style( 'admin-styles', MOZILLA_BUILDERS_THEME_URL . '/dist/static/admin.css', array(), MOZILLA_BUILDERS_THEME_VERSION );
-		wp_enqueue_script( 'vendor', MOZILLA_BUILDERS_THEME_URL . '/dist/static/vendor.js', array(), MOZILLA_BUILDERS_THEME_VERSION, false );
-		wp_enqueue_script( 'admin.js', MOZILLA_BUILDERS_THEME_URL . '/dist/static/admin.js', array(), MOZILLA_BUILDERS_THEME_VERSION, false );
+	public function enqueue_admin() {
+		// Enqueue JS assets.
+		$js_assets = Vite::js_assets();
+		if ( array_key_exists( 'admin', $js_assets ) ) {
+			foreach ( $js_assets['admin'] as $asset ) {
+				$key = pathinfo( basename( $asset ), PATHINFO_FILENAME );
+				wp_enqueue_script_module( 'vite:' . $key, $asset, array(), MOZILLA_BUILDERS_THEME_VERSION );
+			}
+		}
+
+		// Enqueue CSS assets.
+		$css_assets = Vite::css_assets();
+		if ( array_key_exists( 'admin', $css_assets ) ) {
+			foreach ( $css_assets['admin'] as $asset ) {
+				$key = pathinfo( basename( $asset ), PATHINFO_FILENAME );
+				wp_enqueue_style( $key, $asset, array(), MOZILLA_BUILDERS_THEME_VERSION );
+			}
+		}
 	}
 
 	/**
