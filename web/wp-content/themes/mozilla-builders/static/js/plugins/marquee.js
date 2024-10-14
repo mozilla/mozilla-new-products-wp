@@ -16,8 +16,8 @@ export function marquee(Alpine) {
  * Registers the root element with speed and spaceX options
  *
  * @param {import('alpinejs').Alpine} Alpine
- * @param {HTMLElement} el
- * @param {number} speed
+ * @param {HTMLElement}               el
+ * @param {number}                    speed
  */
 function registerRoot(Alpine, el, speed) {
   return Alpine.bind(el, {
@@ -27,7 +27,7 @@ function registerRoot(Alpine, el, speed) {
 
 /**
  * @param {Function} func
- * @param {number} timeout
+ * @param {number}   timeout
  */
 function debounce(func, timeout = 100) {
   let timer;
@@ -61,7 +61,7 @@ async function resize(rootElement, el, originalElement) {
  * Registers the track element to animate the marquee.
  *
  * @param {import('alpinejs').Alpine} Alpine
- * @param {HTMLElement} el
+ * @param {HTMLElement}               el
  */
 function registerTrack(Alpine, el) {
   const options = Alpine.$data(el);
