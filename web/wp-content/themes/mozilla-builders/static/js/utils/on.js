@@ -16,10 +16,10 @@
  * ```
  *
  * @param {HTMLElement|HTMLElement[]} elementOrMultiple one or many HTML elements to apply the listener to
- * @param {string} type the type of event to apply
- * @param {Function} listener the event listener callback
- * @param {boolean|EventListenerOptions} options the event listener options to use
- * @returns {Function} a function that unsubscribes from any event listeners
+ * @param {string}                    type              the type of event to apply
+ * @param {Function}                  listener          the event listener callback
+ * @param {boolean|AbortSignal}       options           the event listener options to use
+ * @return {Function} a function that unsubscribes from any event listeners
  */
 const on = (elementOrMultiple, type, listener, options) => {
   /**

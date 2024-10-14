@@ -81,14 +81,14 @@ class Menu {
   }
 
   handleBackwardTab(e) {
-    if (document.activeElement === this.firstFocusableEl) {
+    if (e.target.ownerDocument.activeElement === this.firstFocusableEl) {
       e.preventDefault();
       this.lastFocusableEl.focus();
     }
   }
 
   handleForwardTab(e) {
-    if (document.activeElement === this.lastFocusableEl) {
+    if (e.target.ownerDocument.activeElement === this.lastFocusableEl) {
       e.preventDefault();
       this.firstFocusableEl.focus();
     }

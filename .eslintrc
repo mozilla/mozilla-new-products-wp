@@ -1,6 +1,6 @@
 {
   "root": true,
-  "extends": "@upstatement",
+  "extends": ["@upstatement", "plugin:@wordpress/eslint-plugin/recommended"],
   "env": {
     "browser": true,
     "node": true,
@@ -10,6 +10,14 @@
     "wp": "readonly"
   },
   "plugins": ["react"],
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [["@src", "./static/js"]],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
   "overrides": [
     {
       "files": "./web/wp-content/themes/mozilla-builders/blocks/**/*.js",

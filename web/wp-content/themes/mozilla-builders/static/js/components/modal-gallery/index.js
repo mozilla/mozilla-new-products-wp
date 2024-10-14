@@ -116,8 +116,8 @@ class ModalGallery {
       .map(tag => `${tag}:not(.${TARGET_CLASSES.hidden}):not(.wp-rich-text-inline-image)`)
       .join(', ');
     const media = Array.from(this.container.querySelectorAll(mediaQuery));
-    this.slides = media.map((media, index) => {
-      const slide = new Slide(media);
+    this.slides = media.map((mediaItem, index) => {
+      const slide = new Slide(mediaItem);
       const openBtn = slide.getOrCreateOpenButton();
 
       this.listeners.push(
@@ -232,7 +232,7 @@ class ModalGallery {
    * Gets the next index, bounded by the maximum number of slides.
    *
    * @param {number} index the index to bound
-   * @returns {number} the bounded index
+   * @return {number} the bounded index
    */
   _getBoundedIndex(index) {
     return Math.min(this.numSlides, Math.max(0, (index + this.numSlides) % this.numSlides));
@@ -241,11 +241,11 @@ class ModalGallery {
   /**
    * Queries for a component using the target class.
    *
-   * @param {string} targetClass the class to target (without "." prefix)
-   * @param {object} [options={}]
-   * @param {HTMLElement} [options.rootEl] the element to query from (defaults to root component)
-   * @param {boolean} [options.multiple] whether to query for multiple or only the first
-   * @returns {HTMLElement} the queried element, or `undefined` if not found
+   * @param {string}      targetClass        the class to target (without "." prefix)
+   * @param {Object}      [options={}]
+   * @param {HTMLElement} [options.rootEl]   the element to query from (defaults to root component)
+   * @param {boolean}     [options.multiple] whether to query for multiple or only the first
+   * @return {HTMLElement} the queried element, or `undefined` if not found
    */
   _getComponent(targetClass, options = {}) {
     const selector = `.${targetClass}`;
@@ -264,7 +264,7 @@ class ModalGallery {
    */
   _handleTab(evt) {
     const focusableElements = this.focusableElements;
-    const activeElement = document.activeElement;
+    const activeElement = this.modalElement.ownerDocument.activeElement;
 
     if (focusableElements.length <= 1) {
       evt.preventDefault();
@@ -340,7 +340,7 @@ class ModalGallery {
    * Sets the inner HTML property of a given element.
    *
    * @param {HTMLElement} element the element to update
-   * @param {string} html the HTML to set
+   * @param {string}      html    the HTML to set
    */
   _setInnerHTML(element, html) {
     if (element) {
@@ -398,7 +398,7 @@ class ModalGallery {
 
     this._update();
     this.root.setAttribute('aria-hidden', false);
-    this.modalOpener = document.activeElement;
+    this.modalOpener = this.root.ownerDocument.activeElement;
     this.root.focus();
 
     disableBodyScroll(this.root);
