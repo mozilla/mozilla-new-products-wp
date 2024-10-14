@@ -28,12 +28,8 @@
   },
   "bundlesize": [
     {
-      "path": "web/wp-content/themes/mozilla-builders/dist/static/app.js",
+      "path": "web/wp-content/themes/mozilla-builders/dist/assets/app-*.js",
       "maxSize": "50 kB"
-    },
-    {
-      "path": "web/wp-content/themes/mozilla-builders/dist/static/vendor.js",
-      "maxSize": "500 kB"
     }
   ],
   "browserslist": [
