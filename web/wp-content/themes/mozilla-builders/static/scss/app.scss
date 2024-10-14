@@ -4,11 +4,30 @@
 @tailwind components;
 @tailwind utilities;
 
+// Mozilla Sans
 @include font-face('Mozilla Sans', 'MozillaSansBETA-ExtraLight', 200, normal);
 @include font-face('Mozilla Sans', 'MozillaSansBETA-Light', 300, normal);
 @include font-face('Mozilla Sans', 'MozillaSansBETA-Regular', 400, normal);
 @include font-face('Mozilla Sans', 'MozillaSansBETA-SemiBold', 600, normal);
 @include font-face('Mozilla Sans', 'MozillaSansBETA-Bold', 700, normal);
+// Mozilla Semi Slab
+@include font-face('Mozilla Semi Slab', 'MozillaSemiSlabBETA-ExtraLight', 200, normal);
+@include font-face('Mozilla Semi Slab', 'MozillaSemiSlabBETA-Light', 300, normal);
+@include font-face('Mozilla Semi Slab', 'MozillaSemiSlabBETA-Regular', 400, normal);
+@include font-face('Mozilla Semi Slab', 'MozillaSemiSlabBETA-SemiBold', 600, normal);
+@include font-face('Mozilla Semi Slab', 'MozillaSemiSlabBETA-Bold', 700, normal);
+// Mozilla Semi Slab Condensed
+@include font-face('Mozilla Semi Slab Condensed', 'MozillaSemiSlabCndBETA-ExtraLight', 200, normal);
+@include font-face('Mozilla Semi Slab Condensed', 'MozillaSemiSlabCndBETA-Light', 300, normal);
+@include font-face('Mozilla Semi Slab Condensed', 'MozillaSemiSlabCndBETA-Regular', 400, normal);
+@include font-face('Mozilla Semi Slab Condensed', 'MozillaSemiSlabCndBETA-SemiBold', 600, normal);
+@include font-face('Mozilla Semi Slab Condensed', 'MozillaSemiSlabCndBETA-Bold', 700, normal);
+// Mozilla Semi Slab Extended
+@include font-face('Mozilla Semi Slab Extended', 'MozillaSemiSlabExtBETA-ExtraLight', 200, normal);
+@include font-face('Mozilla Semi Slab Extended', 'MozillaSemiSlabExtBETA-Light', 300, normal);
+@include font-face('Mozilla Semi Slab Extended', 'MozillaSemiSlabExtBETA-Regular', 400, normal);
+@include font-face('Mozilla Semi Slab Extended', 'MozillaSemiSlabExtBETA-SemiBold', 600, normal);
+@include font-face('Mozilla Semi Slab Extended', 'MozillaSemiSlabExtBETA-Bold', 700, normal);
 
 body {
   @apply bg-white text-black;

@@ -22,6 +22,9 @@ module.exports = {
 
     fontFamily: {
       sans: ['Mozilla Sans', ...theme.fontFamily.sans],
+      slab: ['Mozilla Semi Slab', ...theme.fontFamily.serif],
+      'slab-condensed': ['Mozilla Semi Slab Condensed', ...theme.fontFamily.serif],
+      'slab-extended': ['Mozilla Semi Slab Extended', ...theme.fontFamily.serif],
     },
 
     fontWeight: {
