@@ -61,22 +61,22 @@
       "prettier --write"
     ],
     "*.js": [
-      "eslint --fix"
+      "turbo run lint:js -- --fix"
     ]
   },
   "devDependencies": {
-    "@upstatement/eslint-config": "^1.0.1",
+    "@upstatement/eslint-config": "^3.0.0",
     "@upstatement/prettier-config": "^1.1.0",
     "bundlesize": "^0.18.1",
-    "eslint": "^7.26.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.27.1",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-jsx-a11y": "^6.10.0",
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
     "lodash.get": "^4.4.2",
     "pa11y": "^6.2.3",
-    "prettier": "^2.3.0",
+    "prettier": "^3.3.3",
     "turbo": "^2.1.3"
   }
 }
