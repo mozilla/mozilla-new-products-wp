@@ -13,10 +13,12 @@ import Links from '@src/components/links';
 
 import Alpine from 'alpinejs';
 import focus from '@alpinejs/focus';
+import { marquee } from '@src/plugins/marquee';
 
 // Initialize Alpine
 window.Alpine = Alpine;
 Alpine.plugin(focus);
+Alpine.plugin(marquee);
 Alpine.start();
 
 // Initialize custom JS

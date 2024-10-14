@@ -1,13 +1,15 @@
 <nav class="flex items-center md:items-start justify-between gap-12 p-site">
-  <div class="md:mt-1 flex-1 flex gap-1 justify-start">
+  <div class="md:mt-1 flex-1 flex gap-1 items-center justify-start">
     <svg class="size-5 shrink-0">
       <use xlink:href="#flag"></use>
     </svg>
 
-    <div class="flex-1 h-5 relative overflow-hidden max-md:hidden">
-      <p class="absolute top-1/2 left-0 -translate-y-1/2 text-white text-sm">
-        <span class="bg-black py-0.5 px-1 box-decoration-clone whitespace-nowrap">Building in the open with open source AI. Powered by <span class="font-semibold">Mozilla</span>.</span>
-      </p>
+    <div class="flex-1 h-5 overflow-hidden relative max-md:hidden bg-black text-white max-w-[26rem]">
+      <div x-marquee="{ speed: 0.5 }" class="absolute top-1/2 left-0 -translate-y-1/2 group">
+        <div x-marquee:track class="opacity-0 group-[.loaded]:opacity-100 animate-marquee motion-reduce:!animate-none flex">
+          <p class="px-1 text-sm whitespace-nowrap">Building in the open with open source AI. Powered by <span class="font-semibold">Mozilla</span>.</p>
+        </div>
+      </div>
     </div>
   </div>
 
