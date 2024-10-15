@@ -1,41 +1,31 @@
-{% set asset = null %}
-{% set poster = null %}
-{% set overrides = { caption: article.topper_caption } %}
-
-{% if article.topper_image %}
-  {% set asset = Image(article.topper_image) %}
-{% elseif article.thumbnail.id %}
+{% if article.thumbnail.id %}
   {% set asset = Image(article.thumbnail.id) %}
 {% endif %}
 
-{% if article.topper_video_poster %}
-  {% set poster = Image(article.topper_video_poster) %}
-{% endif %}
+<div class="flex flex-col p-site gap-4">
+  <div class="flex w-full justify-center items-end gap-site max-md:flex-col max-md:items-center max-md:gap-10">
+    <div class="flex flex-1 items-start max-md:order-2">
+      <div class="flex flex-col items-center gap-6 max-md:gap-4">
+        <div class="flex w-[65%] justify-end max-md:justify-center">
+          {% include 'components/articles/overline.twig' with { overline: article.categories[0] } %}
+        </div>
 
-<div class="topper topper--small-img {{ asset.caption or asset.credit or overrides.caption ? 'topper--caption' }}">
-  <div class="topper-hgroup">
-    <div class="topper-hgroup-inner">
-      {% include 'components/articles/overline.twig' %}
+        <h1 class="type-slab-3xl text-pretty text-center">{{ article.title }}</h1>
+      </div>
+    </div>
 
-      <h1 class="topper-hed">{{ article.title }}</h1>
-
-      {% if article.topper_description %}
-        <p class="topper-dek">
-          {{ article.topper_description }}
-        </p>
-      {% endif %}
+    <div class="flex w-1/3 max-w-md justify-center max-md:order-1 max-md:w-2/3 max-md:max-w-xs">
+      {% include 'components/lazy-img.twig' with {
+        img: asset,
+        class: 'w-full',
+      } %}
     </div>
   </div>
 
-  {% if asset %}
-    <figure class="topper-asset-mod">
-      {% include 'components/articles/blocks/asset.twig' with {
-        asset: asset,
-        poster: poster,
-        overrides: overrides,
-        hidden: article.topper_hide_in_modal_gallery
-      } %}
-      {% include 'components/articles/blocks/caption.twig' with { asset: asset, overrides: overrides } %}
-    </figure>
+  {% if article.subtitle %}
+    <p class="type-sans-xl uppercase text-pretty text-left">
+      {{ article.subtitle }}
+    </p>
   {% endif %}
 </div>
+

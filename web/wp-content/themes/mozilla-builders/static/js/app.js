@@ -37,13 +37,6 @@ onDocumentReady(() => {
     });
   }
 
-  if (document.querySelector('.js-modal-gallery')) {
-    import(/* webpackChunkName: "modal-gallery" */ '@src/components/modal-gallery').then(module => {
-      const ModalGallery = module.default;
-      new ModalGallery();
-    });
-  }
-
   if (document.querySelector('.js-hang-punc')) {
     import(/* webpackChunkName: "hang-punctuation" */ '@src/components/hang-punctuation').then(
       module => {

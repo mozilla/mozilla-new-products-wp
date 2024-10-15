@@ -12,11 +12,11 @@
 {% elseif bg_color == 'pink' %}
   {% set overline_class = 'bg-pink' %}
 {% else %}
-  {% set overline_class = '' %}
+  {% set overline_class = 'bg-black text-white' %}
 {% endif %}
 
 <p class="text-xs uppercase">
-  <a class="py-1.5 px-2 {{ overline_class }}" href="{{ overline.link }}">{{ overline.name }}</a>
+  <a class="py-1 px-1.5 {{ overline_class }}" href="{{ overline.link }}">{{ overline.name }}</a>
 </p>
 
 {% endif %}

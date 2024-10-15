@@ -1,12 +1,28 @@
+{% if article.color == 'green' %}
+  {% set bg_class = 'bg-green' %}
+{% elseif article.color == 'orange' %}
+  {% set bg_class = 'bg-orange' %}
+{% elseif article.color == 'yellow' %}
+  {% set bg_class = 'bg-yellow' %}
+{% elseif article.color == 'purple' %}
+  {% set bg_class = 'bg-purple' %}
+{% elseif article.color == 'pink' %}
+  {% set bg_class = 'bg-pink' %}
+{% else %}
+  {% set bg_class = 'bg-black text-white' %}
+{% endif %}
+
 <div class="flex justify-center items-center p-site">
-  <div class="py-6 px-12 w-full max-w-lg bg-green flex flex-col items-center justify-between gap-24 min-h-[650px]">
+  <div class="py-6 px-12 w-full max-w-lg flex flex-col items-center justify-between gap-24 min-h-[650px] {{ bg_class }}">
 
-    <h1 class="type-slab-3xl text-center">{{ article.title }}</h1>
+    <div class="order-2">
+      {% include 'components/articles/overline.twig' with { overline: article.categories[0], color: article.color } %}
+    </div>
 
-    {% include 'components/articles/overline.twig' with { overline: article.categories[0], color: article.color } %}
+    <h1 class="type-slab-3xl text-center text-pretty order-1">{{ article.title }}</h1>
 
     {% if article.subtitle %}
-      <p class="type-sans-lg text-center uppercase">
+      <p class="type-sans-lg text-center text-pretty uppercase order-3">
         {{ article.subtitle }}
       </p>
     {% endif %}
