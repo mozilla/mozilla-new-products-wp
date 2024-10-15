@@ -12,11 +12,10 @@
 
   {% include "components/articles/toppers/topper--" ~ (article.topper_type|default('text_only')) ~ ".twig" %}
 
-  <article class="article-body gutenberg-layout">
+  <article>
     {% include "components/articles/byline.twig" %}
-    {% include "components/articles/share-tools.twig" %}
 
-    <div class="article-body-width gutenberg-content js-hang-punc">
+    <div class="pt-12 gutenberg {{ article.has_lede_paragraph ? 'lede' }} js-hang-punc">
 
       {{ article.content }}
 

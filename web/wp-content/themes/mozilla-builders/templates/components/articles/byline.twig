@@ -1,11 +1,27 @@
-<div class="article__byline">
-  <div class="article__byline-inner">
+<div class="p-site max-w-page mx-auto text-sm">
+  <div class="border-t border-black pt-3 gap-3 grid grid-cols-4 max-md:flex max-md:flex-col max-md:border-none">
     {% if article.bylines is not empty %}
-      <div class="article__byline__author">
+      <p class="uppercase leading-tight max-md:flex max-md:gap-6 max-md:justify-between max-md:border-b max-md:border-black max-md:pb-3">
         {% include 'components/articles/byline_format.twig' with { bylines: article.bylines } %}
-      </div>
+      </p>
     {% endif %}
 
-    <div class="article__byline__date">{{ article.date|date('M d, Y') }}</div>
+    <p class="uppercase leading-tight col-span-2 max-md:flex max-md:gap-6 max-md:justify-between max-md:border-b max-md:border-black max-md:pb-3">
+      <span class="block">on</span>
+      <time class="max-md:text-right" datetime="{{ article.date|date('c') }}">{{ article.date|date('M d, Y') }}</time>
+    </p>
+
+    <div class="max-md:flex max-md:gap-6 max-md:justify-between max-md:border-b max-md:border-black max-md:pb-3">
+      <p class="uppercase leading-tight">Share</p>
+      {% include "components/articles/share-tools.twig" %}
+    </div>
   </div>
+</div>
+
+<div class="flex p-site pt-1 gap-5 md:hidden">
+  {% include "components/lazy-img.twig" with { img: article.author.avatar, aspectRatio: 1, class: "size-20 bg-gray" } %}
+
+  <p class="text-sm leading-tight uppercase max-w-56">
+    <a href="{{ article.author.link }}" class="underline">{{ article.author.name }}</a> is {{ article.author.description }}
+  </p>
 </div>

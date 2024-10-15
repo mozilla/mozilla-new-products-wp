@@ -45,6 +45,8 @@ module.exports = {
       },
 
       fontSize: {
+        // 24px (@640px) -> 40px (@1536px)
+        '2xl': 'clamp(1.5rem, 1.8vw + 0.8rem, 2.5rem)',
         // 32px (@640px) -> 56px (@1536px)
         '4xl': 'clamp(2rem, 2.7vw + 0.9rem, 3.5rem)',
         // 36px (@640px) -> 72px (@1536px)
@@ -55,6 +57,14 @@ module.exports = {
 
       lineHeight: {
         tighter: '1.05',
+      },
+
+      maxWidth: {
+        content: '564px',
+        'content-lg': '764px',
+        'content-xl': '964px',
+        'content-2xl': '1164px',
+        page: '1920px',
       },
 
       spacing: {

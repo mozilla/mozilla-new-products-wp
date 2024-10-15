@@ -2,14 +2,14 @@
   {% set asset = Image(article.thumbnail.id) %}
 {% endif %}
 
-<div class="grid grid-cols-2 p-site gap-site max-md:grid-cols-1 max-md:gap-16">
+<div class="grid grid-cols-2 p-site max-w-page mx-auto gap-site max-md:grid-cols-1 max-md:gap-16">
   <div class="flex flex-col justify-center items-center gap-4">
     <div class="flex flex-col flex-1 items-center gap-6">
       <div class="flex-1"></div>
       {% include 'components/articles/overline.twig' with { overline: article.categories[0] } %}
       <div class="flex-1"></div>
 
-      <h1 class="type-slab-3xl text-pretty text-center">{{ article.title }}</h1>
+      <h1 class="type-slab-2xl text-pretty text-center">{{ article.title }}</h1>
     </div>
 
     {% if article.subtitle %}

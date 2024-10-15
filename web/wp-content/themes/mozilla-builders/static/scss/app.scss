@@ -35,8 +35,16 @@ body {
 }
 
 @layer components {
-  .type-slab-3xl {
+  .type-slab-2xl {
     @apply text-8xl font-slab-condensed font-semibold leading-none;
+  }
+
+  .type-slab-xl {
+    @apply text-6xl font-slab-condensed font-semibold leading-none;
+  }
+
+  .type-slab-lg {
+    @apply text-2xl font-slab-condensed font-semibold leading-tight;
   }
 
   .type-sans-xl {
@@ -45,5 +53,122 @@ body {
 
   .type-sans-lg {
     @apply text-4xl font-sans font-light leading-tighter;
+  }
+
+  .type-code {
+    @apply bg-black text-white py-0.5 px-1 decoration-clone text-sm;
+  }
+
+  .type-caption {
+    @apply uppercase opacity-50 text-sm leading-tight;
+  }
+}
+
+@layer utilities {
+  .gutenberg {
+    @apply flex flex-col items-center gap-6;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    li,
+    pre {
+      // Inline images
+      img {
+        @apply inline-flex translate-y-[-5%];
+        @apply h-[1em] w-auto !important;
+      }
+
+      // Inline code
+      code {
+        @apply type-code;
+      }
+
+      // Inline links
+      a {
+        @apply underline;
+      }
+    }
+
+    // Paragraphs
+    > p {
+      @apply max-w-content px-site;
+
+      &:first-child:is(.lede *) {
+        @apply max-w-content-lg type-slab-lg mb-2 md:mb-6;
+      }
+    }
+
+    // Code block
+    pre {
+      @apply max-w-content-lg w-full px-site;
+
+      code {
+        @apply block bg-black px-4 py-3 leading-loose;
+      }
+    }
+
+    // Blockquotes
+    blockquote {
+      @apply max-w-content-2xl px-site flex flex-col gap-3;
+
+      p {
+        @apply type-slab-xl md:indent-20;
+      }
+
+      cite {
+        @apply type-caption not-italic;
+      }
+    }
+
+    // Images
+    figure.wp-block-image,
+    figure.wp-block-video,
+    figure.wp-block-embed {
+      @apply w-full max-w-content-lg px-site flex flex-col gap-3;
+
+      img,
+      video,
+      .wp-block-embed__wrapper iframe {
+        @apply w-full h-auto;
+      }
+
+      figcaption {
+        @apply type-caption;
+      }
+
+      &.alignwide {
+        @apply max-w-content-2xl;
+      }
+
+      &.alignfull {
+        @apply max-w-none px-0;
+
+        figcaption {
+          @apply px-site;
+        }
+      }
+    }
+
+    // Embeds
+    figure.wp-block-embed {
+      .wp-block-embed__wrapper {
+        @apply flex w-full justify-center;
+      }
+
+      &.wp-has-aspect-ratio {
+        &.wp-embed-aspect-16-9 .wp-block-embed__wrapper iframe {
+          @apply aspect-video;
+        }
+
+        &.wp-embed-aspect-4-3 .wp-block-embed__wrapper iframe {
+          @apply aspect-[4/3];
+        }
+      }
+    }
   }
 }
