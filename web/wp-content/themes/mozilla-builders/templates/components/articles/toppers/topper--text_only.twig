@@ -1,12 +1,13 @@
-<div class="topper topper--text-only">
-  <div class="topper-hgroup">
-    {% include 'components/articles/overline.twig' %}
+<div class="flex justify-center items-center p-site">
+  <div class="py-6 px-12 w-full max-w-lg bg-green flex flex-col items-center justify-between gap-24 min-h-[650px]">
 
-    <h1 class="topper-hed">{{ article.title }}</h1>
+    <h1 class="type-slab-3xl text-center">{{ article.title }}</h1>
 
-    {% if article.topper_description %}
-      <p class="topper-dek">
-        {{ article.topper_description }}
+    {% include 'components/articles/overline.twig' with { overline: article.categories[0], color: article.color } %}
+
+    {% if article.subtitle %}
+      <p class="type-sans-lg text-center uppercase">
+        {{ article.subtitle }}
       </p>
     {% endif %}
   </div>

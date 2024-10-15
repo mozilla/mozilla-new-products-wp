@@ -33,3 +33,17 @@ body {
   @apply bg-white text-black;
   @apply font-sans font-normal text-base antialiased;
 }
+
+@layer components {
+  .type-slab-3xl {
+    @apply text-8xl font-slab-condensed font-semibold leading-none;
+  }
+
+  .type-sans-xl {
+    @apply text-6xl font-sans font-light leading-tighter;
+  }
+
+  .type-sans-lg {
+    @apply text-4xl font-sans font-light leading-tighter;
+  }
+}

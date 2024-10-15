@@ -1,5 +1,22 @@
-{% set overline = article.overline %}
-
 {% if overline %}
-<p class="topper-overline"><a class="topper-overline-link" href="{{ overline.link }}">{{ overline.name }}</a></p>
+
+{% set bg_color = color | default(overline.color) %}
+{% if bg_color == 'green' %}
+  {% set overline_class = 'bg-green' %}
+{% elseif bg_color == 'orange' %}
+  {% set overline_class = 'bg-orange' %}
+{% elseif bg_color == 'yellow' %}
+  {% set overline_class = 'bg-yellow' %}
+{% elseif bg_color == 'purple' %}
+  {% set overline_class = 'bg-purple' %}
+{% elseif bg_color == 'pink' %}
+  {% set overline_class = 'bg-pink' %}
+{% else %}
+  {% set overline_class = '' %}
+{% endif %}
+
+<p class="text-xs uppercase">
+  <a class="py-1.5 px-2 {{ overline_class }}" href="{{ overline.link }}">{{ overline.name }}</a>
+</p>
+
 {% endif %}

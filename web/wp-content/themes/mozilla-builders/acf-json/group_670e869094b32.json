@@ -1,0 +1,55 @@
+{
+  "key": "group_670e869094b32",
+  "title": "Category",
+  "fields": [
+    {
+      "key": "field_670e869086f11",
+      "label": "Color",
+      "name": "color",
+      "aria-label": "",
+      "type": "select",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "choices": {
+        "none": "None",
+        "green": "Green",
+        "orange": "Orange",
+        "yellow": "Yellow",
+        "purple": "Purple",
+        "pink": "Pink"
+      },
+      "default_value": "none",
+      "return_format": "value",
+      "multiple": 0,
+      "allow_null": 0,
+      "ui": 0,
+      "ajax": 0,
+      "placeholder": ""
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "taxonomy",
+        "operator": "==",
+        "value": "category"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "seamless",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0,
+  "modified": 1729005261
+}

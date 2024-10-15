@@ -44,9 +44,22 @@ module.exports = {
         logo: '446/119',
       },
 
+      fontSize: {
+        // 32px (@640px) -> 56px (@1536px)
+        '4xl': 'clamp(2rem, 2.7vw + 0.9rem, 3.5rem)',
+        // 36px (@640px) -> 72px (@1536px)
+        '6xl': 'clamp(2.25rem, 4vw + 0.6rem, 4.5rem)',
+        // 64px (@640px) -> 100px (@1536px)
+        '8xl': 'clamp(4rem, 6vw + 1.25rem, 6.25rem);;',
+      },
+
+      lineHeight: {
+        tighter: '1.05',
+      },
+
       spacing: {
         'wp-admin-bar': 'var(--wp-admin--admin-bar--height, 0px)',
-        // https://modern-fluid-typography.vercel.app/
+        // https://fluid-typography.netlify.app/
         site: 'clamp(1rem, 2vw + 0.25rem, 1.5rem)',
       },
 
