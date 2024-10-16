@@ -6,9 +6,10 @@
  */
 
 use MozillaBuilders\Managers;
-use MozillaBuilders\Blocks\BlockManager;
+use MozillaBuilders\Models\Post;
 use Timber\Timber;
 use Dotenv\Dotenv;
+
 
 // Disable deprecation warnings for PHP 8.
 // phpcs:disable
@@ -34,7 +35,7 @@ $dotenv = Dotenv::createImmutable(ABSPATH . '..')->safeLoad();
  */
 define( 'WP_ENV', getenv( 'WP_ENV' ) ? getenv( 'WP_ENV' ) : 'production' );
 
-$timber          = new Timber();
+Timber::init();
 Timber::$dirname = array( 'templates', 'blocks' );
 
 $managers = array(
@@ -51,6 +52,15 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 
 $theme_manager = new Managers\ThemeManager( $managers );
 add_action( 'after_setup_theme', array( $theme_manager, 'setup_theme' ) );
+
+// Set class maps.
+add_filter('timber/post/classmap', function ($classmap) {
+    $custom_classmap = [
+        'post' => Post::class,
+    ];
+
+    return array_merge($classmap, $custom_classmap);
+});
 
 /**
  * Log given values to logs/error.log

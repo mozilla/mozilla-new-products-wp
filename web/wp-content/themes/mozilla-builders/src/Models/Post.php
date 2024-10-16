@@ -7,9 +7,8 @@
 
 namespace MozillaBuilders\Models;
 
+use Timber\Timber;
 use Timber\Post as TimberPost;
-use Timber\User;
-use Timber\Term;
 
 /** Class */
 class Post extends TimberPost {
@@ -25,7 +24,7 @@ class Post extends TimberPost {
 			$author_terms = \Upstatement\Editorial\get_post_authors();
 
 			if ( is_array( $author_terms ) ) {
-				$author_terms = array_map( fn( $term ) => new Term( $term ), $author_terms );
+				$author_terms = array_map( fn( $term ) => Timber::get_term( $term ), $author_terms );
 			}
 
 			return $author_terms;
@@ -33,13 +32,13 @@ class Post extends TimberPost {
 
 		global $post;
 
-		return array( new User( $post->post_author ) );
+		return array( Timber::get_user( $post->post_author ) );
 	}
 
 	/**
 	 * Get post overline.
 	 *
-	 * @return Term|bool Category term for post overline
+	 * @return \Timber\Term|bool Category term for post overline
 	 */
 	public function overline() {
 		if ( function_exists( 'Upstatement\Editorial\get_post_overline' ) ) {
@@ -48,12 +47,12 @@ class Post extends TimberPost {
 			$first_category      = $assigned_categories[0] ?? false;
 
 			if ( $overline && $overline->name ) {
-				return new Term( $overline->term_id );
+				return Timber::get_term( $overline->term_id );
 			}
 
 			// If there is no overline set, use the first category that is not "Uncategorized".
 			if ( $first_category && 1 !== $first_category->term_id ) {
-				return new Term( $assigned_categories[0]->term_id );
+				return Timber::get_term( $assigned_categories[0]->term_id );
 			}
 		}
 

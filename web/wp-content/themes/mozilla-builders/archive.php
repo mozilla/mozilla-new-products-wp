@@ -11,9 +11,8 @@
  */
 
 use Timber\Timber;
-use Timber\PostQuery;
 
-$context = Timber::get_context();
+$context = Timber::context();
 
 $context['title'] = 'Archive';
 
@@ -55,7 +54,7 @@ if ( is_day() ) {
 }
 
 /* Set the posts that should appear on the archive page. */
-$_posts = new PostQuery( $query_args, 'MozillaBuilders\Models\Post' );
+$_posts = Timber::get_posts( $query_args );
 
 $context['posts']      = $_posts;
 $context['pagination'] = $_posts->pagination( array( 'mid_size' => 2 ) );
