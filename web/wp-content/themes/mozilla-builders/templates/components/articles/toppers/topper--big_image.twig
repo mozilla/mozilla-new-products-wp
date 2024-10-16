@@ -21,10 +21,14 @@
 
 
   <div class="flex items-end">
-    {% include 'components/lazy-img.twig' with {
-      img: asset,
-      class: 'w-full',
-    } %}
+    {% if asset %}
+      {% include 'components/lazy-img.twig' with {
+        img: asset,
+        class: 'w-full',
+      } %}
+    {% else %}
+      <div class="w-full h-[25vh] bg-gray">&nbsp;</div>
+    {% endif %}
   </div>
 </div>
 
