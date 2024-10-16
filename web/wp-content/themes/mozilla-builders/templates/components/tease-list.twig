@@ -25,7 +25,7 @@
 
           <a class="tease__hgroup" href="{{ post.link }}">
             <h3 class="tease__h"><span class="tease__h-underline">{{ post.title }}</span></h3>
-            <p class="tease__desc">{{ post.preview.length(40).read_more('') }}</p>
+            <p class="tease__desc">{{ post.excerpt({ length: 40 }) }}</p>
           </a>
 
           {% if post.bylines is not empty %}
