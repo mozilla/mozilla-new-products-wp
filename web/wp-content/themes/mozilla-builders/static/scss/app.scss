@@ -252,5 +252,40 @@ body {
         background-repeat: repeat-x;
       }
     }
+
+    // Buttons
+    .wp-block-buttons {
+      @apply flex flex-col gap-3 w-full max-w-content px-site;
+    }
+    .wp-block-button {
+      @apply flex justify-center w-full;
+    }
+    .wp-block-button__link {
+      @apply w-full p-10 uppercase text-center bg-black text-white border border-black;
+    }
+    .is-style-outline .wp-block-button__link {
+      @apply bg-transparent text-black;
+    }
+
+    // Files
+    .wp-block-file {
+      @apply w-full max-w-content px-site flex;
+
+      a:not(.wp-block-file__button) {
+        @apply flex items-center gap-10 w-full p-10 bg-green text-black uppercase font-semibold;
+
+        &:has(+ a.wp-block-file__button) {
+          @apply md:py-8;
+
+          &::after {
+            @apply block shrink-0 content-arrow size-10 md:size-14;
+          }
+        }
+      }
+
+      a.wp-block-file__button {
+        @apply hidden;
+      }
+    }
   }
 }
