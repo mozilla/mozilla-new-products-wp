@@ -1,5 +1,6 @@
 {
   "name": "upstatement/mozilla-builders",
+  "version": "0.0.1",
   "authors": [
     {
       "name": "Upstatement",
@@ -29,7 +30,7 @@
   "config": {
     "optimize-autoloader": true,
     "platform": {
-      "php": "8.0"
+      "php": "8.2"
     },
     "allow-plugins": {
       "composer/installers": true,
@@ -45,7 +46,7 @@
   "require": {
     "wpackagist-plugin/wp-environment-indicator": "^1.0",
     "vlucas/phpdotenv": "^5.4",
-    "timber/timber": "^1.22",
+    "timber/timber": "^2.2",
     "wpengine/advanced-custom-fields-pro": "^6.2"
   },
   "require-dev": {
