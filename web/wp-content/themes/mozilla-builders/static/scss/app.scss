@@ -66,7 +66,11 @@ body {
 
 @layer utilities {
   .gutenberg {
-    @apply flex flex-col items-center gap-6;
+    @apply flex flex-col items-center;
+
+    > * + * {
+      @apply mt-6;
+    }
 
     h1,
     h2,
@@ -90,16 +94,50 @@ body {
 
       // Inline links
       a {
-        @apply underline;
+        @apply underline hover:text-green focus:text-green;
       }
+    }
+
+    // Headings
+    > h1,
+    > h2,
+    > h3,
+    > h4,
+    > h5,
+    > h6 {
+      @apply w-full max-w-content px-site;
+
+      + * {
+        @apply mt-3;
+      }
+    }
+    > h1,
+    > h2 {
+      @apply font-semibold uppercase leading-tight indent-6;
+    }
+    > h3 {
+      @apply uppercase leading-tight indent-6;
+    }
+    > h4 {
+      @apply uppercase leading-tight opacity-50 indent-6;
+    }
+    > h5 {
+      @apply font-semibold leading-tight;
+    }
+    > h6 {
+      @apply leading-tight opacity-50;
     }
 
     // Paragraphs
     > p {
-      @apply max-w-content px-site;
+      @apply w-full max-w-content px-site;
 
       &:first-child:is(.lede *) {
         @apply max-w-content-lg type-slab-lg mb-2 md:mb-6;
+      }
+
+      &:empty {
+        @apply hidden;
       }
     }
 
@@ -123,6 +161,36 @@ body {
       cite {
         @apply type-caption not-italic;
       }
+    }
+
+    // Lists
+    ul,
+    ol {
+      @apply w-full max-w-content px-site;
+    }
+    li {
+      @apply leading-normal;
+    }
+    ul li {
+      @apply relative pl-5;
+
+      &::before {
+        content: '';
+        @apply absolute left-0 top-[7px] flex size-2.5 bg-green;
+      }
+    }
+    ol li {
+      @apply relative pl-5;
+
+      &::before {
+        content: counter(list-item);
+        @apply absolute left-0 top-0 font-semibold text-green;
+      }
+    }
+    li + li,
+    li > ul,
+    li > ol {
+      @apply mt-2;
     }
 
     // Images
@@ -168,6 +236,20 @@ body {
         &.wp-embed-aspect-4-3 .wp-block-embed__wrapper iframe {
           @apply aspect-[4/3];
         }
+      }
+    }
+
+    // Separators
+    hr.wp-block-separator {
+      @apply w-full max-w-content px-site my-6 border-transparent overflow-visible;
+
+      &::before {
+        content: '';
+        @apply block h-[0.5px] w-full opacity-50;
+        background-image: linear-gradient(to right, black 33%, transparent 0%);
+        background-position: bottom;
+        background-size: 4px 1px;
+        background-repeat: repeat-x;
       }
     }
   }
