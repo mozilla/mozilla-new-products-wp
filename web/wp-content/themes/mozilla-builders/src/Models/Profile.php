@@ -18,7 +18,7 @@ class Profile extends TimberPost {
 	 *
 	 * @return void
 	 */
-	public static function register() {
+	public static function register(): void {
 		$args = array(
 			'labels'       => array(
 				'name'          => 'Profiles',
@@ -40,4 +40,44 @@ class Profile extends TimberPost {
 		register_post_type( self::HANDLE, $args );
 	}
 
+
+	/**
+	 * Get the contacts for the profile.
+	 *
+	 * @return array
+	 */
+	public function contacts(): array {
+		$contact_data = get_field( 'contacts', $this->ID );
+
+		return array_filter(
+			array_map(
+				function( $contact ) {
+					$type    = $contact['type'] ?? 'Website';
+					$website = $contact['url'] ?? null;
+					$email   = $contact['email'] ?? null;
+
+					$link = match ($type) {
+						'Website' => $website,
+						'Email' => $email ? 'mailto:' . $contact['email'] : null,
+						default => null,
+					};
+
+					if ( empty( $link ) ) {
+						return null;
+					}
+
+					$label = $contact['label'] ?? $link;
+					if ( empty( $label ) && 'Email' === $type ) {
+						$label = $email;
+					}
+
+					return array(
+						'label' => $label,
+						'link'  => $link,
+					);
+				},
+				$contact_data
+			)
+		);
+	}
 }

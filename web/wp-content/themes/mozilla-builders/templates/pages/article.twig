@@ -1,7 +1,7 @@
 {% extends "layouts/base.twig" %}
 
 {%- block custom_body_classes -%}
-  {{ article.is_light_nav ? 'light-nav' }}
+  {{ post.is_light_nav ? 'light-nav' }}
 {%- endblock -%}
 
 {%- block custom_content_classes -%}
@@ -10,7 +10,7 @@
 
 {% block pageBody %}
 
-  {% include "components/articles/toppers/topper--" ~ (article.topper_type|default('text_only')) ~ ".twig" %}
+  {% include "components/articles/toppers/topper--" ~ (post.topper_type|default('text_only')) ~ ".twig" %}
 
   <article class="article-body gutenberg-layout">
     {% include "components/articles/byline.twig" %}
@@ -18,7 +18,7 @@
 
     <div class="article-body-width gutenberg-content js-hang-punc">
 
-      {{ article.content }}
+      {{ post.content }}
 
     </div>
     {% include "components/articles/article-footer.twig" %}

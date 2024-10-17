@@ -1,0 +1,48 @@
+{% extends "layouts/base.twig" %}
+
+{%- block custom_body_classes -%}
+  {{ article.is_light_nav ? 'light-nav' }}
+{%- endblock -%}
+
+{%- block custom_content_classes -%}
+  basic-page
+{%- endblock -%}
+
+{% block pageBody %}
+
+  <article class="gutenberg-layout basic-page__body">
+    <header>
+      <h1>
+        <span>{{ post.first_name }}</span>
+        <span>{{ post.last_name }}</span>
+      </h1>
+
+      {% if post.thumbnail %}
+        <img src="{{ post.thumbnail.src('full') }}" alt="{{ post.thumbnail.alt }}">
+      {% endif %}
+
+      <dl>
+        {% if post.github_username %}
+          <dt>GitHub</dt>
+          <dd><a href="https://github.com/{{ post.github_username }}">[{{ post.github_username }}]</a></dd>
+        {% endif %}
+
+        {% if post.contacts %}
+          <dt>Contact</dt>
+          <dd>
+            {% for item in post.contacts %}
+              <a href="{{ item.link }}">[{{ item.label }}]</a>
+            {% endfor %}
+          </dd>
+        {% endif %}
+
+      </dl>
+
+    </header>
+
+    <div class="gutenberg-content basic-page__body-width js-hang-punc">
+      {{ post.about }}
+    </div>
+  </article>
+
+{% endblock %}
