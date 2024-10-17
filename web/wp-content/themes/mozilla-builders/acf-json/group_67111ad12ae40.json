@@ -1,0 +1,175 @@
+{
+  "key": "group_67111ad12ae40",
+  "title": "Contact Info",
+  "fields": [
+    {
+      "key": "field_67111ad105101",
+      "label": "GitHub Username",
+      "name": "github_username",
+      "aria-label": "",
+      "type": "text",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "allow_in_bindings": 0,
+      "placeholder": "",
+      "prepend": "",
+      "append": ""
+    },
+    {
+      "key": "field_67111ae505102",
+      "label": "Contacts",
+      "name": "contacts",
+      "aria-label": "",
+      "type": "repeater",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "layout": "block",
+      "pagination": 0,
+      "min": 0,
+      "max": 0,
+      "collapsed": "",
+      "button_label": "Add Row",
+      "rows_per_page": 20,
+      "sub_fields": [
+        {
+          "key": "field_67111af605103",
+          "label": "Label",
+          "name": "label",
+          "aria-label": "",
+          "type": "text",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "maxlength": "",
+          "allow_in_bindings": 0,
+          "placeholder": "",
+          "prepend": "",
+          "append": "",
+          "parent_repeater": "field_67111ae505102"
+        },
+        {
+          "key": "field_67111b622d036",
+          "label": "Type",
+          "name": "type",
+          "aria-label": "",
+          "type": "radio",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "25",
+            "class": "",
+            "id": ""
+          },
+          "choices": {
+            "Website": "Website",
+            "Email": "Email"
+          },
+          "default_value": "",
+          "return_format": "value",
+          "allow_null": 0,
+          "other_choice": 0,
+          "allow_in_bindings": 0,
+          "layout": "vertical",
+          "save_other_choice": 0,
+          "parent_repeater": "field_67111ae505102"
+        },
+        {
+          "key": "field_67111b0405104",
+          "label": "URL",
+          "name": "url",
+          "aria-label": "",
+          "type": "url",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": [
+            [
+              {
+                "field": "field_67111b622d036",
+                "operator": "==",
+                "value": "Website"
+              }
+            ]
+          ],
+          "wrapper": {
+            "width": "75",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "allow_in_bindings": 1,
+          "placeholder": "",
+          "parent_repeater": "field_67111ae505102"
+        },
+        {
+          "key": "field_67111b8d2d037",
+          "label": "Email",
+          "name": "email",
+          "aria-label": "",
+          "type": "email",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": [
+            [
+              {
+                "field": "field_67111b622d036",
+                "operator": "==",
+                "value": "Email"
+              }
+            ]
+          ],
+          "wrapper": {
+            "width": "75",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "allow_in_bindings": 0,
+          "placeholder": "",
+          "prepend": "",
+          "append": "",
+          "parent_repeater": "field_67111ae505102"
+        }
+      ]
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "profile"
+      }
+    ]
+  ],
+  "menu_order": 2,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0,
+  "modified": 1729174718
+}
