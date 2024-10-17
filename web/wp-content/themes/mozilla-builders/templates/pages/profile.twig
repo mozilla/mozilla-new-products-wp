@@ -13,8 +13,8 @@
   <article class="gutenberg-layout basic-page__body">
     <header>
       <h1>
-        <span>{{ post.first_name }}</span>
-        <span>{{ post.last_name }}</span>
+        <span>{{ post.meta('first_name') }}</span>
+        <span>{{ post.meta('last_name') }}</span>
       </h1>
 
       {% if post.thumbnail %}
@@ -22,9 +22,9 @@
       {% endif %}
 
       <dl>
-        {% if post.github_username %}
+        {% if post.meta('github_username') %}
           <dt>GitHub</dt>
-          <dd><a href="https://github.com/{{ post.github_username }}">[{{ post.github_username }}]</a></dd>
+          <dd><a href="https://github.com/{{ post.meta('github_username') }}">[{{ post.meta('github_username') }}]</a></dd>
         {% endif %}
 
         {% if post.contacts %}

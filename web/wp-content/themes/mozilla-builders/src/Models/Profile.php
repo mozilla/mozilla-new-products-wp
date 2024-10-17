@@ -47,7 +47,11 @@ class Profile extends TimberPost {
 	 * @return array
 	 */
 	public function contacts(): array {
-		$contact_data = get_field( 'contacts', $this->ID );
+		$contact_data = $this->meta( 'contacts' );
+
+		if ( empty( $contact_data ) ) {
+			return array();
+		}
 
 		return array_filter(
 			array_map(
