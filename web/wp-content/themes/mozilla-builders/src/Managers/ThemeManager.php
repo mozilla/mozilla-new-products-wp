@@ -7,6 +7,8 @@
 
 namespace MozillaBuilders\Managers;
 
+use MozillaBuilders\Models\Profile;
+use MozillaBuilders\Models\Project;
 use MozillaBuilders\Vite;
 
 /** Class */
@@ -45,8 +47,8 @@ class ThemeManager {
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin' ) );
 		add_action( 'admin_init', array( $this, 'register_menus' ) );
 		add_action( 'init', array( $this, 'register_options' ) );
+		add_action( 'init', array( $this, 'register_post_types' ), 1 );
 		add_action( 'pre_get_posts', array( $this, 'filter_posts' ) );
-
 		add_filter( 'admin_footer_text', array( $this, 'add_admin_footer_credit' ) );
 
 		$this->setup_theme_support();
@@ -82,7 +84,7 @@ class ThemeManager {
 		$js_assets = Vite::js_assets();
 		if ( array_key_exists( 'app', $js_assets ) ) {
 			foreach ( $js_assets['app'] as $asset ) {
-				$key = pathinfo( basename( $asset ), PATHINFO_FILENAME );
+				$key     = pathinfo( basename( $asset ), PATHINFO_FILENAME );
 				$version = 'production' === WP_ENV ? MOZILLA_BUILDERS_THEME_VERSION : null;
 				wp_enqueue_script( 'vite:' . $key, $asset, array(), $version );
 			}
@@ -153,6 +155,14 @@ class ThemeManager {
 				)
 			);
 		}
+	}
+
+	/**
+	 * Resgisers post types.
+	 */
+	public function register_post_types() {
+		Profile::register();
+		Project::register();
 	}
 
 	/**

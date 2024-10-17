@@ -36,7 +36,6 @@ Timber::$dirname = array( 'templates', 'blocks' );
 $managers = array(
 	new Managers\TaxonomiesManager(),
 	new Managers\WordPressManager(),
-	new Managers\CustomPostsManager(),
 	new Managers\ContextManager(),
 	new Managers\BlockManager(),
 );
