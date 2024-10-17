@@ -8,6 +8,7 @@
 namespace MozillaBuilders\Managers;
 
 use MozillaBuilders\Models\Profile;
+use MozillaBuilders\Models\Post;
 use MozillaBuilders\Models\Project;
 use MozillaBuilders\Vite;
 
@@ -48,6 +49,7 @@ class ThemeManager {
 		add_action( 'admin_init', array( $this, 'register_menus' ) );
 		add_action( 'init', array( $this, 'register_options' ) );
 		add_action( 'init', array( $this, 'register_post_types' ), 1 );
+		add_filter( 'timber/post/classmap', array( $this, 'set_post_classmap' ) );
 		add_action( 'pre_get_posts', array( $this, 'filter_posts' ) );
 		add_filter( 'admin_footer_text', array( $this, 'add_admin_footer_credit' ) );
 
@@ -159,12 +161,28 @@ class ThemeManager {
 
 	/**
 	 * Resgisers post types.
+	 *
+	 * @return void
 	 */
 	public function register_post_types() {
 		Profile::register();
 		Project::register();
 	}
 
+	/**
+	 * Sets classmap.
+	 *
+	 * @param array $classmap The classmap.
+	 */
+	public function set_post_classmap( array $classmap ): array {
+		$custom_classmap = array(
+			'post'    => Post::class,
+			'profile' => Profile::class,
+			'project' => Project::class,
+		);
+
+		return array_merge( $classmap, $custom_classmap );
+	}
 	/**
 	 * Exclude password protected and unpublished posts from post results
 	 *
