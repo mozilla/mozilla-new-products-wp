@@ -1,28 +1,130 @@
-<nav class="flex items-start justify-between gap-6 p-6">
-  <div class="mt-1 flex-1 flex justify-start">
-    <p class="text-white text-sm">
-      <span class="bg-black py-1">Building in the open with open source AI. Powered by Mozilla.</span>
-    </p>
+<nav class="flex items-center md:items-start justify-between gap-12 p-site">
+  <div class="md:mt-2.5 flex-1 flex gap-1 items-center justify-start">
+    <svg class="size-5 shrink-0">
+      <use xlink:href="#flag"></use>
+    </svg>
+
+    <div class="flex-1 h-5 overflow-hidden relative max-md:hidden bg-black text-white max-w-80">
+      <div x-marquee="{ speed: 0.5 }" class="absolute top-1/2 left-0 -translate-y-1/2 group">
+        <div x-marquee:track class="animate-marquee motion-reduce:!animate-none flex" aria-hidden="true">
+          <p class="px-1 text-sm whitespace-nowrap select-none">Building in the open with open source AI. Powered by <span class="font-semibold">Mozilla</span>.</p>
+        </div>
+      </div>
+    </div>
   </div>
 
   <a href="{{ site.url }}">
-    <svg class="max-w-96 w-[40vw] aspect-logo">
+    <span class="sr-only">Mozilla Builders</span>
+    <svg class="w-40 aspect-logo">
       <use xlink:href="#logo"></use>
     </svg>
   </a>
 
-  <div class="mt-1 flex-1 flex justify-end">
-    <ul class="flex flex-wrap items-center gap-x-6">
+  <div class="lg:mt-2.5 flex-1 flex items-start justify-end gap-1 lg:gap-4 xl:gap-6 md:max-lg:flex-col md:max-lg:items-end">
+    <ul class="flex flex-wrap justify-end items-center gap-2 lg:gap-4 xl:gap-6 gap-y-1 -mt-px max-md:hidden">
       {% for item in nav_pages_menu.items %}
-      <li class"flex">
+      <li class="text-right">
         <a
           href="{{ item.url }}"
-          class="text-sm"
-          {% if item.current %}aria-current="page"{% endif %}>
-          {{ item.name }}
+          class="text-sm md:max-xl:text-xs relative block py-0.5 px-1.5
+                before:absolute before:inset-0 before:bg-green before:z-0
+                motion-safe:before:transition-transform before:scale-x-0 before:origin-center
+                aria-current:before:scale-x-100 hover:before:scale-x-100"
+          {% if item.current %}aria-current="page"{% endif %}
+        >
+          <span class="relative z-10">{{ item.name }}</span>
         </a>
       </li>
       {% endfor %}
     </ul>
+
+    <div class="flex items-center gap-px">
+      <a href="#" class="text-sm md:max-xl:text-xs bg-black py-0.5 px-1.5 text-white transition-bg whitespace-nowrap max-md:hidden hover:bg-green hover:text-black">
+        Join us
+      </a>
+
+      <div
+        class="md:hidden"
+        x-data="{ open: false }"
+        @keydown.escape.window="open = false"
+      >
+        <button
+          class="bg-black size-6 text-white flex items-center justify-center"
+          @click="open = !open"
+          :aria-expanded="open"
+          aria-haspopup="true"
+          aria-controls="menu"
+        >
+          <span class="sr-only">Open menu</span>
+          <svg class="size-4">
+            <use xlink:href="#menu"></use>
+          </svg>
+        </button>
+
+        <template x-teleport="body">
+          <div
+            id="menu"
+            class="fixed inset-0 h-100vh w-full flex flex-col flex-1 pt-wp-admin-bar bg-black text-white"
+            x-show="open"
+            x-trap.noscroll="open"
+            :aria-hidden="!open"
+            aria-modal="true"
+            aria-labelledby="menu-label"
+            role="dialog"
+          >
+            <h2 id="menu-label" class="sr-only">Menu</h2>
+
+            <header class="flex items-center justify-between gap-12 p-site">
+              <div class="flex-1 flex justify-start">
+                <svg class="size-5 shrink-0">
+                  <use xlink:href="#flag"></use>
+                </svg>
+              </div>
+
+              <a href="{{ site.url }}">
+                <span class="sr-only">Mozilla Builders</span>
+                <svg class="w-40 aspect-logo">
+                  <use xlink:href="#logo"></use>
+                </svg>
+              </a>
+
+              <div class="flex-1 flex justify-end">
+                <button
+                  class="bg-white size-6 text-black flex items-center justify-center"
+                  @click="open = false"
+                >
+                  <span class="sr-only">Close menu</span>
+                  <svg class="size-4">
+                    <use xlink:href="#x-close"></use>
+                  </svg>
+                </button>
+              </div>
+            </header>
+
+            <div class="border-b-2 border-white mx-site"></div>
+
+            <div class="p-site flex-1 flex flex-col justify-end gap-5">
+              <ul class="flex flex-col items-start gap-2.5">
+                {% for item in nav_pages_menu.items %}
+                <li>
+                  <a
+                    href="{{ item.url }}"
+                    class="text-5xl font-slab-condensed font-semibold"
+                    {% if item.current %}aria-current="page"{% endif %}
+                  >
+                    {{ item.name }}
+                  </a>
+                </li>
+                {% endfor %}
+              </ul>
+
+              <a href="#" class="text-2xl uppercase bg-white text-center p-3 text-black whitespace-nowrap">
+                Join us
+              </a>
+            </div>
+          </div>
+        </template>
+      </div>
+    </div>
   </div>
 </nav>
