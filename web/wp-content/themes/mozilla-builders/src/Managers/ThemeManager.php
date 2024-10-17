@@ -7,8 +7,8 @@
 
 namespace MozillaBuilders\Managers;
 
+use MozillaBuilders\Models\Article;
 use MozillaBuilders\Models\Profile;
-use MozillaBuilders\Models\Post;
 use MozillaBuilders\Models\Project;
 use MozillaBuilders\Vite;
 
@@ -176,7 +176,7 @@ class ThemeManager {
 	 */
 	public function set_post_classmap( array $classmap ): array {
 		$custom_classmap = array(
-			'post'    => Post::class,
+			'post'    => Article::class,
 			'profile' => Profile::class,
 			'project' => Project::class,
 		);
