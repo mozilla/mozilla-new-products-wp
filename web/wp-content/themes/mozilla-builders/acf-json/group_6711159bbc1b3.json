@@ -4,8 +4,8 @@
   "fields": [
     {
       "key": "field_6711159b92d91",
-      "label": "Author",
-      "name": "author",
+      "label": "Authors",
+      "name": "authors",
       "aria-label": "",
       "type": "post_object",
       "instructions": "",
@@ -46,5 +46,5 @@
   "active": true,
   "description": "",
   "show_in_rest": 0,
-  "modified": 1729173025
+  "modified": 1729178546
 }
