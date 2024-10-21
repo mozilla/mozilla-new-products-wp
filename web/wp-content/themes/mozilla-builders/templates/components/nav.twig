@@ -20,23 +20,26 @@
     </svg>
   </a>
 
-  <div class="md:mt-2.5 flex-1 flex items-start justify-end gap-6">
-    <ul class="flex flex-wrap justify-end items-center gap-8 gap-y-1 -mt-px max-md:hidden">
+  <div class="lg:mt-2.5 flex-1 flex items-start justify-end gap-1 lg:gap-4 xl:gap-6 md:max-lg:flex-col md:max-lg:items-end">
+    <ul class="flex flex-wrap justify-end items-center gap-2 lg:gap-4 xl:gap-6 gap-y-1 -mt-px max-md:hidden">
       {% for item in nav_pages_menu.items %}
       <li class="text-right">
         <a
           href="{{ item.url }}"
-          class="text-sm"
+          class="text-sm md:max-xl:text-xs relative block py-0.5 px-1.5
+                before:absolute before:inset-0 before:bg-green before:z-0
+                motion-safe:before:transition-transform before:scale-x-0 before:origin-center
+                aria-current:before:scale-x-100 hover:before:scale-x-100"
           {% if item.current %}aria-current="page"{% endif %}
         >
-          {{ item.name }}
+          <span class="relative z-10">{{ item.name }}</span>
         </a>
       </li>
       {% endfor %}
     </ul>
 
     <div class="flex items-center gap-px">
-      <a href="#" class="text-sm bg-black py-0.5 px-1.5 text-white whitespace-nowrap max-md:hidden">
+      <a href="#" class="text-sm md:max-xl:text-xs bg-black py-0.5 px-1.5 text-white transition-bg whitespace-nowrap max-md:hidden hover:bg-green hover:text-black">
         Join us
       </a>
 

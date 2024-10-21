@@ -36,6 +36,10 @@ module.exports = {
     },
 
     extend: {
+      aria: {
+        current: 'current="page"',
+      },
+
       animation: {
         marquee: 'marquee var(--marquee-time) linear infinite',
       },
