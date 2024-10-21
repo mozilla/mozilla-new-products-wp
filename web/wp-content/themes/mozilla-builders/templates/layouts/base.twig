@@ -12,7 +12,10 @@
   </a>
 
   {% include "layouts/includes/svgs.twig" %}
-  {% include "layouts/includes/grid.twig" %}
+
+  {% if wp_env == 'development' %}
+    {% include "layouts/includes/grid.twig" %}
+  {% endif %}
 
   <div class="layout--base">
 

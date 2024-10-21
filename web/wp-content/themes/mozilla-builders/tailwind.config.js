@@ -1,5 +1,19 @@
 import theme from 'tailwindcss/defaultTheme';
 
+const GRID_COLUMNS = 24;
+const gridColumn = {};
+for (let i = 1; i <= GRID_COLUMNS; i++) {
+  gridColumn[`span-${i}`] = `span ${i} / span ${i}`;
+}
+const gridColumnStart = {};
+for (let i = 1; i <= GRID_COLUMNS; i++) {
+  gridColumnStart[`start-${i}`] = i;
+}
+const gridColumnEnd = {};
+for (let i = 1; i <= GRID_COLUMNS; i++) {
+  gridColumnEnd[`end-${i}`] = i;
+}
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./**/*.twig'],
@@ -57,8 +71,12 @@ module.exports = {
         '8xl': 'clamp(4rem, 6vw + 1.25rem, 6.25rem);',
       },
 
-      gap: {
-        grid: '2.777777777vw',
+      gridColumn,
+      gridColumnStart,
+      gridColumnEnd,
+
+      gridTemplateColumns: {
+        24: 'repeat(24, minmax(0, 1fr))',
       },
 
       lineHeight: {
@@ -69,9 +87,6 @@ module.exports = {
         'wp-admin-bar': 'var(--wp-admin--admin-bar--height, 0px)',
         // https://fluid-typography.netlify.app/
         site: 'clamp(1rem, 2vw + 0.25rem, 1.5rem)',
-        'grid-gap': '2.777777777vw',
-        'grid-parent': 'var(--grid-parent, 0px)',
-        'grid-child': 'var(--grid-child, 0px)',
       },
 
       keyframes: {
