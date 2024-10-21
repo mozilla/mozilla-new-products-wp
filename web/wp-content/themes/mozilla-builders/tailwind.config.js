@@ -50,7 +50,11 @@ module.exports = {
         // 36px (@640px) -> 72px (@1536px)
         '6xl': 'clamp(2.25rem, 4vw + 0.6rem, 4.5rem)',
         // 64px (@640px) -> 100px (@1536px)
-        '8xl': 'clamp(4rem, 6vw + 1.25rem, 6.25rem);;',
+        '8xl': 'clamp(4rem, 6vw + 1.25rem, 6.25rem);',
+      },
+
+      gap: {
+        grid: '2.777777777vw',
       },
 
       lineHeight: {
@@ -61,6 +65,9 @@ module.exports = {
         'wp-admin-bar': 'var(--wp-admin--admin-bar--height, 0px)',
         // https://fluid-typography.netlify.app/
         site: 'clamp(1rem, 2vw + 0.25rem, 1.5rem)',
+        'grid-gap': '2.777777777vw',
+        'grid-parent': 'var(--grid-parent, 0px)',
+        'grid-child': 'var(--grid-child, 0px)',
       },
 
       keyframes: {

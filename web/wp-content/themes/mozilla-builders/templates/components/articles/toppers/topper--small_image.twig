@@ -2,11 +2,11 @@
   {% set asset = Image(article.thumbnail.id) %}
 {% endif %}
 
-<div class="flex flex-col p-site gap-4">
-  <div class="flex w-full justify-center items-end gap-site max-md:flex-col max-md:items-center max-md:gap-10">
-    <div class="flex flex-1 items-start max-md:order-2">
+<div class="flex flex-col px-grid-parent pt-10 gap-8">
+  <div class="flex w-full justify-center items-end max-md:flex-col max-md:items-center max-md:gap-8">
+    <div class="flex flex-1 items-start px-grid-child md:w-2/3 max-md:order-2">
       <div class="flex flex-col items-center gap-6 max-md:gap-4">
-        <div class="flex w-[65%] justify-end max-md:justify-center">
+        <div class="flex w-[65%] justify-center">
           {% include 'components/articles/overline.twig' with { overline: article.categories[0] } %}
         </div>
 
@@ -14,7 +14,7 @@
       </div>
     </div>
 
-    <div class="flex w-1/3 max-w-md justify-center max-md:order-1 max-md:w-2/3 max-md:max-w-xs">
+    <div class="flex w-1/3 min-w-1/3 justify-center px-grid-child max-md:order-1 max-md:w-2/3 max-md:max-w-xs">
       {% if asset %}
         {% include 'components/lazy-img.twig' with {
           img: asset,
@@ -27,7 +27,7 @@
   </div>
 
   {% if article.subtitle %}
-    <p class="type-sans-xl uppercase text-pretty text-left">
+    <p class="type-sans-xl px-grid-child text-pretty text-left">
       {{ article.subtitle }}
     </p>
   {% endif %}

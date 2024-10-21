@@ -34,6 +34,12 @@ body {
   @apply font-sans font-normal text-base antialiased;
 }
 
+:root {
+  @apply [--grid-parent:0.833333333vw] max-md:[--grid-parent:3.18vw];
+  @apply [--grid-child:1.388888888vw] max-md:[--grid-child:3.18vw];
+  @apply [--grid-gap:2.777777777vw] max-md:[--grid-gap:6.36vw];
+}
+
 @layer components {
   .type-slab-3xl {
     @apply text-8xl font-slab-condensed font-semibold leading-none;

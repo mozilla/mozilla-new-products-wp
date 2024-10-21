@@ -12,19 +12,21 @@
   {% set bg_class = 'bg-black text-white' %}
 {% endif %}
 
-<div class="flex justify-center items-center p-site">
-  <div class="py-6 px-12 w-full max-w-lg flex flex-col items-center justify-between gap-24 min-h-[650px] {{ bg_class }}">
+<div class="flex justify-center items-center px-grid-parent pt-10">
+  <div class="px-grid-child max-md:w-full md:w-2/3 lg:w-1/2 xl:w-[41.666666667%]">
+    <div class="py-6 px-12 flex flex-col items-center justify-between gap-24 min-h-[650px] {{ bg_class }}">
 
-    <div class="order-2">
-      {% include 'components/articles/overline.twig' with { overline: article.categories[0], color: article.color } %}
+      <div class="order-2">
+        {% include 'components/articles/overline.twig' with { overline: article.categories[0], color: article.color } %}
+      </div>
+
+      <h1 class="type-slab-3xl text-center text-pretty order-1">{{ article.title }}</h1>
+
+      {% if article.subtitle %}
+        <p class="type-sans-lg text-center text-pretty order-3">
+          {{ article.subtitle }}
+        </p>
+      {% endif %}
     </div>
-
-    <h1 class="type-slab-3xl text-center text-pretty order-1">{{ article.title }}</h1>
-
-    {% if article.subtitle %}
-      <p class="type-sans-lg text-center text-pretty uppercase order-3">
-        {{ article.subtitle }}
-      </p>
-    {% endif %}
   </div>
 </div>
