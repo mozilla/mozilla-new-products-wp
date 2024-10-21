@@ -3,13 +3,13 @@
 {% set overrides = { caption: article.topper_caption } %}
 
 {% if article.topper_image %}
-  {% set asset = Image(article.topper_image) %}
+  {% set asset = get_image(article.topper_image) %}
 {% elseif article.thumbnail.id %}
-  {% set asset = Image(article.thumbnail.id) %}
+  {% set asset = get_image(article.thumbnail.id) %}
 {% endif %}
 
 {% if article.topper_video_poster %}
-  {% set poster = Image(article.topper_video_poster) %}
+  {% set poster = get_image(article.topper_video_poster) %}
 {% endif %}
 
 <div class="topper topper--small-img {{ asset.caption or asset.credit or overrides.caption ? 'topper--caption' }}">
