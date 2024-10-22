@@ -16,7 +16,6 @@
  */
 
 use Timber\Timber;
-use Timber\Image as TimberImage;
 
 $alignment = $block['align'] ?? 'wide';
 
@@ -29,7 +28,7 @@ $images = get_field( 'imageLayoutImages' );
 if ( is_array( $images ) ) {
 	$context['images'] = array_map(
 		function ( array $image ) {
-			return new TimberImage( $image['id'] );
+			return Timber::get_image( $image['id'] );
 		},
 		$images
 	);

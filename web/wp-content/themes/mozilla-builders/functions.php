@@ -6,13 +6,9 @@
  */
 
 use MozillaBuilders\Managers;
-use MozillaBuilders\Blocks\BlockManager;
+use MozillaBuilders\Models\Post;
 use Timber\Timber;
 use Dotenv\Dotenv;
-
-// Disable deprecation warnings for PHP 8.
-// phpcs:disable
-error_reporting( E_ALL & ~E_DEPRECATED );
 
 /** Autoloader */
 require_once 'vendor/autoload.php';
@@ -24,17 +20,17 @@ define( 'MOZILLA_BUILDERS_SITE_NAME', get_bloginfo( 'name' ) );
 define( 'MOZILLA_BUILDERS_THEME_VERSION', wp_get_theme()->get( 'Version' ) );
 
 /**
- * Use Dotenv to set required environment variables and load .env file when present.
+ * Read in a .env file for environment variables.
  */
-$dotenv = Dotenv::createImmutable(ABSPATH . '..')->safeLoad();
+$dotenv = Dotenv::createImmutable( ABSPATH . '..' )->safeLoad();
 
 /**
  * Set up our global environment constant and load its config first
  * Default: production
  */
-define( 'WP_ENV', getenv( 'WP_ENV' ) ? getenv( 'WP_ENV' ) : 'production' );
+define( 'WP_ENV', $_ENV['WP_ENV'] ?? 'production' );
 
-$timber          = new Timber();
+Timber::init();
 Timber::$dirname = array( 'templates', 'blocks' );
 
 $managers = array(
@@ -51,6 +47,18 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 
 $theme_manager = new Managers\ThemeManager( $managers );
 add_action( 'after_setup_theme', array( $theme_manager, 'setup_theme' ) );
+
+// Set class maps.
+add_filter(
+	'timber/post/classmap',
+	function ( $classmap ) {
+		$custom_classmap = array(
+			'post' => Post::class,
+		);
+
+		return array_merge( $classmap, $custom_classmap );
+	}
+);
 
 /**
  * Log given values to logs/error.log
