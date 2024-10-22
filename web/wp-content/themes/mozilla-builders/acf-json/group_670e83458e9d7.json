@@ -1,0 +1,110 @@
+{
+  "key": "group_670e83458e9d7",
+  "title": "Post Topper",
+  "fields": [
+    {
+      "key": "field_670e8345a8124",
+      "label": "Subtitle",
+      "name": "subtitle",
+      "aria-label": "",
+      "type": "text",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "placeholder": "",
+      "prepend": "",
+      "append": ""
+    },
+    {
+      "key": "field_670e8365a8126",
+      "label": "Topper Type",
+      "name": "topper_type",
+      "aria-label": "",
+      "type": "select",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "choices": {
+        "text_only": "Text Only",
+        "small_image": "Small Image",
+        "big_image": "Big Image"
+      },
+      "default_value": "no_image",
+      "return_format": "value",
+      "multiple": 0,
+      "allow_null": 0,
+      "ui": 0,
+      "ajax": 0,
+      "placeholder": ""
+    },
+    {
+      "key": "field_670e83cba8127",
+      "label": "Color",
+      "name": "color",
+      "aria-label": "",
+      "type": "select",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": [
+        [
+          {
+            "field": "field_670e8365a8126",
+            "operator": "==",
+            "value": "text_only"
+          }
+        ]
+      ],
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "choices": {
+        "none": "None",
+        "green": "Green",
+        "orange": "Orange",
+        "yellow": "Yellow",
+        "purple": "Purple",
+        "pink": "Pink"
+      },
+      "default_value": "none",
+      "return_format": "value",
+      "multiple": 0,
+      "allow_null": 0,
+      "ui": 0,
+      "ajax": 0,
+      "placeholder": ""
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "post"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "side",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0,
+  "modified": 1729004675
+}

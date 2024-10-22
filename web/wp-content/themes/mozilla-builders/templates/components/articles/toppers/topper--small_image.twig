@@ -1,41 +1,39 @@
-{% set asset = null %}
-{% set poster = null %}
-{% set overrides = { caption: article.topper_caption } %}
-
-{% if article.topper_image %}
-  {% set asset = get_image(article.topper_image) %}
-{% elseif article.thumbnail.id %}
-  {% set asset = get_image(article.thumbnail.id) %}
+{% if article.thumbnail.id %}
+  {% set asset = Image(article.thumbnail.id) %}
 {% endif %}
 
-{% if article.topper_video_poster %}
-  {% set poster = get_image(article.topper_video_poster) %}
-{% endif %}
+<div class="flex flex-col pt-10 gap-8">
+  <div class="w-full grid grid-site max-md:flex-col max-md:items-center max-md:gap-8">
+    <div class="flex items-end col-span-full md:col-span-2/3 max-md:order-2">
+      <div class="flex flex-col items-center gap-6 max-md:gap-4">
+        <div class="flex justify-center">
+          {% include 'components/articles/overline.twig' with { overline: article.categories[0] } %}
+        </div>
 
-<div class="topper topper--small-img {{ asset.caption or asset.credit or overrides.caption ? 'topper--caption' }}">
-  <div class="topper-hgroup">
-    <div class="topper-hgroup-inner">
-      {% include 'components/articles/overline.twig' %}
+        <h1 class="type-slab-3xl text-pretty text-center">{{ article.title }}</h1>
+      </div>
+    </div>
 
-      <h1 class="topper-hed">{{ article.title }}</h1>
-
-      {% if article.topper_description %}
-        <p class="topper-dek">
-          {{ article.topper_description }}
-        </p>
-      {% endif %}
+    <div class="flex col-span-full md:col-span-1/3 max-md:order-1">
+      <div class="w-full mx-auto max-md:max-w-xs">
+        {% if asset %}
+          {% include 'components/lazy-img.twig' with {
+            img: asset,
+            class: 'w-full',
+          } %}
+        {% else %}
+          <div class="flex w-full aspect-square bg-gray"></div>
+        {% endif %}
+      </div>
     </div>
   </div>
 
-  {% if asset %}
-    <figure class="topper-asset-mod">
-      {% include 'components/articles/blocks/asset.twig' with {
-        asset: asset,
-        poster: poster,
-        overrides: overrides,
-        hidden: article.topper_hide_in_modal_gallery
-      } %}
-      {% include 'components/articles/blocks/caption.twig' with { asset: asset, overrides: overrides } %}
-    </figure>
+  {% if article.subtitle %}
+    <div class="grid grid-site">
+      <p class="col-span-full type-sans-xl text-pretty text-left">
+        {{ article.subtitle }}
+      </p>
+    </div>
   {% endif %}
 </div>
+

@@ -1,5 +1,5 @@
-<nav class="flex items-center md:items-start justify-between gap-12 p-site">
-  <div class="md:mt-2.5 flex-1 flex gap-1 items-center justify-start">
+<nav class="grid grid-site py-site">
+  <div class="md:mt-2.5 flex-1 flex gap-1 items-center justify-start col-span-2 md:col-span-8">
     <svg class="size-5 shrink-0">
       <use xlink:href="#flag"></use>
     </svg>
@@ -13,14 +13,16 @@
     </div>
   </div>
 
-  <a href="{{ site.url }}">
-    <span class="sr-only">Mozilla Builders</span>
-    <svg class="w-40 aspect-logo">
-      <use xlink:href="#logo"></use>
-    </svg>
-  </a>
+  <div class="col-span-2 md:col-span-8 flex justify-center">
+    <a href="{{ site.url }}">
+      <span class="sr-only">Mozilla Builders</span>
+      <svg class="w-40 aspect-logo">
+        <use xlink:href="#logo"></use>
+      </svg>
+    </a>
+  </div>
 
-  <div class="lg:mt-2.5 flex-1 flex items-start justify-end gap-1 lg:gap-4 xl:gap-6 md:max-lg:flex-col md:max-lg:items-end">
+  <div class="lg:mt-2.5 flex-1 flex items-center justify-end gap-1 col-span-2 md:col-span-8 md:items-start lg:gap-4 xl:gap-6 md:max-lg:flex-col md:max-lg:items-end">
     <ul class="flex flex-wrap justify-end items-center gap-2 lg:gap-4 xl:gap-6 gap-y-1 -mt-px max-md:hidden">
       {% for item in nav_pages_menu.items %}
       <li class="text-right">
