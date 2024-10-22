@@ -54,7 +54,7 @@
     "test:a11y": "node tests/pa11y.js",
     "prepare": "husky install",
     "lint-staged": "lint-staged",
-    "phplogs": "ddev exec tail -f /var/log/php-error.log"
+    "phplogs": "./bin/logs"
   },
   "lint-staged": {
     "*.{js,scss,json,md}": [

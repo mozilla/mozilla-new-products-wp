@@ -19,7 +19,6 @@ if ( post_password_required( $_post_id ) ) {
 
 	Timber::render( 'pages/password.twig', $context );
 } else {
-	$context['article'] = $_post;
-	Timber::render( 'pages/article.twig', $context );
+	$context['post'] = $_post;
+	Timber::render( array( "pages/{$_post->post_type}.twig", 'pages/article.twig' ), $context );
 }
-
