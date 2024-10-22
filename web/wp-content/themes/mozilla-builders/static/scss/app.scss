@@ -40,11 +40,11 @@ body {
   }
 
   .type-sans-xl {
-    @apply text-6xl font-sans font-light leading-tighter;
+    @apply text-6xl font-sans font-light leading-tighter tracking-tight;
   }
 
   .type-sans-lg {
-    @apply text-4xl font-sans font-light leading-tighter;
+    @apply text-4xl font-sans font-light leading-tighter tracking-tight;
   }
 }
 
