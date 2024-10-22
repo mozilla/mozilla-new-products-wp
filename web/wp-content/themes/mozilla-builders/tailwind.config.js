@@ -1,5 +1,19 @@
 import theme from 'tailwindcss/defaultTheme';
 
+const GRID_COLUMNS = 24;
+const gridColumn = {};
+for (let i = 1; i <= GRID_COLUMNS; i++) {
+  gridColumn[`span-${i}`] = `span ${i} / span ${i}`;
+}
+const gridColumnStart = {};
+for (let i = 1; i <= GRID_COLUMNS; i++) {
+  gridColumnStart[`start-${i}`] = i;
+}
+const gridColumnEnd = {};
+for (let i = 1; i <= GRID_COLUMNS; i++) {
+  gridColumnEnd[`end-${i}`] = i;
+}
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./**/*.twig'],
@@ -36,6 +50,10 @@ module.exports = {
     },
 
     extend: {
+      aria: {
+        current: 'current="page"',
+      },
+
       animation: {
         marquee: 'marquee var(--marquee-time) linear infinite',
       },
@@ -56,7 +74,15 @@ module.exports = {
         // 36px (@640px) -> 72px (@1536px)
         '6xl': 'clamp(2.25rem, 4vw + 0.6rem, 4.5rem)',
         // 64px (@640px) -> 100px (@1536px)
-        '8xl': 'clamp(4rem, 6vw + 1.25rem, 6.25rem);;',
+        '8xl': 'clamp(4rem, 6vw + 1.25rem, 6.25rem);',
+      },
+
+      gridColumn,
+      gridColumnStart,
+      gridColumnEnd,
+
+      gridTemplateColumns: {
+        24: 'repeat(24, minmax(0, 1fr))',
       },
 
       lineHeight: {

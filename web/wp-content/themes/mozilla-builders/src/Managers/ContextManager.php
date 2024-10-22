@@ -7,7 +7,7 @@
 
 namespace MozillaBuilders\Managers;
 
-use Timber\Menu;
+use Timber\Timber;
 
 /** Class */
 class ContextManager {
@@ -57,9 +57,9 @@ class ContextManager {
 	 * @return array
 	 */
 	public function menus( $context ) {
-		$context['nav_topics_menu']     = new Menu( 'nav_topics_menu' );
-		$context['nav_pages_menu']      = new Menu( 'nav_pages_menu' );
-		$context['primary_footer_menu'] = new Menu( 'primary_footer_menu' );
+		$context['nav_topics_menu']     = Timber::get_menu( 'nav_topics_menu' );
+		$context['nav_pages_menu']      = Timber::get_menu( 'nav_pages_menu' );
+		$context['primary_footer_menu'] = Timber::get_menu( 'primary_footer_menu' );
 		return $context;
 	}
 

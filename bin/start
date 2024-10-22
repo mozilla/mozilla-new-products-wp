@@ -15,6 +15,11 @@ echo
 ddev start
 echo
 
+echo "Installing dependencies..."
+echo
+ddev composer install
+echo
+
 echo "Running start script..."
 echo
 npm run dev

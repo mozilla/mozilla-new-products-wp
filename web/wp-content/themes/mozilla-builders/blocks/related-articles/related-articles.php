@@ -13,7 +13,6 @@
  */
 
 use Timber\Timber;
-use Timber\PostQuery;
 
 $alignment = $block['align'] ?? 'center';
 
@@ -37,7 +36,7 @@ if ( is_array( $related_articles ) && ! empty( $related_articles ) ) {
 			'orderby'     => 'post__in',
 		);
 
-		$context['related_articles'] = new PostQuery( $args );
+		$context['related_articles'] = Timber::get_posts( $args );
 	}
 }
 

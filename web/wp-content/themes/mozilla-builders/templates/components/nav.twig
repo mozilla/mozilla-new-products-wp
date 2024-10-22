@@ -1,5 +1,5 @@
-<nav class="flex items-center md:items-start justify-between gap-12 p-site max-w-page mx-auto">
-  <div class="md:mt-2.5 flex-1 flex gap-1 items-center justify-start">
+<nav class="grid grid-site py-site">
+  <div class="md:mt-2.5 flex-1 flex gap-1 items-center justify-start col-span-1/3">
     <svg class="size-5 shrink-0">
       <use xlink:href="#flag"></use>
     </svg>
@@ -13,30 +13,35 @@
     </div>
   </div>
 
-  <a href="{{ site.url }}">
-    <span class="sr-only">Mozilla Builders</span>
-    <svg class="w-40 aspect-logo">
-      <use xlink:href="#logo"></use>
-    </svg>
-  </a>
+  <div class="col-span-1/3 flex justify-center">
+    <a href="{{ site.url }}">
+      <span class="sr-only">Mozilla Builders</span>
+      <svg class="w-40 aspect-logo">
+        <use xlink:href="#logo"></use>
+      </svg>
+    </a>
+  </div>
 
-  <div class="md:mt-2.5 flex-1 flex items-start justify-end gap-6">
-    <ul class="flex flex-wrap justify-end items-center gap-8 gap-y-1 -mt-px max-md:hidden">
+  <div class="lg:mt-2.5 flex-1 flex items-center justify-end gap-1 col-span-1/3 md:items-start lg:gap-4 xl:gap-6 md:max-lg:flex-col md:max-lg:items-end">
+    <ul class="flex flex-wrap justify-end items-center gap-2 lg:gap-4 xl:gap-6 gap-y-1 -mt-px max-md:hidden">
       {% for item in nav_pages_menu.items %}
       <li class="text-right">
         <a
           href="{{ item.url }}"
-          class="text-sm"
+          class="text-sm md:max-xl:text-xs relative block py-0.5 px-1.5
+                before:absolute before:inset-0 before:bg-green before:z-0
+                motion-safe:before:transition-transform before:scale-x-0 before:origin-center
+                aria-current:before:scale-x-100 hover:before:scale-x-100"
           {% if item.current %}aria-current="page"{% endif %}
         >
-          {{ item.name }}
+          <span class="relative z-10">{{ item.name }}</span>
         </a>
       </li>
       {% endfor %}
     </ul>
 
     <div class="flex items-center gap-px">
-      <a href="#" class="text-sm bg-black py-0.5 px-1.5 text-white whitespace-nowrap max-md:hidden">
+      <a href="#" class="text-sm md:max-xl:text-xs bg-black py-0.5 px-1.5 text-white transition-bg whitespace-nowrap max-md:hidden hover:bg-green hover:text-black">
         Join us
       </a>
 
@@ -71,21 +76,23 @@
           >
             <h2 id="menu-label" class="sr-only">Menu</h2>
 
-            <header class="flex items-center justify-between gap-12 p-site">
-              <div class="flex-1 flex justify-start">
+            <header class="grid grid-site py-site">
+              <div class="flex-1 flex items-center col-span-1/3">
                 <svg class="size-5 shrink-0">
                   <use xlink:href="#flag"></use>
                 </svg>
               </div>
 
-              <a href="{{ site.url }}">
-                <span class="sr-only">Mozilla Builders</span>
-                <svg class="w-40 aspect-logo">
-                  <use xlink:href="#logo"></use>
-                </svg>
-              </a>
+              <div class="col-span-1/3 flex justify-center">
+                <a href="{{ site.url }}">
+                  <span class="sr-only">Mozilla Builders</span>
+                  <svg class="w-40 aspect-logo">
+                    <use xlink:href="#logo"></use>
+                  </svg>
+                </a>
+              </div>
 
-              <div class="flex-1 flex justify-end">
+              <div class="col-span-1/3 flex-1 flex justify-end items-center">
                 <button
                   class="bg-white size-6 text-black flex items-center justify-center"
                   @click="open = false"
@@ -98,26 +105,30 @@
               </div>
             </header>
 
-            <div class="border-b-2 border-white mx-site"></div>
+            <div class="grid grid-site">
+              <div class="col-span-full border-b-2 border-white"></div>
+            </div>
 
-            <div class="p-site flex-1 flex flex-col justify-end gap-5">
-              <ul class="flex flex-col items-start gap-2.5">
-                {% for item in nav_pages_menu.items %}
-                <li>
-                  <a
-                    href="{{ item.url }}"
-                    class="text-5xl font-slab-condensed font-semibold"
-                    {% if item.current %}aria-current="page"{% endif %}
-                  >
-                    {{ item.name }}
-                  </a>
-                </li>
-                {% endfor %}
-              </ul>
+            <div class="py-site flex-1 grid grid-site">
+              <div class="col-span-full flex-1 flex flex-col justify-end gap-5">
+                <ul class="flex flex-col items-start gap-2.5">
+                  {% for item in nav_pages_menu.items %}
+                  <li>
+                    <a
+                      href="{{ item.url }}"
+                      class="text-5xl font-slab-condensed font-semibold"
+                      {% if item.current %}aria-current="page"{% endif %}
+                    >
+                      {{ item.name }}
+                    </a>
+                  </li>
+                  {% endfor %}
+                </ul>
 
-              <a href="#" class="text-2xl uppercase bg-white text-center p-3 text-black whitespace-nowrap">
-                Join us
-              </a>
+                <a href="#" class="text-2xl uppercase bg-white text-center p-3 text-black whitespace-nowrap">
+                  Join us
+                </a>
+              </div>
             </div>
           </div>
         </template>
