@@ -1,0 +1,34 @@
+{% if article.thumbnail.id %}
+  {% set asset = Image(article.thumbnail.id) %}
+{% endif %}
+
+<div class="grid grid-site pt-10 max-md:flex max-md:flex-col">
+  <div class="flex flex-col justify-center items-center gap-6 col-span-full md:col-span-1/2 lg:gap-10">
+    <div class="flex flex-col items-center gap-6 lg:gap-12">
+      <div class="flex-1">
+        {% include 'components/articles/overline.twig' with { overline: article.categories[0] } %}
+      </div>
+
+      <h1 class="type-slab-3xl text-pretty text-center">{{ article.title }}</h1>
+    </div>
+
+    {% if article.subtitle %}
+      <p class="type-sans-xl text-pretty text-left">
+        {{ article.subtitle }}
+      </p>
+    {% endif %}
+  </div>
+
+
+  <div class="flex items-end col-span-full md:col-span-1/2 max-md:pt-8">
+    {% if asset %}
+      {% include 'components/lazy-img.twig' with {
+        img: asset,
+        class: 'w-full',
+      } %}
+    {% else %}
+      <div class="flex w-full aspect-square bg-gray"></div>
+    {% endif %}
+  </div>
+</div>
+

@@ -11,26 +11,23 @@ import { onDocumentReady } from '@src/utils';
 import Menu from '@src/components/menu';
 import Links from '@src/components/links';
 
+import Alpine from 'alpinejs';
+import focus from '@alpinejs/focus';
+import { marquee } from '@src/plugins/marquee';
+
+// Initialize Alpine
+window.Alpine = Alpine;
+Alpine.plugin(focus);
+Alpine.plugin(marquee);
+Alpine.start();
+
+// Initialize custom JS
 onDocumentReady(() => {
   new Links();
 
   const MENU_CLASS = '.js--menu';
   if (document.querySelector(MENU_CLASS)) {
     new Menu(MENU_CLASS);
-  }
-
-  if (process.env.NODE_ENV === 'development') {
-    import(/* webpackChunkName: "toggle-grid" */ '@src/components/toggle-grid').then(module => {
-      const ToggleGrid = module.default;
-      new ToggleGrid();
-    });
-  }
-
-  if (document.querySelector('.js-modal-gallery')) {
-    import(/* webpackChunkName: "modal-gallery" */ '@src/components/modal-gallery').then(module => {
-      const ModalGallery = module.default;
-      new ModalGallery();
-    });
   }
 
   if (document.querySelector('.js-hang-punc')) {

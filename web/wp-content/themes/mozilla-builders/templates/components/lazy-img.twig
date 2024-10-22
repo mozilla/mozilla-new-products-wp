@@ -49,17 +49,16 @@
 {% else %}
 
   {# calculate aspect ratio using image sizes #}
-  {% set padding = img.height and img.width and img.width != 0 ? img.height / img.width * 100 ~ "%" : '0%' %}
+  {% set ratio = img.height and img.width and img.width != 0 ? img.width ~ "/" ~ img.height : '1' %}
 
   {# override aspect ratio if a percentage string is used #}
   {% if aspectRatio|length > 1 %}
     {% set padding = aspectRatio %}
   {% endif %}
 
-  <div class="lazy-img__mod {{ class }}{{ colorTheme ? ' lazy-img__mod--' ~ colorTheme }}">
-    <span class="lazy-img__placeholder" style="padding-top: {{ padding }}"></span>
+  <div class="flex relative aspect-[--ratio] {{ class }}" style="--ratio: {{ ratio }}">
     <img
-      class="lazy-img lazyload {{ imgClass }}"
+      class="lazy-img lazyload absolute inset-0 w-full h-full {{ imgClass }}"
       data-srcset="{{ img.srcset }}"
       data-src="{{ img.src }}"
       data-sizes="auto"
