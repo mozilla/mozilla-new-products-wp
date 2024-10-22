@@ -1,5 +1,5 @@
 {% if article.thumbnail.id %}
-  {% set asset = Image(article.thumbnail.id) %}
+  {% set asset = get_image(article.thumbnail.id) %}
 {% endif %}
 
 <div class="flex flex-col pt-10 gap-8">
