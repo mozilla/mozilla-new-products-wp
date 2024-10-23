@@ -51,3 +51,10 @@ jobs:
 
       - name: Check bundlesize
         run: npm run test:bundlesize
+
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v4.4.3
+        with:
+          name: deploy-artifacts
+          path: _build
+          retention-days: 1
