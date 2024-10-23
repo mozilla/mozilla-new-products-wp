@@ -35,7 +35,6 @@ web/**
 # Unignore composer.
 !web/composer.json
 !web/composer.lock
-!web/auth.json.sample
 
 # Unignore the web/wp-content/themes directory and its contents
 !web/wp-content/
