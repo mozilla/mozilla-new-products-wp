@@ -1,14 +1,14 @@
 <div class="grid grid-site pt-12 max-w-page mx-auto text-sm max-md:pt-4">
   <div class="md:grid grid-cols-subgrid col-span-6 md:col-span-24 md:border-t border-black md:pt-3 flex max-md:flex-col">
-    {% if article.bylines is not empty %}
+    {% if post.authors is not empty %}
       <p class="md:col-span-7 uppercase leading-tight max-md:flex max-md:gap-6 max-md:justify-between max-md:border-b max-md:border-black max-md:py-2">
-        {% include 'components/articles/byline_format.twig' with { bylines: article.bylines } %}
+        {% include 'components/articles/byline_format.twig' with { bylines: post.authors } %}
       </p>
     {% endif %}
 
     <p class="md:col-span-12 uppercase leading-tight col-span-2 max-md:flex max-md:gap-6 max-md:justify-between max-md:border-b max-md:border-black max-md:py-2">
       <span class="block">on</span>
-      <time class="max-md:text-right" datetime="{{ article.date|date('c') }}">{{ article.date|date('M d, Y') }}</time>
+      <time class="max-md:text-right" datetime="{{ post.date|date('c') }}">{{ post.date|date('M d, Y') }}</time>
     </p>
 
     <div class="md:col-span-5 max-md:flex max-md:gap-6 max-md:justify-between max-md:border-b max-md:border-black max-md:py-2">
@@ -18,10 +18,12 @@
   </div>
 </div>
 
-<div class="flex p-site pt-1 gap-5 md:hidden">
-  {% include "components/lazy-img.twig" with { img: article.author.avatar, aspectRatio: 1, class: "size-20 bg-gray" } %}
+{% for author in post.authors %}
+  <div class="grid grid-site pt-4 md:hidden">
+    {% include "components/lazy-img.twig" with { img: author.avatar, aspectRatio: 1, class: "col-span-2 aspect-square bg-gray" } %}
 
-  <p class="text-sm leading-tight uppercase max-w-56">
-    <a href="{{ article.author.link }}" class="underline">{{ article.author.name }}</a> is {{ article.author.description }}
-  </p>
-</div>
+    <p class="col-span-4 text-sm leading-tight uppercase max-w-56">
+      <a href="{{ author.link }}" class="underline">{{ author.name }}</a> is {{ author.short_bio }}
+    </p>
+  </div>
+{% endfor %}

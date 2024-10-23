@@ -1,15 +1,15 @@
 {% set socials = [
   {
     "name": "X",
-    "url": "https://twitter.com/intent/tweet?url=" ~ article.link|url_encode ~ "&text=" ~ article.post_title|url_encode
+    "url": "https://twitter.com/intent/tweet?url=" ~ post.link|url_encode ~ "&text=" ~ post.post_title|url_encode
   },
   {
     "name": "Facebook",
-    "url": "https://www.facebook.com/sharer/sharer.php?u=" ~ article.link|url_encode
+    "url": "https://www.facebook.com/sharer/sharer.php?u=" ~ post.link|url_encode
   },
   {
     "name": "LinkedIn",
-    "url": "https://www.linkedin.com/sharing/share-offsite/?url=" ~ article.link|url_encode
+    "url": "https://www.linkedin.com/sharing/share-offsite/?url=" ~ post.link|url_encode
   },
   {
     "name": "Discord",

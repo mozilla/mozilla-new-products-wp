@@ -12,21 +12,10 @@
 
   {% include "components/articles/toppers/topper--" ~ (post.topper_type|default('text_only')) ~ ".twig" %}
 
-  <div>
-    {% if post.authors %}
-      <p>
-        By
-        {% for author in post.authors %}
-          <a href="{{ author.link }}">{{ author.title }}</a>{% if loop.revindex0 == 1 %} and {% elseif not loop.last %}, {% endif %}
-        {% endfor %}
-      </p>
-    {% endif %}
-  </div>
-
   <article>
     {% include "components/articles/byline.twig" %}
 
-    <div class="pt-12 gutenberg {{ article.has_lede_paragraph ? 'lede' }} js-hang-punc">
+    <div class="pt-12 gutenberg {{ post.has_lede_paragraph ? 'lede' }} js-hang-punc">
 
       {{ post.content }}
 

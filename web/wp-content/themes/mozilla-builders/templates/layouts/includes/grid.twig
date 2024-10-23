@@ -1,7 +1,7 @@
 <div
   class="fixed inset-0 pointer-events-none z-[9999] hidden grid-site max-w-page mx-auto data-[show=true]:grid"
   x-data="{ show: false }"
-  @keydown.0.window="show = !show"
+  @keydown.0.window="if (!$event.metaKey) show = !show"
   :data-show="show"
   >
   {% for i in range(1, 24) %}

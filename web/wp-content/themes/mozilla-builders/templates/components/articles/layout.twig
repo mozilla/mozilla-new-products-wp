@@ -1,10 +1,10 @@
 <article class="article-body">
-  {% include "byline.twig" with article.article_info %}
+  {% include "byline.twig" with post.article_info %}
   {% include "share-tools.twig" with article %}
 
   <div class="article-body-width js-hang-punc">
 
-    {% for block in article.article_body %}
+    {% for block in post.article_body %}
       {% include "paragraphs.twig" with {'dropcap': loop.index0 == 0} %}
       {% include "" ~ block.article_component ~ ".twig" with block.content %}
     {% endfor %}

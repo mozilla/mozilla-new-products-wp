@@ -1,12 +1,12 @@
-{% if article.color == 'green' %}
+{% if post.color == 'green' %}
   {% set bg_class = 'bg-green' %}
-{% elseif article.color == 'orange' %}
+{% elseif post.color == 'orange' %}
   {% set bg_class = 'bg-orange' %}
-{% elseif article.color == 'yellow' %}
+{% elseif post.color == 'yellow' %}
   {% set bg_class = 'bg-yellow' %}
-{% elseif article.color == 'purple' %}
+{% elseif post.color == 'purple' %}
   {% set bg_class = 'bg-purple' %}
-{% elseif article.color == 'pink' %}
+{% elseif post.color == 'pink' %}
   {% set bg_class = 'bg-pink' %}
 {% else %}
   {% set bg_class = 'bg-black text-white' %}
@@ -17,14 +17,14 @@
     <div class="py-6 px-12 flex flex-col items-center justify-between gap-24 min-h-[650px] {{ bg_class }}">
 
       <div class="order-2">
-        {% include 'components/articles/overline.twig' with { overline: article.categories[0], color: article.color } %}
+        {% include 'components/articles/overline.twig' with { overline: post.categories[0], color: post.color } %}
       </div>
 
-      <h1 class="type-slab-2xl text-center text-pretty order-1">{{ article.title }}</h1>
+      <h1 class="type-slab-2xl text-center text-pretty order-1">{{ post.title }}</h1>
 
-      {% if article.subtitle %}
+      {% if post.subtitle %}
         <p class="type-sans-lg text-center text-pretty order-3">
-          {{ article.subtitle }}
+          {{ post.subtitle }}
         </p>
       {% endif %}
     </div>

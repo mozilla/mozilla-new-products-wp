@@ -1,11 +1,11 @@
 <div class="article-footer">
   <div class="article-footer__inner">
-    {% if article.bylines is not empty %}
+    {% if post.bylines is not empty %}
       <div class="article__byline__author">
-        {% include 'components/articles/byline_format.twig' with { bylines: article.bylines } %}
+        {% include 'components/articles/byline_format.twig' with { bylines: post.bylines } %}
       </div>
     {% endif %}
 
-    <div class="article-footer__date">{{ article.date|date('M d, Y') }}</div>
+    <div class="article-footer__date">{{ post.date|date('M d, Y') }}</div>
   </div>
 </div>
