@@ -1,11 +1,10 @@
 name: Deploy to Staging
 on:
-  push:
+  workflow_run:
+    workflows: [Upload data]
     branches:
       - main
       - deployment
-  workflow_run:
-    workflows: [Test]
     types:
       - completed
 
@@ -18,7 +17,7 @@ jobs:
       - name: Download the deploy artifact
         uses: actions/download-artifact@v4.1.8
         with:
-          name: deploy-artifacts
+          name: deploy_artifacts
           path: _build
       - name: Display structure of downloaded files
         run: ls -la _build
