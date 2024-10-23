@@ -101,7 +101,7 @@ module.exports = {
         'content-lg': '764px',
         'content-xl': '964px',
         'content-2xl': '1164px',
-        page: '1920px',
+        page: 'var(--100vw, 0)',
       },
 
       spacing: {

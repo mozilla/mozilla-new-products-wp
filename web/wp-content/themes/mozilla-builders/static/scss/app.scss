@@ -35,7 +35,8 @@ body {
 }
 
 :root {
-  @apply [--grid-site-margin:calc((24/400)*100vw)] md:[--grid-site-margin:calc((32/1440)*100vw)];
+  @apply [--100vw:min(100vw,1920px)];
+  @apply [--grid-site-margin:calc((24/400)*var(--100vw))] md:[--grid-site-margin:calc((32/1440)*var(--100vw))];
 }
 
 @layer components {
@@ -74,8 +75,8 @@ body {
   }
 
   .grid-site {
-    @apply grid-cols-24 gap-x-[calc((40/1440)*100vw)];
-    @apply max-md:grid-cols-6 max-md:gap-x-[calc((24/400)*100vw)];
+    @apply grid-cols-24 gap-x-[calc((40/1440)*var(--100vw))];
+    @apply max-md:grid-cols-6 max-md:gap-x-[calc((24/400)*var(--100vw))];
     @apply px-[--grid-site-margin];
   }
 
@@ -216,7 +217,7 @@ body {
       @apply md:col-span-full flex flex-col gap-3;
 
       p {
-        @apply type-slab-xl md:indent-[20vw];
+        @apply type-slab-xl md:indent-[calc(0.2*var(--100vw))];
       }
 
       cite {

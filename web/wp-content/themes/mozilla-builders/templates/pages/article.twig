@@ -16,13 +16,10 @@
     {% include "components/articles/byline.twig" %}
 
     <div class="pt-12 gutenberg {{ post.has_lede_paragraph ? 'lede' }} js-hang-punc">
-
       {{ post.content }}
-
     </div>
+
     {% include "components/articles/article-footer.twig" %}
   </article>
-
-  {% include "components/articles/modal-gallery.twig" %}
 
 {% endblock %}
