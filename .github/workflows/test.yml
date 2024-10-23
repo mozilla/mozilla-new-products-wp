@@ -1,11 +1,6 @@
 name: Test
 
-# on: [pull_request]
-
-on:
-  push:
-    branches:
-      - some_thing
+on: [pull_request]
 
 jobs:
   lint:
