@@ -198,7 +198,7 @@ body {
       @apply md:col-span-16 md:col-start-5 lg:col-span-10 lg:col-start-8;
 
       &:first-child:is(.lede *) {
-        @apply max-w-content-lg type-slab-lg mb-2 md:mb-6;
+        @apply type-slab-lg mb-2 md:mb-6 md:col-span-18 md:col-start-4 lg:col-span-14 lg:col-start-6;
       }
 
       &:empty {
