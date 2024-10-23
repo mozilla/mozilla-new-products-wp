@@ -223,7 +223,7 @@ body {
 
     // Code block
     pre {
-      @apply md:col-span-12 md:col-start-7;
+      @apply md:col-span-16 md:col-start-5 lg:col-span-12 lg:col-start-7;
 
       code {
         @apply block bg-black px-4 py-3 leading-loose;
