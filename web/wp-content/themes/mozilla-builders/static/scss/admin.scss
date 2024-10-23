@@ -49,3 +49,8 @@ div[data-align='right'] {
 .editor-styles-wrapper {
   font-family: $ff-sans;
 }
+
+// Hide H1 heading option in Gutenberg.
+.block-library-heading-level-dropdown button.components-dropdown-menu__menu-item:first-child {
+  display: none;
+}

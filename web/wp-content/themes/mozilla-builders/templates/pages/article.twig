@@ -1,7 +1,7 @@
 {% extends "layouts/base.twig" %}
 
 {%- block custom_body_classes -%}
-  {{ article.is_light_nav ? 'light-nav' }}
+  {{ post.is_light_nav ? 'light-nav' }}
 {%- endblock -%}
 
 {%- block custom_content_classes -%}
@@ -10,14 +10,25 @@
 
 {% block pageBody %}
 
-  {% include "components/articles/toppers/topper--" ~ (article.topper_type|default('text_only')) ~ ".twig" %}
+  {% include "components/articles/toppers/topper--" ~ (post.topper_type|default('text_only')) ~ ".twig" %}
+
+  <div>
+    {% if post.authors %}
+      <p>
+        By
+        {% for author in post.authors %}
+          <a href="{{ author.link }}">{{ author.title }}</a>{% if loop.revindex0 == 1 %} and {% elseif not loop.last %}, {% endif %}
+        {% endfor %}
+      </p>
+    {% endif %}
+  </div>
 
   <article>
     {% include "components/articles/byline.twig" %}
 
     <div class="pt-12 gutenberg {{ article.has_lede_paragraph ? 'lede' }} js-hang-punc">
 
-      {{ article.content }}
+      {{ post.content }}
 
     </div>
     {% include "components/articles/article-footer.twig" %}

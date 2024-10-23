@@ -6,7 +6,6 @@
  */
 
 use MozillaBuilders\Managers;
-use MozillaBuilders\Models\Post;
 use Timber\Timber;
 use Dotenv\Dotenv;
 
@@ -34,9 +33,7 @@ Timber::init();
 Timber::$dirname = array( 'templates', 'blocks' );
 
 $managers = array(
-	new Managers\TaxonomiesManager(),
 	new Managers\WordPressManager(),
-	new Managers\CustomPostsManager(),
 	new Managers\ContextManager(),
 	new Managers\BlockManager(),
 );
@@ -47,18 +44,6 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 
 $theme_manager = new Managers\ThemeManager( $managers );
 add_action( 'after_setup_theme', array( $theme_manager, 'setup_theme' ) );
-
-// Set class maps.
-add_filter(
-	'timber/post/classmap',
-	function ( $classmap ) {
-		$custom_classmap = array(
-			'post' => Post::class,
-		);
-
-		return array_merge( $classmap, $custom_classmap );
-	}
-);
 
 /**
  * Log given values to logs/error.log
