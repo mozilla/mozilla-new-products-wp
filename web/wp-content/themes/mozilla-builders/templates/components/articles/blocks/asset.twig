@@ -3,10 +3,10 @@
 {% set data_caption = caption|replace({ '"': '&quot;' })|e('html') %}
 {% set data_credit = asset.credit|replace({ '"': '&quot;' })|e('html') %}
 
-<div class="article-asset-mod">
+<div class="article-asset-mod {{ mod_class }}">
   {% if asset.post_mime_type starts with 'video' %}
     <video
-      class="article-asset {{ is_hidden_class }}"
+      class="article-asset {{ is_hidden_class }} {{ class }}"
       loop="loop"
       muted="muted"
       autoplay="autoplay"
@@ -22,10 +22,9 @@
       img: asset,
       caption: data_caption,
       credit: data_credit,
-      class: "article-asset " ~ is_hidden_class,
+      class: "article-asset " ~ is_hidden_class ~ " " ~ class,
       colorTheme: colorTheme,
       aspectRatio: aspectRatio ?? true
     } %}
-
   {% endif %}
 </div>

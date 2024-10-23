@@ -87,7 +87,7 @@ body {
     @apply col-span-6 md:col-span-24;
   }
 
-  .col-span-xfull {
+  .col-span-screen {
     @apply col-span-full -mx-[--grid-site-margin];
   }
 
@@ -274,7 +274,7 @@ body {
       }
 
       &.alignfull:not(.wp-block-pullquote):not(.wp-block-table) {
-        @apply md:col-span-xfull md:col-start-1;
+        @apply md:col-span-screen md:col-start-1;
 
         figcaption {
           @apply md:px-[--grid-site-margin];

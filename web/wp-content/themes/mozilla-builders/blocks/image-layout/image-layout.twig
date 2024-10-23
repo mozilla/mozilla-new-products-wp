@@ -10,29 +10,32 @@
 
 {% if layout == "row" %}
 
-  <figure class="ups-block__row {{ alignclass }} {{ crop_to_same_ratio ? "is-cropped" : "" }}">
-    <div class="assets asset-count--{{assets|length}}">
-        {% for asset in assets %}
-          <figure class="asset-aspect-ratio">
-            {% include 'components/articles/blocks/asset.twig' with {
-              asset: asset,
-              aspectRatio: crop_to_same_ratio == false
-            } %}
-          </figure>
-        {% endfor %}
+  <figure data-block="image-layout" class="{{ alignclass }}">
+    <div class="flex justify-between gap-3">
+      {% for asset in assets %}
+        <figure class="flex-1">
+          {% include 'components/articles/blocks/asset.twig' with {
+            mod_class: crop_to_same_ratio ? 'aspect-square',
+            class: crop_to_same_ratio ? 'w-full h-full object-cover',
+            asset: asset,
+            aspectRatio: crop_to_same_ratio == false
+          } %}
+        </figure>
+      {% endfor %}
     </div>
 
-    {% include 'components/articles/blocks/caption.twig' with {'caption' : caption} %}
-
+    {% include 'components/articles/blocks/caption.twig' with { 'caption': caption } %}
   </figure>
 
 {% elseif layout == "asymmetrical" %}
 
-  <figure class="ups-block__asym-grid {{ alignclass }} {{ crop_to_same_ratio ? "is-cropped" : "" }}">
-    <div class="assets">
-      <div class="lead-asset">
+  <figure data-block="image-layout" class="{{ alignclass }}">
+    <div class="flex gap-3">
+      <div class="flex-[2]">
         {% for asset in assets|slice(0,1) %}
           {% include 'components/articles/blocks/asset.twig' with {
+            mod_class: crop_to_same_ratio ? 'aspect-square',
+            class: crop_to_same_ratio ? 'w-full h-full object-cover',
             asset: asset,
             aspectRatio: crop_to_same_ratio == false
           } %}
@@ -40,28 +43,34 @@
 
       </div>
 
-      <div class="small-assets">
+      <div class="flex-1 flex flex-col gap-3">
         {% for asset in assets|slice(1,2) %}
-          {% include "components/articles/blocks/asset.twig" with {
-            asset: asset,
-            aspectRatio: crop_to_same_ratio == false
-          } %}
+          <div class="{{ crop_to_same_ratio ? 'flex-1' }}">
+            {% include "components/articles/blocks/asset.twig" with {
+              mod_class: crop_to_same_ratio ? 'aspect-square',
+              class: crop_to_same_ratio ? 'w-full h-full object-cover',
+              asset: asset,
+              aspectRatio: crop_to_same_ratio == false
+            } %}
+          </div>
         {% endfor %}
       </div>
     </div>
 
-    {% include 'components/articles/blocks/caption.twig' with {'caption' : caption} %}
-
+    {% include 'components/articles/blocks/caption.twig' with { 'caption': caption } %}
   </figure>
 
 {% elseif layout == "symmetrical" %}
 
-  <figure class="wp-block-gallery {{ alignclass }} {{ crop_to_same_ratio ? "is-cropped" : "" }}">
-    <ul class="blocks-gallery-grid">
+  {% set asset_class = assets|length > 4 ? 'md:grid-cols-3' %}
+  <figure data-block="image-layout" class="{{ alignclass }}">
+    <ul class="grid grid-cols-2 {{ asset_class }} gap-3">
       {% for asset in assets %}
-        <li class="blocks-gallery-item">
+        <li class="blocks-gallery-item flex-1">
           <figure>
             {% include 'components/articles/blocks/asset.twig' with {
+              mod_class: crop_to_same_ratio ? 'aspect-square',
+              class: crop_to_same_ratio ? 'w-full h-full object-cover',
               asset: asset,
               aspectRatio: crop_to_same_ratio == false
             } %}
@@ -70,7 +79,7 @@
       {% endfor %}
     </ul>
 
-    {% include 'components/articles/blocks/caption.twig' %}
+    {% include 'components/articles/blocks/caption.twig' with { 'caption': caption } %}
   </figure>
 
 {% endif %}
