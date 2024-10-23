@@ -31,6 +31,8 @@ jobs:
 
       - name: Install PHP dependencies
         uses: php-actions/composer@v6
+        with:
+          working_dir: 'web'
 
       - name: Manually install rollup dependencies (see https://github.com/npm/cli/issues/4828#issuecomment-2404560937)
         run: npm i @rollup/rollup-linux-x64-gnu
