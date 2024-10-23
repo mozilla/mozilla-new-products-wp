@@ -1,4 +1,4 @@
-<nav class="grid grid-site py-site">
+<nav class="grid grid-site py-site centered-page">
   <div class="md:mt-2.5 flex-1 flex gap-1 items-center justify-start col-span-1/3">
     <svg class="size-5 shrink-0">
       <use xlink:href="#flag"></use>
@@ -66,7 +66,7 @@
         <template x-teleport="body">
           <div
             id="menu"
-            class="fixed inset-0 h-100vh w-full flex flex-col flex-1 pt-wp-admin-bar bg-black text-white"
+            class="fixed inset-0 h-100vh z-dialog w-full flex flex-col flex-1 pt-wp-admin-bar bg-black text-white"
             x-show="open"
             x-trap.noscroll="open"
             :aria-hidden="!open"
@@ -76,7 +76,7 @@
           >
             <h2 id="menu-label" class="sr-only">Menu</h2>
 
-            <header class="grid grid-site py-site">
+            <header class="grid grid-site py-site centered-page">
               <div class="flex-1 flex items-center col-span-1/3">
                 <svg class="size-5 shrink-0">
                   <use xlink:href="#flag"></use>
@@ -105,11 +105,11 @@
               </div>
             </header>
 
-            <div class="grid grid-site">
+            <div class="grid grid-site centered-page">
               <div class="col-span-full border-b-2 border-white"></div>
             </div>
 
-            <div class="py-site flex-1 grid grid-site">
+            <div class="py-site flex-1 grid grid-site centered-page">
               <div class="col-span-full flex-1 flex flex-col justify-end gap-5">
                 <ul class="flex flex-col items-start gap-2.5">
                   {% for item in nav_pages_menu.items %}

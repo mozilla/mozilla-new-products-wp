@@ -65,6 +65,10 @@ body {
 }
 
 @layer utilities {
+  .centered-page {
+    @apply max-w-page w-full mx-auto;
+  }
+
   .grid-site {
     @apply grid-cols-24 gap-x-[calc((40/1440)*100vw)] px-[calc((32/1440)*100vw)];
     @apply max-md:grid-cols-6 max-md:gap-x-[calc((24/400)*100vw)] max-md:px-[calc((24/400)*100vw)];
@@ -107,8 +111,14 @@ body {
   }
 
   .gutenberg {
-    @apply flex flex-col items-center;
+    @apply grid grid-site centered-page;
 
+    // Apply full-width size to all blocks, by default
+    > * {
+      @apply col-span-full;
+    }
+
+    // Gap between blocks
     > * + * {
       @apply mt-6;
     }
@@ -146,7 +156,7 @@ body {
     > h4,
     > h5,
     > h6 {
-      @apply w-full max-w-content px-site;
+      @apply md:col-span-10 md:col-start-8;
 
       + * {
         @apply mt-3;
@@ -171,7 +181,7 @@ body {
 
     // Paragraphs
     > p {
-      @apply w-full max-w-content px-site;
+      @apply md:col-span-10 md:col-start-8;
 
       &:first-child:is(.lede *) {
         @apply max-w-content-lg type-slab-lg mb-2 md:mb-6;
@@ -184,7 +194,7 @@ body {
 
     // Code block
     pre {
-      @apply max-w-content-lg w-full px-site;
+      @apply md:col-span-12 md:col-start-7;
 
       code {
         @apply block bg-black px-4 py-3 leading-loose;
@@ -192,11 +202,12 @@ body {
     }
 
     // Blockquotes
+    .wp-block-pullquote,
     blockquote {
-      @apply max-w-content-2xl px-site flex flex-col gap-3;
+      @apply flex flex-col gap-3;
 
       p {
-        @apply type-slab-xl md:indent-20;
+        @apply type-slab-xl md:indent-[20vw];
       }
 
       cite {
@@ -207,7 +218,7 @@ body {
     // Lists
     ul,
     ol {
-      @apply w-full max-w-content px-site;
+      @apply md:col-span-10 md:col-start-8;
     }
     li {
       @apply leading-normal;
@@ -234,11 +245,16 @@ body {
       @apply mt-2;
     }
 
+    // Tables
+    figure.wp-block-table {
+      @apply md:col-span-10 md:col-start-8;
+    }
+
     // Images
     figure.wp-block-image,
     figure.wp-block-video,
     figure.wp-block-embed {
-      @apply w-full max-w-content-lg px-site flex flex-col gap-3;
+      @apply md:col-span-12 md:col-start-7 flex flex-col gap-3;
 
       img,
       video,
@@ -251,11 +267,11 @@ body {
       }
 
       &.alignwide {
-        @apply max-w-content-2xl;
+        @apply md:col-span-16 md:col-start-5;
       }
 
       &.alignfull {
-        @apply max-w-none px-0;
+        @apply md:col-span-full md:col-start-1;
 
         figcaption {
           @apply px-site;
@@ -282,7 +298,7 @@ body {
 
     // Separators
     hr.wp-block-separator {
-      @apply w-full max-w-content px-site my-6 border-transparent overflow-visible;
+      @apply md:col-span-10 md:col-start-8 my-6 border-transparent overflow-visible;
 
       &::before {
         content: '';
@@ -296,7 +312,7 @@ body {
 
     // Buttons
     .wp-block-buttons {
-      @apply flex flex-col gap-3 w-full max-w-content px-site;
+      @apply flex flex-col gap-3 md:col-span-10 md:col-start-8;
     }
     .wp-block-button {
       @apply flex justify-center w-full;
@@ -310,7 +326,7 @@ body {
 
     // Files
     .wp-block-file {
-      @apply w-full max-w-content px-site flex;
+      @apply flex md:col-span-10 md:col-start-8;
 
       a:not(.wp-block-file__button) {
         @apply flex items-center gap-10 w-full p-10 bg-green text-black uppercase font-semibold;

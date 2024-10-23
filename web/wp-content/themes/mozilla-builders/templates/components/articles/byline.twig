@@ -1,4 +1,4 @@
-<div class="grid grid-site pt-12 max-w-page mx-auto text-sm max-md:pt-4">
+<div class="grid grid-site pt-12 centered-page text-sm max-md:pt-4">
   <div class="md:grid grid-cols-subgrid col-span-6 md:col-span-24 md:border-t border-black md:pt-3 flex max-md:flex-col">
     {% if post.authors is not empty %}
       <p class="md:col-span-7 uppercase leading-tight max-md:flex max-md:gap-6 max-md:justify-between max-md:border-b max-md:border-black max-md:py-2">
@@ -20,10 +20,12 @@
 
 {% for author in post.authors %}
   <div class="grid grid-site pt-4 md:hidden">
-    {% include "components/lazy-img.twig" with { img: author.avatar, aspectRatio: 1, class: "col-span-2 aspect-square bg-gray" } %}
+    <div class="col-span-full flex items-start gap-4">
+      {% include "components/lazy-img.twig" with { img: author.avatar, aspectRatio: 1, class: "size-20 aspect-square bg-gray" } %}
 
-    <p class="col-span-4 text-sm leading-tight uppercase max-w-56">
-      <a href="{{ author.link }}" class="underline">{{ author.name }}</a> is {{ author.short_bio }}
-    </p>
+      <p class="flex-1 text-sm leading-tight uppercase max-w-56">
+        <a href="{{ author.link }}" class="underline">{{ author.name }}</a> {% if author.short_bio %}is {{ author.short_bio }}{% endif %}
+      </p>
+    </div>
   </div>
 {% endfor %}

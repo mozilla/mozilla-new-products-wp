@@ -85,6 +85,13 @@ module.exports = {
         24: 'repeat(24, minmax(0, 1fr))',
       },
 
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(calc(-1 * var(--marquee-width)))' },
+        },
+      },
+
       lineHeight: {
         tighter: '1.05',
       },
@@ -103,11 +110,8 @@ module.exports = {
         site: 'clamp(1rem, 2vw + 0.25rem, 1.5rem)',
       },
 
-      keyframes: {
-        marquee: {
-          '0%': { transform: 'translateX(0)' },
-          '100%': { transform: 'translateX(calc(-1 * var(--marquee-width)))' },
-        },
+      zIndex: {
+        dialog: 100,
       },
     },
   },
