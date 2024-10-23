@@ -1,6 +1,10 @@
 import theme from 'tailwindcss/defaultTheme';
 
 const GRID_COLUMNS = 24;
+const gridTemplateColumns = {};
+for (let i = 1; i <= GRID_COLUMNS; i++) {
+  gridTemplateColumns[i] = `repeat(${i}, minmax(0, 1fr))`;
+}
 const gridColumn = {};
 for (let i = 1; i <= GRID_COLUMNS; i++) {
   gridColumn[`span-${i}`] = `span ${i} / span ${i}`;
@@ -77,13 +81,10 @@ module.exports = {
         '8xl': 'clamp(4rem, 6vw + 1.25rem, 6.25rem);',
       },
 
+      gridTemplateColumns,
       gridColumn,
       gridColumnStart,
       gridColumnEnd,
-
-      gridTemplateColumns: {
-        24: 'repeat(24, minmax(0, 1fr))',
-      },
 
       keyframes: {
         marquee: {
@@ -108,6 +109,8 @@ module.exports = {
         'wp-admin-bar': 'var(--wp-admin--admin-bar--height, 0px)',
         // https://fluid-typography.netlify.app/
         site: 'clamp(1rem, 2vw + 0.25rem, 1.5rem)',
+        'grid-site-margin': 'var(--grid-site-margin, 0px)',
+        'grid-site-gutter': 'var(--grid-site-gutter, 0px)',
       },
 
       zIndex: {

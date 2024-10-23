@@ -37,6 +37,7 @@ body {
 :root {
   @apply [--100vw:min(100vw,1920px)];
   @apply [--grid-site-margin:calc((24/400)*var(--100vw))] md:[--grid-site-margin:calc((32/1440)*var(--100vw))];
+  @apply [--grid-site-gutter:calc((24/400)*var(--100vw))] md:[--grid-site-gutter:calc((40/1440)*var(--100vw))];
 }
 
 @layer components {
@@ -74,10 +75,12 @@ body {
     @apply max-w-page w-full mx-auto;
   }
 
+  .grid-cols-site {
+    @apply grid-cols-6 md:grid-cols-24;
+  }
+
   .grid-site {
-    @apply grid-cols-24 gap-x-[calc((40/1440)*var(--100vw))];
-    @apply max-md:grid-cols-6 max-md:gap-x-[calc((24/400)*var(--100vw))];
-    @apply px-[--grid-site-margin];
+    @apply grid-cols-site gap-x-[--grid-site-gutter] px-[--grid-site-margin];
   }
 
   .col-span-full {
@@ -133,15 +136,16 @@ body {
       @apply mt-6;
     }
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    p,
-    li,
-    pre {
+    > h1,
+    > h2,
+    > h3,
+    > h4,
+    > h5,
+    > h6,
+    > p,
+    > ul > li,
+    > ol > li,
+    > pre {
       // Inline images
       img {
         @apply inline-flex translate-y-[-5%];
@@ -166,7 +170,7 @@ body {
     > h4,
     > h5,
     > h6 {
-      @apply md:col-span-10 md:col-start-8;
+      @apply md:col-span-16 md:col-start-5 lg:col-span-10 lg:col-start-8;
 
       + * {
         @apply mt-3;
@@ -191,7 +195,7 @@ body {
 
     // Paragraphs
     > p {
-      @apply md:col-span-10 md:col-start-8;
+      @apply md:col-span-16 md:col-start-5 lg:col-span-10 lg:col-start-8;
 
       &:first-child:is(.lede *) {
         @apply max-w-content-lg type-slab-lg mb-2 md:mb-6;
@@ -204,7 +208,8 @@ body {
 
     // Separators
     hr.wp-block-separator {
-      @apply md:col-span-10 md:col-start-8 my-6 border-transparent overflow-visible;
+      @apply my-6 border-transparent overflow-visible;
+      @apply md:col-span-16 md:col-start-5 lg:col-span-10 lg:col-start-8;
 
       &::before {
         content: '';
@@ -226,14 +231,21 @@ body {
     }
 
     // Lists
-    ul,
-    ol {
-      @apply md:col-span-10 md:col-start-8;
+    > ul,
+    > ol {
+      @apply md:col-span-16 md:col-start-5 lg:col-span-10 lg:col-start-8;
+
+      li {
+        @apply leading-normal;
+      }
+
+      li + li,
+      li > ul,
+      li > ol {
+        @apply mt-2;
+      }
     }
-    li {
-      @apply leading-normal;
-    }
-    ul li {
+    > ul li {
       @apply relative pl-5;
 
       &::before {
@@ -241,7 +253,7 @@ body {
         @apply absolute left-0 top-[7px] flex size-2.5 bg-green;
       }
     }
-    ol li {
+    > ol li {
       @apply relative pl-5;
 
       &::before {
@@ -249,26 +261,16 @@ body {
         @apply absolute left-0 top-0 font-semibold text-green;
       }
     }
-    li + li,
-    li > ul,
-    li > ol {
-      @apply mt-2;
-    }
 
-    // Figures and captions
-    figure {
-      @apply flex flex-col gap-3;
-
-      figcaption {
-        @apply type-caption;
-      }
-
+    // Alignment
+    > figure,
+    > [data-block] {
       &:not(.alignwide):not(.alignfull) {
-        @apply md:col-span-12 md:col-start-7;
+        @apply md:col-span-16 md:col-start-5 lg:col-span-10 lg:col-start-8;
       }
 
       &.alignwide {
-        @apply md:col-span-16 md:col-start-5;
+        @apply md:col-span-20 md:col-start-3 lg:col-span-16 lg:col-start-5;
       }
 
       &.alignfull:not(.wp-block-pullquote):not(.wp-block-table) {
@@ -280,10 +282,29 @@ body {
       }
     }
 
+    // Figures and captions
+    > figure {
+      @apply flex flex-col gap-3;
+
+      figcaption {
+        @apply type-caption;
+      }
+
+      &.alignfull:not(.wp-block-pullquote):not(.wp-block-table) {
+        figcaption {
+          @apply md:px-[--grid-site-margin];
+        }
+      }
+    }
+
     // Blockquotes
     figure.wp-block-pullquote,
     blockquote {
-      @apply md:col-span-full flex flex-col gap-3;
+      @apply flex flex-col gap-3;
+
+      &:not(.alignwide):not(.alignfull) {
+        @apply md:col-span-full;
+      }
 
       p {
         @apply type-slab-xl md:indent-[calc(0.2*var(--100vw))];
@@ -296,10 +317,6 @@ body {
 
     // Tables
     figure.wp-block-table {
-      &:not(.alignwide):not(.alignfull) {
-        @apply md:col-span-10 md:col-start-8;
-      }
-
       table {
         thead {
           @apply border-t border-black text-left align-top;
@@ -333,6 +350,10 @@ body {
     figure.wp-block-image,
     figure.wp-block-video,
     figure.wp-block-embed {
+      &:not(.alignwide):not(.alignfull) {
+        @apply md:col-span-12 md:col-start-7;
+      }
+
       img,
       video,
       .wp-block-embed__wrapper iframe {
@@ -359,7 +380,7 @@ body {
 
     // Buttons
     .wp-block-buttons {
-      @apply flex flex-col gap-3 md:col-span-10 md:col-start-8;
+      @apply flex flex-col gap-3 md:col-span-16 md:col-start-5 lg:col-span-10 lg:col-start-8;
     }
     .wp-block-button {
       @apply flex justify-center w-full;
@@ -373,7 +394,7 @@ body {
 
     // Files
     .wp-block-file {
-      @apply flex md:col-span-10 md:col-start-8;
+      @apply flex md:col-span-16 md:col-start-5 lg:col-span-10 lg:col-start-8;
 
       a:not(.wp-block-file__button) {
         @apply flex items-center gap-10 w-full p-10 bg-green text-black uppercase font-semibold;
