@@ -27,10 +27,12 @@ jobs:
         env:
           COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH_JSON }}
         if: env.COMPOSER_AUTH != null
-        run: echo '${{ secrets.COMPOSER_AUTH_JSON }}' > $GITHUB_WORKSPACE/auth.json
+        run: echo '${{ secrets.COMPOSER_AUTH_JSON }}' > $GITHUB_WORKSPACE/web/auth.json
 
       - name: Install PHP dependencies
         uses: php-actions/composer@v6
+        with:
+          working_dir: 'web'
 
       - name: Manually install rollup dependencies (see https://github.com/npm/cli/issues/4828#issuecomment-2404560937)
         run: npm i @rollup/rollup-linux-x64-gnu
