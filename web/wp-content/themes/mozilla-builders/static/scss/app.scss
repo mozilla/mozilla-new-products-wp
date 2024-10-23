@@ -34,6 +34,10 @@ body {
   @apply font-sans font-normal text-base antialiased;
 }
 
+:root {
+  @apply [--grid-site-margin:calc((24/400)*100vw)] md:[--grid-site-margin:calc((32/1440)*100vw)];
+}
+
 @layer components {
   .type-slab-2xl {
     @apply text-8xl font-slab-condensed font-semibold leading-none;
@@ -70,12 +74,17 @@ body {
   }
 
   .grid-site {
-    @apply grid-cols-24 gap-x-[calc((40/1440)*100vw)] px-[calc((32/1440)*100vw)];
-    @apply max-md:grid-cols-6 max-md:gap-x-[calc((24/400)*100vw)] max-md:px-[calc((24/400)*100vw)];
+    @apply grid-cols-24 gap-x-[calc((40/1440)*100vw)];
+    @apply max-md:grid-cols-6 max-md:gap-x-[calc((24/400)*100vw)];
+    @apply px-[--grid-site-margin];
   }
 
   .col-span-full {
     @apply col-span-6 md:col-span-24;
+  }
+
+  .col-span-xfull {
+    @apply col-span-full -mx-[--grid-site-margin];
   }
 
   .col-span-1\/2 {
@@ -204,7 +213,7 @@ body {
     // Blockquotes
     .wp-block-pullquote,
     blockquote {
-      @apply flex flex-col gap-3;
+      @apply md:col-span-full flex flex-col gap-3;
 
       p {
         @apply type-slab-xl md:indent-[20vw];
@@ -245,22 +254,10 @@ body {
       @apply mt-2;
     }
 
-    // Tables
-    figure.wp-block-table {
-      @apply md:col-span-10 md:col-start-8;
-    }
-
-    // Images
-    figure.wp-block-image,
-    figure.wp-block-video,
-    figure.wp-block-embed {
-      @apply md:col-span-12 md:col-start-7 flex flex-col gap-3;
-
-      img,
-      video,
-      .wp-block-embed__wrapper iframe {
-        @apply w-full h-auto;
-      }
+    // Figures and captions
+    figure {
+      @apply md:col-span-12 md:col-start-7;
+      @apply flex flex-col gap-3;
 
       figcaption {
         @apply type-caption;
@@ -271,11 +268,27 @@ body {
       }
 
       &.alignfull {
-        @apply md:col-span-full md:col-start-1;
+        @apply md:col-span-xfull md:col-start-1;
 
         figcaption {
-          @apply px-site;
+          @apply md:px-[--grid-site-margin];
         }
+      }
+    }
+
+    // Tables
+    figure.wp-block-table {
+      @apply md:col-span-12 md:col-start-7;
+    }
+
+    // Images
+    figure.wp-block-image,
+    figure.wp-block-video,
+    figure.wp-block-embed {
+      img,
+      video,
+      .wp-block-embed__wrapper iframe {
+        @apply w-full h-auto;
       }
     }
 
