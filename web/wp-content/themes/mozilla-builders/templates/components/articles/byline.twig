@@ -16,18 +16,22 @@
   </div>
 </div>
 
-{% for author in post.authors %}
-  <div class="grid grid-site pt-4 md:hidden">
-    <div class="col-span-full flex items-start gap-4">
-      <div class="size-20 aspect-square bg-gray">
-        {% if author.thumbnail.id %}
-          {% include "components/lazy-img.twig" with { img: get_image(author.thumbnail), aspectRatio: 1 } %}
-        {% endif %}
-      </div>
+{% if post.authors is not empty %}
+<div class="flex flex-col gap-4 pt-6 md:hidden">
+  {% for author in post.authors %}
+    <div class="grid grid-site">
+      <div class="col-span-full flex items-start gap-4">
+        <div class="size-20 aspect-square bg-gray">
+          {% if author.thumbnail.id %}
+            {% include "components/lazy-img.twig" with { img: get_image(author.thumbnail), aspectRatio: 1 } %}
+          {% endif %}
+        </div>
 
-      <p class="flex-1 text-sm leading-tight uppercase max-w-56">
-        <a href="{{ author.link }}" class="underline">{{ author.name }}</a> {% if author.short_bio %}is {{ author.short_bio }}{% endif %}
-      </p>
+        <p class="flex-1 text-sm leading-tight uppercase max-w-56">
+          <a href="{{ author.link }}" class="underline">{{ author.name }}</a> {% if author.short_bio %}is {{ author.short_bio }}{% endif %}
+        </p>
+      </div>
     </div>
-  </div>
-{% endfor %}
+  {% endfor %}
+</div>
+{% endif %}
