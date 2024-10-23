@@ -12,7 +12,7 @@
   {% set bg_class = 'bg-black text-white' %}
 {% endif %}
 
-<div class="grid grid-site pt-10">
+<div class="grid grid-site max-w-page mx-auto pt-10">
   <div class="col-span-full md:col-span-16 md:col-start-5 lg:col-span-12 lg:col-start-7 xl:col-span-10 xl:col-start-8">
     <div class="py-6 px-12 flex flex-col items-center justify-between gap-24 min-h-[650px] {{ bg_class }}">
 
@@ -20,7 +20,7 @@
         {% include 'components/articles/overline.twig' with { overline: article.categories[0], color: article.color } %}
       </div>
 
-      <h1 class="type-slab-3xl text-center text-pretty order-1">{{ article.title }}</h1>
+      <h1 class="type-slab-2xl text-center text-pretty order-1">{{ article.title }}</h1>
 
       {% if article.subtitle %}
         <p class="type-sans-lg text-center text-pretty order-3">
