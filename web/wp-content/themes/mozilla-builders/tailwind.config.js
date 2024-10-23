@@ -98,10 +98,6 @@ module.exports = {
       },
 
       maxWidth: {
-        content: '564px',
-        'content-lg': '764px',
-        'content-xl': '964px',
-        'content-2xl': '1164px',
         page: 'var(--100vw, 0)',
       },
 
