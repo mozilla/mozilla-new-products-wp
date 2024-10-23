@@ -1,21 +1,12 @@
 {% extends "layouts/base.twig" %}
 
-{%- block custom_body_classes -%}
-  {{ post.is_light_nav ? 'light-nav' }}
-{%- endblock -%}
-
-{%- block custom_content_classes -%}
-  js-modal-gallery article
-{%- endblock -%}
-
 {% block pageBody %}
-
   {% include "components/articles/toppers/topper--" ~ (post.topper_type|default('text_only')) ~ ".twig" %}
 
   <article>
     {% include "components/articles/byline.twig" %}
 
-    <div class="pt-12 gutenberg {{ post.has_lede_paragraph ? 'lede' }} js-hang-punc">
+    <div class="pt-12 pb-24 gutenberg {{ post.has_lede_paragraph ? 'lede' }} js-hang-punc">
       {{ post.content }}
     </div>
 

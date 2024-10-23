@@ -202,26 +202,26 @@ body {
       }
     }
 
+    // Separators
+    hr.wp-block-separator {
+      @apply md:col-span-10 md:col-start-8 my-6 border-transparent overflow-visible;
+
+      &::before {
+        content: '';
+        @apply block h-[0.5px] w-full opacity-50;
+        background-image: linear-gradient(to right, black 33%, transparent 0%);
+        background-position: bottom;
+        background-size: 4px 1px;
+        background-repeat: repeat-x;
+      }
+    }
+
     // Code block
     pre {
       @apply md:col-span-12 md:col-start-7;
 
       code {
         @apply block bg-black px-4 py-3 leading-loose;
-      }
-    }
-
-    // Blockquotes
-    .wp-block-pullquote,
-    blockquote {
-      @apply md:col-span-full flex flex-col gap-3;
-
-      p {
-        @apply type-slab-xl md:indent-[calc(0.2*var(--100vw))];
-      }
-
-      cite {
-        @apply type-caption not-italic;
       }
     }
 
@@ -257,18 +257,21 @@ body {
 
     // Figures and captions
     figure {
-      @apply md:col-span-12 md:col-start-7;
       @apply flex flex-col gap-3;
 
       figcaption {
         @apply type-caption;
       }
 
+      &:not(.alignwide):not(.alignfull) {
+        @apply md:col-span-12 md:col-start-7;
+      }
+
       &.alignwide {
         @apply md:col-span-16 md:col-start-5;
       }
 
-      &.alignfull {
+      &.alignfull:not(.wp-block-pullquote):not(.wp-block-table) {
         @apply md:col-span-xfull md:col-start-1;
 
         figcaption {
@@ -277,9 +280,53 @@ body {
       }
     }
 
+    // Blockquotes
+    figure.wp-block-pullquote,
+    blockquote {
+      @apply md:col-span-full flex flex-col gap-3;
+
+      p {
+        @apply type-slab-xl md:indent-[calc(0.2*var(--100vw))];
+      }
+
+      cite {
+        @apply type-caption not-italic;
+      }
+    }
+
     // Tables
     figure.wp-block-table {
-      @apply md:col-span-12 md:col-start-7;
+      &:not(.alignwide):not(.alignfull) {
+        @apply md:col-span-10 md:col-start-8;
+      }
+
+      table {
+        thead {
+          @apply border-t border-black text-left align-top;
+
+          tr th {
+            @apply py-3 uppercase text-sm font-normal;
+
+            &:not(:last-child) {
+              @apply pr-3;
+            }
+          }
+        }
+
+        tbody {
+          tr {
+            @apply border-t border-black;
+          }
+
+          tr td {
+            @apply py-3;
+
+            &:not(:last-child) {
+              @apply pr-3;
+            }
+          }
+        }
+      }
     }
 
     // Images
@@ -307,20 +354,6 @@ body {
         &.wp-embed-aspect-4-3 .wp-block-embed__wrapper iframe {
           @apply aspect-[4/3];
         }
-      }
-    }
-
-    // Separators
-    hr.wp-block-separator {
-      @apply md:col-span-10 md:col-start-8 my-6 border-transparent overflow-visible;
-
-      &::before {
-        content: '';
-        @apply block h-[0.5px] w-full opacity-50;
-        background-image: linear-gradient(to right, black 33%, transparent 0%);
-        background-position: bottom;
-        background-size: 4px 1px;
-        background-repeat: repeat-x;
       }
     }
 
