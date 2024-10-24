@@ -12,6 +12,10 @@ jobs:
     name: Deploy to WPEngine staging.
     runs-on: ubuntu-latest
     steps:
+      - name: Test
+        run: |
+          echo test
+
       - name: Download the deploy artifact
         uses: actions/download-artifact@v4.1.8
         with:
