@@ -3,7 +3,9 @@
     <a class="before:absolute before:inset-0 before:z-10" href="{{ post.link }}">{{ post.title }}</a>
   </h3>
 
-  {% include 'components/articles/overline.twig' with { overline: post.categories[0], color: post.color } %}
+  <div class="relative z-20">
+    {% include 'components/articles/overline.twig' with { overline: post.categories[0], color: post.color } %}
+  </div>
 
   <p class="type-sans-sm text-center">{{ post.subtitle }}</p>
 </div
