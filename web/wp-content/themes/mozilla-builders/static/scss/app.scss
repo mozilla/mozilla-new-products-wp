@@ -123,17 +123,89 @@ body {
     @apply col-span-5 md:col-span-20;
   }
 
+  .prose {
+    // Gap between blocks
+    > * + * {
+      @apply mt-6;
+    }
+
+    // Headings
+    > h2 {
+      @apply font-semibold uppercase leading-tight indent-6;
+    }
+    > h3 {
+      @apply uppercase leading-tight indent-6;
+    }
+    > h4 {
+      @apply uppercase leading-tight opacity-50 indent-6;
+    }
+    > h5 {
+      @apply font-semibold leading-tight;
+    }
+    > h6 {
+      @apply leading-tight opacity-50;
+    }
+
+    // Paragraphs
+    p {
+      &:empty {
+        @apply hidden;
+      }
+    }
+
+    // Lists
+    > ul,
+    > ol {
+      li {
+        @apply leading-normal;
+      }
+
+      li + li,
+      li > ul,
+      li > ol {
+        @apply mt-2;
+      }
+    }
+    > ul li {
+      @apply relative pl-5;
+
+      &::before {
+        content: '';
+        @apply absolute left-0 top-[7px] flex size-2.5 bg-green;
+      }
+    }
+    > ol li {
+      @apply relative pl-5;
+
+      &::before {
+        content: counter(list-item);
+        @apply absolute left-0 top-0 font-semibold text-green;
+      }
+    }
+
+    // Separators
+    hr {
+      @apply my-6 border-transparent overflow-visible;
+      @apply md:col-span-16 md:col-start-5 lg:col-span-10 lg:col-start-8;
+
+      &::before {
+        content: '';
+        @apply block h-[0.5px] w-full opacity-50;
+        background-image: linear-gradient(to right, black 33%, transparent 0%);
+        background-position: bottom;
+        background-size: 4px 1px;
+        background-repeat: repeat-x;
+      }
+    }
+  }
+
   .gutenberg {
     @apply grid grid-site centered-page;
+    @apply prose;
 
     // Apply full-width size to all blocks, by default
     > * {
       @apply col-span-full;
-    }
-
-    // Gap between blocks
-    > * + * {
-      @apply mt-6;
     }
 
     > h1,
@@ -163,61 +235,12 @@ body {
       }
     }
 
-    // Headings
-    > h1,
-    > h2,
-    > h3,
-    > h4,
-    > h5,
-    > h6 {
-      @apply md:col-span-16 md:col-start-5 lg:col-span-10 lg:col-start-8;
-
-      + * {
-        @apply mt-3;
-      }
-    }
-    > h1,
-    > h2 {
-      @apply font-semibold uppercase leading-tight indent-6;
-    }
-    > h3 {
-      @apply uppercase leading-tight indent-6;
-    }
-    > h4 {
-      @apply uppercase leading-tight opacity-50 indent-6;
-    }
-    > h5 {
-      @apply font-semibold leading-tight;
-    }
-    > h6 {
-      @apply leading-tight opacity-50;
-    }
-
     // Paragraphs
     > p {
       @apply md:col-span-16 md:col-start-5 lg:col-span-10 lg:col-start-8;
 
       &:first-child:is(.lede *) {
         @apply type-slab-lg mb-2 md:mb-6 md:col-span-18 md:col-start-4 lg:col-span-14 lg:col-start-6;
-      }
-
-      &:empty {
-        @apply hidden;
-      }
-    }
-
-    // Separators
-    hr.wp-block-separator {
-      @apply my-6 border-transparent overflow-visible;
-      @apply md:col-span-16 md:col-start-5 lg:col-span-10 lg:col-start-8;
-
-      &::before {
-        content: '';
-        @apply block h-[0.5px] w-full opacity-50;
-        background-image: linear-gradient(to right, black 33%, transparent 0%);
-        background-position: bottom;
-        background-size: 4px 1px;
-        background-repeat: repeat-x;
       }
     }
 
@@ -234,32 +257,6 @@ body {
     > ul,
     > ol {
       @apply md:col-span-16 md:col-start-5 lg:col-span-10 lg:col-start-8;
-
-      li {
-        @apply leading-normal;
-      }
-
-      li + li,
-      li > ul,
-      li > ol {
-        @apply mt-2;
-      }
-    }
-    > ul li {
-      @apply relative pl-5;
-
-      &::before {
-        content: '';
-        @apply absolute left-0 top-[7px] flex size-2.5 bg-green;
-      }
-    }
-    > ol li {
-      @apply relative pl-5;
-
-      &::before {
-        content: counter(list-item);
-        @apply absolute left-0 top-0 font-semibold text-green;
-      }
     }
 
     // Alignment

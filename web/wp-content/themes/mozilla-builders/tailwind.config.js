@@ -11,11 +11,11 @@ for (let i = 1; i <= GRID_COLUMNS; i++) {
 }
 const gridColumnStart = {};
 for (let i = 1; i <= GRID_COLUMNS; i++) {
-  gridColumnStart[`start-${i}`] = i;
+  gridColumnStart[i] = i.toString();
 }
 const gridColumnEnd = {};
 for (let i = 1; i <= GRID_COLUMNS; i++) {
-  gridColumnEnd[`end-${i}`] = i;
+  gridColumnEnd[i] = i.toString();
 }
 
 /** @type {import('tailwindcss').Config} */
