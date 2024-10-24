@@ -1,6 +1,7 @@
 {% extends "layouts/base.twig" %}
 
 {% block pageBody %}
+
 <header class="relative grid grid-site centered-page mt-24 md:-mt-24">
   <div class="col-span-4 col-start-3 max-md:-mt-8 max-md:-mr-grid-site-margin max-md:order-2 md:col-span-11 md:col-start-6">
     <div class="aspect-[3/4] overflow-hidden">
@@ -47,6 +48,7 @@
   </div>
 </header>
 
+{% if post.about %}
 <section class="grid grid-site centered-page">
   <div class="mt-12 md:mt-24 col-span-full md:col-span-8 md:col-start-14 prose js-hang-punc">
     <h2>About</h2>
@@ -54,7 +56,9 @@
     {{ post.about }}
   </div>
 </section>
+{% endif %}
 
+{% if post.latest_articles is not empty %}
 <section class="mt-12 md:mt-24 grid grid-site centered-page">
   <div class="col-span-full border border-black p-1">
     <h2 class="uppercase text-sm text-center">Written by {{ post.first_name }}</h2>
@@ -68,4 +72,6 @@
     {% endfor %}
   </ul>
 </section>
+{% endif %}
+
 {% endblock %}
