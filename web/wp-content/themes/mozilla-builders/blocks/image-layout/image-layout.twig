@@ -34,7 +34,7 @@
       <div class="flex-[2]">
         {% for asset in assets|slice(0,1) %}
           {% include 'components/articles/blocks/asset.twig' with {
-            mod_class: crop_to_same_ratio ? 'aspect-square',
+            mod_class: crop_to_same_ratio ? 'h-full',
             class: crop_to_same_ratio ? 'w-full h-full object-cover',
             asset: asset,
             aspectRatio: crop_to_same_ratio == false
