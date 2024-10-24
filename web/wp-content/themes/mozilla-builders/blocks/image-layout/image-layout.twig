@@ -31,10 +31,10 @@
 
   <figure data-block="image-layout" class="{{ alignclass }}">
     <div class="flex gap-3">
-      <div class="flex-[2]">
+      <div class="flex-[2] relative">
         {% for asset in assets|slice(0,1) %}
           {% include 'components/articles/blocks/asset.twig' with {
-            mod_class: crop_to_same_ratio ? 'h-full',
+            mod_class: crop_to_same_ratio ? 'absolute inset-0',
             class: crop_to_same_ratio ? 'w-full h-full object-cover',
             asset: asset,
             aspectRatio: crop_to_same_ratio == false
