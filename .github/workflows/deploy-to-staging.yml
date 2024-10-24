@@ -2,9 +2,6 @@ name: Deploy to Staging
 on:
   workflow_run:
     workflows: [Upload data]
-    branches:
-      - main
-      - deployment
     types:
       - completed
 
