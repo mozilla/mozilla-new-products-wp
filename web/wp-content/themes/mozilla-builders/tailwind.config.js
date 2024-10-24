@@ -71,6 +71,8 @@ module.exports = {
       },
 
       fontSize: {
+        // 20px (@640px) -> 24px (@1536px)
+        xl: 'clamp(1.25rem, 1.3vw + 0.7rem, 1.5rem)',
         // 24px (@640px) -> 40px (@1536px)
         '2xl': 'clamp(1.5rem, 1.8vw + 0.8rem, 2.5rem)',
         // 32px (@640px) -> 56px (@1536px)

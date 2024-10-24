@@ -61,6 +61,14 @@ body {
     @apply text-4xl font-sans font-light leading-tighter tracking-tight;
   }
 
+  .type-sans-md {
+    @apply text-2xl font-sans font-light leading-tighter tracking-tight;
+  }
+
+  .type-sans-sm {
+    @apply text-xl font-sans font-light leading-tighter tracking-tight;
+  }
+
   .type-code {
     @apply bg-black text-white py-0.5 px-1 decoration-clone text-sm;
   }
@@ -147,7 +155,7 @@ body {
     }
 
     // Paragraphs
-    p {
+    > p {
       &:empty {
         @apply hidden;
       }

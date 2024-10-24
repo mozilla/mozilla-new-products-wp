@@ -50,7 +50,22 @@
 <section class="grid grid-site centered-page">
   <div class="mt-12 md:mt-24 col-span-full md:col-span-8 md:col-start-14 prose js-hang-punc">
     <h2>About</h2>
+
     {{ post.about }}
   </div>
+</section>
+
+<section class="mt-12 md:mt-24 grid grid-site centered-page">
+  <div class="col-span-full border border-black p-1">
+    <h2 class="uppercase text-sm text-center">Written by {{ post.first_name }}</h2>
+  </div>
+
+  <ul class="contents">
+    {% for article in post.latest_articles %}
+      <li class="mt-6 flex flex-col flex-1 col-span-full md:col-span-12 xl:col-span-6">
+        {% include 'components/articles/previews/preview--' ~ article.topper_type|default('text_only') ~ '.twig' with { post: article } %}
+      </li>
+    {% endfor %}
+  </ul>
 </section>
 {% endblock %}
