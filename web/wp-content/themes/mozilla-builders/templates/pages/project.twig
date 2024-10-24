@@ -1,0 +1,15 @@
+{% extends "layouts/base.twig" %}
+
+{%- block custom_body_classes -%}
+  dark
+{%- endblock -%}
+
+{% block pageBody %}
+
+<header class="grid grid-site centered-page">
+  <h1 class="col-span-16 type-sans-2xl">
+    {{ post.title }}
+  </h1>
+</header>
+
+{% endblock %}

@@ -32,6 +32,10 @@
 body {
   @apply bg-white text-black;
   @apply font-sans font-normal text-base antialiased;
+
+  &.dark {
+    @apply bg-black text-white;
+  }
 }
 
 :root {
@@ -51,6 +55,10 @@ body {
 
   .type-slab-lg {
     @apply text-2xl font-slab-condensed font-semibold leading-tight;
+  }
+
+  .type-sans-2xl {
+    @apply text-8xl font-sans font-light leading-tighter tracking-tight;
   }
 
   .type-sans-xl {

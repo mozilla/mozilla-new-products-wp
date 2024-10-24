@@ -17,11 +17,11 @@
     {% include "layouts/includes/grid.twig" %}
   {% endif %}
 
-  <div class="layout--base">
+  <div class="flex flex-col flex-1 min-h-[100dvh]">
 
     {% include "components/nav.twig" %}
 
-    <main id="content" class="content {% block custom_content_classes %}{% endblock %}" tabindex="-1">
+    <main id="content" class="flex flex-col flex-1 {% block custom_content_classes %}{% endblock %}" tabindex="-1">
       {% block pageBody %}
       {% endblock %}
     </main>

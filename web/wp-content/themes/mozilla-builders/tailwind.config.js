@@ -21,6 +21,7 @@ for (let i = 1; i <= GRID_COLUMNS; i++) {
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./**/*.twig'],
+  darkMode: 'class',
   theme: {
     colors: {
       current: 'currentColor',

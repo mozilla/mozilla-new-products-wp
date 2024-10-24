@@ -1,10 +1,10 @@
 <nav class="grid grid-site py-site centered-page">
   <div class="md:mt-2.5 flex-1 flex gap-1 items-center justify-start col-span-1/3">
-    <svg class="size-5 shrink-0">
+    <svg class="size-5 shrink-0 dark:text-pink">
       <use xlink:href="#flag"></use>
     </svg>
 
-    <div class="flex-1 h-5 overflow-hidden relative max-md:hidden bg-black text-white max-w-80">
+    <div class="flex-1 h-5 overflow-hidden relative max-md:hidden bg-black text-white dark:bg-pink dark:text-black max-w-80">
       <div x-marquee="{ speed: 0.25 }" class="absolute top-1/2 left-0 -translate-y-1/2 group">
         <div x-marquee:track class="animate-marquee motion-reduce:!animate-none flex" aria-hidden="true">
           <p class="px-1 text-sm whitespace-nowrap select-none">Building in the open with open source AI. Powered by <span class="font-semibold">Mozilla</span>.</p>
@@ -41,7 +41,10 @@
     </ul>
 
     <div class="flex items-center gap-px">
-      <a href="#" class="text-sm md:max-xl:text-xs bg-black py-0.5 px-1.5 text-white transition-bg whitespace-nowrap max-md:hidden hover:bg-green hover:text-black">
+      <a href="#"
+        class="text-sm md:max-xl:text-xs py-0.5 px-1.5 transition-bg whitespace-nowrap max-md:hidden
+             bg-black text-white dark:bg-pink dark:text-black hover:bg-green hover:text-black"
+      >
         Join us
       </a>
 
@@ -51,7 +54,7 @@
         @keydown.escape.window="open = false"
       >
         <button
-          class="bg-black size-6 text-white flex items-center justify-center"
+          class="size-6 flex items-center justify-center bg-black text-white dark:bg-pink dark:text-black"
           @click="open = !open"
           :aria-expanded="open"
           aria-haspopup="true"
