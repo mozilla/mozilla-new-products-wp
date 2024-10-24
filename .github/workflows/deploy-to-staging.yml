@@ -1,4 +1,4 @@
-name: Test and deploy to WPEngine staging
+name: Test and deploy
 on:
   push:
     branches:
