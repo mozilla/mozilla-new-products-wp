@@ -1,11 +1,15 @@
-<div class="article-footer">
-  <div class="article-footer__inner">
-    {% if article.bylines is not empty %}
-      <div class="article__byline__author">
-        {% include 'components/articles/byline_format.twig' with { bylines: article.bylines } %}
-      </div>
-    {% endif %}
+{% if post.authors is not empty %}
+  <section class="grid grid-site centered-page">
+    <div class="col-span-full border-t border-black pt-6 grid grid-cols-6 gap-x-grid-site-gutter md:grid-cols-16 md:col-span-16 md:col-start-5">
+      <h2 class="col-span-full lg:col-span-8">About the Author{% if post.authors|length > 1 %}s{% endif %}</h2>
 
-    <div class="article-footer__date">{{ article.date|date('M d, Y') }}</div>
-  </div>
-</div>
+      <div class="flex flex-col gap-4 max-lg:mt-4 col-span-full lg:col-span-8">
+        {% for author in post.authors %}
+          <div class="flex flex-col gap-1">
+            {{ author.about }}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endif %}

@@ -1,9 +1,13 @@
-{% if bylines is not empty %}
-  {# Use an oxford comma if we have more than 2 names #}
-  {% set andParam = bylines|length > 2 ? ', and ' : ' and ' %}
-  by
+{# Use an oxford comma if we have more than 2 names #}
+{% set andParam = bylines|length > 2 ? ', and ' : ' and ' %}
+<span class="block">by</span>
 
-  {% for author in bylines %}
-    <a href="{{ author.link }}">{{author.name}}</a>{% if loop.last %}{% elseif loop.revindex == 2 %}{{andParam}}{% else %},{% endif %}
-  {% endfor %}
-{% endif %}
+<span class="max-md:text-right">
+  {% if bylines is not empty %}
+    {% for author in bylines %}
+      <a class="max-md:underline" href="{{ author.link }}">{{author.name}}</a>{% if loop.last %}{% elseif loop.revindex == 2 %}{{andParam}}{% else %},{% endif %}
+    {% endfor %}
+  {% else %}
+    Mozilla
+  {% endif %}
+</span>

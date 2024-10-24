@@ -1,6 +1,10 @@
 import theme from 'tailwindcss/defaultTheme';
 
 const GRID_COLUMNS = 24;
+const gridTemplateColumns = {};
+for (let i = 1; i <= GRID_COLUMNS; i++) {
+  gridTemplateColumns[i] = `repeat(${i}, minmax(0, 1fr))`;
+}
 const gridColumn = {};
 for (let i = 1; i <= GRID_COLUMNS; i++) {
   gridColumn[`span-${i}`] = `span ${i} / span ${i}`;
@@ -62,7 +66,13 @@ module.exports = {
         logo: '446/119',
       },
 
+      content: {
+        arrow: `url('data:image/svg+xml,<svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M69.4914 37.7055L35.9853 71.2097L2.45057 37.675L6.99568 33.1299L32.834 58.9683L32.8349 3.65135L39.1375 3.65125L39.1366 58.9676L65.0628 33.2765L69.4914 37.7055Z" fill="currentColor"/></svg>')`,
+      },
+
       fontSize: {
+        // 24px (@640px) -> 40px (@1536px)
+        '2xl': 'clamp(1.5rem, 1.8vw + 0.8rem, 2.5rem)',
         // 32px (@640px) -> 56px (@1536px)
         '4xl': 'clamp(2rem, 2.7vw + 0.9rem, 3.5rem)',
         // 36px (@640px) -> 72px (@1536px)
@@ -71,29 +81,36 @@ module.exports = {
         '8xl': 'clamp(4rem, 6vw + 1.25rem, 6.25rem);',
       },
 
+      gridTemplateColumns,
       gridColumn,
       gridColumnStart,
       gridColumnEnd,
-
-      gridTemplateColumns: {
-        24: 'repeat(24, minmax(0, 1fr))',
-      },
-
-      lineHeight: {
-        tighter: '1.05',
-      },
-
-      spacing: {
-        'wp-admin-bar': 'var(--wp-admin--admin-bar--height, 0px)',
-        // https://fluid-typography.netlify.app/
-        site: 'clamp(1rem, 2vw + 0.25rem, 1.5rem)',
-      },
 
       keyframes: {
         marquee: {
           '0%': { transform: 'translateX(0)' },
           '100%': { transform: 'translateX(calc(-1 * var(--marquee-width)))' },
         },
+      },
+
+      lineHeight: {
+        tighter: '1.05',
+      },
+
+      maxWidth: {
+        page: 'var(--100vw, 0)',
+      },
+
+      spacing: {
+        'wp-admin-bar': 'var(--wp-admin--admin-bar--height, 0px)',
+        // https://fluid-typography.netlify.app/
+        site: 'clamp(1rem, 2vw + 0.25rem, 1.5rem)',
+        'grid-site-margin': 'var(--grid-site-margin, 0px)',
+        'grid-site-gutter': 'var(--grid-site-gutter, 0px)',
+      },
+
+      zIndex: {
+        dialog: 100,
       },
     },
   },
