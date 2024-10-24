@@ -1,20 +1,12 @@
 {% extends "layouts/base.twig" %}
 
-{%- block custom_body_classes -%}
-  {{ post.is_light_nav ? 'light-nav' }}
-{%- endblock -%}
-
-{%- block custom_content_classes -%}
-  basic-page
-{%- endblock -%}
-
 {% block pageBody %}
 
-  {% include 'components/page-topper.twig' with { title: page.title } %}
+  {% include 'components/articles/toppers/topper--small_image.twig' %}
 
-  <article class="gutenberg-layout basic-page__body">
-    <div class="gutenberg-content basic-page__body-width js-hang-punc">
-      {{ page.content }}
+  <article>
+    <div class="pt-12 pb-24 gutenberg {{ post.has_lede_paragraph ? 'lede' }} js-hang-punc">
+      {{ post.content }}
     </div>
   </article>
 
