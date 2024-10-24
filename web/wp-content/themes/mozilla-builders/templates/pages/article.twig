@@ -1,40 +1,16 @@
 {% extends "layouts/base.twig" %}
 
-{%- block custom_body_classes -%}
-  {{ post.is_light_nav ? 'light-nav' }}
-{%- endblock -%}
-
-{%- block custom_content_classes -%}
-  js-modal-gallery article
-{%- endblock -%}
-
 {% block pageBody %}
-
   {% include "components/articles/toppers/topper--" ~ (post.topper_type|default('text_only')) ~ ".twig" %}
 
-  <div>
-    {% if post.authors %}
-      <p>
-        By
-        {% for author in post.authors %}
-          <a href="{{ author.link }}">{{ author.title }}</a>{% if loop.revindex0 == 1 %} and {% elseif not loop.last %}, {% endif %}
-        {% endfor %}
-      </p>
-    {% endif %}
-  </div>
-
-  <article class="article-body gutenberg-layout">
+  <article>
     {% include "components/articles/byline.twig" %}
-    {% include "components/articles/share-tools.twig" %}
 
-    <div class="article-body-width gutenberg-content js-hang-punc">
-
+    <div class="pt-12 pb-24 gutenberg {{ post.has_lede_paragraph ? 'lede' }} js-hang-punc">
       {{ post.content }}
-
     </div>
+
     {% include "components/articles/article-footer.twig" %}
   </article>
-
-  {% include "components/articles/modal-gallery.twig" %}
 
 {% endblock %}

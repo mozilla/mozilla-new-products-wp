@@ -45,6 +45,27 @@
       "append": ""
     },
     {
+      "key": "field_67194fe59cdaf",
+      "label": "Short Bio",
+      "name": "short_bio",
+      "aria-label": "",
+      "type": "textarea",
+      "instructions": "Presented as: <i>[Full name] is [short bio]</li>",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "allow_in_bindings": 0,
+      "rows": "",
+      "placeholder": "",
+      "new_lines": ""
+    },
+    {
       "key": "field_671115201a7fd",
       "label": "About",
       "name": "about",
@@ -84,5 +105,5 @@
   "active": true,
   "description": "",
   "show_in_rest": 0,
-  "modified": 1729174221
+  "modified": 1729712147
 }
