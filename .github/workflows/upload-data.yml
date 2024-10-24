@@ -12,9 +12,9 @@ jobs:
         env:
           PR_NUMBER: ${{ github.event.number }}
         run: |
-          mkdir -p ./_build
-          echo $PR_NUMBER > ./_build/pr_number
+          mkdir -p ./pr
+          echo $PR_NUMBER > ./pr/pr_number
       - uses: actions/upload-artifact@v4
         with:
-          name: deploy_artifacts
-          path: _build/
+          name: pr_number
+          path: pr/
