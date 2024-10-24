@@ -6,3 +6,4 @@ jobs:
   tests:
     name: Test
     uses: ./.github/workflows/test-scripts.yml
+    secrets: inherit

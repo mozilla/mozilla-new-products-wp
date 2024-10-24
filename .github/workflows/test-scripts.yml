@@ -2,6 +2,9 @@ name: Reusable testing scripts
 
 on:
   workflow_call:
+    secrets:
+      COMPOSER_AUTH_JSON:
+        required: true
 
 jobs:
   tests:
