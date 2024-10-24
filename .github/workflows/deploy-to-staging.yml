@@ -1,0 +1,44 @@
+name: Test and deploy to WPEngine staging
+on:
+  push:
+    branches:
+      - main
+      - action-deploys
+
+jobs:
+  tests:
+    name: Test
+    uses: ./.github/workflows/test-scripts.yml
+    secrets: inherit
+  deploy:
+    name: Deploy to WPEngine staging environment
+    runs-on: ubuntu-latest
+    steps:
+      - name: List things
+        run: |
+          ls -la web
+      # # deploy theme
+      # - name: GitHub Action Deploy Theme to WP Engine
+      #   uses: wpengine/github-action-wpe-site-deploy@v3
+      #   with:
+      #     WPE_SSHG_KEY_PRIVATE: ${{ secrets.SSH_KEY }}
+      #     WPE_ENV: mitadvkitdev
+      #     # Deploy Options
+      #     SRC_PATH: "themes/mit-advancement-toolkit/"
+      #     REMOTE_PATH: "wp-content/themes/mit-advancement-toolkit/"
+      #     PHP_LINT: FALSE
+      #     FLAGS: -azvr --inplace --delete --exclude=".*"  --exclude=wp-content/mu-plugins/local-plugin --exclude-from=.deployignore
+      #     CACHE_CLEAR: TRUE
+
+      # # deploy plugins
+      # - name: GitHub Action Deploy Plugins to WP Engine
+      #   uses: wpengine/github-action-wpe-site-deploy@v3
+      #   with:
+      #     WPE_SSHG_KEY_PRIVATE: ${{ secrets.SSH_KEY }}
+      #     WPE_ENV: mitadvkitdev
+      #     # Deploy Options
+      #     SRC_PATH: "plugins/"
+      #     REMOTE_PATH: "wp-content/plugins/"
+      #     PHP_LINT: FALSE
+      #     FLAGS: -azvr --inplace --exclude=".*"  --exclude=wp-content/mu-plugins/local-plugin
+      #     CACHE_CLEAR: TRUE
