@@ -1,81 +1,53 @@
 {% extends "layouts/base.twig" %}
 
 {% block pageBody %}
-
-  <header class="relative grid grid-site mt-24 md:-mt-24">
-    <div class="col-span-4 col-start-3 max-md:-mt-6 max-md:order-2 md:col-span-11 md:col-start-6">
-      <div class="aspect-[3/4] bg-gray"></div>
+<header class="relative grid grid-site centered-page mt-24 md:-mt-24">
+  <div class="col-span-4 col-start-3 max-md:-mt-8 max-md:-mr-grid-site-margin max-md:order-2 md:col-span-11 md:col-start-6">
+    <div class="aspect-[3/4] overflow-hidden">
+      {% if post.thumbnail.id %}
+        {% include 'components/lazy-img.twig' with { img: get_image(post.thumbnail.id), class: 'w-full h-full object-cover' } %}
+      {% else %}
+        <div class="aspect-[3/4] bg-gray"></div>
+      {% endif %}
     </div>
+  </div>
 
-    <div class="z-10 max-md:col-span-4 max-md:col-start-2 max-md:order-1 md:absolute md:inset-0 md:grid md:grid-site md:place-content-center md:pointer-events-none">
-      <h1 class="type-slab-3xl uppercase flex max-md:text-center max-md:items-center max-md:justify-center max-md:flex-col md:flex-wrap md:justify-between md:gap-8 md:col-span-18 md:col-start-4 md:pointer-events-auto">
-        <span>{{ post.first_name }}</span>
-        <span>{{ post.last_name }}</span>
-      </h1>
-    </div>
+  <div class="z-10 max-md:col-span-4 max-md:col-start-2 max-md:order-1 md:absolute md:inset-0 md:grid md:grid-site md:place-content-center md:pointer-events-none">
+    <h1 class="type-slab-2xl uppercase flex max-md:text-center max-md:items-center max-md:justify-center max-md:flex-col md:flex-wrap md:justify-between md:gap-8 md:col-span-18 md:col-start-4 md:pointer-events-auto">
+      <span>{{ post.first_name }}</span>
+      <span>{{ post.last_name }}</span>
+    </h1>
+  </div>
 
-    <div class="col-span-6 col-start-18 my-8 flex flex-col justify-end">
-      <dl class="grid grid-cols-[2fr_4fr] gap-x-4 gap-y-2">
-        <div class="contents">
-          <dt class="uppercase">Cohort</dt>
-          <dd class="flex items-center">22<span class="inline-flex w-8 border-t border-black" aria-label="through"></span>23</dd>
-        </div>
+  <div class="col-span-6 col-start-18 my-8 flex flex-col justify-end max-md:order-3">
+    <dl class="grid grid-cols-[1fr_1fr] md:grid-cols-[1fr_2fr] gap-x-4 gap-y-2">
+      <div class="contents">
+        <dt class="uppercase">Cohort</dt>
+        <dd class="flex items-center">22<span class="inline-flex w-8 border-t border-black" aria-label="through"></span>23</dd>
+      </div>
 
-        {% if post.github_username %}
-        <div class="contents">
-          <dt class="uppercase">GitHub</dt>
-          <dd><a class="underline" href="https://github.com/{{ post.github_username }}">{{ post.github_username }}</a></dd>
-        </div>
-        {% endif %}
-
-        {% if post.contacts %}
-        <div class="contents">
-          <dt class="uppercase">Contact</dt>
-          <dd>
-            {% for item in post.contacts %}
-              <a class="underline" href="{{ item.link }}">{{ item.label }}</a>
-            {% endfor %}
-          </dd>
-        </div>
-        {% endif %}
-      </dl>
-    </div>
-  </header>
-
-
-  <article class="gutenberg-layout basic-page__body">
-    <header>
-      <h1>
-        <span>{{ post.meta('first_name') }}</span>
-        <span>{{ post.meta('last_name') }}</span>
-      </h1>
-
-      {% if post.thumbnail %}
-        <img src="{{ post.thumbnail.src('full') }}" alt="{{ post.thumbnail.alt }}">
+      {% if post.github_username %}
+      <div class="contents">
+        <dt class="uppercase">GitHub</dt>
+        <dd><a class="underline" href="https://github.com/{{ post.github_username }}">{{ post.github_username }}</a></dd>
+      </div>
       {% endif %}
 
-      <dl>
-        {% if post.meta('github_username') %}
-          <dt>GitHub</dt>
-          <dd><a href="https://github.com/{{ post.meta('github_username') }}">[{{ post.meta('github_username') }}]</a></dd>
-        {% endif %}
+      {% if post.contacts %}
+      <div class="contents">
+        <dt class="uppercase">Contact</dt>
+        <dd>
+          {% for item in post.contacts %}
+            <a class="underline" href="{{ item.link }}">{{ item.label }}</a>
+          {% endfor %}
+        </dd>
+      </div>
+      {% endif %}
+    </dl>
+  </div>
+</header>
 
-        {% if post.contacts %}
-          <dt>Contact</dt>
-          <dd>
-            {% for item in post.contacts %}
-              <a href="{{ item.link }}">[{{ item.label }}]</a>
-            {% endfor %}
-          </dd>
-        {% endif %}
-
-      </dl>
-
-    </header>
-
-    <div class="gutenberg-content basic-page__body-width js-hang-punc">
-      {{ post.about }}
-    </div>
-  </article>
-
+<div class="gutenberg-content basic-page__body-width js-hang-punc">
+  {{ post.about }}
+</div>
 {% endblock %}
