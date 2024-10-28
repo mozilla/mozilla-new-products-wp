@@ -58,6 +58,20 @@ jobs:
       - name: List things
         run: |
           ls -la
+
+      - name: SFTP Upload
+        uses: Dylan700/sftp-upload-action@v1.2.3
+        with:
+          server: buildersmozil1.sftp.wpengine.com
+          username: buildersmozil1-nick-braica
+          password: ${{ secrets.WPENGINE_SFTP_PASSWORD }}
+          port: 2222
+          uploads: |
+            ./web/wp-content/themes/mozilla-builders/ => /wp-content/themes/mozilla-builders
+            ./web/wp-content/plugins/ => /wp-content/plugins/
+          ignore: |
+            ./web/wp-content/themes/mozilla-builders/node_modules
+
       # # deploy theme
       # - name: GitHub Action Deploy Theme to WP Engine
       #   uses: wpengine/github-action-wpe-site-deploy@v3
