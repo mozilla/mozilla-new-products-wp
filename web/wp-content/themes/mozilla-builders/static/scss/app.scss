@@ -1,3 +1,4 @@
+@import 'functions/color';
 @import 'mixins/font-face';
 
 @tailwind base;
@@ -29,19 +30,37 @@
 @include font-face('Mozilla Semi Slab Extended', 'MozillaSemiSlabExtBETA-SemiBold', 600, normal);
 @include font-face('Mozilla Semi Slab Extended', 'MozillaSemiSlabExtBETA-Bold', 700, normal);
 
-body {
-  @apply bg-white text-black;
-  @apply font-sans font-normal text-base antialiased;
-
-  &.dark {
-    @apply bg-black text-white;
-  }
-}
-
 :root {
   @apply [--100vw:min(100vw,1920px)];
   @apply [--grid-site-margin:calc((24/400)*var(--100vw))] md:[--grid-site-margin:calc((32/1440)*var(--100vw))];
   @apply [--grid-site-gutter:calc((24/400)*var(--100vw))] md:[--grid-site-gutter:calc((40/1440)*var(--100vw))];
+
+  --color-black: #{color(#000000)};
+  --color-white: #{color(#ffffff)};
+  --color-gray: #{color(#f0f0f0)};
+  --color-green: #{color(#00d230)};
+  --color-green-dark: #{color(#005e2a)};
+  --color-orange: #{color(#ff9900)};
+  --color-yellow: #{color(#ffdd63)};
+  --color-purple: #{color(#7f00ca)};
+  --color-pink: #{color(#ff008a)};
+}
+
+body {
+  @apply bg-main text-content;
+  @apply font-sans font-normal text-base antialiased;
+}
+
+@layer base {
+  .theme-light {
+    --color-main: var(--color-white);
+    --color-content: var(--color-black);
+  }
+
+  .theme-dark {
+    --color-main: var(--color-black);
+    --color-content: var(--color-white);
+  }
 }
 
 @layer components {
