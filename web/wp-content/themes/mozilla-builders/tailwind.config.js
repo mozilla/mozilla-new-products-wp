@@ -1,4 +1,6 @@
 import theme from 'tailwindcss/defaultTheme';
+import utilitiesScss from './plugins/utilities-scss';
+import path from 'path';
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -98,5 +100,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [utilitiesScss({ filename: path.resolve(__dirname, 'static/scss/app.scss') })],
 };
