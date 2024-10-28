@@ -30,7 +30,7 @@
       {% if post.github_username %}
       <div class="contents">
         <dt class="col-span-2 md:col-span-3 uppercase">GitHub</dt>
-        <dd class="col-span-4"><a class="before:content-['['] after:content-[']'] max-md:before:hidden max-md:after:hidden max-md:underline" href="https://github.com/{{ post.github_username }}">{{ post.github_username }}</a></dd>
+        <dd class="col-span-4"><a class="before:content-['['] after:content-[']'] max-md:before:hidden max-md:after:hidden max-md:underline transition-colors hover:bg-green" href="https://github.com/{{ post.github_username }}">{{ post.github_username }}</a></dd>
       </div>
       {% endif %}
 
@@ -39,7 +39,7 @@
         <dt class="col-span-2 md:col-span-3 uppercase">Contact</dt>
         <dd class="col-span-4">
           {% for item in post.contacts %}
-            <a class="before:content-['['] after:content-[']'] max-md:before:hidden max-md:after:hidden max-md:underline" href="{{ item.link }}">{{ item.label }}</a>
+            <a class="before:content-['['] after:content-[']'] max-md:before:hidden max-md:after:hidden max-md:underline transition-colors hover:bg-green" href="{{ item.link }}">{{ item.label }}</a>
           {% endfor %}
         </dd>
       </div>
