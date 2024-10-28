@@ -1,35 +1,40 @@
-@import 'functions/color';
-@import 'mixins/font-face';
-@import 'mixins/grid';
+@use 'functions/color';
+@use 'mixins/font-face' as fonts;
+@use 'mixins/grid';
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 // Mozilla Sans
-@include font-face('Mozilla Sans', 'MozillaSansBETA-ExtraLight', 200, normal);
-@include font-face('Mozilla Sans', 'MozillaSansBETA-Light', 300, normal);
-@include font-face('Mozilla Sans', 'MozillaSansBETA-Regular', 400, normal);
-@include font-face('Mozilla Sans', 'MozillaSansBETA-SemiBold', 600, normal);
-@include font-face('Mozilla Sans', 'MozillaSansBETA-Bold', 700, normal);
+@include fonts.face('Mozilla Sans', 'MozillaSansBETA-ExtraLight', 200, normal);
+@include fonts.face('Mozilla Sans', 'MozillaSansBETA-Light', 300, normal);
+@include fonts.face('Mozilla Sans', 'MozillaSansBETA-Regular', 400, normal);
+@include fonts.face('Mozilla Sans', 'MozillaSansBETA-SemiBold', 600, normal);
+@include fonts.face('Mozilla Sans', 'MozillaSansBETA-Bold', 700, normal);
 // Mozilla Semi Slab
-@include font-face('Mozilla Semi Slab', 'MozillaSemiSlabBETA-ExtraLight', 200, normal);
-@include font-face('Mozilla Semi Slab', 'MozillaSemiSlabBETA-Light', 300, normal);
-@include font-face('Mozilla Semi Slab', 'MozillaSemiSlabBETA-Regular', 400, normal);
-@include font-face('Mozilla Semi Slab', 'MozillaSemiSlabBETA-SemiBold', 600, normal);
-@include font-face('Mozilla Semi Slab', 'MozillaSemiSlabBETA-Bold', 700, normal);
+@include fonts.face('Mozilla Semi Slab', 'MozillaSemiSlabBETA-ExtraLight', 200, normal);
+@include fonts.face('Mozilla Semi Slab', 'MozillaSemiSlabBETA-Light', 300, normal);
+@include fonts.face('Mozilla Semi Slab', 'MozillaSemiSlabBETA-Regular', 400, normal);
+@include fonts.face('Mozilla Semi Slab', 'MozillaSemiSlabBETA-SemiBold', 600, normal);
+@include fonts.face('Mozilla Semi Slab', 'MozillaSemiSlabBETA-Bold', 700, normal);
 // Mozilla Semi Slab Condensed
-@include font-face('Mozilla Semi Slab Condensed', 'MozillaSemiSlabCndBETA-ExtraLight', 200, normal);
-@include font-face('Mozilla Semi Slab Condensed', 'MozillaSemiSlabCndBETA-Light', 300, normal);
-@include font-face('Mozilla Semi Slab Condensed', 'MozillaSemiSlabCndBETA-Regular', 400, normal);
-@include font-face('Mozilla Semi Slab Condensed', 'MozillaSemiSlabCndBETA-SemiBold', 600, normal);
-@include font-face('Mozilla Semi Slab Condensed', 'MozillaSemiSlabCndBETA-Bold', 700, normal);
+@include fonts.face(
+  'Mozilla Semi Slab Condensed',
+  'MozillaSemiSlabCndBETA-ExtraLight',
+  200,
+  normal
+);
+@include fonts.face('Mozilla Semi Slab Condensed', 'MozillaSemiSlabCndBETA-Light', 300, normal);
+@include fonts.face('Mozilla Semi Slab Condensed', 'MozillaSemiSlabCndBETA-Regular', 400, normal);
+@include fonts.face('Mozilla Semi Slab Condensed', 'MozillaSemiSlabCndBETA-SemiBold', 600, normal);
+@include fonts.face('Mozilla Semi Slab Condensed', 'MozillaSemiSlabCndBETA-Bold', 700, normal);
 // Mozilla Semi Slab Extended
-@include font-face('Mozilla Semi Slab Extended', 'MozillaSemiSlabExtBETA-ExtraLight', 200, normal);
-@include font-face('Mozilla Semi Slab Extended', 'MozillaSemiSlabExtBETA-Light', 300, normal);
-@include font-face('Mozilla Semi Slab Extended', 'MozillaSemiSlabExtBETA-Regular', 400, normal);
-@include font-face('Mozilla Semi Slab Extended', 'MozillaSemiSlabExtBETA-SemiBold', 600, normal);
-@include font-face('Mozilla Semi Slab Extended', 'MozillaSemiSlabExtBETA-Bold', 700, normal);
+@include fonts.face('Mozilla Semi Slab Extended', 'MozillaSemiSlabExtBETA-ExtraLight', 200, normal);
+@include fonts.face('Mozilla Semi Slab Extended', 'MozillaSemiSlabExtBETA-Light', 300, normal);
+@include fonts.face('Mozilla Semi Slab Extended', 'MozillaSemiSlabExtBETA-Regular', 400, normal);
+@include fonts.face('Mozilla Semi Slab Extended', 'MozillaSemiSlabExtBETA-SemiBold', 600, normal);
+@include fonts.face('Mozilla Semi Slab Extended', 'MozillaSemiSlabExtBETA-Bold', 700, normal);
 
 :root {
   @apply [--100vw:min(100vw,1920px)];
@@ -37,15 +42,15 @@
   @apply [--grid-site-margin:calc((24/400)*var(--100vw))] md:[--grid-site-margin:calc((32/1440)*var(--100vw))];
   @apply [--grid-site-gutter:calc((24/400)*var(--100vw))] md:[--grid-site-gutter:calc((40/1440)*var(--100vw))];
 
-  --color-black: #{color(#000000)};
-  --color-white: #{color(#ffffff)};
-  --color-gray: #{color(#f0f0f0)};
-  --color-green: #{color(#00d230)};
-  --color-green-dark: #{color(#005e2a)};
-  --color-orange: #{color(#ff9900)};
-  --color-yellow: #{color(#ffdd63)};
-  --color-purple: #{color(#7f00ca)};
-  --color-pink: #{color(#ff008a)};
+  --color-black: #{color.rgb(#000000)};
+  --color-white: #{color.rgb(#ffffff)};
+  --color-gray: #{color.rgb(#f0f0f0)};
+  --color-green: #{color.rgb(#00d230)};
+  --color-green-dark: #{color.rgb(#005e2a)};
+  --color-orange: #{color.rgb(#ff9900)};
+  --color-yellow: #{color.rgb(#ffdd63)};
+  --color-purple: #{color.rgb(#7f00ca)};
+  --color-pink: #{color.rgb(#ff008a)};
 }
 
 body {
@@ -131,53 +136,53 @@ body {
   // Grid utilities
   @for $i from 1 through 24 {
     .grid-cols-#{$i} {
-      @include grid-template-columns($i);
+      @include grid.template-columns($i);
     }
     .col-span-#{$i} {
-      @include grid-column-span($i);
+      @include grid.column-span($i);
     }
     .col-start-#{$i} {
-      @include grid-column-start($i);
+      @include grid.column-start($i);
     }
     .col-end-#{$i} {
-      @include grid-column-end($i);
+      @include grid.column-end($i);
     }
   }
   .grid-cols-site {
-    @include grid-template-columns(var(--grid-site-cols));
+    @include grid.template-columns(var(--grid-site-cols));
   }
   .col-span-1\/2 {
-    @include grid-column-span(calc(var(--column-count) / 2));
+    @include grid.column-span(calc(var(--column-count) / 2));
   }
   .col-span-1\/3 {
-    @include grid-column-span(calc(var(--column-count) / 3));
+    @include grid.column-span(calc(var(--column-count) / 3));
   }
   .col-span-2\/3 {
-    @include grid-column-span(calc(var(--column-count) * 2 / 3));
+    @include grid.column-span(calc(var(--column-count) * 2 / 3));
   }
   .col-span-1\/6 {
-    @include grid-column-span(calc(var(--column-count) / 6));
+    @include grid.column-span(calc(var(--column-count) / 6));
   }
   .col-span-2\/6 {
-    @include grid-column-span(calc(var(--column-count) * 2 / 6));
+    @include grid.column-span(calc(var(--column-count) * 2 / 6));
   }
   .col-span-3\/6 {
-    @include grid-column-span(calc(var(--column-count) * 3 / 6));
+    @include grid.column-span(calc(var(--column-count) * 3 / 6));
   }
   .col-span-4\/6 {
-    @include grid-column-span(calc(var(--column-count) * 4 / 6));
+    @include grid.column-span(calc(var(--column-count) * 4 / 6));
   }
   .col-span-5\/6 {
-    @include grid-column-span(calc(var(--column-count) * 5 / 6));
+    @include grid.column-span(calc(var(--column-count) * 5 / 6));
   }
   .col-span-full {
-    @include grid-column-span(var(--column-count));
+    @include grid.column-span(var(--column-count));
   }
   .col-span-screen {
     @apply col-span-full -mx-grid-site-margin;
   }
   .col-start-center {
-    @include grid-column-start(calc((var(--column-count) - var(--column-span)) / 2 + 1));
+    @include grid.column-start(calc((var(--column-count) - var(--column-span)) / 2 + 1));
   }
   .grid-site {
     @apply grid-cols-site gap-x-grid-site-gutter px-grid-site-margin;
