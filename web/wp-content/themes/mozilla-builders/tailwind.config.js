@@ -1,23 +1,5 @@
 import theme from 'tailwindcss/defaultTheme';
 
-const GRID_COLUMNS = 24;
-const gridTemplateColumns = {};
-for (let i = 1; i <= GRID_COLUMNS; i++) {
-  gridTemplateColumns[i] = `repeat(${i}, minmax(0, 1fr))`;
-}
-const gridColumn = {};
-for (let i = 1; i <= GRID_COLUMNS; i++) {
-  gridColumn[`span-${i}`] = `span ${i} / span ${i}`;
-}
-const gridColumnStart = {};
-for (let i = 1; i <= GRID_COLUMNS; i++) {
-  gridColumnStart[i] = i.toString();
-}
-const gridColumnEnd = {};
-for (let i = 1; i <= GRID_COLUMNS; i++) {
-  gridColumnEnd[i] = i.toString();
-}
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./**/*.twig'],
@@ -53,6 +35,11 @@ module.exports = {
       bold: 700,
     },
 
+    gridTemplateColumns: false,
+    gridColumn: false,
+    gridColumnStart: false,
+    gridColumnEnd: false,
+
     extend: {
       aria: {
         current: 'current="page"',
@@ -82,11 +69,6 @@ module.exports = {
         // 64px (@640px) -> 100px (@1536px)
         '8xl': 'clamp(4rem, 6vw + 1.25rem, 6.25rem);',
       },
-
-      gridTemplateColumns,
-      gridColumn,
-      gridColumnStart,
-      gridColumnEnd,
 
       keyframes: {
         marquee: {
