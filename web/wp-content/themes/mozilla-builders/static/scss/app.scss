@@ -86,11 +86,6 @@ body {
   }
 
   // Grid utilities
-  .grid {
-    --column-count: initial;
-    --column-start: initial;
-    --column-end: initial;
-  }
   @for $i from 1 through 24 {
     .grid-cols-#{$i} {
       @include grid-template-columns($i);

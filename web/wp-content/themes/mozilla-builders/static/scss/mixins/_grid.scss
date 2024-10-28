@@ -1,5 +1,7 @@
 @mixin grid-template-columns($i) {
   --column-count: #{$i};
+  --column-start: initial;
+  --column-end: initial;
   grid-template-columns: repeat(var(--column-count), minmax(0, 1fr));
 }
 
