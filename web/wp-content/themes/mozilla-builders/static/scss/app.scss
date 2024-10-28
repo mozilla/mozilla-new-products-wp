@@ -266,7 +266,7 @@ body {
 
       // Inline links
       a {
-        @apply underline hover:text-green focus:text-green;
+        @apply underline hover:text-action-focus focus:text-action-focus;
       }
     }
 
