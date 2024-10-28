@@ -240,7 +240,7 @@ body {
     > ul,
     > ol,
     hr {
-      @apply md:col-span-16 lg:col-span-10 col-start-center;
+      @apply md:col-span-16 lg:col-span-10;
     }
 
     > h1,
