@@ -38,7 +38,7 @@
 {# ignore aspect ratio if set to false #}
 {% if aspectRatio == false %}
   <img
-    class="lazy-img lazyload {{ class }}"
+    class="lazyload opacity-0 [&.lazyloaded]:opacity-100 transition-opacity {{ class }}"
     data-srcset="{{ img.srcset }}"
     data-src="{{ img.src }}"
     data-sizes="auto"
@@ -58,7 +58,7 @@
 
   <div class="flex relative aspect-[--ratio] {{ class }}" style="--ratio: {{ ratio }}">
     <img
-      class="lazy-img lazyload absolute inset-0 w-full h-full {{ imgClass }}"
+      class="lazyload opacity-0 [&.lazyloaded]:opacity-100 transition-opacity absolute inset-0 w-full h-full {{ imgClass }}"
       data-srcset="{{ img.srcset }}"
       data-src="{{ img.src }}"
       data-sizes="auto"

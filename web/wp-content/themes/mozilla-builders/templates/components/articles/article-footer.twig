@@ -1,14 +1,16 @@
 {% if post.authors is not empty %}
   <section class="grid grid-site centered-page">
-    <div class="col-span-full border-t border-black pt-6 grid grid-cols-6 gap-x-grid-site-gutter md:grid-cols-16 md:col-span-16 md:col-start-5">
-      <h2 class="col-span-full lg:col-span-8">About the Author{% if post.authors|length > 1 %}s{% endif %}</h2>
+    <div class="col-span-full border-t border-black pt-6 md:col-span-16 md:col-start-center">
+      <div class="grid grid-cols-6 gap-x-grid-site-gutter md:grid-cols-16">
+        <h2 class="col-span-full lg:col-span-8">About the Author{% if post.authors|length > 1 %}s{% endif %}</h2>
 
-      <div class="flex flex-col gap-4 max-lg:mt-4 col-span-full lg:col-span-8">
-        {% for author in post.authors %}
-          <div class="flex flex-col gap-1">
-            {{ author.about }}
-          </div>
-        {% endfor %}
+        <div class="flex flex-col gap-4 max-lg:mt-4 col-span-full lg:col-span-8">
+          {% for author in post.authors %}
+            <div class="flex flex-col gap-1">
+              {{ author.about }}
+            </div>
+          {% endfor %}
+        </div>
       </div>
     </div>
   </section>

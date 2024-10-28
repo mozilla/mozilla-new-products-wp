@@ -1,22 +1,6 @@
 import theme from 'tailwindcss/defaultTheme';
-
-const GRID_COLUMNS = 24;
-const gridTemplateColumns = {};
-for (let i = 1; i <= GRID_COLUMNS; i++) {
-  gridTemplateColumns[i] = `repeat(${i}, minmax(0, 1fr))`;
-}
-const gridColumn = {};
-for (let i = 1; i <= GRID_COLUMNS; i++) {
-  gridColumn[`span-${i}`] = `span ${i} / span ${i}`;
-}
-const gridColumnStart = {};
-for (let i = 1; i <= GRID_COLUMNS; i++) {
-  gridColumnStart[`start-${i}`] = i;
-}
-const gridColumnEnd = {};
-for (let i = 1; i <= GRID_COLUMNS; i++) {
-  gridColumnEnd[`end-${i}`] = i;
-}
+import utilitiesScss from './plugins/utilities-scss';
+import path from 'path';
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -53,6 +37,11 @@ module.exports = {
       bold: 700,
     },
 
+    gridTemplateColumns: false,
+    gridColumn: false,
+    gridColumnStart: false,
+    gridColumnEnd: false,
+
     extend: {
       aria: {
         current: 'current="page"',
@@ -71,6 +60,8 @@ module.exports = {
       },
 
       fontSize: {
+        // 20px (@640px) -> 24px (@1536px)
+        xl: 'clamp(1.25rem, 1.3vw + 0.7rem, 1.5rem)',
         // 24px (@640px) -> 40px (@1536px)
         '2xl': 'clamp(1.5rem, 1.8vw + 0.8rem, 2.5rem)',
         // 32px (@640px) -> 56px (@1536px)
@@ -80,11 +71,6 @@ module.exports = {
         // 64px (@640px) -> 100px (@1536px)
         '8xl': 'clamp(4rem, 6vw + 1.25rem, 6.25rem);',
       },
-
-      gridTemplateColumns,
-      gridColumn,
-      gridColumnStart,
-      gridColumnEnd,
 
       keyframes: {
         marquee: {
@@ -114,5 +100,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [utilitiesScss({ filename: path.resolve(__dirname, 'static/scss/app.scss') })],
 };
