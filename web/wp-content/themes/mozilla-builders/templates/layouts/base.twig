@@ -3,11 +3,11 @@
 
 {% include "layouts/includes/head.twig" %}
 
-<body x-data class="{{ body_class }} {{ pagename ? 'page-name-' ~ pagename }} theme-dark {% block custom_body_classes %}{% endblock %}">
+<body x-data class="{{ body_class }} {{ pagename ? 'page-name-' ~ pagename }} theme-light {% block custom_body_classes %}{% endblock %}">
 
   <a href="#content" class="sr-only focus:not-sr-only !absolute inset-x-0 top-0">
-    <div class="w-full flex items-center justify-center p-1.5 bg-black">
-      <span class="text-white text-center text-sm font-semibold tracking-wide uppercase">Skip to content</span>
+    <div class="w-full flex items-center justify-center p-1.5 bg-content">
+      <span class="text-main text-center text-sm font-semibold tracking-wide uppercase">Skip to content</span>
     </div>
   </a>
 

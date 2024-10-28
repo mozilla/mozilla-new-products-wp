@@ -58,6 +58,7 @@ body {
     --color-main: var(--color-white);
     --color-secondary: var(--color-gray);
     --color-content: var(--color-black);
+
     --color-action: var(--color-black);
     --color-action-reverse: var(--color-white);
     --color-action-focus: var(--color-green);
@@ -68,6 +69,7 @@ body {
     --color-main: var(--color-black);
     --color-secondary: var(--color-gray);
     --color-content: var(--color-white);
+
     --color-action: var(--color-pink);
     --color-action-reverse: var(--color-black);
     --color-action-focus: var(--color-green);
@@ -109,7 +111,7 @@ body {
   }
 
   .type-code {
-    @apply bg-black text-white py-0.5 px-1 decoration-clone text-sm;
+    @apply bg-content text-main py-0.5 px-1 decoration-clone text-sm;
   }
 
   .type-caption {
@@ -120,6 +122,10 @@ body {
 @layer utilities {
   .centered-page {
     @apply max-w-page w-full mx-auto;
+  }
+
+  .mask-arrow-down {
+    mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72"><path fill-rule="evenodd" clip-rule="evenodd" d="M69.4914 37.7046L35.9853 71.2088L2.45056 37.6741L6.99567 33.129L32.834 58.9674L32.8349 3.65049L39.1375 3.65039L39.1366 58.9667L65.0628 33.2756L69.4914 37.7046Z" fill="currentColor"/></svg>');
   }
 
   // Grid utilities
@@ -237,14 +243,41 @@ body {
       }
     }
 
+    > h1,
+    > h2,
+    > h3,
+    > h4,
+    > h5,
+    > h6,
+    > p,
+    > ul > li,
+    > ol > li,
+    > pre {
+      // Inline images
+      img {
+        @apply inline-flex translate-y-[-5%];
+        @apply h-[1em] w-auto !important;
+      }
+
+      // Inline code
+      code {
+        @apply type-code;
+      }
+
+      // Inline links
+      a {
+        @apply underline hover:text-green focus:text-green;
+      }
+    }
+
     // Separators
     hr {
       @apply my-6 border-transparent overflow-visible;
 
       &::before {
         content: '';
-        @apply block h-[0.5px] w-full opacity-50;
-        background-image: linear-gradient(to right, black 33%, transparent 0%);
+        @apply block h-[0.5px] w-full opacity-40;
+        background-image: linear-gradient(to right, rgb(var(--color-content)) 33%, transparent 0%);
         background-position: bottom;
         background-size: 4px 1px;
         background-repeat: repeat-x;
@@ -275,33 +308,6 @@ body {
       @apply md:col-span-16 lg:col-span-10;
     }
 
-    > h1,
-    > h2,
-    > h3,
-    > h4,
-    > h5,
-    > h6,
-    > p,
-    > ul > li,
-    > ol > li,
-    > pre {
-      // Inline images
-      img {
-        @apply inline-flex translate-y-[-5%];
-        @apply h-[1em] w-auto !important;
-      }
-
-      // Inline code
-      code {
-        @apply type-code;
-      }
-
-      // Inline links
-      a {
-        @apply underline hover:text-green focus:text-green;
-      }
-    }
-
     // Paragraphs
     > p {
       &:first-child:is(.lede *) {
@@ -312,7 +318,7 @@ body {
     // Code block
     pre {
       code {
-        @apply block bg-black px-4 py-3 leading-loose;
+        @apply block bg-content px-4 py-3 leading-loose;
       }
     }
 
@@ -373,7 +379,7 @@ body {
     figure.wp-block-table {
       table {
         thead {
-          @apply border-t border-black text-left align-top;
+          @apply border-t border-content text-left align-top;
 
           tr th {
             @apply py-3 uppercase text-sm font-normal;
@@ -386,7 +392,7 @@ body {
 
         tbody {
           tr {
-            @apply border-t border-black;
+            @apply border-t border-content;
           }
 
           tr td {
@@ -440,10 +446,12 @@ body {
       @apply flex justify-center w-full;
     }
     .wp-block-button__link {
-      @apply w-full p-10 uppercase text-center bg-black text-white border border-black transition-colors hover:text-black focus:text-black hover:bg-green focus:bg-green hover:border-green focus:border-green;
+      @apply w-full p-10 uppercase text-center bg-content text-main border border-content transition-colors;
+      @apply hover:text-action-focus-reverse focus:text-action-focus-reverse hover:bg-action focus:bg-action hover:border-action focus:border-action;
     }
     .is-style-outline .wp-block-button__link {
-      @apply bg-transparent text-black hover:text-green focus:text-green;
+      @apply bg-transparent text-content;
+      @apply hover:text-action focus:text-action;
     }
 
     // Files
@@ -451,13 +459,18 @@ body {
       @apply flex md:col-span-16 lg:col-span-10;
 
       a:not(.wp-block-file__button) {
-        @apply flex items-center justify-between gap-10 w-full p-10 bg-green text-black uppercase font-semibold border-2 border-green transition-colors hover:border-black focus:border-black;
+        @apply flex items-center justify-between gap-10 w-full p-10;
+        @apply uppercase font-semibold;
+        @apply bg-action text-action-reverse transition-colors;
+        @apply hover:bg-action-focus focus:bg-action-focus;
 
         &:has(+ a.wp-block-file__button) {
           @apply md:py-8;
 
           &::after {
-            @apply block shrink-0 content-arrow size-10 md:size-14 transition-colors hover:translate-y-2 focus:translate-y-2;
+            content: '';
+            @apply block shrink-0 bg-current mask-arrow-down size-8 md:size-10;
+            @apply transition hover:translate-y-1 focus:translate-y-1;
           }
         }
       }

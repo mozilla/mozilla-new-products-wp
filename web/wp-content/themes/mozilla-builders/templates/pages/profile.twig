@@ -24,7 +24,7 @@
     <dl class="grid grid-cols-6 md:grid-cols-7 gap-x-grid-site-gutter gap-y-2">
       <div class="contents">
         <dt class="col-span-2 md:col-span-3 uppercase">Cohort</dt>
-        <dd class="col-span-4 flex items-center">22<span class="inline-flex w-8 border-t border-black" aria-label="through"></span>23</dd>
+        <dd class="col-span-4 flex items-center">22<span class="inline-flex w-8 border-t border-content" aria-label="through"></span>23</dd>
       </div>
 
       {% if post.github_username %}
@@ -60,7 +60,7 @@
 
 {% if post.latest_articles is not empty %}
 <section class="mt-12 md:mt-24 grid grid-site centered-page">
-  <div class="col-span-full border border-black p-1">
+  <div class="col-span-full border border-content p-1">
     <h2 class="uppercase text-sm text-center">Written by {{ post.first_name }}</h2>
   </div>
 
