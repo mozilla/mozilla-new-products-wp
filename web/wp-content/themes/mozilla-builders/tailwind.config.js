@@ -44,6 +44,13 @@ module.exports = {
       // Applied colors
       main: color('main'),
       content: color('content'),
+      secondary: color('secondary'),
+      action: {
+        DEFAULT: color('action'),
+        reverse: color('action-reverse'),
+        focus: color('action-focus'),
+        'focus-reverse': color('action-focus-reverse'),
+      },
     },
 
     fontFamily: {
@@ -107,6 +114,10 @@ module.exports = {
 
       maxWidth: {
         page: 'var(--100vw, 0)',
+      },
+
+      minHeight: {
+        screen: '100dvh',
       },
 
       spacing: {

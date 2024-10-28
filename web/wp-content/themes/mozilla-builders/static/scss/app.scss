@@ -54,12 +54,22 @@ body {
 @layer base {
   .theme-light {
     --color-main: var(--color-white);
+    --color-secondary: var(--color-gray);
     --color-content: var(--color-black);
+    --color-action: var(--color-black);
+    --color-action-reverse: var(--color-white);
+    --color-action-focus: var(--color-green);
+    --color-action-focus-reverse: var(--color-black);
   }
 
   .theme-dark {
     --color-main: var(--color-black);
+    --color-secondary: var(--color-gray);
     --color-content: var(--color-white);
+    --color-action: var(--color-pink);
+    --color-action-reverse: var(--color-black);
+    --color-action-focus: var(--color-green);
+    --color-action-focus-reverse: var(--color-black);
   }
 }
 

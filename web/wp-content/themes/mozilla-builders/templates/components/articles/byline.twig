@@ -1,15 +1,15 @@
 <div class="grid grid-site pt-12 centered-page text-sm max-md:pt-6">
-  <div class="md:grid grid-cols-subgrid col-span-6 md:col-span-24 md:border-t border-black md:pt-3 flex max-md:flex-col">
-    <p class="md:col-span-7 uppercase leading-tight max-md:flex max-md:gap-6 max-md:justify-between max-md:border-b max-md:border-black max-md:py-2">
+  <div class="md:grid grid-cols-subgrid col-span-6 md:col-span-24 md:border-t border-content md:pt-3 flex max-md:flex-col">
+    <p class="md:col-span-7 uppercase leading-tight max-md:flex max-md:gap-6 max-md:justify-between max-md:border-b max-md:border-content max-md:py-2">
       {% include 'components/articles/byline_format.twig' with { bylines: post.authors } %}
     </p>
 
-    <p class="md:col-span-12 uppercase leading-tight col-span-2 max-md:flex max-md:gap-6 max-md:justify-between max-md:border-b max-md:border-black max-md:py-2">
+    <p class="md:col-span-12 uppercase leading-tight col-span-2 max-md:flex max-md:gap-6 max-md:justify-between max-md:border-b max-md:border-content max-md:py-2">
       <span class="block">on</span>
       <time class="max-md:text-right" datetime="{{ post.date|date('c') }}">{{ post.date|date('M d, Y') }}</time>
     </p>
 
-    <div class="md:col-span-5 max-md:flex max-md:gap-6 max-md:justify-between max-md:border-b max-md:border-black max-md:py-2">
+    <div class="md:col-span-5 max-md:flex max-md:gap-6 max-md:justify-between max-md:border-b max-md:border-content max-md:py-2">
       <p class="uppercase leading-tight">Share</p>
       {% include "components/articles/share-tools.twig" %}
     </div>
