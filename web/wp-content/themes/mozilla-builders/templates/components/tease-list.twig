@@ -1,38 +1,34 @@
 {% if posts|length %}
-<ul class="tease-list">
+<ul class="px-grid-site-margin centered-page">
   {% for post in posts %}
-    <li class="tease {{ post.thumbnail ? 'tease--image' : 'tease--no-image' }}">
-      <div class="tease__inner">
-        {% if post.thumbnail %}
-          <div class="tease__art-mod">
-            <a href="{{ post.link }}" class="tease__art__link" tabindex="-1">
-              {% include 'templates/components/lazy-img.twig' with {
-                img: post.thumbnail,
-                class: "tease__art"
-              } %}
-            </a>
-          </div>
+    <li class="col-span-full grid grid-cols-site gap-x-grid-site-gutter gap-y-2 py-4 relative border-t border-content">
+      <div class="col-span-full md:col-span-5 order-1">
+        <h3 class="text-sm font-semibold uppercase">
+          <a class="before:absolute before:inset-0 before:z-10" href="{{ post.link }}">{{ post.title }}</a>
+        </h3>
+      </div>
+
+      <div class="col-span-full md:col-span-5 order-2 {{ not post.subtitle ? 'hidden md:block' }}">
+        {% if post.subtitle %}
+          <p class="text-sm">{{ post.subtitle }}</p>
         {% endif %}
+      </div>
 
-        <div class="tease__text-mod">
-          {% if post.overline %}
-            <p class="tease__overline">
-              <a href="/category/{{ post.overline.slug }}" class="tease__overline-link">
-                {{ post.overline.name }}
-              </a>
-            </p>
-          {% endif %}
+      <div class="col-span-full md:col-span-9 order-3 max-md:order-5 max-md:mt-1 {{ not post.thumbnail ? 'hidden md:block' }}">
+        {% if post.thumbnail %}
+          {% include 'templates/components/lazy-img.twig' with { img: post.thumbnail } %}
+        {% endif %}
+      </div>
 
-          <a class="tease__hgroup" href="{{ post.link }}">
-            <h3 class="tease__h"><span class="tease__h-underline">{{ post.title }}</span></h3>
-            <p class="tease__desc">{{ post.excerpt({ length: 40 }) }}</p>
-          </a>
+      <div class="col-span-full md:col-span-3 order-4 max-md:order-3">
+        <p class="text-sm">
+          {% include 'components/articles/byline_format.twig' with { bylines: post.authors } %}
+        </p>
+      </div>
 
-          {% if post.bylines is not empty %}
-            <div class="tease__authors">
-              {% include 'components/articles/byline_format.twig' with { bylines: post.bylines } %}
-            </div>
-          {% endif %}
+      <div class="col-span-full md:col-span-2 order-5 max-md:-order-1">
+        <div class="mt-1 max-md:mb-1 flex md:justify-end relative z-20">
+          {% include "components/articles/overline.twig" with { overline: post.categories[0] } %}
         </div>
       </div>
     </li>
