@@ -1,22 +1,22 @@
-@mixin grid-template-columns($i) {
+@mixin template-columns($i) {
   --column-count: #{$i};
   --column-start: initial;
   --column-end: initial;
   grid-template-columns: repeat(var(--column-count), minmax(0, 1fr));
 }
 
-@mixin grid-column-span($i) {
+@mixin column-span($i) {
   --column-span: #{$i};
   grid-column: var(--column-start, span var(--column-span)) /
     var(--column-end, span var(--column-span));
 }
 
-@mixin grid-column-start($i) {
+@mixin column-start($i) {
   --column-start: #{$i};
   grid-column-start: var(--column-start);
 }
 
-@mixin grid-column-end($i) {
+@mixin column-end($i) {
   --column-end: #{$i};
   grid-column-end: var(--column-end);
 }

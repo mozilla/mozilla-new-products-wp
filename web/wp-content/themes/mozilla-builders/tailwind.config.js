@@ -2,24 +2,39 @@ import theme from 'tailwindcss/defaultTheme';
 import utilitiesScss from './plugins/utilities-scss';
 import path from 'path';
 
+function color(name) {
+  return `rgb(var(--color-${name}) / <alpha-value>)`;
+}
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./**/*.twig'],
   theme: {
     colors: {
+      // Base colors
       current: 'currentColor',
       transparent: 'transparent',
-      black: '#000000',
-      white: '#ffffff',
-      gray: '#F0F0F0',
+      black: color('black'),
+      white: color('white'),
+      gray: color('gray'),
       green: {
-        DEFAULT: '#00D230',
-        dark: '#005E2A',
+        DEFAULT: color('green'),
+        dark: color('green-dark'),
       },
-      orange: '#FF9900',
-      yellow: '#FFDD63',
-      purple: '#7F00CA',
-      pink: '#FF008A',
+      orange: color('orange'),
+      yellow: color('yellow'),
+      purple: color('purple'),
+      pink: color('pink'),
+      // Applied colors
+      main: color('main'),
+      content: color('content'),
+      secondary: color('secondary'),
+      action: {
+        DEFAULT: color('action'),
+        reverse: color('action-reverse'),
+        focus: color('action-focus'),
+        'focus-reverse': color('action-focus-reverse'),
+      },
     },
 
     fontFamily: {
@@ -85,6 +100,10 @@ module.exports = {
 
       maxWidth: {
         page: 'var(--100vw, 0)',
+      },
+
+      minHeight: {
+        screen: '100dvh',
       },
 
       spacing: {

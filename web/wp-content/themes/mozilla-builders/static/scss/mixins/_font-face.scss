@@ -1,4 +1,4 @@
-@mixin font-face($family-name, $file-name, $font-weight: normal, $font-style: normal) {
+@mixin face($family-name, $file-name, $font-weight: normal, $font-style: normal) {
   @font-face {
     $font-path: '../fonts/#{$file-name}';
     font-display: swap;
@@ -6,6 +6,8 @@
     font-style: $font-style;
     font-weight: $font-weight;
     // src: url($font-path + '.eot?') format('embedded-opentype');
-    src: url($font-path + '.woff2') format('woff2'), url($font-path + '.woff') format('woff');
+    src:
+      url($font-path + '.woff2') format('woff2'),
+      url($font-path + '.woff') format('woff');
   }
 }
