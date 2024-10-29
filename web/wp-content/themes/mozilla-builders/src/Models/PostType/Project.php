@@ -5,7 +5,7 @@
  * @package MozillaBuilders
  */
 
-namespace MozillaBuilders\Models;
+namespace MozillaBuilders\Models\PostType;
 
 use Timber\Post as TimberPost;
 
