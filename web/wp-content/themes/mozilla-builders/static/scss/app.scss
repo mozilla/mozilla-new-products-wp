@@ -70,9 +70,9 @@ body {
     --color-secondary: var(--color-gray);
     --color-content: var(--color-white);
 
-    --color-action: var(--color-pink);
+    --color-action: var(--color-green);
     --color-action-reverse: var(--color-black);
-    --color-action-focus: var(--color-green);
+    --color-action-focus: var(--color-white);
     --color-action-focus-reverse: var(--color-black);
   }
 }
@@ -446,12 +446,12 @@ body {
       @apply flex justify-center w-full;
     }
     .wp-block-button__link {
-      @apply w-full p-10 uppercase text-center bg-content text-main border border-content transition-colors;
-      @apply hover:text-action-focus-reverse focus:text-action-focus-reverse hover:bg-action focus:bg-action hover:border-action focus:border-action;
+      @apply w-full p-10 uppercase text-center text-action-reverse bg-action text-main border border-action transition-colors;
+      @apply hover:text-action-focus-reverse focus:text-action-focus-reverse hover:bg-action-focus focus:bg-action-focus hover:border-action-focus focus:border-action-focus;
     }
     .is-style-outline .wp-block-button__link {
-      @apply bg-transparent text-content;
-      @apply hover:text-action focus:text-action;
+      @apply bg-transparent text-action;
+      @apply hover:border-action-focus focus:border-action-focus;
     }
 
     // Files
@@ -462,7 +462,7 @@ body {
         @apply flex items-center justify-between gap-10 w-full p-10;
         @apply uppercase font-semibold;
         @apply bg-action text-action-reverse transition-colors;
-        @apply hover:bg-action-focus focus:bg-action-focus;
+        @apply hover:text-action-focus-reverse focus:text-action-focus-reverse hover:bg-action-focus focus:bg-action-focus;
 
         &:has(+ a.wp-block-file__button) {
           @apply md:py-8;
@@ -477,6 +477,13 @@ body {
 
       a.wp-block-file__button {
         @apply hidden;
+      }
+    }
+
+    // Related Articles
+    div[data-block='related-articles'] {
+      &:not(.alignwide):not(.alignfull) {
+        @apply md:col-span-12 xl:col-span-10;
       }
     }
   }
