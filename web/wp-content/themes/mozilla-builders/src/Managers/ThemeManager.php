@@ -7,6 +7,7 @@
 
 namespace MozillaBuilders\Managers;
 
+use MozillaBuilders\Models\PostType\Accelerator;
 use MozillaBuilders\Models\PostType\Article;
 use MozillaBuilders\Models\PostType\Profile;
 use MozillaBuilders\Models\PostType\Project;
@@ -167,6 +168,7 @@ class ThemeManager {
 	 * @return void
 	 */
 	public function register_post_types() {
+		Accelerator::register();
 		Profile::register();
 		Project::register();
 	}
