@@ -252,7 +252,7 @@
           },
           "display_format": "F j, Y",
           "return_format": "M j, Y",
-          "first_day": 1,
+          "first_day": 0,
           "allow_in_bindings": 0,
           "parent_repeater": "field_67227af9a9a29"
         },
@@ -413,5 +413,5 @@
   "active": true,
   "description": "",
   "show_in_rest": 0,
-  "modified": 1730313550
+  "modified": 1730313747
 }
