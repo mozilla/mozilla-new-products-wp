@@ -5,47 +5,38 @@ Pagination
 #}
 
 {% if pagination.pages %}
-<nav class="pagination" role="navigation" aria-label="Pagination Navigation">
+<nav class="grid grid-site centered-page" role="navigation" aria-label="Pagination Navigation">
   {% set prev = pagination.prev %}
   {% set next = pagination.next %}
 
-  <ul class="pagination__list">
-
-    <li class="pagination__next-prev previousPage">
+  <div class="border-t border-content pt-2 col-span-full flex justify-between gap-2.5">
+    <div class="text-sm flex-1 flex justify-start">
       {% if prev %}
-      <a href="{{ prev.link }}" class="pagination__next-prev-button" aria-label="Previous Page">
+      <a href="{{ prev.link }}" aria-label="Previous Page">
         Previous
       </a>
-      {% else %}
-      <span class="pagination__next-prev-button disabled">
-        Previous
-      </span>
       {% endif %}
-    </li>
+    </div>
 
-    {% for page_link in pagination.pages %}
-    <li class="pagination__list-item {{ page_link.current ? 'selected' }}">
-      {% if page_link.link %}
-        <a href="{{ page_link.link }}" class="pagination__link" aria-label="{{ 'Page ' ~ page_link.title }}">{{ page_link.title }}</a>
-      {% else %}
-        <span class="pagination__link" aria-label="{{ 'Page ' ~ page_link.title }}">{{ page_link.title }}</span>
-      {% endif %}
-    </li>
-    {% endfor %}
+    <ul class="flex flex-wrap gap-2.5">
+      {% for page_link in pagination.pages %}
+      <li class="text-sm">
+        {% if page_link.link %}
+          <a href="{{ page_link.link }}" {% if page_link.current %}aria-current="page"{% endif %} aria-label="{{ 'Page ' ~ page_link.title }}">{{ page_link.title }}</a>
+        {% else %}
+          <span class="opacity-40" aria-label="{{ 'Page ' ~ page_link.title }}">{{ page_link.title }}</span>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
 
-    <li class="pagination__next-prev nextPage">
+    <div class="text-sm flex-1 flex justify-end">
       {% if next %}
-      <a href="{{ next.link }}" class="pagination__next-prev-button" aria-label="Next Page">
+      <a href="{{ next.link }}" aria-label="Next Page">
         Next
       </a>
-      {% else %}
-      <span class="pagination__next-prev-button disabled">
-        Next
-      </span>
       {% endif %}
-    </li>
-
-  </ul>
-
+    </div>
+  </div>
 </nav>
 {% endif %}
