@@ -260,6 +260,22 @@ body {
       }
     }
 
+    > h1,
+    > h2,
+    > h3,
+    > h4,
+    > h5,
+    > h6 {
+      & + h1,
+      & + h2,
+      & + h3,
+      & + h4,
+      & + h5,
+      & + h6 {
+        @apply mt-0;
+      }
+    }
+
     // Separators
     hr {
       @apply my-6 border-transparent overflow-visible;
