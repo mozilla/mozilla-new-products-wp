@@ -4,7 +4,9 @@
     <li class="col-span-full grid grid-cols-site gap-x-grid-site-gutter gap-y-2 py-4 relative border-t border-content">
       <div class="col-span-full md:col-span-5 order-1">
         <h3 class="text-sm font-semibold uppercase">
-          <a class="before:absolute before:inset-0 before:z-10" href="{{ post.link }}">{{ post.title }}</a>
+          <a class="before:absolute before:inset-0 before:z-10 group" href="{{ post.link }}">
+            <span class="inline group-hover:bg-action-focus group-focus:bg-action-focus group-hover:text-action-focus-reverse group-focus:text-action-focus-reverse">{{ post.title }}</span>
+          </a>
         </h3>
       </div>
 
