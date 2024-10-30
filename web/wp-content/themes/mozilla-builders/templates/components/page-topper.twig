@@ -1,8 +1,12 @@
-<div class="page-topper {{class}}">
-  <div class="page-topper__hgroup">
-    <h1  class="page-topper__h">{{title}}</h1>
-    {% if description %}
-      <h1  class="page-topper__description">{{description}}</h1>
-    {% endif %}
+<div class="centered-page px-grid-site-margin">
+  <div class="border-t border-content pt-2 mt-8 mb-24 md:mb-48">
+    <div class="flex items-baseline gap-3 type-slab-2xl">
+      <svg class="inline-flex h-[0.69em] aspect-[47/104]">
+        <use href="#protocol" />
+      </svg>
+      <h1 class="uppercase">
+        {{ title }}
+      </h1>
+    </div>
   </div>
 </div>
