@@ -17,22 +17,16 @@
 @include font-face('Mozilla Semi Slab', 'MozillaHeadline-SemiBold', 600, normal);
 @include font-face('Mozilla Semi Slab', 'MozillaHeadline-Bold', 700, normal);
 // Mozilla Semi Slab Condensed
-@include font-face(
+@include font.face(
   'Mozilla Semi Slab Condensed',
   'MozillaHeadlineCondensed-ExtraLight',
   200,
   normal
 );
-@include font-face('Mozilla Semi Slab Condensed', 'MozillaHeadlineCondensed-Light', 300, normal);
-@include font-face('Mozilla Semi Slab Condensed', 'MozillaHeadlineCondensed-Regular', 400, normal);
-@include font-face('Mozilla Semi Slab Condensed', 'MozillaHeadlineCondensed-SemiBold', 600, normal);
-@include font-face('Mozilla Semi Slab Condensed', 'MozillaHeadlineCondensed-Bold', 700, normal);
-// Mozilla Semi Slab Extended
-@include font-face('Mozilla Semi Slab Extended', 'MozillaSemiSlabExtBETA-ExtraLight', 200, normal);
-@include font-face('Mozilla Semi Slab Extended', 'MozillaSemiSlabExtBETA-Light', 300, normal);
-@include font-face('Mozilla Semi Slab Extended', 'MozillaSemiSlabExtBETA-Regular', 400, normal);
-@include font-face('Mozilla Semi Slab Extended', 'MozillaSemiSlabExtBETA-SemiBold', 600, normal);
-@include font-face('Mozilla Semi Slab Extended', 'MozillaSemiSlabExtBETA-Bold', 700, normal);
+@include font.face('Mozilla Semi Slab Condensed', 'MozillaHeadlineCondensed-Light', 300, normal);
+@include font.face('Mozilla Semi Slab Condensed', 'MozillaHeadlineCondensed-Regular', 400, normal);
+@include font.face('Mozilla Semi Slab Condensed', 'MozillaHeadlineCondensed-SemiBold', 600, normal);
+@include font.face('Mozilla Semi Slab Condensed', 'MozillaHeadlineCondensed-Bold', 700, normal);
 
 body {
   @apply bg-white text-black;
