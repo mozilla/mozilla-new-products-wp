@@ -189,9 +189,10 @@ class ThemeManager {
 	 */
 	public function set_post_classmap( array $classmap ): array {
 		$custom_classmap = array(
-			'post'    => Article::class,
-			'profile' => Profile::class,
-			'project' => Project::class,
+			'post'              => Article::class,
+			Profile::HANDLE     => Profile::class,
+			Project::HANDLE     => Project::class,
+			Accelerator::HANDLE => Accelerator::class,
 		);
 
 		return array_merge( $classmap, $custom_classmap );
