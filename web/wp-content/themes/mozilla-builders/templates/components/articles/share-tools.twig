@@ -21,7 +21,7 @@
   {% for social in socials %}
     <li class="flex">
       <a
-        class="uppercase leading-tight before:content-['['] after:content-[']'] max-md:before:hidden max-md:after:hidden max-md:underline"
+        class="uppercase leading-tight before:content-['['] after:content-[']'] max-md:before:hidden max-md:after:hidden max-md:underline hover:bg-action-focus focus:bg-action-focus hover:no-underline focus:no-underline hover:text-action-focus-reverse focus:text-action-focus-reverse"
         href="{{ social.url }}"
         target="_blank"
         rel="noopener"
@@ -29,7 +29,7 @@
         {{- social.name -}}
       </a>
       {% if not loop.last %}
-        <span class="leading-tight max-md:hidden" aria-hidden="true">,&nbsp;</span>
+        <span class="leading-tight max-md:hidden" aria-hidden="true">&nbsp;</span>
       {% endif %}
     </li>
   {% endfor %}
