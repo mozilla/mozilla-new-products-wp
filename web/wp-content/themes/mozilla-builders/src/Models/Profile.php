@@ -7,6 +7,7 @@
 
 namespace MozillaBuilders\Models;
 
+use Timber\Timber;
 use Timber\Post as TimberPost;
 
 /** Class */
@@ -83,5 +84,28 @@ class Profile extends TimberPost {
 				$contact_data
 			)
 		);
+	}
+
+	/**
+	 * Get the 4 latest articles for the profile.
+	 *
+	 * @return array
+	 */
+	public function latest_articles() {
+		$args = array(
+			'post_status' => 'publish',
+			'posts_per_page' => 4,
+			'orderby' => 'date',
+			'order' => 'DESC',
+			'meta_query' => array(
+				array(
+					'key' => 'authors',
+					'value' => $this->id,
+					'compare' => 'LIKE',
+				),
+			),
+		);
+
+		return Timber::get_posts( $args )->to_array();
 	}
 }

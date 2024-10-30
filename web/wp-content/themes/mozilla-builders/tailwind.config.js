@@ -1,21 +1,9 @@
 import theme from 'tailwindcss/defaultTheme';
+import utilitiesScss from './plugins/utilities-scss';
+import path from 'path';
 
-const GRID_COLUMNS = 24;
-const gridTemplateColumns = {};
-for (let i = 1; i <= GRID_COLUMNS; i++) {
-  gridTemplateColumns[i] = `repeat(${i}, minmax(0, 1fr))`;
-}
-const gridColumn = {};
-for (let i = 1; i <= GRID_COLUMNS; i++) {
-  gridColumn[`span-${i}`] = `span ${i} / span ${i}`;
-}
-const gridColumnStart = {};
-for (let i = 1; i <= GRID_COLUMNS; i++) {
-  gridColumnStart[`start-${i}`] = i;
-}
-const gridColumnEnd = {};
-for (let i = 1; i <= GRID_COLUMNS; i++) {
-  gridColumnEnd[`end-${i}`] = i;
+function color(name) {
+  return `rgb(var(--color-${name}) / <alpha-value>)`;
 }
 
 /** @type {import('tailwindcss').Config} */
@@ -23,19 +11,30 @@ module.exports = {
   content: ['./**/*.twig'],
   theme: {
     colors: {
+      // Base colors
       current: 'currentColor',
       transparent: 'transparent',
-      black: '#000000',
-      white: '#ffffff',
-      gray: '#F0F0F0',
+      black: color('black'),
+      white: color('white'),
+      gray: color('gray'),
       green: {
-        DEFAULT: '#00D230',
-        dark: '#005E2A',
+        DEFAULT: color('green'),
+        dark: color('green-dark'),
       },
-      orange: '#FF9900',
-      yellow: '#FFDD63',
-      purple: '#7F00CA',
-      pink: '#FF008A',
+      orange: color('orange'),
+      yellow: color('yellow'),
+      purple: color('purple'),
+      pink: color('pink'),
+      // Applied colors
+      main: color('main'),
+      content: color('content'),
+      secondary: color('secondary'),
+      action: {
+        DEFAULT: color('action'),
+        reverse: color('action-reverse'),
+        focus: color('action-focus'),
+        'focus-reverse': color('action-focus-reverse'),
+      },
     },
 
     fontFamily: {
@@ -52,6 +51,11 @@ module.exports = {
       semibold: 600,
       bold: 700,
     },
+
+    gridTemplateColumns: false,
+    gridColumn: false,
+    gridColumnStart: false,
+    gridColumnEnd: false,
 
     extend: {
       aria: {
@@ -71,6 +75,8 @@ module.exports = {
       },
 
       fontSize: {
+        // 20px (@640px) -> 24px (@1536px)
+        xl: 'clamp(1.25rem, 1.3vw + 0.7rem, 1.5rem)',
         // 24px (@640px) -> 40px (@1536px)
         '2xl': 'clamp(1.5rem, 1.8vw + 0.8rem, 2.5rem)',
         // 32px (@640px) -> 56px (@1536px)
@@ -80,11 +86,6 @@ module.exports = {
         // 64px (@640px) -> 100px (@1536px)
         '8xl': 'clamp(4rem, 6vw + 1.25rem, 6.25rem);',
       },
-
-      gridTemplateColumns,
-      gridColumn,
-      gridColumnStart,
-      gridColumnEnd,
 
       keyframes: {
         marquee: {
@@ -101,6 +102,10 @@ module.exports = {
         page: 'var(--100vw, 0)',
       },
 
+      minHeight: {
+        screen: '100dvh',
+      },
+
       spacing: {
         'wp-admin-bar': 'var(--wp-admin--admin-bar--height, 0px)',
         // https://fluid-typography.netlify.app/
@@ -114,5 +119,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [utilitiesScss({ filename: path.resolve(__dirname, 'static/scss/app.scss') })],
 };

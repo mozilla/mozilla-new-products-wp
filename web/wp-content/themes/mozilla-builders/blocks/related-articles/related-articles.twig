@@ -1,13 +1,13 @@
 {% if related_articles is not empty %}
 <div data-block="related-articles" class="py-3 {{ alignclass }}">
   {% if related_articles_header %}
-    <h3 class="py-3 uppercase text-sm font-normal border-y border-black">{{ related_articles_header }}</h3>
+    <h3 class="py-3 uppercase text-sm font-normal border-y border-content">{{ related_articles_header }}</h3>
   {% endif %}
 
   {% if related_articles %}
     <ul class="contents">
       {% for post in related_articles %}
-        <li class="relative grid grid-cols-10 gap-x-grid-site-gutter py-4 border-b border-black">
+        <li class="relative grid grid-cols-10 gap-x-grid-site-gutter py-4 border-b border-content">
           <a class="col-span-5 mt-2 before:absolute before:inset-0 before:z-10" href="{{ post.link }}">{{ post.title }}</a>
 
           <div class="col-span-3">
