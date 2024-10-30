@@ -28,6 +28,7 @@ class Project extends TimberPost {
 				'add_new_item'  => 'Add New Project',
 			),
 			'public'       => true,
+			'has_archive'  => 'projects',
 			'menu_icon'    => 'dashicons-portfolio',
 			'supports'     => array( 'title', 'thumbnail' ),
 			'map_meta_cap' => true,

@@ -59,4 +59,4 @@ $_posts = Timber::get_posts( $query_args );
 $context['posts']      = $_posts;
 $context['pagination'] = $_posts->pagination( array( 'mid_size' => 2 ) );
 
-Timber::render( 'pages/archive.twig', $context );
+Timber::render( array( 'pages/' . get_post_type() . '-archive.twig', 'pages/archive.twig' ), $context );

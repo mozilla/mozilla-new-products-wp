@@ -1,0 +1,27 @@
+{% extends "layouts/base.twig" %}
+
+{%- block custom_body_classes -%}
+  theme-dark
+{%- endblock -%}
+
+{% block pageBody %}
+
+  <header class="grid grid-site centered-page">
+    <div class="col-span-full border-t flex justify-between gap-3">
+      <h1 class="type-slab-2xl">
+        <span class="text-green">/</span>&nbsp;Collaborations
+      </h1>
+
+      <button type="button" class="flex items-center justify-center">
+        Search Projects&nbsp;&nbsp;<svg class="size-4">
+          <use xlink:href="#search"></use>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <section class="grid-grid-site centered-page">
+
+  </section>
+
+{% endblock %}
