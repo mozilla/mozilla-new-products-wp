@@ -3,7 +3,10 @@
 <span class="max-md:text-right">
   {% if bylines is not empty %}
     {% for author in bylines %}
-      <a class="max-md:underline relative z-20" href="{{ author.link }}">{{author.name}}</a>{% if loop.last %}{% elseif loop.revindex == 2 %}{{andParam}}{% else %},{% endif %}
+      <a class="relative z-20 max-md:underline hover:bg-action-focus focus:bg-action-focus hover:no-underline focus:no-underline hover:text-action-focus-reverse focus:text-action-focus-reverse"
+         href="{{ author.link }}">
+         {{author.name}}
+      </a>{% if loop.last %}{% elseif loop.revindex == 2 %}{{andParam}}{% else %},{% endif %}
     {% endfor %}
   {% else %}
     Mozilla

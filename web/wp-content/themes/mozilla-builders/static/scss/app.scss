@@ -7,29 +7,17 @@
 @tailwind utilities;
 
 // Mozilla Sans
-@include font.face('Mozilla Sans', 'MozillaSansBETA-ExtraLight', 200, normal);
-@include font.face('Mozilla Sans', 'MozillaSansBETA-Light', 300, normal);
-@include font.face('Mozilla Sans', 'MozillaSansBETA-Regular', 400, normal);
-@include font.face('Mozilla Sans', 'MozillaSansBETA-SemiBold', 600, normal);
-@include font.face('Mozilla Sans', 'MozillaSansBETA-Bold', 700, normal);
-// Mozilla Semi Slab
-@include font.face('Mozilla Semi Slab', 'MozillaSemiSlabBETA-ExtraLight', 200, normal);
-@include font.face('Mozilla Semi Slab', 'MozillaSemiSlabBETA-Light', 300, normal);
-@include font.face('Mozilla Semi Slab', 'MozillaSemiSlabBETA-Regular', 400, normal);
-@include font.face('Mozilla Semi Slab', 'MozillaSemiSlabBETA-SemiBold', 600, normal);
-@include font.face('Mozilla Semi Slab', 'MozillaSemiSlabBETA-Bold', 700, normal);
-// Mozilla Semi Slab Condensed
-@include font.face('Mozilla Semi Slab Condensed', 'MozillaSemiSlabCndBETA-ExtraLight', 200, normal);
-@include font.face('Mozilla Semi Slab Condensed', 'MozillaSemiSlabCndBETA-Light', 300, normal);
-@include font.face('Mozilla Semi Slab Condensed', 'MozillaSemiSlabCndBETA-Regular', 400, normal);
-@include font.face('Mozilla Semi Slab Condensed', 'MozillaSemiSlabCndBETA-SemiBold', 600, normal);
-@include font.face('Mozilla Semi Slab Condensed', 'MozillaSemiSlabCndBETA-Bold', 700, normal);
-// Mozilla Semi Slab Extended
-@include font.face('Mozilla Semi Slab Extended', 'MozillaSemiSlabExtBETA-ExtraLight', 200, normal);
-@include font.face('Mozilla Semi Slab Extended', 'MozillaSemiSlabExtBETA-Light', 300, normal);
-@include font.face('Mozilla Semi Slab Extended', 'MozillaSemiSlabExtBETA-Regular', 400, normal);
-@include font.face('Mozilla Semi Slab Extended', 'MozillaSemiSlabExtBETA-SemiBold', 600, normal);
-@include font.face('Mozilla Semi Slab Extended', 'MozillaSemiSlabExtBETA-Bold', 700, normal);
+@include font.face('Mozilla Sans', 'MozillaText-Light', 300, normal);
+@include font.face('Mozilla Sans', 'MozillaText-Regular', 400, normal);
+@include font.face('Mozilla Sans', 'MozillaText-Bold', 700, normal);
+// Mozilla Headline
+@include font.face('Mozilla Headline', 'MozillaHeadline-Light', 300, normal);
+@include font.face('Mozilla Headline', 'MozillaHeadline-Regular', 400, normal);
+@include font.face('Mozilla Headline', 'MozillaHeadline-SemiBold', 600, normal);
+// Mozilla Headline Condensed
+@include font.face('Mozilla Headline Condensed', 'MozillaHeadlineCondensed-Light', 300, normal);
+@include font.face('Mozilla Headline Condensed', 'MozillaHeadlineCondensed-Regular', 400, normal);
+@include font.face('Mozilla Headline Condensed', 'MozillaHeadlineCondensed-SemiBold', 600, normal);
 
 :root {
   @apply [--100vw:min(100vw,1920px)];
@@ -37,8 +25,8 @@
   @apply [--grid-site-margin:calc((24/400)*var(--100vw))] md:[--grid-site-margin:calc((32/1440)*var(--100vw))];
   @apply [--grid-site-gutter:calc((24/400)*var(--100vw))] md:[--grid-site-gutter:calc((40/1440)*var(--100vw))];
 
-  --color-black: #{color.rgb(#000000)};
-  --color-white: #{color.rgb(#ffffff)};
+  --color-black: #{color.rgb(#161616)};
+  --color-white: #{color.rgb(#fafafa)};
   --color-gray: #{color.rgb(#f0f0f0)};
   --color-green: #{color.rgb(#00d230)};
   --color-green-dark: #{color.rgb(#005e2a)};
@@ -78,16 +66,16 @@ body {
 }
 
 @layer components {
-  .type-slab-2xl {
-    @apply text-8xl font-slab-condensed font-semibold leading-none;
+  .type-headline-2xl {
+    @apply text-8xl font-headline-condensed font-semibold leading-none;
   }
 
-  .type-slab-xl {
-    @apply text-6xl font-slab-condensed font-semibold leading-none;
+  .type-headline-xl {
+    @apply text-6xl font-headline-condensed font-semibold leading-none;
   }
 
-  .type-slab-lg {
-    @apply text-2xl font-slab-condensed font-semibold leading-tight;
+  .type-headline-lg {
+    @apply text-2xl font-headline-condensed font-semibold leading-tight;
   }
 
   .type-sans-2xl {
@@ -197,23 +185,25 @@ body {
 
     // Headings
     > h2 {
-      @apply font-semibold uppercase leading-tight indent-6;
+      @apply text-xl font-bold uppercase indent-8 md:indent-16;
     }
     > h3 {
-      @apply uppercase leading-tight indent-6;
+      @apply text-xl font-bold uppercase indent-8 md:indent-16;
     }
     > h4 {
-      @apply uppercase leading-tight opacity-50 indent-6;
+      @apply text-xl uppercase indent-8 md:indent-16;
     }
     > h5 {
-      @apply font-semibold leading-tight;
+      @apply font-bold uppercase indent-8 md:indent-16;
     }
     > h6 {
-      @apply leading-tight opacity-50;
+      @apply uppercase indent-8 md:indent-16;
     }
 
     // Paragraphs
     > p {
+      @apply indent-8 md:indent-16;
+
       &:empty {
         @apply hidden;
       }
@@ -272,7 +262,23 @@ body {
 
       // Inline links
       a {
-        @apply underline hover:text-action-focus focus:text-action-focus;
+        @apply underline hover:bg-action-focus focus:bg-action-focus hover:no-underline focus:no-underline hover:text-action-focus-reverse focus:text-action-focus-reverse;
+      }
+    }
+
+    > h1,
+    > h2,
+    > h3,
+    > h4,
+    > h5,
+    > h6 {
+      & + h1,
+      & + h2,
+      & + h3,
+      & + h4,
+      & + h5,
+      & + h6 {
+        @apply mt-0;
       }
     }
 
@@ -317,7 +323,7 @@ body {
     // Paragraphs
     > p {
       &:first-child:is(.lede *) {
-        @apply type-slab-lg mb-2 md:mb-6 md:col-span-18 lg:col-span-14;
+        @apply type-headline-lg mb-2 md:mb-6 md:col-span-18 lg:col-span-14;
       }
     }
 
@@ -373,7 +379,7 @@ body {
       }
 
       p {
-        @apply type-slab-xl md:indent-[calc(0.2*var(--100vw))];
+        @apply type-headline-xl md:indent-[calc(0.2*var(--100vw))];
       }
 
       cite {
