@@ -1,0 +1,237 @@
+{
+  "key": "group_672392d8e9450",
+  "title": "Projects",
+  "fields": [
+    {
+      "key": "field_672398429ba66",
+      "label": "Tagline",
+      "name": "tagline",
+      "aria-label": "",
+      "type": "text",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "allow_in_bindings": 0,
+      "placeholder": "",
+      "prepend": "",
+      "append": ""
+    },
+    {
+      "key": "field_672397a72f3ae",
+      "label": "Link",
+      "name": "link",
+      "aria-label": "",
+      "type": "url",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "allow_in_bindings": 0,
+      "placeholder": ""
+    },
+    {
+      "key": "field_67239757ea80a",
+      "label": "GitHub Stats",
+      "name": "github_stats",
+      "aria-label": "",
+      "type": "group",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "layout": "block",
+      "sub_fields": [
+        {
+          "key": "field_67239760ea80b",
+          "label": "Stars",
+          "name": "stars",
+          "aria-label": "",
+          "type": "number",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "min": 0,
+          "max": "",
+          "allow_in_bindings": 0,
+          "placeholder": "",
+          "step": "",
+          "prepend": "",
+          "append": ""
+        },
+        {
+          "key": "field_6723976cea80c",
+          "label": "Forks",
+          "name": "forks",
+          "aria-label": "",
+          "type": "number",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "min": 0,
+          "max": "",
+          "allow_in_bindings": 0,
+          "placeholder": "",
+          "step": "",
+          "prepend": "",
+          "append": ""
+        }
+      ]
+    },
+    {
+      "key": "field_672392d9f9277",
+      "label": "Contributors",
+      "name": "contributors",
+      "aria-label": "",
+      "type": "relationship",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "post_type": ["profile"],
+      "post_status": "",
+      "taxonomy": "",
+      "filters": ["search", "post_type", "taxonomy"],
+      "return_format": "id",
+      "min": "",
+      "max": "",
+      "allow_in_bindings": 0,
+      "elements": ["featured_image"],
+      "bidirectional": 1,
+      "bidirectional_target": ["field_6723968aa6c30"]
+    },
+    {
+      "key": "field_672397c52f3af",
+      "label": "Discord",
+      "name": "discord",
+      "aria-label": "",
+      "type": "group",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "layout": "block",
+      "sub_fields": [
+        {
+          "key": "field_672397cf2f3b0",
+          "label": "Channel Name",
+          "name": "channel_name",
+          "aria-label": "",
+          "type": "text",
+          "instructions": "Don't include the leading <code>#</code>",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "maxlength": "",
+          "allow_in_bindings": 0,
+          "placeholder": "",
+          "prepend": "",
+          "append": ""
+        },
+        {
+          "key": "field_672397de2f3b1",
+          "label": "Members Count",
+          "name": "members_count",
+          "aria-label": "",
+          "type": "number",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "min": 0,
+          "max": "",
+          "allow_in_bindings": 0,
+          "placeholder": "",
+          "step": "",
+          "prepend": "",
+          "append": ""
+        }
+      ]
+    },
+    {
+      "key": "field_6723981d37122",
+      "label": "About",
+      "name": "about",
+      "aria-label": "",
+      "type": "wysiwyg",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "allow_in_bindings": 0,
+      "tabs": "visual",
+      "toolbar": "basic",
+      "media_upload": 0,
+      "delay": 0
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "project"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "seamless",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0,
+  "modified": 1730386004
+}
