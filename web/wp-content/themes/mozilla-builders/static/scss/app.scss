@@ -470,7 +470,7 @@ body {
       @apply flex justify-center w-full;
     }
     .wp-block-button__link {
-      @apply w-full p-10 uppercase text-center text-action-reverse bg-action text-main border border-action transition-colors;
+      @apply w-full p-10 uppercase text-center text-action-reverse bg-action border border-action transition-colors;
       @apply hover:text-action-focus-reverse focus:text-action-focus-reverse hover:bg-action-focus focus:bg-action-focus hover:border-action-focus focus:border-action-focus;
     }
     .is-style-outline .wp-block-button__link {

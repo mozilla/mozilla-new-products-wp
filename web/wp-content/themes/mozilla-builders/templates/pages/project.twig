@@ -6,24 +6,27 @@
 
 {% block pageBody %}
 
-<header class="grid grid-site centered-page items-end mt-12 mb-24 md:mb-36 gap-y-4">
+<header class="grid grid-site centered-page items-end mt-12 gap-y-4">
   <h1 class="col-span-full md:col-span-16 type-sans-3xl">
     {{ post.title }}
   </h1>
 
   <div class="col-span-full md:col-span-8">
     <div class="grid grid-cols-6 md:grid-cols-8 gap-x-grid-site-gutter gap-y-4">
+      {% if post.thumbnail.id %}
       <div class="col-span-2 max-md:order-2 md:col-span-4">
         {% include "components/lazy-img.twig" with { img: post.thumbnail } %}
       </div>
+      {% endif %}
+
       <p class="col-span-4 max-md:order-1 md:col-span-8 type-headline-lg">{{ post.tagline }}</p>
     </div>
   </div>
 </header>
 
-<div class="grid grid-site centered-page gap-y-12">
+<div class="grid grid-site centered-page gap-y-12 mt-24 md:mt-36">
   <section class="col-span-full md:col-span-1/2 lg:col-span-1/3 border-t border-content pt-2">
-    <h2 class="mb-6 text-sm uppercase">Overview</h2>
+    <h2 class="mb-6 text-xs uppercase">Overview</h2>
 
     <dl class="grid grid-cols-6 md:grid-cols-16 lg:grid-cols-8 gap-x-grid-site-gutter gap-y-4">
       {% if post.contributors is not empty %}
@@ -85,15 +88,15 @@
   </section>
 
   <section class="col-span-full md:col-span-1/2 lg:col-span-1/3 border-t border-content pt-2">
-    <h2 class="mb-6 text-sm uppercase">More Information</h2>
+    <h2 class="mb-6 text-xs uppercase">More Information</h2>
 
     <div class="prose">
       {{ post.about }}
     </div>
   </section>
 
-  <section class="col-span-full md:col-span-1/2 lg:col-span-1/3 border-t border-content pt-2">
-    <h2 class="mb-6 text-sm uppercase">Contribute</h2>
+  <section class="col-span-full md:col-span-1/2 lg:col-span-1/3 border-t border-content pt-2 flex flex-col">
+    <h2 class="mb-6 text-xs uppercase">Contribute</h2>
 
     <dl class="grid grid-cols-6 md:grid-cols-16 lg:grid-cols-8 gap-x-grid-site-gutter gap-y-4">
       <div class="contents">
@@ -110,7 +113,64 @@
         </dd>
       </div>
     </dl>
+
+    <div class="mt-8">
+      {% include "components/button-link.twig" with { href: post.discord.url, label: 'Join the Discord' } %}
+    </div>
   </section>
 </div>
+
+{% set main_contributor = post.contributors[0] %}
+
+{% if main_contributor %}
+<section class="grid grid-site centered-page gap-y-12 mt-36 md:mt-24">
+  <h2 class="sr-only">Contributors</h2>
+
+  <div class="col-span-full md:col-span-1/2 lg:col-span-1/3">
+    <div class="grid grid-cols-6 md:grid-cols-16 lg:grid-cols-8 gap-x-grid-site-gutter gap-y-4">
+      {% if main_contributor.thumbnail.id %}
+      <div class="col-span-2 md:col-span-5 lg:col-span-3">
+        {% include "components/lazy-img.twig" with { img: main_contributor.thumbnail, class: "w-full" } %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="col-span-full md:col-span-1/2 lg:col-span-1/3 border-t border-content pt-2 flex flex-col">
+    <h3 class="mb-6 text-xs uppercase">About {{ main_contributor.first_name }}</h3>
+
+    <div class="prose">
+      {{ main_contributor.about }}
+    </div>
+
+    <div class="mt-8">
+      <a href="{{ main_contributor.link }}" class="hover-link">
+        {{ main_contributor.first_name }}'s Profile
+      </a>
+    </div>
+  </div>
+
+  {% if main_contributor.latest_articles is not empty %}
+  <div class="col-span-full md:col-span-1/2 lg:col-span-1/3 border-t border-content pt-2 flex flex-col">
+    <h3 class="mb-6 text-xs uppercase">More from {{ main_contributor.first_name }}</h3>
+
+    <ul class="flex flex-col gap-y-4">
+      {% for article in main_contributor.latest_articles %}
+        <li class="relative border-b border-content pb-1">
+          <h4 class="font-semibold"><a href="{{ article.link }}" class="before:inset-0 before:absolute before:z-10">{{ article.title }}</a></h4>
+          <p>{{ article.subtitle }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+</section>
+{% endif %}
+
+<section class="grid grid-site centered-page gap-y-16 mt-36 md:mt-24">
+  <div class="col-span-full border-t border-content pt-2">
+    <h2 class="uppercase">Other Collaborations</h2>
+  </div>
+</section>
 
 {% endblock %}
