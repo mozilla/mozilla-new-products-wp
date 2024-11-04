@@ -8,6 +8,7 @@
 namespace MozillaBuilders\Models\PostType;
 
 use Timber\Post as TimberPost;
+use Timber\Timber;
 
 /** Class */
 class Project extends TimberPost {
@@ -40,4 +41,45 @@ class Project extends TimberPost {
 		register_post_type( self::HANDLE, $args );
 	}
 
+	/**
+	 * Get the contributors for the project.
+	 *
+	 * @return array
+	 */
+	public function contributors() {
+		$contributors = $this->meta( 'contributors' );
+
+		if ( empty( $contributors ) ) {
+			return array();
+		}
+
+		return array_map( fn( $contributor ) => Timber::get_post( $contributor ), $contributors );
+	}
+
+	/**
+	 * Get the platforms for the project.
+	 *
+	 * @return array
+	 */
+	public function platforms() {
+		return $this->terms( 'platform' );
+	}
+
+	/**
+	 * Get the categories for the project.
+	 *
+	 * @return array
+	 */
+	public function categories() {
+		return $this->terms( 'category' );
+	}
+
+	/**
+	 * Get the technologies for the project.
+	 *
+	 * @return array
+	 */
+	public function technologies() {
+		return $this->terms( 'technology' );
+	}
 }

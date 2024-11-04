@@ -21,6 +21,8 @@ class ContextManager {
 		add_filter( 'timber/context', array( $this, 'is_home' ) );
 		add_filter( 'timber/context', array( $this, 'menus' ) );
 		add_filter( 'timber/context', array( $this, 'acf_options' ) );
+
+		add_filter( 'timber/twig', array( $this, 'add_number_shorthand_filter' ) );
 	}
 
 	/**
@@ -75,5 +77,31 @@ class ContextManager {
 			$context['options'] = get_fields( 'option' );
 		}
 		return $context;
+	}
+
+	/**
+	 * Add a number shorthand filter to Twig.
+	 *
+	 * @param \Twig\Environment $twig The Twig environment.
+	 * @return \Twig\Environment
+	 */
+	public function add_number_shorthand_filter( $twig ) {
+		$twig->addFilter( new \Twig\TwigFilter( 'number_shorthand', array( $this, 'number_shorthand' ) ) );
+		return $twig;
+	}
+
+	/**
+	 * Format a number with a shorthand (e.g., 500 -> 500, 1000 -> 1K, 1500 -> 1.5K).
+	 *
+	 * @param int $number The number to format.
+	 * @return string
+	 */
+	public function number_shorthand( $number ) {
+		$k = $number / 1000;
+		if ( $number >= 1000 ) {
+			return ( floor( $k ) == $k ? floor( $k ) : number_format( $k, 1 ) ) . 'K';
+		} else {
+			return strval( $number );
+		}
 	}
 }
