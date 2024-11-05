@@ -6,10 +6,189 @@
 
 {% block pageBody %}
 
-<header class="grid grid-site centered-page">
-  <h1 class="col-span-16 type-sans-2xl">
+<header class="grid grid-site centered-page items-end mt-12 gap-y-4 md:mt-24 xl:mt-30">
+  <h1 class="col-span-full uppercase lg:col-span-16 type-sans-xl md:type-sans-2xl">
     {{ post.title }}
   </h1>
+
+  <div class="col-span-full lg:col-span-8">
+    <div class="grid grid-cols-6 lg:grid-cols-8 gap-x-grid-site-gutter gap-y-4">
+      {% if post.thumbnail.id %}
+      <div class="col-span-2 max-lg:order-2 lg:col-span-4">
+        {% include "components/lazy-img.twig" with { img: post.thumbnail } %}
+      </div>
+      {% endif %}
+
+      <p class="{% if post.thumbnail.id %}col-span-4{% else %}col-span-6 md:col-span-4{% endif %} max-lg:order-1 lg:col-span-8 type-headline-lg">{{ post.tagline }}</p>
+    </div>
+  </div>
 </header>
+
+<div class="grid grid-site centered-page gap-y-12 mt-12 lg:mt-24">
+  <section class="col-span-full md:col-span-1/2 lg:col-span-1/3 border-t border-content pt-2">
+    <h2 class="mb-6 text-xs uppercase">Overview</h2>
+
+    <dl class="grid grid-cols-6 md:grid-cols-16 lg:grid-cols-8 gap-x-grid-site-gutter gap-y-2">
+      {% if post.contributors is not empty %}
+      <div class="contents">
+        <dt class="col-span-1/2">Contributor{{ post.contributors|length > 1 ? 's' : '' }}</dt>
+        <dd class="col-span-1/2 [&_a]:font-semibold">
+          {% include "components/articles/byline_format.twig" with { bylines: post.contributors } %}
+        </dd>
+      </div>
+      {% endif %}
+
+      {% if post.platforms is not empty %}
+      <div class="contents">
+        <dt class="col-span-1/2">Platform{{ post.platforms|length > 1 ? 's' : '' }}</dt>
+        <dd class="col-span-1/2 [&_a]:font-semibold">
+          {% for platform in post.platforms %}
+            <a href="{{ platform.link }}" class="hover-link">{{ platform.name }}</a>{% if not loop.last %}, {% endif %}
+          {% endfor %}
+        </dd>
+      </div>
+      {% endif %}
+
+      {% if post.categories is not empty %}
+      <div class="contents">
+        <dt class="col-span-1/2">{{ post.categories|length > 1 ? 'Categories' : 'Category' }}</dt>
+        <dd class="col-span-1/2 [&_a]:font-semibold">
+          {% for category in post.categories %}
+            <a href="{{ category.link }}" class="hover-link">{{ category.name }}</a>{% if not loop.last %}, {% endif %}
+          {% endfor %}
+        </dd>
+      </div>
+      {% endif %}
+
+      {% if post.github_stats.stars|default(0) > 0 %}
+      <div class="contents">
+        <dt class="col-span-1/2">Stars</dt>
+        <dd class="col-span-1/2 font-semibold">
+          {{- post.github_stats.stars|number_shorthand -}}
+        </dd>
+      </div>
+      {% endif %}
+
+      {% if post.github_stats.forks|default(0) > 0 %}
+      <div class="contents">
+        <dt class="col-span-1/2">Forks</dt>
+        <dd class="col-span-1/2 font-semibold">
+          {{- post.github_stats.forks|number_shorthand -}}
+        </dd>
+      </div>
+      {% endif %}
+
+      {% if post.technologies is not empty %}
+      <div class="contents">
+        <dt class="col-span-1/2">{{ post.technologies|length > 1 ? 'Technologies' : 'Technology' }}</dt>
+        <dd class="col-span-1/2 [&_a]:font-semibold">
+          {% for technology in post.technologies %}
+            <a href="{{ technology.link }}" class="hover-link">{{ technology.name }}</a>{% if not loop.last %}, {% endif %}
+          {% endfor %}
+        </dd>
+      </div>
+      {% endif %}
+    </dl>
+  </section>
+
+  {% if post.about %}
+  <section class="col-span-full md:col-span-1/2 lg:col-span-1/3 border-t border-content pt-2">
+    <h2 class="mb-6 text-xs uppercase">More Information</h2>
+
+    <div class="prose">
+      {{ post.about }}
+    </div>
+  </section>
+  {% endif %}
+
+  {% if post.discord.url or post.discord.channel_name %}
+  <section class="col-span-full md:col-span-1/2 md:max-lg:col-start-end lg:col-span-1/3 border-t border-content pt-2 flex flex-col">
+    <h2 class="mb-6 text-xs uppercase">Contribute</h2>
+
+    <dl class="grid grid-cols-6 md:grid-cols-16 lg:grid-cols-8 gap-x-grid-site-gutter gap-y-2">
+      <div class="contents">
+        <dt class="col-span-1/2">Channel</dt>
+        <dd class="col-span-1/2 font-semibold">
+          <a href="{{ post.discord.url }}" class="hover-link">#{{ post.discord.channel_name }}</a>
+        </dd>
+      </div>
+
+      <div class="contents">
+        <dt class="col-span-1/2">Members</dt>
+        <dd class="col-span-1/2 font-semibold">
+          {{- post.discord.members_count|number_shorthand -}}
+        </dd>
+      </div>
+    </dl>
+
+    <div class="mt-8">
+      {% include "components/button-link.twig" with { href: post.discord.url, label: 'Join the Discord' } %}
+    </div>
+  </section>
+  {% endif %}
+</div>
+
+<section>
+  <h2 class="sr-only">Contributors</h2>
+
+  {% for contributor in post.contributors %}
+  <div class="grid grid-site centered-page gap-y-12 mt-36 md:mt-24">
+    <div class="col-span-full md:col-span-1/2 lg:col-span-1/3">
+      <div class="grid grid-cols-6 md:grid-cols-16 lg:grid-cols-8 gap-x-grid-site-gutter gap-y-4">
+        {% if contributor.thumbnail.id %}
+        <div class="col-span-2 md:col-span-5 lg:col-span-3">
+          {% include "components/lazy-img.twig" with { img: contributor.thumbnail, class: "w-full" } %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="col-span-full md:col-span-1/2 lg:col-span-1/3 border-t border-content pt-2 flex flex-col">
+      <h3 class="mb-6 text-xs uppercase">About {{ contributor.first_name }}</h3>
+
+      <div class="prose">
+        {{ contributor.about }}
+      </div>
+
+      <div class="mt-8">
+        <a href="{{ contributor.link }}" class="hover-link">
+          {{ contributor.first_name }}'s Profile
+        </a>
+      </div>
+    </div>
+
+    {% if contributor.latest_articles is not empty %}
+    <div class="col-span-full md:col-span-1/2 md:max-lg:col-start-end lg:col-span-1/3 border-t border-content pt-2 flex flex-col">
+      <h4 class="mb-6 text-xs uppercase">More from {{ contributor.first_name }}</h4>
+
+      <ul class="flex flex-col gap-y-4">
+        {% for article in contributor.latest_articles %}
+          <li class="relative border-b border-content pb-1">
+            <h5 class="font-semibold"><a href="{{ article.link }}" class="before:inset-0 before:absolute before:z-10 hover:text-action-focus-reverse focus:text-action-focus-reverse hover:bg-action-focus focus:bg-action-focus">{{ article.title }}</a></h5>
+            <p>{{ article.subtitle }}</p>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+  </div>
+  {% endfor %}
+</section>
+
+<section class="grid grid-site centered-page gap-y-16 mt-24 lg:mt-36">
+  <div class="col-span-full border-t border-content pt-2">
+    <h2 class="uppercase">Other Collaborations</h2>
+  </div>
+
+  {% if post.other_projects is not empty %}
+    <ul class="contents">
+      {% for project in post.other_projects %}
+        <li class="col-span-full md:col-span-1/2 lg:col-span-1/3">
+          {% include "components/previews/project.twig" with { project: project } %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</section>
 
 {% endblock %}

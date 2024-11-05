@@ -86,6 +86,8 @@ module.exports = {
         '6xl': 'clamp(2.25rem, 4vw + 0.6rem, 4.5rem)',
         // 64px (@640px) -> 100px (@1536px)
         '8xl': 'clamp(4rem, 6vw + 1.25rem, 6.25rem);',
+        // 72px (@640px) -> 156px (@1536px)
+        '10xl': 'clamp(4.5rem, 9.4vw + 0.8rem, 9.75rem);',
       },
 
       keyframes: {
