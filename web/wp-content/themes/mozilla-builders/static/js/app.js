@@ -39,6 +39,15 @@ onDocumentReady(() => {
     );
   }
 
+  const masonryGrids = document.querySelectorAll('[data-masonry-grid]');
+  if (masonryGrids.length > 0) {
+    import('@src/components/masonry-grid').then(module => {
+      masonryGrids.forEach(el => {
+        new module.default(el);
+      });
+    });
+  }
+
   // This is an example of how to do code splitting. The JS in this
   // referenced file will only be loaded on that page. Good for
   // when you have a large amount of JS only needed in one place

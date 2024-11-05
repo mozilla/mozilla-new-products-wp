@@ -8,7 +8,7 @@
 
   {% include 'components/page-topper.twig' %}
 
-  <ul class="grid grid-site centered-page gap-y-20 mb-24">
+  <ul class="grid grid-site centered-page gap-y-20 mb-24" data-masonry-grid>
     {% for post in posts %}
       <li class="col-span-full md:col-span-1/2 lg:col-span-6">
         {% include 'components/previews/project.twig' with { project: post } %}
