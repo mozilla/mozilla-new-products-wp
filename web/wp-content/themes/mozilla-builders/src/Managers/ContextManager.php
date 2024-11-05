@@ -93,10 +93,11 @@ class ContextManager {
 	/**
 	 * Format a number with a shorthand (e.g., 500 -> 500, 1000 -> 1K, 1500 -> 1.5K).
 	 *
-	 * @param int $number The number to format.
+	 * @param string|int $number The number to format.
 	 * @return string
 	 */
 	public function number_shorthand( $number ) {
+		$number = intval( $number );
 		$k = $number / 1000;
 		if ( $number >= 1000 ) {
 			return ( floor( $k ) == $k ? floor( $k ) : number_format( $k, 1 ) ) . 'K';
