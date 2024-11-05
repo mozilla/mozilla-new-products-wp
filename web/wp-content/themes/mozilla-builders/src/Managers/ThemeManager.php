@@ -7,9 +7,12 @@
 
 namespace MozillaBuilders\Managers;
 
-use MozillaBuilders\Models\Article;
-use MozillaBuilders\Models\Profile;
-use MozillaBuilders\Models\Project;
+use MozillaBuilders\Models\PostType\Article;
+use MozillaBuilders\Models\PostType\Profile;
+use MozillaBuilders\Models\PostType\Project;
+use MozillaBuilders\Models\Taxonomy\Cohort;
+use MozillaBuilders\Models\Taxonomy\Platform;
+use MozillaBuilders\Models\Taxonomy\Technology;
 use MozillaBuilders\Vite;
 
 /** Class */
@@ -49,6 +52,7 @@ class ThemeManager {
 		add_action( 'admin_init', array( $this, 'register_menus' ) );
 		add_action( 'init', array( $this, 'register_options' ) );
 		add_action( 'init', array( $this, 'register_post_types' ), 1 );
+		add_action( 'init', array( $this, 'register_taxonomies' ), 1 );
 		add_filter( 'timber/post/classmap', array( $this, 'set_post_classmap' ) );
 		add_action( 'pre_get_posts', array( $this, 'filter_posts' ) );
 		add_filter( 'admin_footer_text', array( $this, 'add_admin_footer_credit' ) );
@@ -167,6 +171,20 @@ class ThemeManager {
 	public function register_post_types() {
 		Profile::register();
 		Project::register();
+	}
+
+	/**
+	 * Resgisers taxonomies.
+	 *
+	 * @return void
+	 */
+	public function register_taxonomies() {
+		// Register default taxonomies for custom post types.
+		register_taxonomy_for_object_type( 'category', Project::HANDLE );
+		// Register custom post types.
+		Cohort::register();
+		Platform::register();
+		Technology::register();
 	}
 
 	/**

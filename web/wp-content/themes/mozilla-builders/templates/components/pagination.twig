@@ -12,7 +12,7 @@ Pagination
   <div class="border-t border-content pt-2 col-span-full flex justify-between gap-2.5">
     <div class="text-sm flex-1 flex justify-start">
       {% if prev %}
-      <a href="{{ prev.link }}" aria-label="Previous Page">
+      <a href="{{ prev.link }}" aria-label="Previous Page" class="hover:bg-action-focus focus:bg-action-focus hover:text-action-focus-reverse focus:text-action-focus-reverse">
         Previous
       </a>
       {% endif %}
@@ -22,7 +22,7 @@ Pagination
       {% for page_link in pagination.pages %}
       <li class="text-sm">
         {% if page_link.link %}
-          <a href="{{ page_link.link }}" {% if page_link.current %}aria-current="page"{% endif %} aria-label="{{ 'Page ' ~ page_link.title }}">{{ page_link.title }}</a>
+          <a href="{{ page_link.link }}" {% if page_link.current %}aria-current="page"{% endif %} aria-label="{{ 'Page ' ~ page_link.title }}" class="hover:bg-action-focus focus:bg-action-focus hover:text-action-focus-reverse focus:text-action-focus-reverse">{{ page_link.title }}</a>
         {% else %}
           <span class="opacity-40" aria-label="{{ 'Page ' ~ page_link.title }}">{{ page_link.title }}</span>
         {% endif %}
@@ -32,7 +32,7 @@ Pagination
 
     <div class="text-sm flex-1 flex justify-end">
       {% if next %}
-      <a href="{{ next.link }}" aria-label="Next Page">
+      <a href="{{ next.link }}" aria-label="Next Page" class="hover:bg-action-focus focus:bg-action-focus hover:text-action-focus-reverse focus:text-action-focus-reverse">
         Next
       </a>
       {% endif %}

@@ -39,9 +39,8 @@ module.exports = {
 
     fontFamily: {
       sans: ['Mozilla Sans', ...theme.fontFamily.sans],
-      slab: ['Mozilla Semi Slab', ...theme.fontFamily.serif],
-      'slab-condensed': ['Mozilla Semi Slab Condensed', ...theme.fontFamily.serif],
-      'slab-extended': ['Mozilla Semi Slab Extended', ...theme.fontFamily.serif],
+      headline: ['Mozilla Headline', ...theme.fontFamily.serif],
+      'headline-condensed': ['Mozilla Headline Condensed', ...theme.fontFamily.serif],
     },
 
     fontWeight: {
@@ -67,7 +66,9 @@ module.exports = {
       },
 
       aspectRatio: {
-        logo: '446/119',
+        logo: '2227/420',
+        'mozilla-logo': '704/147',
+        'text-topper': '550/686',
       },
 
       content: {
@@ -85,6 +86,8 @@ module.exports = {
         '6xl': 'clamp(2.25rem, 4vw + 0.6rem, 4.5rem)',
         // 64px (@640px) -> 100px (@1536px)
         '8xl': 'clamp(4rem, 6vw + 1.25rem, 6.25rem);',
+        // 72px (@640px) -> 156px (@1536px)
+        '10xl': 'clamp(4.5rem, 9.4vw + 0.8rem, 9.75rem);',
       },
 
       keyframes: {

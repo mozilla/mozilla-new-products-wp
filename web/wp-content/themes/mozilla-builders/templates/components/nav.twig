@@ -1,5 +1,5 @@
 <nav class="grid grid-site py-site centered-page relative z-10">
-  <div class="md:mt-2.5 flex-1 flex gap-1 items-center justify-start col-span-1/3">
+  <div class="flex-1 flex gap-1 items-center justify-start col-span-1/3 md:col-span-3/8">
     <svg class="size-5 shrink-0 text-content">
       <use xlink:href="#flag"></use>
     </svg>
@@ -13,8 +13,8 @@
     </div>
   </div>
 
-  <div class="col-span-1/3 flex justify-center">
-    <a href="{{ site.url }}">
+  <div class="col-span-1/3 md:col-span-1/4 flex justify-center">
+    <a href="{{ site.url }}" class="md:flex md:items-center">
       <span class="sr-only">Mozilla Builders</span>
       <svg class="w-40 aspect-logo">
         <use xlink:href="#logo"></use>
@@ -22,7 +22,7 @@
     </a>
   </div>
 
-  <div class="lg:mt-2.5 flex-1 flex items-center justify-end gap-1 col-span-1/3 md:items-start lg:gap-4 xl:gap-6 md:max-lg:flex-col md:max-lg:items-end">
+  <div class=" flex-1 flex items-center justify-end gap-1 col-span-1/3 md:col-span-3/8 lg:gap-4 xl:gap-6 md:max-lg:flex-col md:max-lg:items-end">
     <ul class="flex flex-wrap justify-end items-center gap-2 lg:gap-4 xl:gap-6 gap-y-1 -mt-px max-md:hidden">
       {% for item in nav_pages_menu.items %}
       <li class="text-right">
@@ -120,7 +120,7 @@
                   <li>
                     <a
                       href="{{ item.url }}"
-                      class="text-5xl font-slab-condensed font-semibold"
+                      class="text-5xl font-headline-condensed font-semibold"
                       {% if item.current %}aria-current="page"{% endif %}
                     >
                       {{ item.name }}
