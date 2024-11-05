@@ -1,3 +1,5 @@
+const LARGE_SCREEN_BREAKPOINT = 767;
+
 class MasonryGrid {
   constructor(root) {
     this.root = root;
@@ -7,14 +9,15 @@ class MasonryGrid {
   }
 
   setup() {
-    this.root.style.gridAutoRows = `${this.rowHeight}px`;
-
     window.addEventListener('resize', this.resize.bind(this));
     this.resize();
   }
 
   resize() {
-    Array.from(this.root.children).forEach(this.resizeGridItem.bind(this));
+    if (window.innerWidth > LARGE_SCREEN_BREAKPOINT) {
+      this.root.style.gridAutoRows = `${this.rowHeight}px`;
+      Array.from(this.root.children).forEach(this.resizeGridItem.bind(this));
+    }
   }
 
   resizeGridItem(item) {
