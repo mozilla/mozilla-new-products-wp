@@ -14,11 +14,13 @@ import Links from '@src/components/links';
 import Alpine from 'alpinejs';
 import focus from '@alpinejs/focus';
 import { marquee } from '@src/plugins/marquee';
+import { masonry } from '@src/plugins/masonry';
 
 // Initialize Alpine
 window.Alpine = Alpine;
 Alpine.plugin(focus);
 Alpine.plugin(marquee);
+Alpine.plugin(masonry);
 Alpine.start();
 
 // Initialize custom JS
@@ -37,15 +39,6 @@ onDocumentReady(() => {
         new HangPunctuation();
       },
     );
-  }
-
-  const masonryGrids = document.querySelectorAll('[data-masonry-grid]');
-  if (masonryGrids.length > 0) {
-    import('@src/components/masonry-grid').then(module => {
-      masonryGrids.forEach(el => {
-        new module.default(el);
-      });
-    });
   }
 
   // This is an example of how to do code splitting. The JS in this
