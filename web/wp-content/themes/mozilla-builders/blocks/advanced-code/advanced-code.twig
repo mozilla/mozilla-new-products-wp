@@ -1,6 +1,6 @@
 {% if code is not empty %}
 <div x-clipboard data-block="advanced-code" class="relative flex flex-col {{ alignclass }}">
-  <div class="flex justify-between items-center gap-4 {{ filename ? 'w-full py-3 border-t border-content' : 'absolute top-2 right-2' }}">
+  <div class="flex justify-between items-center gap-4 {{ filename ? 'w-full py-3 border-t border-content [.alignfull_&]:md:px-3' : 'absolute top-2 right-2' }}">
     <div>
       {% if filename is not empty %}
       <p class="text-sm font-semibold">{{ filename }}</p>
