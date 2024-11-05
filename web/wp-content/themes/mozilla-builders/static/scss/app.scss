@@ -185,6 +185,9 @@ body {
   .col-start-center {
     @include grid.column-start(calc((var(--column-count) - var(--column-span)) / 2 + 1));
   }
+  .col-start-end {
+    @include grid.column-start(calc(var(--column-count) - var(--column-span) + 1));
+  }
   .grid-site {
     @apply grid-cols-site gap-x-grid-site-gutter px-grid-site-margin;
   }

@@ -82,4 +82,22 @@ class Project extends TimberPost {
 	public function technologies() {
 		return $this->terms( 'technology' );
 	}
+
+	/**
+	 * Get 3 other projects to feature on the project page.
+	 *
+	 * @return array
+	 */
+	public function other_projects() {
+		$args = array(
+			'post_type' => self::HANDLE,
+			'post_status' => 'publish',
+			'posts_per_page' => 3,
+			'orderby' => 'date',
+			'order' => 'DESC',
+			'post__not_in' => array( $this->id ),
+		);
+
+		return Timber::get_posts( $args )->to_array();
+	}
 }
