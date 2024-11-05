@@ -66,7 +66,9 @@ module.exports = {
       },
 
       aspectRatio: {
-        logo: '446/119',
+        logo: '2227/420',
+        'mozilla-logo': '704/147',
+        'text-topper': '550/686',
       },
 
       content: {
