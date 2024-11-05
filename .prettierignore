@@ -1,1 +1,16 @@
 **/*.twig
+
+# Dependencies
+node_modules/
+**/vendor/
+**/composer.lock
+**/package-lock.json
+
+# Built files.
+**/dist/
+
+# Vite
+**/.vite
+
+# ddev
+**/.ddev/
