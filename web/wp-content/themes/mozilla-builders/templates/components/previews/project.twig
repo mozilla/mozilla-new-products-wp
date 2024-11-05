@@ -7,31 +7,31 @@
 
   <div class="flex flex-col divide-y divide-content">
     <dl class="flex flex-col divide-y divide-content">
-      {% if post.contributors is not empty %}
+      {% if project.contributors is not empty %}
       <div class="flex justify-between gap-4 py-1.5">
-        <dt>Contributor{{ post.contributors|length > 1 ? 's' : '' }}</dt>
+        <dt>Contributor{{ project.contributors|length > 1 ? 's' : '' }}</dt>
         <dd class="text-right font-semibold">
-          {% include "components/articles/byline_format.twig" with { bylines: post.contributors } %}
+          {% include "components/articles/byline_format.twig" with { bylines: project.contributors } %}
         </dd>
       </div>
       {% endif %}
 
-      {% if post.platforms is not empty %}
+      {% if project.platforms is not empty %}
       <div class="flex justify-between gap-4 py-1.5">
-        <dt>Platform{{ post.platforms|length > 1 ? 's' : '' }}</dt>
+        <dt>Platform{{ project.platforms|length > 1 ? 's' : '' }}</dt>
         <dd class="text-right font-semibold">
-          {% for platform in post.platforms %}
+          {% for platform in project.platforms %}
             <a href="{{ platform.link }}" class="hover-link">{{ platform.name }}</a>{% if not loop.last %}, {% endif %}
           {% endfor %}
         </dd>
       </div>
       {% endif %}
 
-      {% if post.categories is not empty %}
+      {% if project.categories is not empty %}
       <div class="flex justify-between gap-4 py-1.5">
-        <dt>{{ post.categories|length > 1 ? 'Categories' : 'Category' }}</dt>
+        <dt>{{ project.categories|length > 1 ? 'Categories' : 'Category' }}</dt>
         <dd class="text-right font-semibold">
-          {% for category in post.categories %}
+          {% for category in project.categories %}
             <a href="{{ category.link }}" class="hover-link">{{ category.name }}</a>{% if not loop.last %}, {% endif %}
           {% endfor %}
         </dd>
