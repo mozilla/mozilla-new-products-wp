@@ -8,12 +8,28 @@
 
   {% include 'components/page-topper.twig' %}
 
-  <ul class="grid grid-site centered-page gap-y-20">
+  <ul class="grid grid-site centered-page gap-y-20 mb-24">
     {% for post in posts %}
       <li class="col-span-full md:col-span-1/2 lg:col-span-6">
         {% include 'components/previews/project.twig' with { project: post } %}
       </li>
     {% endfor %}
   </ul>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-px mx-grid-site-margin">
+    {% include 'components/big-cta.twig' with {
+      top: 'Explore more',
+      bottom: 'Analysis, tutorials, opinion, and more',
+      label: 'Content',
+      href: archive_links.posts,
+    } %}
+
+    {% include 'components/big-cta.twig' with {
+      top: 'Join our community',
+      bottom: '2951 members and counting',
+      label: 'Discord',
+      href: archive_links.discord,
+    } %}
+  </div>
 
 {% endblock %}
