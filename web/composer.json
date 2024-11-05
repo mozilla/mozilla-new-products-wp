@@ -44,6 +44,7 @@
     }
   },
   "require": {
+    "scrivo/highlight.php": "^9.18",
     "wpackagist-plugin/wp-environment-indicator": "^1.0",
     "vlucas/phpdotenv": "^5.4",
     "timber/timber": "^2.2",

@@ -1,0 +1,7 @@
+{% if code is not empty %}
+<div data-block="advanced-code" class="{{ alignclass }}">
+  <pre>
+    <code class="type-code hljs {{ language }}">{{ code.highlighted }}</code>
+  </pre>
+</div>
+{% endif %}

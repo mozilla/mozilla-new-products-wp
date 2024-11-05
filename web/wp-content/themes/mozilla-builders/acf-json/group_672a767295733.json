@@ -1,0 +1,87 @@
+{
+  "key": "group_672a767295733",
+  "title": "Code Block",
+  "fields": [
+    {
+      "key": "field_672a769a064fa",
+      "label": "Language",
+      "name": "language",
+      "aria-label": "",
+      "type": "select",
+      "instructions": "",
+      "required": 1,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "choices": {
+        "javascript": "JavaScript",
+        "typescript": "TypeScript",
+        "ruby": "Ruby",
+        "python": "Python",
+        "php": "PHP"
+      },
+      "default_value": "javascript",
+      "return_format": "value",
+      "multiple": 0,
+      "allow_null": 0,
+      "allow_in_bindings": 0,
+      "ui": 0,
+      "ajax": 0,
+      "placeholder": "",
+      "allow_custom": 0,
+      "search_placeholder": ""
+    },
+    {
+      "key": "field_672a7672064f9",
+      "label": "Editor",
+      "name": "code",
+      "aria-label": "",
+      "type": "acfe_code_editor",
+      "instructions": "",
+      "required": 1,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": "",
+      "mode": "text/x-php",
+      "lines": 1,
+      "indent_unit": 2,
+      "maxlength": "",
+      "rows": 8,
+      "max_rows": "",
+      "return_format": [],
+      "allow_in_bindings": 0
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf/advanced-code"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "left",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0,
+  "acfe_display_title": "",
+  "acfe_autosync": ["json"],
+  "acfe_form": 0,
+  "acfe_meta": "",
+  "acfe_note": "",
+  "modified": 1730836557
+}

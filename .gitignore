@@ -18,6 +18,7 @@ yarn-error.log*
 !/uploads/.gitkeep
 /plugins/*
 !/plugins/.gitkeep
+!/plugins/acf-extended/
 
 auth.json
 
@@ -51,6 +52,7 @@ web/wp-content/themes/index.php
 # Plugins
 !web/wp-content/plugins/
 !web/wp-content/plugins/.gitkeep
+!web/wp-content/plugins/acf-extended/
 
 # Turborepo
 .turbo
