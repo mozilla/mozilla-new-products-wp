@@ -3,6 +3,27 @@
   "title": "Code Block",
   "fields": [
     {
+      "key": "field_672a7baa88b2a",
+      "label": "Filename",
+      "name": "filename",
+      "aria-label": "",
+      "type": "text",
+      "instructions": "An optional filename to present above the code",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "allow_in_bindings": 0,
+      "placeholder": "",
+      "prepend": "",
+      "append": ""
+    },
+    {
       "key": "field_672a769a064fa",
       "label": "Language",
       "name": "language",
@@ -83,5 +104,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1730836557
+  "modified": 1730837440
 }

@@ -15,12 +15,13 @@ $hl = new Highlighter();
 $code = get_field( 'code' );
 $language = get_field( 'language' );
 
-$context             = Timber::context();
-$context['code']     = array(
+$context               = Timber::context();
+$context['language']   = $language;
+$context['code']       = array(
 	'plain' => $code,
 	'highlighted' => $hl->highlight( $language, $code )->value,
 );
-$context['language'] = $language;
+$context['filename']    = get_field( 'filename' );
 $context['alignclass'] = "align$alignment";
 
 Timber::render( basename( __DIR__ ) . '/advanced-code.twig', $context );
