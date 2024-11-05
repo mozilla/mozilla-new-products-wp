@@ -6,29 +6,29 @@
 
 {% block pageBody %}
 
-<header class="grid grid-site centered-page items-end mt-12 gap-y-4">
-  <h1 class="col-span-full md:col-span-16 type-sans-3xl">
+<header class="grid grid-site centered-page items-end mt-12 gap-y-4 md:mt-24 xl:mt-30">
+  <h1 class="col-span-full uppercase lg:col-span-16 type-sans-xl md:type-sans-2xl">
     {{ post.title }}
   </h1>
 
-  <div class="col-span-full md:col-span-8">
-    <div class="grid grid-cols-6 md:grid-cols-8 gap-x-grid-site-gutter gap-y-4">
+  <div class="col-span-full lg:col-span-8">
+    <div class="grid grid-cols-6 lg:grid-cols-8 gap-x-grid-site-gutter gap-y-4">
       {% if post.thumbnail.id %}
-      <div class="col-span-2 max-md:order-2 md:col-span-4">
+      <div class="col-span-2 max-lg:order-2 lg:col-span-4">
         {% include "components/lazy-img.twig" with { img: post.thumbnail } %}
       </div>
       {% endif %}
 
-      <p class="col-span-4 max-md:order-1 md:col-span-8 type-headline-lg">{{ post.tagline }}</p>
+      <p class="{% if post.thumbnail.id %}col-span-4{% else %}col-span-6 md:col-span-4{% endif %} max-lg:order-1 lg:col-span-8 type-headline-lg">{{ post.tagline }}</p>
     </div>
   </div>
 </header>
 
-<div class="grid grid-site centered-page gap-y-12 mt-24 md:mt-36">
+<div class="grid grid-site centered-page gap-y-12 mt-12 lg:mt-24">
   <section class="col-span-full md:col-span-1/2 lg:col-span-1/3 border-t border-content pt-2">
     <h2 class="mb-6 text-xs uppercase">Overview</h2>
 
-    <dl class="grid grid-cols-6 md:grid-cols-16 lg:grid-cols-8 gap-x-grid-site-gutter gap-y-4">
+    <dl class="grid grid-cols-6 md:grid-cols-16 lg:grid-cols-8 gap-x-grid-site-gutter gap-y-2">
       {% if post.contributors is not empty %}
       <div class="contents">
         <dt class="col-span-1/2">Contributor{{ post.contributors|length > 1 ? 's' : '' }}</dt>
@@ -98,7 +98,7 @@
   <section class="col-span-full md:col-span-1/2 lg:col-span-1/3 border-t border-content pt-2 flex flex-col">
     <h2 class="mb-6 text-xs uppercase">Contribute</h2>
 
-    <dl class="grid grid-cols-6 md:grid-cols-16 lg:grid-cols-8 gap-x-grid-site-gutter gap-y-4">
+    <dl class="grid grid-cols-6 md:grid-cols-16 lg:grid-cols-8 gap-x-grid-site-gutter gap-y-2">
       <div class="contents">
         <dt class="col-span-1/2">Channel</dt>
         <dd class="col-span-1/2 font-semibold">
@@ -167,7 +167,7 @@
   {% endfor %}
 </section>
 
-<section class="grid grid-site centered-page gap-y-16 mt-36 md:mt-24">
+<section class="grid grid-site centered-page gap-y-16 mt-24 lg:mt-36">
   <div class="col-span-full border-t border-content pt-2">
     <h2 class="uppercase">Other Collaborations</h2>
   </div>
