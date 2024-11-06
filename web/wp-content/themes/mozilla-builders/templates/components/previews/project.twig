@@ -1,9 +1,19 @@
-<div class="border-t border-content pt-2 flex flex-col gap-6">
-  <h3 class="text-lg uppercase">
-    <a href="{{ project.link }}" class="transition-colors hover:text-action-focus-reverse focus:text-action-focus-reverse hover:bg-action-focus focus:bg-action-focus">{{ project.title }}</a>
-  </h3>
+<div class="flex flex-col gap-6">
+  <div class="flex flex-col gap-6 relative">
+    {% if project.thumbnail %}
+      <div class="w-1/2">
+        {% include "components/lazy-img.twig" with { img: project.thumbnail } %}
+      </div>
+    {% endif %}
 
-  <p>{{ project.tagline }}</p>
+    <div class="border-t border-content pt-2">
+      <h3 class="text-lg uppercase">
+        <a href="{{ project.link }}" class="before:absolute before:inset-0 before:z-10 transition-colors hover:text-action-focus-reverse focus:text-action-focus-reverse hover:bg-action-focus focus:bg-action-focus">{{ project.title }}</a>
+      </h3>
+    </div>
+
+    <p>{{ project.tagline }}</p>
+  </div>
 
   <div class="flex flex-col divide-y divide-content">
     <dl class="flex flex-col divide-y divide-content">
@@ -47,11 +57,5 @@
       {% endif %}
     </div>
   </div>
-
-  {% if project.thumbnail %}
-    <div class="w-1/2 mt-6">
-      {% include "components/lazy-img.twig" with { img: project.thumbnail } %}
-    </div>
-  {% endif %}
 </div>
 
