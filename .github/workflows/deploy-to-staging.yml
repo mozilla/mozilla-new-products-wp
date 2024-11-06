@@ -59,41 +59,21 @@ jobs:
         run: |
           ls -la
 
-      - name: SFTP Upload
-        uses: Dylan700/sftp-upload-action@v1.2.3
+      - name: lftp-mirror-action
+        uses: pressidium/lftp-mirror-action@v1
         with:
-          server: buildersmozil1.sftp.wpengine.com
-          username: buildersmozil1-nick-braica
-          password: ${{ secrets.WPENGINE_SFTP_PASSWORD }}
+          host: ${{ secrets.SFTP_HOST }}
           port: 2222
-          uploads: |
-            ./web/wp-content/themes/mozilla-builders/ => /wp-content/themes/mozilla-builders
-            ./web/wp-content/plugins/ => /wp-content/plugins/
-          ignore: |
-            ./web/wp-content/themes/mozilla-builders/node_modules
+          user: ${{ secrets.SFTP_USER }}
+          pass: ${{ secrets.SFTP_PASS }}
 
-      # # deploy theme
-      # - name: GitHub Action Deploy Theme to WP Engine
-      #   uses: wpengine/github-action-wpe-site-deploy@v3
-      #   with:
-      #     WPE_SSHG_KEY_PRIVATE: ${{ secrets.SSH_KEY }}
-      #     WPE_ENV: mitadvkitdev
-      #     # Deploy Options
-      #     SRC_PATH: "themes/mit-advancement-toolkit/"
-      #     REMOTE_PATH: "wp-content/themes/mit-advancement-toolkit/"
-      #     PHP_LINT: FALSE
-      #     FLAGS: -azvr --inplace --delete --exclude=".*"  --exclude=wp-content/mu-plugins/local-plugin --exclude-from=.deployignore
-      #     CACHE_CLEAR: TRUE
+          # lftp settings
+          onlyNewer: true
+          settings: 'sftp:auto-confirm=yes'
 
-      # # deploy plugins
-      # - name: GitHub Action Deploy Plugins to WP Engine
-      #   uses: wpengine/github-action-wpe-site-deploy@v3
-      #   with:
-      #     WPE_SSHG_KEY_PRIVATE: ${{ secrets.SSH_KEY }}
-      #     WPE_ENV: mitadvkitdev
-      #     # Deploy Options
-      #     SRC_PATH: "plugins/"
-      #     REMOTE_PATH: "wp-content/plugins/"
-      #     PHP_LINT: FALSE
-      #     FLAGS: -azvr --inplace --exclude=".*"  --exclude=wp-content/mu-plugins/local-plugin
-      #     CACHE_CLEAR: TRUE
+          # Mirror command options
+          localDir: './web/wp-content/themes/mozilla-builders'
+          remoteDir: '/wp-content/themes/mozilla-builders'
+          reverse: true
+          ignoreFile: '.lftp_ignore'
+          options: '--verbose'
