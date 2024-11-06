@@ -108,16 +108,17 @@ jobs:
               break
             fi
           done
-          echo "ANOTHER_TEST=something" >> $GITHUB_OUTPUT
-          echo "PHP_DEPS_CHANGED=$PHP_DEPS_CHANGED" >> $GITHUB_OUTPUT
+          echo "ANOTHER_TEST=something" >> $GITHUB_ENV
+          echo "PHP_DEPS_CHANGED=$PHP_DEPS_CHANGED" >> $GITHUB_ENV
 
       - name: Some test
         env:
           PHP_DEPS_CHANGED: ${{ env.PHP_DEPS_CHANGED }}
         run: |
           echo "somthing"
-          echo "${{ steps.changed-files.outputs.PHP_DEPS_CHANGED }}"
+          echo "$PHP_DEPS_CHANGED"
           echo "${{ steps.changed-files.outputs.ANOTHER_TEST }}"
+          echo "env now"
 
       - name: Install only build PHP dependencies
         env:
