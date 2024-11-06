@@ -2,12 +2,12 @@
   class="relative aspect-square p-3 flex flex-col justify-between items-center
         bg-action text-action-reverse hover:bg-action-focus hover:text-action-reverse-focus focus:bg-action-focus focus:text-action-reverse-focus
         transition-colors duration-200">
-  <p class="text-sm uppercase">
+  <p class="text-center text-sm uppercase">
     {{ top }}
   </p>
 
   <a href="{{ href }}" class="group before:absolute before:inset-0 before:z-10">
-    <div class="type-sans-2xl flex items-center gap-5 md:gap-8">
+    <div class="type-sans-xl lg:type-sans-2xl flex items-center gap-5 md:gap-8">
       <span>{{ label }}</span>
       <svg
         class="h-[0.7em] aspect-square transition-transform group-hover:translate-x-2 {{ href starts with site.link or href starts with '#' ? '' : '-rotate-45 group-hover:-translate-y-2' }}">
@@ -16,7 +16,7 @@
     </div>
   </a>
 
-  <p class="text-sm uppercase">
+  <p class="text-center text-sm uppercase">
     {{ bottom }}
   </p>
 </div>

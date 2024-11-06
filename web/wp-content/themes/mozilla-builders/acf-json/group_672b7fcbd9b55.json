@@ -16,13 +16,12 @@
         "class": "",
         "id": ""
       },
-      "acfe_repeater_stylised_button": 0,
-      "layout": "row",
+      "layout": "block",
       "pagination": 0,
       "min": 0,
-      "max": 0,
+      "max": 2,
       "collapsed": "",
-      "button_label": "Add Row",
+      "button_label": "Add CTA",
       "rows_per_page": 20,
       "sub_fields": [
         {
@@ -35,7 +34,7 @@
           "required": 1,
           "conditional_logic": 0,
           "wrapper": {
-            "width": "",
+            "width": "50",
             "class": "",
             "id": ""
           },
@@ -57,7 +56,7 @@
           "required": 1,
           "conditional_logic": 0,
           "wrapper": {
-            "width": "",
+            "width": "50",
             "class": "",
             "id": ""
           },
@@ -142,11 +141,11 @@
   "menu_order": 0,
   "position": "normal",
   "style": "seamless",
-  "label_placement": "left",
+  "label_placement": "top",
   "instruction_placement": "label",
   "hide_on_screen": ["the_content", "excerpt"],
   "active": true,
   "description": "",
   "show_in_rest": 0,
-  "modified": 1730905450
+  "modified": 1730907251
 }

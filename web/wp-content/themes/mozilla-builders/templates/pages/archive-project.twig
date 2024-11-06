@@ -16,7 +16,7 @@
     {% endfor %}
   </ul>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-px mx-grid-site-margin">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 gap-px mx-grid-site-margin">
     {% for cta in page.ctas %}
       {% if cta.link_type == "post_archive" %}
         {% set label = 'Content' %}
