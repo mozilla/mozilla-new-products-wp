@@ -94,7 +94,7 @@ jobs:
 
       - name: Check if PHP dependencies changed
         run: |
-          changed_files=$(git diff --name-only ${{ github.sha }} ${{ github.event.before }})
+          changed_files=$(git diff --name-only HEAD^ HEAD)
           if [[ $changed_files =~ "web/composer.json" || $changed_files =~ "web/composer.lock" ]]; then
             echo "PHP_DEPS_CHANGED=true" >> $GITHUB_OUTPUT
           fi
