@@ -12,115 +12,116 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Cache turbo build setup
-        uses: actions/cache@v4
-        with:
-          path: .turbo
-          key: ${{ runner.os }}-turbo-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-turbo-
+      # - name: Cache turbo build setup
+      #   uses: actions/cache@v4
+      #   with:
+      #     path: .turbo
+      #     key: ${{ runner.os }}-turbo-${{ github.sha }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-turbo-
 
-      - name: Setup node
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'npm'
+      # - name: Setup node
+      #   uses: actions/setup-node@v4
+      #   with:
+      #     node-version-file: '.nvmrc'
+      #     cache: 'npm'
 
-      - name: Add HTTP basic auth credentials
-        env:
-          COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH_JSON }}
-        if: env.COMPOSER_AUTH != null
-        run: echo '${{ secrets.COMPOSER_AUTH_JSON }}' > $GITHUB_WORKSPACE/web/auth.json
+      # - name: Add HTTP basic auth credentials
+      #   env:
+      #     COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH_JSON }}
+      #   if: env.COMPOSER_AUTH != null
+      #   run: echo '${{ secrets.COMPOSER_AUTH_JSON }}' > $GITHUB_WORKSPACE/web/auth.json
 
-      - name: Install PHP dependencies
-        uses: php-actions/composer@v6
-        with:
-          working_dir: 'web'
+      # - name: Install PHP dependencies
+      #   uses: php-actions/composer@v6
+      #   with:
+      #     working_dir: 'web'
 
-      - name: Manually install rollup dependencies (see https://github.com/npm/cli/issues/4828#issuecomment-2404560937)
-        run: npm i @rollup/rollup-linux-x64-gnu
+      # - name: Manually install rollup dependencies (see https://github.com/npm/cli/issues/4828#issuecomment-2404560937)
+      #   run: npm i @rollup/rollup-linux-x64-gnu
 
-      - name: Install dependencies
-        run: npm ci
+      # - name: Install dependencies
+      #   run: npm ci
 
-      - name: Build
-        run: npm run build
+      # - name: Build
+      #   run: npm run build
 
-      - name: Test JavaScript
-        run: npm run lint:js
+      # - name: Test JavaScript
+      #   run: npm run lint:js
 
-      - name: Test PHP
-        run: npm run lint:php
+      # - name: Test PHP
+      #   run: npm run lint:php
 
-      - name: Check bundlesize
-        run: npm run test:bundlesize
+      # - name: Check bundlesize
+      #   run: npm run test:bundlesize
 
-      - name: Deploy theme
-        uses: pressidium/lftp-mirror-action@v1
-        with:
-          host: ${{ secrets.SFTP_HOST }}
-          port: 2222
-          user: ${{ secrets.SFTP_USER }}
-          pass: ${{ secrets.SFTP_PASS }}
+      # - name: Deploy theme
+      #   uses: pressidium/lftp-mirror-action@v1
+      #   with:
+      #     host: ${{ secrets.SFTP_HOST }}
+      #     port: 2222
+      #     user: ${{ secrets.SFTP_USER }}
+      #     pass: ${{ secrets.SFTP_PASS }}
 
-          # lftp settings
-          onlyNewer: true
-          settings: 'sftp:auto-confirm=yes'
+      #     # lftp settings
+      #     onlyNewer: true
+      #     settings: 'sftp:auto-confirm=yes'
 
-          # Mirror command options
-          localDir: './web/wp-content/themes/mozilla-builders'
-          remoteDir: '/wp-content/themes/mozilla-builders'
-          reverse: true
-          ignoreFile: '.lftp_ignore'
-          options: '--verbose --no-perms --delete'
+      #     # Mirror command options
+      #     localDir: './web/wp-content/themes/mozilla-builders'
+      #     remoteDir: '/wp-content/themes/mozilla-builders'
+      #     reverse: true
+      #     ignoreFile: '.lftp_ignore'
+      #     options: '--verbose --no-perms --delete'
 
-      - name: Deploy plugins
-        uses: pressidium/lftp-mirror-action@v1
-        with:
-          host: ${{ secrets.SFTP_HOST }}
-          port: 2222
-          user: ${{ secrets.SFTP_USER }}
-          pass: ${{ secrets.SFTP_PASS }}
+      # - name: Deploy plugins
+      #   uses: pressidium/lftp-mirror-action@v1
+      #   with:
+      #     host: ${{ secrets.SFTP_HOST }}
+      #     port: 2222
+      #     user: ${{ secrets.SFTP_USER }}
+      #     pass: ${{ secrets.SFTP_PASS }}
 
-          # lftp settings
-          onlyNewer: true
-          settings: 'sftp:auto-confirm=yes'
+      #     # lftp settings
+      #     onlyNewer: true
+      #     settings: 'sftp:auto-confirm=yes'
 
-          # Mirror command options
-          localDir: './web/wp-content/plugins'
-          remoteDir: '/wp-content/plugins'
-          reverse: true
-          options: '--verbose --no-perms --delete'
+      #     # Mirror command options
+      #     localDir: './web/wp-content/plugins'
+      #     remoteDir: '/wp-content/plugins'
+      #     reverse: true
+      #     options: '--verbose --no-perms --delete'
 
       - name: Check if PHP dependencies changed
         run: |
+          git diff --name-only HEAD^ HEAD
           changed_files=$(git diff --name-only HEAD^ HEAD)
           if [[ $changed_files =~ "web/composer.json" || $changed_files =~ "web/composer.lock" ]]; then
             echo "PHP_DEPS_CHANGED=true" >> $GITHUB_OUTPUT
           fi
 
-      - name: Install only build PHP dependencies
-        if: env.PHP_DEPS_CHANGED == 'true'
-        uses: php-actions/composer@v6
-        with:
-          dev: no
-          working_dir: 'web'
+      # - name: Install only build PHP dependencies
+      #   if: env.PHP_DEPS_CHANGED == 'true'
+      #   uses: php-actions/composer@v6
+      #   with:
+      #     dev: no
+      #     working_dir: 'web'
 
-      - name: Deploy PHP dependencies
-        if: env.PHP_DEPS_CHANGED == 'true'
-        uses: pressidium/lftp-mirror-action@v1
-        with:
-          host: ${{ secrets.SFTP_HOST }}
-          port: 2222
-          user: ${{ secrets.SFTP_USER }}
-          pass: ${{ secrets.SFTP_PASS }}
+      # - name: Deploy PHP dependencies
+      #   if: env.PHP_DEPS_CHANGED == 'true'
+      #   uses: pressidium/lftp-mirror-action@v1
+      #   with:
+      #     host: ${{ secrets.SFTP_HOST }}
+      #     port: 2222
+      #     user: ${{ secrets.SFTP_USER }}
+      #     pass: ${{ secrets.SFTP_PASS }}
 
-          # lftp settings
-          onlyNewer: true
-          settings: 'sftp:auto-confirm=yes'
+      #     # lftp settings
+      #     onlyNewer: true
+      #     settings: 'sftp:auto-confirm=yes'
 
-          # Mirror command options
-          localDir: './web/wp-content/themes/mozilla-builders/vendor'
-          remoteDir: '/wp-content/themes/mozilla-builders/vendor'
-          reverse: true
-          options: '--verbose --no-perms --delete'
+      #     # Mirror command options
+      #     localDir: './web/wp-content/themes/mozilla-builders/vendor'
+      #     remoteDir: '/wp-content/themes/mozilla-builders/vendor'
+      #     reverse: true
+      #     options: '--verbose --no-perms --delete'
