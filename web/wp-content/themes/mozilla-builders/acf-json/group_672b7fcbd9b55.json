@@ -106,9 +106,9 @@
           "label": "Custom Link",
           "name": "custom_link",
           "aria-label": "",
-          "type": "acfe_advanced_link",
+          "type": "link",
           "instructions": "",
-          "required": 1,
+          "required": 0,
           "conditional_logic": [
             [
               {
@@ -123,9 +123,8 @@
             "class": "",
             "id": ""
           },
-          "post_type": "",
-          "taxonomy": "",
-          "allow_in_bindings": 0,
+          "return_format": "array",
+          "allow_in_bindings": 1,
           "parent_repeater": "field_672b7fcce168d"
         }
       ]
@@ -145,14 +144,9 @@
   "style": "seamless",
   "label_placement": "left",
   "instruction_placement": "label",
-  "hide_on_screen": ["block_editor", "the_content", "excerpt"],
+  "hide_on_screen": ["the_content", "excerpt"],
   "active": true,
   "description": "",
   "show_in_rest": 0,
-  "acfe_display_title": "",
-  "acfe_autosync": ["json"],
-  "acfe_form": 0,
-  "acfe_meta": "",
-  "acfe_note": "",
-  "modified": 1730904348
+  "modified": 1730905450
 }
