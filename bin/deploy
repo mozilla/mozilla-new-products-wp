@@ -1,0 +1,100 @@
+#!/bin/bash
+
+# Check if a local .env file exists and source it
+if [ -f ".env" ]; then
+  echo "Loading environment variables from .env file..."
+  source .env
+fi
+
+# Check if required environment variables are set
+required_vars=("SFTP_USER" "SFTP_HOST" "SFTP_PORT" "SFTP_PASSWORD")
+for var in "${required_vars[@]}"; do
+  if [ -z "${!var}" ]; then
+    echo "Error: $var environment variable is not set."
+    exit 1
+  fi
+done
+
+# Check if expect is installed
+if ! command -v expect &> /dev/null; then
+    echo "Error: expect is not installed. Please install it first."
+    exit 1
+fi
+
+# Define theme directory
+THEME_DIR="./web/wp-content/themes/mozilla-builders"
+REMOTE_THEME_DIR="/wp-content/themes/mozilla-builders"
+REMOTE_TEMP_DIR="/wp-content/themes/_tmp"
+
+# Check if theme directory exists
+if [ ! -d "$THEME_DIR" ]; then
+    echo "Error: Theme directory not found: $THEME_DIR"
+    exit 1
+fi
+
+# Run the npm build command
+echo "Running npm build..."
+npm run build
+BUILD_STATUS=$?
+
+# Check if the build was successful
+if [ $BUILD_STATUS -ne 0 ]; then
+    echo "Build failed. Exiting."
+    exit 1
+fi
+
+# Create a temporary directory
+TEMP_DIR=$(mktemp -d)
+echo "Creating temporary directory for deployment..."
+
+# Copy all files except node_modules to temp directory
+echo "Copying files to temporary directory..."
+cp -r "$THEME_DIR"/* "$TEMP_DIR"/
+rm -rf "$TEMP_DIR/node_modules"
+rm -rf "$TEMP_DIR/vendor"
+rm -rf "$TEMP_DIR/.turbo"
+rm -rf "$TEMP_DIR/.vite"
+rm -rf "$TEMP_DIR/static/js"
+rm -rf "$TEMP_DIR/static/scss"
+
+# Use expect to upload files, remove old directory, and rename the temp directory
+/usr/bin/expect -c "
+set timeout -1
+spawn sftp -o StrictHostKeyChecking=no -P $SFTP_PORT $SFTP_USER@$SFTP_HOST
+expect {
+    \"*assword:\" { send \"$SFTP_PASSWORD\r\"; exp_continue }
+    \"sftp>\" { send \"cd /wp-content/themes\r\" }
+}
+
+# Upload the entire theme contents to the temporary directory
+expect \"sftp>\"
+send \"mkdir _tmp\r\"
+expect \"sftp>\"
+send \"put -r $TEMP_DIR/* _tmp/\r\"
+expect \"sftp>\"
+
+# Remove the old theme directory (mozilla-builders)
+expect \"sftp>\"
+send \"rm -r $REMOTE_THEME_DIR\r\"
+expect \"sftp>\"
+
+# Rename the temporary directory (_tmp) to mozilla-builders
+expect \"sftp>\"
+send \"rename _tmp $REMOTE_THEME_DIR\r\"
+expect \"sftp>\"
+send \"bye\r\"
+expect eof
+"
+
+# Check expect exit status
+EXPECT_STATUS=$?
+if [ $EXPECT_STATUS -ne 0 ]; then
+    echo "Error: SFTP transfer failed with status $EXPECT_STATUS"
+    rm -rf "$TEMP_DIR"
+    exit 1
+fi
+
+# Clean up temporary directory
+rm -rf "$TEMP_DIR"
+
+echo "Deployment completed successfully!"

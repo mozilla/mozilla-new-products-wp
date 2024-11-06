@@ -1,21 +1,137 @@
-name: Deploy to Staging
-
+name: Test and deploy
 on:
-  workflow_run:
-    workflows: [Upload data]
-    types:
-      - completed
+  push:
+    branches:
+      - main
 
 jobs:
   deploy:
-    if: ${{ github.event.workflow_run.conclusion == 'success' && github.event_name == 'push' }}
-    name: Deploy to WPEngine staging.
+    name: Test and deploy to WPEngine staging environment
     runs-on: ubuntu-latest
     steps:
-      - name: Download the deploy artifact
-        uses: actions/download-artifact@v4.1.8
+      - uses: actions/checkout@v3
+
+      - name: Cache turbo build setup
+        uses: actions/cache@v4
         with:
-          name: deploy_artifacts
-          path: _build
-      - name: Display structure of downloaded files
-        run: ls -la _build
+          path: .turbo
+          key: ${{ runner.os }}-turbo-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-turbo-
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+
+      - name: Add HTTP basic auth credentials
+        env:
+          COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH_JSON }}
+        if: env.COMPOSER_AUTH != null
+        run: echo '${{ secrets.COMPOSER_AUTH_JSON }}' > $GITHUB_WORKSPACE/web/auth.json
+
+      - name: Install PHP dependencies
+        uses: php-actions/composer@v6
+        with:
+          working_dir: 'web'
+
+      - name: Manually install rollup dependencies (see https://github.com/npm/cli/issues/4828#issuecomment-2404560937)
+        run: npm i @rollup/rollup-linux-x64-gnu
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Test JavaScript
+        run: npm run lint:js
+
+      - name: Test PHP
+        run: npm run lint:php
+
+      - name: Check bundlesize
+        run: npm run test:bundlesize
+
+      - name: Deploy theme
+        uses: pressidium/lftp-mirror-action@v1
+        with:
+          host: ${{ secrets.SFTP_HOST }}
+          port: 2222
+          user: ${{ secrets.SFTP_USER }}
+          pass: ${{ secrets.SFTP_PASS }}
+
+          # lftp settings
+          onlyNewer: true
+          settings: 'sftp:auto-confirm=yes'
+
+          # Mirror command options
+          localDir: './web/wp-content/themes/mozilla-builders'
+          remoteDir: '/wp-content/themes/mozilla-builders'
+          reverse: true
+          ignoreFile: '.lftp_ignore'
+          options: '--verbose --no-perms --delete'
+
+      - name: Deploy plugins
+        uses: pressidium/lftp-mirror-action@v1
+        with:
+          host: ${{ secrets.SFTP_HOST }}
+          port: 2222
+          user: ${{ secrets.SFTP_USER }}
+          pass: ${{ secrets.SFTP_PASS }}
+
+          # lftp settings
+          onlyNewer: true
+          settings: 'sftp:auto-confirm=yes'
+
+          # Mirror command options
+          localDir: './web/wp-content/plugins'
+          remoteDir: '/wp-content/plugins'
+          reverse: true
+          options: '--verbose --no-perms --delete'
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v45
+
+      - name: Check if PHP dependencies have changed
+        env:
+          ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
+        run: |
+          for file in ${ALL_CHANGED_FILES}; do
+            if [[ "$file" == "web/composer.json" || "$file" == "web/composer.lock" ]]; then
+              echo "PHP_DEPS_CHANGED=true" >> $GITHUB_ENV
+              break
+            fi
+          done
+
+      - name: Install only build PHP dependencies
+        env:
+          PHP_DEPS_CHANGED: ${{ env.PHP_DEPS_CHANGED }}
+        if: env.PHP_DEPS_CHANGED == 'true'
+        uses: php-actions/composer@v6
+        with:
+          dev: no
+          working_dir: 'web'
+
+      - name: Deploy PHP dependencies
+        env:
+          PHP_DEPS_CHANGED: ${{ env.PHP_DEPS_CHANGED }}
+        if: env.PHP_DEPS_CHANGED == 'true'
+        uses: pressidium/lftp-mirror-action@v1
+        with:
+          host: ${{ secrets.SFTP_HOST }}
+          port: 2222
+          user: ${{ secrets.SFTP_USER }}
+          pass: ${{ secrets.SFTP_PASS }}
+
+          # lftp settings
+          onlyNewer: true
+          settings: 'sftp:auto-confirm=yes'
+
+          # Mirror command options
+          localDir: './web/wp-content/themes/mozilla-builders/vendor'
+          remoteDir: '/wp-content/themes/mozilla-builders/vendor'
+          reverse: true
+          options: '--verbose --no-perms --delete'
