@@ -7,6 +7,7 @@
 
 namespace MozillaBuilders\Managers;
 
+use MozillaBuilders\Models\PostType\Accelerator;
 use MozillaBuilders\Models\PostType\Article;
 use MozillaBuilders\Models\PostType\Profile;
 use MozillaBuilders\Models\PostType\Project;
@@ -169,6 +170,7 @@ class ThemeManager {
 	 * @return void
 	 */
 	public function register_post_types() {
+		Accelerator::register();
 		Profile::register();
 		Project::register();
 	}
@@ -194,9 +196,10 @@ class ThemeManager {
 	 */
 	public function set_post_classmap( array $classmap ): array {
 		$custom_classmap = array(
-			'post'    => Article::class,
-			'profile' => Profile::class,
-			'project' => Project::class,
+			'post'              => Article::class,
+			Profile::HANDLE     => Profile::class,
+			Project::HANDLE     => Project::class,
+			Accelerator::HANDLE => Accelerator::class,
 		);
 
 		return array_merge( $classmap, $custom_classmap );
