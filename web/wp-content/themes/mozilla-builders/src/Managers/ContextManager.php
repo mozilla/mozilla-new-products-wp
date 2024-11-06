@@ -85,12 +85,14 @@ class ContextManager {
 				),
 			),
 		);
-		$project_archive = Timber::get_posts( $project_archive_args )[0];
+
+		$project_archive_posts = Timber::get_posts( $project_archive_args )->to_array();
+		$project_archive_link  = ! empty( $project_archive_posts ) ? $project_archive_posts[0]->link() : null;
 
 		$context['archive_links'] = array(
-			'posts' => get_post_type_archive_link( 'post' ),
-			'projects' => $project_archive->url,
-			'discord' => 'https://discord.com',
+			'posts'    => get_post_type_archive_link( 'post' ),
+			'projects' => $project_archive_link,
+			'discord'  => 'https://discord.com',
 		);
 		return $context;
 	}
@@ -128,7 +130,7 @@ class ContextManager {
 	 */
 	public function number_shorthand( $number ) {
 		$number = intval( $number );
-		$k = $number / 1000;
+		$k      = $number / 1000;
 		if ( $number >= 1000 ) {
 			return ( floor( $k ) == $k ? floor( $k ) : number_format( $k, 1 ) ) . 'K';
 		} else {
