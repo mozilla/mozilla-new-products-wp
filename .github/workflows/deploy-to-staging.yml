@@ -100,25 +100,19 @@ jobs:
         env:
           ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
         run: |
-          PHP_DEPS_CHANGED=false
           for file in ${ALL_CHANGED_FILES}; do
-            echo "$file was changed"
             if [[ "$file" == "web/composer.json" || "$file" == "web/composer.lock" ]]; then
-              PHP_DEPS_CHANGED=true
+              echo "PHP_DEPS_CHANGED=true" >> $GITHUB_ENV
               break
             fi
           done
-          echo "ANOTHER_TEST=something" >> $GITHUB_ENV
-          echo "PHP_DEPS_CHANGED=$PHP_DEPS_CHANGED" >> $GITHUB_ENV
 
       - name: Some test
         env:
           PHP_DEPS_CHANGED: ${{ env.PHP_DEPS_CHANGED }}
         run: |
-          echo "somthing"
+          echo "test this"
           echo "$PHP_DEPS_CHANGED"
-          echo "${{ steps.changed-files.outputs.ANOTHER_TEST }}"
-          echo "env now"
 
       - name: Install only build PHP dependencies
         env:
