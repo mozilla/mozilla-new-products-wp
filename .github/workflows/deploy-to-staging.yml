@@ -92,10 +92,6 @@ jobs:
       #     reverse: true
       #     options: '--verbose --no-perms --delete'
 
-      - name: Check if PHP dependencies changed
-        run: |
-          git diff --name-only ${{ github.event.before }} ${{ github.sha }}
-
       - name: Get changed files
         id: changed-files
         uses: tj-actions/changed-files@v45
