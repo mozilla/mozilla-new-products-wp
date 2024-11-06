@@ -1,0 +1,45 @@
+{% extends "layouts/base.twig" %}
+
+{%- block custom_body_classes -%}
+  theme-dark
+{%- endblock -%}
+
+{% block pageBody %}
+
+  {% include 'components/page-topper.twig' with { title: page.title } %}
+
+  <ul x-masonry="md" class="grid grid-site centered-page gap-y-20 mb-24">
+    {% for post in posts %}
+      <li class="col-span-full md:col-span-1/2 lg:col-span-8 xl:col-span-6">
+        {% include 'components/previews/project.twig' with { project: post } %}
+      </li>
+    {% endfor %}
+  </ul>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 gap-px mx-grid-site-margin">
+    {% for cta in page.ctas %}
+      {% if cta.link_type == "post_archive" %}
+        {% set label = 'Content' %}
+        {% set href = archive_links.posts %}
+      {% elseif cta.link_type == "project_archive" %}
+        {% set label = 'Projects' %}
+        {% set href = archive_links.projects %}
+      {% elseif cta.link_type == "discord" %}
+        {% set label = 'Discord' %}
+        {% set href = archive_links.discord %}
+      {% else %}
+        {% set label = cta.custom_link.title %}
+        {% set href = cta.custom_link.url %}
+      {% endif %}
+
+      {% include 'components/big-cta.twig' with {
+        top: cta.top_text,
+        bottom: cta.bottom_text,
+        label: label,
+        href: href,
+      } %}
+
+    {% endfor %}
+  </div>
+
+{% endblock %}

@@ -15,6 +15,7 @@ module.exports = {
       current: 'currentColor',
       transparent: 'transparent',
       black: color('black'),
+      'off-black': color('off-black'),
       white: color('white'),
       gray: color('gray'),
       green: {
@@ -29,6 +30,7 @@ module.exports = {
       main: color('main'),
       content: color('content'),
       secondary: color('secondary'),
+      code: color('code'),
       action: {
         DEFAULT: color('action'),
         reverse: color('action-reverse'),
@@ -76,6 +78,8 @@ module.exports = {
       },
 
       fontSize: {
+        // 20px (@640px) -> 24px (@1536px)
+        xs: 'clamp(.625rem, 1vw + 0.7rem, .75rem)',
         // 20px (@640px) -> 24px (@1536px)
         xl: 'clamp(1.25rem, 1.3vw + 0.7rem, 1.5rem)',
         // 24px (@640px) -> 40px (@1536px)

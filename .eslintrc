@@ -31,5 +31,6 @@
         }
       }
     }
-  ]
+  ],
+  "ignorePatterns": ["vendor/", "dist/", ".vite/"]
 }

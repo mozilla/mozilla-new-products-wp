@@ -12,3 +12,4 @@ parameters:
     excludePaths:
         - */node_modules/*
         - */vendor/*
+        - */plugins/acf-extended/*
