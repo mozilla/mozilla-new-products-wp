@@ -75,9 +75,21 @@ class ContextManager {
 	 * @return array
 	 */
 	public function archive_links( $context ) {
+		$project_archive_args = array(
+			'post_type'      => 'page',
+			'posts_per_page' => 1,
+			'meta_query'     => array(
+				array(
+					'key'   => '_wp_page_template',
+					'value' => 'page-projects.php',
+				),
+			),
+		);
+		$project_archive = Timber::get_posts( $project_archive_args )[0];
+
 		$context['archive_links'] = array(
 			'posts' => get_post_type_archive_link( 'post' ),
-			'projects' => get_post_type_archive_link( Project::HANDLE ),
+			'projects' => $project_archive->url,
 			'discord' => 'https://discord.com',
 		);
 		return $context;

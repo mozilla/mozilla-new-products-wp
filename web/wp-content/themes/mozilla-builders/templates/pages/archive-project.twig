@@ -6,7 +6,7 @@
 
 {% block pageBody %}
 
-  {% include 'components/page-topper.twig' %}
+  {% include 'components/page-topper.twig' with { title: page.title } %}
 
   <ul x-masonry="md" class="grid grid-site centered-page gap-y-20 mb-24">
     {% for post in posts %}
@@ -17,19 +17,29 @@
   </ul>
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-px mx-grid-site-margin">
-    {% include 'components/big-cta.twig' with {
-      top: 'Explore more',
-      bottom: 'Analysis, tutorials, opinion, and more',
-      label: 'Content',
-      href: archive_links.posts,
-    } %}
+    {% for cta in page.ctas %}
+      {% if cta.link_type == "post_archive" %}
+        {% set label = 'Content' %}
+        {% set href = archive_links.posts %}
+      {% elseif cta.link_type == "project_archive" %}
+        {% set label = 'Projects' %}
+        {% set href = archive_links.projects %}
+      {% elseif cta.link_type == "discord" %}
+        {% set label = 'Discord' %}
+        {% set href = archive_links.discord %}
+      {% else %}
+        {% set label = cta.custom_link.title %}
+        {% set href = cta.custom_link.url %}
+      {% endif %}
 
-    {% include 'components/big-cta.twig' with {
-      top: 'Join our community',
-      bottom: '2951 members and counting',
-      label: 'Discord',
-      href: archive_links.discord,
-    } %}
+      {% include 'components/big-cta.twig' with {
+        top: cta.top_text,
+        bottom: cta.bottom_text,
+        label: label,
+        href: href,
+      } %}
+
+    {% endfor %}
   </div>
 
 {% endblock %}
