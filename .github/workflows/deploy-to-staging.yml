@@ -26,11 +26,11 @@ jobs:
       #     node-version-file: '.nvmrc'
       #     cache: 'npm'
 
-      # - name: Add HTTP basic auth credentials
-      #   env:
-      #     COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH_JSON }}
-      #   if: env.COMPOSER_AUTH != null
-      #   run: echo '${{ secrets.COMPOSER_AUTH_JSON }}' > $GITHUB_WORKSPACE/web/auth.json
+      - name: Add HTTP basic auth credentials
+        env:
+          COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH_JSON }}
+        if: env.COMPOSER_AUTH != null
+        run: echo '${{ secrets.COMPOSER_AUTH_JSON }}' > $GITHUB_WORKSPACE/web/auth.json
 
       # - name: Install PHP dependencies
       #   uses: php-actions/composer@v6
