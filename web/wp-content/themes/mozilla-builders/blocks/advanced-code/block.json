@@ -1,0 +1,20 @@
+{
+  "name": "acf/advanced-code",
+  "title": "Code",
+  "description": "A custom block for inserting code with syntax highlighting.",
+  "category": "text",
+  "icon": "media-code",
+  "keywords": ["code", "syntax", "highlighting"],
+  "acf": {
+    "mode": "edit",
+    "renderTemplate": "advanced-code.php"
+  },
+  "attributes": {
+    "align": {
+      "default": "center"
+    }
+  },
+  "supports": {
+    "align": ["center", "wide", "full"]
+  }
+}

@@ -2,6 +2,8 @@
 @use 'mixins/font-face' as font;
 @use 'mixins/grid';
 
+@use 'base/code';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -34,6 +36,7 @@
   @apply [--grid-site-gutter:calc((24/400)*var(--100vw))] md:[--grid-site-gutter:calc((40/1440)*var(--100vw))];
 
   --color-black: #{color.rgb(#161616)};
+  --color-off-black: #{color.rgb(#242424)};
   --color-white: #{color.rgb(#fafafa)};
   --color-gray: #{color.rgb(#f0f0f0)};
   --color-green: #{color.rgb(#00d230)};
@@ -54,6 +57,7 @@ body {
     --color-main: var(--color-white);
     --color-secondary: var(--color-gray);
     --color-content: var(--color-black);
+    --color-code: var(--color-off-black);
 
     --color-action: var(--color-black);
     --color-action-reverse: var(--color-white);
@@ -65,6 +69,7 @@ body {
     --color-main: var(--color-black);
     --color-secondary: var(--color-gray);
     --color-content: var(--color-white);
+    --color-code: var(--color-off-black);
 
     --color-action: var(--color-green);
     --color-action-reverse: var(--color-black);
@@ -87,11 +92,11 @@ body {
   }
 
   .type-sans-3xl {
-    @apply text-10xl font-sans font-light leading-tighter tracking-tight;
+    @apply text-10xl font-sans font-light leading-tighter tracking-tighter;
   }
 
   .type-sans-2xl {
-    @apply text-8xl font-sans font-light leading-tighter tracking-tight;
+    @apply text-8xl font-sans font-light leading-tighter tracking-tighter;
   }
 
   .type-sans-xl {
@@ -111,7 +116,7 @@ body {
   }
 
   .type-code {
-    @apply bg-content text-main py-0.5 px-1 decoration-clone text-sm;
+    @apply bg-code text-white py-0.5 px-1 decoration-clone text-sm;
   }
 
   .type-caption {
@@ -353,7 +358,7 @@ body {
     // Code block
     pre {
       code {
-        @apply block bg-content px-4 py-3 leading-loose;
+        @apply block bg-code text-white px-4 py-3 leading-loose;
       }
     }
 

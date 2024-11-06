@@ -8,6 +8,7 @@
 namespace MozillaBuilders\Managers;
 
 use Timber\Timber;
+use MozillaBuilders\Models\PostType\Project;
 
 /** Class */
 class ContextManager {
@@ -21,6 +22,7 @@ class ContextManager {
 		add_filter( 'timber/context', array( $this, 'is_home' ) );
 		add_filter( 'timber/context', array( $this, 'menus' ) );
 		add_filter( 'timber/context', array( $this, 'acf_options' ) );
+		add_filter( 'timber/context', array( $this, 'archive_links' ) );
 
 		add_filter( 'timber/twig', array( $this, 'add_number_shorthand_filter' ) );
 	}
@@ -62,6 +64,34 @@ class ContextManager {
 		$context['nav_topics_menu']     = Timber::get_menu( 'nav_topics_menu' );
 		$context['nav_pages_menu']      = Timber::get_menu( 'nav_pages_menu' );
 		$context['primary_footer_menu'] = Timber::get_menu( 'primary_footer_menu' );
+		return $context;
+	}
+
+	/**
+	 * Adds archive links to context.
+	 *
+	 * @param array $context Timber context.
+	 *
+	 * @return array
+	 */
+	public function archive_links( $context ) {
+		$project_archive_args = array(
+			'post_type'      => 'page',
+			'posts_per_page' => 1,
+			'meta_query'     => array(
+				array(
+					'key'   => '_wp_page_template',
+					'value' => 'page-projects.php',
+				),
+			),
+		);
+		$project_archive = Timber::get_posts( $project_archive_args )[0];
+
+		$context['archive_links'] = array(
+			'posts' => get_post_type_archive_link( 'post' ),
+			'projects' => $project_archive->url,
+			'discord' => 'https://discord.com',
+		);
 		return $context;
 	}
 
