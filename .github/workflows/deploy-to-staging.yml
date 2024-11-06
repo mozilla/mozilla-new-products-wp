@@ -116,9 +116,8 @@ jobs:
           PHP_DEPS_CHANGED: ${{ env.PHP_DEPS_CHANGED }}
         run: |
           echo "somthing"
-          echo "$PHP_DEPS_CHANGED"
-          echo "$ANOTHER_TEST"
-          echo ${{ env.PHP_DEPS_CHANGED }}
+          echo "${{ steps.changed-files.outputs.PHP_DEPS_CHANGED }}"
+          echo "${{ steps.changed-files.outputs.ANOTHER_TEST }}"
 
       - name: Install only build PHP dependencies
         env:
