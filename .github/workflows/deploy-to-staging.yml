@@ -26,34 +26,34 @@ jobs:
           node-version-file: '.nvmrc'
           cache: 'npm'
 
-      # - name: Add HTTP basic auth credentials
-      #   env:
-      #     COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH_JSON }}
-      #   if: env.COMPOSER_AUTH != null
-      #   run: echo '${{ secrets.COMPOSER_AUTH_JSON }}' > $GITHUB_WORKSPACE/web/auth.json
+      - name: Add HTTP basic auth credentials
+        env:
+          COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH_JSON }}
+        if: env.COMPOSER_AUTH != null
+        run: echo '${{ secrets.COMPOSER_AUTH_JSON }}' > $GITHUB_WORKSPACE/web/auth.json
 
-      # - name: Install PHP dependencies
-      #   uses: php-actions/composer@v6
-      #   with:
-      #     working_dir: 'web'
+      - name: Install PHP dependencies
+        uses: php-actions/composer@v6
+        with:
+          working_dir: 'web'
 
-      # - name: Manually install rollup dependencies (see https://github.com/npm/cli/issues/4828#issuecomment-2404560937)
-      #   run: npm i @rollup/rollup-linux-x64-gnu
+      - name: Manually install rollup dependencies (see https://github.com/npm/cli/issues/4828#issuecomment-2404560937)
+        run: npm i @rollup/rollup-linux-x64-gnu
 
-      # - name: Install dependencies
-      #   run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-      # - name: Build
-      #   run: npm run build
+      - name: Build
+        run: npm run build
 
-      # - name: Test JavaScript
-      #   run: npm run lint:js
+      - name: Test JavaScript
+        run: npm run lint:js
 
-      # - name: Test PHP
-      #   run: npm run lint:php
+      - name: Test PHP
+        run: npm run lint:php
 
-      # - name: Check bundlesize
-      #   run: npm run test:bundlesize
+      - name: Check bundlesize
+        run: npm run test:bundlesize
 
       - name: List things
         run: |
@@ -76,4 +76,4 @@ jobs:
           remoteDir: '/wp-content/themes/mozilla-builders'
           reverse: true
           ignoreFile: '.lftp_ignore'
-          options: '--verbose -p --delete'
+          options: '--verbose --no-perms --delete'
