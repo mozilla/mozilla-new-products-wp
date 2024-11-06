@@ -58,6 +58,9 @@ class ThemeManager {
 		add_action( 'pre_get_posts', array( $this, 'filter_posts' ) );
 		add_filter( 'admin_footer_text', array( $this, 'add_admin_footer_credit' ) );
 
+		// Filetype allowances.
+		add_filter( 'upload_mimes', array( $this, 'manage_mime_types' ) );
+
 		$this->setup_theme_support();
 	}
 
@@ -226,6 +229,19 @@ class ThemeManager {
 	 */
 	public function add_admin_footer_credit() {
 		return '<span id="footer-thankyou">Made by <a href="https://upstatement.com/" target="_blank">Upstatement</a></span>';
+	}
+
+
+	/**
+	 * Update the allowed file types.
+	 *
+	 * @param array $mimes Mime types.
+	 *
+	 * @return array
+	 */
+	public function manage_mime_types( array $mimes ): array {
+		$mimes['svg'] = 'image/svg+xml';
+		return $mimes;
 	}
 
 	/**
