@@ -7,14 +7,15 @@
 */
 
 .hljs {
-  background: #2b2b2b;
-  color: #f8f8f2;
+  background: #161616;
+  border: 1px solid rgba(#fafafa, 0.2);
+  color: #fafafa;
 }
 
 /* Comment */
 .hljs-comment,
 .hljs-quote {
-  color: #d4d0ab;
+  color: #b3b3b3;
 }
 
 /* Red */
@@ -26,10 +27,10 @@
 .hljs-selector-class,
 .hljs-regexp,
 .hljs-deletion {
-  color: #ffa07a;
+  color: #ff7874;
 }
 
-/* Orange */
+/* Purple */
 .hljs-number,
 .hljs-built_in,
 .hljs-literal,
@@ -37,12 +38,12 @@
 .hljs-params,
 .hljs-meta,
 .hljs-link {
-  color: #f5ab35;
+  color: #ff97e2;
 }
 
 /* Yellow */
 .hljs-attribute {
-  color: #ffd700;
+  color: #e0ee59;
 }
 
 /* Green */
@@ -50,19 +51,19 @@
 .hljs-symbol,
 .hljs-bullet,
 .hljs-addition {
-  color: #abe338;
+  color: #00d32f;
 }
 
 /* Blue */
 .hljs-title,
 .hljs-section {
-  color: #00e0e0;
+  color: #72c2ff;
 }
 
-/* Purple */
+/* Orange */
 .hljs-keyword,
 .hljs-selector-tag {
-  color: #dcc6e0;
+  color: #ff9456;
 }
 
 .hljs-emphasis {

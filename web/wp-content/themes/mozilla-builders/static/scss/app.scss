@@ -57,7 +57,7 @@ body {
     --color-main: var(--color-white);
     --color-secondary: var(--color-gray);
     --color-content: var(--color-black);
-    --color-code: var(--color-off-black);
+    --color-code: var(--color-black);
 
     --color-action: var(--color-black);
     --color-action-reverse: var(--color-white);
@@ -69,7 +69,7 @@ body {
     --color-main: var(--color-black);
     --color-secondary: var(--color-gray);
     --color-content: var(--color-white);
-    --color-code: var(--color-off-black);
+    --color-code: var(--color-black);
 
     --color-action: var(--color-green);
     --color-action-reverse: var(--color-black);
@@ -116,7 +116,7 @@ body {
   }
 
   .type-code {
-    @apply bg-code text-white py-0.5 px-1 decoration-clone text-sm;
+    @apply bg-code font-monospace text-white py-0.5 px-1 decoration-clone text-sm;
   }
 
   .type-caption {

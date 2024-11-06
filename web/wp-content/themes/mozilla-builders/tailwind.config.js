@@ -79,7 +79,7 @@ module.exports = {
       },
 
       fontSize: {
-        // 20px (@640px) -> 24px (@1536px)
+        // 10px (@640px) -> 12px (@1536px)
         xs: 'clamp(.625rem, 1vw + 0.7rem, .75rem)',
         // 20px (@640px) -> 24px (@1536px)
         xl: 'clamp(1.25rem, 1.3vw + 0.7rem, 1.5rem)',
