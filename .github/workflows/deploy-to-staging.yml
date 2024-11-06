@@ -108,13 +108,15 @@ jobs:
               break
             fi
           done
+          echo "ANOTHER_TEST=something" >> $GITHUB_OUTPUT
           echo "PHP_DEPS_CHANGED=$PHP_DEPS_CHANGED" >> $GITHUB_OUTPUT
 
       - name: Some test
         env:
           PHP_DEPS_CHANGED: ${{ env.PHP_DEPS_CHANGED }}
         run: |
-          echo $PHP_DEPS_CHANGED
+          echo "$PHP_DEPS_CHANGED"
+          echo "$ANOTHER_TEST"
           echo ${{ env.PHP_DEPS_CHANGED }}
 
       - name: Install only build PHP dependencies
