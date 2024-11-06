@@ -1,17 +1,9 @@
 import theme from 'tailwindcss/defaultTheme';
+import utilitiesScss from './plugins/utilities-scss';
+import path from 'path';
 
-const GRID_COLUMNS = 24;
-const gridColumn = {};
-for (let i = 1; i <= GRID_COLUMNS; i++) {
-  gridColumn[`span-${i}`] = `span ${i} / span ${i}`;
-}
-const gridColumnStart = {};
-for (let i = 1; i <= GRID_COLUMNS; i++) {
-  gridColumnStart[`start-${i}`] = i;
-}
-const gridColumnEnd = {};
-for (let i = 1; i <= GRID_COLUMNS; i++) {
-  gridColumnEnd[`end-${i}`] = i;
+function color(name) {
+  return `rgb(var(--color-${name}) / <alpha-value>)`;
 }
 
 /** @type {import('tailwindcss').Config} */
@@ -19,26 +11,36 @@ module.exports = {
   content: ['./**/*.twig'],
   theme: {
     colors: {
+      // Base colors
       current: 'currentColor',
       transparent: 'transparent',
-      black: '#000000',
-      white: '#ffffff',
-      gray: '#F0F0F0',
+      black: color('black'),
+      white: color('white'),
+      gray: color('gray'),
       green: {
-        DEFAULT: '#00D230',
-        dark: '#005E2A',
+        DEFAULT: color('green'),
+        dark: color('green-dark'),
       },
-      orange: '#FF9900',
-      yellow: '#FFDD63',
-      purple: '#7F00CA',
-      pink: '#FF008A',
+      orange: color('orange'),
+      yellow: color('yellow'),
+      purple: color('purple'),
+      pink: color('pink'),
+      // Applied colors
+      main: color('main'),
+      content: color('content'),
+      secondary: color('secondary'),
+      action: {
+        DEFAULT: color('action'),
+        reverse: color('action-reverse'),
+        focus: color('action-focus'),
+        'focus-reverse': color('action-focus-reverse'),
+      },
     },
 
     fontFamily: {
       sans: ['Mozilla Sans', ...theme.fontFamily.sans],
-      slab: ['Mozilla Semi Slab', ...theme.fontFamily.serif],
-      'slab-condensed': ['Mozilla Semi Slab Condensed', ...theme.fontFamily.serif],
-      'slab-extended': ['Mozilla Semi Slab Extended', ...theme.fontFamily.serif],
+      headline: ['Mozilla Headline', ...theme.fontFamily.serif],
+      'headline-condensed': ['Mozilla Headline Condensed', ...theme.fontFamily.serif],
     },
 
     fontWeight: {
@@ -48,6 +50,11 @@ module.exports = {
       semibold: 600,
       bold: 700,
     },
+
+    gridTemplateColumns: false,
+    gridColumn: false,
+    gridColumnStart: false,
+    gridColumnEnd: false,
 
     extend: {
       aria: {
@@ -59,34 +66,28 @@ module.exports = {
       },
 
       aspectRatio: {
-        logo: '446/119',
+        logo: '2227/420',
+        'mozilla-logo': '704/147',
+        'text-topper': '550/686',
+      },
+
+      content: {
+        arrow: `url('data:image/svg+xml,<svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M69.4914 37.7055L35.9853 71.2097L2.45057 37.675L6.99568 33.1299L32.834 58.9683L32.8349 3.65135L39.1375 3.65125L39.1366 58.9676L65.0628 33.2765L69.4914 37.7055Z" fill="currentColor"/></svg>')`,
       },
 
       fontSize: {
+        // 20px (@640px) -> 24px (@1536px)
+        xl: 'clamp(1.25rem, 1.3vw + 0.7rem, 1.5rem)',
+        // 24px (@640px) -> 40px (@1536px)
+        '2xl': 'clamp(1.5rem, 1.8vw + 0.8rem, 2.5rem)',
         // 32px (@640px) -> 56px (@1536px)
         '4xl': 'clamp(2rem, 2.7vw + 0.9rem, 3.5rem)',
         // 36px (@640px) -> 72px (@1536px)
         '6xl': 'clamp(2.25rem, 4vw + 0.6rem, 4.5rem)',
         // 64px (@640px) -> 100px (@1536px)
         '8xl': 'clamp(4rem, 6vw + 1.25rem, 6.25rem);',
-      },
-
-      gridColumn,
-      gridColumnStart,
-      gridColumnEnd,
-
-      gridTemplateColumns: {
-        24: 'repeat(24, minmax(0, 1fr))',
-      },
-
-      lineHeight: {
-        tighter: '1.05',
-      },
-
-      spacing: {
-        'wp-admin-bar': 'var(--wp-admin--admin-bar--height, 0px)',
-        // https://fluid-typography.netlify.app/
-        site: 'clamp(1rem, 2vw + 0.25rem, 1.5rem)',
+        // 72px (@640px) -> 156px (@1536px)
+        '10xl': 'clamp(4.5rem, 9.4vw + 0.8rem, 9.75rem);',
       },
 
       keyframes: {
@@ -95,7 +96,31 @@ module.exports = {
           '100%': { transform: 'translateX(calc(-1 * var(--marquee-width)))' },
         },
       },
+
+      lineHeight: {
+        tighter: '1.05',
+      },
+
+      maxWidth: {
+        page: 'var(--100vw, 0)',
+      },
+
+      minHeight: {
+        screen: '100dvh',
+      },
+
+      spacing: {
+        'wp-admin-bar': 'var(--wp-admin--admin-bar--height, 0px)',
+        // https://fluid-typography.netlify.app/
+        site: 'clamp(1rem, 2vw + 0.25rem, 1.5rem)',
+        'grid-site-margin': 'var(--grid-site-margin, 0px)',
+        'grid-site-gutter': 'var(--grid-site-gutter, 0px)',
+      },
+
+      zIndex: {
+        dialog: 100,
+      },
     },
   },
-  plugins: [],
+  plugins: [utilitiesScss({ filename: path.resolve(__dirname, 'static/scss/app.scss') })],
 };

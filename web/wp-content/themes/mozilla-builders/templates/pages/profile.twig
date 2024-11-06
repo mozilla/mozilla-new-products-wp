@@ -1,48 +1,77 @@
 {% extends "layouts/base.twig" %}
 
-{%- block custom_body_classes -%}
-  {{ article.is_light_nav ? 'light-nav' }}
-{%- endblock -%}
-
-{%- block custom_content_classes -%}
-  basic-page
-{%- endblock -%}
-
 {% block pageBody %}
 
-  <article class="gutenberg-layout basic-page__body">
-    <header>
-      <h1>
-        <span>{{ post.meta('first_name') }}</span>
-        <span>{{ post.meta('last_name') }}</span>
-      </h1>
+<header class="relative grid grid-site centered-page mt-24 md:-mt-24">
+  <div class="col-span-4 col-start-3 max-md:-mt-8 max-md:-mr-grid-site-margin max-md:order-2 md:col-span-11 md:col-start-6">
+    <div class="aspect-[3/4] overflow-hidden">
+      {% if post.thumbnail.id %}
+        {% include 'components/lazy-img.twig' with { img: get_image(post.thumbnail.id), class: 'w-full h-full object-cover' } %}
+      {% else %}
+        <div class="aspect-[3/4] bg-gray"></div>
+      {% endif %}
+    </div>
+  </div>
 
-      {% if post.thumbnail %}
-        <img src="{{ post.thumbnail.src('full') }}" alt="{{ post.thumbnail.alt }}">
+  <div class="z-10 max-md:col-span-4 max-md:col-start-2 max-md:order-1 md:absolute md:inset-0 md:grid md:grid-site md:place-content-center md:pointer-events-none">
+    <h1 class="type-headline-2xl uppercase flex max-md:text-center max-md:items-center max-md:justify-center max-md:flex-col md:flex-wrap md:justify-between md:gap-8 md:col-span-18 md:col-start-4 md:pointer-events-auto">
+      <span>{{ post.first_name }}</span>
+      <span>{{ post.last_name }}</span>
+    </h1>
+  </div>
+
+  <div class="col-span-full md:col-span-7 md:col-start-17 my-8 flex flex-col justify-end max-md:order-3">
+    <dl class="grid grid-cols-6 md:grid-cols-7 gap-x-grid-site-gutter gap-y-2">
+      <div class="contents">
+        <dt class="col-span-2 md:col-span-3 uppercase">Cohort</dt>
+        <dd class="col-span-4 flex items-center">22<span class="inline-flex w-8 border-t border-content" aria-label="through"></span>23</dd>
+      </div>
+
+      {% if post.github_username %}
+      <div class="contents">
+        <dt class="col-span-2 md:col-span-3 uppercase">GitHub</dt>
+        <dd class="col-span-4"><a class="hover-link" href="https://github.com/{{ post.github_username }}">{{ post.github_username }}</a></dd>
+      </div>
       {% endif %}
 
-      <dl>
-        {% if post.meta('github_username') %}
-          <dt>GitHub</dt>
-          <dd><a href="https://github.com/{{ post.meta('github_username') }}">[{{ post.meta('github_username') }}]</a></dd>
-        {% endif %}
+      {% if post.contacts %}
+      <div class="contents">
+        <dt class="col-span-2 md:col-span-3 uppercase">Contact</dt>
+        <dd class="col-span-4">
+          {% for item in post.contacts %}
+            <a class="hover-link" href="{{ item.link }}">{{ item.label }}</a>
+          {% endfor %}
+        </dd>
+      </div>
+      {% endif %}
+    </dl>
+  </div>
+</header>
 
-        {% if post.contacts %}
-          <dt>Contact</dt>
-          <dd>
-            {% for item in post.contacts %}
-              <a href="{{ item.link }}">[{{ item.label }}]</a>
-            {% endfor %}
-          </dd>
-        {% endif %}
+{% if post.about %}
+<section class="grid grid-site centered-page">
+  <div class="mt-12 md:mt-24 col-span-full md:col-span-10 md:col-start-14 xl:col-span-8 prose js-hang-punc">
+    <h2>About</h2>
 
-      </dl>
+    {{ post.about }}
+  </div>
+</section>
+{% endif %}
 
-    </header>
+{% if post.latest_articles is not empty %}
+<section class="mt-12 md:mt-24 grid grid-site centered-page">
+  <div class="col-span-full border border-content p-1">
+    <h2 class="uppercase text-sm text-center">Written by {{ post.first_name }}</h2>
+  </div>
 
-    <div class="gutenberg-content basic-page__body-width js-hang-punc">
-      {{ post.about }}
-    </div>
-  </article>
+  <ul class="contents">
+    {% for article in post.latest_articles %}
+      <li class="mt-6 flex flex-col flex-1 col-span-full md:col-span-12 xl:col-span-6">
+        {% include 'components/articles/previews/preview--' ~ article.topper_type|default('text_only') ~ '.twig' with { post: article } %}
+      </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
 
 {% endblock %}

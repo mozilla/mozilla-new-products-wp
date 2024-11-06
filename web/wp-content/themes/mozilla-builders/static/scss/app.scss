@@ -1,42 +1,89 @@
-@import 'mixins/font-face';
+@use 'functions/color';
+@use 'mixins/font-face' as font;
+@use 'mixins/grid';
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 // Mozilla Sans
-@include font-face('Mozilla Sans', 'MozillaSansBETA-ExtraLight', 200, normal);
-@include font-face('Mozilla Sans', 'MozillaSansBETA-Light', 300, normal);
-@include font-face('Mozilla Sans', 'MozillaSansBETA-Regular', 400, normal);
-@include font-face('Mozilla Sans', 'MozillaSansBETA-SemiBold', 600, normal);
-@include font-face('Mozilla Sans', 'MozillaSansBETA-Bold', 700, normal);
-// Mozilla Semi Slab
-@include font-face('Mozilla Semi Slab', 'MozillaSemiSlabBETA-ExtraLight', 200, normal);
-@include font-face('Mozilla Semi Slab', 'MozillaSemiSlabBETA-Light', 300, normal);
-@include font-face('Mozilla Semi Slab', 'MozillaSemiSlabBETA-Regular', 400, normal);
-@include font-face('Mozilla Semi Slab', 'MozillaSemiSlabBETA-SemiBold', 600, normal);
-@include font-face('Mozilla Semi Slab', 'MozillaSemiSlabBETA-Bold', 700, normal);
-// Mozilla Semi Slab Condensed
-@include font-face('Mozilla Semi Slab Condensed', 'MozillaSemiSlabCndBETA-ExtraLight', 200, normal);
-@include font-face('Mozilla Semi Slab Condensed', 'MozillaSemiSlabCndBETA-Light', 300, normal);
-@include font-face('Mozilla Semi Slab Condensed', 'MozillaSemiSlabCndBETA-Regular', 400, normal);
-@include font-face('Mozilla Semi Slab Condensed', 'MozillaSemiSlabCndBETA-SemiBold', 600, normal);
-@include font-face('Mozilla Semi Slab Condensed', 'MozillaSemiSlabCndBETA-Bold', 700, normal);
-// Mozilla Semi Slab Extended
-@include font-face('Mozilla Semi Slab Extended', 'MozillaSemiSlabExtBETA-ExtraLight', 200, normal);
-@include font-face('Mozilla Semi Slab Extended', 'MozillaSemiSlabExtBETA-Light', 300, normal);
-@include font-face('Mozilla Semi Slab Extended', 'MozillaSemiSlabExtBETA-Regular', 400, normal);
-@include font-face('Mozilla Semi Slab Extended', 'MozillaSemiSlabExtBETA-SemiBold', 600, normal);
-@include font-face('Mozilla Semi Slab Extended', 'MozillaSemiSlabExtBETA-Bold', 700, normal);
+@include font.face('Mozilla Sans', 'MozillaText-Light', 300, normal);
+@include font.face('Mozilla Sans', 'MozillaText-Regular', 400, normal);
+@include font.face('Mozilla Sans', 'MozillaText-Bold', 700, normal);
+// Mozilla Headline
+@include font.face('Mozilla Headline', 'MozillaHeadline-Light', 300, normal);
+@include font.face('Mozilla Headline', 'MozillaHeadline-Regular', 400, normal);
+@include font.face('Mozilla Headline', 'MozillaHeadline-SemiBold', 600, normal);
+// Mozilla Headline Condensed
+@include font.face('Mozilla Headline Condensed', 'MozillaHeadlineCondensed-Light', 300, normal);
+@include font.face('Mozilla Headline Condensed', 'MozillaHeadlineCondensed-Regular', 400, normal);
+@include font.face('Mozilla Headline Condensed', 'MozillaHeadlineCondensed-SemiBold', 600, normal);
+
+:root {
+  @apply [--100vw:min(100vw,1920px)];
+  @apply [--grid-site-cols:6] md:[--grid-site-cols:24];
+  @apply [--grid-site-margin:calc((24/400)*var(--100vw))] md:[--grid-site-margin:calc((32/1440)*var(--100vw))];
+  @apply [--grid-site-gutter:calc((24/400)*var(--100vw))] md:[--grid-site-gutter:calc((40/1440)*var(--100vw))];
+
+  --color-black: #{color.rgb(#161616)};
+  --color-white: #{color.rgb(#fafafa)};
+  --color-gray: #{color.rgb(#f0f0f0)};
+  --color-green: #{color.rgb(#00d230)};
+  --color-green-dark: #{color.rgb(#005e2a)};
+  --color-orange: #{color.rgb(#ff9900)};
+  --color-yellow: #{color.rgb(#ffdd63)};
+  --color-purple: #{color.rgb(#7f00ca)};
+  --color-pink: #{color.rgb(#ff008a)};
+}
 
 body {
-  @apply bg-white text-black;
+  @apply bg-main text-content;
   @apply font-sans font-normal text-base antialiased;
 }
 
+@layer base {
+  .theme-light {
+    --color-main: var(--color-white);
+    --color-secondary: var(--color-gray);
+    --color-content: var(--color-black);
+
+    --color-action: var(--color-black);
+    --color-action-reverse: var(--color-white);
+    --color-action-focus: var(--color-green);
+    --color-action-focus-reverse: var(--color-black);
+  }
+
+  .theme-dark {
+    --color-main: var(--color-black);
+    --color-secondary: var(--color-gray);
+    --color-content: var(--color-white);
+
+    --color-action: var(--color-green);
+    --color-action-reverse: var(--color-black);
+    --color-action-focus: var(--color-white);
+    --color-action-focus-reverse: var(--color-black);
+  }
+}
+
 @layer components {
-  .type-slab-3xl {
-    @apply text-8xl font-slab-condensed font-semibold leading-none;
+  .type-headline-2xl {
+    @apply text-8xl font-headline-condensed font-semibold leading-none;
+  }
+
+  .type-headline-xl {
+    @apply text-6xl font-headline-condensed font-semibold leading-none;
+  }
+
+  .type-headline-lg {
+    @apply text-2xl font-headline-condensed font-semibold leading-tight;
+  }
+
+  .type-sans-3xl {
+    @apply text-10xl font-sans font-light leading-tighter tracking-tight;
+  }
+
+  .type-sans-2xl {
+    @apply text-8xl font-sans font-light leading-tighter tracking-tight;
   }
 
   .type-sans-xl {
@@ -46,47 +93,425 @@ body {
   .type-sans-lg {
     @apply text-4xl font-sans font-light leading-tighter tracking-tight;
   }
+
+  .type-sans-md {
+    @apply text-2xl font-sans font-light leading-tighter tracking-tight;
+  }
+
+  .type-sans-sm {
+    @apply text-xl font-sans font-light leading-tighter tracking-tight;
+  }
+
+  .type-code {
+    @apply bg-content text-main py-0.5 px-1 decoration-clone text-sm;
+  }
+
+  .type-caption {
+    @apply uppercase opacity-50 text-sm leading-tight;
+  }
 }
 
 @layer utilities {
-  .grid-site {
-    @apply grid-cols-24 gap-x-[calc((40/1440)*100vw)] px-[calc((32/1440)*100vw)];
-    @apply max-md:grid-cols-6 max-md:gap-x-[calc((24/400)*100vw)] max-md:px-[calc((24/400)*100vw)];
+  .centered-page {
+    @apply max-w-page w-full mx-auto;
   }
 
-  .col-span-full {
-    @apply col-span-6 md:col-span-24;
+  .mask-arrow-down {
+    mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72"><path fill-rule="evenodd" clip-rule="evenodd" d="M69.4914 37.7046L35.9853 71.2088L2.45056 37.6741L6.99567 33.129L32.834 58.9674L32.8349 3.65049L39.1375 3.65039L39.1366 58.9667L65.0628 33.2756L69.4914 37.7046Z" fill="currentColor"/></svg>');
   }
 
+  .hover-link {
+    @apply md:before:content-['\['] md:after:content-['\]'];
+    @apply max-md:underline;
+    @apply hover:bg-action-focus focus:bg-action-focus;
+    @apply hover:no-underline focus:no-underline;
+    @apply hover:text-action-focus-reverse focus:text-action-focus-reverse;
+  }
+
+  // Grid utilities
+  @for $i from 1 through 24 {
+    .grid-cols-#{$i} {
+      @include grid.template-columns($i);
+    }
+    .col-span-#{$i} {
+      @include grid.column-span($i);
+    }
+    .col-start-#{$i} {
+      @include grid.column-start($i);
+    }
+    .col-end-#{$i} {
+      @include grid.column-end($i);
+    }
+  }
+  .grid-cols-site {
+    @include grid.template-columns(var(--grid-site-cols));
+  }
   .col-span-1\/2 {
-    @apply col-span-3 md:col-span-12;
+    @include grid.column-span(calc(var(--column-count) / 2));
   }
-
   .col-span-1\/3 {
-    @apply col-span-2 md:col-span-8;
+    @include grid.column-span(calc(var(--column-count) / 3));
   }
-
+  .col-span-1\/4 {
+    @include grid.column-span(calc(var(--column-count) / 4));
+  }
   .col-span-2\/3 {
-    @apply col-span-4 md:col-span-16;
+    @include grid.column-span(calc(var(--column-count) * 2 / 3));
   }
-
   .col-span-1\/6 {
-    @apply col-span-1 md:col-span-4;
+    @include grid.column-span(calc(var(--column-count) / 6));
   }
-
   .col-span-2\/6 {
-    @apply col-span-2 md:col-span-8;
+    @include grid.column-span(calc(var(--column-count) * 2 / 6));
   }
-
   .col-span-3\/6 {
-    @apply col-span-3 md:col-span-12;
+    @include grid.column-span(calc(var(--column-count) * 3 / 6));
   }
-
   .col-span-4\/6 {
-    @apply col-span-4 md:col-span-16;
+    @include grid.column-span(calc(var(--column-count) * 4 / 6));
+  }
+  .col-span-5\/6 {
+    @include grid.column-span(calc(var(--column-count) * 5 / 6));
+  }
+  .col-span-3\/8 {
+    @include grid.column-span(calc(var(--column-count) * 3 / 8));
+  }
+  .col-span-full {
+    @include grid.column-span(var(--column-count));
+  }
+  .col-span-screen {
+    @apply col-span-full -mx-grid-site-margin;
+  }
+  .col-start-center {
+    @include grid.column-start(calc((var(--column-count) - var(--column-span)) / 2 + 1));
+  }
+  .col-start-end {
+    @include grid.column-start(calc(var(--column-count) - var(--column-span) + 1));
+  }
+  .grid-site {
+    @apply grid-cols-site gap-x-grid-site-gutter px-grid-site-margin;
   }
 
-  .col-span-5\/6 {
-    @apply col-span-5 md:col-span-20;
+  .prose {
+    // Gap between blocks
+    > * + * {
+      @apply mt-6;
+    }
+
+    // Headings
+    > h2 {
+      @apply text-xl font-bold uppercase indent-8 md:indent-16;
+    }
+    > h3 {
+      @apply text-xl font-bold uppercase indent-8 md:indent-16;
+    }
+    > h4 {
+      @apply text-xl uppercase indent-8 md:indent-16;
+    }
+    > h5 {
+      @apply font-bold uppercase indent-8 md:indent-16;
+    }
+    > h6 {
+      @apply uppercase indent-8 md:indent-16;
+    }
+
+    // Paragraphs
+    > p {
+      @apply indent-8 md:indent-16;
+
+      &:empty {
+        @apply hidden;
+      }
+    }
+
+    // Lists
+    > ul,
+    > ol {
+      li {
+        @apply leading-normal;
+      }
+
+      li + li,
+      li > ul,
+      li > ol {
+        @apply mt-2;
+      }
+    }
+    > ul li {
+      @apply relative pl-5;
+
+      &::before {
+        content: '';
+        @apply absolute left-0 top-[7px] flex size-2.5 bg-green;
+      }
+    }
+    > ol li {
+      @apply relative pl-5;
+
+      &::before {
+        content: counter(list-item);
+        @apply absolute left-0 top-0 font-semibold text-green;
+      }
+    }
+
+    > h1,
+    > h2,
+    > h3,
+    > h4,
+    > h5,
+    > h6,
+    > p,
+    > ul > li,
+    > ol > li,
+    > pre {
+      // Inline images
+      img {
+        @apply inline-flex translate-y-[-5%];
+        @apply h-[1em] w-auto !important;
+      }
+
+      // Inline code
+      code {
+        @apply type-code;
+      }
+
+      // Inline links
+      a {
+        @apply underline hover:bg-action-focus focus:bg-action-focus hover:no-underline focus:no-underline hover:text-action-focus-reverse focus:text-action-focus-reverse;
+      }
+    }
+
+    > h1,
+    > h2,
+    > h3,
+    > h4,
+    > h5,
+    > h6 {
+      & + h1,
+      & + h2,
+      & + h3,
+      & + h4,
+      & + h5,
+      & + h6 {
+        @apply mt-0;
+      }
+    }
+
+    // Separators
+    hr {
+      @apply my-6 border-transparent overflow-visible;
+
+      &::before {
+        content: '';
+        @apply block h-[0.5px] w-full opacity-40;
+        background-image: linear-gradient(to right, rgb(var(--color-content)) 33%, transparent 0%);
+        background-position: bottom;
+        background-size: 4px 1px;
+        background-repeat: repeat-x;
+      }
+    }
+  }
+
+  .gutenberg {
+    @apply grid grid-site centered-page;
+    @apply prose;
+
+    // Column-sizing
+    > * {
+      // Apply full-width size to all blocks, by default
+      @apply col-span-full col-start-center;
+    }
+    > h1,
+    > h2,
+    > h3,
+    > h4,
+    > h5,
+    > h6,
+    > p,
+    > pre,
+    > ul,
+    > ol,
+    hr {
+      @apply md:col-span-16 lg:col-span-10;
+    }
+
+    // Paragraphs
+    > p {
+      &:first-child:is(.lede *) {
+        @apply type-headline-lg mb-2 md:mb-6 md:col-span-18 lg:col-span-14;
+      }
+    }
+
+    // Code block
+    pre {
+      code {
+        @apply block bg-content px-4 py-3 leading-loose;
+      }
+    }
+
+    // Alignment
+    > figure,
+    > [data-block] {
+      &:not(.alignwide):not(.alignfull) {
+        @apply md:col-span-16;
+      }
+
+      &.alignwide {
+        @apply md:col-span-20;
+      }
+
+      &.alignfull:not(.wp-block-pullquote):not(.wp-block-table) {
+        @apply md:col-span-screen;
+
+        figcaption {
+          @apply md:px-[--grid-site-margin];
+        }
+      }
+    }
+
+    // Figures and captions
+    > figure {
+      @apply flex flex-col gap-3;
+
+      figcaption {
+        @apply type-caption;
+      }
+
+      &.alignfull:not(.wp-block-pullquote):not(.wp-block-table) {
+        figcaption {
+          @apply md:px-[--grid-site-margin];
+        }
+      }
+    }
+
+    // Blockquotes
+    figure.wp-block-pullquote,
+    blockquote {
+      @apply flex flex-col gap-3;
+
+      &:not(.alignwide):not(.alignfull) {
+        @apply md:col-span-full;
+      }
+
+      p {
+        @apply type-headline-xl md:indent-[calc(0.2*var(--100vw))];
+      }
+
+      cite {
+        @apply type-caption not-italic;
+      }
+    }
+
+    // Tables
+    figure.wp-block-table {
+      table {
+        thead {
+          @apply border-t border-content text-left align-top;
+
+          tr th {
+            @apply py-3 uppercase text-sm font-normal;
+
+            &:not(:last-child) {
+              @apply pr-3;
+            }
+          }
+        }
+
+        tbody {
+          tr {
+            @apply border-t border-content;
+          }
+
+          tr td {
+            @apply py-3;
+
+            &:not(:last-child) {
+              @apply pr-3;
+            }
+          }
+        }
+      }
+    }
+
+    // Images
+    figure.wp-block-image,
+    figure.wp-block-video,
+    figure.wp-block-embed {
+      &:not(.alignwide):not(.alignfull) {
+        @apply md:col-span-12;
+      }
+
+      img,
+      video,
+      .wp-block-embed__wrapper iframe {
+        @apply w-full h-auto;
+      }
+    }
+
+    // Embeds
+    figure.wp-block-embed {
+      .wp-block-embed__wrapper {
+        @apply flex w-full justify-center;
+      }
+
+      &.wp-has-aspect-ratio {
+        &.wp-embed-aspect-16-9 .wp-block-embed__wrapper iframe {
+          @apply aspect-video;
+        }
+
+        &.wp-embed-aspect-4-3 .wp-block-embed__wrapper iframe {
+          @apply aspect-[4/3];
+        }
+      }
+    }
+
+    // Buttons
+    .wp-block-buttons {
+      @apply flex flex-col gap-3 md:col-span-16 lg:col-span-10;
+    }
+    .wp-block-button {
+      @apply flex justify-center w-full;
+    }
+    .wp-block-button__link {
+      @apply w-full p-10 uppercase text-center text-action-reverse bg-action border border-action transition-colors;
+      @apply hover:text-action-focus-reverse focus:text-action-focus-reverse hover:bg-action-focus focus:bg-action-focus hover:border-action-focus focus:border-action-focus;
+    }
+    .is-style-outline .wp-block-button__link {
+      @apply bg-transparent text-action;
+      @apply hover:border-action-focus focus:border-action-focus;
+    }
+
+    // Files
+    .wp-block-file {
+      @apply flex md:col-span-16 lg:col-span-10;
+
+      a:not(.wp-block-file__button) {
+        @apply flex items-center justify-between gap-10 w-full p-10;
+        @apply uppercase font-semibold;
+        @apply bg-action text-action-reverse transition-colors;
+        @apply hover:text-action-focus-reverse focus:text-action-focus-reverse hover:bg-action-focus focus:bg-action-focus;
+
+        &:has(+ a.wp-block-file__button) {
+          @apply md:py-8;
+
+          &::after {
+            content: '';
+            @apply block shrink-0 bg-current mask-arrow-down size-8 md:size-10;
+            @apply transition hover:translate-y-1 focus:translate-y-1;
+          }
+        }
+      }
+
+      a.wp-block-file__button {
+        @apply hidden;
+      }
+    }
+
+    // Related Articles
+    div[data-block='related-articles'] {
+      &:not(.alignwide):not(.alignfull) {
+        @apply md:col-span-12 xl:col-span-10;
+      }
+    }
   }
 }

@@ -45,6 +45,27 @@
       "append": ""
     },
     {
+      "key": "field_67194fe59cdaf",
+      "label": "Short Bio",
+      "name": "short_bio",
+      "aria-label": "",
+      "type": "textarea",
+      "instructions": "Presented as: <i>[Full name] is [short bio]</li>",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "allow_in_bindings": 0,
+      "rows": "",
+      "placeholder": "",
+      "new_lines": ""
+    },
+    {
       "key": "field_671115201a7fd",
       "label": "About",
       "name": "about",
@@ -64,6 +85,32 @@
       "toolbar": "basic",
       "media_upload": 0,
       "delay": 0
+    },
+    {
+      "key": "field_6723968aa6c30",
+      "label": "Projects",
+      "name": "projects",
+      "aria-label": "",
+      "type": "relationship",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "post_type": ["project"],
+      "post_status": "",
+      "taxonomy": "",
+      "filters": ["search", "post_type", "taxonomy"],
+      "return_format": "id",
+      "min": "",
+      "max": "",
+      "allow_in_bindings": 0,
+      "elements": "",
+      "bidirectional": 1,
+      "bidirectional_target": ["field_672392d9f9277"]
     }
   ],
   "location": [
@@ -77,12 +124,12 @@
   ],
   "menu_order": 0,
   "position": "normal",
-  "style": "default",
+  "style": "seamless",
   "label_placement": "top",
   "instruction_placement": "label",
   "hide_on_screen": "",
   "active": true,
   "description": "",
   "show_in_rest": 0,
-  "modified": 1729174221
+  "modified": 1730385619
 }

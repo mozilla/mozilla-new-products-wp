@@ -1,34 +1,36 @@
-<div class="article__share-tools">
-  <p class="article__share-tools__h visually-hidden">Share</p>
+{% set socials = [
+  {
+    "name": "X",
+    "url": "https://twitter.com/intent/tweet?url=" ~ post.link|url_encode ~ "&text=" ~ post.post_title|url_encode
+  },
+  {
+    "name": "Facebook",
+    "url": "https://www.facebook.com/sharer/sharer.php?u=" ~ post.link|url_encode
+  },
+  {
+    "name": "LinkedIn",
+    "url": "https://www.linkedin.com/sharing/share-offsite/?url=" ~ post.link|url_encode
+  },
+  {
+    "name": "Discord",
+    "url": "#"
+  }
+] %}
 
-  <ul class="article__share-list">
-    <li class="article__share-item article__share-item--twitter">
+<ul class="flex flex-wrap max-md:justify-end max-md:gap-x-3 max-md:gap-y-1">
+  {% for social in socials %}
+    <li class="flex">
       <a
-        href="https://twitter.com/intent/tweet?url={{ article.link|url_encode }}&amp;text={{ article.post_title|url_encode }}"
-        class="article__share-item--link"
+        class="uppercase leading-tight hover-link"
+        href="{{ social.url }}"
         target="_blank"
         rel="noopener"
-        aria-label="Twitter"
       >
-        <span class="visually-hidden">Twitter</span>
-        <svg class="article__share-item--icon">
-          <use xlink:href="#twitter"></use>
-        </svg>
+        {{- social.name -}}
       </a>
+      {% if not loop.last %}
+        <span class="leading-tight max-md:hidden" aria-hidden="true">&nbsp;</span>
+      {% endif %}
     </li>
-    <li class="article__share-item article__share-item--facebook">
-      <a
-        href="https://www.facebook.com/sharer/sharer.php?u={{article.link|url_encode}}"
-        class="article__share-item--link"
-        target="_blank"
-        rel="noopener"
-        aria-label="Facebook"
-      >
-        <span class="visually-hidden">Facebook</span>
-        <svg class="article__share-item--icon">
-          <use xlink:href="#facebook"></use>
-        </svg>
-      </a>
-    </li>
-  </ul>
-</div>
+  {% endfor %}
+</ul>

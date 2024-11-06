@@ -1,21 +1,29 @@
 {% if related_articles is not empty %}
-<div class="ups-block__related-articles {{ alignclass }}">
-  <div class="ups-block__related-articles__inner">
-
+<div data-block="related-articles" class="py-3 {{ alignclass }}">
   {% if related_articles_header %}
-    <h3 class="ups-block__related-articles__head">{{ related_articles_header }}</h3>
+    <h3 class="py-3 uppercase text-sm font-normal border-y border-content">{{ related_articles_header }}</h3>
   {% endif %}
 
   {% if related_articles %}
-    <ul class="ups-block__related-articles__list">
-      {% for article in related_articles %}
-        <li class="ups-block__related-articles__item">
-          <a class="ups-block__related-articles__link" href="{{ article.link }}">{{ article.title }}</a>
+    <ul class="contents">
+      {% for post in related_articles %}
+        <li class="relative grid grid-cols-10 gap-x-grid-site-gutter py-4 border-b border-content">
+          <a class="col-span-5 mt-2 before:absolute before:inset-0 before:z-10" href="{{ post.link }}">{{ post.title }}</a>
+
+          <div class="col-span-3">
+            <div class="w-full aspect-square {{ post.thumbnail.id ? '' : 'bg-gray' }}">
+              {% if post.thumbnail.id %}
+                {% include "components/lazy-img.twig" with { img: get_image(post.thumbnail), class: 'max-w-full max-h-full m-auto' } %}
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="col-span-2 mt-3 flex justify-end">
+            {% include "components/articles/overline.twig" with { overline: post.categories[0] } %}
+          </div>
         </li>
       {% endfor %}
     </ul>
   {% endif %}
-
-  </div>
 </div>
 {% endif %}

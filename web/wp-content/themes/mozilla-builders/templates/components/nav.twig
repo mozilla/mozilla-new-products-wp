@@ -1,11 +1,11 @@
-<nav class="grid grid-site py-site">
-  <div class="md:mt-2.5 flex-1 flex gap-1 items-center justify-start col-span-2 md:col-span-8">
-    <svg class="size-5 shrink-0">
+<nav class="grid grid-site py-site centered-page relative z-10">
+  <div class="flex-1 flex gap-1 items-center justify-start col-span-1/3 md:col-span-3/8">
+    <svg class="size-5 shrink-0 text-content">
       <use xlink:href="#flag"></use>
     </svg>
 
-    <div class="flex-1 h-5 overflow-hidden relative max-md:hidden bg-black text-white max-w-80">
-      <div x-marquee="{ speed: 0.5 }" class="absolute top-1/2 left-0 -translate-y-1/2 group">
+    <div class="flex-1 h-5 overflow-hidden relative max-md:hidden bg-action text-action-reverse max-w-80">
+      <div x-marquee="{ speed: 0.25 }" class="absolute top-1/2 left-0 -translate-y-1/2 group">
         <div x-marquee:track class="animate-marquee motion-reduce:!animate-none flex" aria-hidden="true">
           <p class="px-1 text-sm whitespace-nowrap select-none">Building in the open with open source AI. Powered by <span class="font-semibold">Mozilla</span>.</p>
         </div>
@@ -13,8 +13,8 @@
     </div>
   </div>
 
-  <div class="col-span-2 md:col-span-8 flex justify-center">
-    <a href="{{ site.url }}">
+  <div class="col-span-1/3 md:col-span-1/4 flex justify-center">
+    <a href="{{ site.url }}" class="md:flex md:items-center">
       <span class="sr-only">Mozilla Builders</span>
       <svg class="w-40 aspect-logo">
         <use xlink:href="#logo"></use>
@@ -22,15 +22,16 @@
     </a>
   </div>
 
-  <div class="lg:mt-2.5 flex-1 flex items-center justify-end gap-1 col-span-2 md:col-span-8 md:items-start lg:gap-4 xl:gap-6 md:max-lg:flex-col md:max-lg:items-end">
+  <div class=" flex-1 flex items-center justify-end gap-1 col-span-1/3 md:col-span-3/8 lg:gap-4 xl:gap-6 md:max-lg:flex-col md:max-lg:items-end">
     <ul class="flex flex-wrap justify-end items-center gap-2 lg:gap-4 xl:gap-6 gap-y-1 -mt-px max-md:hidden">
       {% for item in nav_pages_menu.items %}
       <li class="text-right">
         <a
           href="{{ item.url }}"
           class="text-sm md:max-xl:text-xs relative block py-0.5 px-1.5
-                before:absolute before:inset-0 before:bg-green before:z-0
+                before:absolute before:inset-0 before:bg-action-focus before:z-0
                 motion-safe:before:transition-transform before:scale-x-0 before:origin-center
+                aria-current:text-action-focus-reverse hover:text-action-focus-reverse
                 aria-current:before:scale-x-100 hover:before:scale-x-100"
           {% if item.current %}aria-current="page"{% endif %}
         >
@@ -41,7 +42,10 @@
     </ul>
 
     <div class="flex items-center gap-px">
-      <a href="#" class="text-sm md:max-xl:text-xs bg-black py-0.5 px-1.5 text-white transition-bg whitespace-nowrap max-md:hidden hover:bg-green hover:text-black">
+      <a href="#"
+        class="text-sm md:max-xl:text-xs py-0.5 px-1.5 transition-bg whitespace-nowrap max-md:hidden
+             bg-action text-action-reverse hover:bg-action-focus hover:text-action-focus-reverse"
+      >
         Join us
       </a>
 
@@ -51,7 +55,7 @@
         @keydown.escape.window="open = false"
       >
         <button
-          class="bg-black size-6 text-white flex items-center justify-center"
+          class="size-6 flex items-center justify-center bg-action text-action-reverse"
           @click="open = !open"
           :aria-expanded="open"
           aria-haspopup="true"
@@ -66,7 +70,7 @@
         <template x-teleport="body">
           <div
             id="menu"
-            class="fixed inset-0 h-100vh w-full flex flex-col flex-1 pt-wp-admin-bar bg-black text-white"
+            class="fixed inset-0 h-100vh z-dialog w-full flex flex-col flex-1 pt-wp-admin-bar theme-dark bg-main text-content"
             x-show="open"
             x-trap.noscroll="open"
             :aria-hidden="!open"
@@ -76,21 +80,23 @@
           >
             <h2 id="menu-label" class="sr-only">Menu</h2>
 
-            <header class="flex items-center justify-between gap-12 p-site">
-              <div class="flex-1 flex justify-start">
+            <header class="grid grid-site py-site centered-page">
+              <div class="flex-1 flex items-center col-span-1/3">
                 <svg class="size-5 shrink-0">
                   <use xlink:href="#flag"></use>
                 </svg>
               </div>
 
-              <a href="{{ site.url }}">
-                <span class="sr-only">Mozilla Builders</span>
-                <svg class="w-40 aspect-logo">
-                  <use xlink:href="#logo"></use>
-                </svg>
-              </a>
+              <div class="col-span-1/3 flex justify-center">
+                <a href="{{ site.url }}">
+                  <span class="sr-only">Mozilla Builders</span>
+                  <svg class="w-40 aspect-logo">
+                    <use xlink:href="#logo"></use>
+                  </svg>
+                </a>
+              </div>
 
-              <div class="flex-1 flex justify-end">
+              <div class="col-span-1/3 flex-1 flex justify-end items-center">
                 <button
                   class="bg-white size-6 text-black flex items-center justify-center"
                   @click="open = false"
@@ -103,26 +109,30 @@
               </div>
             </header>
 
-            <div class="border-b-2 border-white mx-site"></div>
+            <div class="grid grid-site centered-page">
+              <div class="col-span-full border-b-2 border-white"></div>
+            </div>
 
-            <div class="p-site flex-1 flex flex-col justify-end gap-5">
-              <ul class="flex flex-col items-start gap-2.5">
-                {% for item in nav_pages_menu.items %}
-                <li>
-                  <a
-                    href="{{ item.url }}"
-                    class="text-5xl font-slab-condensed font-semibold"
-                    {% if item.current %}aria-current="page"{% endif %}
-                  >
-                    {{ item.name }}
-                  </a>
-                </li>
-                {% endfor %}
-              </ul>
+            <div class="py-site flex-1 grid grid-site centered-page">
+              <div class="col-span-full flex-1 flex flex-col justify-end gap-5">
+                <ul class="flex flex-col items-start gap-2.5">
+                  {% for item in nav_pages_menu.items %}
+                  <li>
+                    <a
+                      href="{{ item.url }}"
+                      class="text-5xl font-headline-condensed font-semibold"
+                      {% if item.current %}aria-current="page"{% endif %}
+                    >
+                      {{ item.name }}
+                    </a>
+                  </li>
+                  {% endfor %}
+                </ul>
 
-              <a href="#" class="text-2xl uppercase bg-white text-center p-3 text-black whitespace-nowrap">
-                Join us
-              </a>
+                <a href="#" class="text-2xl uppercase bg-white text-center p-3 text-black whitespace-nowrap">
+                  Join us
+                </a>
+              </div>
             </div>
           </div>
         </template>

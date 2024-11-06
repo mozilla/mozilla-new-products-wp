@@ -1,0 +1,57 @@
+<div class="border-t border-content pt-2 flex flex-col gap-6">
+  <h3 class="text-lg uppercase">
+    <a href="{{ project.link }}" class="transition-colors hover:text-action-focus-reverse focus:text-action-focus-reverse hover:bg-action-focus focus:bg-action-focus">{{ project.title }}</a>
+  </h3>
+
+  <p>{{ project.tagline }}</p>
+
+  <div class="flex flex-col divide-y divide-content">
+    <dl class="flex flex-col divide-y divide-content">
+      {% if project.contributors is not empty %}
+      <div class="flex justify-between gap-4 py-1.5">
+        <dt>Contributor{{ project.contributors|length > 1 ? 's' : '' }}</dt>
+        <dd class="text-right font-semibold">
+          {% include "components/articles/byline_format.twig" with { bylines: project.contributors } %}
+        </dd>
+      </div>
+      {% endif %}
+
+      {% if project.platforms is not empty %}
+      <div class="flex justify-between gap-4 py-1.5">
+        <dt>Platform{{ project.platforms|length > 1 ? 's' : '' }}</dt>
+        <dd class="text-right font-semibold">
+          {% for platform in project.platforms %}
+            <a href="{{ platform.link }}" class="hover-link">{{ platform.name }}</a>{% if not loop.last %}, {% endif %}
+          {% endfor %}
+        </dd>
+      </div>
+      {% endif %}
+
+      {% if project.categories is not empty %}
+      <div class="flex justify-between gap-4 py-1.5">
+        <dt>{{ project.categories|length > 1 ? 'Categories' : 'Category' }}</dt>
+        <dd class="text-right font-semibold">
+          {% for category in project.categories %}
+            <a href="{{ category.link }}" class="hover-link">{{ category.name }}</a>{% if not loop.last %}, {% endif %}
+          {% endfor %}
+        </dd>
+      </div>
+      {% endif %}
+    </dl>
+
+    <div class="flex justify-between gap-4 py-1.5">
+      <a href="{{ project.link }}" class="hover-link">Project Details</a>
+
+      {% if project.github_link %}
+        <a href="{{ project.github_link }}" class="hover-link">GitHub</a>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if project.thumbnail %}
+    <div class="w-1/2 mt-6">
+      {% include "components/lazy-img.twig" with { img: project.thumbnail } %}
+    </div>
+  {% endif %}
+</div>
+
