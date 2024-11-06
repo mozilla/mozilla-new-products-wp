@@ -55,11 +55,7 @@ jobs:
       - name: Check bundlesize
         run: npm run test:bundlesize
 
-      - name: List things
-        run: |
-          ls -la
-
-      - name: lftp-mirror-action
+      - name: Deploy theme
         uses: pressidium/lftp-mirror-action@v1
         with:
           host: ${{ secrets.SFTP_HOST }}
@@ -76,4 +72,55 @@ jobs:
           remoteDir: '/wp-content/themes/mozilla-builders'
           reverse: true
           ignoreFile: '.lftp_ignore'
+          options: '--verbose --no-perms --delete'
+
+      - name: Deploy plugins
+        uses: pressidium/lftp-mirror-action@v1
+        with:
+          host: ${{ secrets.SFTP_HOST }}
+          port: 2222
+          user: ${{ secrets.SFTP_USER }}
+          pass: ${{ secrets.SFTP_PASS }}
+
+          # lftp settings
+          onlyNewer: true
+          settings: 'sftp:auto-confirm=yes'
+
+          # Mirror command options
+          localDir: './web/wp-content/plugins'
+          remoteDir: '/wp-content/plugins'
+          reverse: true
+          options: '--verbose --no-perms --delete'
+
+      - name: Check if PHP dependencies changed
+        run: |
+          changed_files=$(git diff --name-only ${{ github.sha }} ${{ github.event.before }})
+          if [[ $changed_files =~ "web/composer.json" || $changed_files =~ "web/composer.lock" ]]; then
+            echo "PHP_DEPS_CHANGED=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Install only build PHP dependencies
+        if: env.PHP_DEPS_CHANGED == 'true'
+        uses: php-actions/composer@v6
+        with:
+          dev: no
+          working_dir: 'web'
+
+      - name: Deploy PHP dependencies
+        if: env.PHP_DEPS_CHANGED == 'true'
+        uses: pressidium/lftp-mirror-action@v1
+        with:
+          host: ${{ secrets.SFTP_HOST }}
+          port: 2222
+          user: ${{ secrets.SFTP_USER }}
+          pass: ${{ secrets.SFTP_PASS }}
+
+          # lftp settings
+          onlyNewer: true
+          settings: 'sftp:auto-confirm=yes'
+
+          # Mirror command options
+          localDir: './web/wp-content/themes/mozilla-builders/vendor'
+          remoteDir: '/wp-content/themes/mozilla-builders/vendor'
+          reverse: true
           options: '--verbose --no-perms --delete'
