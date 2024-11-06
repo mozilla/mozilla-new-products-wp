@@ -94,7 +94,7 @@ jobs:
 
       - name: Check if PHP dependencies changed
         run: |
-          echo ${{ github.event.pull_request.files }}
+          git diff --name-only ${{ github.event.before }} ${{ github.sha }}
 
       # - name: Install only build PHP dependencies
       #   if: env.PHP_DEPS_CHANGED == 'true'
