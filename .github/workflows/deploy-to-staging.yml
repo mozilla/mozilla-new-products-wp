@@ -115,6 +115,7 @@ jobs:
         env:
           PHP_DEPS_CHANGED: ${{ env.PHP_DEPS_CHANGED }}
         run: |
+          echo "somthing"
           echo "$PHP_DEPS_CHANGED"
           echo "$ANOTHER_TEST"
           echo ${{ env.PHP_DEPS_CHANGED }}
