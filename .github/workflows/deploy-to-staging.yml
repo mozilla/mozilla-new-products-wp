@@ -113,7 +113,9 @@ jobs:
       - name: Some test
         env:
           PHP_DEPS_CHANGED: ${{ env.PHP_DEPS_CHANGED }}
-        run: echo $PHP_DEPS_CHANGED
+        run: |
+          echo $PHP_DEPS_CHANGED
+          echo ${{ env.PHP_DEPS_CHANGED }}
 
       - name: Install only build PHP dependencies
         env:
