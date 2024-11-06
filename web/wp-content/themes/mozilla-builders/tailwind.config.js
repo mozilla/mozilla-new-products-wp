@@ -15,6 +15,7 @@ module.exports = {
       current: 'currentColor',
       transparent: 'transparent',
       black: color('black'),
+      'off-black': color('off-black'),
       white: color('white'),
       gray: color('gray'),
       green: {
@@ -29,6 +30,7 @@ module.exports = {
       main: color('main'),
       content: color('content'),
       secondary: color('secondary'),
+      code: color('code'),
       action: {
         DEFAULT: color('action'),
         reverse: color('action-reverse'),

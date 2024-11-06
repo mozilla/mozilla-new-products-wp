@@ -1,4 +1,5 @@
 **/*.twig
+web/wp-content/plugins/acf-extended/*
 
 # Dependencies
 node_modules/
