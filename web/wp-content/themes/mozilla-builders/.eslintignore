@@ -1,2 +1,3 @@
 dist
 vendor
+web/wp-content/plugins/acf-extended/*

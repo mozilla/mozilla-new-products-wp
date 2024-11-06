@@ -1,1 +1,2 @@
 **/*.twig
+web/wp-content/plugins/acf-extended/*

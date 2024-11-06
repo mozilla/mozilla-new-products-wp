@@ -11,6 +11,7 @@
   <!-- Where to sniff -->
   <file>./web/wp-content/themes/mozilla-builders</file>
   <exclude-pattern>*.twig</exclude-pattern>
+  <exclude-pattern>*/plugins/acf-extended/*</exclude-pattern>
   <exclude-pattern>./themes/mozilla-builders/vendor</exclude-pattern>
   <exclude-pattern>./themes/mozilla-builders/node_modules</exclude-pattern>
   <exclude-pattern>./themes/mozilla-builders/dist</exclude-pattern>
