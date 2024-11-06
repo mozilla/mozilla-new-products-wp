@@ -8,8 +8,11 @@
 
 // Mozilla Sans
 @include font.face('Mozilla Sans', 'MozillaText-Light', 300, normal);
+@include font.face('Mozilla Sans', 'MozillaText-LightItalic', 300, italic);
 @include font.face('Mozilla Sans', 'MozillaText-Regular', 400, normal);
+@include font.face('Mozilla Sans', 'MozillaText-Italic', 400, italic);
 @include font.face('Mozilla Sans', 'MozillaText-Bold', 700, normal);
+@include font.face('Mozilla Sans', 'MozillaText-BoldItalic', 700, italic);
 // Mozilla Headline
 @include font.face('Mozilla Headline', 'MozillaHeadline-Light', 300, normal);
 @include font.face('Mozilla Headline', 'MozillaHeadline-Regular', 400, normal);
@@ -18,6 +21,11 @@
 @include font.face('Mozilla Headline Condensed', 'MozillaHeadlineCondensed-Light', 300, normal);
 @include font.face('Mozilla Headline Condensed', 'MozillaHeadlineCondensed-Regular', 400, normal);
 @include font.face('Mozilla Headline Condensed', 'MozillaHeadlineCondensed-SemiBold', 600, normal);
+// Source Code Pro
+@include font.face('Source Code Pro', 'SourceCodePro-Regular', 400, normal);
+@include font.face('Source Code Pro', 'SourceCodePro-It', 400, italic);
+@include font.face('Source Code Pro', 'SourceCodePro-Bold', 700, normal);
+@include font.face('Source Code Pro', 'SourceCodePro-BoldIt', 700, italic);
 
 :root {
   @apply [--100vw:min(100vw,1920px)];

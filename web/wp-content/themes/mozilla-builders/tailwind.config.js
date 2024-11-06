@@ -41,6 +41,7 @@ module.exports = {
       sans: ['Mozilla Sans', ...theme.fontFamily.sans],
       headline: ['Mozilla Headline', ...theme.fontFamily.serif],
       'headline-condensed': ['Mozilla Headline Condensed', ...theme.fontFamily.serif],
+      monospace: ['Source Code Pro', ...theme.fontFamily.serif],
     },
 
     fontWeight: {
