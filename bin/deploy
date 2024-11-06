@@ -1,0 +1,93 @@
+#!/bin/bash
+
+# Check if a local .env file exists and source it
+if [ -f ".env" ]; then
+  echo "Loading environment variables from .env file..."
+  source .env
+fi
+
+# Check if required environment variables are set
+required_vars=("SFTP_USER" "SFTP_HOST" "SFTP_PORT" "SFTP_PASSWORD")
+for var in "${required_vars[@]}"; do
+  if [ -z "${!var}" ]; then
+    echo "Error: $var environment variable is not set."
+    exit 1
+  fi
+done
+
+# Check if expect is installed
+if ! command -v expect &> /dev/null; then
+    echo "Error: expect is not installed. Please install it first."
+    exit 1
+fi
+
+# Define theme directory
+THEME_DIR="./web/wp-content/themes/mozilla-builders"
+REMOTE_THEME_DIR="/wp-content/themes/mozilla-builders"
+
+# Check if theme directory exists
+if [ ! -d "$THEME_DIR" ]; then
+    echo "Error: Theme directory not found: $THEME_DIR"
+    exit 1
+fi
+
+# Run the npm build command
+echo "Running npm build..."
+cd "$THEME_DIR" || exit 1
+npm run build
+BUILD_STATUS=$?
+
+# Return to original directory
+cd - > /dev/null
+
+# Check if the build was successful
+if [ $BUILD_STATUS -ne 0 ]; then
+    echo "Build failed. Exiting."
+    exit 1
+fi
+
+# Create a temporary directory for deployment
+TEMP_DIR=$(mktemp -d)
+echo "Creating temporary deployment directory..."
+
+# Copy theme files to temporary directory, excluding node_modules and other development files
+echo "Copying files to temporary directory..."
+cd "$THEME_DIR" || exit 1
+for file in *; do
+    if [ "$file" != "node_modules" ] && \
+       [ "$file" != ".git" ] && \
+       [ "$file" != ".gitignore" ] && \
+       [ "$file" != "package-lock.json" ] && \
+       [ "$file" != ".env" ] && \
+       [ "$file" != "README.md" ]; then
+        cp -r "$file" "$TEMP_DIR/"
+    fi
+done
+cd - > /dev/null
+
+# Create expect script
+/usr/bin/expect -c "
+set timeout -1
+spawn sftp -o StrictHostKeyChecking=no -P $SFTP_PORT $SFTP_USER@$SFTP_HOST
+expect {
+    \"*assword:\" { send \"$SFTP_PASSWORD\r\"; exp_continue }
+    \"sftp>\" { send \"cd $REMOTE_THEME_DIR\r\" }
+}
+expect \"sftp>\"
+send \"put -r $TEMP_DIR/*\r\"
+expect \"sftp>\"
+send \"bye\r\"
+expect eof"
+
+# Check expect exit status
+EXPECT_STATUS=$?
+if [ $EXPECT_STATUS -ne 0 ]; then
+    echo "Error: SFTP transfer failed with status $EXPECT_STATUS"
+    rm -rf "$TEMP_DIR"
+    exit 1
+fi
+
+# Clean up temporary directory
+rm -rf "$TEMP_DIR"
+
+echo "Deployment completed successfully!"
