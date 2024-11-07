@@ -37,6 +37,12 @@ module.exports = {
         focus: color('action-focus'),
         'focus-reverse': color('action-focus-reverse'),
       },
+      'action-secondary': {
+        DEFAULT: color('action-secondary'),
+        reverse: color('action-secondary-reverse'),
+        focus: color('action-secondary-focus'),
+        'focus-reverse': color('action-secondary-focus-reverse'),
+      },
     },
 
     fontFamily: {

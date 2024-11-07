@@ -55,6 +55,11 @@ body {
     --color-action-reverse: var(--color-white);
     --color-action-focus: var(--color-green);
     --color-action-focus-reverse: var(--color-black);
+
+    --color-action-secondary: var(--color-green);
+    --color-action-secondary-reverse: var(--color-black);
+    --color-action-secondary-focus: var(--color-black);
+    --color-action-secondary-focus-reverse: var(--color-white);
   }
 
   .theme-dark {
@@ -67,6 +72,11 @@ body {
     --color-action-reverse: var(--color-black);
     --color-action-focus: var(--color-white);
     --color-action-focus-reverse: var(--color-black);
+
+    --color-action-secondary: var(--color-white);
+    --color-action-secondary-reverse: var(--color-black);
+    --color-action-secondary-focus: var(--color-green);
+    --color-action-secondary-focus-reverse: var(--color-black);
   }
 }
 
