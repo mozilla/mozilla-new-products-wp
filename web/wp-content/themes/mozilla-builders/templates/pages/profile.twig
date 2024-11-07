@@ -48,6 +48,28 @@
   </div>
 </header>
 
+{% if post.project_description %}
+<section class="grid grid-site centered-page">
+  <div class="mt-12 md:mt-24 col-span-full md:col-span-16 md:col-start-9 lg:col-span-12 lg:col-start-13 xl:col-start-13 xl:col-span-11 md:grid md:grid-cols-16 lg:grid-cols-12 xl:grid-cols-11 md:gap-x-grid-site-gutter">
+    <h2 class="max-md:mb-4 md:col-span-4 xl:col-span-3 md:col-start-1 max-md:indent-8 font-bold uppercase">Project</h2>
+    <div class="md:col-span-12 lg:col-span-8 xl:col-span-8 md:col-start-5 xl:col-start-4 prose js-hang-punc">
+      {{ post.project_description }}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if post.collaborators %}
+<section class="grid grid-site centered-page">
+  <div class="mt-12 md:mt-24 col-span-full md:col-span-16 md:col-start-9 lg:col-span-12 lg:col-start-13 xl:col-start-13 xl:col-span-11 md:grid md:grid-cols-16 lg:grid-cols-12 xl:grid-cols-11 md:gap-x-grid-site-gutter">
+    <h2 class="max-md:mb-4 md:col-span-4 xl:col-span-3 md:col-start-1 max-md:indent-8 font-bold uppercase">Collaborators</h2>
+    <div class="md:col-span-12 lg:col-span-8 xl:col-span-8 md:col-start-5 xl:col-start-4 prose js-hang-punc">
+      {{ post.collaborators }}
+    </div>
+  </div>
+</section>
+{% endif %}
+
 {% if post.about %}
 <section class="grid grid-site centered-page">
   <div class="mt-12 md:mt-24 col-span-full md:col-span-16 md:col-start-9 lg:col-span-12 lg:col-start-13 xl:col-start-13 xl:col-span-11 md:grid md:grid-cols-16 lg:grid-cols-12 xl:grid-cols-11 md:gap-x-grid-site-gutter">

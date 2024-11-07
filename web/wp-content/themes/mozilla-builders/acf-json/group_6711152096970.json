@@ -116,6 +116,48 @@
       "delay": 0
     },
     {
+      "key": "field_672cbe3a822c4",
+      "label": "Project",
+      "name": "project_description",
+      "aria-label": "",
+      "type": "wysiwyg",
+      "instructions": "A brief description of the project background.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "allow_in_bindings": 0,
+      "tabs": "all",
+      "toolbar": "full",
+      "media_upload": 0,
+      "delay": 0
+    },
+    {
+      "key": "field_672cbeba822c5",
+      "label": "Collaborators",
+      "name": "collaborators",
+      "aria-label": "",
+      "type": "wysiwyg",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "allow_in_bindings": 0,
+      "tabs": "all",
+      "toolbar": "full",
+      "media_upload": 0,
+      "delay": 0
+    },
+    {
       "key": "field_6723968aa6c30",
       "label": "Projects",
       "name": "projects",
@@ -165,5 +207,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1730976298
+  "modified": 1730985845
 }
