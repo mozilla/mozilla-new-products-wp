@@ -44,7 +44,7 @@
   --color-orange: #{color.rgb(#ff9900)};
   --color-yellow: #{color.rgb(#ffdd63)};
   --color-purple: #{color.rgb(#7f00ca)};
-  --color-pink: #{color.rgb(#ff008a)};
+  --color-pink: #{color.rgb(#ff97e2)};
 }
 
 body {
@@ -63,6 +63,11 @@ body {
     --color-action-reverse: var(--color-white);
     --color-action-focus: var(--color-green);
     --color-action-focus-reverse: var(--color-black);
+
+    --color-action-secondary: var(--color-green);
+    --color-action-secondary-reverse: var(--color-black);
+    --color-action-secondary-focus: var(--color-black);
+    --color-action-secondary-focus-reverse: var(--color-white);
   }
 
   .theme-dark {
@@ -75,6 +80,11 @@ body {
     --color-action-reverse: var(--color-black);
     --color-action-focus: var(--color-white);
     --color-action-focus-reverse: var(--color-black);
+
+    --color-action-secondary: var(--color-white);
+    --color-action-secondary-reverse: var(--color-black);
+    --color-action-secondary-focus: var(--color-black);
+    --color-action-secondary-focus-reverse: var(--color-white);
   }
 }
 

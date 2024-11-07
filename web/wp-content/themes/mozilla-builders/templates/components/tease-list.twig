@@ -16,7 +16,7 @@
         {% endif %}
       </div>
 
-      <div class="col-span-full md:col-span-9 order-3 max-md:order-5 max-md:mt-1 {{ not post.thumbnail ? 'hidden md:block' }}">
+      <div class="col-span-full md:col-span-9 order-3 max-md:order-5 max-md:mt-1 md:w-2/4 {{ not post.thumbnail ? 'hidden md:block' }}">
         {% if post.thumbnail %}
           {% include 'templates/components/lazy-img.twig' with { img: post.thumbnail } %}
         {% endif %}
