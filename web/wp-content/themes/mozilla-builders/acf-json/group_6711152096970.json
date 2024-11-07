@@ -12,7 +12,7 @@
       "required": 0,
       "conditional_logic": 0,
       "wrapper": {
-        "width": "",
+        "width": "50",
         "class": "",
         "id": ""
       },
@@ -33,7 +33,7 @@
       "required": 0,
       "conditional_logic": 0,
       "wrapper": {
-        "width": "",
+        "width": "50",
         "class": "",
         "id": ""
       },
@@ -43,6 +43,34 @@
       "placeholder": "",
       "prepend": "",
       "append": ""
+    },
+    {
+      "key": "field_672c99c1815ff",
+      "label": "Stylized Photo",
+      "name": "stylized_photo",
+      "aria-label": "",
+      "type": "image",
+      "instructions": "Appears on the top of the profile page. The image should be an svg for best performance.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "uploader": "",
+      "return_format": "array",
+      "library": "all",
+      "acfe_thumbnail": 0,
+      "min_width": "",
+      "min_height": "",
+      "min_size": "",
+      "max_width": "",
+      "max_height": "",
+      "max_size": "",
+      "mime_types": "",
+      "allow_in_bindings": 0,
+      "preview_size": "medium"
     },
     {
       "key": "field_67194fe59cdaf",
@@ -63,7 +91,8 @@
       "allow_in_bindings": 0,
       "rows": "",
       "placeholder": "",
-      "new_lines": ""
+      "new_lines": "",
+      "acfe_textarea_code": 0
     },
     {
       "key": "field_671115201a7fd",
@@ -83,6 +112,48 @@
       "allow_in_bindings": 0,
       "tabs": "all",
       "toolbar": "basic",
+      "media_upload": 0,
+      "delay": 0
+    },
+    {
+      "key": "field_672cbe3a822c4",
+      "label": "Project",
+      "name": "project_description",
+      "aria-label": "",
+      "type": "wysiwyg",
+      "instructions": "A brief description of the project background.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "allow_in_bindings": 0,
+      "tabs": "all",
+      "toolbar": "full",
+      "media_upload": 0,
+      "delay": 0
+    },
+    {
+      "key": "field_672cbeba822c5",
+      "label": "Collaborators",
+      "name": "collaborators",
+      "aria-label": "",
+      "type": "wysiwyg",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "allow_in_bindings": 0,
+      "tabs": "all",
+      "toolbar": "full",
       "media_upload": 0,
       "delay": 0
     },
@@ -131,5 +202,10 @@
   "active": true,
   "description": "",
   "show_in_rest": 0,
-  "modified": 1730385619
+  "acfe_display_title": "",
+  "acfe_autosync": ["json"],
+  "acfe_form": 0,
+  "acfe_meta": "",
+  "acfe_note": "",
+  "modified": 1730985845
 }
