@@ -136,7 +136,7 @@
     <div class="col-span-full md:col-span-1/2 lg:col-span-1/3">
       <div class="grid grid-cols-6 md:grid-cols-16 lg:grid-cols-8 gap-x-grid-site-gutter gap-y-4">
         {% if contributor.thumbnail.id %}
-        <div class="col-span-2 md:col-span-5 lg:col-span-3">
+        <div class="col-span-2 md:col-span-5 lg:col-span-3 p-1.5 relative bg-content before:size-1.5 before:bg-main before:absolute before:bottom-0 before:right-0">
           {% include "components/lazy-img.twig" with { img: contributor.thumbnail, class: "w-full" } %}
         </div>
         {% endif %}
