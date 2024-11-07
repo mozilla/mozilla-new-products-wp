@@ -43,6 +43,7 @@ module.exports = {
       sans: ['Mozilla Sans', ...theme.fontFamily.sans],
       headline: ['Mozilla Headline', ...theme.fontFamily.serif],
       'headline-condensed': ['Mozilla Headline Condensed', ...theme.fontFamily.serif],
+      monospace: ['Source Code Pro', ...theme.fontFamily.serif],
     },
 
     fontWeight: {
@@ -78,7 +79,7 @@ module.exports = {
       },
 
       fontSize: {
-        // 20px (@640px) -> 24px (@1536px)
+        // 10px (@640px) -> 12px (@1536px)
         xs: 'clamp(.625rem, 1vw + 0.7rem, .75rem)',
         // 20px (@640px) -> 24px (@1536px)
         xl: 'clamp(1.25rem, 1.3vw + 0.7rem, 1.5rem)',

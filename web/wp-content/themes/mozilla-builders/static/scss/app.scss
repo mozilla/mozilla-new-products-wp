@@ -10,8 +10,11 @@
 
 // Mozilla Sans
 @include font.face('Mozilla Sans', 'MozillaText-Light', 300, normal);
+@include font.face('Mozilla Sans', 'MozillaText-LightItalic', 300, italic);
 @include font.face('Mozilla Sans', 'MozillaText-Regular', 400, normal);
+@include font.face('Mozilla Sans', 'MozillaText-Italic', 400, italic);
 @include font.face('Mozilla Sans', 'MozillaText-Bold', 700, normal);
+@include font.face('Mozilla Sans', 'MozillaText-BoldItalic', 700, italic);
 // Mozilla Headline
 @include font.face('Mozilla Headline', 'MozillaHeadline-Light', 300, normal);
 @include font.face('Mozilla Headline', 'MozillaHeadline-Regular', 400, normal);
@@ -20,6 +23,11 @@
 @include font.face('Mozilla Headline Condensed', 'MozillaHeadlineCondensed-Light', 300, normal);
 @include font.face('Mozilla Headline Condensed', 'MozillaHeadlineCondensed-Regular', 400, normal);
 @include font.face('Mozilla Headline Condensed', 'MozillaHeadlineCondensed-SemiBold', 600, normal);
+// Source Code Pro
+@include font.face('Source Code Pro', 'SourceCodePro-Regular', 400, normal);
+@include font.face('Source Code Pro', 'SourceCodePro-It', 400, italic);
+@include font.face('Source Code Pro', 'SourceCodePro-Bold', 700, normal);
+@include font.face('Source Code Pro', 'SourceCodePro-BoldIt', 700, italic);
 
 :root {
   @apply [--100vw:min(100vw,1920px)];
@@ -49,7 +57,7 @@ body {
     --color-main: var(--color-white);
     --color-secondary: var(--color-gray);
     --color-content: var(--color-black);
-    --color-code: var(--color-off-black);
+    --color-code: var(--color-black);
 
     --color-action: var(--color-black);
     --color-action-reverse: var(--color-white);
@@ -61,7 +69,7 @@ body {
     --color-main: var(--color-black);
     --color-secondary: var(--color-gray);
     --color-content: var(--color-white);
-    --color-code: var(--color-off-black);
+    --color-code: var(--color-black);
 
     --color-action: var(--color-green);
     --color-action-reverse: var(--color-black);
@@ -108,7 +116,7 @@ body {
   }
 
   .type-code {
-    @apply bg-code text-white py-0.5 px-1 decoration-clone text-sm;
+    @apply bg-code font-monospace text-white py-0.5 px-1 decoration-clone text-sm;
   }
 
   .type-caption {
