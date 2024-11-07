@@ -1,7 +1,6 @@
 .git/
 .github/
 .turbo/
-.vite/
 static/js/
 static/scss/
 node_modules/
