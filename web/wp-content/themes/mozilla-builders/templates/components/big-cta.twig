@@ -1,10 +1,10 @@
 {% if color == 'primary' %}
-  {% set theme = 'bg-action text-action-reverse hover:bg-action-secondary-focus hover:text-action-reverse-focus focus:bg-action-secondary-focus focus:text-action-reverse-focus' %}
+  {% set theme = 'bg-action text-action-reverse hover:bg-action-focus-reverse hover:text-action-focus hover:border-action-focus focus:bg-action-focus-reverse focus:text-action-focus focus:border-action-focus' %}
 {% else %}
-  {% set theme = 'bg-action-secondary text-action-secondary-reverse hover:bg-action-secondary-focus hover:text-action-secondary-focus-reverse  focus:bg-action-focus-reverse focus:text-action-secondary-focus-reverse' %}
+  {% set theme = 'bg-action-secondary text-action-secondary-reverse hover:bg-action-secondary-focus hover:text-action-secondary-focus-reverse hover:border-action-secondary-focus-reverse focus:bg-action-focus-reverse focus:text-action-secondary-focus-reverse focus:border-action-secondary-focus-reverse' %}
 {% endif %}
 <div
-  class="relative aspect-square p-3 flex flex-col justify-between items-center transition-colors duration-200 {{ theme }}">
+  class="relative aspect-square p-3 flex flex-col justify-between items-center transition-colors duration-200 border {{ theme }}">
   <p class="text-center text-sm uppercase">
     {{ top }}
   </p>
