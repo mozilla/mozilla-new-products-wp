@@ -39,12 +39,23 @@
   --color-off-black: #{color.rgb(#242424)};
   --color-white: #{color.rgb(#fafafa)};
   --color-gray: #{color.rgb(#f0f0f0)};
+  --color-stone: #{color.rgb(#e8e8e8)};
+  --color-green-light: #{color.rgb(#d7ffcd)};
   --color-green: #{color.rgb(#00d230)};
-  --color-green-dark: #{color.rgb(#005e2a)};
-  --color-orange: #{color.rgb(#ff9900)};
-  --color-yellow: #{color.rgb(#ffdd63)};
-  --color-purple: #{color.rgb(#7f00ca)};
+  --color-green-dark: #{color.rgb(#297340)};
+  --color-green-darker: #{color.rgb(#032612)};
+  --color-orange-light: #{color.rgb(#faf0e6)};
+  --color-orange: #{color.rgb(#ff9456)};
+  --color-orange-dark: #{color.rgb(#fe4540)};
+  --color-orange-darker: #{color.rgb(#330505)};
+  --color-yellow: #{color.rgb(#e0ee59)};
+  --color-pink-light: #{color.rgb(#fef1f8)};
   --color-pink: #{color.rgb(#ff97e2)};
+  --color-pink-dark: #{color.rgb(#ae49ed)};
+  --color-pink-darker: #{color.rgb(#210341)};
+  --color-olive: #{color.rgb(#b3b898)};
+  --color-olive-dark: #{color.rgb(#6c7863)};
+  --color-blue-green: #{color.rgb(#6bbcae)};
 }
 
 body {
