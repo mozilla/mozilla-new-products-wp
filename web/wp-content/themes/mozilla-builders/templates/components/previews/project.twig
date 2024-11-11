@@ -1,6 +1,6 @@
 <div class="flex flex-col gap-6">
   <div class="flex flex-col gap-6 relative">
-    {% if project.thumbnail %}
+    {% if project.thumbnail and project.show_image_on_index %}
       <div class="w-1/2">
         {% include "components/lazy-img.twig" with { img: project.thumbnail } %}
       </div>

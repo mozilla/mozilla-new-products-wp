@@ -100,6 +100,27 @@
       "placeholder": "",
       "allow_custom": 0,
       "search_placeholder": ""
+    },
+    {
+      "key": "field_67323e376e918",
+      "label": "Show image on index",
+      "name": "show_image_on_index",
+      "aria-label": "",
+      "type": "true_false",
+      "instructions": "This will display the image on the content page.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "message": "",
+      "default_value": 0,
+      "allow_in_bindings": 0,
+      "ui_on_text": "",
+      "ui_off_text": "",
+      "ui": 1
     }
   ],
   "location": [
@@ -125,5 +146,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1731341486
+  "modified": 1731346308
 }
