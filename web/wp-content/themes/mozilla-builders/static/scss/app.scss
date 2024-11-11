@@ -89,6 +89,10 @@ body {
 }
 
 @layer components {
+  .type-headline-3xl {
+    @apply text-10xl font-headline-condensed font-semibold leading-none;
+  }
+
   .type-headline-2xl {
     @apply text-8xl font-headline-condensed font-semibold leading-none;
   }
@@ -118,11 +122,11 @@ body {
   }
 
   .type-sans-md {
-    @apply text-2xl font-sans font-light leading-tighter tracking-tight;
+    @apply text-2xl font-sans font-normal leading-tighter tracking-tight;
   }
 
   .type-sans-sm {
-    @apply text-xl font-sans font-light leading-tighter tracking-tight;
+    @apply text-xl font-sans font-normal leading-tighter tracking-tight;
   }
 
   .type-code {
