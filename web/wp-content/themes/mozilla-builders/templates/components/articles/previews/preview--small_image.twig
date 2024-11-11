@@ -3,10 +3,10 @@
     {% include 'components/articles/overline.twig' with { overline: post.categories[0] } %}
   </div>
 
-  <h3 class="mt-3 type-headline-lg text-center leading-tighter">
+  <h3 class="mt-3 type-headline-lg text-center text-balance leading-tighter">
     <a class="before:absolute before:inset-0 before:z-10" href="{{ post.link }}">{{ post.title }}</a>
   </h3>
-  <p class="type-sans-sm text-center">{{ post.subtitle }}</p>
+  <p class="type-sans-sm text-center text-balance">{{ post.subtitle }}</p>
 
   <div class="flex-1"></div>
 
