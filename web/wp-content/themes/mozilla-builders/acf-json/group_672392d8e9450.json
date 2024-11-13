@@ -127,7 +127,12 @@
           "prepend": "",
           "append": ""
         }
-      ]
+      ],
+      "acfe_seamless_style": 0,
+      "acfe_group_modal": 0,
+      "acfe_group_modal_close": 0,
+      "acfe_group_modal_button": "",
+      "acfe_group_modal_size": "large"
     },
     {
       "key": "field_6723981d37122",
@@ -149,6 +154,27 @@
       "toolbar": "basic",
       "media_upload": 0,
       "delay": 0
+    },
+    {
+      "key": "field_67323eb12cdc9",
+      "label": "Show image on index",
+      "name": "show_image_on_index",
+      "aria-label": "",
+      "type": "true_false",
+      "instructions": "This will show the project image on the index page.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "message": "",
+      "default_value": 0,
+      "allow_in_bindings": 0,
+      "ui_on_text": "",
+      "ui_off_text": "",
+      "ui": 1
     }
   ],
   "location": [
@@ -169,5 +195,10 @@
   "active": true,
   "description": "",
   "show_in_rest": 0,
+  "acfe_display_title": "",
+  "acfe_autosync": ["json"],
+  "acfe_form": 0,
+  "acfe_meta": "",
+  "acfe_note": "",
   "modified": 1731512246
 }

@@ -1,25 +1,43 @@
 {% if post.color == 'green' %}
   {% set bg_class = 'bg-green' %}
+{% elseif post.color == 'green-light' %}
+  {% set bg_class = 'bg-green-light' %}
+{% elseif post.color == 'green-darker' %}
+  {% set bg_class = 'bg-green-darker text-main' %}
 {% elseif post.color == 'orange' %}
   {% set bg_class = 'bg-orange' %}
-{% elseif post.color == 'yellow' %}
-  {% set bg_class = 'bg-yellow' %}
-{% elseif post.color == 'purple' %}
-  {% set bg_class = 'bg-purple' %}
+{% elseif post.color == 'orange-light' %}
+  {% set bg_class = 'bg-orange-light' %}
+{% elseif post.color == 'orange-darker' %}
+  {% set bg_class = 'bg-orange-darker text-main' %}
 {% elseif post.color == 'pink' %}
   {% set bg_class = 'bg-pink' %}
+{% elseif post.color == 'pink-light' %}
+  {% set bg_class = 'bg-pink-light' %}
+{% elseif post.color == 'pink-darker' %}
+  {% set bg_class = 'bg-pink-darker text-main' %}
+{% elseif post.color == 'stone' %}
+  {% set bg_class = 'bg-stone' %}
+{% elseif post.color == 'yellow' %}
+  {% set bg_class = 'bg-yellow' %}
+{% elseif post.color == 'olive' %}
+  {% set bg_class = 'bg-olive' %}
+{% elseif post.color == 'olive-dark' %}
+  {% set bg_class = 'bg-olive-dark text-main' %}
+{% elseif post.color == 'blue-green' %}
+  {% set bg_class = 'bg-blue-green' %}
 {% else %}
   {% set bg_class = 'bg-content text-main' %}
 {% endif %}
 
 <div class="relative {{ bg_class }} p-4 min-h-96 flex-1 flex flex-col justify-between items-center">
-  <h3 class="type-headline-lg text-center leading-tighter">
-    <a class="before:absolute before:inset-0 before:z-10" href="{{ post.link }}">{{ post.title }}</a>
+  <h3 class="type-headline-lg text-center text-balance leading-tighter">
+    <a class="before:absolute before:inset-0 before:z-10 hover:before:shadow-inner" href="{{ post.link }}">{{ post.title }}</a>
   </h3>
 
   <div class="relative z-20">
     {% include 'components/articles/overline.twig' with { overline: post.categories[0], color: post.color } %}
   </div>
 
-  <p class="type-sans-sm text-center">{{ post.subtitle }}</p>
+  <p class="type-sans-sm text-center text-balance">{{ post.subtitle }}</p>
 </div

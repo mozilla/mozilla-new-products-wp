@@ -10,7 +10,7 @@
           {% include 'components/articles/overline.twig' with { overline: post.categories[0] } %}
         </div>
 
-        <h1 class="type-headline-2xl text-pretty text-center">{{ post.title }}</h1>
+        <h1 class="type-headline-2xl text-balance text-center">{{ post.title }}</h1>
       </div>
     </div>
 
@@ -30,7 +30,7 @@
 
   {% if post.subtitle %}
     <div class="grid grid-site">
-      <p class="col-span-full mt-6 type-sans-xl text-pretty text-left md:mt-12 xl:mt-20">
+      <p class="col-span-full my-6 type-sans-lg uppercase leading-tighter text-pretty text-center md:text-left md:mb-10 xl:mb-16 xl:col-span-18">
         {{ post.subtitle }}
       </p>
     </div>
