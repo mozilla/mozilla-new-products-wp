@@ -1,33 +1,39 @@
 {% extends "layouts/base.twig" %}
 
+{%- block custom_body_classes -%}
+  theme-dark
+{%- endblock -%}
+
 {% block pageBody %}
+
+  {% include 'components/accelerator/topper.twig' %}
 
   <section>
     <dl>
       <dt>Description</dt>
-      <dd>{{ post.meta('description') }}</dd>
+      <dd>{{ page.meta('description') }}</dd>
 
       <dt>Overview</dt>
-      <dd>{{ post.meta('overview') }}</dd>
+      <dd>{{ page.meta('overview') }}</dd>
 
       <dt>Concept</dt>
-      <dd>{{ post.meta('concept') }}</dd>
+      <dd>{{ page.meta('concept') }}</dd>
 
       <dt>Quote</dt>
       <dd>
-        {{ post.meta('quote').quote }} <br>
-        {{ post.meta('quote').source_name }} <br>
-        {{ post.meta('quote').source_title }} <br>
-        {{ get_image(post.meta('quote').source_headshot).src }}
+        {{ page.meta('quote').quote }} <br>
+        {{ page.meta('quote').source_name }} <br>
+        {{ page.meta('quote').source_title }} <br>
+        {{ get_image(page.meta('quote').source_headshot).src }}
       </dd>
 
       <dt>The Inaugural Theme</dt>
-      <dd>{{ post.meta('theme') }}</dd>
+      <dd>{{ page.meta('theme') }}</dd>
 
       <dt>Key dates</dt>
       <dd>
         <ul>
-          {% for keyDate in post.meta('key_dates') %}
+          {% for keyDate in page.meta('key_dates') %}
             <li>
               {{ keyDate.date }} - {{ keyDate.description }}
             </li>
@@ -36,48 +42,10 @@
       </dd>
 
       <dt>Mission</dt>
-      <dd>{{ post.meta('mission') }}</dd>
+      <dd>{{ page.meta('mission') }}</dd>
 
     </dl>
 
   </section>
-
-  <div>
-    <h2>Cohort profiles</h2>
-
-    <ul>
-      {% for profile in post.profiles %}
-        <li>
-          {{ profile.title }} - {{ get_image( profile.thumbnail).src }}
-        </li>
-
-      {% endfor %}
-    </ul>
-
-
-  </div>
-
-
-  <div>
-    <h2>FAQs</h2>
-
-    {% for faqSection in post.meta('faq_groups') %}
-      <section>
-        <h3>{{ faqSection.title }}</h3>
-
-        <ul>
-          {% for faq in faqSection.faqs %}
-            <li>
-              <h4>{{ faq.question }}</h4>
-
-              <div>
-              {{ faq.answer }}
-              </div>
-            </li>
-          {% endfor %}
-        </ul>
-      </section>
-    {% endfor %}
-  </div>
 
 {% endblock %}

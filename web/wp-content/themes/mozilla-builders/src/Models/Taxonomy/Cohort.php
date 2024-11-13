@@ -7,7 +7,6 @@
 
 namespace MozillaBuilders\Models\Taxonomy;
 
-use MozillaBuilders\Models\PostType\Accelerator;
 use MozillaBuilders\Models\PostType\Profile;
 
 /** Class */
@@ -34,7 +33,7 @@ class Cohort {
 			),
 		);
 
-		register_taxonomy( self::HANDLE, array( Profile::HANDLE, Accelerator::HANDLE ), $args );
+		register_taxonomy( self::HANDLE, array( Profile::HANDLE ), $args );
 	}
 
 }

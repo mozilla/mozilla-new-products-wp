@@ -21,7 +21,8 @@
       "allow_in_bindings": 0,
       "rows": 3,
       "placeholder": "",
-      "new_lines": ""
+      "new_lines": "",
+      "acfe_textarea_code": 0
     },
     {
       "key": "field_67227991a9a21",
@@ -63,7 +64,8 @@
       "allow_in_bindings": 0,
       "rows": 3,
       "placeholder": "",
-      "new_lines": ""
+      "new_lines": "",
+      "acfe_textarea_code": 0
     },
     {
       "key": "field_67227ae4a9a28",
@@ -142,7 +144,8 @@
           "allow_in_bindings": 0,
           "rows": 3,
           "placeholder": "",
-          "new_lines": ""
+          "new_lines": "",
+          "acfe_textarea_code": 0
         },
         {
           "key": "field_67227a0fa9a25",
@@ -210,9 +213,16 @@
           "max_size": "",
           "mime_types": "",
           "allow_in_bindings": 0,
-          "preview_size": "medium"
+          "preview_size": "medium",
+          "uploader": "",
+          "acfe_thumbnail": 0
         }
-      ]
+      ],
+      "acfe_seamless_style": 0,
+      "acfe_group_modal": 0,
+      "acfe_group_modal_close": 0,
+      "acfe_group_modal_button": "",
+      "acfe_group_modal_size": "large"
     },
     {
       "key": "field_67227af9a9a29",
@@ -235,6 +245,7 @@
       "collapsed": "",
       "button_label": "Add Row",
       "rows_per_page": 20,
+      "acfe_repeater_stylised_button": 0,
       "sub_fields": [
         {
           "key": "field_67227b07a9a2a",
@@ -301,6 +312,7 @@
       "collapsed": "",
       "button_label": "Add FAQ Group",
       "rows_per_page": 20,
+      "acfe_repeater_stylised_button": 0,
       "sub_fields": [
         {
           "key": "field_67227bb8472be",
@@ -344,6 +356,8 @@
           "collapsed": "",
           "button_label": "Add FAQ",
           "rows_per_page": 20,
+          "parent_repeater": "field_67227ba8472bd",
+          "acfe_repeater_stylised_button": 0,
           "sub_fields": [
             {
               "key": "field_67227c16472c0",
@@ -389,8 +403,7 @@
               "delay": 0,
               "parent_repeater": "field_67227be4472bf"
             }
-          ],
-          "parent_repeater": "field_67227ba8472bd"
+          ]
         }
       ]
     }
@@ -398,20 +411,25 @@
   "location": [
     [
       {
-        "param": "post_type",
+        "param": "post_template",
         "operator": "==",
-        "value": "accelerator"
+        "value": "page-accelerator.php"
       }
     ]
   ],
   "menu_order": 0,
   "position": "normal",
-  "style": "default",
+  "style": "seamless",
   "label_placement": "top",
   "instruction_placement": "label",
-  "hide_on_screen": "",
+  "hide_on_screen": ["block_editor", "the_content"],
   "active": true,
   "description": "",
   "show_in_rest": 0,
-  "modified": 1730313747
+  "acfe_display_title": "",
+  "acfe_autosync": ["json"],
+  "acfe_form": 0,
+  "acfe_meta": "",
+  "acfe_note": "",
+  "modified": 1731511939
 }
