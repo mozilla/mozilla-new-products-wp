@@ -3,7 +3,7 @@
   {% for post in posts %}
     <li class="col-span-full grid grid-cols-site gap-x-grid-site-gutter gap-y-2 py-4 relative border-t border-content">
       <div class="col-span-full md:col-span-5 order-1">
-        <h3 class="text-sm font-semibold uppercase">
+        <h3 class="text-sm font-semibold uppercase leading-tight">
           <a class="before:absolute before:inset-0 before:z-10 group" href="{{ post.link }}">
             <span class="inline group-hover:bg-action-focus group-focus:bg-action-focus group-hover:text-action-focus-reverse group-focus:text-action-focus-reverse">{{ post.title }}</span>
           </a>
@@ -17,7 +17,7 @@
       </div>
 
       <div class="col-span-full md:col-span-9 order-3 max-md:order-5 max-md:mt-1 md:w-2/4 {{ not post.thumbnail ? 'hidden md:block' }}">
-        {% if post.thumbnail %}
+        {% if post.thumbnail and post.show_image_on_index %}
           {% include 'templates/components/lazy-img.twig' with { img: post.thumbnail } %}
         {% endif %}
       </div>
