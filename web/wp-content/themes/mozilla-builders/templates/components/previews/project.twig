@@ -1,6 +1,6 @@
 <div class="flex flex-col gap-6">
   <div class="flex flex-col gap-6 relative">
-    {% if project.thumbnail %}
+    {% if project.thumbnail and project.show_image_on_index %}
       <div class="w-1/2">
         {% include "components/lazy-img.twig" with { img: project.thumbnail } %}
       </div>
@@ -15,19 +15,19 @@
     <p>{{ project.tagline }}</p>
   </div>
 
-  <div class="flex flex-col divide-y divide-content">
-    <dl class="flex flex-col divide-y divide-content">
+  <div class="flex flex-col divide-content">
+    <dl class="flex flex-col divide-content">
       {% if project.contributors is not empty %}
-      <div class="flex justify-between gap-4 py-1.5">
+      <div class="flex justify-between gap-4 pt-1.5">
         <dt>Contributor{{ project.contributors|length > 1 ? 's' : '' }}</dt>
-        <dd class="text-right font-semibold">
+        <dd class="text-right [&_a]:font-semibold">
           {% include "components/articles/byline_format.twig" with { bylines: project.contributors } %}
         </dd>
       </div>
       {% endif %}
 
       {% if project.platforms is not empty %}
-      <div class="flex justify-between gap-4 py-1.5">
+      <div class="flex justify-between gap-4 pt-1.5">
         <dt>Platform{{ project.platforms|length > 1 ? 's' : '' }}</dt>
         <dd class="text-right font-semibold">
           {% for platform in project.platforms %}
@@ -38,7 +38,7 @@
       {% endif %}
 
       {% if project.categories is not empty %}
-      <div class="flex justify-between gap-4 py-1.5">
+      <div class="flex justify-between gap-4 pt-1.5">
         <dt>{{ project.categories|length > 1 ? 'Categories' : 'Category' }}</dt>
         <dd class="text-right font-semibold">
           {% for category in project.categories %}
@@ -49,7 +49,7 @@
       {% endif %}
     </dl>
 
-    <div class="flex justify-between gap-4 py-1.5">
+    <div class="flex justify-between gap-4 pt-1.5">
       <a href="{{ project.link }}" class="hover-link">Project Details</a>
 
       {% if project.github_link %}
