@@ -14,6 +14,7 @@
 namespace MozillaBuilders\ScheduledTasks;
 
 use MozillaBuilders\ScheduledTasks\Autoloader;
+use WP_CLI;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -21,6 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 require_once __DIR__ . '/autoloader.php';
 require_once __DIR__ . '/src/JobManager.php';
+require_once __DIR__ . '/src/Cli.php';
 
 $autoloader = new Autoloader();
 $autoloader->register();
@@ -38,3 +40,7 @@ class Plugin {
 }
 
 new Plugin();
+
+if ( defined( 'WP_CLI' ) && WP_CLI ) {
+	WP_CLI::add_command( 'mozilla tasks', new Cli() );
+}

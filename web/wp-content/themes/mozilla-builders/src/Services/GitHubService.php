@@ -31,7 +31,11 @@ class GitHubService {
 	 *
 	 * @return void
 	 */
-	public function __construct( string $repo ) {
+	public function __construct( ?string $repo = null ) {
+		if ( is_null( $repo ) ) {
+			return;
+		}
+
 		if ( preg_match( '/^https?:\/\/github\.com\/([^\/]+)\/([^\/]+)$/', $repo, $matches ) ) {
 			$this->repo = 'https://api.github.com/repos/' . $matches[1] . '/' . $matches[2];
 			$this->fetch_repo_data();

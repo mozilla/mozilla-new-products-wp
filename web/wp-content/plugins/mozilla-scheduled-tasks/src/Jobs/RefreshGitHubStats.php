@@ -7,6 +7,8 @@
 
 namespace MozillaBuilders\ScheduledTasks\Jobs;
 
+use MozillaBuilders\Models\PostType\Project;
+
 /** Class */
 class RefreshGitHubStats {
 
@@ -17,6 +19,25 @@ class RefreshGitHubStats {
 	 * Run.
 	 */
 	public static function run() {
-		error_log( print_r( 'test', true ));
+		if (!class_exists('\MozillaBuilders\Models\PostType\Project')) {
+			error_log( 'This plugin only works with the Mozilla Builders theme.' );
+			return;
+		}
+
+		$projects = get_posts(
+			array(
+				'post_type' => 'project',
+				'posts_per_page' => -1,
+				'post_status' => 'publish'
+			)
+		);
+
+		if (empty($projects)) {
+			return;
+		}
+
+		foreach ($projects as $project ) {
+			Project::fetch_github_data( $project->ID, $project );
+		}
 	}
 }
