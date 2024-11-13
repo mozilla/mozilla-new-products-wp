@@ -71,6 +71,8 @@ class Project extends TimberPost {
 		// If the repo link isn't a valid one, show an error.
 		if ( ! $github->is_valid() ) {
 			set_transient( 'moz_warning', 'Unable to fetch GitHub stats for the entered GitHub repo URL.', 1 );
+			delete_post_meta( $post_id, 'project_github_stars' );
+			delete_post_meta( $post_id, 'project_github_forks' );
 			return;
 		}
 
