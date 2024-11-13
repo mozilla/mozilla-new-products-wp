@@ -56,10 +56,10 @@ function registerTargets(Alpine, el) {
   // Setup
   const targets = Array.from(el.children);
   const numTargets = targets.length;
-  const staggerDelay = 60;
-  const duration = staggerDelay * numTargets * 10;
+  const staggerDelay = 80;
+  const duration = staggerDelay * numTargets * 16;
   const minSeek = duration - staggerDelay * numTargets;
-  const seekStart = minSeek + Math.random() * duration;
+  const seekStart = minSeek + Math.floor(Math.random() * duration);
 
   // Loop through targets and animate
   const animations = targets.map((target, i) => {
@@ -76,8 +76,6 @@ function registerTargets(Alpine, el) {
     const delay = staggerDelay * (numTargets - i);
     const seek = (seekStart - delay) % duration;
     initial.seek(seek);
-
-    initial.play();
 
     return initial;
   });

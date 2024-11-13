@@ -28,7 +28,10 @@ module.exports = {
       pink: color('pink'),
       // Applied colors
       main: color('main'),
-      content: color('content'),
+      content: {
+        DEFAULT: color('content'),
+        reverse: color('content-reverse'),
+      },
       secondary: color('secondary'),
       code: color('code'),
       action: {

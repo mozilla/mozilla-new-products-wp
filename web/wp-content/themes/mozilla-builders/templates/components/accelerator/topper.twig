@@ -1,22 +1,24 @@
-<div class="relative centered-page px-grid-site-margin">
-  <div class="mt-10 mb-72">
-    <div class="flex items-baseline gap-3 type-headline-2xl relative z-10">
-      <svg class="inline-flex h-[0.69em] aspect-[47/104] text-action">
-        <use href="#protocol" />
-      </svg>
-      <h1>
-        {{ page.title }}
-      </h1>
+<div class="relative overflow-hidden">
+  <div class="relative centered-page px-grid-site-margin">
+    <div class="pt-10 pb-96">
+      <div class="flex items-baseline gap-3 type-headline-2xl relative z-10">
+        <svg class="inline-flex h-[0.69em] aspect-[47/104] text-action">
+          <use href="#protocol" />
+        </svg>
+        <h1>
+          {{ page.title }}
+        </h1>
+      </div>
+
+      <p class="flex items-center gap-4 mt-40">
+        <span class="relative z-10 text-sm uppercase">Accelerator</span>
+        <span class="h-px flex-1 bg-content" aria-hidden="true"></span>
+        <span class="relative z-10 text-sm uppercase">2024</span>
+      </p>
     </div>
 
-    <div class="flex items-center gap-4 mt-32">
-      <p class="relative z-10 text-sm uppercase">Accelerator</p>
-      <div class="h-px flex-1 bg-content"></div>
-      <p class="relative z-10 text-sm uppercase">2024</p>
-    </div>
-
-    <div x-accelerator class="absolute inset-0 overflow-x-hidden">
-      <svg class="w-full h-[60%]" viewBox="0 0 355 198" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <div x-accelerator class="absolute inset-0">
+      <svg class="w-full h-[68%]" viewBox="0 0 355 198" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path x-accelerator:path d="M133 67C207.5 67 209.5 1 257 1C304.5 1 354 30 354 96C354 162 217.5 134 179.5 82C141.5 30 98.4998 -9.5 43.9998 12C-10.5002 33.5 33.9998 66 66.4998 78C98.9998 90 157.499 122.5 124.499 172.5C91.4994 222.5 -14.5006 189 3.49942 135.5C21.4994 82 78.4996 67 133 67Z" />
       </svg>
       <div x-accelerator:targets class="opacity-0 data-[play=true]:opacity-100 transition duration-300">

@@ -21,6 +21,8 @@ if ( post_password_required( $_page_id ) ) {
 } else {
 	$context['page'] = $_page;
 
+	$context['initial_tab'] = $_GET['tab'] ?? 'overview';
+
 	Timber::render( 'pages/accelerator.twig', $context );
 }
 

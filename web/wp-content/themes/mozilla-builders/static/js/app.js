@@ -17,6 +17,7 @@ import { clipboard } from '@src/plugins/clipboard';
 import { marquee } from '@src/plugins/marquee';
 import { masonry } from '@src/plugins/masonry';
 import { accelerator } from '@src/plugins/accelerator';
+import { tabs } from '@src/plugins/tabs';
 
 // Initialize Alpine
 window.Alpine = Alpine;
@@ -25,6 +26,7 @@ Alpine.plugin(clipboard);
 Alpine.plugin(marquee);
 Alpine.plugin(masonry);
 Alpine.plugin(accelerator);
+Alpine.plugin(tabs);
 Alpine.start();
 
 // Initialize custom JS
