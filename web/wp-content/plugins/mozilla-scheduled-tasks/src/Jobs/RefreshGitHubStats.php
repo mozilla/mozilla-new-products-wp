@@ -39,5 +39,7 @@ class RefreshGitHubStats {
 		foreach ($projects as $project ) {
 			Project::fetch_github_data( $project->ID, $project );
 		}
+
+		delete_transient( 'moz_warning' );
 	}
 }

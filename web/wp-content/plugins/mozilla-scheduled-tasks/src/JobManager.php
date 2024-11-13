@@ -18,13 +18,15 @@ class JobManager {
 
     public function register_jobs() {
 		foreach ($this->job_classes as $class) {
-            add_action($class::$hook, array($class, 'run'));
+			if (property_exists($class, 'hook') && method_exists($class, 'run')) {
+				add_action($class::$hook, array($class, 'run'));
+			}
         }
 
         foreach ($this->job_classes as $class) {
-            if (!wp_next_scheduled($class::$hook)) {
-                wp_schedule_event(time(), $class::$interval, $class::$hook);
-            }
+			if (property_exists($class, 'hook') && property_exists($class, 'interval') && !wp_next_scheduled($class::$hook)) {
+				wp_schedule_event(time(), $class::$interval, $class::$hook);
+			}
         }
     }
 
@@ -46,7 +48,7 @@ class JobManager {
 
     private function unschedule_jobs() {
         foreach ($this->job_classes as $class) {
-            $timestamp = wp_next_scheduled($class::$hook);
+            $timestamp = wp_next_scheduled($class::$hook ?? null);
             if ($timestamp) {
                 wp_unschedule_event($timestamp, $class::$hook);
             }
