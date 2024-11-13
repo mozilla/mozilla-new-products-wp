@@ -16,6 +16,8 @@
     {% endfor %}
   </ul>
 
+  {% include 'components/pagination.twig' with { pagination: posts.pagination } %}
+
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4 gap-px mx-grid-site-margin">
     {% for cta in page.ctas %}
       {% if cta.link_type == "post_archive" %}

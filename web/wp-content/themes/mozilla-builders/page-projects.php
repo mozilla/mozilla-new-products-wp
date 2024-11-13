@@ -11,6 +11,8 @@ $context  = Timber::context();
 $_page    = Timber::get_post();
 $_page_id = (int) $_page->ID;
 
+global $paged;
+
 // If page is password protected, render password page.
 if ( post_password_required( $_page_id ) ) {
 	$cookie_value       = $_COOKIE[ 'wp-postpass_' . md5( get_site_option( 'siteurl' ) ) ];
@@ -21,9 +23,10 @@ if ( post_password_required( $_page_id ) ) {
 } else {
 	$context['page'] = $_page;
 
-	$args = array(
+	$args             = array(
 		'post_type'      => 'project',
-		'posts_per_page' => -1,
+		'posts_per_page' => 16,
+		'paged'          => isset( $paged ) && $paged ? $paged : 1,
 	);
 	$context['posts'] = Timber::get_posts( $args );
 
