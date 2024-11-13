@@ -61,16 +61,14 @@ class Project extends TimberPost {
 		}
 
 		$github_link = get_field( 'github_link', $post_id );
+		$github      = new GitHubService( $github_link );
 
-		if ( empty( $github_link ) ) {
-			return;
-		}
-
-		$github = new GitHubService( $github_link );
-
-		// If the repo link isn't a valid one, show an error.
+		// If the repo link isn't a valid one, remove the GitHub metadata.
 		if ( ! $github->is_valid() ) {
-			set_transient( 'moz_warning', 'Unable to fetch GitHub stats for the entered GitHub repo URL.', 1 );
+			// If the field isn't empty, it means we have a bad URL. Show a warning.
+			if ( ! empty( $github_link ) ) {
+				set_transient( 'moz_warning', 'Unable to fetch GitHub stats for the entered GitHub repo URL.', 1 );
+			}
 			delete_post_meta( $post_id, 'project_github_stars' );
 			delete_post_meta( $post_id, 'project_github_forks' );
 			return;
