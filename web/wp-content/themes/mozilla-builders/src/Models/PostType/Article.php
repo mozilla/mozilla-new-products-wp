@@ -37,14 +37,21 @@ class Article extends TimberPost {
 		if ( empty( $selected_articles ) ) {
 			$selected_articles = array();
 		}
+
 		$count = 4 - count( $selected_articles );
 		if ( $count > 0 ) {
 			$args = array(
-				'post_type' => 'post',
+				'post_type'      => 'post',
 				'posts_per_page' => $count,
-				'post__not_in' => array_merge( $selected_articles, array( $this->ID ) ),
-				'orderby' => 'date',
-				'order' => 'DESC',
+				'post__not_in'   => array_merge( $selected_articles, array( $this->ID ) ),
+				'orderby'        => 'date',
+				'order'          => 'DESC',
+				'tax_query'      => array(
+					array(
+						'taxonomy' => 'category',
+						'terms' => array_column( $this->categories(), 'id' ),
+					),
+				),
 			);
 			$pulled_articles = Timber::get_posts( $args );
 			$selected_articles = array_merge( $selected_articles, $pulled_articles->to_array() );
