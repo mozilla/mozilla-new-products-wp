@@ -28,6 +28,8 @@ export function tabs(Alpine) {
  * @param {{ default: string }}       config
  */
 function handleRoot(el, Alpine, config) {
+  let didRender = false;
+
   Alpine.bind(el, {
     'x-data'() {
       return {
@@ -54,6 +56,12 @@ function handleRoot(el, Alpine, config) {
         const pathname = window.location.pathname;
         const search = params.size > 0 ? `?${params.toString()}` : '';
         window.history.replaceState(null, '', `${pathname}${search}`);
+
+        if (!didRender) {
+          didRender = true;
+        } else {
+          window.scrollTo({ top: el.offsetTop, behavior: 'smooth' });
+        }
       }
     },
   });

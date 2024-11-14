@@ -6,10 +6,10 @@
 
 {% block pageBody %}
 
-<div x-tabs="{ default: 'overview', initial: '{{ initial_tab }}' }">
-  {% include 'components/accelerator/topper.twig' %}
+{% include 'components/accelerator/topper.twig' %}
 
-  <div class="my-4 sticky top-4 centered-page px-grid-site-margin flex max-xl:flex-col items-center z-10">
+<div x-tabs="{ default: 'overview', initial: '{{ initial_tab }}' }">
+  <div class="my-4 sticky top-4 md:top-wp-admin-bar md:pt-4 centered-page px-grid-site-margin flex max-xl:flex-col items-center z-50">
     <div
       x-tabs:list.automatic.loop
       class="bg-main flex flex-col md:grid md:grid-cols-3 max-xl:w-full border border-content max-md:divide-y md:divide-x divide-content">
@@ -35,21 +35,29 @@
       </button>
     </div>
 
+    {% if page.ctas|length %}
     <div class="xl:flex-1 xl:h-px bg-content"></div>
 
     <div class="flex flex-col md:grid md:grid-cols-2 max-xl:w-full border border-content max-md:divide-y md:divide-x divide-content max-xl:-mt-px">
-      <a href="#" class="bg-main flex-1 py-1 px-16 hover:bg-content hover:text-content-reverse focus-within:bg-content focus-within:text-content-reverse">
-        <p class="uppercase text-center text-xs leading-3 tracking-wide whitespace-nowrap">
-          Newsletter
-        </p>
-      </a>
+      {% for cta in page.ctas %}
+        {% if cta.link_type == "post_archive" %}
+          {% set label = 'Content' %}
+        {% elseif cta.link_type == "project_archive" %}
+          {% set label = 'Projects' %}
+        {% elseif cta.link_type == "discord" %}
+          {% set label = 'Discord' %}
+        {% else %}
+          {% set label = cta.custom_link.title %}
+        {% endif %}
 
-      <a href="{{ archive_links.discord }}" class="bg-main flex-1 py-1 px-16 hover:bg-content hover:text-content-reverse focus-within:bg-content focus-within:text-content-reverse">
-        <p class="uppercase text-center text-xs leading-3 tracking-wide whitespace-nowrap">
-          Discord
-        </p>
-      </a>
+        <a href="#ctas" class="bg-main flex-1 py-1 px-16 hover:bg-content hover:text-content-reverse focus-within:bg-content focus-within:text-content-reverse">
+          <p class="uppercase text-center text-xs leading-3 tracking-wide whitespace-nowrap">
+            {{ label }}
+          </p>
+        </a>
+      {% endfor %}
     </div>
+    {% endif %}
   </div>
 
   <div x-tabs:panel="overview" {% if initial_tab != 'overview' %}style="display:none"{% endif %}>
@@ -174,7 +182,7 @@
   </div>
 
   {% if page.ctas|length %}
-    <div class="mt-16 md:mt-24 grid grid-cols-1 md:grid-cols-2 gap-px mx-grid-site-margin">
+    <div id="ctas" class="scroll-mt-24 md:scroll-mt-16 mt-16 md:mt-24 grid grid-cols-1 md:grid-cols-2 gap-px mx-grid-site-margin">
       {% for cta in page.ctas %}
         {% if cta.link_type == "post_archive" %}
           {% set label = 'Content' %}
