@@ -13,6 +13,7 @@ use MozillaBuilders\Models\PostType\Profile;
 use MozillaBuilders\Models\PostType\Project;
 use MozillaBuilders\Models\Taxonomy\Cohort;
 use MozillaBuilders\Models\Taxonomy\Platform;
+use MozillaBuilders\Models\Taxonomy\ProjectCategory;
 use MozillaBuilders\Models\Taxonomy\Technology;
 use MozillaBuilders\Vite;
 
@@ -184,11 +185,10 @@ class ThemeManager {
 	 * @return void
 	 */
 	public function register_taxonomies() {
-		// Register default taxonomies for custom post types.
-		register_taxonomy_for_object_type( 'category', Project::HANDLE );
 		// Register custom post types.
 		Cohort::register();
 		Platform::register();
+		ProjectCategory::register();
 		Technology::register();
 	}
 
