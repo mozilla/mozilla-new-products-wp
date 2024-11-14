@@ -9,43 +9,43 @@
 <div x-tabs="{ default: 'overview', initial: '{{ initial_tab }}' }">
   {% include 'components/accelerator/topper.twig' %}
 
-  <div class="my-4 centered-page px-grid-site-margin flex max-xl:flex-col items-center">
+  <div class="my-4 sticky top-4 centered-page px-grid-site-margin flex max-xl:flex-col items-center z-10">
     <div
       x-tabs:list.automatic.loop
-      class="flex flex-col md:grid md:grid-cols-3 max-xl:w-full border border-content max-md:divide-y md:divide-x divide-content">
+      class="bg-main flex flex-col md:grid md:grid-cols-3 max-xl:w-full border border-content max-md:divide-y md:divide-x divide-content">
       <button
         x-tabs:tab="overview"
         {% if initial_tab == 'overview' %}data-state="active"{% endif %}
-        class="flex-1 py-1 px-16 data-[state=active]:bg-content data-[state=active]:text-content-reverse">
-        <span class="text-sm text-center uppercase whitespace-nowrap">Overview</span>
+        class="flex-1 py-1 px-16 text-xs leading-3 data-[state=active]:bg-content data-[state=active]:text-content-reverse">
+        <span class="uppercase text-xs leading-3 tracking-wide text-center whitespace-nowrap">Overview</span>
       </button>
 
       <button
         x-tabs:tab="cohorts"
         {% if initial_tab == 'cohorts' %}data-state="active"{% endif %}
-        class="flex-1 py-1 px-16 data-[state=active]:bg-content data-[state=active]:text-content-reverse">
-        <span class="text-sm text-center uppercase whitespace-nowrap">Past Cohorts</span>
+        class="bg-main flex-1 py-1 px-16 text-xs leading-3 data-[state=active]:bg-content data-[state=active]:text-content-reverse">
+        <span class="uppercase text-center text-xs leading-3 tracking-wide whitespace-nowrap">Past Cohorts</span>
       </button>
 
       <button
         x-tabs:tab="faqs"
         {% if initial_tab == 'faqs' %}data-state="active"{% endif %}
-        class="flex-1 py-1 px-16 data-[state=active]:bg-content data-[state=active]:text-content-reverse">
-        <span class="text-sm text-center uppercase whitespace-nowrap">FAQs</span>
+        class="bg-main flex-1 py-1 px-16 text-xs leading-3 data-[state=active]:bg-content data-[state=active]:text-content-reverse">
+        <span class="uppercase text-center text-xs leading-3 tracking-wide whitespace-nowrap">FAQs</span>
       </button>
     </div>
 
-    <div class="xl:flex-1 h-px bg-content max-xl:h-8 max-xl:w-px"></div>
+    <div class="xl:flex-1 xl:h-px bg-content"></div>
 
-    <div class="flex flex-col md:grid md:grid-cols-2 max-xl:w-full border border-content max-md:divide-y md:divide-x divide-content">
-      <a href="#" class="flex-1 py-1 px-16 hover:bg-content hover:text-content-reverse focus-within:bg-content focus-within:text-content-reverse">
-        <p class="text-sm text-center uppercase whitespace-nowrap">
+    <div class="flex flex-col md:grid md:grid-cols-2 max-xl:w-full border border-content max-md:divide-y md:divide-x divide-content max-xl:-mt-px">
+      <a href="#" class="bg-main flex-1 py-1 px-16 hover:bg-content hover:text-content-reverse focus-within:bg-content focus-within:text-content-reverse">
+        <p class="uppercase text-center text-xs leading-3 tracking-wide whitespace-nowrap">
           Newsletter
         </p>
       </a>
 
-      <a href="{{ archive_links.discord }}" class="flex-1 py-1 px-16 hover:bg-content hover:text-content-reverse focus-within:bg-content focus-within:text-content-reverse">
-        <p class="text-sm text-center uppercase whitespace-nowrap">
+      <a href="{{ archive_links.discord }}" class="bg-main flex-1 py-1 px-16 hover:bg-content hover:text-content-reverse focus-within:bg-content focus-within:text-content-reverse">
+        <p class="uppercase text-center text-xs leading-3 tracking-wide whitespace-nowrap">
           Discord
         </p>
       </a>
@@ -61,7 +61,7 @@
       </div>
 
       <div class="col-span-full md:col-start-6 md:col-span-19 mt-16 md:mt-24">
-        <p class="type-headline-xl md:indent-[calc(0.1*var(--100vw))]">
+        <p class="type-headline-xl indent-8 md:indent-[calc(0.1*var(--100vw))]">
           {{ page.concept }}
         </p>
       </div>
@@ -113,7 +113,7 @@
       {% for cohort in cohorts %}
         <div class="col-span-full mt-16 md:mt-24 mb-8">
           <div class="border border-content p-1">
-            <h4 class="text-sm text-center uppercase">
+            <h4 class="uppercase text-xs leading-3 tracking-wide text-center">
               {{ cohort.title }}
             </h4>
           </div>

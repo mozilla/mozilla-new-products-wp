@@ -1,7 +1,7 @@
-<div class="relative overflow-hidden">
-  <div class="relative centered-page px-grid-site-margin">
-    <div class="pt-10 pb-96">
-      <div class="flex items-baseline gap-3 type-headline-2xl relative z-20">
+<div class="relative overflow-hidden h-[80vh] md:h-[75vh]">
+  <div class="relative centered-page px-grid-site-margin h-full">
+    <div class="max-md:h-[80vh] flex flex-col">
+      <div class="pt-10 flex items-baseline gap-3 type-headline-xl md:type-headline-3xl relative z-20">
         <svg class="inline-flex h-[0.69em] aspect-[47/104] text-action">
           <use href="#protocol" />
         </svg>
@@ -10,10 +10,10 @@
         </h1>
       </div>
 
-      <p class="flex items-center gap-4 mt-40">
-        <span class="relative z-20 text-sm uppercase">Accelerator</span>
-        <span class="h-px flex-1 bg-content" aria-hidden="true"></span>
-        <span class="relative z-20 text-sm uppercase">2024</span>
+      <p class="max-md:mt-6 md:absolute md:inset-y md:px-grid-site-margin md:right-0 md:left-0 flex items-center gap-2 md:gap-4 max-md:flex-col-reverse h-full">
+        <span class="relative z-20 text-sm tracking-wide uppercase">Accelerator</span>
+        <span class="max-md:w-px md:h-px flex-1 bg-content" aria-hidden="true"></span>
+        <span class="relative z-20 text-sm tracking-wide uppercase">2024</span>
       </p>
     </div>
 
@@ -21,7 +21,7 @@
       {% set img = page.thumbnail %}
       {% set height = ((img.height / img.width) * 18)|round %}
 
-      <div x-accelerator class="absolute top-32 md:top-8 bottom-0 inset-x-grid-site-margin flex items-center justify-center">
+      <div x-accelerator class="absolute top-16 md:top-8 bottom-0 inset-x-grid-site-margin flex items-center justify-center">
         <svg
           class="w-[calc(100%-18rem)] h-[min(100%-var(--height),var(--100vw)*315/206)] aspect-[315/206]"
           style="--height: {{ height }}rem"
