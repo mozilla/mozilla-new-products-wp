@@ -6,103 +6,188 @@
 
 {% block pageBody %}
 
+<div x-tabs="{ default: 'overview', initial: '{{ initial_tab }}' }">
   {% include 'components/accelerator/topper.twig' %}
 
-  <div x-tabs="{ default: 'overview', initial: '{{ initial_tab }}' }">
-    <div class="my-4 centered-page px-grid-site-margin flex max-xl:flex-col items-center">
-      <div
-        x-tabs:list.automatic.loop
-        class="flex flex-col md:grid md:grid-cols-3 max-xl:w-full border border-content max-md:divide-y md:divide-x divide-content">
-        <button
-          x-tabs:tab="overview"
-          {% if initial_tab == 'overview' %}data-state="active"{% endif %}
-          class="flex-1 py-1 px-16 data-[state=active]:bg-content data-[state=active]:text-content-reverse">
-          <span class="text-sm text-center uppercase whitespace-nowrap">Overview</span>
-        </button>
+  <div class="my-4 centered-page px-grid-site-margin flex max-xl:flex-col items-center">
+    <div
+      x-tabs:list.automatic.loop
+      class="flex flex-col md:grid md:grid-cols-3 max-xl:w-full border border-content max-md:divide-y md:divide-x divide-content">
+      <button
+        x-tabs:tab="overview"
+        {% if initial_tab == 'overview' %}data-state="active"{% endif %}
+        class="flex-1 py-1 px-16 data-[state=active]:bg-content data-[state=active]:text-content-reverse">
+        <span class="text-sm text-center uppercase whitespace-nowrap">Overview</span>
+      </button>
 
-        <button
-          x-tabs:tab="cohorts"
-          {% if initial_tab == 'cohorts' %}data-state="active"{% endif %}
-          class="flex-1 py-1 px-16 data-[state=active]:bg-content data-[state=active]:text-content-reverse">
-          <span class="text-sm text-center uppercase whitespace-nowrap">Past Cohorts</span>
-        </button>
+      <button
+        x-tabs:tab="cohorts"
+        {% if initial_tab == 'cohorts' %}data-state="active"{% endif %}
+        class="flex-1 py-1 px-16 data-[state=active]:bg-content data-[state=active]:text-content-reverse">
+        <span class="text-sm text-center uppercase whitespace-nowrap">Past Cohorts</span>
+      </button>
 
-        <button
-          x-tabs:tab="faqs"
-          {% if initial_tab == 'faqs' %}data-state="active"{% endif %}
-          class="flex-1 py-1 px-16 data-[state=active]:bg-content data-[state=active]:text-content-reverse">
-          <span class="text-sm text-center uppercase whitespace-nowrap">FAQs</span>
-        </button>
-      </div>
-
-      <div class="xl:flex-1 h-px bg-content max-xl:h-8 max-xl:w-px"></div>
-
-      <div class="flex flex-col md:grid md:grid-cols-2 max-xl:w-full border border-content max-md:divide-y md:divide-x divide-content">
-        <a href="#" class="flex-1 py-1 px-16 hover:bg-content hover:text-content-reverse focus-within:bg-content focus-within:text-content-reverse">
-          <p class="text-sm text-center uppercase whitespace-nowrap">
-            Newsletter
-          </p>
-        </a>
-
-        <a href="{{ archive_links.discord }}" class="flex-1 py-1 px-16 hover:bg-content hover:text-content-reverse focus-within:bg-content focus-within:text-content-reverse">
-          <p class="text-sm text-center uppercase whitespace-nowrap">
-            Discord
-          </p>
-        </a>
-      </div>
+      <button
+        x-tabs:tab="faqs"
+        {% if initial_tab == 'faqs' %}data-state="active"{% endif %}
+        class="flex-1 py-1 px-16 data-[state=active]:bg-content data-[state=active]:text-content-reverse">
+        <span class="text-sm text-center uppercase whitespace-nowrap">FAQs</span>
+      </button>
     </div>
 
-    <div x-tabs:panel="overview" {% if initial_tab != 'overview' %}style="display:none"{% endif %}>
-      <h2>Overview</h2>
-    </div>
+    <div class="xl:flex-1 h-px bg-content max-xl:h-8 max-xl:w-px"></div>
 
-    <div x-tabs:panel="cohorts" {% if initial_tab != 'cohorts' %}style="display:none"{% endif %}>
-      <h2>Past Cohorts</h2>
-    </div>
+    <div class="flex flex-col md:grid md:grid-cols-2 max-xl:w-full border border-content max-md:divide-y md:divide-x divide-content">
+      <a href="#" class="flex-1 py-1 px-16 hover:bg-content hover:text-content-reverse focus-within:bg-content focus-within:text-content-reverse">
+        <p class="text-sm text-center uppercase whitespace-nowrap">
+          Newsletter
+        </p>
+      </a>
 
-    <div x-tabs:panel="faqs" {% if initial_tab != 'faqs' %}style="display:none"{% endif %}>
-      <h2>FAQs</h2>
+      <a href="{{ archive_links.discord }}" class="flex-1 py-1 px-16 hover:bg-content hover:text-content-reverse focus-within:bg-content focus-within:text-content-reverse">
+        <p class="text-sm text-center uppercase whitespace-nowrap">
+          Discord
+        </p>
+      </a>
     </div>
   </div>
 
-  <section>
-    <dl>
-      <dt>Description</dt>
-      <dd>{{ page.meta('description') }}</dd>
+  <div x-tabs:panel="overview" {% if initial_tab != 'overview' %}style="display:none"{% endif %}>
+    <div class="mt-16 centered-page grid grid-site">
+      <h2 class="sr-only">Overview</h2>
 
-      <dt>Overview</dt>
-      <dd>{{ page.meta('overview') }}</dd>
+      <div class="col-span-full max-md:mt-8 md:col-start-13 md:col-span-10 lg:col-start-15 lg:col-span-8 prose">
+        {{ page.overview }}
+      </div>
 
-      <dt>Concept</dt>
-      <dd>{{ page.meta('concept') }}</dd>
+      <div class="col-span-full md:col-start-6 md:col-span-19 mt-16 md:mt-24">
+        <p class="type-headline-xl md:indent-[calc(0.1*var(--100vw))]">
+          {{ page.concept }}
+        </p>
+      </div>
 
-      <dt>Quote</dt>
-      <dd>
-        {{ page.meta('quote').quote }} <br>
-        {{ page.meta('quote').source_name }} <br>
-        {{ page.meta('quote').source_title }} <br>
-        {{ get_image(page.meta('quote').source_headshot).src }}
-      </dd>
+      <hr class="col-span-full mt-16 md:mt-24 mb-8" />
 
-      <dt>The Inaugural Theme</dt>
-      <dd>{{ page.meta('theme') }}</dd>
+      <h3 class="col-span-full md:col-span-8 type-sans-lg uppercase">
+        The Inaugural Theme
+      </h3>
 
-      <dt>Key dates</dt>
-      <dd>
-        <ul>
-          {% for keyDate in page.meta('key_dates') %}
-            <li>
-              {{ keyDate.date }} - {{ keyDate.description }}
-            </li>
+      <div class="col-span-full max-md:mt-8 md:col-start-end md:col-span-14 lg:col-span-1/2 mb-8">
+        <div class="w-full aspect-video bg-content/10">
+          {# TODO: add theme video #}
+        </div>
+      </div>
+
+      <div class="col-span-full md:col-start-13 md:col-span-10 lg:col-start-15 lg:col-span-8 prose">
+        {{ page.theme }}
+      </div>
+    </div>
+  </div>
+
+  <div x-tabs:panel="cohorts" {% if initial_tab != 'cohorts' %}style="display:none"{% endif %}>
+    <div class="mt-16 centered-page grid grid-site">
+      <h2 class="sr-only">Past Cohorts</h2>
+
+      <h3 class="col-span-full md:col-span-8 type-sans-lg uppercase">
+        Mission
+      </h3>
+
+      <div class="col-span-full max-md:mt-8 md:col-start-13 md:col-span-10 lg:col-start-15 lg:col-span-8 prose">
+        {{ page.past_cohorts.mission }}
+      </div>
+
+      {% for cohort in cohorts %}
+        <div class="col-span-full mt-16 md:mt-24 mb-8">
+          <div class="border border-content p-1">
+            <h4 class="text-sm text-center uppercase">
+              {{ cohort.title }}
+            </h4>
+          </div>
+        </div>
+
+        <div class="col-span-full">
+          <ul class="grid grid-cols-site gap-x-grid-site-gutter gap-y-8">
+            {% for profile in cohort.posts %}
+              <li class="relative col-span-1/2 md:col-span-1/3 lg:col-span-6 xl:col-span-1/6">
+                <div class="w-full aspect-poster {% if not profile.thumbnail %}bg-content/10{% endif %}">
+                  {% if profile.thumbnail %}
+                    {% include 'components/lazy-img.twig' with {
+                      img: profile.thumbnail,
+                      aspectRatio: false,
+                      class: 'w-full h-full object-cover',
+                    } %}
+                  {% endif %}
+                </div>
+
+                <p class="mt-2 text-sm uppercase font-semibold">
+                  <a href="{{ profile.link }}" class="before:absolute before:inset-0">
+                    {{ profile.first_name }} {{ profile.last_name }}
+                  </a>
+                </p>
+                <p class="text-sm uppercase">{{ profile.projects[0].title }}</p>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div x-tabs:panel="faqs" {% if initial_tab != 'faqs' %}style="display:none"{% endif %}>
+    <div class="mt-16 centered-page grid grid-site">
+      <h2 class="sr-only">FAQs</h2>
+
+      {% for section in page.faqs %}
+        <h3 class="col-span-full md:col-span-8 type-sans-lg uppercase">
+          {{ section.heading }}
+        </h3>
+
+        <div class="col-span-full max-md:mt-8 md:col-start-13 md:col-span-10 lg:col-start-15 lg:col-span-8 prose">
+          {% for group in section.groups %}
+            <h4 class="type-sans-md uppercase">
+              {{ group.question }}
+            </h4>
+
+            {{ group.answer }}
           {% endfor %}
-        </ul>
-      </dd>
+        </div>
 
-      <dt>Mission</dt>
-      <dd>{{ page.meta('mission') }}</dd>
+        {% if not loop.last %}
+          <hr class="col-span-full mt-16 md:mt-24 mb-8" />
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
 
-    </dl>
+  {% if page.ctas|length %}
+    <div class="mt-16 md:mt-24 grid grid-cols-1 md:grid-cols-2 gap-px mx-grid-site-margin">
+      {% for cta in page.ctas %}
+        {% if cta.link_type == "post_archive" %}
+          {% set label = 'Content' %}
+          {% set href = archive_links.posts %}
+        {% elseif cta.link_type == "project_archive" %}
+          {% set label = 'Projects' %}
+          {% set href = archive_links.projects %}
+        {% elseif cta.link_type == "discord" %}
+          {% set label = 'Discord' %}
+          {% set href = archive_links.discord %}
+        {% else %}
+          {% set label = cta.custom_link.title %}
+          {% set href = cta.custom_link.url %}
+        {% endif %}
 
-  </section>
+        {% include 'components/big-cta.twig' with {
+          top: cta.top_text,
+          bottom: cta.bottom_text,
+          label: label,
+          href: href,
+          color: cta.cta_color
+        } %}
+
+      {% endfor %}
+    </div>
+  {% endif %}
+
+</div>
 
 {% endblock %}

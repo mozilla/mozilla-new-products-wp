@@ -78,6 +78,7 @@ module.exports = {
       },
 
       aspectRatio: {
+        poster: '2/3',
         logo: '2227/420',
         'mozilla-logo': '704/147',
         'text-topper': '550/686',

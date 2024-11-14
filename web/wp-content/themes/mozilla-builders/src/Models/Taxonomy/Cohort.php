@@ -35,5 +35,4 @@ class Cohort {
 
 		register_taxonomy( self::HANDLE, array( Profile::HANDLE ), $args );
 	}
-
 }

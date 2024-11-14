@@ -35,11 +35,9 @@ function registerRoot(Alpine, el) {
  * @param {HTMLElement}               el
  */
 function registerPath(Alpine, el) {
-  const path = anime.path(el);
-
   // Add path to parent data
   const options = Alpine.$data(el);
-  options.path = path;
+  options.pathElement = el;
 }
 
 /**
@@ -49,55 +47,81 @@ function registerPath(Alpine, el) {
  * @param {HTMLElement}               el
  */
 function registerTargets(Alpine, el) {
-  const options = Alpine.$data(el);
-  /** @type {ReturnType<typeof anime.path>} */
-  const path = options.path;
+  el.dataset.state = 'inactive';
 
-  // Setup
+  /** @type {{ pathElement?: HTMLElement }} */
+  const options = Alpine.$data(el);
+  const pathElement = options.pathElement;
+  if (!pathElement) {
+    return () => {};
+  }
+
+  // Setup targets
   const targets = Array.from(el.children);
-  const numTargets = targets.length;
+  const maxIndex = targets.length - 1;
+
+  // Setup variables
+  let animateTimeout;
+  const initialDelay = 200;
+  const duration = 1600;
   const staggerDelay = 80;
-  const duration = staggerDelay * numTargets * 16;
-  const minSeek = duration - staggerDelay * numTargets;
-  const seekStart = minSeek + Math.floor(Math.random() * duration);
 
   // Loop through targets and animate
   const animations = targets.map((target, i) => {
+    const percentage = Math.max((i / maxIndex) * 100, 0.01);
+    const path = anime.path(pathElement, percentage);
     const initial = anime({
       targets: target,
       translateX: path('x'),
       translateY: path('y'),
       duration,
-      easing: 'linear',
-      loop: true,
+      delay: anime.stagger(staggerDelay),
+      easing: 'easeOutExpo',
     });
     initial.pause();
-
-    const delay = staggerDelay * (numTargets - i);
-    const seek = (seekStart - delay) % duration;
-    initial.seek(seek);
 
     return initial;
   });
 
-  // Show animation
-  el.dataset.play = true;
-
-  // Handle reduced motion
+  // Play initial animation
   const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-  function onReducedMotionChange(event) {
-    const reducedMotion = event.matches;
-    if (reducedMotion) {
-      animations.forEach(animation => animation.pause());
-    } else {
+  if (mediaQuery.matches) {
+    animations.forEach(animation => animation.seek(duration));
+    el.dataset.state = 'active';
+  } else {
+    el.dataset.state = 'active';
+    animateTimeout = setTimeout(() => {
       animations.forEach(animation => animation.play());
-    }
+    }, initialDelay);
   }
-  onReducedMotionChange(mediaQuery);
-  mediaQuery.addEventListener('change', onReducedMotionChange);
+
+  // Pause the animation when reduced motion is enabled or the window is resized
+  function finishAnimation() {
+    animations.forEach(animation => animation.pause());
+    clearTimeout(animateTimeout);
+
+    targets.forEach((target, i) => {
+      const percentage = Math.max((i / maxIndex) * 100, 0.01);
+      const path = anime.path(pathElement, percentage);
+      const initial = anime({
+        targets: target,
+        translateX: path('x'),
+        translateY: path('y'),
+        duration: 0,
+      });
+      initial.pause();
+    });
+  }
+  mediaQuery.addEventListener('change', finishAnimation);
+  window.addEventListener('resize', finishAnimation);
 
   // Cleanup
   return () => {
-    mediaQuery.removeEventListener('change', onReducedMotionChange);
+    clearTimeout(animateTimeout);
+
+    window.removeEventListener('resize', finishAnimation);
+    mediaQuery.removeEventListener('change', finishAnimation);
+
+    el.dataset.state = 'inactive';
   };
 }

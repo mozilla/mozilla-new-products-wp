@@ -6,6 +6,7 @@
  */
 
 use Timber\Timber;
+use MozillaBuilders\Models\Taxonomy\Cohort;
 
 $context  = Timber::context();
 $_page    = Timber::get_post();
@@ -22,6 +23,11 @@ if ( post_password_required( $_page_id ) ) {
 	$context['page'] = $_page;
 
 	$context['initial_tab'] = $_GET['tab'] ?? 'overview';
+
+	$cohorts_args = array(
+		'taxonomy' => Cohort::HANDLE,
+	);
+	$context['cohorts'] = Timber::get_terms( $cohorts_args );
 
 	Timber::render( 'pages/accelerator.twig', $context );
 }
