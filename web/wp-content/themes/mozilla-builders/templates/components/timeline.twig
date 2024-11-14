@@ -1,0 +1,38 @@
+{% set current_index = -1 %}
+{% for item in items %}
+  {% if current_index == -1 and item.date|date('Y-m-d') >= 'now'|date('Y-m-d') %}
+    {% set current_index = loop.index %}
+  {% endif %}
+{% endfor %}
+
+<ol class="flex max-lg:flex-col {{ current_index != -1 ? 'lg:pt-48' }}">
+  {% for item in items %}
+    {% set is_past = item.date|date('Y-m-d') < 'now'|date('Y-m-d') %}
+    {% set is_current = current_index == loop.index %}
+
+    <li class="relative flex-1 max-lg:py-5 lg:px-4 flex flex-col items-start gap-2 lg:border-l lg:border-content {{ loop.last ? 'lg:border-r' }}">
+      {% if is_current %}
+        <div class="max-lg:hidden absolute -left-px bottom-0 h-64 w-px bg-content">
+          <p class="absolute -top-1 left-4 whitespace-nowrap text-sm uppercase">We are here</p>
+        </div>
+        <div class="lg:hidden flex w-full items-center mb-4">
+          <div class="py-0.5 px-2.5 border border-content">
+            <p class="text-xs uppercase font-semibold">We are here</p>
+          </div>
+          <div class="h-px flex-1 bg-content"></div>
+        </div>
+      {% endif %}
+
+      <p class="text-sm mb-4">
+        <time datetime="{{ item.date|date('Y-m-d') }}">{{ item.date|date('M d, Y') }}</time>
+      </p>
+
+      <div class="relative w-full h-px bg-content">
+        {% if is_past %}
+          <div class="absolute left-0 bottom-0 w-full h-1.5 bg-action"></div>
+        {% endif %}
+      </div>
+      <p class="text-sm uppercase font-semibold">{{ item.description }}</p>
+    </li>
+  {% endfor %}
+</ol>

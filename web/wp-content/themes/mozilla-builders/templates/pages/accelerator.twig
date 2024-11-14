@@ -72,14 +72,28 @@
         The Inaugural Theme
       </h3>
 
+      {% if page.theme_video %}
       <div class="col-span-full max-md:mt-8 md:col-start-end md:col-span-14 lg:col-span-1/2 mb-8">
-        <div class="w-full aspect-video bg-content/10">
-          {# TODO: add theme video #}
+        <div class="w-full aspect-video bg-content/10 [&_iframe]:w-full [&_iframe]:h-full">
+          {{ page.theme_video }}
         </div>
       </div>
+      {% endif %}
 
       <div class="col-span-full md:col-start-13 md:col-span-10 lg:col-start-15 lg:col-span-8 prose">
         {{ page.theme }}
+      </div>
+
+      <h3 class="col-span-full md:col-span-8 mt-16 md:mt-24 type-sans-lg uppercase">
+        Key Dates
+      </h3>
+
+      <div class="col-span-full my-8">
+        {% include 'components/timeline.twig' with { items: page.key_dates } %}
+      </div>
+
+      <div class="col-span-full my-16">
+        {% include 'components/big-quote.twig' with { quote: page.quote } %}
       </div>
     </div>
   </div>
