@@ -151,7 +151,7 @@ body {
     @apply text-sm text-content/70 leading-tight;
 
     strong {
-      @apply text-content/100;
+      @apply text-content;
     }
   }
 }
@@ -167,10 +167,6 @@ body {
 
   .mask-quote {
     mask: url('data:image/svg+xml;utf8,<svg viewBox="0 0 75 75" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M0 0H75V75H0V0ZM66.6662 66.6662H74.9995V74.9995H66.6662V66.6662ZM42.9999 35.1469L47.2749 28.1719H43.1499L38.5749 35.1469V43.6219H47.1999V35.1469H42.9999ZM27.3999 35.1469V43.6219H36.0249V35.1469H31.8249L36.0999 28.1719H31.9749L27.3999 35.1469Z" fill="currentColor"/></svg>');
-  }
-
-  .mask-plus {
-    mask: url('data:image/svg+xml;utf8,<svg viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M6.6 0H4.4V2.2V4.4H2.2H0V6.6H2.2H4.4V8.8V11H6.6V8.8V6.6H8.8H11V4.4H8.8H6.6V2.2V0Z" fill="currentColor"/></svg>');
   }
 
   .hover-link {
@@ -389,10 +385,6 @@ body {
       &::before {
         content: '';
         @apply block h-[1px] w-full bg-spot;
-        // background-image: linear-gradient(to right, rgb(var(--color-content)) 33%, transparent 0%);
-        // background-position: bottom;
-        // background-size: 4px 1px;
-        // background-repeat: repeat-x;
       }
     }
   }
@@ -599,7 +591,7 @@ body {
       a:not(.wp-block-file__button) {
         @apply flex items-center justify-between gap-10 w-full p-10;
         @apply uppercase font-semibold;
-        @apply bg-action text-action-reverse transition-colors;
+        @apply bg-action text-action-reverse transition duration-300;
         @apply hover:text-action-focus-reverse focus:text-action-focus-reverse hover:bg-action-focus focus:bg-action-focus;
 
         &:has(+ a.wp-block-file__button) {
@@ -608,7 +600,7 @@ body {
           &::after {
             content: '';
             @apply block shrink-0 bg-current mask-arrow-down size-8 md:size-10;
-            @apply transition hover:translate-y-1 focus:translate-y-1;
+            @apply transition-transform duration-300 hover:translate-y-1 focus:translate-y-1.5;
           }
         }
       }
