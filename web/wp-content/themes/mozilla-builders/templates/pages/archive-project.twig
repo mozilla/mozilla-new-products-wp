@@ -6,7 +6,7 @@
 
 {% block pageBody %}
 
-  {% include 'components/page-topper.twig' with { title: page.title } %}
+  {% include 'components/page-topper.twig' with { title: title } %}
 
   <ul x-masonry="md" class="grid grid-site centered-page gap-y-20 mb-24">
     {% for post in posts %}
