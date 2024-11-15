@@ -249,28 +249,28 @@ body {
 
     // Headings
     > h2 {
-      @apply text-xl font-bold uppercase indent-8 md:indent-16;
+      @apply text-xl font-bold uppercase indent-8;
 
       span {
         @apply bg-content text-main;
       }
     }
     > h3 {
-      @apply text-xl font-bold uppercase indent-8 md:indent-16;
+      @apply text-xl font-bold uppercase indent-8;
     }
     > h4 {
-      @apply text-xl uppercase indent-8 md:indent-16;
+      @apply text-xl uppercase indent-8;
     }
     > h5 {
-      @apply font-bold uppercase indent-8 md:indent-16;
+      @apply font-bold uppercase indent-8;
     }
     > h6 {
-      @apply uppercase indent-8 md:indent-16;
+      @apply uppercase indent-8;
     }
 
     // Paragraphs
     > p {
-      @apply indent-8 md:indent-16;
+      @apply indent-8;
 
       &:empty {
         @apply hidden;
@@ -291,7 +291,7 @@ body {
       }
     }
     > ul li {
-      @apply relative pl-5;
+      @apply relative pl-8;
 
       &::before {
         content: '';
@@ -311,7 +311,7 @@ body {
       }
     }
     > ol li {
-      @apply relative pl-7;
+      @apply relative pl-8;
 
       &::before {
         content: '0' counter(list-item);
@@ -658,7 +658,7 @@ body {
         }
 
         p {
-          @apply indent-8 md:indent-16 lg:max-w-text-narrow;
+          @apply indent-8 lg:max-w-text-narrow;
         }
 
         * + * {
