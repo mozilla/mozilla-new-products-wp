@@ -22,6 +22,24 @@ class BlockManager {
 
 		add_action( 'enqueue_block_editor_assets', array( $this, 'load_block_editor_assets' ) );
 		add_filter( 'allowed_block_types_all', array( $this, 'enabled_blocks' ) );
+		add_filter(
+			'render_block',
+			function (
+				$block_content,
+				$block
+			) {
+
+				if ( 'core/heading' !== $block['blockName'] ) {
+					return $block_content;
+				}
+
+				$pattern     = '/(<h[^>]*>)(.*)(<\/h[1-7]{1}>)/i';
+				$replacement = '$1<span>$2</span>$3';
+				return preg_replace( $pattern, $replacement, $block_content );
+			},
+			10,
+			2
+		);
 	}
 
 	/**
@@ -90,21 +108,14 @@ class BlockManager {
 			'core/pullquote',
 			'core/table',
 			'core/image',
-			'core/gallery',
-			'core/audio',
 			'core/file',
 			'core/video',
-			'core/media-text',
 			'core/buttons',
 			'core/button',
 			'core/embed',
-			'core/column',
-			'core/columns',
 			'core/cover',
 			'core/details',
 			'core/embed',
-			'core/footnotes',
-			'core/latest-posts',
 			'core/separator',
 			'core/shortcode',
 
