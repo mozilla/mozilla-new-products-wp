@@ -48,7 +48,10 @@ module.exports = {
       yellow: color('yellow'),
       // Applied colors
       main: color('main'),
-      content: color('content'),
+      content: {
+        DEFAULT: color('content'),
+        reverse: color('content-reverse'),
+      },
       secondary: color('secondary'),
       code: color('code'),
       spot: color('spot'),
@@ -96,6 +99,7 @@ module.exports = {
       },
 
       aspectRatio: {
+        poster: '2/3',
         logo: '2227/420',
         'mozilla-logo': '704/147',
         'text-topper': '550/686',

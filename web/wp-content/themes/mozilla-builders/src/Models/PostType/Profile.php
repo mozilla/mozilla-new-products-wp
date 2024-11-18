@@ -87,6 +87,20 @@ class Profile extends TimberPost {
 	}
 
 	/**
+	 * Get the projects for the profile.
+	 *
+	 * @return array
+	 */
+	public function projects() {
+		$projects = $this->meta( 'projects' );
+		if ( empty( $projects ) ) {
+			return array();
+		}
+
+		return array_map( fn( $project ) => Timber::get_post( $project ), $projects );
+	}
+
+	/**
 	 * Get the 4 latest articles for the profile.
 	 *
 	 * @return array

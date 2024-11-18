@@ -1,0 +1,30 @@
+<div class="bg-content text-content-reverse w-full">
+  <div class="grid grid-cols-site gap-x-grid-site-gutter">
+    <div class="col-span-full p-6">
+      <svg class="w-14 aspect-[69/55]">
+        <use xlink:href="#quote" />
+      </svg>
+    </div>
+
+    <div class="col-span-full md:col-span-18 my-20 p-6">
+      <p class="type-headline-xl md:type-headline-2xl font-light text-balance">{{ quote.quote }}</p>
+    </div>
+
+    <div class="max-md:hidden col-span-1/2 md:col-start-1 md:col-span-1/3 p-6 flex flex-col justify-end">
+      <p class="uppercase font-semibold">{{ quote.source_name }}</p>
+    </div>
+
+    <div class="col-span-1/2 max-md:col-start-1 md:col-span-1/3 p-6 flex flex-col justify-end">
+      <p class="leading-5 md:hidden uppercase font-semibold">{{ quote.source_name }}</p>
+      <p class="leading-5 uppercase">{{ quote.source_title }}</p>
+    </div>
+
+    {% if quote.source_headshot %}
+    <div class="col-start-end col-span-2 md:col-span-3 flex flex-col justify-end">
+      <div class="w-full aspect-square">
+        {% include 'components/lazy-img.twig' with { img: get_image(quote.source_headshot) } %}
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</div>
