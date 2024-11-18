@@ -56,9 +56,11 @@ function registerTargets(Alpine, el) {
     return () => {};
   }
 
-  // Setup targets
-  const targets = Array.from(el.children);
-  const maxIndex = targets.length - 1;
+  function getTargets() {
+    const children = Array.from(el.children);
+    const visibleChildren = children.filter(target => getComputedStyle(target).display !== 'none');
+    return visibleChildren;
+  }
 
   // Setup variables
   let animateTimeout;
@@ -67,6 +69,8 @@ function registerTargets(Alpine, el) {
   const staggerDelay = 80;
 
   // Loop through targets and animate
+  let targets = getTargets();
+  let maxIndex = targets.length - 1;
   const animations = targets.map((target, i) => {
     const percentage = Math.max((i / maxIndex) * 100, 0.01);
     const path = anime.path(pathElement, percentage);
@@ -100,6 +104,8 @@ function registerTargets(Alpine, el) {
     animations.forEach(animation => animation.pause());
     clearTimeout(animateTimeout);
 
+    targets = getTargets();
+    maxIndex = targets.length - 1;
     targets.forEach((target, i) => {
       const percentage = Math.max((i / maxIndex) * 100, 0.01);
       const path = anime.path(pathElement, percentage);

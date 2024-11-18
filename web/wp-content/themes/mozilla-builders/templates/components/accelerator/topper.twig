@@ -21,7 +21,7 @@
       {% set img = page.thumbnail %}
       {% set height = ((img.height / img.width) * 18)|round %}
 
-      <div x-accelerator class="absolute top-16 md:top-8 bottom-0 inset-x-grid-site-margin flex items-center justify-center">
+      <div x-accelerator class="absolute top-44 bottom-20 md:top-8 md:bottom-0 inset-x-grid-site-margin flex items-center justify-center">
         <svg
           class="w-[calc(100%-18rem)] h-[min(100%-var(--height),var(--100vw)*315/206)] aspect-[315/206]"
           style="--height: {{ height }}rem"
@@ -36,7 +36,7 @@
 
         <div x-accelerator:targets class="opacity-0 data-[state=active]:opacity-100">
           {% for i in 1..20 %}
-            <div class="absolute top-0 left-0 w-72 z-10" {% if not loop.first %}aria-hidden="true"{% endif %}>
+            <div class="absolute top-0 left-0 w-72 z-10 {% if loop.index > 10 %}hidden md:block{% endif %}" {% if not loop.first %}aria-hidden="true"{% endif %}>
               {% include "components/lazy-img.twig" with { img: img } %}
             </div>
           {% endfor %}
