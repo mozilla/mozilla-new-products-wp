@@ -11,6 +11,8 @@
     </div>
 
     {% include "components/articles/article-footer.twig" %}
+
+    {% include 'components/article-recirculation.twig' with { posts: post.related_articles } %}
   </article>
 
 {% endblock %}
