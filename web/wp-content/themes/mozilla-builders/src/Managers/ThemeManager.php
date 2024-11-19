@@ -168,6 +168,20 @@ class ThemeManager {
 	}
 
 	/**
+	 * Adds ability to access array of ACF options fields in a twig field
+	 *
+	 * @param array $context Timber context.
+	 *
+	 * @return array
+	 */
+	public function add_acf_options_to_context( $context ) {
+		if ( class_exists( 'acf' ) ) {
+			$context['options'] = get_fields( 'option' );
+		}
+		return $context;
+	}
+
+	/**
 	 * Resgisers post types.
 	 *
 	 * @return void
