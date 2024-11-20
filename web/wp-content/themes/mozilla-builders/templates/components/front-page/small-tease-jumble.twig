@@ -4,9 +4,10 @@
   <div class="col-span-full md:col-span-16 lg:col-start-2 lg:col-span-10 flex-1 flex flex-col justify-center">
     <div class="w-full">
       {% if posts.count >= 1 %}
-        {% include [
-          'components/articles/previews/preview--' ~ posts[0].topper_type|default('text_only') ~ '.twig'
-        ] with { post: posts[0] } %}
+          {% include [
+            'components/articles/previews/preview--' ~ posts[0].topper_type|default('text_only') ~ '-feature.twig',
+            'components/articles/previews/preview--' ~ posts[0].topper_type|default('text_only') ~ '.twig'
+          ] with { post: posts[0], class: 'aspect-[4/5]', size: 'lg' } %}
       {% endif %}
     </div>
   </div>

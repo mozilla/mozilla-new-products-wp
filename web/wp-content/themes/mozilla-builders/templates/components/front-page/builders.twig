@@ -1,16 +1,16 @@
 <section class="centered-page grid grid-site gap-y-6 lg:gap-y-12">
   <div class="col-span-full p-1 border border-content flex justify-center text-center">
-    <h2 class="text-sm uppercase">{{ builders.headline }}</h2>
+    <h2 class="uppercase text-xs leading-3 tracking-wide">{{ builders.headline }}</h2>
   </div>
 
   <ul class="col-span-full grid grid-cols-site gap-x-grid-site-gutter gap-y-8 lg:gap-y-4">
     {% for person in featured_people %}
       {% set project = person.projects[0] %}
       <li class="contents">
-        <div class="max-lg:hidden col-span-3 col-start-1 mt-3">
+        <div class="max-lg:hidden col-span-3 col-start-1 self-center">
           {% if project %}
             <p class="text-sm uppercase">
-              <a href="{{ project.link }}">
+              <a href="{{ project.link }}" class="transition-colors hover:bg-spot focus:bg-spot">
                 {{ project.title }}
               </a>
             </p>
@@ -57,6 +57,7 @@
   </ul>
 
   <div class="col-span-full max-lg:mt-4 md:col-span-12 md:col-start-7 lg:col-span-8 lg:col-start-9">
-    {% include 'components/button-link.twig' with { href: archive_links.accelerator, label: builders.cta_label } %}
+    {% set label = builders.cta_label ?: 'See more' %}
+    {% include 'components/button-link.twig' with { href: archive_links.accelerator, label: label } %}
   </div>
 </section>
