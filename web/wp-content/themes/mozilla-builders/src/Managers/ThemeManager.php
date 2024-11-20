@@ -143,7 +143,6 @@ class ThemeManager {
 	public function register_menus() {
 		register_nav_menus(
 			array(
-				'nav_topics_menu'     => 'Navigation Topics Menu',
 				'nav_pages_menu'      => 'Navigation Pages Menu',
 				'primary_footer_menu' => 'Primary Footer Menu',
 			)
