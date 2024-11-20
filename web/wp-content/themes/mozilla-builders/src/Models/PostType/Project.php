@@ -67,7 +67,7 @@ class Project extends TimberPost {
 		// If the repo link isn't a valid one, remove the GitHub metadata.
 		if ( ! $github->is_valid() ) {
 			// If the field isn't empty, it means we have a bad URL. Show a warning.
-			if ( ! empty( $github_link ) ) {
+			if ( ! empty( $github_link ) && ! ( defined( 'WP_CLI' ) && WP_CLI ) ) {
 				set_transient( 'moz_warning', 'Unable to fetch GitHub stats for the entered GitHub repo URL.', 1 );
 			}
 			delete_post_meta( $post_id, 'project_github_stars' );
