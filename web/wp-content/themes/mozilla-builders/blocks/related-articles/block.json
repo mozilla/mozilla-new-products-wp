@@ -4,7 +4,6 @@
   "description": "A custom block for inserting a list of links to other articles.",
   "category": "widgets",
   "icon": {
-    "background": "#ecf6f6",
     "src": "list-view"
   },
   "keywords": ["related", "articles"],

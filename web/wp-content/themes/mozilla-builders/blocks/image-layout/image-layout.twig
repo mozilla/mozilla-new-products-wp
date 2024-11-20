@@ -11,7 +11,7 @@
 {% if layout == "row" %}
 
   <figure data-block="image-layout" class="{{ alignclass }}">
-    <div class="flex justify-between gap-3">
+    <div class="flex justify-between gap-px md:gap-3">
       {% for asset in assets %}
         <figure class="flex-1">
           {% include 'components/articles/blocks/asset.twig' with {
@@ -30,7 +30,7 @@
 {% elseif layout == "asymmetrical" %}
 
   <figure data-block="image-layout" class="{{ alignclass }}">
-    <div class="flex gap-3">
+    <div class="flex gap-px md:gap-3">
       <div class="flex-[2] relative">
         {% for asset in assets|slice(0,1) %}
           {% include 'components/articles/blocks/asset.twig' with {
@@ -43,7 +43,7 @@
 
       </div>
 
-      <div class="flex-1 flex flex-col gap-3">
+      <div class="flex-1 flex flex-col gap-px md:gap-3">
         {% for asset in assets|slice(1,2) %}
           <div class="{{ crop_to_same_ratio ? 'flex-1' }}">
             {% include "components/articles/blocks/asset.twig" with {
@@ -64,7 +64,7 @@
 
   {% set asset_class = assets|length > 4 ? 'md:grid-cols-3' %}
   <figure data-block="image-layout" class="{{ alignclass }}">
-    <ul class="grid grid-cols-2 {{ asset_class }} gap-3">
+    <ul class="grid grid-cols-2 {{ asset_class }} gap-px md:gap-3">
       {% for asset in assets %}
         <li class="blocks-gallery-item flex-1">
           <figure>

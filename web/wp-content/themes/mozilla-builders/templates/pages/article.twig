@@ -6,11 +6,13 @@
   <article>
     {% include "components/articles/byline.twig" %}
 
-    <div class="pt-12 pb-24 gutenberg {{ post.has_lede_paragraph ? 'lede' }} js-hang-punc">
+    <div class="pt-12 pb-24 gutenberg article {{ post.has_lede_paragraph ? 'lede' }} js-hang-punc">
       {{ post.content }}
     </div>
 
     {% include "components/articles/article-footer.twig" %}
+
+    {% include 'components/article-recirculation.twig' with { posts: post.related_articles } %}
   </article>
 
 {% endblock %}

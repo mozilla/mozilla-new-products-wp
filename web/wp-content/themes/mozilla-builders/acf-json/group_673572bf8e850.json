@@ -1,6 +1,6 @@
 {
-  "key": "group_672b7fcbd9b55",
-  "title": "Projects Archive",
+  "key": "group_673572bf8e850",
+  "title": "CTAs",
   "fields": [
     {
       "key": "field_672b7fcce168d",
@@ -23,6 +23,7 @@
       "collapsed": "",
       "button_label": "Add CTA",
       "rows_per_page": 20,
+      "acfe_repeater_stylised_button": 0,
       "sub_fields": [
         {
           "key": "field_672b8003e168e",
@@ -156,25 +157,31 @@
           "search_placeholder": "",
           "parent_repeater": "field_672b7fcce168d"
         }
-      ],
-      "acfe_repeater_stylised_button": 0
+      ]
     }
   ],
   "location": [
     [
       {
-        "param": "post_template",
+        "param": "page_template",
+        "operator": "==",
+        "value": "page-accelerator.php"
+      }
+    ],
+    [
+      {
+        "param": "page_template",
         "operator": "==",
         "value": "page-projects.php"
       }
     ]
   ],
-  "menu_order": 0,
+  "menu_order": 1,
   "position": "normal",
   "style": "seamless",
-  "label_placement": "top",
+  "label_placement": "left",
   "instruction_placement": "label",
-  "hide_on_screen": ["block_editor", "the_content", "excerpt"],
+  "hide_on_screen": "",
   "active": true,
   "description": "",
   "show_in_rest": 0,
@@ -183,5 +190,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1730982749
+  "modified": 1731556107
 }

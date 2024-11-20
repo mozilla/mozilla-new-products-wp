@@ -2,7 +2,7 @@
   "name": "acf/image-layout",
   "title": "Image Layout",
   "description": "A custom image block.",
-  "category": "formatting",
+  "category": "media",
   "icon": "images-alt",
   "keywords": ["image", "layout"],
   "acf": {
