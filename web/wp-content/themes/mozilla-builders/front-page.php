@@ -55,20 +55,20 @@ $context['featured_people'] = $_people;
 $collaborations            = $_page->meta( 'collaborations' );
 $context['collaborations'] = $collaborations;
 
-$secondary_post_ids = $_page->meta( 'secondary_posts' );
+$secondary_post_ids = $_page->meta( 'secondary_featured_articles' );
 if ( empty( $secondary_post_ids ) ) {
-	$secondary_post_ids = array();
+	$context['secondary_posts'] = array();
+} else {
+	$context['secondary_posts'] = Timber::get_posts(
+		array(
+			'post_type'      => 'post',
+			'posts_per_page' => 4,
+			'post_status'    => 'publish',
+			'post__in'       => $secondary_post_ids,
+			'orderby'        => 'post__in',
+		)
+	);
 }
-$_secondary_posts           = Timber::get_posts(
-	array(
-		'post_type'      => 'post',
-		'posts_per_page' => 4,
-		'post_status'    => 'publish',
-		'post__in'       => $secondary_post_ids,
-		'orderby'        => 'post__in',
-	)
-);
-$context['secondary_posts'] = $_secondary_posts;
 
 $featured_project_ids = $collaborations['projects'];
 if ( empty( $featured_project_ids ) ) {

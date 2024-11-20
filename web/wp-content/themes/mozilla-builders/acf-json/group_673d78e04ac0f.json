@@ -280,7 +280,7 @@
       "post_status": ["publish"],
       "taxonomy": "",
       "filters": ["search", "post_type", "taxonomy"],
-      "return_format": "object",
+      "return_format": "id",
       "acfe_bidirectional": {
         "acfe_bidirectional_enabled": "0"
       },
@@ -409,5 +409,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1732085287
+  "modified": 1732119460
 }
