@@ -1,28 +1,46 @@
 {% if post.color == 'green' %}
   {% set bg_class = 'bg-green' %}
+{% elseif post.color == 'green-light' %}
+  {% set bg_class = 'bg-green-light text-black' %}
+{% elseif post.color == 'green-darker' %}
+  {% set bg_class = 'bg-green-darker text-white' %}
 {% elseif post.color == 'orange' %}
-  {% set bg_class = 'bg-orange' %}
-{% elseif post.color == 'yellow' %}
-  {% set bg_class = 'bg-yellow' %}
-{% elseif post.color == 'purple' %}
-  {% set bg_class = 'bg-purple' %}
+  {% set bg_class = 'bg-orange text-black' %}
+{% elseif post.color == 'orange-light' %}
+  {% set bg_class = 'bg-orange-light text-black' %}
+{% elseif post.color == 'orange-darker' %}
+  {% set bg_class = 'bg-orange-darker text-white' %}
 {% elseif post.color == 'pink' %}
-  {% set bg_class = 'bg-pink' %}
+  {% set bg_class = 'bg-pink text-black' %}
+{% elseif post.color == 'pink-light' %}
+  {% set bg_class = 'bg-pink-light text-black' %}
+{% elseif post.color == 'pink-darker' %}
+  {% set bg_class = 'bg-pink-darker text-white' %}
+{% elseif post.color == 'stone' %}
+  {% set bg_class = 'bg-stone text-black' %}
+{% elseif post.color == 'yellow' %}
+  {% set bg_class = 'bg-yellow text-black' %}
+{% elseif post.color == 'olive' %}
+  {% set bg_class = 'bg-olive text-black' %}
+{% elseif post.color == 'olive-dark' %}
+  {% set bg_class = 'bg-olive-dark text-white' %}
+{% elseif post.color == 'blue-green' %}
+  {% set bg_class = 'bg-blue-green text-black' %}
 {% else %}
-  {% set bg_class = 'bg-content text-main' %}
+  {% set bg_class = 'bg-content text-white' %}
 {% endif %}
 
 <div class="grid grid-site centered-page pt-10">
   <div class="col-span-full md:col-span-16 lg:col-span-12 2xl:col-span-10 4xl:col-span-8 col-start-center">
-    <div class="py-6 px-12 flex flex-col items-center justify-between gap-24 min-h-[650px] md:aspect-text-topper {{ bg_class }}">
+    <div class="py-6 px-12 flex flex-col items-center justify-between gap-24 md:gap-10 min-h-[650px] md:aspect-text-topper {{ bg_class }}">
       <div class="order-2">
         {% include 'components/articles/overline.twig' with { overline: post.categories[0], color: post.color } %}
       </div>
 
-      <h1 class="type-headline-2xl text-center text-pretty order-1">{{ post.title }}</h1>
+      <h1 class="type-headline-2xl text-center text-balance order-1">{{ post.title }}</h1>
 
       {% if post.subtitle %}
-        <p class="type-sans-lg text-center text-pretty order-3">
+        <p class="type-sans-lg uppercase text-center text-balance order-3">
           {{ post.subtitle }}
         </p>
       {% endif %}

@@ -1,0 +1,47 @@
+<div class="relative overflow-hidden h-[80vh] md:h-[75vh]">
+  <div class="relative centered-page px-grid-site-margin h-full">
+    <div class="max-md:h-[80vh] flex flex-col">
+      <div class="pt-10 flex items-baseline gap-3 type-headline-xl md:type-headline-3xl relative z-20">
+        <svg class="inline-flex h-[0.69em] aspect-[47/104] text-action">
+          <use href="#protocol" />
+        </svg>
+        <h1>
+          {{ page.title }}
+        </h1>
+      </div>
+
+      <p class="max-md:mt-6 md:absolute md:inset-y md:px-grid-site-margin md:right-0 md:left-0 flex items-center gap-2 md:gap-4 max-md:flex-col-reverse h-full">
+        <span class="relative z-20 text-sm tracking-wide uppercase">Accelerator</span>
+        <span class="relative max-md:z-20 max-md:w-px md:h-px flex-1 bg-content" aria-hidden="true"></span>
+        <span class="relative z-20 text-sm tracking-wide uppercase">2024</span>
+      </p>
+    </div>
+
+    {% if page.thumbnail %}
+      {% set img = page.thumbnail %}
+      {% set height = ((img.height / img.width) * 18)|round %}
+
+      <div x-accelerator class="absolute top-44 bottom-20 md:top-8 md:bottom-0 inset-x-grid-site-margin flex items-center justify-center">
+        <svg
+          class="w-[calc(100%-18rem)] h-[min(100%-var(--height),var(--100vw)*315/206)] aspect-[315/206]"
+          style="--height: {{ height }}rem"
+          viewBox="0 0 315 206"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <path x-accelerator:path d="M1 204.735C138 217.235 172.5 -7.2644 314 1.23549" />
+          {# <path x-accelerator:path d="M2.5 96.5015C59 203.501 240 253.499 304 141.001C341.377 75.3013 249 -61 129 44.9994" /> #}
+        </svg>
+
+        <div x-accelerator:targets class="opacity-0 data-[state=active]:opacity-100">
+          {% for i in 1..20 %}
+            <div class="absolute top-0 left-0 w-72 z-10 {% if loop.index > 10 %}hidden md:block{% endif %}" {% if not loop.first %}aria-hidden="true"{% endif %}>
+              {% include "components/lazy-img.twig" with { img: img } %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>

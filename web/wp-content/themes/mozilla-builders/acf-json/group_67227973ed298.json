@@ -3,27 +3,6 @@
   "title": "Accelerator",
   "fields": [
     {
-      "key": "field_67227974a9a20",
-      "label": "Description",
-      "name": "description",
-      "aria-label": "",
-      "type": "textarea",
-      "instructions": "",
-      "required": 0,
-      "conditional_logic": 0,
-      "wrapper": {
-        "width": "",
-        "class": "",
-        "id": ""
-      },
-      "default_value": "",
-      "maxlength": "",
-      "allow_in_bindings": 0,
-      "rows": 3,
-      "placeholder": "",
-      "new_lines": ""
-    },
-    {
       "key": "field_67227991a9a21",
       "label": "Overview",
       "name": "overview",
@@ -63,7 +42,8 @@
       "allow_in_bindings": 0,
       "rows": 3,
       "placeholder": "",
-      "new_lines": ""
+      "new_lines": "",
+      "acfe_textarea_code": 0
     },
     {
       "key": "field_67227ae4a9a28",
@@ -87,11 +67,11 @@
       "delay": 0
     },
     {
-      "key": "field_67227d29d1aa2",
-      "label": "Mission",
-      "name": "mission",
+      "key": "field_6736186cf2821",
+      "label": "Theme Video",
+      "name": "theme_video",
       "aria-label": "",
-      "type": "wysiwyg",
+      "type": "oembed",
       "instructions": "",
       "required": 0,
       "conditional_logic": 0,
@@ -100,12 +80,76 @@
         "class": "",
         "id": ""
       },
-      "default_value": "",
-      "allow_in_bindings": 0,
-      "tabs": "visual",
-      "toolbar": "basic",
-      "media_upload": 0,
-      "delay": 0
+      "width": "",
+      "height": "",
+      "allow_in_bindings": 0
+    },
+    {
+      "key": "field_67227af9a9a29",
+      "label": "Key Dates",
+      "name": "key_dates",
+      "aria-label": "",
+      "type": "repeater",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "layout": "table",
+      "pagination": 0,
+      "min": 0,
+      "max": 0,
+      "collapsed": "",
+      "button_label": "Add Row",
+      "rows_per_page": 20,
+      "acfe_repeater_stylised_button": 0,
+      "sub_fields": [
+        {
+          "key": "field_67227b07a9a2a",
+          "label": "Date",
+          "name": "date",
+          "aria-label": "",
+          "type": "date_picker",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "30",
+            "class": "",
+            "id": ""
+          },
+          "display_format": "F j, Y",
+          "return_format": "M j, Y",
+          "first_day": 0,
+          "allow_in_bindings": 0,
+          "parent_repeater": "field_67227af9a9a29"
+        },
+        {
+          "key": "field_67227b46a9a2b",
+          "label": "Description",
+          "name": "description",
+          "aria-label": "",
+          "type": "text",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "maxlength": "",
+          "allow_in_bindings": 0,
+          "placeholder": "",
+          "prepend": "",
+          "append": "",
+          "parent_repeater": "field_67227af9a9a29"
+        }
+      ]
     },
     {
       "key": "field_672279b9a9a23",
@@ -142,7 +186,8 @@
           "allow_in_bindings": 0,
           "rows": 3,
           "placeholder": "",
-          "new_lines": ""
+          "new_lines": "",
+          "acfe_textarea_code": 0
         },
         {
           "key": "field_67227a0fa9a25",
@@ -210,14 +255,65 @@
           "max_size": "",
           "mime_types": "",
           "allow_in_bindings": 0,
-          "preview_size": "medium"
+          "preview_size": "medium",
+          "uploader": "",
+          "acfe_thumbnail": 0
         }
-      ]
+      ],
+      "acfe_seamless_style": 0,
+      "acfe_group_modal": 0,
+      "acfe_group_modal_close": 0,
+      "acfe_group_modal_button": "",
+      "acfe_group_modal_size": "large"
     },
     {
-      "key": "field_67227af9a9a29",
-      "label": "Key Dates",
-      "name": "key_dates",
+      "key": "field_67356c4e0b994",
+      "label": "Past Cohorts",
+      "name": "past_cohorts",
+      "aria-label": "",
+      "type": "group",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "layout": "block",
+      "acfe_seamless_style": 0,
+      "acfe_group_modal": 0,
+      "sub_fields": [
+        {
+          "key": "field_67356c6c0b995",
+          "label": "Mission",
+          "name": "mission",
+          "aria-label": "",
+          "type": "wysiwyg",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "allow_in_bindings": 0,
+          "tabs": "visual",
+          "toolbar": "basic",
+          "media_upload": 0,
+          "delay": 0
+        }
+      ],
+      "acfe_group_modal_close": 0,
+      "acfe_group_modal_button": "",
+      "acfe_group_modal_size": "large"
+    },
+    {
+      "key": "field_673569dedb559",
+      "label": "FAQs",
+      "name": "faqs",
       "aria-label": "",
       "type": "repeater",
       "instructions": "",
@@ -228,38 +324,19 @@
         "class": "",
         "id": ""
       },
-      "layout": "table",
+      "acfe_repeater_stylised_button": 0,
+      "layout": "block",
       "pagination": 0,
       "min": 0,
       "max": 0,
       "collapsed": "",
-      "button_label": "Add Row",
+      "button_label": "Add Section",
       "rows_per_page": 20,
       "sub_fields": [
         {
-          "key": "field_67227b07a9a2a",
-          "label": "Date",
-          "name": "date",
-          "aria-label": "",
-          "type": "date_picker",
-          "instructions": "",
-          "required": 0,
-          "conditional_logic": 0,
-          "wrapper": {
-            "width": "30",
-            "class": "",
-            "id": ""
-          },
-          "display_format": "F j, Y",
-          "return_format": "M j, Y",
-          "first_day": 0,
-          "allow_in_bindings": 0,
-          "parent_repeater": "field_67227af9a9a29"
-        },
-        {
-          "key": "field_67227b46a9a2b",
-          "label": "Description",
-          "name": "description",
+          "key": "field_673569eedb55a",
+          "label": "Heading",
+          "name": "heading",
           "aria-label": "",
           "type": "text",
           "instructions": "",
@@ -276,58 +353,12 @@
           "placeholder": "",
           "prepend": "",
           "append": "",
-          "parent_repeater": "field_67227af9a9a29"
-        }
-      ]
-    },
-    {
-      "key": "field_67227ba8472bd",
-      "label": "FAQ Groups",
-      "name": "faq_groups",
-      "aria-label": "",
-      "type": "repeater",
-      "instructions": "",
-      "required": 0,
-      "conditional_logic": 0,
-      "wrapper": {
-        "width": "",
-        "class": "",
-        "id": ""
-      },
-      "layout": "row",
-      "pagination": 0,
-      "min": 0,
-      "max": 0,
-      "collapsed": "",
-      "button_label": "Add FAQ Group",
-      "rows_per_page": 20,
-      "sub_fields": [
-        {
-          "key": "field_67227bb8472be",
-          "label": "Title",
-          "name": "title",
-          "aria-label": "",
-          "type": "text",
-          "instructions": "",
-          "required": 0,
-          "conditional_logic": 0,
-          "wrapper": {
-            "width": "",
-            "class": "",
-            "id": ""
-          },
-          "default_value": "",
-          "maxlength": "",
-          "allow_in_bindings": 0,
-          "placeholder": "",
-          "prepend": "",
-          "append": "",
-          "parent_repeater": "field_67227ba8472bd"
+          "parent_repeater": "field_673569dedb559"
         },
         {
-          "key": "field_67227be4472bf",
-          "label": "FAQs",
-          "name": "faqs",
+          "key": "field_67356a02db55b",
+          "label": "Questions",
+          "name": "groups",
           "aria-label": "",
           "type": "repeater",
           "instructions": "",
@@ -338,15 +369,16 @@
             "class": "",
             "id": ""
           },
+          "acfe_repeater_stylised_button": 0,
           "layout": "block",
           "min": 0,
           "max": 0,
           "collapsed": "",
-          "button_label": "Add FAQ",
+          "button_label": "Add Question",
           "rows_per_page": 20,
           "sub_fields": [
             {
-              "key": "field_67227c16472c0",
+              "key": "field_67356a10db55c",
               "label": "Question",
               "name": "question",
               "aria-label": "",
@@ -365,10 +397,10 @@
               "placeholder": "",
               "prepend": "",
               "append": "",
-              "parent_repeater": "field_67227be4472bf"
+              "parent_repeater": "field_67356a02db55b"
             },
             {
-              "key": "field_67227c23472c1",
+              "key": "field_67356a18db55d",
               "label": "Answer",
               "name": "answer",
               "aria-label": "",
@@ -387,10 +419,10 @@
               "toolbar": "basic",
               "media_upload": 0,
               "delay": 0,
-              "parent_repeater": "field_67227be4472bf"
+              "parent_repeater": "field_67356a02db55b"
             }
           ],
-          "parent_repeater": "field_67227ba8472bd"
+          "parent_repeater": "field_673569dedb559"
         }
       ]
     }
@@ -398,20 +430,25 @@
   "location": [
     [
       {
-        "param": "post_type",
+        "param": "post_template",
         "operator": "==",
-        "value": "accelerator"
+        "value": "page-accelerator.php"
       }
     ]
   ],
   "menu_order": 0,
   "position": "normal",
-  "style": "default",
+  "style": "seamless",
   "label_placement": "top",
   "instruction_placement": "label",
-  "hide_on_screen": "",
+  "hide_on_screen": ["block_editor", "the_content"],
   "active": true,
   "description": "",
   "show_in_rest": 0,
-  "modified": 1730313747
+  "acfe_display_title": "",
+  "acfe_autosync": ["json"],
+  "acfe_form": 0,
+  "acfe_meta": "",
+  "acfe_note": "",
+  "modified": 1731598488
 }

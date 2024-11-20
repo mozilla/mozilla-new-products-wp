@@ -9,6 +9,7 @@ namespace MozillaBuilders\Models\PostType;
 
 use Timber\Post as TimberPost;
 use Timber\Timber;
+use MozillaBuilders\Models\Taxonomy\ProjectCategory;
 
 /** Class */
 class Project extends TimberPost {
@@ -71,7 +72,7 @@ class Project extends TimberPost {
 	 * @return array
 	 */
 	public function categories() {
-		return $this->terms( 'category' );
+		return $this->terms( ProjectCategory::HANDLE );
 	}
 
 	/**
@@ -90,12 +91,12 @@ class Project extends TimberPost {
 	 */
 	public function other_projects() {
 		$args = array(
-			'post_type' => self::HANDLE,
-			'post_status' => 'publish',
+			'post_type'      => self::HANDLE,
+			'post_status'    => 'publish',
 			'posts_per_page' => 3,
-			'orderby' => 'date',
-			'order' => 'DESC',
-			'post__not_in' => array( $this->id ),
+			'orderby'        => 'date',
+			'order'          => 'DESC',
+			'post__not_in'   => array( $this->id ),
 		);
 
 		return Timber::get_posts( $args )->to_array();

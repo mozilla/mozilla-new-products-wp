@@ -7,6 +7,11 @@
         <div class="flex flex-col gap-4 max-lg:mt-4 col-span-full lg:col-span-8">
           {% for author in post.authors %}
             <div class="flex flex-col gap-1">
+              <h2 class="uppercase">
+                <a class="relative z-20 hover-link" href="{{ author.link }}">
+                  {{- author.name -}}
+                </a>
+              </h2>
               {{ author.about }}
             </div>
           {% endfor %}
