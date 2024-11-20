@@ -60,6 +60,13 @@
       </div>
       {% endif %}
 
+      {% if post.github_link %}
+      <div class="contents">
+        <dt class="col-span-1/2">Link</dt>
+        <dd class="col-span-1/2 font-semibold"><a href="{{ post.github_link }}" class="hover-link">GitHub</a></dd>
+      </div>
+      {% endif %}
+
       {% if post.github_stars|default(0) > 0 %}
       <div class="contents">
         <dt class="col-span-1/2">Stars</dt>
