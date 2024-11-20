@@ -6,7 +6,6 @@
       <div class="col-span-full col-start-1 md:col-span-8 md:col-start-5 md:order-2">
         {% if posts.count >= 1 %}
           {% include [
-            'components/articles/previews/preview--' ~ posts[0].topper_type|default('text_only') ~ '-alt.twig',
             'components/articles/previews/preview--' ~ posts[0].topper_type|default('text_only') ~ '.twig'
           ] with { post: posts[0], class: 'aspect-[4/5]', size: 'lg' } %}
         {% endif %}

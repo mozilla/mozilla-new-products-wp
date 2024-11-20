@@ -5,14 +5,13 @@
 <h1 class="sr-only">Mozilla Builders</h1>
 
 <div class="flex flex-col flex-1 gap-y-20">
+  {% include 'components/front-page/large-tease-jumble.twig' with { posts: featured_posts } %}
 
-{% include 'components/front-page/large-tease-jumble.twig' with { posts: featured_posts } %}
+  {% include 'components/front-page/builders.twig' %}
 
-{% include 'components/front-page/builders.twig' %}
+  {% include 'components/front-page/small-tease-jumble.twig' with { posts: secondary_posts } %}
 
-{% include 'components/front-page/small-tease-jumble.twig' with { posts: secondary_posts } %}
-
-{% include 'components/front-page/projects-tease.twig' with { projects: featured_projects } %}
+  {% include 'components/front-page/projects-tease.twig' with { projects: featured_projects } %}
 
   <section>
     <div class="centered-page px-grid-site-margin">

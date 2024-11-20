@@ -1,13 +1,62 @@
-<section class="centered-page grid grid-site">
+<section class="centered-page grid grid-site gap-y-6 lg:gap-y-12">
   <div class="col-span-full p-1 border border-content flex justify-center text-center">
     <h2 class="text-sm uppercase">{{ builders.headline }}</h2>
   </div>
 
-  <ul class="col-span-full grid grid-cols-site gap-x-grid-site-gutter">
+  <ul class="col-span-full grid grid-cols-site gap-x-grid-site-gutter gap-y-8 lg:gap-y-4">
     {% for person in featured_people %}
-      <li class="col-span-1/2">
-        <p>{{ person.title }}</p>
+      {% set project = person.projects[0] %}
+      <li class="contents">
+        <div class="max-lg:hidden col-span-3 col-start-1 mt-3">
+          {% if project %}
+            <p class="text-sm uppercase">
+              <a href="{{ project.link }}">
+                {{ project.title }}
+              </a>
+            </p>
+          {% endif %}
+        </div>
+
+        <div class="relative max-md:col-span-1/2 max-lg:col-span-1/4 col-span-21 lg:col-span-18 group">
+          <div class="lg:hidden mb-2 w-full aspect-poster {% if not person.thumbnail %}bg-content/10{% endif %}">
+            {% if person.thumbnail %}
+              {% include 'components/lazy-img.twig' with {
+                img: person.thumbnail,
+                aspectRatio: false,
+                class: 'w-full h-full object-cover',
+              } %}
+            {% endif %}
+          </div>
+
+          <p class="w-full max-lg:text-sm max-lg:font-bold max-lg:uppercase lg:type-sans-xl uppercase gap-3">
+            <a href="{{ person.link }}" class="w-full flex items-center lg:justify-between before:absolute before:inset-0 before:z-10">
+              <span>{{ person.first_name }}</span>
+              <span class="lg:hidden">&nbsp;</span>
+              <span class="max-lg:hidden flex-1 border-t border-content relative opacity-0 group-hover:opacity-100 group-focus-within:opacity-100"
+                aria-hidden="true"></span>
+              <span>{{ person.last_name }}</span>
+            </a>
+          </p>
+
+          {% if project %}
+            <p class="lg:hidden text-sm uppercase">
+              <a href="{{ project.link }}">
+                {{ project.title }}
+              </a>
+            </p>
+          {% endif %}
+
+          {% if person.thumbnail %}
+            <span class="max-lg:hidden absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 transition-opacity opacity-0 group-hover:opacity-100 group-focus-within:opacity-100">
+              {% include 'components/lazy-img.twig' with { img: person.thumbnail, class: 'h-32' } %}
+            </span>
+          {% endif %}
+        </div>
       </li>
     {% endfor %}
   </ul>
+
+  <div class="col-span-full max-lg:mt-4 md:col-span-12 md:col-start-7 lg:col-span-8 lg:col-start-9">
+    {% include 'components/button-link.twig' with { href: '#', label: builders.cta_label } %}
+  </div>
 </section>
