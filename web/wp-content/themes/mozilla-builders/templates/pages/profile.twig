@@ -50,16 +50,25 @@
 
 <section class="grid grid-site centered-page">
 
-  <div class="mt-12 md:mt-24 col-span-full md:col-span-8 lg:col-span-10 2xl:col-span-8 md:col-start-1 md:row-span-full">
-    <div class="md:grid md:grid-cols-8 md:gap-x-grid-site-gutter lg:grid-cols-10 2xl:grid-cols-8">
-      <h2 class="max-lg:mb-2 max-lg:col-span-full lg:col-span-5 2xl:col-span-4 font-bold uppercase lg:leading-4 lg:mt-1">Taxonomy Title (MIECO)</h2>
-      <ul class="lg:mt-1 max-lg:col-span-full lg:col-span-5 2xl:col-span-4 lg:col-start-6 2xl:col-start-5">
-        <li class="uppercase leading-4">
-          <a href="#" class="hover:bg-spot transition-colors">Name Lastname</a>
-        </li>
-      </ul>
+  {% if post.cohorts %}
+    {% set cohort = post.cohorts[0] %}
+    <div class="mt-12 md:mt-24 col-span-full md:col-span-8 lg:col-span-10 2xl:col-span-8 md:col-start-1 md:row-span-full">
+      <div class="md:grid md:grid-cols-8 md:gap-x-grid-site-gutter lg:grid-cols-10 2xl:grid-cols-8">
+        <h2 class="max-lg:mb-2 max-lg:col-span-full lg:col-span-5 2xl:col-span-4 font-bold uppercase lg:leading-4 lg:mt-1">{{ cohort.title }}</h2>
+        <ul class="lg:mt-1 max-lg:col-span-full lg:col-span-5 2xl:col-span-4 lg:col-start-6 2xl:col-start-5">
+          {% for profile in cohort.posts %}
+            {% if profile.id != post.id %}
+              <li class="uppercase leading-4">
+                <a href="{{ profile.link }}" class="hover:bg-spot transition-colors">
+                  {{ profile.first_name }} {{ profile.last_name }}
+                </a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
     </div>
-  </div>
+  {% endif %}
 
   {% if post.project_description %}
     <div class="mt-12 md:mt-24 col-span-full md:col-span-16 md:col-start-9 lg:col-span-12 lg:col-start-13 xl:col-start-13 xl:col-span-11">
