@@ -18,7 +18,10 @@ module.exports = {
       'off-black': color('off-black'),
       white: color('white'),
       'blue-green': color('blue-green'),
-      gray: color('gray'),
+      gray: {
+        DEFAULT: color('gray'),
+        dark: color('gray-dark'),
+      },
       green: {
         light: color('green-light'),
         DEFAULT: color('green'),
@@ -45,9 +48,13 @@ module.exports = {
       yellow: color('yellow'),
       // Applied colors
       main: color('main'),
-      content: color('content'),
+      content: {
+        DEFAULT: color('content'),
+        reverse: color('content-reverse'),
+      },
       secondary: color('secondary'),
       code: color('code'),
+      spot: color('spot'),
       action: {
         DEFAULT: color('action'),
         reverse: color('action-reverse'),
@@ -92,6 +99,7 @@ module.exports = {
       },
 
       aspectRatio: {
+        poster: '2/3',
         logo: '2227/420',
         'mozilla-logo': '704/147',
         'text-topper': '550/686',
@@ -99,6 +107,7 @@ module.exports = {
 
       boxShadow: {
         inner: 'inset 0 0 0 1px black',
+        'inner-thick': 'inset 0 0 0 4px black',
       },
 
       content: {
@@ -135,6 +144,7 @@ module.exports = {
 
       maxWidth: {
         page: 'var(--100vw, 0)',
+        'text-narrow': '480px',
       },
 
       minHeight: {

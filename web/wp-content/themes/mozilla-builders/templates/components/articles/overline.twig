@@ -2,33 +2,33 @@
 
 {% set bg_color = color | default(overline.color) %}
 {% if bg_color == 'green' %}
-  {% set bg_class = 'bg-green' %}
+  {% set overline_class = 'bg-green' %}
 {% elseif post.color == 'green-light' %}
-  {% set bg_class = 'bg-green-light' %}
+  {% set overline_class = 'bg-green-light text-black' %}
 {% elseif post.color == 'green-darker' %}
-  {% set bg_class = 'bg-green-darker text-main' %}
+  {% set overline_class = 'bg-green-darker text-white' %}
 {% elseif post.color == 'orange' %}
-  {% set bg_class = 'bg-orange' %}
+  {% set overline_class = 'bg-orange text-black' %}
 {% elseif post.color == 'orange-light' %}
-  {% set bg_class = 'bg-orange-light' %}
+  {% set overline_class = 'bg-orange-light text-black' %}
 {% elseif post.color == 'orange-darker' %}
-  {% set bg_class = 'bg-orange-darker text-main' %}
+  {% set overline_class = 'bg-orange-darker text-white' %}
 {% elseif post.color == 'pink' %}
-  {% set bg_class = 'bg-pink' %}
+  {% set overline_class = 'bg-pink text-black' %}
 {% elseif post.color == 'pink-light' %}
-  {% set bg_class = 'bg-pink-light' %}
+  {% set overline_class = 'bg-pink-light text-black' %}
 {% elseif post.color == 'pink-darker' %}
-  {% set bg_class = 'bg-pink-darker text-main' %}
+  {% set overline_class = 'bg-pink-darker text-white' %}
 {% elseif post.color == 'stone' %}
-  {% set bg_class = 'bg-stone' %}
+  {% set overline_class = 'bg-stone text-black' %}
 {% elseif post.color == 'yellow' %}
-  {% set bg_class = 'bg-yellow' %}
+  {% set overline_class = 'bg-yellow text-black' %}
 {% elseif post.color == 'olive' %}
-  {% set bg_class = 'bg-olive' %}
+  {% set overline_class = 'bg-olive text-black' %}
 {% elseif post.color == 'olive-dark' %}
-  {% set bg_class = 'bg-olive-dark text-main' %}
+  {% set overline_class = 'bg-olive-dark text-white' %}
 {% elseif post.color == 'blue-green' %}
-  {% set bg_class = 'bg-blue-green' %}
+  {% set overline_class = 'bg-blue-green text-black' %}
 {% else %}
   {% set overline_class = 'bg-content text-main' %}
 {% endif %}

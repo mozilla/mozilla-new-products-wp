@@ -1,0 +1,29 @@
+{
+  "key": "group_6735731802c7d",
+  "title": "Projects Archive",
+  "fields": [],
+  "location": [
+    [
+      {
+        "param": "page_template",
+        "operator": "==",
+        "value": "page-projects.php"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "seamless",
+  "label_placement": "left",
+  "instruction_placement": "label",
+  "hide_on_screen": ["block_editor", "the_content"],
+  "active": true,
+  "description": "",
+  "show_in_rest": 0,
+  "acfe_display_title": "",
+  "acfe_autosync": ["json"],
+  "acfe_form": 0,
+  "acfe_meta": "",
+  "acfe_note": "",
+  "modified": 1731556166
+}

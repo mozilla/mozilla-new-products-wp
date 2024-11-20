@@ -11,6 +11,7 @@ use MozillaBuilders\Services\GitHubService;
 use Timber\Post as TimberPost;
 use Timber\Timber;
 use WP_Post;
+use MozillaBuilders\Models\Taxonomy\ProjectCategory;
 
 /** Class */
 class Project extends TimberPost {
@@ -131,7 +132,7 @@ class Project extends TimberPost {
 	 * @return array
 	 */
 	public function categories() {
-		return $this->terms( 'category' );
+		return $this->terms( ProjectCategory::HANDLE );
 	}
 
 	/**
