@@ -49,6 +49,7 @@ class ContextManager {
 	 */
 	public function is_home( $context ) {
 		$context['is_home'] = is_home();
+		$context['is_front_page'] = is_front_page();
 
 		return $context;
 	}

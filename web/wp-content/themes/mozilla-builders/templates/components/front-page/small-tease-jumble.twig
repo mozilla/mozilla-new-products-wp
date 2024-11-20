@@ -1,0 +1,6 @@
+{% if posts is not empty %}
+<section>
+  {# TODO: custom component for this #}
+  {% include 'components/tease-list.twig' with { posts: posts } %}
+</section>
+{% endif %}

@@ -1,0 +1,13 @@
+<section class="centered-page grid grid-site">
+  <div class="col-span-full p-1 border border-content flex justify-center text-center">
+    <h2 class="text-sm uppercase">{{ builders.headline }}</h2>
+  </div>
+
+  <ul class="col-span-full grid grid-cols-site gap-x-grid-site-gutter">
+    {% for person in featured_people %}
+      <li class="col-span-1/2">
+        <p>{{ person.title }}</p>
+      </li>
+    {% endfor %}
+  </ul>
+</section>

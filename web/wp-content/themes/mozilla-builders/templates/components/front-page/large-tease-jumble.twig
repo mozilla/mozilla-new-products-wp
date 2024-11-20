@@ -1,0 +1,107 @@
+{% if posts is not empty %}
+
+<section class="centered-page grid grid-site md:max-lg:grid-cols-12 mt-16">
+  {% if posts.count >= 3 %}
+    <div class="col-span-full md:hidden">
+      {% include [
+        'components/articles/previews/preview--' ~ posts[2].topper_type|default('text_only') ~ '-alt.twig',
+        'components/articles/previews/preview--' ~ posts[2].topper_type|default('text_only') ~ '.twig'
+      ] with { post: posts[2], class: 'aspect-[4/5]', size: 'lg' } %}
+    </div>
+  {% endif %}
+
+  <div class="col-span-full md:col-span-4 flex flex-col flex-1 gap-y-12 mt-12 md:mt-24">
+    <div class="flex flex-col flex-1 gap-y-12 max-md:grid max-md:grid-cols-site max-md:gap-x-grid-site-gutter">
+      <div class="w-full max-md:col-span-1/2">
+        {% if posts.count >= 1 %}
+          {% include [
+            'components/articles/previews/preview--' ~ posts[0].topper_type|default('text_only') ~ '-alt.twig',
+            'components/articles/previews/preview--' ~ posts[0].topper_type|default('text_only') ~ '.twig'
+          ] with { post: posts[0] } %}
+        {% endif %}
+      </div>
+
+      <div class="flex-1 max-md:hidden"></div>
+
+      <div class="w-full max-md:col-span-1/2 max-md:mt-[75%]">
+        {% if posts.count >= 2 %}
+          {% include [
+            'components/articles/previews/preview--' ~ posts[1].topper_type|default('text_only') ~ '-alt.twig',
+            'components/articles/previews/preview--' ~ posts[1].topper_type|default('text_only') ~ '.twig'
+          ] with { post: posts[1] } %}
+        {% endif %}
+      </div>
+
+      <div class="flex-2 max-md:hidden"></div>
+    </div>
+  </div>
+
+  <div class="col-span-full md:col-span-8 max-md:mt-12">
+    <div class="w-full max-md:hidden">
+      {% if posts.count >= 3 %}
+        {% include [
+          'components/articles/previews/preview--' ~ posts[2].topper_type|default('text_only') ~ '-alt.twig',
+          'components/articles/previews/preview--' ~ posts[2].topper_type|default('text_only') ~ '.twig'
+        ] with { post: posts[2], class: 'aspect-[4/5]', size: 'lg' } %}
+      {% endif %}
+    </div>
+
+    <div class="w-full grid grid-cols-6 md:grid-cols-8 gap-x-grid-site-gutter md:mt-12">
+      <div class="col-span-4 md:col-span-6">
+        {% if posts.count >= 4 %}
+          {% include [
+            'components/articles/previews/preview--' ~ posts[3].topper_type|default('text_only') ~ '-alt.twig',
+            'components/articles/previews/preview--' ~ posts[3].topper_type|default('text_only') ~ '.twig'
+          ] with { post: posts[3] } %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="col-span-full md:col-span-12 flex flex-col flex-1 gap-y-12 max-lg:mt-12">
+    <div class="w-full flex-1 grid grid-cols-6 md:grid-cols-12 gap-x-grid-site-gutter max-md:gap-y-12">
+      <div class="w-full col-span-6 md:col-start-7 flex md:flex-col max-md:items-end gap-3">
+        <div class="flex flex-col gap-y-3">
+          <p class="text-sm uppercase">{{ topper.new_promotion.overline }}</p>
+          <div class="type-headline-lg md:type-headline-md [&_a]:underline">
+            {{ topper.new_promotion.prompt }}
+          </div>
+        </div>
+
+        {% if topper.new_promotion.image %}
+          <div class="ml-auto w-36 md:w-1/3">
+            {% include 'components/lazy-img.twig' with { img: get_image( topper.new_promotion.image ) } %}
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="col-span-4 max-md:col-start-3 md:col-span-6 flex flex-col flex-1">
+        <div class="flex-1 max-md:hidden"></div>
+
+        {% if posts.count >= 5 %}
+          {% include [
+            'components/articles/previews/preview--' ~ posts[4].topper_type|default('text_only') ~ '-alt.twig',
+            'components/articles/previews/preview--' ~ posts[4].topper_type|default('text_only') ~ '.twig'
+          ] with { post: posts[4] } %}
+        {% endif %}
+      </div>
+
+      <div class="col-span-4 md:col-span-6 flex flex-col flex-1 md:mb-36 gap-y-8">
+        <div class="flex-1 max-md:hidden"></div>
+
+        <div class="w-full">
+          {% if posts.count >= 6 %}
+            {% include [
+              'components/articles/previews/preview--' ~ posts[5].topper_type|default('text_only') ~ '-alt.twig',
+              'components/articles/previews/preview--' ~ posts[5].topper_type|default('text_only') ~ '.twig'
+            ] with { post: posts[5], class: 'aspect-[4/5]' } %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    {% include 'components/button-link.twig' with { href: archive_links.posts, label: topper.cta_label } %}
+  </div>
+</section>
+
+{% endif %}
