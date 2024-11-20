@@ -1,29 +1,18 @@
 {% if posts is not empty %}
 
-<section class="centered-page grid grid-site md:max-lg:grid-cols-12 mt-16">
-  {% if posts.count >= 3 %}
-    <div class="col-span-full md:hidden">
-      {% include [
-        'components/articles/previews/preview--' ~ posts[2].topper_type|default('text_only') ~ '-alt.twig',
-        'components/articles/previews/preview--' ~ posts[2].topper_type|default('text_only') ~ '.twig'
-      ] with { post: posts[2], class: 'aspect-[4/5]', size: 'lg' } %}
-    </div>
-  {% endif %}
-
-  <div class="col-span-full md:col-span-4 flex flex-col flex-1 gap-y-12 mt-12 md:mt-24">
-    <div class="flex flex-col flex-1 gap-y-12 max-md:grid max-md:grid-cols-site max-md:gap-x-grid-site-gutter">
-      <div class="w-full max-md:col-span-1/2">
+<section class="centered-page grid grid-site  md:max-lg:grid-cols-12 mt-16">
+  <div class="col-span-full md:col-span-12">
+    <div class="grid grid-cols-site md:grid-cols-12 gap-x-grid-site-gutter gap-y-12">
+      <div class="col-span-full col-start-1 md:col-span-8 md:col-start-5 md:order-2">
         {% if posts.count >= 1 %}
           {% include [
             'components/articles/previews/preview--' ~ posts[0].topper_type|default('text_only') ~ '-alt.twig',
             'components/articles/previews/preview--' ~ posts[0].topper_type|default('text_only') ~ '.twig'
-          ] with { post: posts[0] } %}
+          ] with { post: posts[0], class: 'aspect-[4/5]', size: 'lg' } %}
         {% endif %}
       </div>
 
-      <div class="flex-1 max-md:hidden"></div>
-
-      <div class="w-full max-md:col-span-1/2 max-md:mt-[75%]">
+      <div class="col-span-3 col-start-1 md:col-span-4 md:order-1 md:mt-24">
         {% if posts.count >= 2 %}
           {% include [
             'components/articles/previews/preview--' ~ posts[1].topper_type|default('text_only') ~ '-alt.twig',
@@ -32,22 +21,16 @@
         {% endif %}
       </div>
 
-      <div class="flex-2 max-md:hidden"></div>
-    </div>
-  </div>
+      <div class="col-span-3 col-start-4 md:col-span-4 md:col-start-1 order-3 max-md:mt-36">
+        {% if posts.count >= 3 %}
+          {% include [
+            'components/articles/previews/preview--' ~ posts[2].topper_type|default('text_only') ~ '-alt.twig',
+            'components/articles/previews/preview--' ~ posts[2].topper_type|default('text_only') ~ '.twig'
+          ] with { post: posts[2] } %}
+        {% endif %}
+      </div>
 
-  <div class="col-span-full md:col-span-8 max-md:mt-12">
-    <div class="w-full max-md:hidden">
-      {% if posts.count >= 3 %}
-        {% include [
-          'components/articles/previews/preview--' ~ posts[2].topper_type|default('text_only') ~ '-alt.twig',
-          'components/articles/previews/preview--' ~ posts[2].topper_type|default('text_only') ~ '.twig'
-        ] with { post: posts[2], class: 'aspect-[4/5]', size: 'lg' } %}
-      {% endif %}
-    </div>
-
-    <div class="w-full grid grid-cols-6 md:grid-cols-8 gap-x-grid-site-gutter md:mt-12">
-      <div class="col-span-4 md:col-span-6">
+      <div class="col-span-4 md:col-start-6 md:col-span-6 lg:col-start-5 order-4 md:mt-24">
         {% if posts.count >= 4 %}
           {% include [
             'components/articles/previews/preview--' ~ posts[3].topper_type|default('text_only') ~ '-alt.twig',
