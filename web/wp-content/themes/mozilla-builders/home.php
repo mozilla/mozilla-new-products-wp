@@ -7,20 +7,12 @@
 
 use Timber\Timber;
 
-global $paged;
-
 $context = Timber::context();
 
-$_posts = Timber::get_posts(
-	array(
-		'posts_per_page' => 10,
-		'post_status'    => 'publish',
-		'paged'          => $paged,
-	)
-);
-
+$_posts = Timber::get_posts();
 
 $context['posts'] = $_posts;
+$context['pagination'] = $_posts->pagination( array( 'mid_size' => 2 ) );
 $context['title'] = 'Latest';
 
 // Render view.
