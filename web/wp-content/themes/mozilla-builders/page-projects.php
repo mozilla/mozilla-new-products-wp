@@ -11,6 +11,8 @@ $context  = Timber::context();
 $_page    = Timber::get_post();
 $_page_id = (int) $_page->ID;
 
+global $paged;
+
 $context['title'] = $_page->title();
 
 // If page is password protected, render password page.
@@ -27,7 +29,8 @@ if ( post_password_required( $_page_id ) ) {
 		'post_type'      => 'project',
 		'orderby'        => 'title',
 		'order'          => 'ASC',
-		'posts_per_page' => -1,
+		'posts_per_page' => 24,
+		'paged'          => isset( $paged ) && $paged ? $paged : 1,
 	);
 	$context['posts'] = Timber::get_posts( $args );
 

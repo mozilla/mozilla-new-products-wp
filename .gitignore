@@ -55,6 +55,8 @@ web/wp-content/themes/index.php
 !web/wp-content/plugins/.gitkeep
 !web/wp-content/plugins/acf-extended/
 !web/wp-content/plugins/acf-extended/**/*
+!web/wp-content/plugins/mozilla-scheduled-tasks/
+!web/wp-content/plugins/mozilla-scheduled-tasks/**/*
 
 # Turborepo
 .turbo
