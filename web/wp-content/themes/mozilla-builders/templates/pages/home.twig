@@ -1,0 +1,11 @@
+{% extends "layouts/base.twig" %}
+
+{% block pageBody %}
+
+  {% include 'components/page-topper.twig' with {class: 'archive-page'} %}
+  <div class="archive-page__content">
+    {% include 'components/tease-list.twig' with { posts: posts } %}
+    {% include 'components/pagination.twig' %}
+  </div>
+
+{% endblock %}

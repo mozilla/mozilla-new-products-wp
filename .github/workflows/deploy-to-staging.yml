@@ -70,7 +70,7 @@ jobs:
           localDir: './web/wp-content/themes/mozilla-builders'
           remoteDir: '/wp-content/themes/mozilla-builders'
           reverse: true
-          ignoreFile: '.lftp_ignore'
+          ignoreFile: './web/wp-content/themes/mozilla-builders/.lftp_ignore'
           options: '--verbose --no-perms --delete'
 
       - name: Deploy plugins

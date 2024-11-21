@@ -19,7 +19,7 @@ $context['page'] = $_page;
 $topper            = $_page->meta( 'topper' );
 $context['topper'] = $topper;
 
-$featured_post_ids = $topper['featured_articles'];
+$featured_post_ids = $topper['featured_articles'] ?? array();
 if ( empty( $featured_post_ids ) ) {
 	$context['featured_posts'] = array();
 } else {
