@@ -106,7 +106,7 @@ class ContextManager {
 			'posts'    => get_post_type_archive_link( 'post' ),
 			'projects' => $project_archive_link,
 			'accelerator' => $accelerator_page_link,
-			'discord'  => 'https://discord.com',
+			'discord'  => 'https://discord.gg/gydMdRK2zV',
 		);
 		return $context;
 	}
