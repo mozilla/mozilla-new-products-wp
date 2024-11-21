@@ -4,4 +4,4 @@
 static/js/
 static/scss/
 node_modules/
-vendor/
+web/wp-content/themes/mozilla-builders/vendor/
