@@ -121,6 +121,7 @@ class Profile extends TimberPost {
 			'posts_per_page' => 4,
 			'orderby' => 'date',
 			'order' => 'DESC',
+			'ignore_sticky_posts' => 1,
 			'meta_query' => array(
 				array(
 					'key' => 'authors',
