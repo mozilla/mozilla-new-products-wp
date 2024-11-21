@@ -64,7 +64,11 @@
         <h2 class="max-lg:mb-2 max-lg:col-span-full lg:col-span-4 font-bold uppercase lg:leading-4 lg:mt-1">{{ cohort.title }}</h2>
         <ul class="lg:mt-1 max-lg:col-span-full lg:col-span-4 lg:col-start-5">
           {% for profile in cohort.posts %}
-            {% if profile.id != post.id %}
+            {% if profile.id == post.id %}
+              <li class="font-bold uppercase leading-4 [&+&]:mt-1">
+                {{ profile.first_name }} {{ profile.last_name }}
+              </li>
+            {% else %}
               <li class="uppercase leading-4 [&+&]:mt-1">
                 <a href="{{ profile.link }}" class="hover:bg-spot transition-colors">
                   {{ profile.first_name }} {{ profile.last_name }}
