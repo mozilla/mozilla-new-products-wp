@@ -9,6 +9,7 @@ namespace MozillaBuilders\Models\PostType;
 
 use Timber\Timber;
 use Timber\Post as TimberPost;
+use MozillaBuilders\Models\Taxonomy\Cohort;
 
 /** Class */
 class Profile extends TimberPost {
@@ -98,6 +99,15 @@ class Profile extends TimberPost {
 		}
 
 		return array_map( fn( $project ) => Timber::get_post( $project ), $projects );
+	}
+
+	/**
+	 * Get the cohorts for the profile.
+	 *
+	 * @return array
+	 */
+	public function cohorts() {
+		return $this->terms( Cohort::HANDLE );
 	}
 
 	/**
