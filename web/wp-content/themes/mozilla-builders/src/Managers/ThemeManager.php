@@ -143,7 +143,6 @@ class ThemeManager {
 	public function register_menus() {
 		register_nav_menus(
 			array(
-				'nav_topics_menu'     => 'Navigation Topics Menu',
 				'nav_pages_menu'      => 'Navigation Pages Menu',
 				'primary_footer_menu' => 'Primary Footer Menu',
 			)
@@ -165,6 +164,20 @@ class ThemeManager {
 				)
 			);
 		}
+	}
+
+	/**
+	 * Adds ability to access array of ACF options fields in a twig field
+	 *
+	 * @param array $context Timber context.
+	 *
+	 * @return array
+	 */
+	public function add_acf_options_to_context( $context ) {
+		if ( class_exists( 'acf' ) ) {
+			$context['options'] = get_fields( 'option' );
+		}
+		return $context;
 	}
 
 	/**
