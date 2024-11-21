@@ -121,6 +121,10 @@ body {
     @apply text-2xl font-headline-condensed font-semibold leading-tight;
   }
 
+  .type-headline-md {
+    @apply text-xl font-headline-condensed font-semibold leading-tight;
+  }
+
   .type-sans-3xl {
     @apply text-10xl font-sans font-light leading-tighter tracking-tighter;
   }

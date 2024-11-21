@@ -1,9 +1,11 @@
 <div class="flex flex-col gap-6">
   <div class="flex flex-col gap-6 relative">
     {% if project.thumbnail and project.show_image_on_index %}
-      <div class="w-1/2">
-        {% include "components/lazy-img.twig" with { img: project.thumbnail } %}
-      </div>
+      {% if archive %}
+        <div class="w-1/2">
+          {% include "components/lazy-img.twig" with { img: project.thumbnail } %}
+        </div>
+      {% endif %}
     {% endif %}
 
     <div class="border-t border-content pt-2">
@@ -57,5 +59,13 @@
       {% endif %}
     </div>
   </div>
+
+  {% if project.thumbnail and project.show_image_on_index %}
+    {% if not archive %}
+      <div class="w-1/2 lg:mt-6">
+        {% include "components/lazy-img.twig" with { img: project.thumbnail } %}
+      </div>
+    {% endif %}
+  {% endif %}
 </div>
 
