@@ -25,11 +25,12 @@ if ( empty( $featured_post_ids ) ) {
 } else {
 	$context['featured_posts'] = Timber::get_posts(
 		array(
-			'post_type'      => 'post',
-			'posts_per_page' => 6,
-			'post_status'    => 'publish',
-			'post__in'       => $featured_post_ids,
-			'orderby'        => 'post__in',
+			'post_type'           => 'post',
+			'posts_per_page'      => 6,
+			'post_status'         => 'publish',
+			'post__in'            => $featured_post_ids,
+			'orderby'             => 'post__in',
+			'ignore_sticky_posts' => 1,
 		)
 	);
 }
@@ -43,11 +44,12 @@ if ( empty( $featured_people_ids ) ) {
 } else {
 	$context['featured_people'] = Timber::get_posts(
 		array(
-			'post_type'      => Profile::HANDLE,
-			'posts_per_page' => 6,
-			'post_status'    => 'publish',
-			'post__in'       => $featured_people_ids,
-			'orderby'        => 'post__in',
+			'post_type'           => Profile::HANDLE,
+			'posts_per_page'      => 6,
+			'post_status'         => 'publish',
+			'post__in'            => $featured_people_ids,
+			'orderby'             => 'post__in',
+			'ignore_sticky_posts' => 1,
 		)
 	);
 }
@@ -58,11 +60,12 @@ if ( empty( $secondary_post_ids ) ) {
 } else {
 	$context['secondary_posts'] = Timber::get_posts(
 		array(
-			'post_type'      => 'post',
-			'posts_per_page' => 4,
-			'post_status'    => 'publish',
-			'post__in'       => $secondary_post_ids,
-			'orderby'        => 'post__in',
+			'post_type'           => 'post',
+			'posts_per_page'      => 4,
+			'post_status'         => 'publish',
+			'post__in'            => $secondary_post_ids,
+			'orderby'             => 'post__in',
+			'ignore_sticky_posts' => 1,
 		)
 	);
 }
@@ -76,11 +79,12 @@ if ( empty( $featured_project_ids ) ) {
 } else {
 	$context['featured_projects'] = Timber::get_posts(
 		array(
-			'post_type'      => Project::HANDLE,
-			'posts_per_page' => 4,
-			'post_status'    => 'publish',
-			'post__in'       => $featured_project_ids,
-			'orderby'        => 'post__in',
+			'post_type'           => Project::HANDLE,
+			'posts_per_page'      => 4,
+			'post_status'         => 'publish',
+			'post__in'            => $featured_project_ids,
+			'orderby'             => 'post__in',
+			'ignore_sticky_posts' => 1,
 		)
 	);
 }
