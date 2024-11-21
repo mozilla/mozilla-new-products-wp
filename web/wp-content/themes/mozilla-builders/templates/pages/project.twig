@@ -60,20 +60,27 @@
       </div>
       {% endif %}
 
-      {% if post.github_stats.stars|default(0) > 0 %}
+      {% if post.github_link %}
+      <div class="contents">
+        <dt class="col-span-1/2">Link</dt>
+        <dd class="col-span-1/2 font-semibold"><a href="{{ post.github_link }}" class="hover-link">GitHub</a></dd>
+      </div>
+      {% endif %}
+
+      {% if post.github_stars|default(0) > 0 %}
       <div class="contents">
         <dt class="col-span-1/2">Stars</dt>
         <dd class="col-span-1/2 font-semibold">
-          {{- post.github_stats.stars|number_shorthand -}}
+          {{- post.github_stars|number_shorthand -}}
         </dd>
       </div>
       {% endif %}
 
-      {% if post.github_stats.forks|default(0) > 0 %}
+      {% if post.github_forks|default(0) > 0 %}
       <div class="contents">
         <dt class="col-span-1/2">Forks</dt>
         <dd class="col-span-1/2 font-semibold">
-          {{- post.github_stats.forks|number_shorthand -}}
+          {{- post.github_forks|number_shorthand -}}
         </dd>
       </div>
       {% endif %}

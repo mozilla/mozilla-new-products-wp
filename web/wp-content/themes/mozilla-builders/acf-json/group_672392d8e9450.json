@@ -42,75 +42,6 @@
       "placeholder": ""
     },
     {
-      "key": "field_67239757ea80a",
-      "label": "GitHub Stats",
-      "name": "github_stats",
-      "aria-label": "",
-      "type": "group",
-      "instructions": "",
-      "required": 0,
-      "conditional_logic": 0,
-      "wrapper": {
-        "width": "",
-        "class": "",
-        "id": ""
-      },
-      "layout": "block",
-      "sub_fields": [
-        {
-          "key": "field_67239760ea80b",
-          "label": "Stars",
-          "name": "stars",
-          "aria-label": "",
-          "type": "number",
-          "instructions": "",
-          "required": 0,
-          "conditional_logic": 0,
-          "wrapper": {
-            "width": "",
-            "class": "",
-            "id": ""
-          },
-          "default_value": "",
-          "min": 0,
-          "max": "",
-          "allow_in_bindings": 0,
-          "placeholder": "",
-          "step": "",
-          "prepend": "",
-          "append": ""
-        },
-        {
-          "key": "field_6723976cea80c",
-          "label": "Forks",
-          "name": "forks",
-          "aria-label": "",
-          "type": "number",
-          "instructions": "",
-          "required": 0,
-          "conditional_logic": 0,
-          "wrapper": {
-            "width": "",
-            "class": "",
-            "id": ""
-          },
-          "default_value": "",
-          "min": 0,
-          "max": "",
-          "allow_in_bindings": 0,
-          "placeholder": "",
-          "step": "",
-          "prepend": "",
-          "append": ""
-        }
-      ],
-      "acfe_seamless_style": 0,
-      "acfe_group_modal": 0,
-      "acfe_group_modal_close": 0,
-      "acfe_group_modal_button": "",
-      "acfe_group_modal_size": "large"
-    },
-    {
       "key": "field_672392d9f9277",
       "label": "Contributors",
       "name": "contributors",
@@ -269,5 +200,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1731346279
+  "modified": 1731512246
 }

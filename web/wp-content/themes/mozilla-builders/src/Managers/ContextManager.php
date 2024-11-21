@@ -61,7 +61,6 @@ class ContextManager {
 	 * @return array
 	 */
 	public function menus( $context ) {
-		$context['nav_topics_menu']     = Timber::get_menu( 'nav_topics_menu' );
 		$context['nav_pages_menu']      = Timber::get_menu( 'nav_pages_menu' );
 		$context['primary_footer_menu'] = Timber::get_menu( 'primary_footer_menu' );
 		return $context;
