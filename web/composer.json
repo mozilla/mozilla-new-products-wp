@@ -17,6 +17,10 @@
     {
       "type": "composer",
       "url": "https://connect.advancedcustomfields.com"
+    },
+    {
+      "type": "composer",
+      "url": "https://composer.deliciousbrains.com"
     }
   ],
   "extra": {
@@ -48,7 +52,8 @@
     "wpackagist-plugin/wp-environment-indicator": "^1.0",
     "vlucas/phpdotenv": "^5.4",
     "timber/timber": "^2.2",
-    "wpengine/advanced-custom-fields-pro": "^6.2"
+    "wpengine/advanced-custom-fields-pro": "^6.2",
+    "deliciousbrains-plugin/wp-migrate-db-pro": "^2.7"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.6",

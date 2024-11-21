@@ -58,7 +58,7 @@ Note that these installation steps assume that you're using the DDEV configurati
 
 2. Duplicate the contents of `.env.sample` into a new `.env` file.
 
-3. Duplicate the `auth.json.sample` file and rename it to `auth.json`. Search for this project's auth.json entry in 1Password and copy its contents into your `auth.json` file.
+3. Duplicate the `web/auth.json.sample` file and rename it to `web/auth.json`. Search for this project's auth.json entry in 1Password and copy its contents into your `auth.json` file.
 
 4. Run the install/setup command
 
