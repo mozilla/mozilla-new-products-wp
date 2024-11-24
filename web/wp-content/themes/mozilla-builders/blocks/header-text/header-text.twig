@@ -1,0 +1,19 @@
+{% if size == 'large' %}
+  <div data-block="header-text-large" class="mt-16 pt-3 border-t col-span-full">
+    <div class="md:grid md:grid-cols-24 gap-x-grid-site-gutter">
+      <h2 class="max-md:indent-8 md:col-span-8 max-md:font-bold md:type-sans-lg uppercase">{{ header_text }}</h2>
+      <div class="max-md:mt-3 md:col-start-13 md:col-span-12 lg:col-start-15 lg:col-span-10 2xl:col-span-8 prose">
+        {{ text_content }}
+      </div>
+    </div>
+  </div>
+{% elseif size == 'small' %}
+  <div data-block="header-text-small" class="mt-16 pt-3 border-t">
+    <div class="md:grid md:grid-cols-18 md:gap-x-grid-site-gutter lg:grid-cols-16 2xl:grid-cols-12">
+      <h2 class="max-md:indent-8 md:col-span-6 2xl:col-span-4 font-bold uppercase">{{ header_text }}</h2>
+      <div class="max-md:mt-3 md:col-span-12 2xl:col-span-8 md:col-start-7 2xl:col-start-5 prose">
+        {{ text_content }}
+      </div>
+    </div>
+  </div>
+{% endif %}
