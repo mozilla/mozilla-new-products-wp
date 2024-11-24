@@ -76,6 +76,8 @@
           {% if loop.index0 > 0 %}
             <hr class="col-span-full mt-16 md:mt-24 mb-8" />
             <div class="col-span-full md:grid md:grid-cols-24 gap-x-grid-site-gutter">
+          {% elseif loop.first %}
+            <div class="col-span-full md:mt-8 md:grid md:grid-cols-24 gap-x-grid-site-gutter">
           {% else %}
             <div class="col-span-full mt-16 md:grid md:grid-cols-24 gap-x-grid-site-gutter">
           {% endif %}
