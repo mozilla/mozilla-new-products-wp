@@ -3,7 +3,7 @@
   "title": "Header & Text",
   "description": "A custom block for inserting a side by side header and text.",
   "category": "text",
-  "icon": "media-code",
+  "icon": "media-text",
   "keywords": ["heading", "text"],
   "acf": {
     "mode": "edit",
