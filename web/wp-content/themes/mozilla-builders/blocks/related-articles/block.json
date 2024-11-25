@@ -17,6 +17,6 @@
     }
   },
   "supports": {
-    "align": ["center", "left", "right"]
+    "align": ["center", "wide"]
   }
 }
