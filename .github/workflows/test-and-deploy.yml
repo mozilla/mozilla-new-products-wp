@@ -8,7 +8,7 @@ on:
 
 jobs:
   deploy:
-    name: Test and deploy to WPEngine staging environment
+    name: Test and deploy to WPEngine environment
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -124,7 +124,7 @@ jobs:
       - name: Install only build PHP dependencies
         env:
           PHP_DEPS_CHANGED: ${{ env.PHP_DEPS_CHANGED }}
-        if: env.PHP_DEPS_CHANGED == 'true'
+        if: env.PHP_DEPS_CHANGED == 'true' || github.event_name == 'release'
         uses: php-actions/composer@v6
         with:
           dev: no
@@ -133,7 +133,7 @@ jobs:
       - name: Deploy PHP dependencies
         env:
           PHP_DEPS_CHANGED: ${{ env.PHP_DEPS_CHANGED }}
-        if: env.PHP_DEPS_CHANGED == 'true'
+        if: env.PHP_DEPS_CHANGED == 'true' || github.event_name == 'release'
         uses: pressidium/lftp-mirror-action@v1
         with:
           host: ${{ env.SFTP_HOST }}
