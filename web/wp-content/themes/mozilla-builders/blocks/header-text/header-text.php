@@ -8,9 +8,10 @@
 
 use Timber\Timber;
 
-$context                 = Timber::context();
-$context['size']         = get_field( 'block_size' );
-$context['header_text']  = get_field( 'header_text' );
-$context['text_content'] = get_field( 'text_content' );
+$context                  = Timber::context();
+$context['size']          = get_field( 'block_size' );
+$context['header_text']   = get_field( 'header_text' );
+$context['text_content']  = get_field( 'text_content' );
+$context['heading_level'] = get_field( 'heading_level' );
 
 Timber::render( basename( __DIR__ ) . '/header-text.twig', $context );

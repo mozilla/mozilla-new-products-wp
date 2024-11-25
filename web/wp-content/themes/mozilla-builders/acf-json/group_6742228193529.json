@@ -3,6 +3,38 @@
   "title": "Block: Heading Text",
   "fields": [
     {
+      "key": "field_6744aa03fa248",
+      "label": "Heading Level",
+      "name": "heading_level",
+      "aria-label": "",
+      "type": "select",
+      "instructions": "Choose the appropriate heading level given the surrounding content. <i>For more information, check out <a href=\"https://usability.yale.edu/web-accessibility/articles/headings\">Yale's accessibility guidelines</a>.</i>",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "choices": {
+        "h2": "H2",
+        "h3": "H3",
+        "h4": "H4",
+        "h5": "H5",
+        "h6": "H6"
+      },
+      "default_value": "H2",
+      "return_format": "value",
+      "multiple": 0,
+      "allow_null": 0,
+      "allow_in_bindings": 0,
+      "ui": 0,
+      "ajax": 0,
+      "placeholder": "",
+      "allow_custom": 0,
+      "search_placeholder": ""
+    },
+    {
       "key": "field_6742228172859",
       "label": "Header Text",
       "name": "header_text",
@@ -97,5 +129,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1732389019
+  "modified": 1732553323
 }
