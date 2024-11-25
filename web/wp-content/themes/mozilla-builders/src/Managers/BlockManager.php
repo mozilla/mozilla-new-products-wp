@@ -52,6 +52,7 @@ class BlockManager {
 		register_block_type( MOZILLA_BUILDERS_THEME_PATH . 'blocks/related-articles' );
 		register_block_type( MOZILLA_BUILDERS_THEME_PATH . 'blocks/advanced-code' );
 		register_block_type( MOZILLA_BUILDERS_THEME_PATH . 'blocks/mozilla-newsletter-signup-form' );
+		register_block_type( MOZILLA_BUILDERS_THEME_PATH . 'blocks/header-text' );
 	}
 
 	/**
@@ -125,6 +126,7 @@ class BlockManager {
 			'acf/image-layout',
 			'acf/advanced-code',
 			'acf/mozilla-newsletter-signup-form',
+			'acf/header-text',
 			'wsk/static-native-block',
 		);
 	}

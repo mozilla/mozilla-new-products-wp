@@ -627,6 +627,18 @@ body {
       }
     }
 
+    // Header Text
+    div[data-block='header-text-small'] {
+      &:not(.alignwide):not(.alignfull) {
+        @apply md:col-span-18 md:col-start-4 lg:col-span-16 lg:col-start-5 2xl:col-span-12 2xl:col-start-7;
+      }
+    }
+    div[data-block='header-text-large'] {
+      &:not(.alignwide):not(.alignfull) {
+        @apply md:col-span-full;
+      }
+    }
+
     // Cover
     .wp-block-cover {
       &:not(.alignwide):not(.alignfull) {
