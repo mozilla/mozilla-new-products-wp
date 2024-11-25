@@ -419,13 +419,13 @@ body {
     > ul,
     > ol,
     hr {
-      @apply md:col-span-16 lg:col-span-12 2xl:col-span-10;
+      @apply md:col-span-14 lg:col-span-12 2xl:col-span-10;
     }
 
     // Paragraphs
     > p {
       &:first-child:is(.lede *) {
-        @apply type-headline-lg mb-2 md:mb-6 md:col-span-18 lg:col-span-14;
+        @apply type-headline-lg mb-2 md:mb-6 lg:col-span-14;
       }
     }
 
@@ -436,11 +436,18 @@ body {
       }
     }
 
+    .alignleft {
+      @apply md:col-start-1 md:col-span-5 lg:col-span-6 2xl:col-span-7 md:h-0;
+    }
+    .alignright {
+      @apply md:col-start-end md:col-span-5 lg:col-span-6 2xl:col-span-7 md:h-0;
+    }
+
     // Alignment
     > figure,
     > [data-block] {
-      &:not(.alignwide):not(.alignfull) {
-        @apply md:col-span-16 lg:col-span-12 2xl:col-span-10;
+      &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
+        @apply md:col-span-14 lg:col-span-12 2xl:col-span-10;
       }
 
       &.alignwide {
@@ -481,8 +488,8 @@ body {
         @apply type-headline-lg absolute top-0.5 left-0 block shrink-0 bg-current mask-quote size-[0.9em];
       }
 
-      &:not(.alignwide):not(.alignfull) {
-        @apply md:col-span-16 lg:col-span-12 2xl:col-span-10;
+      &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
+        @apply md:col-span-14 lg:col-span-12 2xl:col-span-10;
       }
 
       &.alignwide {
@@ -550,8 +557,8 @@ body {
     figure.wp-block-image,
     figure.wp-block-video,
     figure.wp-block-embed {
-      &:not(.alignwide):not(.alignfull) {
-        @apply md:col-span-16 lg:col-span-12 2xl:col-span-10;
+      &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
+        @apply md:col-span-14 lg:col-span-12 2xl:col-span-10;
       }
 
       img,
@@ -580,7 +587,7 @@ body {
 
     // Buttons
     .wp-block-buttons {
-      @apply flex flex-col gap-3 md:col-span-16 lg:col-span-12 2xl:col-span-10;
+      @apply flex flex-col gap-3 md:col-span-14 lg:col-span-12 2xl:col-span-10;
     }
     .wp-block-button {
       @apply flex justify-center w-full;
@@ -596,7 +603,11 @@ body {
 
     // Files
     .wp-block-file {
-      @apply flex md:col-span-16 lg:col-span-12 2xl:col-span-10;
+      @apply flex flex-col;
+
+      &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
+        @apply md:col-span-14 lg:col-span-12 2xl:col-span-10;
+      }
 
       a:not(.wp-block-file__button) {
         @apply flex items-center justify-between gap-10 w-full p-10;
@@ -622,27 +633,27 @@ body {
 
     // Related Articles
     div[data-block='related-articles'] {
-      &:not(.alignwide):not(.alignfull) {
-        @apply md:col-span-16 lg:col-span-12 2xl:col-span-10;
+      &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
+        @apply md:col-span-14 lg:col-span-12 2xl:col-span-10;
       }
     }
 
     // Header Text
     div[data-block='header-text-small'] {
-      &:not(.alignwide):not(.alignfull) {
+      &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
         @apply md:col-span-18 md:col-start-4 lg:col-span-16 lg:col-start-5 2xl:col-span-12 2xl:col-start-7;
       }
     }
     div[data-block='header-text-large'] {
-      &:not(.alignwide):not(.alignfull) {
+      &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
         @apply md:col-span-full;
       }
     }
 
     // Cover
     .wp-block-cover {
-      &:not(.alignwide):not(.alignfull) {
-        @apply md:col-span-16 lg:col-span-12 2xl:col-span-10;
+      &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
+        @apply md:col-span-14 lg:col-span-12 2xl:col-span-10;
       }
 
       &.alignwide {
@@ -691,7 +702,7 @@ body {
 
     // Details
     .wp-block-details {
-      @apply flex flex-col gap-3 md:col-span-16 lg:col-span-12 2xl:col-span-10 pl-8 relative;
+      @apply flex flex-col gap-3 md:col-span-14 lg:col-span-12 2xl:col-span-10 pl-8 relative;
       @apply prose;
 
       &::before {
