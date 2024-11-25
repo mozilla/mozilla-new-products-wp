@@ -438,7 +438,8 @@ body {
 
     // Alignment
     > figure,
-    > [data-block] {
+    > [data-block],
+    > .wp-block-file {
       &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
         @apply md:col-span-14 lg:col-span-12 2xl:col-span-10;
       }
