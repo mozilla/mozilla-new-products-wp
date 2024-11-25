@@ -51,6 +51,7 @@ class BlockManager {
 		register_block_type( MOZILLA_BUILDERS_THEME_PATH . 'blocks/image-layout' );
 		register_block_type( MOZILLA_BUILDERS_THEME_PATH . 'blocks/related-articles' );
 		register_block_type( MOZILLA_BUILDERS_THEME_PATH . 'blocks/advanced-code' );
+		register_block_type( MOZILLA_BUILDERS_THEME_PATH . 'blocks/header-text' );
 	}
 
 	/**
@@ -123,6 +124,7 @@ class BlockManager {
 			'acf/related-articles',
 			'acf/image-layout',
 			'acf/advanced-code',
+			'acf/header-text',
 			'wsk/static-native-block',
 		);
 	}
