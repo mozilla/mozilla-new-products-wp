@@ -1,7 +1,6 @@
 {% if overline %}
 
-{% set bg_color = color | default(overline.color) %}
-{% if bg_color == 'green' %}
+{% if post.color == 'green' %}
   {% set overline_class = 'bg-green' %}
 {% elseif post.color == 'green-light' %}
   {% set overline_class = 'bg-green-light text-black' %}
