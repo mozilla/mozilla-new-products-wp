@@ -9,7 +9,7 @@
 {% include 'components/accelerator/topper.twig' %}
 
 <div x-tabs="{ default: 'overview', initial: '{{ initial_tab }}' }">
-  <div class="my-4 sticky top-4 md:top-wp-admin-bar md:pt-4 centered-page px-grid-site-margin flex max-xl:flex-col items-center z-50">
+  <div class="my-4 sticky top-4 md:top-wp-admin-bar md:pt-4 centered-page px-grid-site-margin flex max-xl:flex-col items-center self-start z-50">
     <div
       x-tabs:list.automatic.loop
       class="bg-main flex flex-col md:grid md:grid-cols-3 max-xl:w-full border border-content max-md:divide-y md:divide-x divide-content">
@@ -141,8 +141,8 @@
                   {% endif %}
                 </div>
 
-                <p class="mt-2 text-sm uppercase font-semibold">
-                  <a href="{{ profile.link }}" class="before:absolute before:inset-0">
+                <p class="mt-2 text-sm uppercase font-bold">
+                  <a href="{{ profile.link }}" class="before:absolute before:inset-0 hover:bg-content hover:text-main">
                     {{ profile.first_name }} {{ profile.last_name }}
                   </a>
                 </p>

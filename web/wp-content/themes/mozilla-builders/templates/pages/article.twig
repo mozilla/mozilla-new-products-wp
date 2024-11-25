@@ -3,7 +3,7 @@
 {% block pageBody %}
   {% include "components/articles/toppers/topper--" ~ (post.topper_type|default('text_only')) ~ ".twig" %}
 
-  <article>
+  <article class="relative">
     {% include "components/articles/byline.twig" %}
 
     <div class="pt-12 pb-24 gutenberg article {{ post.has_lede_paragraph ? 'lede' }} js-hang-punc">
