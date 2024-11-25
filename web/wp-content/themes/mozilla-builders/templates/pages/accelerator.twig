@@ -17,21 +17,21 @@
         x-tabs:tab="overview"
         {% if initial_tab == 'overview' %}data-state="active"{% endif %}
         class="flex-1 py-1 px-16 text-xs leading-3 hover:bg-action hover:text-action-reverse transition-colors data-[state=active]:bg-content data-[state=active]:text-content-reverse">
-        <span class="uppercase text-xs leading-3 tracking-wide text-center whitespace-nowrap">Overview</span>
+        <span class="uppercase text-xs leading-3 tracking-wide text-center whitespace-nowrap">{{ page.overview_title ?: 'Overview' }}</span>
       </button>
 
       <button
         x-tabs:tab="cohorts"
         {% if initial_tab == 'cohorts' %}data-state="active"{% endif %}
         class="bg-main flex-1 py-1 px-16 text-xs leading-3 hover:bg-action hover:text-action-reverse transition-colors data-[state=active]:bg-content data-[state=active]:text-content-reverse">
-        <span class="uppercase text-center text-xs leading-3 tracking-wide whitespace-nowrap">Past Cohorts</span>
+        <span class="uppercase text-center text-xs leading-3 tracking-wide whitespace-nowrap">{{ page.cohorts.cohort_title ?: 'Cohorts' }}</span>
       </button>
 
       <button
         x-tabs:tab="faqs"
         {% if initial_tab == 'faqs' %}data-state="active"{% endif %}
         class="bg-main flex-1 py-1 px-16 text-xs leading-3 hover:bg-action hover:text-action-reverse transition-colors data-[state=active]:bg-content data-[state=active]:text-content-reverse">
-        <span class="uppercase text-center text-xs leading-3 tracking-wide whitespace-nowrap">FAQs</span>
+        <span class="uppercase text-center text-xs leading-3 tracking-wide whitespace-nowrap">{{ page.faq_title ?: 'FAQs' }}</span>
       </button>
     </div>
 
@@ -64,58 +64,64 @@
     <div class="mt-16 centered-page grid grid-site">
       <h2 class="sr-only">Overview</h2>
 
-      <div class="col-span-full max-md:mt-8 md:col-start-13 md:col-span-10 lg:col-start-15 lg:col-span-8 prose">
-        {{ page.overview }}
-      </div>
+      {% for layout in page.overview_content %}
+        {% if layout.acf_fc_layout == 'timeline' %}
+          <h3 class="col-span-full md:col-span-8 mt-16 md:mt-24 type-sans-lg uppercase">
+            Key Dates
+          </h3>
+          <div class="col-span-full my-4">
+            {% include 'components/timeline.twig' with { items: layout.key_dates } %}
+          </div>
+        {% elseif layout.acf_fc_layout == 'heading_and_text' %}
+          {% if loop.index0 > 0 %}
+            <hr class="col-span-full mt-16 md:mt-24 mb-8" />
+            <div class="col-span-full md:grid md:grid-cols-24 gap-x-grid-site-gutter">
+          {% elseif loop.first %}
+            <div class="col-span-full md:mt-8 md:grid md:grid-cols-24 gap-x-grid-site-gutter">
+          {% else %}
+            <div class="col-span-full mt-16 md:grid md:grid-cols-24 gap-x-grid-site-gutter">
+          {% endif %}
+            {% if layout.heading %}
+              <h3 class="col-span-full md:col-span-8 type-sans-lg uppercase">{{ layout.heading }}</h3>
+            {% endif %}
+            <div class="col-span-full max-md:mt-8 md:col-start-13 md:col-span-10 lg:col-start-15 lg:col-span-8 prose">
+              {{ layout.text_content }}
+            </div>
+          </div>
+        {% elseif layout.acf_fc_layout == 'big_heading' %}
+          <div class="col-span-full md:col-start-6 md:col-span-19 mt-16 md:mt-24">
+            <p class="type-headline-xl indent-8 md:indent-[calc(0.1*var(--100vw))]">
+              {{ layout.heading_text }}
+            </p>
+          </div>
+        {% elseif layout.acf_fc_layout == 'big_quote' %}
+          <div class="col-span-full mt-16">
+            {% include 'components/big-quote.twig' with { quote: layout } %}
+          </div>
+        {% elseif layout.acf_fc_layout == 'video' %}
+          <div class="col-span-full mt-16 md:col-start-end md:col-span-14 lg:col-span-1/2 mb-8">
+            <div class="w-full aspect-video bg-content/10 [&_iframe]:w-full [&_iframe]:h-full">
+              {{ layout.theme_video }}
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
 
-      <div class="col-span-full md:col-start-6 md:col-span-19 mt-16 md:mt-24">
-        <p class="type-headline-xl indent-8 md:indent-[calc(0.1*var(--100vw))]">
-          {{ page.concept }}
-        </p>
-      </div>
-
-      <hr class="col-span-full mt-16 md:mt-24 mb-8" />
-
-      <h3 class="col-span-full md:col-span-8 type-sans-lg uppercase">
-        The Inaugural Theme
-      </h3>
-
-      {% if page.theme_video %}
-      <div class="col-span-full max-md:mt-8 md:col-start-end md:col-span-14 lg:col-span-1/2 mb-8">
-        <div class="w-full aspect-video bg-content/10 [&_iframe]:w-full [&_iframe]:h-full">
-          {{ page.theme_video }}
-        </div>
-      </div>
-      {% endif %}
-
-      <div class="col-span-full md:col-start-13 md:col-span-10 lg:col-start-15 lg:col-span-8 prose">
-        {{ page.theme }}
-      </div>
-
-      <h3 class="col-span-full md:col-span-8 mt-16 md:mt-24 type-sans-lg uppercase">
-        Key Dates
-      </h3>
-
-      <div class="col-span-full my-4 lg:my-8">
-        {% include 'components/timeline.twig' with { items: page.key_dates } %}
-      </div>
-
-      <div class="col-span-full my-16">
-        {% include 'components/big-quote.twig' with { quote: page.quote } %}
-      </div>
     </div>
   </div>
 
   <div x-tabs:panel="cohorts" {% if initial_tab != 'cohorts' %}style="display:none"{% endif %}>
     <div class="mt-16 centered-page grid grid-site">
-      <h2 class="sr-only">Past Cohorts</h2>
+      <h2 class="sr-only">Cohorts</h2>
 
-      <h3 class="col-span-full md:col-span-8 type-sans-lg uppercase">
-        Mission
-      </h3>
+      {% if page.cohorts.cohort_heading %}
+        <h3 class="col-span-full md:col-span-8 type-sans-lg uppercase">
+          {{ page.cohorts.cohort_heading }}
+        </h3>
+      {% endif %}
 
       <div class="col-span-full max-md:mt-8 md:col-start-13 md:col-span-10 lg:col-start-15 lg:col-span-8 prose">
-        {{ page.past_cohorts.mission }}
+        {{ page.cohorts.cohort_description }}
       </div>
 
       {% for cohort in cohorts %}
@@ -129,7 +135,7 @@
 
         <div class="col-span-full">
           <ul class="grid grid-cols-site gap-x-grid-site-gutter gap-y-8">
-            {% for profile in cohort.posts %}
+            {% for profile in cohort.profiles %}
               <li class="relative col-span-1/2 md:col-span-1/3 lg:col-span-6 xl:col-span-1/6">
                 <div class="w-full aspect-poster {% if not profile.thumbnail %}bg-content/10{% endif %}">
                   {% if profile.thumbnail %}
@@ -147,7 +153,7 @@
                   </a>
                 </p>
                 {% if profile.projects %}
-                  <p class="text-sm uppercase">{{ profile.projects[1].title }}</p>
+                  <p class="text-sm uppercase">{{ profile.projects[0].title }}</p>
                 {% endif %}
               </li>
             {% endfor %}

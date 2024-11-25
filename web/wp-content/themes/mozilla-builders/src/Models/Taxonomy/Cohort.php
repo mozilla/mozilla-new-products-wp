@@ -7,10 +7,13 @@
 
 namespace MozillaBuilders\Models\Taxonomy;
 
+use Timber\Timber;
+use Timber\Term as TimberTerm;
+
 use MozillaBuilders\Models\PostType\Profile;
 
 /** Class */
-class Cohort {
+class Cohort extends TimberTerm {
 	const HANDLE = 'cohort';
 
 	/**
@@ -34,5 +37,27 @@ class Cohort {
 		);
 
 		register_taxonomy( self::HANDLE, array( Profile::HANDLE ), $args );
+	}
+
+	/**
+	 * Get the profiles for the cohort.
+	 *
+	 * @return array
+	 */
+	public function profiles() {
+		$args = array(
+			'post_type' => Profile::HANDLE,
+			'post_status' => 'publish',
+			'posts_per_page' => -1,
+			'tax_query' => array(
+				array(
+					'taxonomy' => self::HANDLE,
+					'field' => 'id',
+					'terms' => $this->ID,
+				),
+			),
+		);
+
+		return Timber::get_posts( $args )->to_array();
 	}
 }

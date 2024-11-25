@@ -55,6 +55,7 @@ class ThemeManager {
 		add_action( 'init', array( $this, 'register_post_types' ), 1 );
 		add_action( 'init', array( $this, 'register_taxonomies' ), 1 );
 		add_filter( 'timber/post/classmap', array( $this, 'set_post_classmap' ) );
+		add_filter( 'timber/term/classmap', array( $this, 'set_term_classmap' ) );
 		add_action( 'pre_get_posts', array( $this, 'filter_posts' ) );
 		add_filter( 'admin_footer_text', array( $this, 'add_admin_footer_credit' ) );
 
@@ -191,6 +192,21 @@ class ThemeManager {
 	}
 
 	/**
+	 * Sets classmap for posts.
+	 *
+	 * @param array $classmap The classmap.
+	 */
+	public function set_post_classmap( array $classmap ): array {
+		$custom_classmap = array(
+			'post'              => Article::class,
+			Profile::HANDLE     => Profile::class,
+			Project::HANDLE     => Project::class,
+		);
+
+		return array_merge( $classmap, $custom_classmap );
+	}
+
+	/**
 	 * Resgisers taxonomies.
 	 *
 	 * @return void
@@ -204,19 +220,20 @@ class ThemeManager {
 	}
 
 	/**
-	 * Sets classmap.
+	 * Sets the classmap for taxonomies.
 	 *
 	 * @param array $classmap The classmap.
 	 */
-	public function set_post_classmap( array $classmap ): array {
+	public function set_term_classmap( array $classmap ): array {
 		$custom_classmap = array(
-			'post'              => Article::class,
-			Profile::HANDLE     => Profile::class,
-			Project::HANDLE     => Project::class,
+			Cohort::HANDLE => Cohort::class,
+			Platform::HANDLE => Platform::class,
+			ProjectCategory::HANDLE => ProjectCategory::class,
+			Technology::HANDLE => Technology::class,
 		);
-
 		return array_merge( $classmap, $custom_classmap );
 	}
+
 	/**
 	 * Exclude password protected and unpublished posts from post results
 	 *
