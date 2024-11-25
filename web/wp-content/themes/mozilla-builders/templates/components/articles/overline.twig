@@ -1,33 +1,38 @@
 {% if overline %}
 
-{% set bg_color = color | default(overline.color) %}
+{% if post.color == 'none' %}
+  {% set bg_color = overline.color %}
+{% else %}
+  {% set bg_color = post.color ?: overline.color %}
+{% endif %}
+
 {% if bg_color == 'green' %}
   {% set overline_class = 'bg-green' %}
-{% elseif post.color == 'green-light' %}
+{% elseif bg_color == 'green-light' %}
   {% set overline_class = 'bg-green-light text-black' %}
-{% elseif post.color == 'green-darker' %}
+{% elseif bg_color == 'green-darker' %}
   {% set overline_class = 'bg-green-darker text-white' %}
-{% elseif post.color == 'orange' %}
+{% elseif bg_color == 'orange' %}
   {% set overline_class = 'bg-orange text-black' %}
-{% elseif post.color == 'orange-light' %}
+{% elseif bg_color == 'orange-light' %}
   {% set overline_class = 'bg-orange-light text-black' %}
-{% elseif post.color == 'orange-darker' %}
+{% elseif bg_color == 'orange-darker' %}
   {% set overline_class = 'bg-orange-darker text-white' %}
-{% elseif post.color == 'pink' %}
+{% elseif bg_color == 'pink' %}
   {% set overline_class = 'bg-pink text-black' %}
-{% elseif post.color == 'pink-light' %}
+{% elseif bg_color == 'pink-light' %}
   {% set overline_class = 'bg-pink-light text-black' %}
-{% elseif post.color == 'pink-darker' %}
+{% elseif bg_color == 'pink-darker' %}
   {% set overline_class = 'bg-pink-darker text-white' %}
-{% elseif post.color == 'stone' %}
+{% elseif bg_color == 'stone' %}
   {% set overline_class = 'bg-stone text-black' %}
-{% elseif post.color == 'yellow' %}
+{% elseif bg_color == 'yellow' %}
   {% set overline_class = 'bg-yellow text-black' %}
-{% elseif post.color == 'olive' %}
+{% elseif bg_color == 'olive' %}
   {% set overline_class = 'bg-olive text-black' %}
-{% elseif post.color == 'olive-dark' %}
+{% elseif bg_color == 'olive-dark' %}
   {% set overline_class = 'bg-olive-dark text-white' %}
-{% elseif post.color == 'blue-green' %}
+{% elseif bg_color == 'blue-green' %}
   {% set overline_class = 'bg-blue-green text-black' %}
 {% else %}
   {% set overline_class = 'bg-content text-main' %}
