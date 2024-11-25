@@ -106,7 +106,6 @@ module.exports = {
       },
 
       boxShadow: {
-        'inner-transparent': 'inset 0 0 0 1px transparent',
         inner: 'inset 0 0 0 1px black',
         'inner-thick': 'inset 0 0 0 4px black',
       },
