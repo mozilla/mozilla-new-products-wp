@@ -135,7 +135,7 @@
 
         <div class="col-span-full">
           <ul class="grid grid-cols-site gap-x-grid-site-gutter gap-y-8">
-            {% for profile in cohort.posts %}
+            {% for profile in cohort.profiles %}
               <li class="relative col-span-1/2 md:col-span-1/3 lg:col-span-6 xl:col-span-1/6">
                 <div class="w-full aspect-poster {% if not profile.thumbnail %}bg-content/10{% endif %}">
                   {% if profile.thumbnail %}
