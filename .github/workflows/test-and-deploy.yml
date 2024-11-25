@@ -3,10 +3,12 @@ on:
   push:
     branches:
       - main
+  release:
+    types: [created]
 
 jobs:
   deploy:
-    name: Test and deploy to WPEngine staging environment
+    name: Test and deploy to WPEngine environment
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -54,13 +56,26 @@ jobs:
       - name: Check bundlesize
         run: npm run test:bundlesize
 
+      - name: Set SFTP credentials
+        id: set-sftp-credentials
+        run: |
+          if [[ "${{ github.event_name }}" == "release" ]]; then
+            echo "SFTP_HOST=${{ secrets.SFTP_HOST_PRD }}" >> $GITHUB_ENV
+            echo "SFTP_USER=${{ secrets.SFTP_USER_PRD }}" >> $GITHUB_ENV
+            echo "SFTP_PASS=${{ secrets.SFTP_PASS_PRD }}" >> $GITHUB_ENV
+          else
+            echo "SFTP_HOST=${{ secrets.SFTP_HOST }}" >> $GITHUB_ENV
+            echo "SFTP_USER=${{ secrets.SFTP_USER }}" >> $GITHUB_ENV
+            echo "SFTP_PASS=${{ secrets.SFTP_PASS }}" >> $GITHUB_ENV
+          fi
+
       - name: Deploy theme
         uses: pressidium/lftp-mirror-action@v1
         with:
-          host: ${{ secrets.SFTP_HOST }}
+          host: ${{ env.SFTP_HOST }}
           port: 2222
-          user: ${{ secrets.SFTP_USER }}
-          pass: ${{ secrets.SFTP_PASS }}
+          user: ${{ env.SFTP_USER }}
+          pass: ${{ env.SFTP_PASS }}
 
           # lftp settings
           onlyNewer: true
@@ -70,16 +85,16 @@ jobs:
           localDir: './web/wp-content/themes/mozilla-builders'
           remoteDir: '/wp-content/themes/mozilla-builders'
           reverse: true
-          ignoreFile: './web/wp-content/themes/mozilla-builders/.lftp_ignore'
+          ignoreFile: '.lftp_ignore'
           options: '--verbose --no-perms --delete'
 
       - name: Deploy plugins
         uses: pressidium/lftp-mirror-action@v1
         with:
-          host: ${{ secrets.SFTP_HOST }}
+          host: ${{ env.SFTP_HOST }}
           port: 2222
-          user: ${{ secrets.SFTP_USER }}
-          pass: ${{ secrets.SFTP_PASS }}
+          user: ${{ env.SFTP_USER }}
+          pass: ${{ env.SFTP_PASS }}
 
           # lftp settings
           onlyNewer: true
@@ -109,7 +124,7 @@ jobs:
       - name: Install only build PHP dependencies
         env:
           PHP_DEPS_CHANGED: ${{ env.PHP_DEPS_CHANGED }}
-        if: env.PHP_DEPS_CHANGED == 'true'
+        if: env.PHP_DEPS_CHANGED == 'true' || github.event_name == 'release'
         uses: php-actions/composer@v6
         with:
           dev: no
@@ -118,13 +133,13 @@ jobs:
       - name: Deploy PHP dependencies
         env:
           PHP_DEPS_CHANGED: ${{ env.PHP_DEPS_CHANGED }}
-        if: env.PHP_DEPS_CHANGED == 'true'
+        if: env.PHP_DEPS_CHANGED == 'true' || github.event_name == 'release'
         uses: pressidium/lftp-mirror-action@v1
         with:
-          host: ${{ secrets.SFTP_HOST }}
+          host: ${{ env.SFTP_HOST }}
           port: 2222
-          user: ${{ secrets.SFTP_USER }}
-          pass: ${{ secrets.SFTP_PASS }}
+          user: ${{ env.SFTP_USER }}
+          pass: ${{ env.SFTP_PASS }}
 
           # lftp settings
           onlyNewer: true
