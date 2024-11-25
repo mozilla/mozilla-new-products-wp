@@ -436,18 +436,19 @@ body {
       }
     }
 
-    .alignleft {
-      @apply md:col-start-1 md:col-span-5 lg:col-span-6 2xl:col-span-7 md:h-0;
-    }
-    .alignright {
-      @apply md:col-start-end md:col-span-5 lg:col-span-6 2xl:col-span-7 md:h-0;
-    }
-
     // Alignment
     > figure,
     > [data-block] {
       &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
         @apply md:col-span-14 lg:col-span-12 2xl:col-span-10;
+      }
+
+      &.alignleft {
+        @apply md:col-start-1 md:col-span-5 lg:col-span-6 2xl:col-span-7 md:h-0;
+      }
+
+      &.alignright {
+        @apply md:col-start-end md:col-span-5 lg:col-span-6 2xl:col-span-7 md:h-0;
       }
 
       &.alignwide {
