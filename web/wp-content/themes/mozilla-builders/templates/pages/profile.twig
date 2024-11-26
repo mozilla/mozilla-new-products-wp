@@ -28,7 +28,7 @@
         <dt class="col-span-2 md:col-span-3 uppercase">Project{% if post.projects|length > 1 %}s{% endif %}</dt>
         <dd class="col-span-4 md:max-xl:col-span-5">
           {% for project in post.projects %}
-            <a class="hover-link" href="{{ project.link }}">{{ project.title }}</a>{% if loop.last %}{% else %}, {% endif %}
+            <a class="hover-link font-bold" href="{{ project.link }}">{{ project.title }}</a>{% if loop.last %}{% else %}, {% endif %}
           {% endfor %}
         </dd>
       </div>
@@ -37,7 +37,7 @@
       {% if post.github_username %}
       <div class="contents">
         <dt class="col-span-2 md:col-span-3 uppercase">GitHub</dt>
-        <dd class="col-span-4 md:max-xl:col-span-5"><a class="hover-link" href="https://github.com/{{ post.github_username }}">{{ post.github_username }}</a></dd>
+        <dd class="col-span-4 md:max-xl:col-span-5"><a class="hover-link font-bold" href="https://github.com/{{ post.github_username }}">{{ post.github_username }}</a></dd>
       </div>
       {% endif %}
 
@@ -46,7 +46,7 @@
         <dt class="col-span-2 md:col-span-3 uppercase">Contact</dt>
         <dd class="col-span-4 md:max-xl:col-span-5">
           {% for item in post.contacts %}
-            <a class="hover-link" href="{{ item.link }}">{{ item.label }}</a>
+            <a class="hover-link font-bold" href="{{ item.link }}">{{ item.label }}</a>
           {% endfor %}
         </dd>
       </div>
