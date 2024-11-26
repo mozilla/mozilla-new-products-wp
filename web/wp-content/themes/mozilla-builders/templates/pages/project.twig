@@ -108,31 +108,38 @@
   </section>
   {% endif %}
 
-  {% if post.discord.url or post.discord.channel_name %}
-  <section class="col-span-full md:col-span-1/2 md:max-lg:col-start-end lg:col-span-1/3 border-t border-content pt-2 flex flex-col">
+  <section class="col-span-full md:col-span-1/2 md:col-start-end lg:col-span-1/3 border-t border-content pt-2 flex flex-col">
     <h2 class="mb-6 text-xs uppercase">Contribute</h2>
 
-    <dl class="grid grid-cols-6 md:grid-cols-16 lg:grid-cols-8 gap-x-grid-site-gutter gap-y-2">
-      <div class="contents">
-        <dt class="col-span-1/2">Channel</dt>
-        <dd class="col-span-1/2 font-semibold">
-          <a href="{{ post.discord.url }}" class="hover-link">#{{ post.discord.channel_name }}</a>
-        </dd>
-      </div>
+    {% if post.discord.url or post.discord.channel_name %}
+      <dl class="grid grid-cols-6 md:grid-cols-16 lg:grid-cols-8 gap-x-grid-site-gutter gap-y-2 mb-8">
+        {% if post.discord.channel_name %}
+          <div class="contents">
+            <dt class="col-span-1/2">Channel</dt>
+            <dd class="col-span-1/2 font-semibold">
+              <a href="{{ post.discord.url }}" class="hover-link">#{{ post.discord.channel_name }}</a>
+            </dd>
+          </div>
+        {% endif %}
 
-      <div class="contents">
-        <dt class="col-span-1/2">Members</dt>
-        <dd class="col-span-1/2 font-semibold">
-          {{- post.discord.members_count|number_shorthand -}}
-        </dd>
-      </div>
-    </dl>
+        {% if post.discord.members_count %}
+          <div class="contents">
+            <dt class="col-span-1/2">Members</dt>
+            <dd class="col-span-1/2 font-semibold">
+              {{- post.discord.members_count|number_shorthand -}}
+            </dd>
+          </div>
+        {% endif %}
+      </dl>
+    {% endif %}
 
-    <div class="mt-8">
-      {% include "components/button-link.twig" with { href: post.discord.url, label: 'Join the Discord' } %}
-    </div>
+    {% if post.discord.url %}
+      {% set href = post.discord.url %}
+    {% else %}
+      {% set href = archive_links.discord %}
+    {% endif %}
+    {% include "components/button-link.twig" with { href: href, label: 'Join the Discord' } %}
   </section>
-  {% endif %}
 </div>
 
 <section>
