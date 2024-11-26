@@ -6,7 +6,7 @@
   "icon": "feedback",
   "keywords": ["form", "newsletter", "signup"],
   "acf": {
-    "mode": "preview",
+    "mode": "edit",
     "renderTemplate": "mozilla-newsletter-signup-form.php"
   },
   "attributes": {
