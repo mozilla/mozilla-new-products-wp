@@ -11,10 +11,10 @@
   },
   "attributes": {
     "align": {
-      "default": "center"
+      "default": "full"
     }
   },
   "supports": {
-    "align": ["center", "wide", "full"]
+    "align": ["full"]
   }
 }
