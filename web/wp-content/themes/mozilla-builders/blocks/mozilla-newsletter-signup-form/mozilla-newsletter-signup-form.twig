@@ -2,7 +2,7 @@
 
     <form id="newsletter-form" class="mzp-c-newsletter-form  md:grid md:grid-cols-24 gap-x-grid-site-gutter" action="https://basket.mozilla.org/news/subscribe/" method="post">
         <!-- The value for the source_url field below should match the URL of your page where the newsletter form appears-->
-        <input type="hidden" name="source_url" value="{{ site.url }}">
+        <input type="hidden" name="source_url" value="{{ current_url }}">
 
         <header class="mzp-c-newsletter-header md:col-span-10 max-md:mb-6">
             <h3 class="mzp-c-newsletter-title type-sans-md uppercase leading-tighter">{{ heading ?: 'Love the Web?' }}</h3>
