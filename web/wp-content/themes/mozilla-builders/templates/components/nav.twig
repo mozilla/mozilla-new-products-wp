@@ -6,13 +6,17 @@
       <use xlink:href="#flag"></use>
     </svg>
 
+    {% if options.flag_text %}
     <div class="flex-1 h-5 overflow-hidden relative max-md:hidden bg-action text-action-reverse max-w-80">
-      <div x-marquee="{ speed: 0.25 }" class="absolute top-1/2 left-0 -translate-y-1/2 group">
+      <div x-marquee="{ speed: 0.25 }" class="absolute top-1/2 left-0 right-0 -translate-y-1/2 group flex flex-col items-start">
         <div x-marquee:track class="animate-marquee motion-reduce:!animate-none flex" aria-hidden="true">
-          <p class="px-1 text-sm whitespace-nowrap select-none">Building in the open with open source AI. Powered by <span class="font-semibold">Mozilla</span>.</p>
+          <p class="px-1.5 text-sm whitespace-nowrap select-none">
+            {{ options.flag_text }}
+          </p>
         </div>
       </div>
     </div>
+    {% endif %}
   </div>
 
   <div class="{{ use_big_logo ? 'col-span-1/3' : 'col-span-1/3 md:col-span-1/4' }} flex justify-center">
