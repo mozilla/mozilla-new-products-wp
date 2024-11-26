@@ -133,14 +133,12 @@
       </dl>
     {% endif %}
 
-    <div class="">
-      {% if post.discord.url %}
-        {% set href = post.discord.url %}
-      {% else %}
-        {% set href = archive_links.discord %}
-      {% endif %}
-      {% include "components/button-link.twig" with { href: href, label: 'Join the Discord' } %}
-    </div>
+    {% if post.discord.url %}
+      {% set href = post.discord.url %}
+    {% else %}
+      {% set href = archive_links.discord %}
+    {% endif %}
+    {% include "components/button-link.twig" with { href: href, label: 'Join the Discord' } %}
   </section>
 </div>
 
