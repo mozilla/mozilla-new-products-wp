@@ -82,6 +82,11 @@ body {
     --color-action-secondary-reverse: var(--color-black);
     --color-action-secondary-focus: var(--color-black);
     --color-action-secondary-focus-reverse: var(--color-white);
+
+    --color-cta-main: var(--color-green);
+    --color-cta-main-text: var(--color-black);
+    --color-cta-secondary: var(--color-stone);
+    --color-cta-secondary-text: var(--color-black);
   }
 
   .theme-dark {
@@ -101,6 +106,11 @@ body {
     --color-action-secondary-reverse: var(--color-black);
     --color-action-secondary-focus: var(--color-black);
     --color-action-secondary-focus-reverse: var(--color-white);
+
+    --color-cta-main: var(--color-green);
+    --color-cta-main-text: var(--color-black);
+    --color-cta-secondary: var(--color-white);
+    --color-cta-secondary-text: var(--color-black);
   }
 }
 

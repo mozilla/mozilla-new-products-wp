@@ -67,6 +67,12 @@ module.exports = {
         focus: color('action-secondary-focus'),
         'focus-reverse': color('action-secondary-focus-reverse'),
       },
+      cta: {
+        DEFAULT: color('cta-main'),
+        text: color('cta-main-text'),
+        secondary: color('cta-secondary'),
+        'secondary-text': color('cta-secondary-text'),
+      },
     },
 
     fontFamily: {

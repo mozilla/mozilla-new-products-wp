@@ -1,6 +1,6 @@
 {
-  "key": "group_673572bf8e850",
-  "title": "CTAs",
+  "key": "group_672b7fcbd9b55",
+  "title": "Project Archive",
   "fields": [
     {
       "key": "field_672b7fcce168d",
@@ -23,7 +23,6 @@
       "collapsed": "",
       "button_label": "Add CTA",
       "rows_per_page": 20,
-      "acfe_repeater_stylised_button": 0,
       "sub_fields": [
         {
           "key": "field_672b8003e168e",
@@ -157,38 +156,25 @@
           "search_placeholder": "",
           "parent_repeater": "field_672b7fcce168d"
         }
-      ]
+      ],
+      "acfe_repeater_stylised_button": 0
     }
   ],
   "location": [
     [
       {
-        "param": "page_template",
-        "operator": "==",
-        "value": "page-accelerator.php"
-      }
-    ],
-    [
-      {
-        "param": "page_template",
+        "param": "post_template",
         "operator": "==",
         "value": "page-projects.php"
       }
-    ],
-    [
-      {
-        "param": "post_type",
-        "operator": "==",
-        "value": "page"
-      }
     ]
   ],
-  "menu_order": 1,
+  "menu_order": 0,
   "position": "normal",
   "style": "seamless",
-  "label_placement": "left",
+  "label_placement": "top",
   "instruction_placement": "label",
-  "hide_on_screen": "",
+  "hide_on_screen": ["block_editor", "the_content", "excerpt"],
   "active": true,
   "description": "",
   "show_in_rest": 0,
@@ -197,5 +183,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1732649383
+  "modified": 1732634634
 }
