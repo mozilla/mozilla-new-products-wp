@@ -8,6 +8,7 @@
 namespace MozillaBuilders\Managers;
 
 use Timber\Timber;
+use Timber\URLHelper;
 use MozillaBuilders\Models\PostType\Project;
 
 /** Class */
@@ -48,8 +49,9 @@ class ContextManager {
 	 * @return array
 	 */
 	public function is_home( $context ) {
-		$context['is_home'] = is_home();
+		$context['is_home']       = is_home();
 		$context['is_front_page'] = is_front_page();
+		$context['current_url']   = URLHelper::get_current_url();
 
 		return $context;
 	}

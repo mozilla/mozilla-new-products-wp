@@ -1,0 +1,20 @@
+{
+  "name": "acf/mozilla-newsletter-signup-form",
+  "title": "Mozilla Newsletter Signup Form",
+  "description": "A custom block for embedding the Mozilla Newsletter signup form.",
+  "category": "widgets",
+  "icon": "feedback",
+  "keywords": ["form", "newsletter", "signup"],
+  "acf": {
+    "mode": "edit",
+    "renderTemplate": "mozilla-newsletter-signup-form.php"
+  },
+  "attributes": {
+    "align": {
+      "default": "full"
+    }
+  },
+  "supports": {
+    "align": ["full"]
+  }
+}
