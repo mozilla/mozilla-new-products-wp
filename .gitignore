@@ -37,6 +37,7 @@ web/**
 # Unignore composer.
 !web/composer.json
 !web/composer.lock
+!web/auth.json.sample
 
 # Unignore the web/wp-content/themes directory and its contents
 !web/wp-content/
@@ -55,6 +56,8 @@ web/wp-content/themes/index.php
 !web/wp-content/plugins/.gitkeep
 !web/wp-content/plugins/acf-extended/
 !web/wp-content/plugins/acf-extended/**/*
+!web/wp-content/plugins/mozilla-scheduled-tasks/
+!web/wp-content/plugins/mozilla-scheduled-tasks/**/*
 
 # Turborepo
 .turbo

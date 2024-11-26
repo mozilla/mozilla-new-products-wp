@@ -1,0 +1,413 @@
+{
+  "key": "group_673d78e04ac0f",
+  "title": "Front Page",
+  "fields": [
+    {
+      "key": "field_673d78e0ceee9",
+      "label": "Topper",
+      "name": "topper",
+      "aria-label": "",
+      "type": "group",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "layout": "block",
+      "acfe_seamless_style": 0,
+      "acfe_group_modal": 0,
+      "acfe_group_modal_close": 0,
+      "acfe_group_modal_button": "",
+      "acfe_group_modal_size": "large",
+      "sub_fields": [
+        {
+          "key": "field_673d78f7ceeea",
+          "label": "Featured Articles",
+          "name": "featured_articles",
+          "aria-label": "",
+          "type": "relationship",
+          "instructions": "Choose 6 posts to feature. <i>Choose none to exclude the section.</i>",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "post_type": ["post"],
+          "post_status": ["publish"],
+          "taxonomy": "",
+          "filters": ["search", "post_type", "taxonomy"],
+          "return_format": "id",
+          "acfe_bidirectional": {
+            "acfe_bidirectional_enabled": "0"
+          },
+          "min": 6,
+          "max": 6,
+          "allow_in_bindings": 0,
+          "elements": "",
+          "bidirectional": 0,
+          "bidirectional_target": []
+        },
+        {
+          "key": "field_673d790cceeeb",
+          "label": "New Promotion",
+          "name": "new_promotion",
+          "aria-label": "",
+          "type": "group",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "layout": "block",
+          "acfe_seamless_style": 0,
+          "acfe_group_modal": 0,
+          "acfe_group_modal_close": 0,
+          "acfe_group_modal_button": "",
+          "acfe_group_modal_size": "large",
+          "sub_fields": [
+            {
+              "key": "field_673d7923ceeec",
+              "label": "Overline",
+              "name": "overline",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "allow_in_bindings": 0,
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_673d792dceeed",
+              "label": "Prompt",
+              "name": "prompt",
+              "aria-label": "",
+              "type": "wysiwyg",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "allow_in_bindings": 0,
+              "tabs": "visual",
+              "toolbar": "bold_italic_link",
+              "media_upload": 0,
+              "delay": 0
+            },
+            {
+              "key": "field_673d7940ceeee",
+              "label": "Image",
+              "name": "image",
+              "aria-label": "",
+              "type": "image",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "uploader": "",
+              "return_format": "id",
+              "library": "all",
+              "acfe_thumbnail": 0,
+              "min_width": "",
+              "min_height": "",
+              "min_size": "",
+              "max_width": "",
+              "max_height": "",
+              "max_size": "",
+              "mime_types": "",
+              "allow_in_bindings": 0,
+              "preview_size": "medium"
+            }
+          ]
+        },
+        {
+          "key": "field_673d7959ceeef",
+          "label": "CTA label",
+          "name": "cta_label",
+          "aria-label": "",
+          "type": "text",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "maxlength": "",
+          "allow_in_bindings": 1,
+          "placeholder": "",
+          "prepend": "",
+          "append": ""
+        }
+      ]
+    },
+    {
+      "key": "field_673d84e554107",
+      "label": "Builders",
+      "name": "builders",
+      "aria-label": "",
+      "type": "group",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "layout": "block",
+      "acfe_seamless_style": 0,
+      "acfe_group_modal": 0,
+      "acfe_group_modal_close": 0,
+      "acfe_group_modal_button": "",
+      "acfe_group_modal_size": "large",
+      "sub_fields": [
+        {
+          "key": "field_673d84eb54108",
+          "label": "Headline",
+          "name": "headline",
+          "aria-label": "",
+          "type": "text",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "maxlength": "",
+          "allow_in_bindings": 0,
+          "placeholder": "",
+          "prepend": "",
+          "append": ""
+        },
+        {
+          "key": "field_673d84f154109",
+          "label": "People",
+          "name": "people",
+          "aria-label": "",
+          "type": "relationship",
+          "instructions": "Choose 4 to 6 profiles to feature. <i>Choose none to exclude the section.</i>",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "post_type": ["profile"],
+          "post_status": ["publish"],
+          "taxonomy": "",
+          "filters": ["search", "post_type", "taxonomy"],
+          "return_format": "id",
+          "acfe_bidirectional": {
+            "acfe_bidirectional_enabled": "0"
+          },
+          "min": 4,
+          "max": 6,
+          "allow_in_bindings": 0,
+          "elements": "",
+          "bidirectional": 0,
+          "bidirectional_target": []
+        },
+        {
+          "key": "field_673d85055410a",
+          "label": "CTA Label",
+          "name": "cta_label",
+          "aria-label": "",
+          "type": "text",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "maxlength": "",
+          "allow_in_bindings": 0,
+          "placeholder": "",
+          "prepend": "",
+          "append": ""
+        }
+      ]
+    },
+    {
+      "key": "field_673d85c2daf14",
+      "label": "Secondary Featured Articles",
+      "name": "secondary_featured_articles",
+      "aria-label": "",
+      "type": "relationship",
+      "instructions": "Choose 4 more articles to feature. <i>Choose none to exclude the section.</i>",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "post_type": ["post"],
+      "post_status": ["publish"],
+      "taxonomy": "",
+      "filters": ["search", "post_type", "taxonomy"],
+      "return_format": "id",
+      "acfe_bidirectional": {
+        "acfe_bidirectional_enabled": "0"
+      },
+      "min": 4,
+      "max": 4,
+      "allow_in_bindings": 0,
+      "elements": "",
+      "bidirectional": 0,
+      "bidirectional_target": []
+    },
+    {
+      "key": "field_673d85f019676",
+      "label": "Collaborations",
+      "name": "collaborations",
+      "aria-label": "",
+      "type": "group",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "layout": "block",
+      "acfe_seamless_style": 0,
+      "acfe_group_modal": 0,
+      "acfe_group_modal_close": 0,
+      "acfe_group_modal_button": "",
+      "acfe_group_modal_size": "large",
+      "sub_fields": [
+        {
+          "key": "field_673d85fa19677",
+          "label": "Headline",
+          "name": "headline",
+          "aria-label": "",
+          "type": "text",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "maxlength": "",
+          "allow_in_bindings": 0,
+          "placeholder": "",
+          "prepend": "",
+          "append": ""
+        },
+        {
+          "key": "field_673d860519678",
+          "label": "Projects",
+          "name": "projects",
+          "aria-label": "",
+          "type": "relationship",
+          "instructions": "Choose 4 projects to feature. <i>Choose none to exclude the section.</i>",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "post_type": ["project"],
+          "post_status": ["publish"],
+          "taxonomy": "",
+          "filters": ["search", "post_type", "taxonomy"],
+          "return_format": "id",
+          "acfe_bidirectional": {
+            "acfe_bidirectional_enabled": "0"
+          },
+          "min": 4,
+          "max": 4,
+          "allow_in_bindings": 0,
+          "elements": "",
+          "bidirectional": 0,
+          "bidirectional_target": []
+        },
+        {
+          "key": "field_673d861819679",
+          "label": "CTA label",
+          "name": "cta_label",
+          "aria-label": "",
+          "type": "text",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "maxlength": "",
+          "allow_in_bindings": 0,
+          "placeholder": "",
+          "prepend": "",
+          "append": ""
+        }
+      ]
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "page_type",
+        "operator": "==",
+        "value": "front_page"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "seamless",
+  "label_placement": "left",
+  "instruction_placement": "label",
+  "hide_on_screen": ["block_editor", "the_content"],
+  "active": true,
+  "description": "",
+  "show_in_rest": 0,
+  "acfe_display_title": "",
+  "acfe_autosync": ["json"],
+  "acfe_form": 0,
+  "acfe_meta": "",
+  "acfe_note": "",
+  "modified": 1732130847
+}

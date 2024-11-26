@@ -121,6 +121,10 @@ body {
     @apply text-2xl font-headline-condensed font-semibold leading-tight;
   }
 
+  .type-headline-md {
+    @apply text-xl font-headline-condensed font-semibold leading-tight;
+  }
+
   .type-sans-3xl {
     @apply text-10xl font-sans font-light leading-tighter tracking-tighter;
   }
@@ -172,7 +176,7 @@ body {
   }
 
   .mask-critter {
-    mask: url('data:image/svg+xml;utf8,<svg viewBox="0 0 196 200" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M118.001 34C120.501 51.5 112.001 80 80.501 85.5C80.501 98.5 96.501 106 108.501 105.5C110.139 105.432 112.292 105.277 114.82 105.096C130.817 103.947 161.813 101.721 172 113.5C173.241 114.935 174.368 116.574 175.39 118.381C175.437 118.368 175.488 118.354 175.541 118.34C177.529 117.807 183.608 116.177 188.5 101.5C189.5 98.5 186 88 183 84.0088C177.075 76.1257 184.5 77.5001 187.5 80.5104C187.585 80.596 187.687 80.6954 187.803 80.8088C190.081 83.0404 197.879 90.6771 195.5 104C193 118 187.5 129.5 181.5 134.511C181.43 134.569 181.36 134.618 181.29 134.656C186.509 157.263 184.727 186.277 184 191C183 197.5 180 198.5 173.5 199C167 199.5 164.5 198 163 191C161.646 184.681 161 166.833 161.5 158.5L140.5 163.5C141 171.333 141.7 188.3 140.5 193.5C139 200 132.5 199 129.5 198.5C122.151 197.275 121.487 194.652 120.909 192.366C120.789 191.891 120.672 191.43 120.5 191C119.7 189 119.834 173.167 120 165.5C118.884 165.556 117.563 165.686 116.056 165.835L116.055 165.835C113.058 166.131 109.324 166.5 105 166.5C100.98 166.5 94.3335 166 91.5002 165.5C92.3335 172.333 93.5002 187.3 91.5002 192.5C90.5386 195 89 196.5 83.5 196.5C76.4464 196.5 75.8567 193.846 75.1396 190.619C75.0942 190.415 75.0483 190.208 75.0002 190C73.5 183.5 73.8335 169.833 75.0002 163.5L60.5002 160C61.0002 168 61.7002 185.4 60.5002 191C59.2198 196.975 55.0245 196.757 51.3359 196.565C50.7033 196.532 50.0857 196.5 49.5002 196.5C49.308 196.5 49.1159 196.501 48.9241 196.502C45.0928 196.525 41.3572 196.547 38.5002 187.5C36.1002 179.9 38.8335 122 40.5002 94C28.167 91.5 3.00073 81.1 1.00073 59.5C-1.49927 32.5 10.5007 9.99997 47.0007 2.99997C83.5007 -4.00003 116.002 6.99997 118.001 34ZM35.5 58C44.0604 58 51 51.732 51 44C51 36.268 44.0604 30 35.5 30C26.9396 30 20 36.268 20 44C20 51.732 26.9396 58 35.5 58ZM97 44C97 51.732 89.3888 58 80 58C70.6112 58 63 51.732 63 44C63 36.268 70.6112 30 80 30C89.3888 30 97 36.268 97 44Z" fill="currentColor"/></svg>');
+    mask: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M119.317 34.0566C121.817 51.5566 113.317 80.0566 81.8174 85.5566C81.8174 98.5566 97.8174 106.057 109.817 105.557C111.455 105.488 113.608 105.334 116.136 105.152C132.133 104.003 163.129 101.777 173.317 113.557C174.557 114.991 175.684 116.631 176.706 118.437C176.754 118.424 176.804 118.411 176.858 118.396C178.845 117.863 184.924 116.233 189.816 101.557C190.816 98.5566 187.316 88.0566 184.316 84.0654C178.391 76.1824 185.816 77.5567 188.816 80.5671C188.902 80.6526 189.003 80.7521 189.119 80.8655C191.398 83.0971 199.195 90.7338 196.816 104.057C194.316 118.057 188.816 129.557 182.816 134.568C182.747 134.626 182.677 134.674 182.607 134.713C187.826 157.319 186.043 186.333 185.316 191.057C184.316 197.557 181.317 198.557 174.817 199.057C168.317 199.557 165.816 198.057 164.317 191.057C162.963 184.738 162.317 166.89 162.817 158.557L141.817 163.557C142.317 171.39 143.017 188.357 141.817 193.557C140.317 200.057 133.816 199.057 130.816 198.557C123.467 197.332 122.803 194.708 122.225 192.423C122.105 191.948 121.989 191.487 121.817 191.057C121.017 189.057 121.15 173.223 121.317 165.557C120.201 165.612 118.88 165.743 117.372 165.892L117.372 165.892C114.375 166.188 110.641 166.557 106.317 166.557C102.297 166.557 95.6499 166.057 92.8166 165.557C93.6499 172.39 94.8166 187.357 92.8166 192.557C91.855 195.057 90.3164 196.557 84.8164 196.557C77.7628 196.557 77.1731 193.903 76.456 190.676C76.4106 190.471 76.3647 190.265 76.3166 190.057C74.8164 183.557 75.1499 169.89 76.3166 163.557L61.8166 160.057C62.3166 168.057 63.0166 185.457 61.8166 191.057C60.5362 197.032 56.341 196.814 52.6523 196.622C52.0197 196.589 51.4021 196.557 50.8166 196.557C50.6244 196.557 50.4323 196.558 50.2405 196.559C46.4092 196.582 42.6736 196.604 39.8166 187.557C37.4166 179.957 40.1499 122.057 41.8166 94.0566C29.4834 91.5566 4.31714 81.1566 2.31714 59.5566C-0.182861 32.5566 11.8171 10.0566 48.3171 3.05661C84.8171 -3.94339 117.318 7.05661 119.317 34.0566ZM36.8164 58.0566C45.3768 58.0566 52.3164 51.7886 52.3164 44.0566C52.3164 36.3247 45.3768 30.0566 36.8164 30.0566C28.256 30.0566 21.3164 36.3247 21.3164 44.0566C21.3164 51.7886 28.256 58.0566 36.8164 58.0566ZM98.3164 44.0566C98.3164 51.7886 90.7052 58.0566 81.3164 58.0566C71.9276 58.0566 64.3164 51.7886 64.3164 44.0566C64.3164 36.3247 71.9276 30.0566 81.3164 30.0566C90.7052 30.0566 98.3164 36.3247 98.3164 44.0566Z" fill="currentColor"/></svg>');
   }
 
   .hover-link {
@@ -415,13 +419,13 @@ body {
     > ul,
     > ol,
     hr {
-      @apply md:col-span-16 lg:col-span-12 2xl:col-span-10;
+      @apply md:col-span-14 lg:col-span-12 2xl:col-span-10;
     }
 
     // Paragraphs
     > p {
       &:first-child:is(.lede *) {
-        @apply type-headline-lg mb-2 md:mb-6 md:col-span-18 lg:col-span-14;
+        @apply type-headline-lg mb-2 md:mb-6 lg:col-span-14;
       }
     }
 
@@ -434,9 +438,18 @@ body {
 
     // Alignment
     > figure,
-    > [data-block] {
-      &:not(.alignwide):not(.alignfull) {
-        @apply md:col-span-16 lg:col-span-12 2xl:col-span-10;
+    > [data-block],
+    > .wp-block-file {
+      &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
+        @apply md:col-span-14 lg:col-span-12 2xl:col-span-10;
+      }
+
+      &.alignleft {
+        @apply md:col-start-1 md:col-span-5 lg:col-span-6 md:h-0;
+      }
+
+      &.alignright {
+        @apply md:col-start-end md:col-span-5 lg:col-span-6 md:h-0;
       }
 
       &.alignwide {
@@ -477,8 +490,20 @@ body {
         @apply type-headline-lg absolute top-0.5 left-0 block shrink-0 bg-current mask-quote size-[0.9em];
       }
 
-      &:not(.alignwide):not(.alignfull) {
-        @apply md:col-span-16 lg:col-span-12 2xl:col-span-10;
+      &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
+        @apply md:col-span-14 lg:col-span-12 2xl:col-span-10;
+      }
+
+      &.alignleft,
+      &.alignright {
+        &::before {
+          content: '';
+          @apply md:max-2xl:type-headline-md 2xl:type-headline-lg md:top-1 xl:top-2 md:size-[0.85em];
+        }
+
+        p {
+          @apply md:max-2xl:type-headline-md 2xl:type-headline-lg 2xl:leading-tighter md:indent-[calc(0.042*var(--100vw))];
+        }
       }
 
       &.alignwide {
@@ -546,8 +571,8 @@ body {
     figure.wp-block-image,
     figure.wp-block-video,
     figure.wp-block-embed {
-      &:not(.alignwide):not(.alignfull) {
-        @apply md:col-span-16 lg:col-span-12 2xl:col-span-10;
+      &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
+        @apply md:col-span-14 lg:col-span-12 2xl:col-span-10;
       }
 
       img,
@@ -576,7 +601,7 @@ body {
 
     // Buttons
     .wp-block-buttons {
-      @apply flex flex-col gap-3 md:col-span-16 lg:col-span-12 2xl:col-span-10;
+      @apply flex flex-col gap-3 md:col-span-14 lg:col-span-12 2xl:col-span-10;
     }
     .wp-block-button {
       @apply flex justify-center w-full;
@@ -592,7 +617,22 @@ body {
 
     // Files
     .wp-block-file {
-      @apply flex md:col-span-16 lg:col-span-12 2xl:col-span-10;
+      @apply flex flex-col;
+
+      &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
+        @apply md:col-span-14 lg:col-span-12 2xl:col-span-10;
+      }
+
+      &.alignleft,
+      &.alignright {
+        a:not(.wp-block-file__button) {
+          @apply md:max-lg:flex-col md:max-xl:p-6 md:max-xl:gap-4;
+
+          &:has(+ a.wp-block-file__button) {
+            @apply md:max-lg:py-6;
+          }
+        }
+      }
 
       a:not(.wp-block-file__button) {
         @apply flex items-center justify-between gap-10 w-full p-10;
@@ -618,15 +658,27 @@ body {
 
     // Related Articles
     div[data-block='related-articles'] {
-      &:not(.alignwide):not(.alignfull) {
-        @apply md:col-span-16 lg:col-span-12 2xl:col-span-10;
+      &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
+        @apply md:col-span-14 lg:col-span-12 2xl:col-span-10;
+      }
+    }
+
+    // Header Text
+    div[data-block='header-text-small'] {
+      &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
+        @apply md:col-span-18 md:col-start-4 lg:col-span-16 lg:col-start-5 2xl:col-span-12 2xl:col-start-7;
+      }
+    }
+    div[data-block='header-text-large'] {
+      &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
+        @apply md:col-span-full;
       }
     }
 
     // Cover
     .wp-block-cover {
-      &:not(.alignwide):not(.alignfull) {
-        @apply md:col-span-16 lg:col-span-12 2xl:col-span-10;
+      &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
+        @apply md:col-span-14 lg:col-span-12 2xl:col-span-10;
       }
 
       &.alignwide {
@@ -675,7 +727,7 @@ body {
 
     // Details
     .wp-block-details {
-      @apply flex flex-col gap-3 md:col-span-16 lg:col-span-12 2xl:col-span-10 pl-8 relative;
+      @apply flex flex-col gap-3 md:col-span-14 lg:col-span-12 2xl:col-span-10 pl-8 relative;
       @apply prose;
 
       &::before {

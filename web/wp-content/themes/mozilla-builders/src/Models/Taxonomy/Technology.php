@@ -7,10 +7,13 @@
 
 namespace MozillaBuilders\Models\Taxonomy;
 
+use Timber\Timber;
+use Timber\Term as TimberTerm;
+
 use MozillaBuilders\Models\PostType\Project;
 
 /** Class */
-class Technology {
+class Technology extends TimberTerm {
 	const HANDLE = 'technology';
 
 	/**

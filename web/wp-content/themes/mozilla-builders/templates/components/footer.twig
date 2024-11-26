@@ -1,15 +1,29 @@
-<footer class="mt-24 pb-4 grid grid-site gap-4 centered-page">
+<footer class="mt-12 md:mt-24 pb-4 grid grid-site gap-4 centered-page">
+  <div class="col-span-full border-b border-content mb-6 lg:mb-8">
+    {% for section in options.footer_links_section %}
+    <div class="flex max-md:flex-col max-md:py-2 border-t border-content py-1.5">
+      <h2 class="text-sm font-bold md:leading-3 uppercase whitespace-nowrap">{{ section.footer_links_section_heading }}</h2>
+      <ul class="flex max-md:flex-col md:justify-around md:items-center w-full">
+        {% for item in section.footer_links_items %}
+          <li class="text-sm md:leading-3">
+            <a href="{{ item.footer_links_item_link.url }}" class="uppercase transition-colors hover:bg-spot hover:text-black">{{ item.footer_links_item_link.name ?: item.footer_links_item_link.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  </div>
   <svg class="col-span-full aspect-mozilla-logo" aria-label="Builders">
     <use xlink:href="#mozillalogo"></use>
   </svg>
 
   <div class="col-span-full flex items-start justify-between text-xs uppercase font-semibold gap-6">
-    <p class="whitespace-nowrap"><a href="https://mozilla.org/">Mozilla</a> &copy; {{ now|date('Y') }}</p>
+    <p class="max-md:w-1/2 whitespace-nowrap"><a href="https://mozilla.org/">Mozilla</a> &copy; {{ now|date('Y') }}</p>
 
-    <ul class="flex flex-wrap items-center justify-end gap-x-6 gap-y-1.5 text-right">
-      <li><a href="#">Terms and Services</a></li>
-      <li><a href="#">Accessibility</a></li>
-      <li><a href="#">Privacy Policy</a></li>
+    <ul class="max-md:w-1/2 flex flex-wrap max-md:flex-col md:items-center justify-end md:gap-x-6 gap-y-1.5 text-right">
+      {% for item in primary_footer_menu.items %}
+        <li class="text-xs leading-none"><a href="{{ item.url }}" class=" transition-colors hover:bg-spot hover:text-black">{{ item.name }}</a></li>
+      {% endfor %}
     </ul>
   </div>
 </footer>

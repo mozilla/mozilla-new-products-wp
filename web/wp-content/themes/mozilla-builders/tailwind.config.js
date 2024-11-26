@@ -114,6 +114,10 @@ module.exports = {
         arrow: `url('data:image/svg+xml,<svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M69.4914 37.7055L35.9853 71.2097L2.45057 37.675L6.99568 33.1299L32.834 58.9683L32.8349 3.65135L39.1375 3.65125L39.1366 58.9676L65.0628 33.2765L69.4914 37.7055Z" fill="currentColor"/></svg>')`,
       },
 
+      flex: {
+        2: '2 2 0%',
+      },
+
       fontSize: {
         // 10px (@640px) -> 12px (@1536px)
         xs: 'clamp(.625rem, 1vw + 0.7rem, .75rem)',

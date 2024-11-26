@@ -30,8 +30,10 @@
   {% set bg_class = 'bg-content text-main' %}
 {% endif %}
 
-<div class="relative {{ bg_class }} p-4 min-h-96 flex-1 flex flex-col justify-between items-center">
-  <h3 class="type-headline-lg text-center text-balance leading-tighter">
+{% set size = size|default('md') %}
+
+<div class="relative {{ bg_class }} {{ class|default('min-h-96') }} p-4 flex-1 flex flex-col justify-between items-center">
+  <h3 class="{{ size == 'md' ? 'type-headline-lg' : 'type-headline-2xl md:type-headline-xl' }} text-center text-balance leading-tighter">
     <a class="before:absolute before:inset-0 before:z-10 hover:before:shadow-inner" href="{{ post.link }}">{{ post.title }}</a>
   </h3>
 
@@ -39,5 +41,5 @@
     {% include 'components/articles/overline.twig' with { overline: post.categories[0], color: post.color } %}
   </div>
 
-  <p class="type-sans-sm text-center text-balance">{{ post.subtitle }}</p>
-</div
+  <p class="{{ size == 'md' ? 'type-sans-sm' : 'type-sans-md' }} text-center text-balance">{{ post.subtitle }}</p>
+</div>

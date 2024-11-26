@@ -49,6 +49,7 @@ class ContextManager {
 	 */
 	public function is_home( $context ) {
 		$context['is_home'] = is_home();
+		$context['is_front_page'] = is_front_page();
 
 		return $context;
 	}
@@ -61,7 +62,6 @@ class ContextManager {
 	 * @return array
 	 */
 	public function menus( $context ) {
-		$context['nav_topics_menu']     = Timber::get_menu( 'nav_topics_menu' );
 		$context['nav_pages_menu']      = Timber::get_menu( 'nav_pages_menu' );
 		$context['primary_footer_menu'] = Timber::get_menu( 'primary_footer_menu' );
 		return $context;
@@ -85,14 +85,27 @@ class ContextManager {
 				),
 			),
 		);
-
 		$project_archive_posts = Timber::get_posts( $project_archive_args )->to_array();
 		$project_archive_link  = ! empty( $project_archive_posts ) ? $project_archive_posts[0]->link() : null;
+
+		$accelerator_page_args = array(
+			'post_type'      => 'page',
+			'posts_per_page' => 1,
+			'meta_query'     => array(
+				array(
+					'key'   => '_wp_page_template',
+					'value' => 'page-accelerator.php',
+				),
+			),
+		);
+		$accelerator_page_posts = Timber::get_posts( $accelerator_page_args )->to_array();
+		$accelerator_page_link  = ! empty( $accelerator_page_posts ) ? $accelerator_page_posts[0]->link() : null;
 
 		$context['archive_links'] = array(
 			'posts'    => get_post_type_archive_link( 'post' ),
 			'projects' => $project_archive_link,
-			'discord'  => 'https://discord.com',
+			'accelerator' => $accelerator_page_link,
+			'discord'  => 'https://discord.gg/gydMdRK2zV',
 		);
 		return $context;
 	}

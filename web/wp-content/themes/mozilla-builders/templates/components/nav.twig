@@ -1,5 +1,7 @@
+{% set use_big_logo = is_front_page %}
+
 <nav class="grid grid-site py-site centered-page relative z-10">
-  <div class="flex-1 flex gap-1 items-center justify-start col-span-1/3 md:col-span-3/8">
+  <div class="flex-1 flex gap-1 {{ use_big_logo ? 'items-start mt-2 col-span-1/3' : 'items-center col-span-1/3 md:col-span-3/8' }} justify-start">
     <svg class="size-5 shrink-0 text-content">
       <use xlink:href="#flag"></use>
     </svg>
@@ -13,16 +15,16 @@
     </div>
   </div>
 
-  <div class="col-span-1/3 md:col-span-1/4 flex justify-center">
-    <a href="{{ site.url }}" class="md:flex md:items-center">
+  <div class="{{ use_big_logo ? 'col-span-1/3' : 'col-span-1/3 md:col-span-1/4' }} flex justify-center">
+    <a href="{{ site.url }}" class="md:flex md:items-center {{ use_big_logo ? 'md:w-full' }}">
       <span class="sr-only">Mozilla Builders</span>
-      <svg class="w-40 aspect-logo">
+      <svg class="{{ use_big_logo ? 'w-52 md:w-full' : 'w-40' }} aspect-logo">
         <use xlink:href="#logo"></use>
       </svg>
     </a>
   </div>
 
-  <div class=" flex-1 flex items-center justify-end gap-1 col-span-1/3 md:col-span-3/8 lg:gap-4 xl:gap-6 md:max-lg:flex-col md:max-lg:items-end">
+  <div class=" flex-1 flex {{ use_big_logo ? 'items-start mt-2 col-span-1/3 md:col-span-1/3' : 'items-center col-span-1/3 md:col-span-3/8' }} justify-end gap-1 lg:gap-4 xl:gap-6 md:max-lg:flex-col md:max-lg:items-end">
     <ul class="flex flex-wrap justify-end items-center gap-2 lg:gap-4 xl:gap-6 gap-y-1 -mt-px max-md:hidden">
       {% for item in nav_pages_menu.items %}
       <li class="text-right">

@@ -1,0 +1,47 @@
+{% if posts is not empty %}
+
+<section class="centered-page grid grid-site gap-y-12">
+  <div class="col-span-full md:col-span-16 lg:col-start-2 lg:col-span-10 flex-1 flex flex-col justify-center">
+    <div class="w-full">
+      {% if posts.count >= 1 %}
+          {% include [
+            'components/articles/previews/preview--' ~ posts[0].topper_type|default('text_only') ~ '-feature.twig',
+            'components/articles/previews/preview--' ~ posts[0].topper_type|default('text_only') ~ '.twig'
+          ] with { post: posts[0], class: 'aspect-[4/5]', size: 'lg' } %}
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="col-span-4 md:col-span-8 lg:col-start-13 lg:col-span-6 flex-1 flex flex-col justify-center">
+    <div class="w-full">
+      {% if posts.count >= 2 %}
+        {% include [
+          'components/articles/previews/preview--' ~ posts[1].topper_type|default('text_only') ~ '-alt.twig',
+          'components/articles/previews/preview--' ~ posts[1].topper_type|default('text_only') ~ '.twig'
+        ] with { post: posts[1], class: 'aspect-[4/5]' } %}
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="max-lg:contents lg:col-start-19 lg:col-span-6 flex-1 flex flex-col justify-center gap-y-12">
+    <div class="w-full max-md:col-span-4 max-md:col-start-3 max-lg:col-span-8">
+      {% if posts.count >= 3 %}
+        {% include [
+          'components/articles/previews/preview--' ~ posts[2].topper_type|default('text_only') ~ '-alt.twig',
+          'components/articles/previews/preview--' ~ posts[2].topper_type|default('text_only') ~ '.twig'
+        ] with { post: posts[2], class: 'aspect-[4/5]' } %}
+      {% endif %}
+    </div>
+
+    <div class="w-full max-md:col-span-4 max-lg:col-span-16">
+      {% if posts.count >= 4 %}
+        {% include [
+          'components/articles/previews/preview--' ~ posts[3].topper_type|default('text_only') ~ '-alt.twig',
+          'components/articles/previews/preview--' ~ posts[3].topper_type|default('text_only') ~ '.twig'
+        ] with { post: posts[3], class: 'aspect-[4/5]' } %}
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% endif %}

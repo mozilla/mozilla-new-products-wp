@@ -22,15 +22,22 @@
 
   <div class="col-span-full md:col-span-8 xl:col-span-7 md:col-start-17 my-8 md:mb-0 flex flex-col justify-end max-md:order-3">
     <dl class="grid grid-cols-6 md:grid-cols-8 xl:grid-cols-7 gap-x-grid-site-gutter gap-y-1">
+
+      {% if post.projects %}
       <div class="contents">
-        <dt class="col-span-2 md:col-span-3 uppercase">Cohort</dt>
-        <dd class="col-span-4 md:max-xl:col-span-5 flex items-center">22<span class="inline-flex w-8 border-t border-content" aria-label="through"></span>23</dd>
+        <dt class="col-span-2 md:col-span-3 uppercase">Project{% if post.projects|length > 1 %}s{% endif %}</dt>
+        <dd class="col-span-4 md:max-xl:col-span-5">
+          {% for project in post.projects %}
+            <a class="hover-link font-bold" href="{{ project.link }}">{{ project.title }}</a>{% if loop.last %}{% else %}, {% endif %}
+          {% endfor %}
+        </dd>
       </div>
+      {% endif %}
 
       {% if post.github_username %}
       <div class="contents">
         <dt class="col-span-2 md:col-span-3 uppercase">GitHub</dt>
-        <dd class="col-span-4 md:max-xl:col-span-5"><a class="hover-link" href="https://github.com/{{ post.github_username }}">{{ post.github_username }}</a></dd>
+        <dd class="col-span-4 md:max-xl:col-span-5"><a class="hover-link font-bold" href="https://github.com/{{ post.github_username }}">{{ post.github_username }}</a></dd>
       </div>
       {% endif %}
 
@@ -39,7 +46,7 @@
         <dt class="col-span-2 md:col-span-3 uppercase">Contact</dt>
         <dd class="col-span-4 md:max-xl:col-span-5">
           {% for item in post.contacts %}
-            <a class="hover-link" href="{{ item.link }}">{{ item.label }}</a>
+            <a class="hover-link font-bold" href="{{ item.link }}">{{ item.label }}</a>
           {% endfor %}
         </dd>
       </div>
@@ -48,44 +55,65 @@
   </div>
 </header>
 
-{% if post.project_description %}
 <section class="grid grid-site centered-page">
-  <div class="mt-12 md:mt-24 col-span-full md:col-span-16 md:col-start-9 lg:col-span-12 lg:col-start-13 xl:col-start-13 xl:col-span-11">
-    <div class="md:grid md:grid-cols-16 lg:grid-cols-12 xl:grid-cols-11 md:gap-x-grid-site-gutter">
-      <h2 class="max-md:mb-4 md:col-span-4 xl:col-span-3 md:col-start-1 max-md:indent-8 font-bold uppercase">Project</h2>
-      <div class="md:col-span-12 lg:col-span-8 xl:col-span-8 md:col-start-5 xl:col-start-4 prose js-hang-punc">
-        {{ post.project_description }}
-      </div>
-    </div>
-  </div>
-</section>
-{% endif %}
 
-{% if post.collaborators %}
-<section class="grid grid-site centered-page">
-  <div class="mt-12 md:mt-24 col-span-full md:col-span-16 md:col-start-9 lg:col-span-12 lg:col-start-13 xl:col-start-13 xl:col-span-11">
-    <div class="md:grid md:grid-cols-16 lg:grid-cols-12 xl:grid-cols-11 md:gap-x-grid-site-gutter">
-      <h2 class="max-md:mb-4 md:col-span-4 xl:col-span-3 md:col-start-1 max-md:indent-8 font-bold uppercase">Collaborators</h2>
-      <div class="md:col-span-12 lg:col-span-8 xl:col-span-8 md:col-start-5 xl:col-start-4 prose js-hang-punc">
-        {{ post.collaborators }}
+  {% if post.cohorts %}
+    {% set cohort = post.cohorts[0] %}
+    <div class="mt-12 md:mt-24 col-span-full md:col-span-7 lg:col-span-8 md:col-start-1 md:row-span-full">
+      <div class="md:grid md:grid-cols-8 md:gap-x-grid-site-gutter lg:grid-cols-8">
+        <h2 class="max-lg:mb-2 max-lg:col-span-full lg:col-span-4 font-bold uppercase lg:leading-4 lg:mt-1">{{ cohort.title }}</h2>
+        <ul class="lg:mt-1 max-lg:col-span-full lg:col-span-4 lg:col-start-5">
+          {% for profile in cohort.profiles %}
+            {% if profile.id == post.id %}
+              <li class="font-bold uppercase leading-4 [&+&]:mt-1">
+                {{ profile.first_name }} {{ profile.last_name }}
+              </li>
+            {% else %}
+              <li class="uppercase leading-4 [&+&]:mt-1">
+                <a href="{{ profile.link }}" class="hover:bg-spot transition-colors">
+                  {{ profile.first_name }} {{ profile.last_name }}
+                </a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
       </div>
     </div>
-  </div>
-</section>
-{% endif %}
+  {% endif %}
 
-{% if post.about %}
-<section class="grid grid-site centered-page">
-  <div class="mt-12 md:mt-24 col-span-full md:col-span-16 md:col-start-9 lg:col-span-12 lg:col-start-13 xl:col-start-13 xl:col-span-11">
-    <div class="md:grid md:grid-cols-16 lg:grid-cols-12 xl:grid-cols-11 md:gap-x-grid-site-gutter">
-      <h2 class="max-md:mb-4 md:col-span-4 xl:col-span-3 md:col-start-1 max-md:indent-8 font-bold uppercase">About</h2>
-      <div class="md:col-span-12 lg:col-span-8 xl:col-span-8 md:col-start-5 xl:col-start-4 prose js-hang-punc">
-        {{ post.about }}
+  {% if post.project_description %}
+    <div class="mt-12 md:mt-24 col-span-full md:col-span-17 md:col-start-8 lg:col-span-14 lg:col-start-11 xl:col-start-13 xl:col-span-11">
+      <div class="md:grid md:grid-cols-17 lg:grid-cols-14 xl:grid-cols-11 md:gap-x-grid-site-gutter">
+        <h2 class="max-md:mb-4 md:col-span-5 lg:col-span-4 xl:col-span-3 md:col-start-1 max-md:indent-8 font-bold uppercase">Project</h2>
+        <div class="md:col-span-12 lg:col-span-10 xl:col-span-8 md:col-start-6 lg:col-start-5 xl:col-start-4 prose js-hang-punc">
+          {{ post.project_description }}
+        </div>
       </div>
     </div>
-  </div>
+  {% endif %}
+
+  {% if post.collaborators %}
+    <div class="mt-12 md:mt-24 col-span-full md:col-span-17 md:col-start-8 lg:col-span-14 lg:col-start-11 xl:col-start-13 xl:col-span-11">
+      <div class="md:grid md:grid-cols-17 lg:grid-cols-14 xl:grid-cols-11 md:gap-x-grid-site-gutter">
+        <h2 class="max-md:mb-4 md:col-span-5 lg:col-span-4 xl:col-span-3 md:col-start-1 max-md:indent-8 font-bold uppercase">Collaborators</h2>
+        <div class="md:col-span-12 lg:col-span-10 xl:col-span-8 md:col-start-6 lg:col-start-5 xl:col-start-4 prose js-hang-punc">
+          {{ post.collaborators }}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  {% if post.about %}
+    <div class="mt-12 md:mt-24 col-span-full md:col-span-17 md:col-start-8 lg:col-span-14 lg:col-start-11 xl:col-start-13 xl:col-span-11">
+      <div class="md:grid md:grid-cols-17 lg:grid-cols-14 xl:grid-cols-11 md:gap-x-grid-site-gutter">
+        <h2 class="max-md:mb-4 md:col-span-5 lg:col-span-4 xl:col-span-3 md:col-start-1 max-md:indent-8 font-bold uppercase">About</h2>
+        <div class="md:col-span-12 lg:col-span-10 xl:col-span-8 md:col-start-6 lg:col-start-5 xl:col-start-4 prose js-hang-punc">
+          {{ post.about }}
+        </div>
+      </div>
+    </div>
+  {% endif %}
 </section>
-{% endif %}
 
 {% include 'components/article-recirculation.twig' with { posts: post.latest_articles, title: 'Written by ' ~ post.first_name } %}
 

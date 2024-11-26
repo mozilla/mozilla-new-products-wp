@@ -18,6 +18,7 @@ class ACFManager {
 	 */
 	public function run() {
 		add_filter( 'acf/fields/relationship/query', array( $this, 'relationship_query' ), 10, 3 );
+		add_filter( 'acf/fields/wysiwyg/toolbars', array( $this, 'edit_wysiwyg_toolbars' ) );
 	}
 
 	/**
@@ -35,5 +36,22 @@ class ACFManager {
 		$args['orderby'] = 'post_date';
 
 		return $args;
+	}
+
+	/**
+	 * Updates the toolbars available for the ACF wysiwyg editor.
+	 * Adds a new simple toolbar which only supports bold, italic, and underline operations.
+	 *
+	 * @param array $toolbars the default toolbars available.
+	 *
+	 * @return array the enabled toolbars
+	 */
+	public function edit_wysiwyg_toolbars( $toolbars ) {
+		$toolbars['Bold, Italic, Link']           = array();
+		$toolbars['Bold, Italic, Link'][1]        = array( 'bold', 'italic', 'link' );
+		$toolbars['Bold, Italic, Link, Lists']    = array();
+		$toolbars['Bold, Italic, Link, Lists'][1] = array( 'bold', 'italic', 'link', 'bullist', 'numlist' );
+
+		return $toolbars;
 	}
 }

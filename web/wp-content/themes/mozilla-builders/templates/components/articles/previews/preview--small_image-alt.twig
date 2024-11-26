@@ -1,0 +1,16 @@
+<div class="relative flex-1 flex flex-col items-center gap-1 p-2">
+  <div class="relative w-full {{ post.thumbnail.id ? '' : 'bg-gray' }}">
+    {% if post.thumbnail.id %}
+      {% include 'components/lazy-img.twig' with { img: get_image(post.thumbnail.id), class: '' } %}
+    {% endif %}
+  </div>
+
+  <div class="w-full flex flex-col items-start gap-1.5 mt-2">
+    <div class="relative z-20">
+      {% include 'components/articles/overline.twig' with { overline: post.categories[0] } %}
+    </div>
+    <h3 class="flex-1 font-bold uppercase text-balance leading-tighter">
+      <a class="before:absolute before:inset-0 before:z-10 hover:before:shadow-inner" href="{{ post.link }}">{{ post.title }}</a>
+    </h3>
+  </div>
+</div>

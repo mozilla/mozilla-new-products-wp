@@ -9,6 +9,7 @@ namespace MozillaBuilders\Models\PostType;
 
 use Timber\Timber;
 use Timber\Post as TimberPost;
+use MozillaBuilders\Models\Taxonomy\Cohort;
 
 /** Class */
 class Profile extends TimberPost {
@@ -101,6 +102,15 @@ class Profile extends TimberPost {
 	}
 
 	/**
+	 * Get the cohorts for the profile.
+	 *
+	 * @return array
+	 */
+	public function cohorts() {
+		return $this->terms( Cohort::HANDLE );
+	}
+
+	/**
 	 * Get the 4 latest articles for the profile.
 	 *
 	 * @return array
@@ -111,6 +121,7 @@ class Profile extends TimberPost {
 			'posts_per_page' => 4,
 			'orderby' => 'date',
 			'order' => 'DESC',
+			'ignore_sticky_posts' => 1,
 			'meta_query' => array(
 				array(
 					'key' => 'authors',

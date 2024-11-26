@@ -55,6 +55,7 @@ class ThemeManager {
 		add_action( 'init', array( $this, 'register_post_types' ), 1 );
 		add_action( 'init', array( $this, 'register_taxonomies' ), 1 );
 		add_filter( 'timber/post/classmap', array( $this, 'set_post_classmap' ) );
+		add_filter( 'timber/term/classmap', array( $this, 'set_term_classmap' ) );
 		add_action( 'pre_get_posts', array( $this, 'filter_posts' ) );
 		add_filter( 'admin_footer_text', array( $this, 'add_admin_footer_credit' ) );
 
@@ -143,7 +144,6 @@ class ThemeManager {
 	public function register_menus() {
 		register_nav_menus(
 			array(
-				'nav_topics_menu'     => 'Navigation Topics Menu',
 				'nav_pages_menu'      => 'Navigation Pages Menu',
 				'primary_footer_menu' => 'Primary Footer Menu',
 			)
@@ -168,6 +168,20 @@ class ThemeManager {
 	}
 
 	/**
+	 * Adds ability to access array of ACF options fields in a twig field
+	 *
+	 * @param array $context Timber context.
+	 *
+	 * @return array
+	 */
+	public function add_acf_options_to_context( $context ) {
+		if ( class_exists( 'acf' ) ) {
+			$context['options'] = get_fields( 'option' );
+		}
+		return $context;
+	}
+
+	/**
 	 * Resgisers post types.
 	 *
 	 * @return void
@@ -175,6 +189,21 @@ class ThemeManager {
 	public function register_post_types() {
 		Profile::register();
 		Project::register();
+	}
+
+	/**
+	 * Sets classmap for posts.
+	 *
+	 * @param array $classmap The classmap.
+	 */
+	public function set_post_classmap( array $classmap ): array {
+		$custom_classmap = array(
+			'post'              => Article::class,
+			Profile::HANDLE     => Profile::class,
+			Project::HANDLE     => Project::class,
+		);
+
+		return array_merge( $classmap, $custom_classmap );
 	}
 
 	/**
@@ -191,19 +220,20 @@ class ThemeManager {
 	}
 
 	/**
-	 * Sets classmap.
+	 * Sets the classmap for taxonomies.
 	 *
 	 * @param array $classmap The classmap.
 	 */
-	public function set_post_classmap( array $classmap ): array {
+	public function set_term_classmap( array $classmap ): array {
 		$custom_classmap = array(
-			'post'              => Article::class,
-			Profile::HANDLE     => Profile::class,
-			Project::HANDLE     => Project::class,
+			Cohort::HANDLE => Cohort::class,
+			Platform::HANDLE => Platform::class,
+			ProjectCategory::HANDLE => ProjectCategory::class,
+			Technology::HANDLE => Technology::class,
 		);
-
 		return array_merge( $classmap, $custom_classmap );
 	}
+
 	/**
 	 * Exclude password protected and unpublished posts from post results
 	 *
