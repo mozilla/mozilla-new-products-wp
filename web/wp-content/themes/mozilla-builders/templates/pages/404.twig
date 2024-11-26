@@ -2,9 +2,21 @@
 
 {% block pageBody %}
 
-<div class="page">
-  <div class="page-inner">
-    <h1>404 Not Found</h1>
+<div class="flex flex-col flex-1 justify-center">
+  <div class="max-md:flex max-md:flex-col max-md:gap-4 max-md:px-grid-site-margin md:grid md:grid-site py-site centered-page">
+    {% if options.error_page_image.id %}
+    <div class="md:col-start-5 md:col-span-6">
+      {% include "components/lazy-img.twig" with { img: get_image(options.error_page_image.id) } %}
+    </div>
+    {% endif %}
+    <div class="md:col-start-13 md:col-span-10">
+      <h1 class="type-sans-2xl">{{ options.error_page_title ?: '404 Not Found' }}</h1>
+      {% if options.error_page_content %}
+        <div class="prose mt-3">
+          {{ options.error_page_content }}
+        </div>
+      {% endif %}
+    </div>
   </div>
 </div>
 
