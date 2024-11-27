@@ -3,19 +3,19 @@
   {% for post in posts %}
     {% if post.topper_type == 'big_image' %}
       {% if post.thumbnail.width > post.thumbnail.height %}
-        {% set img_size = 'md:col-start-1 md:col-span-8 xl:col-span-9' %}
+        {% set img_size = 'max-md:w-1/2 md:col-start-1 md:col-span-7 xl:col-span-6' %}
       {% elseif post.thumbnail.width < post.thumbnail.height %}
-        {% set img_size = 'md:col-start-1 md:col-span-4 xl:col-span-6' %}
+        {% set img_size = 'max-md:w-1/2 md:col-start-1 md:col-span-5 xl:col-span-5' %}
       {% else %}
-        {% set img_size = 'md:col-start-1 md:col-span-5 xl:col-span-7' %}
+        {% set img_size = 'max-md:w-1/2 md:col-start-1 md:col-span-5 xl:col-span-4' %}
       {% endif %}
     {% elseif post.topper_type == 'small_image' %}
       {% if post.thumbnail.width > post.thumbnail.height %}
-        {% set img_size = 'max-md:w-1/2 md:col-start-1 md:col-span-5 xl:col-span-6' %}
+        {% set img_size = 'max-md:w-1/4 md:col-start-1 md:col-span-4 xl:col-span-3' %}
       {% elseif post.thumbnail.width < post.thumbnail.height %}
-        {% set img_size = 'max-md:w-1/2 md:col-start-1 md:col-span-3 xl:col-span-3' %}
+        {% set img_size = 'max-md:w-1/4 md:col-start-1 md:col-span-2 xl:col-span-2' %}
       {% else %}
-        {% set img_size = 'max-md:w-1/2 md:col-start-1 md:col-span-3 xl:col-span-3' %}
+        {% set img_size = 'max-md:w-1/4 md:col-start-1 md:col-span-2 xl:col-span-2' %}
       {% endif %}
     {% endif %}
     <li class="col-span-full grid grid-cols-site gap-x-grid-site-gutter gap-y-2 py-4 relative border-t border-content grid-rows-[min-content,_1fr]">
