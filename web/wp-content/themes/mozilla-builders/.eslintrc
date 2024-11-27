@@ -1,0 +1,11 @@
+{
+  "extends": ["../../../../.eslintrc"],
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [["@src", "./static/js"]],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"],
+      },
+    },
+  },
+}

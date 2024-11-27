@@ -7,14 +7,12 @@
  * Version: 0.1.0
  */
 
-@import 'abstracts';
-
 // App CSS loaded in via src/Blocks/editor.scss to keep it contained.
 // Otherwise our typography and stuff breaks normal Wordpress.
 
 // override wp-help plugin styles
-#cws-wp-help-listing {
-  @include mq(783px) {
+@media (min-width: 783px) {
+  #cws-wp-help-listing {
     position: fixed;
   }
 }
@@ -30,7 +28,7 @@ div[data-type*='acf/'] {
     background-color: #1d2327;
     color: #ffffff;
     display: block;
-    font-family: $ff-sans;
+    font-family: sans-serif;
     font-size: 13px;
     font-weight: normal;
     padding: 16px 20px;
@@ -47,7 +45,7 @@ div[data-align='right'] {
 }
 
 .editor-styles-wrapper {
-  font-family: $ff-sans;
+  font-family: sans-serif;
 }
 
 // Hide H1 heading option in Gutenberg.

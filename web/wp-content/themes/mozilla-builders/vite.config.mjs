@@ -6,9 +6,8 @@ const BASE_PATH = '/wp-content/themes/mozilla-builders';
 function base(mode) {
   if (mode === 'production') {
     return `${BASE_PATH}/dist`;
-  } else {
-    return BASE_PATH;
   }
+  return BASE_PATH;
 }
 
 // Prints the hosted port to a tmp file so that PHP can read it.

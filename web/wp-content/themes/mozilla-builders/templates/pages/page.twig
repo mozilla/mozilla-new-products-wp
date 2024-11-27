@@ -5,7 +5,7 @@
   {% include 'components/page-topper.twig' with { title: post.title } %}
 
   <article>
-    <div class="pb-24 gutenberg {{ post.has_lede_paragraph ? 'lede' }} js-hang-punc">
+    <div x-hang-punc class="pb-24 gutenberg {{ post.has_lede_paragraph ? 'lede' }}">
       {{ post.content }}
     </div>
   </article>

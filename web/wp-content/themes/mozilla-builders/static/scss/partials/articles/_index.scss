@@ -1,6 +1,0 @@
-// bring in topper styles
-@import 'article-toppers';
-
-// Import non-block article components last. This should be done after
-// blocks as they typically need to overwrite article block styles.
-@import 'article-body-components';
