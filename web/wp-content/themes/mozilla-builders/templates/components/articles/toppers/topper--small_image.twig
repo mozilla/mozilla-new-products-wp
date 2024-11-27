@@ -4,13 +4,13 @@
 
 <div class="flex flex-col pt-10 gap-4 centered-page xl:pt-20">
   <div class="w-full grid grid-site max-md:flex-col max-md:items-center max-md:gap-8">
-    <div class="flex items-end col-span-full md:col-span-2/3 max-md:order-2">
+    <div class="flex items-end col-span-full justify-center md:col-span-2/3 max-md:order-2">
       <div class="flex flex-col items-center gap-6 max-md:gap-4">
         <div class="flex justify-center">
           {% include 'components/articles/overline.twig' with { overline: post.categories[0] } %}
         </div>
 
-        <h1 class="type-headline-2xl text-balance text-center">{{ post.title }}</h1>
+        <h1 class="type-headline-2xl text-balance text-center leading-none">{{ post.title }}</h1>
       </div>
     </div>
 
@@ -30,7 +30,7 @@
 
   {% if post.subtitle %}
     <div class="grid grid-site">
-      <p class="col-span-full my-6 type-sans-lg uppercase leading-tighter text-pretty text-center md:text-left md:mb-10 xl:mb-16 xl:col-span-18">
+      <p class="col-span-full md:mt-6 type-sans-subhead uppercase text-pretty text-center md:text-left xl:col-span-18">
         {{ post.subtitle }}
       </p>
     </div>
