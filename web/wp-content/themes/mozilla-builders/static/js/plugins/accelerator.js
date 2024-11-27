@@ -80,7 +80,7 @@ function registerTargets(Alpine, el) {
       translateY: path('y'),
       duration,
       delay: anime.stagger(staggerDelay),
-      easing: 'easeOutExpo',
+      easing: 'easeInOutQuint',
     });
     initial.pause();
 
