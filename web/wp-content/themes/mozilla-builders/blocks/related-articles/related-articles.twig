@@ -1,8 +1,8 @@
 {% if related_articles is not empty %}
-<div data-block="related-articles" class="py-3 {{ alignclass }}">
+<section data-block="related-articles" class="py-3 {{ alignclass }}">
   {% if related_articles_header %}
     <div class="col-span-full border border-content p-1">
-      <h3 class="uppercase text-center text-xs leading-3 tracking-wide">{{ related_articles_header }}</h3>
+      <h2 class="uppercase text-center text-xs leading-3 tracking-wide">{{ related_articles_header }}</h2>
     </div>
   {% endif %}
 
@@ -29,5 +29,5 @@
       {% endfor %}
     </ul>
   {% endif %}
-</div>
+</section>
 {% endif %}

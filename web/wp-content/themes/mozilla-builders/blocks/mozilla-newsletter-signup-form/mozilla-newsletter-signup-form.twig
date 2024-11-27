@@ -1,11 +1,11 @@
-<aside class="mzp-c-newsletter mt-16 pt-3 border-t">
+<section class="mzp-c-newsletter mt-16 pt-3 border-t">
 
     <form id="newsletter-form" class="mzp-c-newsletter-form  md:grid md:grid-cols-24 gap-x-grid-site-gutter" action="https://basket.mozilla.org/news/subscribe/" method="post">
         <!-- The value for the source_url field below should match the URL of your page where the newsletter form appears-->
         <input type="hidden" name="source_url" value="{{ current_url }}">
 
         <header class="mzp-c-newsletter-header md:col-span-10 max-md:mb-6">
-            <h3 class="mzp-c-newsletter-title type-sans-md uppercase leading-tighter">{{ heading ?: 'Love the Web?' }}</h3>
+            <h2 class="mzp-c-newsletter-title type-sans-md uppercase leading-tighter">{{ heading ?: 'Love the Web?' }}</h2>
             <p class="mzp-c-newsletter-tagline mt-3">{{ description ?: 'Get the Mozilla newsletter and help us keep it open and free.' }}</p>
         </header>
 
@@ -95,7 +95,7 @@
         <p>If you haven’t previously confirmed a subscription to a Mozilla-related newsletter you may have to do so. Please check your inbox or your spam filter for an email from us.</p>
     </div>
 
-</aside>
+</section>
 
 <script>
   // Wait until DOM has loaded
