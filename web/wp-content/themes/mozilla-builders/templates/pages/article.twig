@@ -6,8 +6,36 @@
   <article>
     {% include "components/articles/byline.twig" %}
 
-    <div class="pt-12 pb-24 gutenberg article {{ post.has_lede_paragraph ? 'lede' }} js-hang-punc">
-      {{ post.content }}
+    <div class="md:pt-12 pb-24 grid grid-site centered-page article {{ post.has_lede_paragraph ? 'lede' }} js-hang-punc">
+
+      {% if post.authors is not empty %}
+      <div class="col-span-full flex flex-col gap-4 pt-6 md:hidden order-2">
+        {% for author in post.authors %}
+            <div class="flex items-start gap-4">
+              <div class="size-20 aspect-square overflow-hidden {{ author.thumbnail.id ? '' : 'bg-gray' }}">
+                {% if author.thumbnail.id %}
+                  {% include "components/lazy-img.twig" with { img: get_image(author.thumbnail), aspectRatio: 1 } %}
+                {% endif %}
+              </div>
+
+              <p class="flex-1 text-sm leading-tight uppercase">
+                <a href="{{ author.link }}" class="underline">{{ author.name }}</a> {% if author.short_bio %}is {{ author.short_bio }}{% endif %}
+              </p>
+            </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <div class="max-md:pt-12 col-span-full gutenberg grid grid-cols-site gap-x-grid-site-gutter centered-page order-3 md:order-1">
+        {{ post.content }}
+      </div>
+
+      <div class="col-span-full md:col-span-4 lg:col-span-3 3xl:col-span-2 md:col-start-end md:sticky md:bottom-4  max-md:border-b max-md:border-content max-md:py-2 text-sm text-right order-1 md:order-2 md:h-0">
+        <div class="max-md:flex max-md:gap-6 max-md:justify-between md:-translate-y-full">
+          <p class="uppercase leading-tight">Share</p>
+          {% include "components/articles/share-tools.twig" %}
+        </div>
+      </div>
     </div>
 
     {% include "components/articles/article-footer.twig" %}

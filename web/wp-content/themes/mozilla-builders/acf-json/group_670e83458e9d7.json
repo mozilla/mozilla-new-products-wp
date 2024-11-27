@@ -102,6 +102,60 @@
       "search_placeholder": ""
     },
     {
+      "key": "field_674746bb709dc",
+      "label": "Art Credit",
+      "name": "art_credit",
+      "aria-label": "",
+      "type": "text",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": [
+        [
+          {
+            "field": "field_670e8365a8126",
+            "operator": "!=",
+            "value": "text_only"
+          }
+        ]
+      ],
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "allow_in_bindings": 0,
+      "placeholder": "",
+      "prepend": "",
+      "append": ""
+    },
+    {
+      "key": "field_674746c7709dd",
+      "label": "Art Credit Link",
+      "name": "art_credit_link",
+      "aria-label": "",
+      "type": "link",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": [
+        [
+          {
+            "field": "field_670e8365a8126",
+            "operator": "!=",
+            "value": "text_only"
+          }
+        ]
+      ],
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "return_format": "array",
+      "allow_in_bindings": 0
+    },
+    {
       "key": "field_67323e376e918",
       "label": "Show image on index",
       "name": "show_image_on_index",
@@ -109,7 +163,15 @@
       "type": "true_false",
       "instructions": "This will display the image on the content page.",
       "required": 0,
-      "conditional_logic": 0,
+      "conditional_logic": [
+        [
+          {
+            "field": "field_670e8365a8126",
+            "operator": "!=",
+            "value": "text_only"
+          }
+        ]
+      ],
       "wrapper": {
         "width": "",
         "class": "",
@@ -146,5 +208,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1732550114
+  "modified": 1732724733
 }
