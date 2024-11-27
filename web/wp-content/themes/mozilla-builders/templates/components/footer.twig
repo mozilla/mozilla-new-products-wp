@@ -13,9 +13,11 @@
     </div>
     {% endfor %}
   </div>
-  <svg class="col-span-full aspect-mozilla-logo" aria-label="Builders">
+
+  <svg class="col-span-full aspect-mozilla-logo" aria-hidden="true">
     <use xlink:href="#mozillalogo"></use>
   </svg>
+  <span class="sr-only">Mozilla</span>
 
   <div class="col-span-full flex items-start justify-between text-xs uppercase font-semibold gap-6">
     <p class="max-md:w-1/2 whitespace-nowrap"><a href="https://mozilla.org/">Mozilla</a> &copy; {{ now|date('Y') }}</p>

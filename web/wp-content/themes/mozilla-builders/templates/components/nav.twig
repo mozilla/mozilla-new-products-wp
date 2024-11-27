@@ -2,7 +2,7 @@
 
 <nav class="grid grid-site py-site centered-page relative z-10">
   <div class="flex-1 flex gap-1 {{ use_big_logo ? 'items-start mt-2 col-span-1/3' : 'items-center col-span-1/3 md:col-span-3/8' }} justify-start">
-    <svg class="size-5 shrink-0 text-content">
+    <svg class="size-5 shrink-0 text-content" aria-hidden="true">
       <use xlink:href="#flag"></use>
     </svg>
 
@@ -22,7 +22,7 @@
   <div class="{{ use_big_logo ? 'col-span-1/3' : 'col-span-1/3 md:col-span-1/4' }} flex justify-center">
     <a href="{{ site.url }}" class="md:flex md:items-center {{ use_big_logo ? 'md:w-full' }}">
       <span class="sr-only">Mozilla Builders</span>
-      <svg class="{{ use_big_logo ? 'w-52 md:w-full' : 'w-40' }} aspect-logo">
+      <svg class="{{ use_big_logo ? 'w-52 md:w-full' : 'w-40' }} aspect-logo" aria-hidden="true">
         <use xlink:href="#logo"></use>
       </svg>
     </a>
@@ -48,12 +48,15 @@
     </ul>
 
     <div class="flex items-center gap-px">
-      <a href="#"
+
+      {% if options.join_us_link %}
+      <a href="{{ options.join_us_link.url }}"
         class="text-sm md:max-xl:text-xs py-0.5 px-1.5 transition-colors whitespace-nowrap max-md:hidden
              bg-action text-action-reverse hover:bg-action-focus hover:text-action-focus-reverse"
       >
-        Join us
+        {{ options.join_us_link.title ?: 'Join us' }}
       </a>
+      {% endif %}
 
       <div
         class="md:hidden"
@@ -68,7 +71,7 @@
           aria-controls="menu"
         >
           <span class="sr-only">Open menu</span>
-          <svg class="size-4">
+          <svg class="size-4" aria-hidden="true">
             <use xlink:href="#menu"></use>
           </svg>
         </button>
@@ -88,7 +91,7 @@
 
             <header class="grid grid-site py-site centered-page">
               <div class="flex-1 flex items-center col-span-1/3">
-                <svg class="size-5 shrink-0">
+                <svg class="size-5 shrink-0" aria-hidden="true">
                   <use xlink:href="#flag"></use>
                 </svg>
               </div>
@@ -96,7 +99,7 @@
               <div class="col-span-1/3 flex justify-center">
                 <a href="{{ site.url }}">
                   <span class="sr-only">Mozilla Builders</span>
-                  <svg class="w-40 aspect-logo">
+                  <svg class="w-40 aspect-logo" aria-hidden="true">
                     <use xlink:href="#logo"></use>
                   </svg>
                 </a>
@@ -108,7 +111,7 @@
                   @click="open = false"
                 >
                   <span class="sr-only">Close menu</span>
-                  <svg class="size-4">
+                  <svg class="size-4" aria-hidden="true">
                     <use xlink:href="#x-close"></use>
                   </svg>
                 </button>
@@ -135,9 +138,13 @@
                   {% endfor %}
                 </ul>
 
-                <a href="#" class="text-2xl uppercase bg-white text-center p-3 text-black whitespace-nowrap">
-                  Join us
+                {% if options.join_us_link %}
+                <a href="{{ options.join_us_link.url }}"
+                  class="text-2xl uppercase bg-white text-center p-3 text-black whitespace-nowrap"
+                >
+                  {{ options.join_us_link.title ?: 'Join us' }}
                 </a>
+                {% endif %}
               </div>
             </div>
           </div>

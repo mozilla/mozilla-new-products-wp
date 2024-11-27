@@ -5,57 +5,26 @@ import Unveilhooks from 'lazysizes/plugins/unveilhooks/ls.unveilhooks';
 
 import '../scss/app.scss';
 
-import { onDocumentReady } from '@src/utils';
-
-// Components
-import Menu from '@src/components/menu';
-import Links from '@src/components/links';
-
 import Alpine from 'alpinejs';
 import focus from '@alpinejs/focus';
+import { accelerator } from '@src/plugins/accelerator';
 import { clipboard } from '@src/plugins/clipboard';
+import { hangPunctuation } from '@src/plugins/hang-punctuation';
+import { links } from '@src/plugins/links';
 import { marquee } from '@src/plugins/marquee';
 import { masonry } from '@src/plugins/masonry';
-import { accelerator } from '@src/plugins/accelerator';
 import { tabs } from '@src/plugins/tabs';
 
 // Initialize Alpine
 window.Alpine = Alpine;
-Alpine.plugin(focus);
+// Register Alpine plugins
+Alpine.plugin(accelerator);
 Alpine.plugin(clipboard);
+Alpine.plugin(focus);
+Alpine.plugin(hangPunctuation);
+Alpine.plugin(links);
 Alpine.plugin(marquee);
 Alpine.plugin(masonry);
-Alpine.plugin(accelerator);
 Alpine.plugin(tabs);
+// Start Alpine
 Alpine.start();
-
-// Initialize custom JS
-onDocumentReady(() => {
-  new Links();
-
-  const MENU_CLASS = '.js--menu';
-  if (document.querySelector(MENU_CLASS)) {
-    new Menu(MENU_CLASS);
-  }
-
-  if (document.querySelector('.js-hang-punc')) {
-    import(/* webpackChunkName: "hang-punctuation" */ '@src/components/hang-punctuation').then(
-      module => {
-        const HangPunctuation = module.default;
-        new HangPunctuation();
-      },
-    );
-  }
-
-  // This is an example of how to do code splitting. The JS in this
-  // referenced file will only be loaded on that page. Good for
-  // when you have a large amount of JS only needed in one place
-  //
-  //  if (document.querySelector('#js-process')) {
-  //    import(/* webpackChunkName: "process" */ './pages/process')
-  //      .then(module => {
-  //        const Process = module.default;
-  //        this.process = new Process();
-  //      });
-  //  }
-});

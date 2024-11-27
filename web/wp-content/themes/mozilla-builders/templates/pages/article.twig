@@ -26,11 +26,11 @@
       </div>
       {% endif %}
 
-      <div class="max-md:pt-12 col-span-full gutenberg grid grid-cols-site gap-x-grid-site-gutter centered-page order-3 md:order-1">
+      <div x-hang-punc class="max-md:pt-12 col-span-full gutenberg grid grid-cols-site gap-x-grid-site-gutter centered-page order-3 md:order-1">
         {{ post.content }}
       </div>
 
-      <div class="col-span-full md:col-span-4 lg:col-span-3 3xl:col-span-2 md:col-start-end md:sticky md:bottom-4  max-md:border-b max-md:border-content max-md:py-2 text-sm text-right order-1 md:order-2 md:h-0">
+      <div class="col-span-full md:col-span-4 lg:col-span-3 3xl:col-span-2 md:col-start-end md:sticky md:bottom-4 max-md:border-b max-md:border-content max-md:py-2 text-sm text-right order-1 md:order-2 md:h-0">
         <div class="max-md:flex max-md:gap-6 max-md:justify-between md:-translate-y-full">
           <p class="uppercase leading-tight">Share</p>
           {% include "components/articles/share-tools.twig" %}

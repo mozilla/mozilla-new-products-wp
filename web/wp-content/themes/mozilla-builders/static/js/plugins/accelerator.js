@@ -41,12 +41,38 @@ function registerPath(Alpine, el) {
 }
 
 /**
+ * Waits for all images to load.
+ *
+ * @param {HTMLElement} target
+ * @return {Promise<void>}
+ */
+async function waitForImages(target) {
+  const images = Array.from(target.querySelectorAll('img'));
+  if (!images.length) {
+    return Promise.resolve();
+  }
+
+  const promises = images.map(img => {
+    if (img.complete) {
+      return Promise.resolve();
+    }
+
+    return new Promise((resolve, reject) => {
+      img.addEventListener('load', resolve);
+      img.addEventListener('error', reject);
+    });
+  });
+
+  return await Promise.allSettled(promises);
+}
+
+/**
  * Registers the track element to animate the marquee.
  *
  * @param {import('alpinejs').Alpine} Alpine
  * @param {HTMLElement}               el
  */
-function registerTargets(Alpine, el) {
+async function registerTargets(Alpine, el) {
   el.dataset.state = 'inactive';
 
   /** @type {{ pathElement?: HTMLElement }} */
@@ -63,7 +89,7 @@ function registerTargets(Alpine, el) {
   }
 
   // Setup variables
-  let animateTimeout;
+  const abortController = new AbortController();
   const initialDelay = 200;
   const duration = 1600;
   const staggerDelay = 80;
@@ -94,15 +120,25 @@ function registerTargets(Alpine, el) {
     el.dataset.state = 'active';
   } else {
     el.dataset.state = 'active';
-    animateTimeout = setTimeout(() => {
-      animations.forEach(animation => animation.play());
-    }, initialDelay);
+
+    const imageLoadPromises = targets.map(waitForImages);
+    const currentTime = Date.now();
+    Promise.allSettled(imageLoadPromises).then(() => {
+      const deltaTime = Date.now() - currentTime;
+      const delay = Math.max(initialDelay - deltaTime, 0);
+
+      setTimeout(() => {
+        if (!abortController.signal.aborted) {
+          animations.forEach(animation => animation.play());
+        }
+      }, delay);
+    });
   }
 
   // Pause the animation when reduced motion is enabled or the window is resized
   function finishAnimation() {
     animations.forEach(animation => animation.pause());
-    clearTimeout(animateTimeout);
+    abortController.abort();
 
     targets = getTargets();
     maxIndex = targets.length - 1;
@@ -123,7 +159,7 @@ function registerTargets(Alpine, el) {
 
   // Cleanup
   return () => {
-    clearTimeout(animateTimeout);
+    abortController.abort();
 
     window.removeEventListener('resize', finishAnimation);
     mediaQuery.removeEventListener('change', finishAnimation);
