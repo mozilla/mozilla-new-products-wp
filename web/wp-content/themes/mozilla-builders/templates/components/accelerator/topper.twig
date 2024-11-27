@@ -36,7 +36,7 @@
 
         <div x-accelerator:targets class="opacity-0 data-[state=active]:opacity-100">
           {% for i in 1..20 %}
-            <div class="absolute top-0 left-0 w-72 z-10 {% if loop.index > 10 %}hidden md:block{% endif %}" {% if not loop.first %}aria-hidden="true"{% endif %}>
+            <div class="absolute top-0 left-0 w-72 z-10 {% if loop.index > 8 %}hidden md:block{% endif %}" {% if not loop.first %}aria-hidden="true"{% endif %}>
               {% include "components/lazy-img.twig" with { img: img } %}
             </div>
           {% endfor %}

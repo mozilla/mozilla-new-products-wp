@@ -41,12 +41,38 @@ function registerPath(Alpine, el) {
 }
 
 /**
+ * Waits for all images to load.
+ *
+ * @param {HTMLElement} target
+ * @return {Promise<void>}
+ */
+async function waitForImages(target) {
+  const images = Array.from(target.querySelectorAll('img'));
+  if (!images.length) {
+    return Promise.resolve();
+  }
+
+  const promises = images.map(img => {
+    if (img.complete) {
+      return Promise.resolve();
+    }
+
+    return new Promise((resolve, reject) => {
+      img.addEventListener('load', resolve);
+      img.addEventListener('error', reject);
+    });
+  });
+
+  return await Promise.allSettled(promises);
+}
+
+/**
  * Registers the track element to animate the marquee.
  *
  * @param {import('alpinejs').Alpine} Alpine
  * @param {HTMLElement}               el
  */
-function registerTargets(Alpine, el) {
+async function registerTargets(Alpine, el) {
   el.dataset.state = 'inactive';
 
   /** @type {{ pathElement?: HTMLElement }} */
@@ -94,9 +120,16 @@ function registerTargets(Alpine, el) {
     el.dataset.state = 'active';
   } else {
     el.dataset.state = 'active';
+
+    const imageLoadPromises = targets.map(waitForImages);
+    const currentTime = Date.now();
+    await Promise.all(imageLoadPromises);
+    const deltaTime = Date.now() - currentTime;
+    const delay = Math.max(initialDelay - deltaTime, 0);
+
     animateTimeout = setTimeout(() => {
       animations.forEach(animation => animation.play());
-    }, initialDelay);
+    }, delay);
   }
 
   // Pause the animation when reduced motion is enabled or the window is resized
