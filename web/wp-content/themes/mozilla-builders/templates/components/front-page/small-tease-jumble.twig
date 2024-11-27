@@ -24,7 +24,7 @@
   </div>
 
   <div class="max-lg:contents lg:col-start-19 lg:col-span-6 flex-1 flex flex-col justify-center gap-y-12">
-    <div class="w-full max-md:col-span-4 max-md:col-start-3 max-lg:col-span-8">
+    <div class="w-full max-md:col-span-4 max-md:col-start-3 max-lg:col-span-8 2xl:w-[64.5%]">
       {% if posts.count >= 3 %}
         {% include [
           'components/articles/previews/preview--' ~ posts[2].topper_type|default('text_only') ~ '-alt.twig',
