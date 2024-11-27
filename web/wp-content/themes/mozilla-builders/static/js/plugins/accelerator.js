@@ -89,7 +89,7 @@ async function registerTargets(Alpine, el) {
   }
 
   // Setup variables
-  let animateTimeout;
+  const abortController = new AbortController();
   const initialDelay = 200;
   const duration = 1600;
   const staggerDelay = 80;
@@ -123,19 +123,22 @@ async function registerTargets(Alpine, el) {
 
     const imageLoadPromises = targets.map(waitForImages);
     const currentTime = Date.now();
-    await Promise.all(imageLoadPromises);
-    const deltaTime = Date.now() - currentTime;
-    const delay = Math.max(initialDelay - deltaTime, 0);
+    Promise.allSettled(imageLoadPromises).then(() => {
+      const deltaTime = Date.now() - currentTime;
+      const delay = Math.max(initialDelay - deltaTime, 0);
 
-    animateTimeout = setTimeout(() => {
-      animations.forEach(animation => animation.play());
-    }, delay);
+      setTimeout(() => {
+        if (!abortController.signal.aborted) {
+          animations.forEach(animation => animation.play());
+        }
+      }, delay);
+    });
   }
 
   // Pause the animation when reduced motion is enabled or the window is resized
   function finishAnimation() {
     animations.forEach(animation => animation.pause());
-    clearTimeout(animateTimeout);
+    abortController.abort();
 
     targets = getTargets();
     maxIndex = targets.length - 1;
@@ -156,7 +159,7 @@ async function registerTargets(Alpine, el) {
 
   // Cleanup
   return () => {
-    clearTimeout(animateTimeout);
+    abortController.abort();
 
     window.removeEventListener('resize', finishAnimation);
     mediaQuery.removeEventListener('change', finishAnimation);
