@@ -8,6 +8,8 @@
 
   {% include 'components/page-topper.twig' with { title: title } %}
 
+  <h2 class="sr-only">{{ subheading }}</h2>
+
   <ul x-masonry="md" class="grid grid-site centered-page gap-y-20 mb-24">
     {% for post in posts %}
       <li class="col-span-full md:col-span-1/2 lg:col-span-8 xl:col-span-6">

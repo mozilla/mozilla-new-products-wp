@@ -59,4 +59,10 @@ $_posts = Timber::get_posts( $query_args );
 $context['posts']      = $_posts;
 $context['pagination'] = $_posts->pagination( array( 'mid_size' => 2 ) );
 
+if ( 'post' === get_post_type() ) {
+	$context['subheading'] = 'Articles';
+} else {
+	$context['subheading'] = get_post_type_object( get_post_type() )->label;
+}
+
 Timber::render( array( 'pages/archive-' . get_post_type() . '.twig', 'pages/archive.twig' ), $context );
