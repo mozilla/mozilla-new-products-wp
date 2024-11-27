@@ -12,7 +12,7 @@
       <div class="col-span-full flex flex-col gap-4 pt-6 md:hidden order-2">
         {% for author in post.authors %}
             <div class="flex items-start gap-4">
-              <div class="size-20 aspect-square overflow-hidden {{ author.thumbnail.id ? '' : 'bg-gray' }}">
+              <div class="relative size-20 aspect-square overflow-hidden [&>*]:absolute [&>*]:top-1/2 [&>*]:-translate-y-1/2 [&>*]:w-full">
                 {% if author.thumbnail.id %}
                   {% include "components/lazy-img.twig" with { img: get_image(author.thumbnail), aspectRatio: 1 } %}
                 {% endif %}
