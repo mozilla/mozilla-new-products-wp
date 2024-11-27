@@ -4,33 +4,25 @@
   "env": {
     "browser": true,
     "node": true,
-    "es6": true
+    "es6": true,
   },
   "globals": {
-    "wp": "readonly"
+    "wp": "readonly",
   },
   "plugins": ["react"],
-  "settings": {
-    "import/resolver": {
-      "alias": {
-        "map": [["@src", "./static/js"]],
-        "extensions": [".js", ".jsx", ".ts", ".tsx"]
-      }
-    }
-  },
   "overrides": [
     {
       "files": "./web/wp-content/themes/mozilla-builders/blocks/**/*.js",
       "extends": "@upstatement/eslint-config/react",
       "rules": {
-        "react/react-in-jsx-scope": "off"
+        "react/react-in-jsx-scope": "off",
       },
       "settings": {
         "react": {
-          "version": "^16.9.0"
-        }
-      }
-    }
+          "version": "^16.9.0",
+        },
+      },
+    },
   ],
-  "ignorePatterns": ["vendor/", "dist/", ".vite/"]
+  "ignorePatterns": ["vendor/", "dist/", ".vite/"],
 }

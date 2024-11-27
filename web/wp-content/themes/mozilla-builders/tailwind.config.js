@@ -8,7 +8,7 @@ function color(name) {
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./**/*.twig'],
+  content: ['./**/*.twig', './**/*.js'],
   theme: {
     colors: {
       // Base colors

@@ -2,7 +2,7 @@
   {% include "byline.twig" with post.article_info %}
   {% include "share-tools.twig" with article %}
 
-  <div class="article-body-width js-hang-punc">
+  <div x-hang-punc class="article-body-width">
 
     {% for block in post.article_body %}
       {% include "paragraphs.twig" with {'dropcap': loop.index0 == 0} %}
