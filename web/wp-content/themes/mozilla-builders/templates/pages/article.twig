@@ -6,7 +6,7 @@
   <article>
     {% include "components/articles/byline.twig" %}
 
-    <div class="md:pt-12 pb-24 grid grid-site centered-page article {{ post.has_lede_paragraph ? 'lede' }} js-hang-punc">
+    <div class="md:pt-12 pb-24 grid grid-site centered-page article">
 
       {% if post.authors is not empty %}
       <div class="col-span-full flex flex-col gap-4 pt-6 md:hidden order-2">
