@@ -26,7 +26,7 @@
       </div>
       {% endif %}
 
-      <div x-hang-punc class="max-md:pt-12 col-span-full gutenberg grid grid-cols-site gap-x-grid-site-gutter centered-page order-3 md:order-1">
+      <div x-hang-punc class="max-md:pt-12 col-span-full gutenberg {{ post.has_lede_paragraph ? 'lede' }} grid grid-cols-site gap-x-grid-site-gutter centered-page order-3 md:order-1">
         {{ post.content }}
       </div>
 
