@@ -240,11 +240,11 @@
           "bidirectional_target": []
         },
         {
-          "key": "field_673d85055410a",
-          "label": "CTA Label",
-          "name": "cta_label",
+          "key": "field_674da83491070",
+          "label": "CTA Link",
+          "name": "cta_link",
           "aria-label": "",
-          "type": "text",
+          "type": "link",
           "instructions": "",
           "required": 0,
           "conditional_logic": 0,
@@ -253,12 +253,8 @@
             "class": "",
             "id": ""
           },
-          "default_value": "",
-          "maxlength": "",
-          "allow_in_bindings": 0,
-          "placeholder": "",
-          "prepend": "",
-          "append": ""
+          "return_format": "array",
+          "allow_in_bindings": 0
         }
       ]
     },
@@ -409,5 +405,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1732130847
+  "modified": 1733142869
 }
