@@ -9,9 +9,6 @@ use MozillaBuilders\Managers;
 use Timber\Timber;
 use Dotenv\Dotenv;
 
-/** Autoloader */
-require_once 'vendor/autoload.php';
-
 define( 'MOZILLA_BUILDERS_THEME_URL', get_stylesheet_directory_uri() );
 define( 'MOZILLA_BUILDERS_THEME_PATH', dirname( __FILE__ ) . '/' );
 define( 'MOZILLA_BUILDERS_DOMAIN', get_site_url() );
