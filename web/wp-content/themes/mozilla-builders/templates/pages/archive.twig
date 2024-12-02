@@ -3,7 +3,11 @@
 {% block pageBody %}
 
   {% include 'components/page-topper.twig' %}
+
+  <h2 class="sr-only">{{ subheading }}</h2>
+
   {% include 'components/tease-list.twig' with { posts: posts } %}
+
   {% include 'components/pagination.twig' %}
 
 {% endblock %}
