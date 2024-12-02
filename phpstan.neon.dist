@@ -1,12 +1,12 @@
 includes:
-    - web/wp-content/themes/mozilla-builders/vendor/szepeviktor/phpstan-wordpress/extension.neon
+    - web/vendor/szepeviktor/phpstan-wordpress/extension.neon
 parameters:
     level: max
     inferPrivatePropertyTypeFromConstructor: true
     bootstrapFiles:
         - tests/phpstan/bootstrap.php
     scanFiles:
-        - web/wp-content/themes/mozilla-builders/vendor/php-stubs/acf-pro-stubs/acf-pro-stubs.php
+        - web/vendor/php-stubs/acf-pro-stubs/acf-pro-stubs.php
     paths:
         - web/wp-content/themes/mozilla-builders
     excludePaths:

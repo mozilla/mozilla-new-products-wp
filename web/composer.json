@@ -72,12 +72,12 @@
   },
   "scripts": {
     "static-tests": [
-      "find wp-content/themes/mozilla-builders -path 'wp-content/themes/mozilla-builders/vendor' -prune -o -name '*.php' -exec php -l {} \\;",
-      "./wp-content/themes/mozilla-builders/vendor/bin/phpcs --runtime-set ignore_warnings_on_exit true --standard=../phpcs.xml.dist --colors --ignore=node_modules,vendor --error-severity=1 --warning-severity=8 wp-content/themes/mozilla-builders",
-      "./wp-content/themes/mozilla-builders/vendor/bin/phpstan analyse -c ../phpstan.neon.dist -l 5 --memory-limit=2G"
+      "find wp-content/themes/mozilla-builders -name '*.php' -exec php -l {} \\;",
+      "phpcs --runtime-set ignore_warnings_on_exit true --standard=../phpcs.xml.dist --colors --ignore=node_modules,vendor --error-severity=1 --warning-severity=8 wp-content/themes/mozilla-builders",
+      "phpstan analyse -c ../phpstan.neon.dist -l 5 --memory-limit=2G"
     ],
     "fix": [
-      "./wp-content/themes/mozilla-builders/vendor/bin/phpcbf --standard=phpcs.xml.dist --colors --ignore=node_modules,vendor wp-content/themes/mozilla-builders"
+      "phpcbf --standard=phpcs.xml.dist --colors --ignore=node_modules wp-content/themes/mozilla-builders"
     ]
   }
 }
