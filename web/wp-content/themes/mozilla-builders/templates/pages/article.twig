@@ -6,8 +6,43 @@
   <article>
     {% include "components/articles/byline.twig" %}
 
-    <div x-hang-punc class="pt-12 pb-24 gutenberg article {{ post.has_lede_paragraph ? 'lede' }}">
-      {{ post.content }}
+    <div class="md:pt-12 grid grid-site centered-page">
+    
+      <div class="col-span-full md:hidden border-b border-content max-md:pt-2.5 max-md:pb-2">
+        <div class="text-sm flex gap-6 justify-between items-baseline">
+          <p class="uppercase leading-tight">Share</p>
+          {% include "components/articles/share-tools.twig" %}
+        </div>
+      </div>
+
+      {% if post.authors is not empty %}
+      <div class="col-span-full flex flex-col gap-4 pt-6 md:hidden">
+        {% for author in post.authors %}
+            <div class="flex items-start gap-4">
+              <div class="relative size-20 aspect-square overflow-hidden [&>*]:absolute [&>*]:top-1/2 [&>*]:-translate-y-1/2 [&>*]:w-full">
+                {% if author.thumbnail.id %}
+                  {% include "components/lazy-img.twig" with { img: get_image(author.thumbnail), aspectRatio: 1 } %}
+                {% endif %}
+              </div>
+
+              <p class="flex-1 text-sm leading-tight uppercase">
+                <a href="{{ author.link }}" class="underline">{{ author.name }}</a> {% if author.short_bio %}is {{ author.short_bio }}{% endif %}
+              </p>
+            </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <div x-hang-punc class="max-md:pt-12 col-span-full gutenberg article {{ post.has_lede_paragraph ? 'lede' }} grid grid-cols-site gap-x-grid-site-gutter centered-page">
+        {{ post.content }}
+      </div>
+
+      <div class="max-md:hidden md:col-span-4 lg:col-span-3 3xl:col-span-2 md:col-start-end md:sticky md:bottom-4 text-sm md:h-0">
+        <div class="max-md:flex max-md:gap-6 max-md:justify-between md:-translate-y-full">
+          <p class="uppercase leading-tight text-right">Share</p>
+          {% include "components/articles/share-tools.twig" %}
+        </div>
+      </div>
     </div>
 
     {% include "components/articles/article-footer.twig" %}

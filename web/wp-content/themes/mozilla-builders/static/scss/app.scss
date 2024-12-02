@@ -159,6 +159,10 @@ body {
     @apply text-xl font-sans font-normal leading-tighter tracking-tight;
   }
 
+  .type-sans-subhead {
+    @apply text-subhead font-sans font-normal leading-tighter tracking-tighter;
+  }
+
   .type-code {
     @apply bg-code font-monospace text-white py-0.5 px-1 decoration-clone text-sm;
   }
@@ -410,7 +414,6 @@ body {
   }
 
   .gutenberg {
-    @apply grid grid-site centered-page;
     @apply prose;
 
     // Column-sizing

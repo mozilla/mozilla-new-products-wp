@@ -135,10 +135,12 @@ module.exports = {
         '4xl': 'clamp(2rem, 2.7vw + 0.9rem, 3.5rem)',
         // 36px (@640px) -> 72px (@1536px)
         '6xl': 'clamp(2.25rem, 4vw + 0.6rem, 4.5rem)',
-        // 64px (@640px) -> 100px (@1536px)
-        '8xl': 'clamp(4rem, 6vw + 1.25rem, 6.25rem);',
-        // 72px (@640px) -> 156px (@1536px)
-        '10xl': 'clamp(4.5rem, 9.4vw + 0.8rem, 9.75rem);',
+        // 48px (@640px) -> 100px (@1536px)
+        '8xl': 'clamp(3rem, 5.8vw + 0.7rem, 6.25rem)',
+        // 56px (@640px) -> 156px (@1536px)
+        '10xl': 'clamp(3.5rem, 11.2vw - 1rem, 9.75rem)',
+        // 28px (@640px) -> 48px (@1536px)
+        subhead: 'clamp(1.5rem, 2.7vw + 0.4rem, 3rem)',
       },
 
       keyframes: {
@@ -159,6 +161,10 @@ module.exports = {
 
       minHeight: {
         screen: '100dvh',
+      },
+
+      screens: {
+        '3xl': '1700px',
       },
 
       spacing: {

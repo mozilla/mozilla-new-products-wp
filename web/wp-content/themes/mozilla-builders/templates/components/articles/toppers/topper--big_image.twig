@@ -9,11 +9,11 @@
         {% include 'components/articles/overline.twig' with { overline: post.categories[0] } %}
       </div>
 
-      <h1 class="type-headline-2xl text-balance text-center">{{ post.title }}</h1>
+      <h1 class="type-headline-2xl text-balance text-center leading-none">{{ post.title }}</h1>
     </div>
 
     {% if post.subtitle %}
-      <p class="type-sans-lg uppercase text-balance leading-tighter text-center">
+      <p class="type-sans-subhead uppercase text-balance text-center">
         {{ post.subtitle }}
       </p>
     {% endif %}
