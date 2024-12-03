@@ -7,10 +7,10 @@
     </svg>
 
     {% if options.flag_text %}
-    <div class="flex-1 h-5 overflow-hidden relative max-md:hidden bg-action text-action-reverse max-w-80">
+    <div class="flex-1 h-5 overflow-hidden relative max-md:hidden motion-safe:bg-action text-action-reverse max-w-80">
       <div x-marquee="{ speed: 0.25 }" class="absolute top-1/2 left-0 right-0 -translate-y-1/2 group flex flex-col items-start">
         <div x-marquee:track class="animate-marquee motion-reduce:!animate-none flex" aria-hidden="true">
-          <p class="px-1.5 text-sm whitespace-nowrap select-none">
+          <p class="px-1.5 text-sm whitespace-nowrap motion-reduce:bg-action select-none motion-reduce:[&:not(:first-child)]:invisible">
             {{ options.flag_text }}
           </p>
         </div>
