@@ -78,7 +78,7 @@
       "name": "short_bio",
       "aria-label": "",
       "type": "textarea",
-      "instructions": "Presented as: <i>[Full name] is [short bio]</li>",
+      "instructions": "A short description of the person.<br />\r\nWhen the short bio is presented, it will be prefixed with <i>\"[Full name] is \"</i>",
       "required": 0,
       "conditional_logic": 0,
       "wrapper": {
@@ -87,12 +87,12 @@
         "id": ""
       },
       "default_value": "",
+      "acfe_textarea_code": 0,
       "maxlength": "",
       "allow_in_bindings": 0,
       "rows": "",
       "placeholder": "",
-      "new_lines": "",
-      "acfe_textarea_code": 0
+      "new_lines": ""
     },
     {
       "key": "field_671115201a7fd",
@@ -207,5 +207,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1730985845
+  "modified": 1733240109
 }
