@@ -78,7 +78,7 @@
       "name": "short_bio",
       "aria-label": "",
       "type": "textarea",
-      "instructions": "A short description of the person.<br />\r\nWhen the short bio is presented, it will be prefixed with <i>\"[Full name] is \"</li>",
+      "instructions": "A short description of the person.<br />\r\nWhen the short bio is presented, it will be prefixed with <i>\"[Full name] is \"</i>",
       "required": 0,
       "conditional_logic": 0,
       "wrapper": {
