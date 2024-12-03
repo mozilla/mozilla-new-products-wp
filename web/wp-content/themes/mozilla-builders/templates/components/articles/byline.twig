@@ -15,7 +15,7 @@
         <p class="uppercase leading-tight">Art</p>
         <p class="uppercase leading-tight">
           {% if post.art_credit_link %}
-            <a href="#" class="hover-link font-bold">{{ post.art_credit }}</a>
+            <a href="{{ post.art_credit_link }}" class="hover-link font-bold">{{ post.art_credit }}</a>
           {% else %}
             {{ post.art_credit }}
           {% endif %}
