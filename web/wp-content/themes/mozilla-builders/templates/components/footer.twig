@@ -1,9 +1,9 @@
 <footer class="mt-12 md:mt-24 pb-4 grid grid-site gap-4 centered-page">
   <div class="col-span-full border-b border-content mb-6 lg:mb-8">
     {% for section in options.footer_links_section %}
-    <div class="flex max-md:flex-col max-md:py-2 border-t border-content py-1.5">
-      <h2 class="text-sm font-bold md:leading-3 uppercase whitespace-nowrap">{{ section.footer_links_section_heading }}</h2>
-      <ul class="flex max-md:flex-col md:justify-around md:items-center w-full">
+    <div class="flex max-md:gap-x-grid-site-gutter max-md:py-2 border-t border-content py-1.5">
+      <h2 class="max-md:w-1/2 text-sm font-bold md:leading-3 uppercase whitespace-nowrap">{{ section.footer_links_section_heading }}</h2>
+      <ul class="max-md:w-1/2 flex max-md:flex-col md:justify-around md:items-center w-full">
         {% for item in section.footer_links_items %}
           <li class="text-sm md:leading-3">
             <a href="{{ item.footer_links_item_link.url }}" class="uppercase transition-colors hover:bg-spot hover:text-black">{{ item.footer_links_item_link.name ?: item.footer_links_item_link.title }}</a>
