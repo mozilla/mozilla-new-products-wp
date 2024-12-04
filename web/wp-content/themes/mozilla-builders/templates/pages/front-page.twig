@@ -19,6 +19,13 @@
     </div>
 
     {% include 'components/tease-list.twig' with { posts: latest_posts } %}
+
+    <div class="centered-page px-grid-site-margin">
+      <div class="full mt-4">
+        {% set label = topper.cta_label ?: 'Explore content' %}
+        {% include 'components/button-link.twig' with { href: archive_links.posts, label: label } %}
+      </div>
+    </div>
   </section>
 </div>
 

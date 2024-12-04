@@ -28,10 +28,16 @@
             {% endif %}
           </div>
 
-          <p class="w-full max-lg:text-sm max-lg:font-bold max-lg:uppercase lg:type-sans-xl uppercase gap-3">
-            <a href="{{ person.link }}" class="w-full lg:flex lg:items-center lg:justify-between before:absolute before:inset-0 before:z-10 max-lg:hover:bg-content max-lg:hover:text-main">
+          <p class="w-full text-sm font-bold uppercase lg:hidden gap-3">
+            <a href="{{ person.link }}" class="w-full before:absolute before:inset-0 before:z-10 transition-colors hover:bg-spot focus:bg-spot">
+              <span>{{ person.first_name }} {{ person.last_name }}</span>
+            </a>
+          </p>
+
+          <p class="w-full max-lg:hidden type-sans-xl uppercase gap-3">
+            <a href="{{ person.link }}" class="w-full lg:flex lg:items-center lg:justify-between before:absolute before:inset-0 before:z-10">
               <span>{{ person.first_name }}</span>
-              <span class="lg:hidden">&nbsp;</span>
+              <span>&nbsp;</span>
               <span class="max-lg:hidden flex-1 border-t border-content relative opacity-0 group-hover:opacity-100 group-focus-within:opacity-100"
                 aria-hidden="true"></span>
               <span>{{ person.last_name }}</span>
@@ -39,8 +45,8 @@
           </p>
 
           {% if project %}
-            <p class="lg:hidden text-sm uppercase">
-              <a href="{{ project.link }}">
+            <p class="lg:hidden relative z-10 text-sm uppercase">
+              <a href="{{ project.link }}" class="transition-colors hover:bg-spot focus:bg-spot">
                 {{ project.title }}
               </a>
             </p>
@@ -56,7 +62,7 @@
     {% endfor %}
   </ul>
 
-  <div class="col-span-full max-lg:mt-4 md:col-span-12 md:col-start-7 lg:col-span-8 lg:col-start-9">
+  <div class="col-span-full max-lg:mt-4 lg:col-span-8 lg:col-start-9">
     {% set label = builders.cta_link.title ?: 'See more' %}
     {% include 'components/button-link.twig' with { href: builders.cta_link.url, label: label } %}
   </div>
