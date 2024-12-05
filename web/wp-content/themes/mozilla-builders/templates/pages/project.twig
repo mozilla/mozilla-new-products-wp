@@ -96,10 +96,14 @@
       </div>
       {% endif %}
 
-      {% if post.website_link %}
+      {% if post.external_links %}
       <div class="contents">
-        <dt class="col-span-1/2">Website</dt>
-        <dd class="col-span-1/2 font-semibold"><a href="{{ post.website_link }}" class="hover-link">Link</a></dd>
+        <dt class="col-span-1/2">Link{% if post.external_links|length > 1 %}s{% endif %}</dt>
+        <dd class="col-span-1/2 font-semibold">
+          {% for link in post.external_links %}
+            <a href="{{ link.external_link.url }}" class="hover-link">{{ link.external_link.title }}</a>{% if not loop.last %}, {% endif %}
+          {% endfor %}
+        </dd>
       </div>
       {% endif %}
     </dl>
