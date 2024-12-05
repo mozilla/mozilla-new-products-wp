@@ -62,8 +62,8 @@
 
       {% if post.github_link %}
       <div class="contents">
-        <dt class="col-span-1/2">Link</dt>
-        <dd class="col-span-1/2 font-semibold"><a href="{{ post.github_link }}" class="hover-link">GitHub</a></dd>
+        <dt class="col-span-1/2">Github</dt>
+        <dd class="col-span-1/2 font-semibold"><a href="{{ post.github_link }}" class="hover-link">Code</a></dd>
       </div>
       {% endif %}
 
@@ -93,6 +93,13 @@
             <a href="{{ technology.link }}" class="hover-link">{{ technology.name }}</a>{% if not loop.last %}, {% endif %}
           {% endfor %}
         </dd>
+      </div>
+      {% endif %}
+
+      {% if post.website_link %}
+      <div class="contents">
+        <dt class="col-span-1/2">Website</dt>
+        <dd class="col-span-1/2 font-semibold"><a href="{{ post.website_link }}" class="hover-link">Link</a></dd>
       </div>
       {% endif %}
     </dl>
