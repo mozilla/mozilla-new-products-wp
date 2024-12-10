@@ -62,8 +62,8 @@
 
       {% if post.github_link %}
       <div class="contents">
-        <dt class="col-span-1/2">Link</dt>
-        <dd class="col-span-1/2 font-semibold"><a href="{{ post.github_link }}" class="hover-link">GitHub</a></dd>
+        <dt class="col-span-1/2">Github</dt>
+        <dd class="col-span-1/2 font-semibold"><a href="{{ post.github_link }}" class="hover-link">Code</a></dd>
       </div>
       {% endif %}
 
@@ -91,6 +91,17 @@
         <dd class="col-span-1/2 [&_a]:font-semibold">
           {% for technology in post.technologies %}
             <a href="{{ technology.link }}" class="hover-link">{{ technology.name }}</a>{% if not loop.last %}, {% endif %}
+          {% endfor %}
+        </dd>
+      </div>
+      {% endif %}
+
+      {% if post.external_links %}
+      <div class="contents">
+        <dt class="col-span-1/2">Link{% if post.external_links|length > 1 %}s{% endif %}</dt>
+        <dd class="col-span-1/2 font-semibold">
+          {% for link in post.external_links %}
+            <a href="{{ link.external_link.url }}" class="hover-link">{{ link.external_link.title }}</a>{% if not loop.last %}, {% endif %}
           {% endfor %}
         </dd>
       </div>

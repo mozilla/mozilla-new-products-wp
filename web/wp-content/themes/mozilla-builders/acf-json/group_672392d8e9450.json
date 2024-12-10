@@ -42,6 +42,49 @@
       "placeholder": ""
     },
     {
+      "key": "field_6751e42ac07c9",
+      "label": "External Links",
+      "name": "external_links",
+      "aria-label": "",
+      "type": "repeater",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "acfe_repeater_stylised_button": 0,
+      "layout": "table",
+      "pagination": 0,
+      "min": 0,
+      "max": 0,
+      "collapsed": "",
+      "button_label": "Add Link",
+      "rows_per_page": 20,
+      "sub_fields": [
+        {
+          "key": "field_6752010c8ed64",
+          "label": "External Link",
+          "name": "external_link",
+          "aria-label": "",
+          "type": "link",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "return_format": "array",
+          "allow_in_bindings": 0,
+          "parent_repeater": "field_6751e42ac07c9"
+        }
+      ]
+    },
+    {
       "key": "field_672392d9f9277",
       "label": "Contributors",
       "name": "contributors",
@@ -82,6 +125,11 @@
         "id": ""
       },
       "layout": "block",
+      "acfe_seamless_style": 0,
+      "acfe_group_modal": 0,
+      "acfe_group_modal_close": 0,
+      "acfe_group_modal_button": "",
+      "acfe_group_modal_size": "large",
       "sub_fields": [
         {
           "key": "field_672397cf2f3b0",
@@ -127,12 +175,7 @@
           "prepend": "",
           "append": ""
         }
-      ],
-      "acfe_seamless_style": 0,
-      "acfe_group_modal": 0,
-      "acfe_group_modal_close": 0,
-      "acfe_group_modal_button": "",
-      "acfe_group_modal_size": "large"
+      ]
     },
     {
       "key": "field_6723981d37122",
@@ -200,5 +243,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1731512246
+  "modified": 1733428053
 }
