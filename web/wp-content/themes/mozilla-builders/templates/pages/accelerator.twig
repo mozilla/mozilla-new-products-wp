@@ -16,21 +16,21 @@
       <button
         x-tabs:tab="overview"
         {% if initial_tab == 'overview' %}data-state="active"{% endif %}
-        class="flex-1 py-1 px-16 text-xs leading-3 hover:bg-action hover:text-action-reverse transition-colors data-[state=active]:bg-content data-[state=active]:text-content-reverse">
+        class="flex-1 py-1 px-16 text-xs leading-3 hocus:bg-action hocus:text-action-reverse data-active:bg-content data-active:text-content-reverse">
         <span class="uppercase text-xs leading-3 tracking-wide text-center whitespace-nowrap">{{ page.overview_title ?: 'Overview' }}</span>
       </button>
 
       <button
         x-tabs:tab="cohorts"
         {% if initial_tab == 'cohorts' %}data-state="active"{% endif %}
-        class="bg-main flex-1 py-1 px-16 text-xs leading-3 hover:bg-action hover:text-action-reverse transition-colors data-[state=active]:bg-content data-[state=active]:text-content-reverse">
+        class="bg-main flex-1 py-1 px-16 text-xs leading-3 hocus:bg-action hocus:text-action-reverse data-active:bg-content data-active:text-content-reverse">
         <span class="uppercase text-center text-xs leading-3 tracking-wide whitespace-nowrap">{{ page.cohorts.cohort_title ?: 'Cohorts' }}</span>
       </button>
 
       <button
         x-tabs:tab="faqs"
         {% if initial_tab == 'faqs' %}data-state="active"{% endif %}
-        class="bg-main flex-1 py-1 px-16 text-xs leading-3 hover:bg-action hover:text-action-reverse transition-colors data-[state=active]:bg-content data-[state=active]:text-content-reverse">
+        class="bg-main flex-1 py-1 px-16 text-xs leading-3 hocus:bg-action hocus:text-action-reverse data-active:bg-content data-active:text-content-reverse">
         <span class="uppercase text-center text-xs leading-3 tracking-wide whitespace-nowrap">{{ page.faq_title ?: 'FAQs' }}</span>
       </button>
     </div>
@@ -50,7 +50,7 @@
           {% set label = cta.custom_link.title %}
         {% endif %}
 
-        <a href="#ctas" class="bg-main flex-1 py-1 px-16 hover:bg-action hover:text-action-reverse transition-colors focus-within:bg-action focus-within:text-action-reverse">
+        <a href="#ctas" class="bg-main flex-1 py-1 px-16 hocus:bg-action hocus:text-action-reverse data-active:bg-content data-active:text-content-reverse">
           <p class="uppercase text-center text-xs leading-3 tracking-wide whitespace-nowrap">
             {{ label }}
           </p>
@@ -148,7 +148,7 @@
                 </div>
 
                 <p class="mt-2 text-sm uppercase font-semibold">
-                  <a href="{{ profile.link }}" class="before:absolute before:inset-0 hover:bg-content hover:text-main focus:bg-content focus:text-main">
+                  <a href="{{ profile.link }}" class="before:absolute before:inset-0 hocus:bg-content hocus:text-main">
                     {{ profile.first_name }} {{ profile.last_name }}
                   </a>
                 </p>

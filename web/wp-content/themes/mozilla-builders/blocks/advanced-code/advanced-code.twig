@@ -9,9 +9,9 @@
 
     <button
       x-clipboard:trigger
-      :data-copied="copied"
+      :data-state="copied ? 'active' : 'inactive'"
       aria-live="polite"
-      class="p-1 transition-colors bg-action text-action-reverse data-[copied=true]:bg-action-focus data-[copied=true]:text-action-focus-reverse"
+      class="p-1 bg-action text-action-reverse data-active:bg-action-focus data-active:text-action-focus-reverse"
     >
       <span class="sr-only" x-text="copied ? 'Copied' : 'Copy'">Copy</span>
       <svg class="w-5 h-5" aria-hidden="true">

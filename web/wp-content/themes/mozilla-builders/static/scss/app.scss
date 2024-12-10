@@ -196,9 +196,7 @@ body {
   .hover-link {
     @apply md:before:content-['\['] md:after:content-['\]'];
     @apply max-md:underline;
-    @apply hover:bg-action-focus focus:bg-action-focus;
-    @apply hover:no-underline focus:no-underline;
-    @apply hover:text-action-focus-reverse focus:text-action-focus-reverse;
+    @apply hocus:bg-action-focus hocus:no-underline hocus:text-action-focus-reverse;
   }
 
   // Grid utilities
@@ -382,7 +380,7 @@ body {
 
       // Inline links
       a {
-        @apply underline hover:bg-action-focus focus:bg-action-focus hover:no-underline focus:no-underline hover:text-action-focus-reverse focus:text-action-focus-reverse;
+        @apply underline hocus:bg-action-focus hocus:no-underline hocus:text-action-focus-reverse;
       }
     }
 
@@ -621,11 +619,11 @@ body {
     }
     .wp-block-button__link {
       @apply w-full p-10 uppercase text-center text-action-reverse bg-action border border-action transition-colors;
-      @apply hover:text-action-focus-reverse focus:text-action-focus-reverse hover:bg-action-focus focus:bg-action-focus hover:border-action-focus focus:border-action-focus;
+      @apply hocus:text-action-focus-reverse hocus:bg-action-focus hocus:border-action-focus;
     }
     .is-style-outline .wp-block-button__link {
       @apply bg-transparent border-none text-action transition-shadow shadow-inner shadow-action;
-      @apply hover:shadow-inner-thick hover:shadow-action focus:shadow-inner-thick focus:shadow-action;
+      @apply hocus:shadow-inner-thick hocus:shadow-action;
     }
 
     // Files
@@ -651,7 +649,7 @@ body {
         @apply flex items-center justify-between gap-10 w-full p-10;
         @apply uppercase font-semibold;
         @apply bg-action text-action-reverse transition duration-300;
-        @apply hover:text-action-focus-reverse focus:text-action-focus-reverse hover:bg-action-focus focus:bg-action-focus;
+        @apply hocus:text-action-focus-reverse hocus:bg-action-focus;
 
         &:has(+ a.wp-block-file__button) {
           @apply md:py-8;
@@ -659,7 +657,7 @@ body {
           &::after {
             content: '';
             @apply block shrink-0 bg-current mask-arrow-down size-8 md:size-10;
-            @apply transition-transform duration-300 hover:translate-y-1 focus:translate-y-1.5;
+            @apply transition-transform duration-300 hocus:translate-y-1.5;
           }
         }
       }
@@ -749,7 +747,7 @@ body {
       }
 
       summary {
-        @apply hover:cursor-pointer font-bold uppercase;
+        @apply hocus:cursor-pointer font-bold uppercase;
 
         &::marker,
         &::-webkit-details-marker {

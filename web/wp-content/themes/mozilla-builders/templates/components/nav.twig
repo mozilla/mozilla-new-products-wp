@@ -37,8 +37,8 @@
           class="text-sm md:max-xl:text-xs relative block py-0.5 px-1.5
                 before:absolute before:inset-0 before:bg-action-focus before:z-0
                 motion-safe:before:transition-transform before:scale-x-0 before:origin-center
-                aria-current:text-action-focus-reverse hover:text-action-focus-reverse
-                aria-current:before:scale-x-100 hover:before:scale-x-100"
+                aria-current:text-action-focus-reverse hocus:text-action-focus-reverse
+                aria-current:before:scale-x-100 hocus:before:scale-x-100"
           {% if item.current %}aria-current="page"{% endif %}
         >
           <span class="relative z-10">{{ item.name }}</span>
@@ -51,8 +51,8 @@
 
       {% if options.join_us_link %}
       <a href="{{ options.join_us_link.url }}"
-        class="text-sm md:max-xl:text-xs py-0.5 px-1.5 transition-colors whitespace-nowrap max-md:hidden
-             bg-action text-action-reverse hover:bg-action-focus hover:text-action-focus-reverse"
+        class="text-sm md:max-xl:text-xs py-0.5 px-1.5 whitespace-nowrap max-md:hidden
+             bg-action text-action-reverse hocus:bg-action-focus hocus:text-action-focus-reverse"
       >
         {{ options.join_us_link.title ?: 'Join us' }}
       </a>
