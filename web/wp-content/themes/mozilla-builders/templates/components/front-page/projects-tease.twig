@@ -1,9 +1,17 @@
 {% if projects is not empty %}
-<section class="centered-page px-grid-site-margin flex flex-col gap-px theme-dark">
+<section class="centered-page px-grid-site-margin flex flex-col theme-dark">
   {% if collaborations.headline %}
-    <div class="bg-main text-content p-1 flex justify-center text-center">
+    <div class="bg-main text-content p-1 flex justify-center text-center border-b border-content">
       <h2 class="uppercase text-xs leading-3 tracking-wide">{{ collaborations.headline }}</h2>
     </div>
+  {% endif %}
+
+  {% if collaborations.subheading %}
+  <div class="bg-main text-content col-span-full grid grid-cols-site gap-x-grid-site-gutter text-center">
+    <div class=" md:col-span-16 md:col-start-5 xl:col-span-12 xl:col-start-7 flex justify-center py-8">
+      <div class="type-headline-lg text-center text-balance leading-tighter [&_a]:underline [&_a:hover]:no-underline">{{ collaborations.subheading }}</div>
+    </div>
+  </div>
   {% endif %}
 
   <div class="bg-main text-content p-8 flex flex-col gap-y-12">

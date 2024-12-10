@@ -211,6 +211,27 @@
           "append": ""
         },
         {
+          "key": "field_67588c8b98a9d",
+          "label": "Subheading",
+          "name": "subheading",
+          "aria-label": "",
+          "type": "wysiwyg",
+          "instructions": "A short description about the builders.",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "allow_in_bindings": 0,
+          "tabs": "all",
+          "toolbar": "bold_italic_link",
+          "media_upload": 0,
+          "delay": 0
+        },
+        {
           "key": "field_673d84f154109",
           "label": "People",
           "name": "people",
@@ -304,9 +325,6 @@
       "layout": "block",
       "acfe_seamless_style": 0,
       "acfe_group_modal": 0,
-      "acfe_group_modal_close": 0,
-      "acfe_group_modal_button": "",
-      "acfe_group_modal_size": "large",
       "sub_fields": [
         {
           "key": "field_673d85fa19677",
@@ -328,6 +346,27 @@
           "placeholder": "",
           "prepend": "",
           "append": ""
+        },
+        {
+          "key": "field_67588cc998a9e",
+          "label": "Subheading",
+          "name": "subheading",
+          "aria-label": "",
+          "type": "wysiwyg",
+          "instructions": "A short description about Projects",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "allow_in_bindings": 0,
+          "tabs": "all",
+          "toolbar": "bold_italic_link",
+          "media_upload": 0,
+          "delay": 0
         },
         {
           "key": "field_673d860519678",
@@ -379,7 +418,10 @@
           "prepend": "",
           "append": ""
         }
-      ]
+      ],
+      "acfe_group_modal_close": 0,
+      "acfe_group_modal_button": "",
+      "acfe_group_modal_size": "large"
     }
   ],
   "location": [
@@ -405,5 +447,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1733142869
+  "modified": 1733856536
 }

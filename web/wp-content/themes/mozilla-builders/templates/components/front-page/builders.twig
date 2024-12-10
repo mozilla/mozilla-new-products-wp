@@ -3,6 +3,12 @@
     <h2 class="uppercase text-xs leading-3 tracking-wide">{{ builders.headline }}</h2>
   </div>
 
+  {% if builders.subheading %}
+  <div class="col-span-full md:col-span-16 md:col-start-5 xl:col-span-12 xl:col-start-7 flex justify-center text-center">
+    <div class="type-headline-lg text-center text-balance leading-tighter [&_a]:underline [&_a:hover]:no-underline">{{ builders.subheading }}</div>
+  </div>
+  {% endif %}
+
   <ul class="col-span-full grid grid-cols-site gap-x-grid-site-gutter gap-y-8 lg:gap-y-4">
     {% for person in featured_people %}
       {% set project = person.projects[0] %}
