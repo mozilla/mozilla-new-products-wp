@@ -16,6 +16,8 @@ use MozillaBuilders\Models\Taxonomy\ProjectCategory;
 use MozillaBuilders\Models\Taxonomy\Technology;
 use MozillaBuilders\Vite;
 
+use Timber\Timber;
+
 /** Class */
 class ThemeManager {
 
@@ -58,6 +60,12 @@ class ThemeManager {
 		add_filter( 'timber/term/classmap', array( $this, 'set_term_classmap' ) );
 		add_action( 'pre_get_posts', array( $this, 'filter_posts' ) );
 		add_filter( 'admin_footer_text', array( $this, 'add_admin_footer_credit' ) );
+
+		// Yoast SEO.
+		add_filter( 'wpseo_meta_author', array( $this, 'set_yoast_author' ) );
+		add_filter( 'wpseo_enhanced_slack_data', array( $this, 'set_yoast_slack_data' ) );
+		add_filter( 'wpseo_opengraph_author_facebook', '__return_false' );
+		add_filter( 'wpseo_schema_person_user_id', '__return_false' );
 
 		// Filetype allowances.
 		add_filter( 'upload_mimes', array( $this, 'manage_mime_types' ) );
@@ -256,6 +264,46 @@ class ThemeManager {
 	 */
 	public function add_admin_footer_credit() {
 		return '<span id="footer-thankyou">Made by <a href="https://upstatement.com/" target="_blank">Upstatement</a></span>';
+	}
+
+	/**
+	 * Set the Yoast SEO author meta.
+	 *
+	 * @param string $author The author.
+	 *
+	 * @return string|false
+	 */
+	public function set_yoast_author( $author ) {
+		$post = Timber::get_post();
+		if ( $post instanceof Article ) {
+			$authors = $post->authors();
+			if ( count( $authors ) > 0 ) {
+				return implode( ', ', array_map( fn( $author ) => $author->name, $authors ) );
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Set the Yoast SEO enhanced Slack data.
+	 *
+	 * @param array $data The data.
+	 *
+	 * @return array
+	 */
+	public function set_yoast_slack_data( $data ) {
+		$post = Timber::get_post();
+		if ( $post instanceof Article ) {
+			$authors = $post->authors();
+			if ( count( $authors ) > 0 ) {
+				$data['Written by'] = implode( ', ', array_map( fn( $author ) => $author->name, $authors ) );
+			} else {
+				unset( $data['Written by'] );
+			}
+		} else {
+			unset( $data['Written by'] );
+		}
+		return $data;
 	}
 
 
