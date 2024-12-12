@@ -6,7 +6,7 @@
       <ul class="max-md:w-1/2 flex max-md:flex-col md:justify-around md:items-center w-full">
         {% for item in section.footer_links_items %}
           <li class="text-sm md:leading-3">
-            <a href="{{ item.footer_links_item_link.url }}" class="uppercase transition-colors hover:bg-spot hover:text-black">{{ item.footer_links_item_link.name ?: item.footer_links_item_link.title }}</a>
+            <a href="{{ item.footer_links_item_link.url }}" class="uppercase hocus:bg-spot hocus:text-black">{{ item.footer_links_item_link.name ?: item.footer_links_item_link.title }}</a>
           </li>
         {% endfor %}
       </ul>
@@ -24,7 +24,7 @@
 
     <ul class="max-md:w-1/2 flex flex-wrap max-md:flex-col md:items-center justify-end md:gap-x-6 gap-y-1.5 text-right">
       {% for item in primary_footer_menu.items %}
-        <li class="text-xs leading-none"><a href="{{ item.url }}" class=" transition-colors hover:bg-spot hover:text-black">{{ item.name }}</a></li>
+        <li class="text-xs leading-none"><a href="{{ item.url }}" class="hocus:bg-spot hocus:text-black">{{ item.name }}</a></li>
       {% endfor %}
     </ul>
   </div>

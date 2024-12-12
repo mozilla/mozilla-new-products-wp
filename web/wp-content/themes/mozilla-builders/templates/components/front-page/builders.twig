@@ -16,7 +16,7 @@
         <div class="max-lg:hidden col-span-3 col-start-1 self-center">
           {% if project %}
             <p class="text-sm uppercase">
-              <a href="{{ project.link }}" class="transition-colors hover:bg-spot focus:bg-spot">
+              <a href="{{ project.link }}" class="hocus:bg-spot">
                 {{ project.title }}
               </a>
             </p>
@@ -35,7 +35,7 @@
           </div>
 
           <p class="w-full text-sm font-bold uppercase lg:hidden gap-3">
-            <a href="{{ person.link }}" class="w-full before:absolute before:inset-0 before:z-10 transition-colors hover:bg-spot focus:bg-spot">
+            <a href="{{ person.link }}" class="w-full before:absolute before:inset-0 before:z-10 hocus:bg-spot">
               <span>{{ person.first_name }} {{ person.last_name }}</span>
             </a>
           </p>
@@ -43,7 +43,7 @@
           <p class="w-full max-lg:hidden type-sans-xl uppercase gap-3">
             <a href="{{ person.link }}" class="w-full lg:flex lg:items-center lg:justify-between before:absolute before:inset-0 before:z-10">
               <span>{{ person.first_name }}</span>
-              <span class="max-lg:hidden flex-1 border-t border-content relative opacity-0 group-hover:opacity-100 group-focus-within:opacity-100"
+              <span class="max-lg:hidden flex-1 border-t border-content relative opacity-0 group-hocus:opacity-100"
                 aria-hidden="true"></span>
               <span>{{ person.last_name }}</span>
             </a>
@@ -51,14 +51,14 @@
 
           {% if project %}
             <p class="lg:hidden relative z-10 text-sm uppercase">
-              <a href="{{ project.link }}" class="transition-colors hover:bg-spot focus:bg-spot">
+              <a href="{{ project.link }}" class="hocus:bg-spot">
                 {{ project.title }}
               </a>
             </p>
           {% endif %}
 
           {% if person.thumbnail %}
-            <span class="max-lg:hidden absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 transition-opacity opacity-0 group-hover:opacity-100 group-focus-within:opacity-100">
+            <span class="max-lg:hidden absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 transition-opacity opacity-0 group-hocus:opacity-100">
               {% include 'components/lazy-img.twig' with { img: person.thumbnail, class: 'h-32' } %}
             </span>
           {% endif %}

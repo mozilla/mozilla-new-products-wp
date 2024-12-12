@@ -1,26 +1,28 @@
 {% if color == 'primary' %}
-  {% set theme = 'bg-cta border-cta text-cta-text hover:bg-main hover:text-content hover:border-content focus:bg-main focus:text-content focus:border-content' %}
+  {% set theme = 'bg-cta border-cta text-cta-text group-hocus:bg-main group-hocus:text-content group-hocus:border-content' %}
 {% else %}
-  {% set theme = 'bg-cta-secondary border-cta-secondary text-cta-secondary-text hover:bg-main hover:text-content hover:border-content focus:bg-main focus:text-content focus:border-content' %}
+  {% set theme = 'bg-cta-secondary border-cta-secondary text-cta-secondary-text group-hocus:bg-main group-hocus:text-content group-hocus:border-content' %}
 {% endif %}
 
-<div
-  class="relative aspect-square p-3 flex flex-col justify-between items-center transition-colors duration-200 border {{ theme }}">
-  <p class="text-center text-sm uppercase">
-    {{ top }}
-  </p>
+<div class="group">
+  <div
+    class="relative aspect-square p-3 flex flex-col justify-between items-center transition-colors duration-200 border {{ theme }}">
+    <p class="text-center text-sm uppercase">
+      {{ top }}
+    </p>
 
-  <a href="{{ href }}" class="group before:absolute before:inset-0 before:z-10">
-    <div class="type-sans-xl lg:type-sans-2xl flex items-center gap-5 md:gap-8">
-      <span>{{ label }}</span>
-      <svg
-        class="h-[0.7em] aspect-square transition-transform group-hover:translate-x-2 {{ href starts with site.link or href starts with '#' ? '' : '-rotate-45 group-hover:-translate-y-2' }}">
-        <use xlink:href="#arrow-right" />
-      </svg>
-    </div>
-  </a>
+    <a href="{{ href }}" class="before:absolute before:inset-0 before:z-10 outline-none">
+      <div class="type-sans-xl lg:type-sans-2xl flex items-center gap-5 md:gap-8">
+        <span>{{ label }}</span>
+        <svg
+          class="h-[0.7em] aspect-square transition-transform group-hocus:translate-x-2 {{ href starts with site.link or href starts with '#' ? '' : '-rotate-45 group-hocus:-translate-y-2' }}">
+          <use xlink:href="#arrow-right" />
+        </svg>
+      </div>
+    </a>
 
-  <p class="text-center text-sm uppercase">
-    {{ bottom }}
-  </p>
+    <p class="text-center text-sm uppercase">
+      {{ bottom }}
+    </p>
+  </div>
 </div>
