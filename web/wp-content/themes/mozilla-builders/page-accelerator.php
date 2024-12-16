@@ -27,6 +27,10 @@ if ( post_password_required( $_page_id ) ) {
 	$cohorts_args = array(
 		'taxonomy' => Cohort::HANDLE,
 	);
+	$cohort_ids = $_page->meta( 'cohorts' )['items'];
+	if ( ! empty( $cohort_ids ) ) {
+		$cohorts_args['include'] = $cohort_ids;
+	}
 	$context['cohorts'] = Timber::get_terms( $cohorts_args );
 
 	Timber::render( 'pages/accelerator.twig', $context );

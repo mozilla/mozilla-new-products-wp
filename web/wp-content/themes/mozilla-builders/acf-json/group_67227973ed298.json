@@ -413,6 +413,9 @@
       "layout": "block",
       "acfe_seamless_style": 0,
       "acfe_group_modal": 0,
+      "acfe_group_modal_close": 0,
+      "acfe_group_modal_button": "",
+      "acfe_group_modal_size": "large",
       "sub_fields": [
         {
           "key": "field_674340d69240c",
@@ -476,11 +479,43 @@
           "toolbar": "basic",
           "media_upload": 0,
           "delay": 0
+        },
+        {
+          "key": "field_6760611e91e8a",
+          "label": "Cohorts",
+          "name": "items",
+          "aria-label": "",
+          "type": "acfe_taxonomy_terms",
+          "instructions": "Which cohorts to include. <i>Leave blank to include all</i>",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "taxonomy": ["cohort"],
+          "allow_terms": "",
+          "allow_level": "",
+          "field_type": "checkbox",
+          "default_value": [],
+          "return_format": "id",
+          "layout": "vertical",
+          "toggle": 0,
+          "save_terms": 0,
+          "load_terms": 0,
+          "allow_in_bindings": 0,
+          "choices": [],
+          "ui": 0,
+          "multiple": 0,
+          "allow_null": 0,
+          "ajax": 0,
+          "placeholder": "",
+          "search_placeholder": "",
+          "allow_custom": 0,
+          "other_choice": 0
         }
-      ],
-      "acfe_group_modal_close": 0,
-      "acfe_group_modal_button": "",
-      "acfe_group_modal_size": "large"
+      ]
     },
     {
       "key": "field_674340f49240d",
@@ -643,5 +678,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1732460823
+  "modified": 1734369624
 }
