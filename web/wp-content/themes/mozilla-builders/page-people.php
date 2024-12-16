@@ -1,16 +1,22 @@
 <?php
 /**
- * Template Name: Accelerator
+ * Template Name: People Archive
  *
  * @package MozillaBuilders
  */
 
 use Timber\Timber;
+
 use MozillaBuilders\Models\Taxonomy\Cohort;
 
 $context  = Timber::context();
 $_page    = Timber::get_post();
 $_page_id = (int) $_page->ID;
+
+global $paged;
+
+$context['title'] = $_page->title();
+$context['subheading'] = 'Projects';
 
 // If page is password protected, render password page.
 if ( post_password_required( $_page_id ) ) {
@@ -22,17 +28,11 @@ if ( post_password_required( $_page_id ) ) {
 } else {
 	$context['page'] = $_page;
 
-	$context['initial_tab'] = $_GET['tab'] ?? 'overview';
-
 	$cohorts_args = array(
 		'taxonomy' => Cohort::HANDLE,
 	);
-	$cohort_ids = $_page->meta( 'cohorts' )['items'];
-	if ( ! empty( $cohort_ids ) ) {
-		$cohorts_args['include'] = $cohort_ids;
-	}
 	$context['cohorts'] = Timber::get_terms( $cohorts_args );
 
-	Timber::render( 'pages/accelerator.twig', $context );
+	Timber::render( 'pages/archive-people.twig', $context );
 }
 

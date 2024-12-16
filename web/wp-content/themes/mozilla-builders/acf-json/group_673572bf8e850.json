@@ -181,6 +181,13 @@
         "operator": "==",
         "value": "page"
       }
+    ],
+    [
+      {
+        "param": "post_template",
+        "operator": "==",
+        "value": "page-people.php"
+      }
     ]
   ],
   "menu_order": 1,
@@ -197,5 +204,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1732649383
+  "modified": 1734368750
 }
