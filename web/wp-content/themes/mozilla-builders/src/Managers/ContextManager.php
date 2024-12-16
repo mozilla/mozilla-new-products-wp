@@ -103,10 +103,24 @@ class ContextManager {
 		$accelerator_page_posts = Timber::get_posts( $accelerator_page_args )->to_array();
 		$accelerator_page_link  = ! empty( $accelerator_page_posts ) ? $accelerator_page_posts[0]->link() : null;
 
+		$people_page_args = array(
+			'post_type'      => 'page',
+			'posts_per_page' => 1,
+			'meta_query'     => array(
+				array(
+					'key'   => '_wp_page_template',
+					'value' => 'page-people.php',
+				),
+			),
+		);
+		$people_page_posts = Timber::get_posts( $people_page_args )->to_array();
+		$people_page_link  = ! empty( $people_page_posts ) ? $people_page_posts[0]->link() : null;
+
 		$context['archive_links'] = array(
 			'posts'    => get_post_type_archive_link( 'post' ),
 			'projects' => $project_archive_link,
 			'accelerator' => $accelerator_page_link,
+			'people' => $people_page_link,
 			'discord'  => 'https://discord.gg/gydMdRK2zV',
 		);
 		return $context;

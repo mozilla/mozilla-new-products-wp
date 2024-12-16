@@ -59,6 +59,10 @@
   --color-blue-green: #{color.rgb(#6bbcae)};
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   @apply bg-main text-content;
   @apply font-sans font-normal text-base antialiased;
