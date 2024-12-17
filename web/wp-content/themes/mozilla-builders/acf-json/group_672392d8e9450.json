@@ -85,6 +85,27 @@
       ]
     },
     {
+      "key": "field_6723981d37122",
+      "label": "About",
+      "name": "about",
+      "aria-label": "",
+      "type": "wysiwyg",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "allow_in_bindings": 0,
+      "tabs": "visual",
+      "toolbar": "basic",
+      "media_upload": 0,
+      "delay": 0
+    },
+    {
       "key": "field_672392d9f9277",
       "label": "Contributors",
       "name": "contributors",
@@ -216,27 +237,6 @@
       "acfe_group_modal_size": "large"
     },
     {
-      "key": "field_6723981d37122",
-      "label": "About",
-      "name": "about",
-      "aria-label": "",
-      "type": "wysiwyg",
-      "instructions": "",
-      "required": 0,
-      "conditional_logic": 0,
-      "wrapper": {
-        "width": "",
-        "class": "",
-        "id": ""
-      },
-      "default_value": "",
-      "allow_in_bindings": 0,
-      "tabs": "visual",
-      "toolbar": "basic",
-      "media_upload": 0,
-      "delay": 0
-    },
-    {
       "key": "field_67323eb12cdc9",
       "label": "Show image on index",
       "name": "show_image_on_index",
@@ -281,5 +281,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1734458005
+  "modified": 1734460160
 }
