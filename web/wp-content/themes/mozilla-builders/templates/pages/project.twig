@@ -120,7 +120,7 @@
   {% endif %}
 
   <section class="col-span-full md:col-span-1/2 md:col-start-end lg:col-span-1/3 border-t border-content pt-2 flex flex-col">
-    <h2 class="mb-6 text-xs uppercase">Contribute</h2>
+    <h2 class="mb-6 text-xs uppercase">{{ post.discord.heading ?: 'Contribute' }}</h2>
 
     {% if post.discord.url or post.discord.channel_name %}
       <dl class="grid grid-cols-6 md:grid-cols-16 lg:grid-cols-8 gap-x-grid-site-gutter gap-y-2 mb-8">
@@ -146,10 +146,15 @@
 
     {% if post.discord.url %}
       {% set href = post.discord.url %}
+      {% set label = 'Join the Discord' %}
+    {% elseif post.discord.link|length %}
+      {% set href = post.discord.link.url %}
+      {% set label = post.discord.link.title %}
     {% else %}
       {% set href = archive_links.discord %}
+      {% set label = 'Join the Discord' %}
     {% endif %}
-    {% include "components/button-link.twig" with { href: href, label: 'Join the Discord' } %}
+    {% include "components/button-link.twig" with { href: href, label: label } %}
   </section>
 </div>
 
