@@ -85,6 +85,27 @@
       ]
     },
     {
+      "key": "field_6723981d37122",
+      "label": "About",
+      "name": "about",
+      "aria-label": "",
+      "type": "wysiwyg",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "allow_in_bindings": 0,
+      "tabs": "visual",
+      "toolbar": "basic",
+      "media_upload": 0,
+      "delay": 0
+    },
+    {
       "key": "field_672392d9f9277",
       "label": "Contributors",
       "name": "contributors",
@@ -112,7 +133,7 @@
     },
     {
       "key": "field_672397c52f3af",
-      "label": "Discord",
+      "label": "Contribute",
       "name": "discord",
       "aria-label": "",
       "type": "group",
@@ -127,17 +148,35 @@
       "layout": "block",
       "acfe_seamless_style": 0,
       "acfe_group_modal": 0,
-      "acfe_group_modal_close": 0,
-      "acfe_group_modal_button": "",
-      "acfe_group_modal_size": "large",
       "sub_fields": [
         {
+          "key": "field_6761b9e60b9e7",
+          "label": "Heading",
+          "name": "heading",
+          "aria-label": "",
+          "type": "text",
+          "instructions": "If blank, defaults to \"Contribute\".",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "maxlength": "",
+          "allow_in_bindings": 0,
+          "placeholder": "",
+          "prepend": "",
+          "append": ""
+        },
+        {
           "key": "field_672397cf2f3b0",
-          "label": "Channel Name",
+          "label": "Discord Channel Name",
           "name": "channel_name",
           "aria-label": "",
           "type": "text",
-          "instructions": "Don't include the leading <code>#</code>",
+          "instructions": "Don't include the leading <code>#<\/code>",
           "required": 0,
           "conditional_logic": 0,
           "wrapper": {
@@ -154,7 +193,7 @@
         },
         {
           "key": "field_672397de2f3b1",
-          "label": "Members Count",
+          "label": "Discord Members Count",
           "name": "members_count",
           "aria-label": "",
           "type": "number",
@@ -174,29 +213,28 @@
           "step": "",
           "prepend": "",
           "append": ""
+        },
+        {
+          "key": "field_6761b9c70b9e6",
+          "label": "Contribute Link",
+          "name": "link",
+          "aria-label": "",
+          "type": "link",
+          "instructions": "If empty, defaults to discord link.",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "return_format": "array",
+          "allow_in_bindings": 0
         }
-      ]
-    },
-    {
-      "key": "field_6723981d37122",
-      "label": "About",
-      "name": "about",
-      "aria-label": "",
-      "type": "wysiwyg",
-      "instructions": "",
-      "required": 0,
-      "conditional_logic": 0,
-      "wrapper": {
-        "width": "",
-        "class": "",
-        "id": ""
-      },
-      "default_value": "",
-      "allow_in_bindings": 0,
-      "tabs": "visual",
-      "toolbar": "basic",
-      "media_upload": 0,
-      "delay": 0
+      ],
+      "acfe_group_modal_close": 0,
+      "acfe_group_modal_button": "",
+      "acfe_group_modal_size": "large"
     },
     {
       "key": "field_67323eb12cdc9",
@@ -243,5 +281,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1733428053
+  "modified": 1734460160
 }
