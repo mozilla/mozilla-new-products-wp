@@ -44,6 +44,8 @@
           {% set label = 'Content' %}
         {% elseif cta.link_type == "project_archive" %}
           {% set label = 'Projects' %}
+        {% elseif cta.link_type == "people_archive" %}
+          {% set label = 'People' %}
         {% elseif cta.link_type == "discord" %}
           {% set label = 'Discord' %}
         {% else %}
@@ -166,32 +168,11 @@
     </div>
   </div>
 
+
+
   {% if page.ctas|length %}
-    <div id="ctas" class="scroll-mt-24 md:scroll-mt-16 mt-16 md:mt-24 grid grid-cols-1 md:grid-cols-2 gap-px mx-grid-site-margin">
-      {% for cta in page.ctas %}
-        {% if cta.link_type == "post_archive" %}
-          {% set label = 'Content' %}
-          {% set href = archive_links.posts %}
-        {% elseif cta.link_type == "project_archive" %}
-          {% set label = 'Projects' %}
-          {% set href = archive_links.projects %}
-        {% elseif cta.link_type == "discord" %}
-          {% set label = 'Discord' %}
-          {% set href = archive_links.discord %}
-        {% else %}
-          {% set label = cta.custom_link.title %}
-          {% set href = cta.custom_link.url %}
-        {% endif %}
-
-        {% include 'components/big-cta.twig' with {
-          top: cta.top_text,
-          bottom: cta.bottom_text,
-          label: label,
-          href: href,
-          color: cta.cta_color
-        } %}
-
-      {% endfor %}
+    <div id="ctas" class="scroll-mt-24 md:scroll-mt-16 mt-16 md:mt-24">
+      {% include 'components/big-cta-row.twig' with { ctas: page.ctas } %}
     </div>
   {% endif %}
 

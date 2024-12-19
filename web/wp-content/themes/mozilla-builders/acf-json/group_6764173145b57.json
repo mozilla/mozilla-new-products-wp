@@ -1,0 +1,129 @@
+{
+  "key": "group_6764173145b57",
+  "title": "CTA",
+  "fields": [
+    {
+      "key": "field_6764173159951",
+      "label": "Top Text",
+      "name": "top_text",
+      "aria-label": "",
+      "type": "text",
+      "instructions": "",
+      "required": 1,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "allow_in_bindings": 0,
+      "placeholder": "",
+      "prepend": "",
+      "append": ""
+    },
+    {
+      "key": "field_6764174859952",
+      "label": "Bottom Text",
+      "name": "bottom_text",
+      "aria-label": "",
+      "type": "text",
+      "instructions": "",
+      "required": 1,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "allow_in_bindings": 0,
+      "placeholder": "",
+      "prepend": "",
+      "append": ""
+    },
+    {
+      "key": "field_6764174f59953",
+      "label": "Link Type",
+      "name": "link_type",
+      "aria-label": "",
+      "type": "select",
+      "instructions": "",
+      "required": 1,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "choices": {
+        "post_archive": "Content",
+        "project_archive": "Projects",
+        "people_archive": "People",
+        "discord": "Discord",
+        "custom": "Custom"
+      },
+      "default_value": "custom",
+      "return_format": "value",
+      "multiple": 0,
+      "allow_custom": 0,
+      "placeholder": "",
+      "search_placeholder": "",
+      "allow_null": 0,
+      "allow_in_bindings": 0,
+      "ui": 0,
+      "ajax": 0
+    },
+    {
+      "key": "field_6764179a59954",
+      "label": "Custom Link",
+      "name": "custom_link",
+      "aria-label": "",
+      "type": "link",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": [
+        [
+          {
+            "field": "field_6764174f59953",
+            "operator": "==",
+            "value": "custom"
+          }
+        ]
+      ],
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "return_format": "array",
+      "allow_in_bindings": 0
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "cta"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "seamless",
+  "label_placement": "left",
+  "instruction_placement": "label",
+  "hide_on_screen": ["block_editor", "the_content"],
+  "active": true,
+  "description": "",
+  "show_in_rest": 0,
+  "acfe_display_title": "",
+  "acfe_autosync": ["json"],
+  "acfe_form": 0,
+  "acfe_meta": "",
+  "acfe_note": "",
+  "modified": 1734612973
+}

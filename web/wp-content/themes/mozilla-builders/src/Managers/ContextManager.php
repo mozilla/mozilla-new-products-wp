@@ -116,12 +116,17 @@ class ContextManager {
 		$people_page_posts = Timber::get_posts( $people_page_args )->to_array();
 		$people_page_link  = ! empty( $people_page_posts ) ? $people_page_posts[0]->link() : null;
 
+		$discord_link = get_fields( 'option' )['discord_invite_link'];
+		if ( empty( $discord_link ) ) {
+			$discord_link = 'https://discord.gg/gydMdRK2zV';
+		}
+
 		$context['archive_links'] = array(
 			'posts'    => get_post_type_archive_link( 'post' ),
 			'projects' => $project_archive_link,
 			'accelerator' => $accelerator_page_link,
 			'people' => $people_page_link,
-			'discord'  => 'https://discord.gg/gydMdRK2zV',
+			'discord'  => $discord_link,
 		);
 		return $context;
 	}
