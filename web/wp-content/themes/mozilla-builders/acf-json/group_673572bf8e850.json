@@ -172,6 +172,7 @@
           "choices": {
             "post_archive": "Content",
             "project_archive": "Projects",
+            "people_archive": "People",
             "discord": "Discord",
             "custom": "Custom"
           },
@@ -295,5 +296,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1734613621
+  "modified": 1734614233
 }
