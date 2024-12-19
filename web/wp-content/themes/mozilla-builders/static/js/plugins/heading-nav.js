@@ -4,9 +4,11 @@ function slugify(text) {
 
 /** @type {import('alpinejs').PluginCallback} */
 export function headingNav(Alpine) {
-  Alpine.directive('heading-nav', (el, _, { cleanup }) => {
-    const unregister = registerRoot(el, Alpine);
-    cleanup(() => unregister());
+  Alpine.directive('headings', (el, { value }, { cleanup }) => {
+    if (!value) {
+      const unregister = registerRoot(el, Alpine);
+      cleanup(() => unregister());
+    }
   });
 }
 
@@ -17,8 +19,12 @@ export function headingNav(Alpine) {
  * @param {import('alpinejs').Alpine} Alpine
  */
 function registerRoot(el, Alpine) {
-  const article = el.closest('article');
-  const headingEls = Array.from(article.querySelectorAll('h1, h2, h3, h4, h5, h6'));
+  const content = el.querySelector('[x-headings\\:content]');
+  if (!content) {
+    return () => {};
+  }
+
+  const headingEls = Array.from(content.querySelectorAll('h1, h2, h3, h4, h5, h6'));
 
   const headingIdSet = new Set();
   const headings = [];
@@ -32,6 +38,7 @@ function registerRoot(el, Alpine) {
     }
 
     heading.id = id;
+    heading.classList.add('scroll-mt-32');
     headingIdSet.add(id);
 
     headings.push({
@@ -44,9 +51,11 @@ function registerRoot(el, Alpine) {
   Alpine.data('headings', () => ({
     headings,
     activeIndex: 0,
+    lastActiveIndex: 0,
+    observer: null,
     init() {
       this.observer = new IntersectionObserver(this.onIntersection.bind(this), {
-        rootMargin: '0px',
+        rootMargin: '0px 0px -80% 0px',
         threshold: 1,
       });
 
@@ -58,22 +67,24 @@ function registerRoot(el, Alpine) {
      * @param {IntersectionObserverEntry[]} entries
      */
     onIntersection(entries) {
-      const firstOrIntersectingEntry = entries.find(entry => entry.isIntersecting) || entries[0];
+      const intersectingEntry = entries.find(entry => entry.isIntersecting);
 
-      const entryIndex = this.headings.findIndex(
-        heading => heading.id === firstOrIntersectingEntry.target.id,
-      );
+      let nextIndex = this.activeIndex;
+      if (intersectingEntry) {
+        nextIndex = this.headings.findIndex(heading => heading.id === intersectingEntry.target.id);
+      }
 
-      if (entryIndex === -1) {
+      this.lastActiveIndex = this.activeIndex;
+
+      if (nextIndex === -1) {
         this.activeIndex = 0;
-      } else if (firstOrIntersectingEntry.isIntersecting) {
-        this.activeIndex = entryIndex;
       } else {
-        this.activeIndex = Math.max(0, Math.min(this.headings.length - 1, entryIndex - 1));
+        this.activeIndex = nextIndex;
       }
     },
     destroy() {
-      this.observer.disconnect();
+      this.observer?.disconnect();
+      this.observer = null;
     },
   }));
 
