@@ -8,6 +8,7 @@
 namespace MozillaBuilders\Managers;
 
 use MozillaBuilders\Models\PostType\Article;
+use MozillaBuilders\Models\PostType\Cta;
 use MozillaBuilders\Models\PostType\Profile;
 use MozillaBuilders\Models\PostType\Project;
 use MozillaBuilders\Models\Taxonomy\Cohort;
@@ -195,6 +196,7 @@ class ThemeManager {
 	 * @return void
 	 */
 	public function register_post_types() {
+		Cta::register();
 		Profile::register();
 		Project::register();
 	}
@@ -206,9 +208,10 @@ class ThemeManager {
 	 */
 	public function set_post_classmap( array $classmap ): array {
 		$custom_classmap = array(
-			'post'              => Article::class,
-			Profile::HANDLE     => Profile::class,
-			Project::HANDLE     => Project::class,
+			Article::HANDLE  => Article::class,
+			Cta::HANDLE      => Cta::class,
+			Profile::HANDLE   => Profile::class,
+			Project::HANDLE  => Project::class,
 		);
 
 		return array_merge( $classmap, $custom_classmap );

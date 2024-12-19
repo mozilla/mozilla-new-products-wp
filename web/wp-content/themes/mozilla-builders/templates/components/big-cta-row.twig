@@ -1,0 +1,38 @@
+{% if ctas|length %}
+
+<div class="centered-page">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-px mx-grid-site-margin">
+    {% for cta in ctas %}
+      {% set content = cta.use_existing ? get_post(cta.existing_cta) : cta %}
+      {% if content %}
+        {% if content.link_type == "post_archive" %}
+          {% set label = 'Content' %}
+          {% set href = archive_links.posts %}
+        {% elseif content.link_type == "project_archive" %}
+          {% set label = 'Projects' %}
+          {% set href = archive_links.projects %}
+        {% elseif content.link_type == "people_archive" %}
+          {% set label = 'People' %}
+          {% set href = archive_links.people %}
+        {% elseif content.link_type == "discord" %}
+          {% set label = 'Discord' %}
+          {% set href = archive_links.discord %}
+        {% else %}
+          {% set label = content.custom_link.title %}
+          {% set href = content.custom_link.url %}
+        {% endif %}
+
+        {% include 'components/big-cta.twig' with {
+          top: content.top_text,
+          bottom: content.bottom_text,
+          label: label,
+          href: href,
+          color: cta.cta_color
+        } %}
+      {% endif %}
+
+    {% endfor %}
+  </div>
+</div>
+
+{% endif %}

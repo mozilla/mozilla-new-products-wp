@@ -12,6 +12,7 @@ use Timber\Post as TimberPost;
 
 /** Class */
 class Article extends TimberPost {
+	const HANDLE = 'post';
 
 	/**
 	 * Bylines for a post.

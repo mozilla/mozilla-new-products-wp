@@ -26,6 +26,68 @@
       "acfe_repeater_stylised_button": 0,
       "sub_fields": [
         {
+          "key": "field_6764185334a0d",
+          "label": "Use Existing?",
+          "name": "use_existing",
+          "aria-label": "",
+          "type": "true_false",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "message": "Use content from an existing CTA.",
+          "default_value": 0,
+          "allow_in_bindings": 0,
+          "ui_on_text": "",
+          "ui_off_text": "",
+          "ui": 1,
+          "parent_repeater": "field_672b7fcce168d"
+        },
+        {
+          "key": "field_6764187534a0e",
+          "label": "Existing CTA",
+          "name": "existing_cta",
+          "aria-label": "",
+          "type": "post_object",
+          "instructions": "",
+          "required": 1,
+          "conditional_logic": [
+            [
+              {
+                "field": "field_6764185334a0d",
+                "operator": "==",
+                "value": "1"
+              }
+            ]
+          ],
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "post_type": ["cta"],
+          "post_status": ["publish"],
+          "taxonomy": "",
+          "return_format": "id",
+          "multiple": 0,
+          "save_custom": 0,
+          "save_post_status": "publish",
+          "acfe_bidirectional": {
+            "acfe_bidirectional_enabled": "0"
+          },
+          "allow_null": 0,
+          "allow_in_bindings": 0,
+          "bidirectional": 0,
+          "ui": 1,
+          "bidirectional_target": [],
+          "save_post_type": "",
+          "parent_repeater": "field_672b7fcce168d"
+        },
+        {
           "key": "field_672b8003e168e",
           "label": "Top Text",
           "name": "top_text",
@@ -33,7 +95,15 @@
           "type": "text",
           "instructions": "",
           "required": 1,
-          "conditional_logic": 0,
+          "conditional_logic": [
+            [
+              {
+                "field": "field_6764185334a0d",
+                "operator": "!=",
+                "value": "1"
+              }
+            ]
+          ],
           "wrapper": {
             "width": "50",
             "class": "",
@@ -55,7 +125,15 @@
           "type": "text",
           "instructions": "",
           "required": 1,
-          "conditional_logic": 0,
+          "conditional_logic": [
+            [
+              {
+                "field": "field_6764185334a0d",
+                "operator": "!=",
+                "value": "1"
+              }
+            ]
+          ],
           "wrapper": {
             "width": "50",
             "class": "",
@@ -77,7 +155,15 @@
           "type": "select",
           "instructions": "",
           "required": 1,
-          "conditional_logic": 0,
+          "conditional_logic": [
+            [
+              {
+                "field": "field_6764185334a0d",
+                "operator": "!=",
+                "value": "1"
+              }
+            ]
+          ],
           "wrapper": {
             "width": "",
             "class": "",
@@ -86,6 +172,7 @@
           "choices": {
             "post_archive": "Content",
             "project_archive": "Projects",
+            "people_archive": "People",
             "discord": "Discord",
             "custom": "Custom"
           },
@@ -115,6 +202,11 @@
                 "field": "field_672b8019e1690",
                 "operator": "==",
                 "value": "custom"
+              },
+              {
+                "field": "field_6764185334a0d",
+                "operator": "!=",
+                "value": "1"
               }
             ]
           ],
@@ -204,5 +296,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1734368750
+  "modified": 1734614233
 }

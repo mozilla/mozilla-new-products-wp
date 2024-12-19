@@ -176,7 +176,7 @@
           "name": "channel_name",
           "aria-label": "",
           "type": "text",
-          "instructions": "Don't include the leading <code>#<\/code>",
+          "instructions": "Don't include the leading <code>#</code>",
           "required": 0,
           "conditional_logic": 0,
           "wrapper": {
