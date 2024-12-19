@@ -1,0 +1,61 @@
+{% if posts is not empty %}
+
+{% if posts[0].topper_type == 'big_image' and posts[0].thumbnail.height > posts[0].thumbnail.width %}
+  {% set layout = 'md:col-span-18 md:col-start-1' %}
+  {% set portrait = true %}
+{% elseif posts[0].topper_type == 'big_image' %}
+  {% set layout = 'md:col-span-14 md:col-start-3' %}
+{% else %}
+  {% set layout = 'md:col-span-12 md:col-start-4 xl:col-span-10 xl:col-start-5' %}
+{% endif %}
+
+
+<section class="centered-page grid grid-site md:max-lg:grid-cols-12 mt-16">
+  <h2 class="sr-only">Featured</h2>
+
+  <div class="col-span-full md:col-span-18">
+    <div class="grid grid-cols-site md:grid-cols-18 gap-x-grid-site-gutter gap-y-12 lg:gap-y-6">
+      <div class="col-span-full col-start-1 md:order-2 {{ layout }}">
+        {% if posts.count >= 1 %}
+          {% if portrait %}
+            {% include 'components/articles/previews/preview--portrait-feature.twig' with { post: posts[0]} %}
+          {% else %}
+            {% include [
+              'components/articles/previews/preview--' ~ posts[0].topper_type|default('text_only') ~ '-feature.twig',
+              'components/articles/previews/preview--' ~ posts[0].topper_type|default('text_only') ~ '.twig'
+            ] with { post: posts[0], class: 'aspect-[4/5]', size: 'lg' } %}
+          {% endif %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="col-span-full md:col-span-6 flex flex-col flex-1 gap-y-12 max-lg:mt-12">
+    <div class="w-full flex-1 grid grid-cols-6 md:grid-cols-6 gap-x-grid-site-gutter max-md:gap-y-12">
+
+      <div class="w-full col-span-6 flex md:flex-col max-md:items-end gap-3 md:mb-6 lg:mb-4">
+        <div class="flex flex-col gap-y-3">
+          <p class="text-sm uppercase">{{ topper.new_promotion.overline }}</p>
+          <div class="type-headline-lg md:type-headline-md [&_a]:underline [&_a:hover]:no-underline">
+            {{ topper.new_promotion.prompt }}
+          </div>
+        </div>
+
+        {% if topper.new_promotion.image %}
+          <div class="ml-auto w-24 sm:w-24 md:w-1/3 lg:w-1/4 max-md:shrink-0">
+            {% include 'components/lazy-img.twig' with { img: get_image( topper.new_promotion.image ) } %}
+          </div>
+        {% endif %}
+      </div>
+
+
+      <div class="w-full col-span-6 mt-auto">
+        {% set label = topper.cta_label ?: 'Explore content' %}
+        {% include 'components/button-link.twig' with { href: archive_links.posts, label: label } %}
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+{% endif %}
