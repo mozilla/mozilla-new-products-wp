@@ -1,4 +1,4 @@
-<div class="relative flex-1 flex flex-col items-center gap-1 p-2">
+<div class="relative flex flex-col items-center gap-1 p-2">
   <div class="relative w-full {{ post.thumbnail.id ? '' : 'bg-gray' }}">
     {% if post.thumbnail.id %}
       {% include 'components/lazy-img.twig' with { img: get_image(post.thumbnail.id), class: '' } %}
