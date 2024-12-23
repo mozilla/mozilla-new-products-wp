@@ -1,7 +1,7 @@
 {% if posts is not empty %}
 
 {% if posts[0].topper_type == 'big_image' and posts[0].thumbnail.height > posts[0].thumbnail.width %}
-  {% set layout = 'md:col-span-18 md:col-start-1' %}
+  {% set layout = 'md:col-span-18 md:col-start-1 xl:col-span-16' %}
   {% set portrait = true %}
 {% elseif posts[0].topper_type == 'big_image' %}
   {% set layout = 'md:col-span-14 md:col-start-3' %}
