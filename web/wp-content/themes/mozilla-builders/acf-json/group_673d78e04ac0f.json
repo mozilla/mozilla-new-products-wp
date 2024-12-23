@@ -24,35 +24,6 @@
       "acfe_group_modal_size": "large",
       "sub_fields": [
         {
-          "key": "field_673d78f7ceeea",
-          "label": "Featured Articles",
-          "name": "featured_articles",
-          "aria-label": "",
-          "type": "relationship",
-          "instructions": "Choose 6 posts to feature. <i>Choose none to exclude the section.<\/i>",
-          "required": 0,
-          "conditional_logic": 0,
-          "wrapper": {
-            "width": "",
-            "class": "",
-            "id": ""
-          },
-          "post_type": ["post"],
-          "post_status": ["publish"],
-          "taxonomy": "",
-          "filters": ["search", "post_type", "taxonomy"],
-          "return_format": "id",
-          "acfe_bidirectional": {
-            "acfe_bidirectional_enabled": "0"
-          },
-          "min": 6,
-          "max": 6,
-          "allow_in_bindings": 0,
-          "elements": "",
-          "bidirectional": 0,
-          "bidirectional_target": []
-        },
-        {
           "key": "field_67646dea62b1e",
           "label": "Featured Article Count",
           "name": "featured_article_count",
@@ -81,6 +52,35 @@
           "allow_in_bindings": 0,
           "ui": 0,
           "ajax": 0
+        },
+        {
+          "key": "field_673d78f7ceeea",
+          "label": "Featured Articles",
+          "name": "featured_articles",
+          "aria-label": "",
+          "type": "relationship",
+          "instructions": "Choose posts to feature based on the layout selected above. For the topper to appear correctly, the right number of articles should be selected.",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "post_type": ["post"],
+          "post_status": ["publish"],
+          "taxonomy": "",
+          "filters": ["search", "post_type", "taxonomy"],
+          "return_format": "id",
+          "acfe_bidirectional": {
+            "acfe_bidirectional_enabled": "0"
+          },
+          "min": 1,
+          "max": 6,
+          "allow_in_bindings": 0,
+          "elements": "",
+          "bidirectional": 0,
+          "bidirectional_target": []
         },
         {
           "key": "field_673d790cceeeb",
@@ -477,5 +477,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1734635786
+  "modified": 1734969272
 }
