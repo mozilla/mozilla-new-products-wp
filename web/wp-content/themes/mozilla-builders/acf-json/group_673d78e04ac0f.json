@@ -24,12 +24,42 @@
       "acfe_group_modal_size": "large",
       "sub_fields": [
         {
+          "key": "field_67646dea62b1e",
+          "label": "Featured Article Count",
+          "name": "featured_article_count",
+          "aria-label": "",
+          "type": "select",
+          "instructions": "How many articles to show in the top section of the homepage.",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "choices": {
+            "six": "Six articles",
+            "four": "Four articles",
+            "one": "One article"
+          },
+          "default_value": "six",
+          "return_format": "value",
+          "multiple": 0,
+          "allow_custom": 0,
+          "placeholder": "",
+          "search_placeholder": "",
+          "allow_null": 0,
+          "allow_in_bindings": 0,
+          "ui": 0,
+          "ajax": 0
+        },
+        {
           "key": "field_673d78f7ceeea",
           "label": "Featured Articles",
           "name": "featured_articles",
           "aria-label": "",
           "type": "relationship",
-          "instructions": "Choose 6 posts to feature. <i>Choose none to exclude the section.</i>",
+          "instructions": "Choose posts to feature based on the layout selected above. For the topper to appear correctly, the right number of articles should be selected.",
           "required": 0,
           "conditional_logic": 0,
           "wrapper": {
@@ -45,7 +75,7 @@
           "acfe_bidirectional": {
             "acfe_bidirectional_enabled": "0"
           },
-          "min": 6,
+          "min": 1,
           "max": 6,
           "allow_in_bindings": 0,
           "elements": "",
@@ -237,7 +267,7 @@
           "name": "people",
           "aria-label": "",
           "type": "relationship",
-          "instructions": "Choose 4 to 6 profiles to feature. <i>Choose none to exclude the section.</i>",
+          "instructions": "Choose 4 to 6 profiles to feature. <i>Choose none to exclude the section.<\/i>",
           "required": 0,
           "conditional_logic": 0,
           "wrapper": {
@@ -285,7 +315,7 @@
       "name": "secondary_featured_articles",
       "aria-label": "",
       "type": "relationship",
-      "instructions": "Choose 4 more articles to feature. <i>Choose none to exclude the section.</i>",
+      "instructions": "Choose 4 more articles to feature. <i>Choose none to exclude the section.<\/i>",
       "required": 0,
       "conditional_logic": 0,
       "wrapper": {
@@ -325,6 +355,9 @@
       "layout": "block",
       "acfe_seamless_style": 0,
       "acfe_group_modal": 0,
+      "acfe_group_modal_close": 0,
+      "acfe_group_modal_button": "",
+      "acfe_group_modal_size": "large",
       "sub_fields": [
         {
           "key": "field_673d85fa19677",
@@ -374,7 +407,7 @@
           "name": "projects",
           "aria-label": "",
           "type": "relationship",
-          "instructions": "Choose 4 projects to feature. <i>Choose none to exclude the section.</i>",
+          "instructions": "Choose 4 projects to feature. <i>Choose none to exclude the section.<\/i>",
           "required": 0,
           "conditional_logic": 0,
           "wrapper": {
@@ -418,10 +451,7 @@
           "prepend": "",
           "append": ""
         }
-      ],
-      "acfe_group_modal_close": 0,
-      "acfe_group_modal_button": "",
-      "acfe_group_modal_size": "large"
+      ]
     }
   ],
   "location": [
@@ -447,5 +477,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1733856536
+  "modified": 1734969272
 }

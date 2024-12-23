@@ -5,7 +5,13 @@
 <h1 class="sr-only">Mozilla Builders</h1>
 
 <div class="flex flex-col flex-1 gap-y-20 xl:gap-y-28">
-  {% include 'components/front-page/large-tease-jumble.twig' with { posts: featured_posts } %}
+  {% if topper.featured_article_count == 'six' %}
+    {% include 'components/front-page/large-tease-jumble.twig' with { posts: featured_posts } %}
+  {% elseif topper.featured_article_count == 'four' %}
+    {% include 'components/front-page/small-tease-jumble.twig' with { posts: featured_posts, home_top: true } %}
+  {% elseif topper.featured_article_count == 'one' %}
+    {% include 'components/front-page/single-tease-topper.twig' with { posts: featured_posts } %}
+  {% endif %}
 
   {% include 'components/front-page/builders.twig' %}
 

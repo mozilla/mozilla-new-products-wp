@@ -37,7 +37,7 @@
           {% include [
             'components/articles/previews/preview--' ~ posts[3].topper_type|default('text_only') ~ '-alt.twig',
             'components/articles/previews/preview--' ~ posts[3].topper_type|default('text_only') ~ '.twig'
-          ] with { post: posts[3] } %}
+          ] with { post: posts[3], class: 'aspect-[4/5]' } %}
         {% endif %}
       </div>
     </div>
