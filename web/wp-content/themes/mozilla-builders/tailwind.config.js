@@ -126,6 +126,9 @@ module.exports = {
 
       data: {
         active: 'state=active',
+        inactive: 'state=inactive',
+        open: 'state=open',
+        closed: 'state=closed',
       },
 
       flex: {
