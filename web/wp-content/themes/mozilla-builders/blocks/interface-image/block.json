@@ -1,0 +1,15 @@
+{
+  "name": "acf/interface-image",
+  "title": "Interface Image",
+  "description": "A custom block for formatting images of interfaces and screenshots.",
+  "category": "text",
+  "icon": "laptop",
+  "keywords": ["interface", "image", "screenshot"],
+  "acf": {
+    "mode": "edit",
+    "renderTemplate": "interface-image.php"
+  },
+  "supports": {
+    "align": true
+  }
+}

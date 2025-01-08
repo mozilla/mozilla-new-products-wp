@@ -585,7 +585,8 @@ body {
     // Images
     figure.wp-block-image,
     figure.wp-block-video,
-    figure.wp-block-embed {
+    figure.wp-block-embed,
+    div[data-block='interface-image'] figure {
       &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
         @apply md:col-span-14 lg:col-span-12 2xl:col-span-10;
       }
