@@ -2,7 +2,7 @@
   "name": "acf/interface-image",
   "title": "Interface Image",
   "description": "A custom block for formatting images of interfaces and screenshots.",
-  "category": "text",
+  "category": "media",
   "icon": "laptop",
   "keywords": ["interface", "image", "screenshot"],
   "acf": {
