@@ -8,8 +8,11 @@
 
 use Timber\Timber;
 
+$alignment = $block['align'] ?? 'center';
+
 $context               = Timber::context();
 $context['image']      = get_field( 'image' );
-$context['alignclass'] = 'align' . ( $block['align'] ? $block['align'] : 'center' );
+$context['alignclass'] = 'align' . $alignment;
 
 Timber::render( basename( __DIR__ ) . '/interface-image.twig', $context );
+
