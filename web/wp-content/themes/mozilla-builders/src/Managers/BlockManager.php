@@ -53,6 +53,7 @@ class BlockManager {
 		register_block_type( MOZILLA_BUILDERS_THEME_PATH . 'blocks/advanced-code' );
 		register_block_type( MOZILLA_BUILDERS_THEME_PATH . 'blocks/mozilla-newsletter-signup-form' );
 		register_block_type( MOZILLA_BUILDERS_THEME_PATH . 'blocks/header-text' );
+		register_block_type( MOZILLA_BUILDERS_THEME_PATH . 'blocks/interface-image' );
 	}
 
 	/**
@@ -125,8 +126,9 @@ class BlockManager {
 			'acf/related-articles',
 			'acf/image-layout',
 			'acf/advanced-code',
-			'acf/mozilla-newsletter-signup-form',
 			'acf/header-text',
+			'acf/interface-image',
+			'acf/mozilla-newsletter-signup-form',
 			'wsk/static-native-block',
 		);
 	}

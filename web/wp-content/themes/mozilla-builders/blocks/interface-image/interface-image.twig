@@ -1,0 +1,13 @@
+{% set asset = get_image(image) %}
+
+<figure data-block="interface-image" class="mt-16 pt-3 col-span-full {{ alignclass }}">
+  <div class="shadow-inner-interface p-2.5 bg-stone rounded-md">
+    {% include 'components/lazy-img.twig' with {
+      img: get_image(image),
+      class: 'w-full rounded-lg overflow-hidden',
+    } %}
+  </div>
+  {% if asset.post_excerpt %}
+    <figcaption class="article-caption">{{ asset.post_excerpt }}</figcaption>
+  {% endif %}
+</figure>

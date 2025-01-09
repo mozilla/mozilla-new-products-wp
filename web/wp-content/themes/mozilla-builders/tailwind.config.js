@@ -118,6 +118,7 @@ module.exports = {
       boxShadow: {
         inner: 'inset 0 0 0 1px black',
         'inner-thick': 'inset 0 0 0 4px black',
+        'inner-interface': 'inset 0 0 15px 0 rgba(0,0,0,0.2)',
       },
 
       content: {
