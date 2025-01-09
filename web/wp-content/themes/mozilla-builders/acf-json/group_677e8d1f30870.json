@@ -9,7 +9,7 @@
       "aria-label": "",
       "type": "image",
       "instructions": "",
-      "required": 0,
+      "required": 1,
       "conditional_logic": 0,
       "wrapper": {
         "width": "",
@@ -54,5 +54,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1736347007
+  "modified": 1736437620
 }
