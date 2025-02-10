@@ -22,7 +22,17 @@ if ( post_password_required( $_page_id ) ) {
 } else {
 	$context['page'] = $_page;
 
-	$context['initial_tab'] = $_GET['tab'] ?? 'overview';
+	$allowed_tabs = array( 'overview', 'cohorts', 'faqs' );
+	$initial_tab = 'overview';
+
+	if ( isset( $_GET['tab'] )  ) {
+		$tab_from_url = sanitize_title( $_GET['tab'] );
+		if ( in_array( $tab_from_url, $allowed_tabs ) ) {
+			$initial_tab = $tab_from_url;
+		}
+	}
+
+	$context['initial_tab'] = $initial_tab;
 
 	$cohorts_args = array(
 		'taxonomy' => Cohort::HANDLE,
