@@ -94,7 +94,7 @@ class Vite {
 	 */
 	public static function development_js_assets() {
 		return array(
-			'app' => array(
+			'app'   => array(
 				self::dev_server_url() . '/@vite/client',
 				self::dev_server_url() . '/static/js/app.js',
 			),
@@ -133,7 +133,7 @@ class Vite {
 			if ( ! array_key_exists( 'isEntry', $file ) || ! $file['isEntry'] || ! array_key_exists( 'src', $file ) ) {
 				continue;
 			}
-			$name = pathinfo( basename( $file['src'] ), PATHINFO_FILENAME );
+			$name            = pathinfo( basename( $file['src'] ), PATHINFO_FILENAME );
 			$assets[ $name ] = array( MOZILLA_BUILDERS_THEME_URL . '/dist/' . $file['file'] );
 		}
 		return $assets;
@@ -146,7 +146,7 @@ class Vite {
 	 */
 	public static function development_css_assets() {
 		return array(
-			'app' => array( self::dev_server_url() . '/static/scss/app.scss' ),
+			'app'   => array( self::dev_server_url() . '/static/scss/app.scss' ),
 			'admin' => array( self::dev_server_url() . '/static/scss/admin.scss' ),
 		);
 	}

@@ -77,7 +77,7 @@ class ContextManager {
 	 * @return array
 	 */
 	public function archive_links( $context ) {
-		$project_archive_args = array(
+		$project_archive_args  = array(
 			'post_type'      => 'page',
 			'posts_per_page' => 1,
 			'meta_query'     => array(
@@ -90,7 +90,7 @@ class ContextManager {
 		$project_archive_posts = Timber::get_posts( $project_archive_args )->to_array();
 		$project_archive_link  = ! empty( $project_archive_posts ) ? $project_archive_posts[0]->link() : null;
 
-		$accelerator_page_args = array(
+		$accelerator_page_args  = array(
 			'post_type'      => 'page',
 			'posts_per_page' => 1,
 			'meta_query'     => array(
@@ -103,7 +103,7 @@ class ContextManager {
 		$accelerator_page_posts = Timber::get_posts( $accelerator_page_args )->to_array();
 		$accelerator_page_link  = ! empty( $accelerator_page_posts ) ? $accelerator_page_posts[0]->link() : null;
 
-		$people_page_args = array(
+		$people_page_args  = array(
 			'post_type'      => 'page',
 			'posts_per_page' => 1,
 			'meta_query'     => array(
@@ -122,11 +122,11 @@ class ContextManager {
 		}
 
 		$context['archive_links'] = array(
-			'posts'    => get_post_type_archive_link( 'post' ),
-			'projects' => $project_archive_link,
+			'posts'       => get_post_type_archive_link( 'post' ),
+			'projects'    => $project_archive_link,
 			'accelerator' => $accelerator_page_link,
-			'people' => $people_page_link,
-			'discord'  => $discord_link,
+			'people'      => $people_page_link,
+			'discord'     => $discord_link,
 		);
 		return $context;
 	}

@@ -15,7 +15,7 @@ $_page_id = (int) $_page->ID;
 
 global $paged;
 
-$context['title'] = $_page->title();
+$context['title']      = $_page->title();
 $context['subheading'] = 'Projects';
 
 // If page is password protected, render password page.
@@ -28,11 +28,10 @@ if ( post_password_required( $_page_id ) ) {
 } else {
 	$context['page'] = $_page;
 
-	$cohorts_args = array(
+	$cohorts_args       = array(
 		'taxonomy' => Cohort::HANDLE,
 	);
 	$context['cohorts'] = Timber::get_terms( $cohorts_args );
 
 	Timber::render( 'pages/archive-people.twig', $context );
 }
-

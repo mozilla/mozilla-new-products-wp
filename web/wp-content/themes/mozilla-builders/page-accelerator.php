@@ -23,9 +23,9 @@ if ( post_password_required( $_page_id ) ) {
 	$context['page'] = $_page;
 
 	$allowed_tabs = array( 'overview', 'cohorts', 'faqs' );
-	$initial_tab = 'overview';
+	$initial_tab  = 'overview';
 
-	if ( isset( $_GET['tab'] )  ) {
+	if ( isset( $_GET['tab'] ) ) {
 		$tab_from_url = sanitize_title( $_GET['tab'] );
 		if ( in_array( $tab_from_url, $allowed_tabs ) ) {
 			$initial_tab = $tab_from_url;
@@ -37,7 +37,7 @@ if ( post_password_required( $_page_id ) ) {
 	$cohorts_args = array(
 		'taxonomy' => Cohort::HANDLE,
 	);
-	$cohort_ids = $_page->meta( 'cohorts' )['items'];
+	$cohort_ids   = $_page->meta( 'cohorts' )['items'];
 	if ( ! empty( $cohort_ids ) ) {
 		$cohorts_args['include'] = $cohort_ids;
 	}
@@ -45,4 +45,3 @@ if ( post_password_required( $_page_id ) ) {
 
 	Timber::render( 'pages/accelerator.twig', $context );
 }
-

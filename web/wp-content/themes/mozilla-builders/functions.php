@@ -10,7 +10,7 @@ use Timber\Timber;
 use Dotenv\Dotenv;
 
 define( 'MOZILLA_BUILDERS_THEME_URL', get_stylesheet_directory_uri() );
-define( 'MOZILLA_BUILDERS_THEME_PATH', dirname( __FILE__ ) . '/' );
+define( 'MOZILLA_BUILDERS_THEME_PATH', __DIR__ . '/' );
 define( 'MOZILLA_BUILDERS_DOMAIN', get_site_url() );
 define( 'MOZILLA_BUILDERS_SITE_NAME', get_bloginfo( 'name' ) );
 define( 'MOZILLA_BUILDERS_THEME_VERSION', wp_get_theme()->get( 'Version' ) );

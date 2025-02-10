@@ -97,5 +97,4 @@ class GitHubService {
 	public function get_forks(): ?int {
 		return $this->repo_data['forks'] ?? null;
 	}
-
 }
