@@ -46,14 +46,14 @@ class Cohort extends TimberTerm {
 	 */
 	public function profiles() {
 		$args = array(
-			'post_type' => Profile::HANDLE,
-			'post_status' => 'publish',
+			'post_type'      => Profile::HANDLE,
+			'post_status'    => 'publish',
 			'posts_per_page' => -1,
-			'tax_query' => array(
+			'tax_query'      => array(
 				array(
 					'taxonomy' => self::HANDLE,
-					'field' => 'id',
-					'terms' => $this->ID,
+					'field'    => 'id',
+					'terms'    => $this->ID,
 				),
 			),
 		);

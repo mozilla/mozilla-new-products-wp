@@ -10,10 +10,10 @@ use Timber\Timber;
 
 $alignment = $block['align'] ?? 'wide';
 
-$context                  = Timber::context();
-$context['alignclass']    = "align$alignment";
-$context['heading']       = get_field( 'newsletter_headline' );
-$context['description']   = get_field( 'newsletter_description' );
+$context                = Timber::context();
+$context['alignclass']  = "align$alignment";
+$context['heading']     = get_field( 'newsletter_headline' );
+$context['description'] = get_field( 'newsletter_description' );
 
 // See https://github.com/mozilla/protocol/blob/main/assets/js/protocol/newsletter.js.
 wp_enqueue_script(

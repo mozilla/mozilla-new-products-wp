@@ -11,9 +11,9 @@ $context = Timber::context();
 
 $_posts = Timber::get_posts();
 
-$context['posts'] = $_posts;
+$context['posts']      = $_posts;
 $context['pagination'] = $_posts->pagination( array( 'mid_size' => 2 ) );
-$context['title'] = 'Latest';
+$context['title']      = 'Latest';
 
 // Render view.
 Timber::render( 'pages/home.twig', $context );

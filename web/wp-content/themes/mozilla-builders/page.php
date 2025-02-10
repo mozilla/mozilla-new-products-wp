@@ -22,4 +22,3 @@ if ( post_password_required( $_page_id ) ) {
 	$context['page'] = $_page;
 	Timber::render( 'pages/page.twig', $context );
 }
-

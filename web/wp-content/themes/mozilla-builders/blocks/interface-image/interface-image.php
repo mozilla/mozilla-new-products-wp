@@ -15,4 +15,3 @@ $context['image']      = get_field( 'image' );
 $context['alignclass'] = 'align' . $alignment;
 
 Timber::render( basename( __DIR__ ) . '/interface-image.twig', $context );
-

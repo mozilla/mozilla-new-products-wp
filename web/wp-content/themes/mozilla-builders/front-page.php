@@ -89,7 +89,7 @@ if ( empty( $featured_project_ids ) ) {
 	);
 }
 
-$_latest_posts             = Timber::get_posts(
+$_latest_posts           = Timber::get_posts(
 	array(
 		'post_type'      => 'post',
 		'posts_per_page' => 12,
@@ -98,7 +98,7 @@ $_latest_posts             = Timber::get_posts(
 		'order'          => 'DESC',
 	)
 );
-$context['latest_posts']   = $_latest_posts;
+$context['latest_posts'] = $_latest_posts;
 
 // Render view.
 Timber::render( 'pages/front-page.twig', $context );

@@ -57,12 +57,12 @@ class Profile extends TimberPost {
 
 		return array_filter(
 			array_map(
-				function( $contact ) {
+				function ( $contact ) {
 					$type    = $contact['type'] ?? 'Website';
 					$website = $contact['url'] ?? null;
 					$email   = $contact['email'] ?? null;
 
-					$link = match ($type) {
+					$link = match ( $type ) {
 						'Website' => $website,
 						'Email' => $email ? 'mailto:' . $contact['email'] : null,
 						default => null,
@@ -117,15 +117,15 @@ class Profile extends TimberPost {
 	 */
 	public function latest_articles() {
 		$args = array(
-			'post_status' => 'publish',
-			'posts_per_page' => 4,
-			'orderby' => 'date',
-			'order' => 'DESC',
+			'post_status'         => 'publish',
+			'posts_per_page'      => 4,
+			'orderby'             => 'date',
+			'order'               => 'DESC',
 			'ignore_sticky_posts' => 1,
-			'meta_query' => array(
+			'meta_query'          => array(
 				array(
-					'key' => 'authors',
-					'value' => $this->id,
+					'key'     => 'authors',
+					'value'   => $this->id,
 					'compare' => 'LIKE',
 				),
 			),

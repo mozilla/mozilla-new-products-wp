@@ -41,7 +41,7 @@ class Article extends TimberPost {
 
 		$count = 4 - count( $selected_articles );
 		if ( $count > 0 ) {
-			$args = array(
+			$args              = array(
 				'post_type'      => 'post',
 				'posts_per_page' => $count,
 				'post__not_in'   => array_merge( $selected_articles, array( $this->ID ) ),
@@ -50,11 +50,11 @@ class Article extends TimberPost {
 				'tax_query'      => array(
 					array(
 						'taxonomy' => 'category',
-						'terms' => array_column( $this->categories(), 'id' ),
+						'terms'    => array_column( $this->categories(), 'id' ),
 					),
 				),
 			);
-			$pulled_articles = Timber::get_posts( $args );
+			$pulled_articles   = Timber::get_posts( $args );
 			$selected_articles = array_merge( $selected_articles, $pulled_articles->to_array() );
 		}
 

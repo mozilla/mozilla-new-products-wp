@@ -208,10 +208,10 @@ class ThemeManager {
 	 */
 	public function set_post_classmap( array $classmap ): array {
 		$custom_classmap = array(
-			Article::HANDLE  => Article::class,
-			Cta::HANDLE      => Cta::class,
-			Profile::HANDLE   => Profile::class,
-			Project::HANDLE  => Project::class,
+			Article::HANDLE => Article::class,
+			Cta::HANDLE     => Cta::class,
+			Profile::HANDLE => Profile::class,
+			Project::HANDLE => Project::class,
 		);
 
 		return array_merge( $classmap, $custom_classmap );
@@ -237,10 +237,10 @@ class ThemeManager {
 	 */
 	public function set_term_classmap( array $classmap ): array {
 		$custom_classmap = array(
-			Cohort::HANDLE => Cohort::class,
-			Platform::HANDLE => Platform::class,
+			Cohort::HANDLE          => Cohort::class,
+			Platform::HANDLE        => Platform::class,
 			ProjectCategory::HANDLE => ProjectCategory::class,
-			Technology::HANDLE => Technology::class,
+			Technology::HANDLE      => Technology::class,
 		);
 		return array_merge( $classmap, $custom_classmap );
 	}

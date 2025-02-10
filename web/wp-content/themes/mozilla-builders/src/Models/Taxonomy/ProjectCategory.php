@@ -38,5 +38,4 @@ class ProjectCategory extends TimberTerm {
 
 		register_taxonomy( self::HANDLE, array( Project::HANDLE ), $args );
 	}
-
 }
