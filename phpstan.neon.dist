@@ -8,7 +8,7 @@ parameters:
     scanFiles:
         - web/vendor/php-stubs/acf-pro-stubs/acf-pro-stubs.php
     paths:
-        - web/wp-content/themes/mozilla-builders
+        - web/wp-content/themes/mozilla-labs
     excludePaths:
         - */node_modules/*
         - */vendor/*

@@ -8,12 +8,12 @@
  * Author: Upstatement
  * Author URI: https://upstatement.com
  *
- * @package MozillaBuildersScheduledTasks
+ * @package MozillaLabsScheduledTasks
  */
 
-namespace MozillaBuilders\ScheduledTasks;
+namespace MozillaLabs\ScheduledTasks;
 
-use MozillaBuilders\ScheduledTasks\Autoloader;
+use MozillaLabs\ScheduledTasks\Autoloader;
 use WP_CLI;
 
 if ( ! defined( 'ABSPATH' ) ) {

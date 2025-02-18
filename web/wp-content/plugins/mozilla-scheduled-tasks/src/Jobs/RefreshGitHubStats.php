@@ -2,12 +2,12 @@
 /**
  * Refresh the GitHub stats attached to projects.
  *
- * @package MozillaBuildersScheduledTasks
+ * @package MozillaLabsScheduledTasks
  */
 
-namespace MozillaBuilders\ScheduledTasks\Jobs;
+namespace MozillaLabs\ScheduledTasks\Jobs;
 
-use MozillaBuilders\Models\PostType\Project;
+use MozillaLabs\Models\PostType\Project;
 
 /** Class */
 class RefreshGitHubStats {
@@ -19,8 +19,8 @@ class RefreshGitHubStats {
 	 * Run.
 	 */
 	public static function run() {
-		if (!class_exists('\MozillaBuilders\Models\PostType\Project')) {
-			error_log( 'This plugin only works with the Mozilla Builders theme.' );
+		if (!class_exists('\MozillaLabs\Models\PostType\Project')) {
+			error_log( 'This plugin only works with the Mozilla Labs theme.' );
 			return;
 		}
 

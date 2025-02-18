@@ -1,0 +1,156 @@
+{% set use_big_logo = is_front_page %}
+
+<nav class="grid grid-site py-site centered-page relative z-10">
+  <div class="flex-1 flex gap-1 {{ use_big_logo ? 'items-start mt-2 col-span-1/3' : 'items-center col-span-1/3 md:col-span-3/8' }} justify-start">
+    <svg class="size-5 shrink-0 text-content" aria-hidden="true">
+      <use xlink:href="#flag"></use>
+    </svg>
+
+    {% if options.flag_text %}
+    <div class="flex-1 h-5 overflow-hidden relative max-md:hidden motion-safe:bg-action text-action-reverse max-w-80">
+      <div x-marquee="{ speed: 0.25 }" class="absolute top-1/2 left-0 right-0 -translate-y-1/2 group flex flex-col items-start">
+        <div x-marquee:track class="animate-marquee motion-reduce:!animate-none flex" aria-hidden="true">
+          <p class="px-1.5 text-sm whitespace-nowrap motion-reduce:bg-action select-none motion-reduce:[&:not(:first-child)]:invisible">
+            {{ options.flag_text }}
+          </p>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+
+  <div class="{{ use_big_logo ? 'col-span-1/3 md:mt-2' : 'col-span-1/3 md:col-span-1/4' }} flex justify-center">
+    <a href="{{ site.url }}" class="md:flex md:items-center {{ use_big_logo ? 'md:w-full md:max-lg:items-start' }}">
+      <span class="sr-only">Mozilla Labs</span>
+      <svg class="{{ use_big_logo ? 'w-52 md:w-full' : 'w-40' }} aspect-logo" aria-hidden="true">
+        <use xlink:href="#logo"></use>
+      </svg>
+    </a>
+  </div>
+
+  <div class="flex-1 flex mt-2 {{ use_big_logo ? 'col-span-1/3 md:col-span-1/3 md:max-2xl:flex-col 2xl:justify-end' : 'col-span-1/3 md:col-span-3/8 md:max-xl:flex-col xl:justify-end' }} items-start gap-y-0.5 lg:gap-y-1 xl:gap-x-2 md:max-2xl:items-end max-md:justify-end">
+
+    <ul class="flex flex-wrap justify-end items-center gap-x-2 lg:gap-x-2 gap-y-0.5 lg:gap-y-1 -mt-px max-md:hidden">
+      {% for item in nav_pages_menu.items %}
+      <li class="text-right">
+        <a
+          href="{{ item.url }}"
+          class="text-sm md:max-xl:text-xs relative block py-0.5 px-1.5
+                before:absolute before:inset-0 before:bg-action-focus before:z-0
+                motion-safe:before:transition-transform before:scale-x-0 before:origin-center
+                aria-current:text-action-focus-reverse hocus:text-action-focus-reverse
+                aria-current:before:scale-x-100 hocus:before:scale-x-100"
+          {% if item.current %}aria-current="page"{% endif %}
+        >
+          <span class="relative z-10">{{ item.name }}</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+
+    <div class="flex items-center gap-px">
+
+      {% if options.join_us_link %}
+      <a href="{{ options.join_us_link.url }}"
+        class="text-sm md:max-xl:text-xs py-0.5 px-1.5 whitespace-nowrap max-md:hidden
+             bg-action text-action-reverse transition-colors hocus:bg-action-focus hocus:text-action-focus-reverse"
+      >
+        {{ options.join_us_link.title ?: 'Join us' }}
+      </a>
+      {% endif %}
+
+      <div
+        class="md:hidden"
+        x-data="{ open: false }"
+        @keydown.escape.window="open = false"
+      >
+        <button
+          class="size-6 flex items-center justify-center bg-action text-action-reverse"
+          @click="open = !open"
+          :aria-expanded="open"
+          aria-haspopup="true"
+          aria-controls="menu"
+        >
+          <span class="sr-only">Open menu</span>
+          <svg class="size-4" aria-hidden="true">
+            <use xlink:href="#menu"></use>
+          </svg>
+        </button>
+
+        <template x-teleport="body">
+          <div
+            id="menu"
+            class="fixed inset-0 h-100vh z-dialog w-full flex flex-col flex-1 pt-wp-admin-bar theme-dark bg-main text-content"
+            x-show="open"
+            x-trap.noscroll="open"
+            :aria-hidden="!open"
+            aria-modal="true"
+            aria-labelledby="menu-label"
+            role="dialog"
+          >
+            <h2 id="menu-label" class="sr-only">Menu</h2>
+
+            <header class="grid grid-site py-site centered-page">
+              <div class="flex-1 flex items-center col-span-1/3">
+                <svg class="size-5 shrink-0" aria-hidden="true">
+                  <use xlink:href="#flag"></use>
+                </svg>
+              </div>
+
+              <div class="col-span-1/3 flex justify-center">
+                <a href="{{ site.url }}">
+                  <span class="sr-only">Mozilla Labs</span>
+                  <svg class="w-40 aspect-logo" aria-hidden="true">
+                    <use xlink:href="#logo"></use>
+                  </svg>
+                </a>
+              </div>
+
+              <div class="col-span-1/3 flex-1 flex justify-end items-center">
+                <button
+                  class="bg-white size-6 text-black flex items-center justify-center"
+                  @click="open = false"
+                >
+                  <span class="sr-only">Close menu</span>
+                  <svg class="size-4" aria-hidden="true">
+                    <use xlink:href="#x-close"></use>
+                  </svg>
+                </button>
+              </div>
+            </header>
+
+            <div class="grid grid-site centered-page">
+              <div class="col-span-full border-b-2 border-white"></div>
+            </div>
+
+            <div class="py-grid-site-margin flex-1 grid grid-site centered-page">
+              <div class="col-span-full flex-1 flex flex-col justify-end gap-5">
+                <ul class="flex flex-col items-start gap-2.5">
+                  {% for item in nav_pages_menu.items %}
+                  <li>
+                    <a
+                      href="{{ item.url }}"
+                      class="text-5xl font-headline-condensed font-semibold"
+                      {% if item.current %}aria-current="page"{% endif %}
+                    >
+                      {{ item.name }}
+                    </a>
+                  </li>
+                  {% endfor %}
+                </ul>
+
+                {% if options.join_us_link %}
+                <a href="{{ options.join_us_link.url }}"
+                  class="text-2xl uppercase bg-white text-center p-3 text-black whitespace-nowrap"
+                >
+                  {{ options.join_us_link.title ?: 'Join us' }}
+                </a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </template>
+      </div>
+    </div>
+  </div>
+</nav>
