@@ -2,12 +2,12 @@
 /**
  * Registers WP CLI commands.
  *
- * @package MozillaBuildersScheduledTasks
+ * @package MozillaLabsScheduledTasks
  */
 
-namespace MozillaBuilders\ScheduledTasks;
+namespace MozillaLabs\ScheduledTasks;
 
-use MozillaBuilders\ScheduledTasks\Jobs\RefreshGitHubStats;
+use MozillaLabs\ScheduledTasks\Jobs\RefreshGitHubStats;
 use WP_CLI;
 
 class Cli {
@@ -21,8 +21,8 @@ class Cli {
 	 * @subcommand refresh-github
 	 */
 	public function refresh_github() {
-		if (!class_exists('\MozillaBuilders\Models\PostType\Project')) {
-			WP_CLI::warning('This plugin only works with the Mozilla Builders theme.');
+		if (!class_exists('\MozillaLabs\Models\PostType\Project')) {
+			WP_CLI::warning('This plugin only works with the Mozilla Labs theme.');
 			die;
 		}
 

@@ -22,8 +22,8 @@ if ! command -v expect &> /dev/null; then
 fi
 
 # Define theme directory
-THEME_DIR="./web/wp-content/themes/mozilla-builders"
-REMOTE_THEME_DIR="/wp-content/themes/mozilla-builders"
+THEME_DIR="./web/wp-content/themes/mozilla-labs"
+REMOTE_THEME_DIR="/wp-content/themes/mozilla-labs"
 REMOTE_TEMP_DIR="/wp-content/themes/_tmp"
 
 # Check if theme directory exists
@@ -73,12 +73,12 @@ expect \"sftp>\"
 send \"put -r $TEMP_DIR/* _tmp/\r\"
 expect \"sftp>\"
 
-# Remove the old theme directory (mozilla-builders)
+# Remove the old theme directory (mozilla-labs)
 expect \"sftp>\"
 send \"rm -r $REMOTE_THEME_DIR\r\"
 expect \"sftp>\"
 
-# Rename the temporary directory (_tmp) to mozilla-builders
+# Rename the temporary directory (_tmp) to mozilla-labs
 expect \"sftp>\"
 send \"rename _tmp $REMOTE_THEME_DIR\r\"
 expect \"sftp>\"
