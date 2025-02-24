@@ -43,6 +43,18 @@ $theme_manager = new Managers\ThemeManager( $managers );
 add_action( 'after_setup_theme', array( $theme_manager, 'setup_theme' ) );
 
 /**
+ * Customize error reporting settings
+ */
+function custom_error_reporting() {
+	// Set the error reporting level to hide warnings but show other errors.
+	error_reporting( E_ALL & ~E_WARNING & ~E_NOTICE & ~E_DEPRECATED );
+
+	// Log errors to a file.
+	ini_set( 'error_log', WP_CONTENT_DIR . '/debug.log' );
+}
+add_action( 'init', 'custom_error_reporting' );
+
+/**
  * Log given values to logs/error.log
  *
  * @param array ...$values values to log.
