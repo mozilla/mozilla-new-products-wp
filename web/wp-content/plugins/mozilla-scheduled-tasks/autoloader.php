@@ -2,10 +2,10 @@
 /**
  * Custom autoloader for the plugin.
  *
- * @package MozillaBuildersScheduledTasks
+ * @package MozillaLabsScheduledTasks
  */
 
-namespace MozillaBuilders\ScheduledTasks;
+namespace MozillaLabs\ScheduledTasks;
 
 class Autoloader {
     /**
@@ -21,8 +21,8 @@ class Autoloader {
      * @param string $class_name The name of the class to load.
      */
     public function load_class($class_name) {
-        if (strpos($class_name, 'MozillaBuilders\\ScheduledTasks') === 0) {
-            $file_path = __DIR__ . '/src' . str_replace('\\', DIRECTORY_SEPARATOR, substr($class_name, strlen('MozillaBuilders\\ScheduledTasks'))) . '.php';
+        if (strpos($class_name, 'MozillaLabs\\ScheduledTasks') === 0) {
+            $file_path = __DIR__ . '/src' . str_replace('\\', DIRECTORY_SEPARATOR, substr($class_name, strlen('MozillaLabs\\ScheduledTasks'))) . '.php';
             if (file_exists($file_path)) {
                 require_once $file_path;
             }

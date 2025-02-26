@@ -1,13 +1,13 @@
 {
-  "name": "@upstatement/mozilla-builders",
+  "name": "@upstatement/mozilla-labs",
   "version": "0.0.3",
-  "description": "Theme for Mozilla Builders",
+  "description": "Theme for Mozilla Labs",
   "author": "Upstatement",
   "repository": "",
   "license": "ISC",
   "testing": {
     "urls": {
-      "local": "http://mozilla-builders.ups.dock",
+      "local": "http://mozilla-labs.ups.dock",
       "staging": "",
       "production": ""
     },
@@ -28,7 +28,7 @@
   },
   "bundlesize": [
     {
-      "path": "web/wp-content/themes/mozilla-builders/dist/assets/app-*.js",
+      "path": "web/wp-content/themes/mozilla-labs/dist/assets/app-*.js",
       "maxSize": "50 kB"
     }
   ],
@@ -78,5 +78,8 @@
     "pa11y": "^6.2.3",
     "prettier": "^3.3.3",
     "turbo": "^2.1.3"
+  },
+  "dependencies": {
+    "node-gyp": "^11.1.0"
   }
 }
