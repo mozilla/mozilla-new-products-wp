@@ -1,6 +1,6 @@
 # Mozilla Labs
 
-A WordPress theme for Mozilla Labs.
+A new WordPress theme for Mozilla Labs.
 
 ## Table of Contents
 
