@@ -1,13 +1,13 @@
 {
-  "name": "upstatement/mozilla-builders",
-  "version": "0.0.1",
+  "name": "upstatement/mozilla-labs",
+  "version": "0.0.2",
   "authors": [
     {
       "name": "Upstatement",
       "email": "tech@upstatement.com"
     }
   ],
-  "description": "Theme for Mozilla Builders",
+  "description": "Theme for Mozilla Labs",
   "license": "proprietary",
   "repositories": {
     "my-yoast": {
@@ -47,7 +47,7 @@
   },
   "autoload": {
     "psr-4": {
-      "MozillaBuilders\\": "wp-content/themes/mozilla-builders/src"
+      "MozillaLabs\\": "wp-content/themes/mozilla-labs/src"
     }
   },
   "require": {
@@ -72,12 +72,12 @@
   },
   "scripts": {
     "static-tests": [
-      "find wp-content/themes/mozilla-builders -name '*.php' -exec php -l {} \\;",
-      "phpcs --runtime-set ignore_warnings_on_exit true --standard=../phpcs.xml.dist --colors --ignore=node_modules,vendor --error-severity=1 --warning-severity=8 wp-content/themes/mozilla-builders",
+      "find wp-content/themes/mozilla-labs -name '*.php' -exec php -l {} \\;",
+      "phpcs --runtime-set ignore_warnings_on_exit true --standard=../phpcs.xml.dist --colors --ignore=node_modules,vendor --error-severity=1 --warning-severity=8 wp-content/themes/mozilla-labs",
       "phpstan analyse -c ../phpstan.neon.dist -l 5 --memory-limit=2G"
     ],
     "fix": [
-      "phpcbf --standard=../phpcs.xml.dist --colors --ignore=node_modules wp-content/themes/mozilla-builders"
+      "phpcbf --standard=../phpcs.xml.dist --colors --ignore=node_modules wp-content/themes/mozilla-labs"
     ]
   }
 }

@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@src/*": ["web/wp-content/themes/mozilla-builders/static/js/*"]
+      "@src/*": ["web/wp-content/themes/mozilla-labs/static/js/*"]
     }
   }
 }

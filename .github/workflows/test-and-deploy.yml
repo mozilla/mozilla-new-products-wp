@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+      - develop
   release:
     types: [created]
 
@@ -86,8 +87,8 @@ jobs:
           settings: 'sftp:auto-confirm=yes'
 
           # Mirror command options
-          localDir: './web/wp-content/themes/mozilla-builders'
-          remoteDir: '/wp-content/themes/mozilla-builders'
+          localDir: './web/wp-content/themes/mozilla-labs'
+          remoteDir: '/wp-content/themes/mozilla-labs'
           reverse: true
           ignoreFile: '.lftp_ignore'
           options: '--verbose --no-perms --delete'
