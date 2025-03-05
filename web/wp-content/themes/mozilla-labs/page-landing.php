@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Accelerator
+ * Template Name: Landing Page
  *
  * @package MozillaLabs
  */
@@ -34,14 +34,5 @@ if ( post_password_required( $_page_id ) ) {
 
 	$context['initial_tab'] = $initial_tab;
 
-	$cohorts_args = array(
-		'taxonomy' => Cohort::HANDLE,
-	);
-	$cohort_ids   = $_page->meta( 'cohorts' )['items'];
-	if ( ! empty( $cohort_ids ) ) {
-		$cohorts_args['include'] = $cohort_ids;
-	}
-	$context['cohorts'] = Timber::get_terms( $cohorts_args );
-
-	Timber::render( 'pages/accelerator.twig', $context );
+	Timber::render( 'pages/landing.twig', $context );
 }
