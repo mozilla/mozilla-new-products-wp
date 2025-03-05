@@ -485,7 +485,7 @@ body {
     // Column-sizing
     > * {
       // Apply full-width size to all blocks, by default
-      @apply col-span-full col-start-center;
+      @apply col-span-4 col-start-center;
     }
 
     > h1,
@@ -499,7 +499,7 @@ body {
     > ul,
     > ol,
     hr {
-      @apply md:col-span-7 lg:col-span-12 2xl:col-span-10;
+      @apply md:col-span-7 lg:col-span-6 2xl:col-span-10;
     }
 
     // Paragraphs
