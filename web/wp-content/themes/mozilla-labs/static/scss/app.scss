@@ -356,8 +356,6 @@ body {
 
     // Paragraphs
     > p {
-      @apply indent-8;
-
       &:empty {
         @apply hidden;
       }
@@ -863,15 +861,15 @@ body {
     }
   }
 
-  .article {
-    // Paragraphs
-    > p {
-      &:last-child::after {
-        content: '';
-        @apply ml-1 inline-block shrink-0 bg-current mask-critter size-[0.9em];
-      }
-    }
-  }
+  // .article {
+  //   // Paragraphs
+  //   > p {
+  //     &:last-child::after {
+  //       content: '';
+  //       @apply ml-1 inline-block shrink-0 bg-current mask-critter size-[0.9em];
+  //     }
+  //   }
+  // }
 
   .hang-punc-header-small,
   .hang-punc-small {
