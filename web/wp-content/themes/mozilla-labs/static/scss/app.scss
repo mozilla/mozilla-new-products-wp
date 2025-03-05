@@ -183,15 +183,20 @@ body {
   // Buttons
   .button {
     @apply block cursor-pointer whitespace-nowrap;
-    @apply font-headline font-semibold bg-off-black/60 text-white backdrop-blur-sm transition-colors hocus:bg-black;
+    @apply font-headline font-semibold bg-off-black/60 text-white backdrop-blur-md transition-colors hocus:bg-black;
   }
 
   .button-sm {
-    @apply py-1.5 px-3;
+    @apply flex justify-center items-center h-9 px-3;
   }
 
   .button-dark {
-    @apply bg-black/70;
+    @apply bg-black/70 hocus:bg-black;
+
+    &.theme-dark,
+    .theme-dark & {
+      @apply bg-off-black/70 hocus:bg-black;
+    }
   }
 }
 
