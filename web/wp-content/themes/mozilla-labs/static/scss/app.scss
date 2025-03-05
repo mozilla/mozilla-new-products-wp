@@ -190,6 +190,10 @@ body {
     @apply flex justify-center items-center h-9 px-3;
   }
 
+  .button-square {
+    @apply w-auto aspect-square px-0;
+  }
+
   .button-dark {
     @apply bg-black/70 hocus:bg-black;
 

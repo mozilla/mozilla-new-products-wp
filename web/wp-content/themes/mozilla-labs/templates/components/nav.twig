@@ -1,18 +1,19 @@
 <header class="centered-page">
-  <nav class="grid grid-site items-center py-site" aria-label="Site">
-    <div class="col-span-3 flex gap-2">
-      <div class="w-auto aspect-square button-sm button-dark px-0 flex justify-center items-center">
+  <nav class="grid grid-cols-[1fr_auto_1fr] gap-x-grid-site-gutter px-grid-site-margin items-center py-site" aria-label="Site">
+    <div class="flex gap-2">
+      <a class="button button-sm button-dark button-square flex justify-center items-center">
+        <span class="sr-only">Home</span>
         <svg class="size-5 shrink-0 text-white" aria-hidden="true">
           <use xlink:href="#flag"></use>
         </svg>
-      </div>
+      </a>
 
-      <a class="w-fit button button-sm button-dark" href="#become-a-tester">
+      <a class="max-lg:hidden w-fit button button-sm button-dark" href="#become-a-tester">
         Become a Tester
       </a>
     </div>
 
-    <a class="col-span-6 mx-auto py-1 h-full w-fit" href="/">
+    <a class="mx-auto py-1 h-3/4 lg:h-full w-fit" href="/">
       <span class="sr-only">Home</span>
       <svg class="text-content h-full" viewBox="0 0 187 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <g>
@@ -32,14 +33,22 @@
       </svg>
     </a>
 
-    <ul class="col-start-10 col-span-3 ml-auto flex gap-2">
-      {% for item in nav_pages_menu.items %}
-      <li>
-        <a class="button button-sm aria-current:bg-black" href="{{ item.url }}" {% if item.current %}aria-current="page"{% endif %}>
-          {{ item.name }}
-        </a>
-      </li>
-      {% endfor %}
-    </ul>
+    <div class="ml-auto">
+      <ul class="max-lg:hidden flex gap-2">
+        {% for item in nav_pages_menu.items %}
+        <li>
+          <a class="button button-sm aria-current:bg-black" href="{{ item.url }}" {% if item.current %}aria-current="page"{% endif %}>
+            {{ item.name }}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+
+      <button class="lg:hidden w-fit button button-sm button-square">
+        <svg class="size-5" aria-hidden="true">
+          <use href="#menu"></use>
+        </svg>
+      </button>
+    </div>
   </nav>
 </header>
