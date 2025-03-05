@@ -171,6 +171,7 @@ module.exports = {
       },
 
       lineHeight: {
+        headline: '0.96',
         tighter: '1.05',
       },
 

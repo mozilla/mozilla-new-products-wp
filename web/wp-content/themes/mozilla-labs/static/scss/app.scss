@@ -15,14 +15,6 @@
 @include font.face('Mozilla Sans', 'MozillaText-Italic', 400, italic);
 @include font.face('Mozilla Sans', 'MozillaText-Bold', 700, normal);
 @include font.face('Mozilla Sans', 'MozillaText-BoldItalic', 700, italic);
-// Mozilla Headline
-@include font.face('Mozilla Headline', 'MozillaHeadline-Light', 300, normal);
-@include font.face('Mozilla Headline', 'MozillaHeadline-Regular', 400, normal);
-@include font.face('Mozilla Headline', 'MozillaHeadline-SemiBold', 600, normal);
-// Mozilla Headline Condensed
-@include font.face('Mozilla Headline Condensed', 'MozillaHeadlineCondensed-Light', 300, normal);
-@include font.face('Mozilla Headline Condensed', 'MozillaHeadlineCondensed-Regular', 400, normal);
-@include font.face('Mozilla Headline Condensed', 'MozillaHeadlineCondensed-SemiBold', 600, normal);
 // Source Code Pro
 @include font.face('Source Code Pro', 'SourceCodePro-Regular', 400, normal);
 @include font.face('Source Code Pro', 'SourceCodePro-It', 400, italic);
@@ -147,7 +139,7 @@ body {
   }
 
   .type-headline-lg {
-    @apply text-2xl font-headline font-semibold leading-tight;
+    @apply text-2xl font-headline font-wdth-380 font-semibold leading-headline;
   }
 
   .type-headline-md {
@@ -201,7 +193,7 @@ body {
   }
 
   .button-sm {
-    @apply flex justify-center items-center pt-[6px] pb-[5px] px-[8px];
+    @apply flex justify-center items-center pt-[6px] pb-[5px] px-[10px];
   }
 
   .button-square {
@@ -305,7 +297,7 @@ body {
 
   .col-span-full {
     // TODO: Replace 12 with --column-count after fixing the grid
-    @include grid.column-span(12);
+    @apply col-span-6 md:col-span-12;
   }
 
   .col-span-screen {
@@ -332,23 +324,23 @@ body {
 
     // Headings
     > h2 {
-      @apply text-xl font-bold uppercase indent-8;
+      @apply text-xl font-bold;
     }
 
     > h3 {
-      @apply text-xl uppercase indent-8;
+      @apply text-xl;
     }
 
     > h4 {
-      @apply font-bold uppercase indent-8;
+      @apply font-bold;
     }
 
     > h5 {
-      @apply uppercase indent-8;
+      @apply font-bold;
     }
 
     > h6 {
-      @apply uppercase indent-8;
+      @apply font-bold;
 
       span {
         @apply bg-content text-main px-0.5;
@@ -500,7 +492,7 @@ body {
     > ul,
     > ol,
     hr {
-      @apply md:col-span-7 lg:col-span-6 2xl:col-span-10;
+      @apply col-span-6 lg:col-span-6 2xl:col-span-10;
     }
 
     // Paragraphs
@@ -526,11 +518,11 @@ body {
       }
 
       &.alignleft {
-        @apply md:col-start-1 md:col-span-5 lg:col-span-6 md:h-0;
+        @apply md:col-start-1 md:col-span-5 lg:col-span-3 md:h-0;
       }
 
       &.alignright {
-        @apply md:col-start-end md:col-span-5 lg:col-span-6 md:h-0;
+        @apply md:col-start-end md:col-span-5 lg:col-span-3 md:h-0;
       }
 
       &.alignwide {
