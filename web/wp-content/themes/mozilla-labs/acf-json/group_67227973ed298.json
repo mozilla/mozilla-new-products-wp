@@ -1,6 +1,6 @@
 {
   "key": "group_67227973ed298",
-  "title": "Accelerator",
+  "title": "Landing Page",
   "fields": [
     {
       "key": "field_6743405b9240a",
@@ -25,8 +25,8 @@
     },
     {
       "key": "field_674332da21832",
-      "label": "Overview Content",
-      "name": "overview_content",
+      "label": "Blocks",
+      "name": "blocks",
       "aria-label": "",
       "type": "flexible_content",
       "instructions": "",
@@ -397,148 +397,6 @@
       }
     },
     {
-      "key": "field_67356c4e0b994",
-      "label": "Cohorts",
-      "name": "cohorts",
-      "aria-label": "",
-      "type": "group",
-      "instructions": "",
-      "required": 0,
-      "conditional_logic": 0,
-      "wrapper": {
-        "width": "",
-        "class": "",
-        "id": ""
-      },
-      "layout": "block",
-      "acfe_seamless_style": 0,
-      "acfe_group_modal": 0,
-      "acfe_group_modal_close": 0,
-      "acfe_group_modal_button": "",
-      "acfe_group_modal_size": "large",
-      "sub_fields": [
-        {
-          "key": "field_674340d69240c",
-          "label": "Cohort Title",
-          "name": "cohort_title",
-          "aria-label": "",
-          "type": "text",
-          "instructions": "This label will appear in the navigation bar. Defaults to \"Cohorts\" if empty.",
-          "required": 0,
-          "conditional_logic": 0,
-          "wrapper": {
-            "width": "",
-            "class": "",
-            "id": ""
-          },
-          "default_value": "",
-          "maxlength": "",
-          "allow_in_bindings": 0,
-          "placeholder": "",
-          "prepend": "",
-          "append": ""
-        },
-        {
-          "key": "field_67433c93b4af5",
-          "label": "Cohort Heading",
-          "name": "cohort_heading",
-          "aria-label": "",
-          "type": "text",
-          "instructions": "",
-          "required": 0,
-          "conditional_logic": 0,
-          "wrapper": {
-            "width": "",
-            "class": "",
-            "id": ""
-          },
-          "default_value": "",
-          "maxlength": "",
-          "allow_in_bindings": 0,
-          "placeholder": "",
-          "prepend": "",
-          "append": ""
-        },
-        {
-          "key": "field_67356c6c0b995",
-          "label": "Cohort Description",
-          "name": "cohort_description",
-          "aria-label": "",
-          "type": "wysiwyg",
-          "instructions": "",
-          "required": 0,
-          "conditional_logic": 0,
-          "wrapper": {
-            "width": "",
-            "class": "",
-            "id": ""
-          },
-          "default_value": "",
-          "allow_in_bindings": 0,
-          "tabs": "visual",
-          "toolbar": "basic",
-          "media_upload": 0,
-          "delay": 0
-        },
-        {
-          "key": "field_6760611e91e8a",
-          "label": "Cohorts",
-          "name": "items",
-          "aria-label": "",
-          "type": "acfe_taxonomy_terms",
-          "instructions": "Which cohorts to include. <i>Leave blank to include all</i>",
-          "required": 0,
-          "conditional_logic": 0,
-          "wrapper": {
-            "width": "",
-            "class": "",
-            "id": ""
-          },
-          "taxonomy": ["cohort"],
-          "allow_terms": "",
-          "allow_level": "",
-          "field_type": "checkbox",
-          "default_value": [],
-          "return_format": "id",
-          "layout": "vertical",
-          "toggle": 0,
-          "save_terms": 0,
-          "load_terms": 0,
-          "allow_in_bindings": 0,
-          "choices": [],
-          "ui": 0,
-          "multiple": 0,
-          "allow_null": 0,
-          "ajax": 0,
-          "placeholder": "",
-          "search_placeholder": "",
-          "allow_custom": 0,
-          "other_choice": 0
-        }
-      ]
-    },
-    {
-      "key": "field_674340f49240d",
-      "label": "FAQ Title",
-      "name": "faq_title",
-      "aria-label": "",
-      "type": "text",
-      "instructions": "This label will appear in the navigation bar. Defaults to \"FAQs\" if empty.",
-      "required": 0,
-      "conditional_logic": 0,
-      "wrapper": {
-        "width": "",
-        "class": "",
-        "id": ""
-      },
-      "default_value": "",
-      "maxlength": "",
-      "allow_in_bindings": 0,
-      "placeholder": "",
-      "prepend": "",
-      "append": ""
-    },
-    {
       "key": "field_673569dedb559",
       "label": "FAQs",
       "name": "faqs",
@@ -678,5 +536,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1734369624
+  "modified": 1741207445
 }
