@@ -197,15 +197,15 @@ body {
   // Buttons
   .button {
     @apply block cursor-pointer whitespace-nowrap;
-    @apply font-headline font-semibold bg-off-black/60 text-white backdrop-blur-md transition-colors hocus:bg-black;
+    @apply font-headline font-semibold tracking-normal text-sm leading-none font-wdth-380 bg-off-black/60 text-white backdrop-blur-md transition-colors hocus:bg-black;
   }
 
   .button-sm {
-    @apply flex justify-center items-center h-9 px-3;
+    @apply flex justify-center items-center pt-[6px] pb-[5px] px-[8px];
   }
 
   .button-square {
-    @apply w-auto aspect-square px-0;
+    @apply w-auto aspect-square h-[31px] py-0 px-0;
   }
 
   .button-dark {

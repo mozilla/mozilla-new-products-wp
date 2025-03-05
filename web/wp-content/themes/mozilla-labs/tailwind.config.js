@@ -94,7 +94,7 @@ module.exports = {
       extralight: 200,
       light: 350,
       normal: 400,
-      semibold: 600,
+      semibold: 500,
       bold: 700,
     },
 
