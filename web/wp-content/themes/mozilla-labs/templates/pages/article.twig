@@ -33,62 +33,6 @@
       </div>
       {% endif %}
 
-      <div
-        class="col-start-center col-span-full md:col-span-18 lg:col-span-12 2xl:col-span-10 max-md:mt-8 md:mb-8 sticky top-wp-admin-bar pt-4 z-50"
-        x-accordion
-        @click.outside="openItems.clear()"
-        hidden
-        :hidden="headings.length === 0">
-        <div x-accordion:item class="relative w-full bg-main border border-content">
-          <div class="flex px-4 py-3 gap-3 sticky top-0 bg-main z-10">
-            <div class="flex-2">
-              <p class="text-xs uppercase">In this article</p>
-            </div>
-
-            <div class="flex-2 overflow-hidden">
-              <p aria-hidden="true" class="text-xs" x-text="(activeIndex + 1).toString().padStart(2, '0')"></p>
-              <p class="text-sm uppercase font-bold truncate" x-text="headings[activeIndex].text"></p>
-            </div>
-
-            <button x-accordion:trigger data-state="closed" class="group before:absolute before:inset-0">
-              <svg class="size-4 group-data-open:hidden" aria-hidden="true" viewBox="0 0 24 24">
-                <use href="#plus" />
-              </svg>
-              <svg class="size-4 group-data-closed:hidden" aria-hidden="true" viewBox="0 0 24 24">
-                <use href="#minus" />
-              </svg>
-              <span class="sr-only">View all headings</span>
-            </button>
-
-            <div class="absolute inset-x-4 -bottom-px border-t border-content"></div>
-          </div>
-
-          <div x-accordion:content data-state="closed" class="data-closed:hidden absolute -inset-x-px bottom-0 translate-y-full">
-            <div class="flex px-4 py-3 gap-3 bg-main border-x border-b border-content">
-              <div class="flex-2"></div>
-              <nav class="flex-2">
-                <ul class="flex flex-col gap-1">
-                  <template x-for="(heading, index) in headings">
-                    <li class="flex relative gap-3">
-                      <p aria-hidden="true" class="text-sm" x-text="(index + 1).toString().padStart(2, '0')"></p>
-                      <a
-                        class="text-sm upppercase"
-                        :href="heading.href"
-                        :data-state="activeIndex === index ? 'active' : 'inactive'"
-                        @click="openItems.clear()"
-                        >
-                        <span :class="activeIndex === index ? 'font-bold' : ''" x-text="heading.text"></span>
-                      </a>
-                    </li>
-                  </template>
-                </ul>
-              </nav>
-              <div class="size-4"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <div x-headings:content x-hang-punc class="max-md:pt-12 col-span-full gutenberg article {{ post.has_lede_paragraph ? 'lede' }} grid grid-cols-site gap-x-grid-site-gutter centered-page">
         {{ post.content }}
       </div>
