@@ -45,7 +45,7 @@
 
 :root {
   @apply [--100vw:min(100vw,1920px)];
-  @apply [--grid-site-cols:6] md:[--grid-site-cols:24];
+  @apply [--grid-site-cols:6] md:[--grid-site-cols:12];
   @apply [--grid-site-margin:20px] md:[--grid-site-margin:20px];
   @apply [--grid-site-gutter:calc((24/400)*var(--100vw))] md:[--grid-site-gutter:calc((40/1440)*var(--100vw))];
 
@@ -217,7 +217,7 @@ body {
   }
 
   // Grid utilities
-  @for $i from 1 through 24 {
+  @for $i from 1 through 12 {
     .grid-cols-#{$i} {
       @include grid.template-columns($i);
     }
@@ -447,13 +447,13 @@ body {
     > ul,
     > ol,
     hr {
-      @apply md:col-span-14 lg:col-span-12 2xl:col-span-10;
+      @apply md:col-span-7 lg:col-span-12 2xl:col-span-10;
     }
 
     // Paragraphs
     > p {
       &:first-child:is(.lede *) {
-        @apply type-headline-lg mb-2 md:mb-6 lg:col-span-14;
+        @apply type-headline-lg mb-2 md:mb-6 lg:col-span-7;
       }
     }
 
@@ -469,7 +469,7 @@ body {
     > [data-block],
     > .wp-block-file {
       &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
-        @apply md:col-span-14 lg:col-span-12 2xl:col-span-10;
+        @apply md:col-span-7 lg:col-span-6 2xl:col-span-5;
       }
 
       &.alignleft {
@@ -481,7 +481,7 @@ body {
       }
 
       &.alignwide {
-        @apply md:col-span-20;
+        @apply md:col-span-10;
       }
 
       &.alignfull:not(.wp-block-pullquote):not(.wp-block-table) {
@@ -519,7 +519,7 @@ body {
       }
 
       &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
-        @apply md:col-span-14 lg:col-span-12 2xl:col-span-10;
+        @apply md:col-span-7 lg:col-span-12 2xl:col-span-10;
       }
 
       &.alignleft,
@@ -535,7 +535,7 @@ body {
       }
 
       &.alignwide {
-        @apply md:col-span-20 lg:col-span-16;
+        @apply md:col-span-10 lg:col-span-8;
 
         p {
           @apply 2xl:indent-[calc(0.125*var(--100vw))];
@@ -601,7 +601,7 @@ body {
     figure.wp-block-embed,
     div[data-block='interface-image'] figure {
       &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
-        @apply md:col-span-14 lg:col-span-12 2xl:col-span-10;
+        @apply md:col-span-7 lg:col-span-12 2xl:col-span-10;
       }
 
       img,
@@ -630,7 +630,7 @@ body {
 
     // Buttons
     .wp-block-buttons {
-      @apply flex flex-col gap-3 md:col-span-14 lg:col-span-12 2xl:col-span-10;
+      @apply flex flex-col gap-3 md:col-span-7 lg:col-span-12 2xl:col-span-10;
     }
     .wp-block-button {
       @apply flex justify-center w-full;
@@ -649,7 +649,7 @@ body {
       @apply flex flex-col;
 
       &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
-        @apply md:col-span-14 lg:col-span-12 2xl:col-span-10;
+        @apply md:col-span-7 lg:col-span-12 2xl:col-span-10;
       }
 
       &.alignleft,
@@ -688,14 +688,14 @@ body {
     // Related Articles
     div[data-block='related-articles'] {
       &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
-        @apply md:col-span-14 lg:col-span-12 2xl:col-span-10;
+        @apply md:col-span-7 lg:col-span-12 2xl:col-span-10;
       }
     }
 
     // Header Text
     div[data-block='header-text-small'] {
       &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
-        @apply md:col-span-18 md:col-start-4 lg:col-span-16 lg:col-start-5 2xl:col-span-12 2xl:col-start-7;
+        @apply md:col-span-9 md:col-start-4 lg:col-span-8 lg:col-start-5 2xl:col-span-12 2xl:col-start-7;
       }
     }
     div[data-block='header-text-large'] {
@@ -707,11 +707,11 @@ body {
     // Cover
     .wp-block-cover {
       &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
-        @apply md:col-span-14 lg:col-span-12 2xl:col-span-10;
+        @apply md:col-span-7 lg:col-span-12 2xl:col-span-10;
       }
 
       &.alignwide {
-        @apply md:col-span-20 lg:col-span-16;
+        @apply md:col-span-10 lg:col-span-8;
       }
 
       &.alignfull {
@@ -756,7 +756,7 @@ body {
 
     // Details
     .wp-block-details {
-      @apply flex flex-col gap-3 md:col-span-14 lg:col-span-12 2xl:col-span-10 pl-8 relative;
+      @apply flex flex-col gap-3 md:col-span-7 lg:col-span-6 2xl:col-span-5 pl-8 relative;
       @apply prose;
 
       &::before {
