@@ -1,47 +1,24 @@
 <footer class="mt-12 md:mt-24 pb-4 grid grid-site gap-6 centered-page">
   <div class="col-span-4 flex flex-col gap-4">
-    <h2 class="font-semibold">Products</h2>
+    <h2 class="text-sm font-semibold">Products</h2>
     <ul class="columns-2">
-      <li class="w-fit">
+      {% for product in ["Odin", "Deepfake Detector", "Hiro", "Orbit", "Solo", "Formulaic"] %}
+      <li class="text-sm w-fit">
         <a class="hocus:underline" href="#">
-          0din
+          {{ product }}
         </a>
       </li>
-      <li>
-        <a class="hocus:underline" href="#">
-          Deepfake Detector
-        </a>
-      </li>
-      <li>
-        <a class="hocus:underline" href="#">
-          Hiro
-        </a>
-      </li>
-      <li>
-        <a class="hocus:underline" href="#">
-          Orbit
-        </a>
-      </li>
-      <li>
-        <a class="hocus:underline" href="#">
-          Solo
-        </a>
-      </li>
-      <li>
-        <a class="hocus:underline" href="#">
-          Formulaic
-        </a>
-      </li>
+      {% endfor %}
     </ul>
   </div>
 
   <div class="col-start-9 col-span-4 grid grid-cols-2 gap-grid-site-gutter">
     {% for section in options.footer_links_section %}
     <div class="flex flex-col gap-4">
-      <h2 class="font-semibold">{{ section.footer_links_section_heading }}</h2>
+      <h2 class="text-sm font-semibold">{{ section.footer_links_section_heading }}</h2>
       <ul>
         {% for item in section.footer_links_items %}
-          <li>
+          <li class="text-sm">
             <a class="hocus:underline" href="{{ item.footer_links_item_link.url }}">
               {{ item.footer_links_item_link.name ?: item.footer_links_item_link.title }}
             </a>
@@ -56,12 +33,14 @@
     <use xlink:href="#mozillalogo"></use>
   </svg>
 
-  <div class="col-span-full flex items-start justify-between text-xs uppercase font-semibold gap-6">
-    <p class="max-md:w-1/2 whitespace-nowrap"><a href="https://mozilla.org/">Mozilla</a> &copy; {{ now|date('Y') }}</p>
+  <div class="col-span-full flex items-start justify-between gap-6">
+    <p class="max-md:w-1/2 font-bold text-sm whitespace-nowrap"><a href="https://mozilla.org/">Mozilla</a> &copy; {{ now|date('Y') }}</p>
 
     <ul class="max-md:w-1/2 flex flex-wrap max-md:flex-col md:items-center justify-end md:gap-x-6 gap-y-1.5 text-right">
       {% for item in primary_footer_menu.items %}
-        <li class="text-xs leading-none"><a href="{{ item.url }}" class="hocus:bg-spot hocus:text-black">{{ item.name }}</a></li>
+        <li class="leading-none text-sm">
+          <a href="{{ item.url }}" class="hocus:underline">{{ item.name }}</a>
+        </li>
       {% endfor %}
     </ul>
   </div>
