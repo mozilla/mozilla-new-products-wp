@@ -183,7 +183,7 @@ body {
   // Buttons
   .button {
     @apply block cursor-pointer whitespace-nowrap;
-    @apply font-headline bg-off-black/60 text-white backdrop-blur-sm;
+    @apply font-headline font-semibold bg-off-black/60 text-white backdrop-blur-sm transition-colors hocus:bg-black;
   }
 
   .button-sm {

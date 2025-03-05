@@ -2,7 +2,7 @@
   <nav class="grid grid-site items-center py-site" aria-label="Site">
     <div class="w-fit col-span-3 grid grid-rows-1 grid-cols-[auto_auto] gap-2">
       <div class="w-fit h-full aspect-square flex justify-center items-center bg-black/70 backdrop-blur-sm">
-        <svg class="size-6 shrink-0 text-white" aria-hidden="true">
+        <svg class="size-5 shrink-0 text-white" aria-hidden="true">
           <use xlink:href="#flag"></use>
         </svg>
       </div>
@@ -35,7 +35,7 @@
     <ul class="col-start-10 col-span-3 ml-auto flex gap-2">
       {% for item in nav_pages_menu.items %}
       <li>
-        <a class="button button-sm" href="{{ item.url }}" {% if item.current %}aria-current="page"{% endif %}>
+        <a class="button button-sm aria-current:bg-black" href="{{ item.url }}" {% if item.current %}aria-current="page"{% endif %}>
           {{ item.name }}
         </a>
       </li>
