@@ -31,9 +31,9 @@
 
 :root {
   @apply [--100vw:min(100vw,1920px)];
-  @apply [--grid-site-cols:6] md:[--grid-site-cols:24];
-  @apply [--grid-site-margin:calc((24/400)*var(--100vw))] md:[--grid-site-margin:calc((32/1440)*var(--100vw))];
-  @apply [--grid-site-gutter:calc((24/400)*var(--100vw))] md:[--grid-site-gutter:calc((40/1440)*var(--100vw))];
+  @apply [--grid-site-cols:6] md:[--grid-site-cols:12];
+  @apply [--grid-site-margin:calc((12/400)*var(--100vw))] md:[--grid-site-margin:calc((24/1440)*var(--100vw))];
+  @apply [--grid-site-gutter:calc((12/400)*var(--100vw))] md:[--grid-site-gutter:calc((24/1440)*var(--100vw))];
 
   --color-black: #{color.rgb(#161616)};
   --color-off-black: #{color.rgb(#242424)};
