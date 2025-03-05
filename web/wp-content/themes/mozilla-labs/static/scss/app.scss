@@ -291,7 +291,8 @@ body {
   }
 
   .col-span-full {
-    @include grid.column-span(var(--column-count));
+    // TODO: Replace 12 with --column-count after fixing the grid
+    @include grid.column-span(12);
   }
 
   .col-span-screen {
