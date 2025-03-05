@@ -1,13 +1,13 @@
-<div class="grid grid-site pt-12 centered-page text-sm max-md:pt-6">
-  <div class="col-span-full flex flex-col md:grid md:grid-cols-site md:gap-x-grid-site-gutter md:border-t md:border-content md:pt-3 ">
-    <p class="md:col-span-6 2xl:col-span-7 uppercase leading-tight max-md:flex max-md:gap-6 max-md:justify-between max-md:border-b max-md:border-content max-md:pt-2.5 max-md:pb-2">
-      <span class="block">by</span>
+<div class="grid grid-site pt-12 centered-page max-md:pt-6">
+  <div class="col-span-full flex flex-col gap-y-1 md:grid md:grid-cols-site md:gap-x-grid-site-gutter md:border-content">
+    <p class="flex col-span-2 max-md:justify-between items-baseline md:col-span-6 md: col-start-7 md:flex-col">
+      <span class="block font-headline text-xs font-wdth-380 font-light tracking-normal ">Published On</span>
       {% include 'components/articles/byline_format.twig' with { bylines: post.authors } %}
     </p>
 
-    <p class="md:col-span-6 uppercase leading-tight col-span-2 max-md:flex max-md:gap-6 max-md:justify-between max-md:border-b max-md:border-content max-md:pt-2.5 max-md:pb-2">
-      <span class="block">on</span>
-      <time class="max-md:text-right" datetime="{{ post.date|date('c') }}">{{ post.date|date('M d, Y') }}</time>
+    <p class="flex col-span-2 max-md:justify-between items-baseline md:col-span-6 md:flex-col md:gap-y-0">
+      <span class="block font-headline text-xs font-wdth-380 font-light tracking-normal">On</span>
+      <time class="max-md:text-right text-sm" datetime="{{ post.date|date('c') }}">{{ post.date|date('M d, Y') }}</time>
     </p>
 
     {% if post.art_credit %}

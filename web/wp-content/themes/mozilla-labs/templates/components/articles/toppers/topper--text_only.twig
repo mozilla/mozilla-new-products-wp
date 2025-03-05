@@ -32,18 +32,18 @@
 
 <header class="grid grid-site centered-page pt-10">
   <div class="col-span-full md:col-span-16 lg:col-span-12 2xl:col-span-10 4xl:col-span-8 col-start-center">
-    <div class="py-6 px-12 flex flex-col items-center justify-between gap-24 md:gap-10 min-h-[650px] md:aspect-text-topper {{ bg_class }}">
-      <div class="order-2">
+    <div class="py-6 px-12 flex flex-col items-center justify-between gap-24 md:gap-10 {{ bg_class }}">
+      <div>
         {% include 'components/articles/overline.twig' with { overline: post.categories[0], color: post.color } %}
       </div>
 
-      <h1 class="type-headline-2xl text-center text-balance order-1">{{ post.title }}</h1>
+      <h1 class="type-headline-2xl text-center text-balance">{{ post.title }}</h1>
 
-      {% if post.subtitle %}
+      {# {% if post.subtitle %}
         <p class="type-sans-lg uppercase text-center text-balance order-3">
           {{ post.subtitle }}
         </p>
-      {% endif %}
+      {% endif %} #}
     </div>
   </div>
 </header>

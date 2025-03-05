@@ -29,10 +29,24 @@
 @include font.face('Source Code Pro', 'SourceCodePro-Bold', 700, normal);
 @include font.face('Source Code Pro', 'SourceCodePro-BoldIt', 700, italic);
 
+// Variable Fonts
+
+@include font.variable-face('Mozilla Text', 'MozillaText-VF'); // Weight axis only
+@include font.variable-face-italic('Mozilla Text', 'MozillaTextItalic-VF'); // Weight axis only
+
+@include font.variable-face-width(
+  'Mozilla NewHeadline',
+  'MozillaHeadline-VF'
+); // Weight & Width axis (200-600)
+@include font.variable-face-italic-width(
+  'Mozilla NewHeadline',
+  'MozillaHeadlineItalic-VF'
+); // Weight & Width axis (200-600)
+
 :root {
   @apply [--100vw:min(100vw,1920px)];
   @apply [--grid-site-cols:6] md:[--grid-site-cols:24];
-  @apply [--grid-site-margin:calc((24/400)*var(--100vw))] md:[--grid-site-margin:calc((32/1440)*var(--100vw))];
+  @apply [--grid-site-margin:20px] md:[--grid-site-margin:20px];
   @apply [--grid-site-gutter:calc((24/400)*var(--100vw))] md:[--grid-site-gutter:calc((40/1440)*var(--100vw))];
 
   --color-black: #{color.rgb(#161616)};
@@ -65,7 +79,7 @@ html {
 
 body {
   @apply bg-main text-content;
-  @apply font-sans font-normal text-base antialiased;
+  @apply font-sans font-[480] tracking-tight text-lg leading-[1.6] antialiased;
 }
 
 @layer base {
@@ -120,23 +134,23 @@ body {
 
 @layer components {
   .type-headline-3xl {
-    @apply text-10xl font-headline-condensed font-semibold leading-none;
+    @apply text-10xl font-headline font-semibold leading-none;
   }
 
   .type-headline-2xl {
-    @apply text-8xl font-headline-condensed font-semibold leading-none;
+    @apply text-8xl font-headline font-semibold leading-none;
   }
 
   .type-headline-xl {
-    @apply text-6xl font-headline-condensed font-semibold leading-none;
+    @apply text-6xl font-headline font-semibold leading-none;
   }
 
   .type-headline-lg {
-    @apply text-2xl font-headline-condensed font-semibold leading-tight;
+    @apply text-2xl font-headline font-semibold leading-tight;
   }
 
   .type-headline-md {
-    @apply text-xl font-headline-condensed font-semibold leading-tight;
+    @apply text-xl font-headline font-semibold leading-tight;
   }
 
   .type-sans-3xl {
@@ -198,7 +212,6 @@ body {
   }
 
   .hover-link {
-    @apply md:before:content-['\['] md:after:content-['\]'];
     @apply max-md:underline;
     @apply hocus:bg-action-focus hocus:no-underline hocus:text-action-focus-reverse;
   }

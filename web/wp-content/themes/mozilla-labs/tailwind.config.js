@@ -80,15 +80,19 @@ module.exports = {
     },
 
     fontFamily: {
-      sans: ['Mozilla Sans', ...theme.fontFamily.sans],
-      headline: ['Mozilla Headline', ...theme.fontFamily.serif],
-      'headline-condensed': ['Mozilla Headline Condensed', ...theme.fontFamily.serif],
+      sans: ['Mozilla Text', ...theme.fontFamily.sans],
+      headline: ['Mozilla NewHeadline', ...theme.fontFamily.serif],
       monospace: ['Source Code Pro', ...theme.fontFamily.serif],
+    },
+
+    fontVariationSettings: {
+      wght: ['200', '700'], // Weight axis
+      wdth: ['200', '600'], // Width axis
     },
 
     fontWeight: {
       extralight: 200,
-      light: 300,
+      light: 350,
       normal: 400,
       semibold: 600,
       bold: 700,
@@ -162,6 +166,10 @@ module.exports = {
         },
       },
 
+      letterSpacing: {
+        tight: '-0.015em',
+      },
+
       lineHeight: {
         tighter: '1.05',
       },
@@ -192,5 +200,19 @@ module.exports = {
       },
     },
   },
-  plugins: [hocus, utilitiesScss({ filename: path.resolve(__dirname, 'static/scss/app.scss') })],
+  plugins: [
+    hocus,
+    utilitiesScss({ filename: path.resolve(__dirname, 'static/scss/app.scss') }),
+    function ({ addUtilities }) {
+      const newUtilities = {
+        '.font-wght-100': { 'font-variation-settings': '"wght" 100' },
+        '.font-wght-350': { 'font-variation-settings': '"wght" 350' },
+        '.font-wght-700': { 'font-variation-settings': '"wght" 700' },
+        '.font-wdth-200': { 'font-variation-settings': '"wdth" 200' },
+        '.font-wdth-380': { 'font-variation-settings': '"wdth" 380' },
+        '.font-wdth-600': { 'font-variation-settings': '"wdth" 600' },
+      };
+      addUtilities(newUtilities);
+    },
+  ],
 };
