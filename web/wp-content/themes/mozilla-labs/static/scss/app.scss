@@ -854,16 +854,6 @@ body {
     }
   }
 
-  // .article {
-  //   // Paragraphs
-  //   > p {
-  //     &:last-child::after {
-  //       content: '';
-  //       @apply ml-1 inline-block shrink-0 bg-current mask-critter size-[0.9em];
-  //     }
-  //   }
-  // }
-
   .hang-punc-header-small,
   .hang-punc-small {
     text-indent: -0.175em;
