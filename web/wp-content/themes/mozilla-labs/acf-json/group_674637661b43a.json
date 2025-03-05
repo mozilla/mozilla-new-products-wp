@@ -1,14 +1,14 @@
 {
   "key": "group_674637661b43a",
-  "title": "Settings: Join Link",
+  "title": "Settings: Tester Sign-up",
   "fields": [
     {
       "key": "field_674637662b8df",
-      "label": "Join Us Link",
-      "name": "join_us_link",
+      "label": "Tester Sign-up CTA",
+      "name": "tester_signup_cta",
       "aria-label": "",
-      "type": "link",
-      "instructions": "",
+      "type": "text",
+      "instructions": "Call to action text on the header navigation for prompting users to sign up as a tester.",
       "required": 0,
       "conditional_logic": 0,
       "wrapper": {
@@ -16,8 +16,12 @@
         "class": "",
         "id": ""
       },
-      "return_format": "array",
-      "allow_in_bindings": 0
+      "default_value": "Become a Tester",
+      "maxlength": "",
+      "allow_in_bindings": 0,
+      "placeholder": "",
+      "prepend": "",
+      "append": ""
     }
   ],
   "location": [
@@ -43,5 +47,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1732654999
+  "modified": 1741199900
 }
