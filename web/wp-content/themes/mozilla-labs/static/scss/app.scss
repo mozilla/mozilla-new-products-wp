@@ -30,13 +30,13 @@
 @include font.face('Source Code Pro', 'SourceCodePro-BoldIt', 700, italic);
 
 :root {
-  @apply [--100vw:min(100vw,1920px)];
+  --100vw: min(100vw, 1920px);
   @apply [--grid-site-cols:6] md:[--grid-site-cols:12];
   @apply [--grid-site-margin:calc((12/400)*var(--100vw))] md:[--grid-site-margin:calc((24/1440)*var(--100vw))];
   @apply [--grid-site-gutter:calc((12/400)*var(--100vw))] md:[--grid-site-gutter:calc((24/1440)*var(--100vw))];
 
   --color-black: #{color.rgb(#161616)};
-  --color-off-black: #{color.rgb(#242424)};
+  --color-off-black: #{color.rgb(#3c3c3c)};
   --color-white: #{color.rgb(#fafafa)};
   --color-gray: #{color.rgb(#f0f0f0)};
   --color-gray-dark: #{color.rgb(#6d6d6d)};
@@ -119,6 +119,7 @@ body {
 }
 
 @layer components {
+  // Type scales
   .type-headline-3xl {
     @apply text-10xl font-headline-condensed font-semibold leading-none;
   }
@@ -178,6 +179,20 @@ body {
       @apply text-content;
     }
   }
+
+  // Buttons
+  .button {
+    @apply block cursor-pointer whitespace-nowrap;
+    @apply font-headline bg-off-black/60 text-white backdrop-blur-sm;
+  }
+
+  .button-sm {
+    @apply py-1.5 px-3;
+  }
+
+  .button-dark {
+    @apply bg-black/70;
+  }
 }
 
 @layer utilities {
@@ -208,61 +223,80 @@ body {
     .grid-cols-#{$i} {
       @include grid.template-columns($i);
     }
+
     .col-span-#{$i} {
       @include grid.column-span($i);
     }
+
     .col-start-#{$i} {
       @include grid.column-start($i);
     }
+
     .col-end-#{$i} {
       @include grid.column-end($i);
     }
   }
+
   .grid-cols-site {
     @include grid.template-columns(var(--grid-site-cols));
   }
+
   .col-span-1\/2 {
     @include grid.column-span(calc(var(--column-count) / 2));
   }
+
   .col-span-1\/3 {
     @include grid.column-span(calc(var(--column-count) / 3));
   }
+
   .col-span-1\/4 {
     @include grid.column-span(calc(var(--column-count) / 4));
   }
+
   .col-span-2\/3 {
     @include grid.column-span(calc(var(--column-count) * 2 / 3));
   }
+
   .col-span-1\/6 {
     @include grid.column-span(calc(var(--column-count) / 6));
   }
+
   .col-span-2\/6 {
     @include grid.column-span(calc(var(--column-count) * 2 / 6));
   }
+
   .col-span-3\/6 {
     @include grid.column-span(calc(var(--column-count) * 3 / 6));
   }
+
   .col-span-4\/6 {
     @include grid.column-span(calc(var(--column-count) * 4 / 6));
   }
+
   .col-span-5\/6 {
     @include grid.column-span(calc(var(--column-count) * 5 / 6));
   }
+
   .col-span-3\/8 {
     @include grid.column-span(calc(var(--column-count) * 3 / 8));
   }
+
   .col-span-full {
     @include grid.column-span(var(--column-count));
   }
+
   .col-span-screen {
     @apply col-span-full -mx-grid-site-margin;
   }
+
   .col-start-center {
     @include grid.column-start(calc((var(--column-count) - var(--column-span)) / 2 + 1));
   }
+
   .col-start-end {
     @include grid.column-start(calc(var(--column-count) - var(--column-span) + 1));
   }
+
   .grid-site {
     @apply grid-cols-site gap-x-grid-site-gutter px-grid-site-margin;
   }
@@ -277,15 +311,19 @@ body {
     > h2 {
       @apply text-xl font-bold uppercase indent-8;
     }
+
     > h3 {
       @apply text-xl uppercase indent-8;
     }
+
     > h4 {
       @apply font-bold uppercase indent-8;
     }
+
     > h5 {
       @apply uppercase indent-8;
     }
+
     > h6 {
       @apply uppercase indent-8;
 
@@ -316,6 +354,7 @@ body {
         @apply mt-2;
       }
     }
+
     > ul li {
       @apply relative pl-8;
 
@@ -324,18 +363,21 @@ body {
         @apply absolute left-0 top-[7px] flex size-2.5 bg-green;
       }
     }
+
     > ul ul li {
       &::before {
         content: '';
         @apply size-2 bg-green-dark;
       }
     }
+
     > ul ul ul li {
       &::before {
         content: '';
         @apply size-2 bg-green-darker;
       }
     }
+
     > ol li {
       @apply relative pl-8;
 
@@ -348,6 +390,7 @@ body {
         content: counter(list-item);
       }
     }
+
     > ol ol li {
       @apply pl-5;
 
@@ -355,6 +398,7 @@ body {
         content: counter(list-item, upper-alpha);
       }
     }
+
     > ol ol ol li {
       &::before {
         content: counter(list-item, upper-roman);
@@ -423,6 +467,7 @@ body {
       // Apply full-width size to all blocks, by default
       @apply col-span-full col-start-center;
     }
+
     > h1,
     > h2,
     > h3,
@@ -619,13 +664,16 @@ body {
     .wp-block-buttons {
       @apply flex flex-col gap-3 md:col-span-14 lg:col-span-12 2xl:col-span-10;
     }
+
     .wp-block-button {
       @apply flex justify-center w-full;
     }
+
     .wp-block-button__link {
       @apply w-full p-10 uppercase text-center text-action-reverse bg-action border border-action transition-colors;
       @apply hocus:text-action-focus-reverse hocus:bg-action-focus hocus:border-action-focus;
     }
+
     .is-style-outline .wp-block-button__link {
       @apply bg-transparent border-none text-action transition-shadow shadow-inner shadow-action;
       @apply hocus:shadow-inner-thick hocus:shadow-action;
@@ -685,6 +733,7 @@ body {
         @apply md:col-span-18 md:col-start-4 lg:col-span-16 lg:col-start-5 2xl:col-span-12 2xl:col-start-7;
       }
     }
+
     div[data-block='header-text-large'] {
       &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
         @apply md:col-span-full;
@@ -823,6 +872,7 @@ body {
     &.hang-punc-header-small,
     &.hang-punc-small {
       text-indent: 0;
+
       p {
         text-indent: -0.175em;
       }
@@ -831,6 +881,7 @@ body {
     &.hang-punc-header-medium,
     &.hang-punc-medium {
       text-indent: 0;
+
       p {
         text-indent: -0.35em;
       }
@@ -839,6 +890,7 @@ body {
     &.hang-punc-header-large,
     &.hang-punc-large {
       text-indent: 0;
+
       p {
         text-indent: -0.45em;
       }
