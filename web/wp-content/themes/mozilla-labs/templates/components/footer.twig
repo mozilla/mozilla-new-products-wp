@@ -1,7 +1,7 @@
 <footer class="mt-12 md:mt-24 pb-4 grid grid-site gap-6 centered-page">
-  <div class="col-span-4 flex flex-col gap-4">
+  <div class="col-span-full grid grid-cols-2 gap-grid-site-gutter md:col-span-4 md:flex md:flex-col md:gap-4">
     <h2 class="text-sm font-semibold">Products</h2>
-    <ul class="columns-2">
+    <ul class="md:columns-2">
       {% for product in ["Odin", "Deepfake Detector", "Hiro", "Orbit", "Solo", "Formulaic"] %}
       <li class="text-sm w-fit">
         <a class="hocus:underline" href="#">
@@ -12,9 +12,9 @@
     </ul>
   </div>
 
-  <div class="col-start-9 col-span-4 grid grid-cols-2 gap-grid-site-gutter">
+  <div class="col-span-full flex flex-col md:col-start-9 md:col-span-4 md:grid md:grid-cols-2 gap-grid-site-gutter">
     {% for section in options.footer_links_section %}
-    <div class="flex flex-col gap-4">
+    <div class="col-span-full grid grid-cols-2 gap-grid-site-gutter md:flex md:flex-col md:gap-4">
       <h2 class="text-sm font-semibold">{{ section.footer_links_section_heading }}</h2>
       <ul>
         {% for item in section.footer_links_items %}
