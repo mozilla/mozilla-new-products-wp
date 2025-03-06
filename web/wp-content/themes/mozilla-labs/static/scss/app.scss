@@ -522,11 +522,11 @@ body {
       }
 
       &.alignleft {
-        @apply md:col-start-1 md:col-span-5 lg:col-span-3 md:h-0;
+        @apply md:col-start-1 md:col-span-3 lg:col-span-3 md:h-0;
       }
 
       &.alignright {
-        @apply md:col-start-end md:col-span-5 lg:col-span-3 md:h-0;
+        @apply md:col-start-end md:col-span-3 lg:col-span-3 md:h-0;
       }
 
       &.alignwide {
