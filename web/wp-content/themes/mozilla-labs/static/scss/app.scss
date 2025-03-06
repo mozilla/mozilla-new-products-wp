@@ -183,7 +183,7 @@ body {
   }
 
   .type-caption {
-    @apply text-sm text-content/70 leading-tight;
+    @apply text-xs text-content/70 leading-tight;
 
     strong {
       @apply text-content;
@@ -482,7 +482,7 @@ body {
     // Column-sizing
     > * {
       // Apply full-width size to all blocks, by default
-      @apply col-span-4 col-start-center;
+      @apply col-span-6 col-start-center;
     }
 
     > h1,
@@ -518,7 +518,7 @@ body {
     > [data-block],
     > .wp-block-file {
       &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
-        @apply md:col-span-7 lg:col-span-6 2xl:col-span-5;
+        @apply md:col-span-6 lg:col-span-6 md:max-w-[600px] w-full ml-auto mr-auto;
       }
 
       &.alignleft {
@@ -537,22 +537,21 @@ body {
         @apply md:col-span-screen;
 
         figcaption {
-          @apply md:px-[--grid-site-margin];
+          @apply md:px-[10px] md:mx-[--grid-site-margin];
         }
       }
     }
 
     // Figures and captions
     > figure {
-      @apply flex flex-col gap-3;
+      @apply flex flex-col gap-2 relative;
 
       figcaption {
-        @apply type-caption;
+        @apply bg-black/60 text-white backdrop-blur-md px-[10px] pt-[6.5px] pb-[5.5px] w-fit type-caption;
       }
 
       &.alignfull:not(.wp-block-pullquote):not(.wp-block-table) {
         figcaption {
-          @apply md:px-[--grid-site-margin];
         }
       }
     }
@@ -568,7 +567,7 @@ body {
       }
 
       &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
-        @apply md:col-span-7 lg:col-span-12 2xl:col-span-10;
+        @apply md:col-span-6 lg:col-span-12 2xl:col-span-10;
       }
 
       &.alignleft,
@@ -650,7 +649,7 @@ body {
     figure.wp-block-embed,
     div[data-block='interface-image'] figure {
       &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
-        @apply md:col-span-7 lg:col-span-12 2xl:col-span-10;
+        @apply md:col-span-6;
       }
 
       img,
@@ -679,7 +678,7 @@ body {
 
     // Buttons
     .wp-block-buttons {
-      @apply flex flex-col gap-3 md:col-span-7 lg:col-span-12 2xl:col-span-10;
+      @apply flex flex-col gap-3 w-full ml-auto mr-auto md:col-span-6 md:max-w-[600px]  lg:col-span-6 2xl:col-span-10;
     }
 
     .wp-block-button {
@@ -701,7 +700,7 @@ body {
       @apply flex flex-col;
 
       &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
-        @apply md:col-span-7 lg:col-span-12 2xl:col-span-10;
+        @apply md:col-span-6;
       }
 
       &.alignleft,
@@ -740,7 +739,7 @@ body {
     // Related Articles
     div[data-block='related-articles'] {
       &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
-        @apply md:col-span-7 lg:col-span-12 2xl:col-span-10;
+        @apply md:col-span-6 lg:col-span-12 2xl:col-span-10;
       }
     }
 
@@ -809,7 +808,7 @@ body {
 
     // Details
     .wp-block-details {
-      @apply flex flex-col gap-3 md:col-span-7 lg:col-span-6 2xl:col-span-5 pl-8 relative;
+      @apply flex flex-col gap-3 w-full md:col-span-6 md:max-w-[600px] ml-auto mr-auto pl-8 relative;
       @apply prose;
 
       &::before {
@@ -818,7 +817,7 @@ body {
       }
 
       summary {
-        @apply hocus:cursor-pointer font-bold uppercase;
+        @apply hocus:cursor-pointer font-bold;
 
         &::marker,
         &::-webkit-details-marker {
@@ -844,16 +843,6 @@ body {
 
       * + * {
         @apply mt-6;
-      }
-
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6,
-      p {
-        @apply indent-8;
       }
     }
   }
