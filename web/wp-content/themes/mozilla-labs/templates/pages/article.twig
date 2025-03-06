@@ -6,7 +6,7 @@
   <article x-headings>
     {% include "components/articles/byline.twig" %}
 
-    <div class="md:pt-12 grid grid-site centered-page">
+    <div class="md:pt-12 grid grid-site centered-page justify-center">
 
       <div class="col-span-full md:hidden border-b border-content max-md:pt-2.5 max-md:pb-2">
         <div class="text-sm flex gap-6 justify-between items-baseline">
@@ -37,6 +37,7 @@
         {{ post.content }}
       </div>
 
+      {# Share Tools #}
       <div class="max-md:hidden md:col-span-4 lg:col-span-3 3xl:col-span-2 md:col-start-end md:sticky md:bottom-4 text-sm md:h-0">
         <div class="max-md:flex max-md:gap-6 max-md:justify-between md:-translate-y-full">
           <p class="uppercase leading-tight text-right">Share</p>

@@ -1,43 +1,11 @@
-{% if post.color == 'green' %}
-  {% set bg_class = 'bg-green' %}
-{% elseif post.color == 'green-light' %}
-  {% set bg_class = 'bg-green-light text-black' %}
-{% elseif post.color == 'green-darker' %}
-  {% set bg_class = 'bg-green-darker text-white' %}
-{% elseif post.color == 'orange' %}
-  {% set bg_class = 'bg-orange text-black' %}
-{% elseif post.color == 'orange-light' %}
-  {% set bg_class = 'bg-orange-light text-black' %}
-{% elseif post.color == 'orange-darker' %}
-  {% set bg_class = 'bg-orange-darker text-white' %}
-{% elseif post.color == 'pink' %}
-  {% set bg_class = 'bg-pink text-black' %}
-{% elseif post.color == 'pink-light' %}
-  {% set bg_class = 'bg-pink-light text-black' %}
-{% elseif post.color == 'pink-darker' %}
-  {% set bg_class = 'bg-pink-darker text-white' %}
-{% elseif post.color == 'stone' %}
-  {% set bg_class = 'bg-stone text-black' %}
-{% elseif post.color == 'yellow' %}
-  {% set bg_class = 'bg-yellow text-black' %}
-{% elseif post.color == 'olive' %}
-  {% set bg_class = 'bg-olive text-black' %}
-{% elseif post.color == 'olive-dark' %}
-  {% set bg_class = 'bg-olive-dark text-white' %}
-{% elseif post.color == 'blue-green' %}
-  {% set bg_class = 'bg-blue-green text-black' %}
-{% else %}
-  {% set bg_class = 'bg-content text-white' %}
-{% endif %}
-
-<header class="grid grid-site centered-page pt-40">
-  <div class="col-span-6 md:col-span-6 lg:col-span-6 2xl:col-span-10 4xl:col-span-8 col-start-center">
+<header class="grid justify-items-center grid-site centered-page pt-40">
+  <div class="w-full col-span-6 md:col-span-6 md:max-w-[600px] lg:col-span-6 2xl:col-span-10 4xl:col-span-8 col-start-center">
     <div class="py-6 flex flex-col items-left justify-between">
       <div>
         {% include 'components/articles/overline.twig' with { overline: post.categories[0], color: post.color } %}
       </div>
 
-      <h1 class="type-headline-lg text-balance">{{ post.title }}</h1>
+      <h1 class="type-headline-40 text-balance">{{ post.title }}</h1>
 
       {# {% if post.subtitle %}
         <p class="type-sans-lg uppercase text-center text-balance order-3">

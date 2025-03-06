@@ -41,7 +41,7 @@
   @apply [--grid-site-margin:20px] md:[--grid-site-margin:20px];
   @apply [--grid-site-gutter:calc((24/400)*var(--100vw))] md:[--grid-site-gutter:calc((40/1440)*var(--100vw))];
 
-  --color-black: #{color.rgb(#161616)};
+  --color-black: #{color.rgb(#000000)};
   --color-off-black: #{color.rgb(#3c3c3c)};
   --color-white: #{color.rgb(#fafafa)};
   --color-gray: #{color.rgb(#f0f0f0)};
@@ -77,7 +77,7 @@ body {
 @layer base {
   .theme-light {
     --color-main: var(--color-white);
-    --color-secondary: var(--color-gray);
+    --color-secondary: 27, 27, 27;
     --color-content: var(--color-black);
     --color-content-reverse: var(--color-white);
     --color-code: var(--color-black);
@@ -135,11 +135,15 @@ body {
   }
 
   .type-headline-xl {
-    @apply text-6xl font-headline font-semibold leading-none;
+    @apply text-6xl font-headline font-wdth-380 font-semibold leading-headline tracking-[-0.01em];
+  }
+
+  .type-headline-40 {
+    @apply text-[32px] md:text-[40px] font-headline font-wdth-380 font-semibold leading-headline tracking-[-0.01em];
   }
 
   .type-headline-lg {
-    @apply text-2xl font-headline font-wdth-380 font-semibold leading-headline;
+    @apply text-2xl font-headline font-wdth-380 font-semibold leading-headline tracking-[-0.01em];
   }
 
   .type-headline-md {
@@ -212,7 +216,7 @@ body {
 
 @layer utilities {
   .centered-page {
-    @apply max-w-page w-full mx-auto;
+    @apply w-full mx-auto;
   }
 
   .mask-arrow-down {
@@ -492,7 +496,7 @@ body {
     > ul,
     > ol,
     hr {
-      @apply col-span-6 lg:col-span-6 2xl:col-span-10;
+      @apply col-span-6 lg:col-span-6 w-full max-w-[600px] ml-auto mr-auto 2xl:col-span-10;
     }
 
     // Paragraphs
