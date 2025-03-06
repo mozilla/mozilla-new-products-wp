@@ -496,7 +496,7 @@ body {
     > ul,
     > ol,
     hr {
-      @apply col-span-6 lg:col-span-6 w-full max-w-[600px] ml-auto mr-auto 2xl:col-span-10;
+      @apply col-span-6 lg:col-span-6 w-full md:max-w-[600px] ml-auto mr-auto 2xl:col-span-10;
     }
 
     // Paragraphs

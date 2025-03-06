@@ -1,6 +1,6 @@
 {# Use an oxford comma if we have more than 2 names #}
 {% set andParam = bylines|length > 2 ? ', and ' : ' and ' %}
-<span class="max-md:text-right text-sm">
+<span class="max-md:text-right text-sm leading-tight">
   {% if bylines is not empty %}
     {% for author in bylines %}
       <a class="relative z-20 hover-link" href="{{ author.link }}">
