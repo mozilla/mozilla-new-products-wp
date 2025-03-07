@@ -1,4 +1,4 @@
-<footer class="text-content mt-12 md:mt-24 pb-4 grid grid-site gap-6 centered-page">
+<footer class="text-content mt-12 md:mt-24 pb-grid-site-margin grid grid-site centered-page">
   <div class="col-span-full grid grid-cols-2 gap-grid-site-gutter md:col-span-4 md:flex md:flex-col md:gap-4">
     <h2 class="text-sm font-bold">Products</h2>
     <ul class="md:columns-2">
@@ -29,8 +29,8 @@
     {% endfor %}
   </div>
 
-  <div class="col-span-full grid grid-cols-2 gap-grid-site-gutter md:flex md:items-start md:justify-between md:gap-6">
-    <p class="max-md:w-1/2 font-bold text-sm whitespace-nowrap"><a href="https://mozilla.org/">Mozilla</a> &copy; {{ now|date('Y') }}</p>
+  <div class="col-span-full grid grid-cols-2 gap-grid-site-gutter md:flex md:items-start md:justify-between md:gap-6 bg-blue-green">
+    <p class="max-md:w-1/2 font-bold text-xs whitespace-nowrap"><a href="https://mozilla.org/">Mozilla</a> &copy; {{ now|date('Y') }}</p>
 
     <ul class="flex flex-wrap max-md:flex-col md:items-center justify-end md:gap-x-6 gap-y-1.5">
       {% for item in primary_footer_menu.items %}
@@ -41,7 +41,8 @@
     </ul>
   </div>
 
-  <svg class="md:row-start-2 col-span-full aspect-mozilla-logo mt-8 md:mt-16" aria-hidden="true">
+  {# Mozilla Logo #}
+  <svg class="md:row-start-2 col-span-full aspect-mozilla-logo mt-16" aria-hidden="true">
     <use xlink:href="#mozillalogo"></use>
   </svg>
 </footer>
