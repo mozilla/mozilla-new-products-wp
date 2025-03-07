@@ -24,13 +24,16 @@
   </div>
 
   {% if post.categories|length %}
-  <ul class="col-start-1 col-span-full row-start-3 h-fit mt-auto py-grid-site-margin flex justify-center gap-2 flex-wrap z-10">
-    {% for category in post.categories %}
-      <li class="button-sm font-sans text-sm leading-none bg-off-black/60 text-white backdrop-blur-md whitespace-nowrap">
-        {{ category.title }}
-      </li>
-    {% endfor %}
-  </ul>
+  <section class="col-start-1 col-span-full row-start-3 h-fit mt-auto py-grid-site-margin z-10">
+    <h2 class="sr-only">Categories</h2>
+    <ul class="flex justify-center gap-2 flex-wrap">
+      {% for category in post.categories %}
+        <li class="button-sm font-sans text-sm leading-none bg-off-black/60 text-white backdrop-blur-md whitespace-nowrap">
+          {{ category.title }}
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
   {% endif %}
 </header>
 
