@@ -1,6 +1,6 @@
 {% extends "layouts/base.twig" %}
 
-{% set custom_nav_classes = "theme-dark" %}
+{% set custom_nav_classes = post.meta("navigation_theme") %}
 
 {% block pageBody %}
 
