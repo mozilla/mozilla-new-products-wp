@@ -8,7 +8,7 @@
 use Timber\Timber;
 
 use MozillaLabs\Models\PostType\Profile;
-use MozillaLabs\Models\PostType\Project;
+use MozillaLabs\Models\PostType\Product;
 
 global $paged;
 

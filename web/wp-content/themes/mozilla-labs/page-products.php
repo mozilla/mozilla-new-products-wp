@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Projects Archive
+ * Template Name: Products Archive
  *
  * @package MozillaLabs
  */
@@ -14,7 +14,7 @@ $_page_id = (int) $_page->ID;
 global $paged;
 
 $context['title']      = $_page->title();
-$context['subheading'] = 'Projects';
+$context['subheading'] = 'Products';
 
 // If page is password protected, render password page.
 if ( post_password_required( $_page_id ) ) {
@@ -27,7 +27,7 @@ if ( post_password_required( $_page_id ) ) {
 	$context['page'] = $_page;
 
 	$args             = array(
-		'post_type'      => 'project',
+		'post_type'      => 'product',
 		'orderby'        => 'title',
 		'order'          => 'ASC',
 		'posts_per_page' => 24,
@@ -35,5 +35,5 @@ if ( post_password_required( $_page_id ) ) {
 	);
 	$context['posts'] = Timber::get_posts( $args );
 
-	Timber::render( 'pages/archive-project.twig', $context );
+	Timber::render( 'pages/archive-product.twig', $context );
 }

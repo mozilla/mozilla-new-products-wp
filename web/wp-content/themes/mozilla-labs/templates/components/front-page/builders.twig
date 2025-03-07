@@ -11,13 +11,13 @@
 
   <ul class="col-span-full grid grid-cols-site gap-x-grid-site-gutter gap-y-8 lg:gap-y-4">
     {% for person in featured_people %}
-      {% set project = person.projects[0] %}
+      {% set product = person.products[0] %}
       <li class="contents">
         <div class="max-lg:hidden col-span-3 col-start-1 self-center">
-          {% if project %}
+          {% if product %}
             <p class="text-sm uppercase">
-              <a href="{{ project.link }}" class="hocus:bg-spot">
-                {{ project.title }}
+              <a href="{{ product.link }}" class="hocus:bg-spot">
+                {{ product.title }}
               </a>
             </p>
           {% endif %}
@@ -49,10 +49,10 @@
             </a>
           </p>
 
-          {% if project %}
+          {% if product %}
             <p class="lg:hidden relative z-10 text-sm uppercase">
-              <a href="{{ project.link }}" class="hocus:bg-spot">
-                {{ project.title }}
+              <a href="{{ product.link }}" class="hocus:bg-spot">
+                {{ product.title }}
               </a>
             </p>
           {% endif %}

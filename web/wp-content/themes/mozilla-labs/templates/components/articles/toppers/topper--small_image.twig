@@ -10,7 +10,7 @@
           {% include 'components/articles/overline.twig' with { overline: post.categories[0] } %}
         </div>
 
-        <h1 class="type-headline-40 text-balance text-center leading-none">{{ post.title }}</h1>
+        <h1 class="type-headline-40 text-balance leading-none">{{ post.title }}</h1>
       </div>
     </div>
 
@@ -20,7 +20,7 @@
 
 
     <div class="row-start-3 mt-24 my-12 flex col-span-full md:col-span-6 md:w-full md:max-w-[600px] md:col-start-4 max-md:order-1">
-      <div class="w-full mx-auto max-md:max-w-xs">
+      <div class="w-full mx-auto">
         {% if asset %}
           {% include 'components/lazy-img.twig' with {
             img: asset,

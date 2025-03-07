@@ -10,7 +10,7 @@ namespace MozillaLabs\Models\Taxonomy;
 use Timber\Timber;
 use Timber\Term as TimberTerm;
 
-use MozillaLabs\Models\PostType\Project;
+use MozillaLabs\Models\PostType\Product;
 
 /** Class */
 class Platform extends TimberTerm {
@@ -36,6 +36,6 @@ class Platform extends TimberTerm {
 			),
 		);
 
-		register_taxonomy( self::HANDLE, array( Project::HANDLE ), $args );
+		register_taxonomy( self::HANDLE, array( Product::HANDLE ), $args );
 	}
 }

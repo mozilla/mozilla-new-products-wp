@@ -1,6 +1,6 @@
 {
   "key": "group_672392d8e9450",
-  "title": "Projects",
+  "title": "Products",
   "fields": [
     {
       "key": "field_672398429ba66",
@@ -22,6 +22,63 @@
       "placeholder": "",
       "prepend": "",
       "append": ""
+    },
+    {
+      "key": "field_67cb2f625aa4e",
+      "label": "Backdrop Image",
+      "name": "backdrop_image",
+      "aria-label": "",
+      "type": "image",
+      "instructions": "Image is used as the backdrop of the product page topper.",
+      "required": 1,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "50",
+        "class": "",
+        "id": ""
+      },
+      "uploader": "",
+      "return_format": "array",
+      "library": "all",
+      "acfe_thumbnail": 0,
+      "min_width": "",
+      "min_height": "",
+      "min_size": "",
+      "max_width": "",
+      "max_height": "",
+      "max_size": "",
+      "mime_types": "",
+      "allow_in_bindings": 0,
+      "preview_size": "medium"
+    },
+    {
+      "key": "field_67cb384881a54",
+      "label": "Navigation Theme",
+      "name": "navigation_theme",
+      "aria-label": "",
+      "type": "select",
+      "instructions": "Choose the theme for the navigation header based on the backdrop image. If the backdrop image is darker, choose \"dark\".",
+      "required": 1,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "50",
+        "class": "",
+        "id": ""
+      },
+      "choices": {
+        "theme-light": "Light",
+        "theme-dark": "Dark"
+      },
+      "default_value": "theme-light",
+      "return_format": "value",
+      "multiple": 0,
+      "allow_custom": 0,
+      "search_placeholder": "",
+      "allow_null": 0,
+      "allow_in_bindings": 0,
+      "ui": 1,
+      "ajax": 0,
+      "placeholder": ""
     },
     {
       "key": "field_672397a72f3ae",
@@ -148,6 +205,9 @@
       "layout": "block",
       "acfe_seamless_style": 0,
       "acfe_group_modal": 0,
+      "acfe_group_modal_close": 0,
+      "acfe_group_modal_button": "",
+      "acfe_group_modal_size": "large",
       "sub_fields": [
         {
           "key": "field_6761b9e60b9e7",
@@ -231,10 +291,7 @@
           "return_format": "array",
           "allow_in_bindings": 0
         }
-      ],
-      "acfe_group_modal_close": 0,
-      "acfe_group_modal_button": "",
-      "acfe_group_modal_size": "large"
+      ]
     },
     {
       "key": "field_67323eb12cdc9",
@@ -242,7 +299,7 @@
       "name": "show_image_on_index",
       "aria-label": "",
       "type": "true_false",
-      "instructions": "This will show the project image on the index page.",
+      "instructions": "This will show the product image on the index page.",
       "required": 0,
       "conditional_logic": 0,
       "wrapper": {
@@ -263,7 +320,7 @@
       {
         "param": "post_type",
         "operator": "==",
-        "value": "project"
+        "value": "product"
       }
     ]
   ],
@@ -281,5 +338,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1734460160
+  "modified": 1741371629
 }

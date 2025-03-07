@@ -42,8 +42,8 @@
       {% for cta in page.ctas %}
         {% if cta.link_type == "post_archive" %}
           {% set label = 'Content' %}
-        {% elseif cta.link_type == "project_archive" %}
-          {% set label = 'Projects' %}
+        {% elseif cta.link_type == "product_archive" %}
+          {% set label = 'Products' %}
         {% elseif cta.link_type == "people_archive" %}
           {% set label = 'People' %}
         {% elseif cta.link_type == "discord" %}
