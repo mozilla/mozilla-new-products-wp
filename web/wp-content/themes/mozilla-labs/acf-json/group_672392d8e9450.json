@@ -24,6 +24,34 @@
       "append": ""
     },
     {
+      "key": "field_67cb2f625aa4e",
+      "label": "Backdrop Image",
+      "name": "backdrop_image",
+      "aria-label": "",
+      "type": "image",
+      "instructions": "Image is used as the backdrop of the product page topper.",
+      "required": 1,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "uploader": "",
+      "return_format": "array",
+      "library": "all",
+      "acfe_thumbnail": 0,
+      "min_width": "",
+      "min_height": "",
+      "min_size": "",
+      "max_width": "",
+      "max_height": "",
+      "max_size": "",
+      "mime_types": "",
+      "allow_in_bindings": 0,
+      "preview_size": "medium"
+    },
+    {
       "key": "field_672397a72f3ae",
       "label": "GitHub Link",
       "name": "github_link",
@@ -281,5 +309,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1741368657
+  "modified": 1741369290
 }
