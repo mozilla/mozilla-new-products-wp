@@ -23,6 +23,10 @@
             } %}
           {% endif %}
 
+          {% if post.category %}
+            <p>{{ post.category }}</p>
+          {% endif %}
+
           <h3>
             <a href="{{ post.link }}">
               {{ post.title }}
