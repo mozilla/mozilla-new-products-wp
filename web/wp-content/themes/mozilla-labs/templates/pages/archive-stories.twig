@@ -23,7 +23,11 @@
             } %}
           {% endif %}
 
-          <h3>{{ post.title }}</h3>
+          <h3>
+            <a href="{{ post.link }}">
+              {{ post.title }}
+            </a>
+          </h3>
         </li>
       {% endfor %}
     </ul>
