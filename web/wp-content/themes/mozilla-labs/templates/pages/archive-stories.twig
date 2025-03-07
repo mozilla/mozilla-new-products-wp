@@ -10,4 +10,22 @@
     <p>{{ page.description }}</p>
     {% endif %}
   </header>
+
+  <section aria-label="Posts">
+    <h2 class="sr-only">Posts</h2>
+
+    <ul>
+      {% for post in posts %}
+        <li>
+          {% if post.thumbnail %}
+            {% include "components/lazy-img.twig" with {
+              img: get_image(post.thumbnail)
+            } %}
+          {% endif %}
+
+          <h3>{{ post.title }}</h3>
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
 {% endblock %}

@@ -21,5 +21,12 @@ if ( post_password_required( $_page_id ) ) {
 } else {
 	$context['page'] = $_page;
 
+	$context['posts'] = Timber::get_posts(
+		array(
+			'post_type'      => 'post',
+			'posts_per_page' => -1,
+		)
+	);
+
 	Timber::render( 'pages/archive-stories.twig', $context );
 }
