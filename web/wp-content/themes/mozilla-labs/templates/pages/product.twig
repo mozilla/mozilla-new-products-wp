@@ -37,4 +37,23 @@
   {% endif %}
 </header>
 
+<div class="grid grid-site pt-24">
+  <section class="col-span-3 grid grid-cols-3 gap-x-grid-site-gutter" aria-label="About">
+    {% set primary_icon = post.meta("icons").primary %}
+
+    {% if primary_icon %}
+      {% include "components/lazy-img.twig" with {
+        class: "mb-8",
+        img: get_image(primary_icon)
+      } %}
+    {% endif %}
+
+    <p class="col-start-1 col-end-4 font-headline text-xl font-wdth-380 leading-tight">{{ post.title }}</p>
+
+    {% if post.tagline %}
+      <p class="col-start-1 col-end-4 font-headline text-xl font-wdth-380 text-secondary/60 text-pretty leading-tight">{{ post.tagline }}</p>
+    {% endif %}
+  </section>
+</div>
+
 {% endblock %}
