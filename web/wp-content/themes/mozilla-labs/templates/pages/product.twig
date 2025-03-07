@@ -4,7 +4,7 @@
 
 {% block pageBody %}
 
-<header class="grid grid-site grid-rows-[100dvh] overflow-y-hidden">
+<header class="grid grid-site grid-rows-[auto_1fr_auto] h-[80vh] overflow-y-hidden isolate">
   {% set backdrop = post.meta("backdrop_image") %}
 
   {% if backdrop %}
@@ -16,12 +16,21 @@
   {% endif %}
 
   <div class="
-    col-start-1 col-span-full row-span-full z-10 self-center justify-self-center size-fit
+    col-start-1 col-span-full row-start-2 z-10 self-center justify-self-center size-fit
     px-8 pt-9 pb-8 lg:pt-14 lg:pb-12 lg:px-16
     bg-off-black/60 backdrop-blur-md
   ">
     <h1 class="text-white type-headline-2xl">{{ post.title }}</h1>
   </div>
+
+
+  <ul class="col-start-1 col-span-full row-start-3 py-grid-site-margin flex justify-center gap-2 flex-wrap z-10">
+    {% for category in post.categories %}
+      <li class="button-sm font-sans text-sm leading-none bg-off-black/60 text-white backdrop-blur-md whitespace-nowrap">
+        {{ category.title }}
+      </li>
+    {% endfor %}
+  </ul>
 </header>
 
 {% endblock %}
