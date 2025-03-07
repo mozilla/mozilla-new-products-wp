@@ -171,7 +171,7 @@
           },
           "choices": {
             "post_archive": "Content",
-            "project_archive": "Projects",
+            "product_archive": "Products",
             "people_archive": "People",
             "discord": "Discord",
             "custom": "Custom"
@@ -264,7 +264,7 @@
       {
         "param": "page_template",
         "operator": "==",
-        "value": "page-projects.php"
+        "value": "page-products.php"
       }
     ],
     [
@@ -296,5 +296,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1734614233
+  "modified": 1741368690
 }
