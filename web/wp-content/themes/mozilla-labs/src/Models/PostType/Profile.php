@@ -88,17 +88,17 @@ class Profile extends TimberPost {
 	}
 
 	/**
-	 * Get the projects for the profile.
+	 * Get the products for the profile.
 	 *
 	 * @return array
 	 */
-	public function projects() {
-		$projects = $this->meta( 'projects' );
-		if ( empty( $projects ) ) {
+	public function products() {
+		$products = $this->meta( 'products' );
+		if ( empty( $products ) ) {
 			return array();
 		}
 
-		return array_map( fn( $project ) => Timber::get_post( $project ), $projects );
+		return array_map( fn( $product ) => Timber::get_post( $product ), $products );
 	}
 
 	/**

@@ -10,10 +10,10 @@ namespace MozillaLabs\Managers;
 use MozillaLabs\Models\PostType\Article;
 use MozillaLabs\Models\PostType\Cta;
 use MozillaLabs\Models\PostType\Profile;
-use MozillaLabs\Models\PostType\Project;
+use MozillaLabs\Models\PostType\Product;
 use MozillaLabs\Models\Taxonomy\Cohort;
 use MozillaLabs\Models\Taxonomy\Platform;
-use MozillaLabs\Models\Taxonomy\ProjectCategory;
+use MozillaLabs\Models\Taxonomy\ProductCategory;
 use MozillaLabs\Models\Taxonomy\Technology;
 use MozillaLabs\Vite;
 
@@ -198,7 +198,7 @@ class ThemeManager {
 	public function register_post_types() {
 		Cta::register();
 		Profile::register();
-		Project::register();
+		Product::register();
 	}
 
 	/**
@@ -211,7 +211,7 @@ class ThemeManager {
 			Article::HANDLE => Article::class,
 			Cta::HANDLE     => Cta::class,
 			Profile::HANDLE => Profile::class,
-			Project::HANDLE => Project::class,
+			Product::HANDLE => Product::class,
 		);
 
 		return array_merge( $classmap, $custom_classmap );
@@ -226,7 +226,7 @@ class ThemeManager {
 		// Register custom post types.
 		Cohort::register();
 		Platform::register();
-		ProjectCategory::register();
+		ProductCategory::register();
 		Technology::register();
 	}
 
@@ -239,7 +239,7 @@ class ThemeManager {
 		$custom_classmap = array(
 			Cohort::HANDLE          => Cohort::class,
 			Platform::HANDLE        => Platform::class,
-			ProjectCategory::HANDLE => ProjectCategory::class,
+			ProductCategory::HANDLE => ProductCategory::class,
 			Technology::HANDLE      => Technology::class,
 		);
 		return array_merge( $classmap, $custom_classmap );
