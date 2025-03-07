@@ -1,0 +1,51 @@
+{
+  "key": "group_67cb1fcdbff07",
+  "title": "Stories Archive",
+  "fields": [
+    {
+      "key": "field_67cb1fcfe150b",
+      "label": "Description",
+      "name": "description",
+      "aria-label": "",
+      "type": "text",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "allow_in_bindings": 0,
+      "placeholder": "",
+      "prepend": "",
+      "append": ""
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_template",
+        "operator": "==",
+        "value": "page-stories.php"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "seamless",
+  "label_placement": "left",
+  "instruction_placement": "label",
+  "hide_on_screen": ["block_editor", "the_content"],
+  "active": true,
+  "description": "",
+  "show_in_rest": 0,
+  "acfe_display_title": "",
+  "acfe_autosync": ["json"],
+  "acfe_form": 0,
+  "acfe_meta": "",
+  "acfe_note": "",
+  "modified": 1741365297
+}
