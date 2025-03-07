@@ -1,6 +1,6 @@
 <header class="centered-page z-50 theme-light {{ class|default("") }}">
   <nav class="fixed top-0 w-full grid grid-cols-[1fr_auto_1fr] gap-x-grid-site-gutter px-grid-site-margin items-center py-[20px]" aria-label="Site">
-    <div class="flex gap-1.5">
+    <div class="flex gap-1">
       <a class="button button-sm button-dark button-square flex justify-center items-center">
         <span class="sr-only">Home</span>
         <svg class="size-4 shrink-0 text-white" aria-hidden="true">
@@ -34,7 +34,7 @@
     </a>
 
     <div class="ml-auto">
-      <ul class="max-lg:hidden flex gap-2">
+      <ul class="max-lg:hidden flex gap-1">
         {% for item in nav_pages_menu.items %}
         <li>
           <a class="button button-sm aria-current:bg-black" href="{{ item.url }}" {% if item.current %}aria-current="page"{% endif %}>
