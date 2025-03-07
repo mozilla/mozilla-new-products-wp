@@ -13,11 +13,11 @@
   }
 ] %}
 
-<ul class="flex flex-wrap max-md:justify-end max-md:gap-x-3 md:flex-col max-md:gap-y-1">
+<ul class="flex flex-wrap max-md:justify-end max-md:gap-x-3 md:flex-col max-md:gap-y-1 md:mt-1 md:gap-y-1">
   {% for social in socials %}
     <li class="flex justify-end">
       <a
-        class="uppercase leading-tight hover-link font-bold"
+        class="leading-tight hover-link"
         href="{{ social.url }}"
         target="_blank"
         rel="noopener"
