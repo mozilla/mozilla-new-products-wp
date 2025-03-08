@@ -1,0 +1,18 @@
+<section class="col-span-full sm:col-span-6 lg:col-span-3 grid grid-cols-3 auto-rows-auto h-fit gap-x-grid-site-gutter" aria-label="About">
+  {% if icon %}
+    {% include "components/lazy-img.twig" with {
+      class: "mb-8",
+      img: icon
+    } %}
+  {% endif %}
+
+  {% if title %}
+    <p class="col-start-1 col-end-4 font-headline text-xl font-wdth-380 leading-tight">
+      {{ title }}
+    </p>
+  {% endif %}
+
+  {% if tagline %}
+    <p class="col-start-1 col-end-4 font-headline text-xl font-wdth-380 text-secondary/60 text-balance leading-tight">{{ tagline }}</p>
+  {% endif %}
+</section>

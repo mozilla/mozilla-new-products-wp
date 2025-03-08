@@ -38,22 +38,13 @@
 </header>
 
 <div class="grid grid-site gap-y-grid-site-gutter pt-grid-site-margin lg:pt-24">
-  <section class="col-span-full sm:col-span-6 lg:col-span-3 grid grid-cols-3 gap-x-grid-site-gutter" aria-label="About">
-    {% set primary_icon = post.meta("icons").primary %}
+  {% set icons = post.meta("icons") %}
 
-    {% if primary_icon %}
-      {% include "components/lazy-img.twig" with {
-        class: "mb-8",
-        img: get_image(primary_icon)
-      } %}
-    {% endif %}
-
-    <p class="col-start-1 col-end-4 font-headline text-xl font-wdth-380 leading-tight">{{ post.title }}</p>
-
-    {% if post.tagline %}
-      <p class="col-start-1 col-end-4 font-headline text-xl font-wdth-380 text-secondary/60 text-balance leading-tight">{{ post.tagline }}</p>
-    {% endif %}
-  </section>
+  {% include 'components/product-overview.twig' with {
+    icon: icons.primary ? get_image(icons.primary) : null,
+    title: post.title,
+    tagline: post.tagline,
+  } %}
 
   {% set information = post.meta("information") %}
   {% set cta = post.meta("cta") %}
