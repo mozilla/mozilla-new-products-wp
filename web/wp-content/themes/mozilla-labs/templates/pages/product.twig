@@ -37,4 +37,55 @@
   {% endif %}
 </header>
 
+<div class="grid grid-site gap-y-grid-site-gutter pt-grid-site-margin lg:pt-24">
+  <section class="col-span-full sm:col-span-6 lg:col-span-3 grid grid-cols-3 gap-x-grid-site-gutter" aria-label="About">
+    {% set primary_icon = post.meta("icons").primary %}
+
+    {% if primary_icon %}
+      {% include "components/lazy-img.twig" with {
+        class: "mb-8",
+        img: get_image(primary_icon)
+      } %}
+    {% endif %}
+
+    <p class="col-start-1 col-end-4 font-headline text-xl font-wdth-380 leading-tight">{{ post.title }}</p>
+
+    {% if post.tagline %}
+      <p class="col-start-1 col-end-4 font-headline text-xl font-wdth-380 text-secondary/60 text-balance leading-tight">{{ post.tagline }}</p>
+    {% endif %}
+  </section>
+
+  {% set information = post.meta("information") %}
+  {% set cta = post.meta("cta") %}
+
+  {% if information|length or cta %}
+  <section class="col-span-full sm:col-span-6 lg:col-span-3 flex flex-col gap-y-grid-site-gutter lg:gap-8" aria-label="Information">
+    {% if information|length %}
+    <dl class="contents">
+      {% for item in information %}
+        <div>
+          <dt class="text-xs">{{ item.label }}</dt>
+          <dd class="text-sm prose">{{ item.text }}</dd>
+        </div>
+      {% endfor %}
+    </dl>
+    {% endif %}
+
+    {% if cta %}
+      <a class="group w-fit flex" href="{{ cta.url }}">
+        <span class="w-fit button button-sm group-hocus:bg-black">
+          {{ cta.title }}
+        </span>
+
+        <span class="w-1 h-full bg-transparent transition-all group-hocus:w-2 cursor-pointer" aria-hidden="true"></span>
+
+        <svg class="button button-square p-2 transition-all group-hocus:bg-black" aria-hidden="true">
+          <use href="#arrow-right" />
+        </svg>
+      </a>
+    {% endif %}
+  </section>
+  {% endif %}
+</div>
+
 {% endblock %}
