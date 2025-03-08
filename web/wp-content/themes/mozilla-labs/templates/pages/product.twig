@@ -37,8 +37,8 @@
   {% endif %}
 </header>
 
-<div class="grid grid-site pt-24">
-  <section class="col-span-3 grid grid-cols-3 gap-x-grid-site-gutter" aria-label="About">
+<div class="grid grid-site pt-grid-site-margin lg:pt-24">
+  <section class="col-span-full sm:col-span-6 lg:col-span-3 grid grid-cols-3 gap-x-grid-site-gutter" aria-label="About">
     {% set primary_icon = post.meta("icons").primary %}
 
     {% if primary_icon %}
@@ -51,7 +51,7 @@
     <p class="col-start-1 col-end-4 font-headline text-xl font-wdth-380 leading-tight">{{ post.title }}</p>
 
     {% if post.tagline %}
-      <p class="col-start-1 col-end-4 font-headline text-xl font-wdth-380 text-secondary/60 text-pretty leading-tight">{{ post.tagline }}</p>
+      <p class="col-start-1 col-end-4 font-headline text-xl font-wdth-380 text-secondary/60 text-balance leading-tight">{{ post.tagline }}</p>
     {% endif %}
   </section>
 </div>
