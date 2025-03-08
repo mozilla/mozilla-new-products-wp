@@ -56,8 +56,9 @@
   </section>
 
   {% set information = post.meta("information") %}
+  {% set cta = post.meta("cta") %}
 
-  {% if information|length %}
+  {% if information|length or cta %}
   <section class="col-span-full sm:col-span-6 lg:col-span-3 flex flex-col gap-y-grid-site-gutter lg:gap-8" aria-label="Information">
     {% if information|length %}
     <dl class="contents">
@@ -68,6 +69,20 @@
         </div>
       {% endfor %}
     </dl>
+    {% endif %}
+
+    {% if cta %}
+      <a class="group w-fit flex" href="{{ cta.url }}">
+        <span class="w-fit button button-sm group-hocus:bg-black">
+          {{ cta.title }}
+        </span>
+
+        <span class="w-1 h-full bg-transparent transition-all group-hocus:w-2 cursor-pointer" aria-hidden="true"></span>
+
+        <svg class="button button-square p-2 transition-all group-hocus:bg-black" aria-hidden="true">
+          <use href="#arrow-right" />
+        </svg>
+      </a>
     {% endif %}
   </section>
   {% endif %}
