@@ -1,6 +1,9 @@
 {% extends "layouts/base.twig" %}
 
 {% block pageBody %}
+
+{% include "components/filter-topper.twig" with { title: page.title } %}
+
   <header class="flex gap-2">
     <h1>
       {{ page.title }}/
