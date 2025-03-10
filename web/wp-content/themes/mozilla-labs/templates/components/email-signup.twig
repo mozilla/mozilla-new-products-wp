@@ -8,8 +8,12 @@
     {{ signup.prompt }}
   </div>
 
-  <form id="newsletter-form" class="mzp-c-newsletter-form col-span-full md:col-start-4 md:col-span-1/2" action="https://basket.mozilla.org/news/subscribe/"
-    method="post">
+  <form
+    id="newsletter-form"
+    class="mzp-c-newsletter-form col-span-full md:col-start-4 md:col-span-1/2"
+    method="post"
+    {# action="https://basket.mozilla.org/news/subscribe/" #}
+  >
     <!-- The value for the source_url field below should match the URL of your page where the newsletter form appears-->
     <input type="hidden" name="source_url" value="{{ current_url }}">
 
@@ -36,14 +40,23 @@
 
         <input
           id="id_email"
-          class="mzp-js-email-field bg-transparent flex-1 py-1 font-headline font-wdth-380 font-semibold text-sm placeholder:text-white"
+          class="mzp-js-email-field bg-transparent flex-1 py-1 font-headline font-wdth-380 font-semibold outline-none text-sm placeholder:text-white"
           type="email"
           name="email"
           required=""
           maxlength="320"
           placeholder="Enter Your Email"
         >
-        <button type="submit" class="mzp-c-button button button-sm" id="newsletter-submit">{{ signup.cta }}</button>
+
+        <button type="submit" class="mzp-c-button group w-fit flex gap-2 cursor-pointer" id="newsletter-submit">
+          <span class="w-fit button button-sm group-hocus:bg-black">
+            {{ signup.cta }}
+          </span>
+
+          <svg class="button button-square p-2 transition-all group-hocus:bg-black" aria-hidden="true">
+            <use href="#arrow-right" />
+          </svg>
+        </button>
       </div>
 
       <!-- <div id="newsletter-details" class="mzp-c-newsletter-details">
