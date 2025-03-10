@@ -304,7 +304,7 @@
           "key": "layout_67cef0e909af6",
           "name": "text",
           "label": "Text",
-          "display": "block",
+          "display": "row",
           "sub_fields": [
             {
               "key": "field_67cef0f609af8",
@@ -326,6 +326,73 @@
               "toolbar": "bold_italic_link_lists",
               "media_upload": 0,
               "delay": 0
+            }
+          ],
+          "min": "",
+          "max": "",
+          "acfe_flexible_render_template": false,
+          "acfe_flexible_render_style": false,
+          "acfe_flexible_render_script": false,
+          "acfe_flexible_thumbnail": false,
+          "acfe_flexible_settings": false,
+          "acfe_flexible_settings_size": "medium",
+          "acfe_flexible_modal_edit_size": false,
+          "acfe_flexible_category": false
+        },
+        "layout_67cef9a406d4b": {
+          "key": "layout_67cef9a406d4b",
+          "name": "image",
+          "label": "Image",
+          "display": "row",
+          "sub_fields": [
+            {
+              "key": "field_67cef9a806d4d",
+              "label": "Image",
+              "name": "image",
+              "aria-label": "",
+              "type": "image",
+              "instructions": "",
+              "required": 1,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "uploader": "",
+              "return_format": "array",
+              "library": "all",
+              "acfe_thumbnail": 0,
+              "min_width": "",
+              "min_height": "",
+              "min_size": "",
+              "max_width": "",
+              "max_height": "",
+              "max_size": "",
+              "mime_types": "",
+              "allow_in_bindings": 0,
+              "preview_size": "medium"
+            },
+            {
+              "key": "field_67cef9c506d4e",
+              "label": "Caption",
+              "name": "caption",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "allow_in_bindings": 0,
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
             }
           ],
           "min": "",
@@ -391,5 +458,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1741615421
+  "modified": 1741617628
 }
