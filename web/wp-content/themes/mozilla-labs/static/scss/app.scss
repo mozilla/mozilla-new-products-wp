@@ -196,8 +196,13 @@ body {
 
   // Buttons
   .button {
-    @apply block cursor-pointer whitespace-nowrap;
-    @apply font-headline font-semibold tracking-normal text-sm leading-none font-wdth-380 bg-off-black/60 text-white backdrop-blur-md transition-colors hocus:bg-black;
+    @apply block whitespace-nowrap;
+    @apply font-headline font-semibold tracking-normal text-sm leading-none font-wdth-380 bg-off-black/60 text-white backdrop-blur-md transition-colors;
+  }
+
+  button.button,
+  a.button {
+    @apply cursor-pointer hocus:bg-black;
   }
 
   .button-sm {
@@ -209,12 +214,17 @@ body {
   }
 
   .button-dark {
-    @apply bg-black/70 hocus:bg-black;
+    @apply bg-black/70;
 
     &.theme-dark,
     .theme-dark & {
-      @apply bg-off-black/70 hocus:bg-black;
+      @apply bg-off-black/70;
     }
+  }
+
+  .button.button-dark,
+  a.button-dark {
+    @apply cursor-pointer hocus:bg-black;
   }
 }
 

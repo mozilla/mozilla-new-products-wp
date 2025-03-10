@@ -19,7 +19,37 @@
         } %}
 
         {% if item.caption %}
-          <figcaption class="w-fit button button-sm">{{ item.caption }}</figcaption>
+          <figcaption class="w-fit button button-sm whitespace-normal">{{ item.caption }}</figcaption>
+        {% endif %}
+      </figure>
+
+    {% elseif type == "video_embed" %}
+      <figure class="flex flex-wrap gap-2" x-init x-video-embed>
+        <div class="relative w-full [&>iframe]:w-full [&>iframe]:h-auto [&>iframe]:aspect-video isolate overflow-hidden">
+          {{ item.embed|raw }}
+
+          {% if item.cover %}
+            <div class="absolute inset-0 w-full h-full z-10 data-[playing]:hidden" x-video-embed:cover>
+              {% include "components/lazy-img.twig" with {
+                class: "w-full h-full object-cover",
+                img: get_image(item.cover),
+                aspectRatio: false
+              } %}
+            </div>
+          {% endif %}
+        </div>
+
+        {% if item.cover %}
+        <button class="button button-sm button-square w-fit data-[playing]:hidden" x-video-embed:play>
+          <span class="sr-only">Play video</span>
+          <svg class="size-3 -translate-x-[0.1rem] shrink-0 text-white" aria-hidden="true">
+            <use href="#play"></use>
+          </svg>
+        </button>
+        {% endif %}
+
+        {% if item.caption %}
+          <figcaption class="w-fit button button-sm whitespace-normal">{{ item.caption }}</figcaption>
         {% endif %}
       </figure>
     {% endif %}

@@ -1,16 +1,20 @@
+{% set products = options.footer_product_links_section.links %}
+
 <footer class="text-content mt-12 md:mt-24 pb-grid-site-margin grid grid-site centered-page">
+  {% if products|length %}
   <div class="col-span-full grid grid-cols-2 gap-grid-site-gutter md:col-span-4 md:flex md:flex-col md:gap-4">
-    <h2 class="text-xs font-bold leading-tight">Products</h2>
-    <ul class="grid md:grid-cols-2 gap-x-grid-site-gutter gap-y-[3px]">
-      {% for product in ["Odin", "Deepfake Detector", "Hiro", "Orbit", "Solo", "Formulaic"] %}
+    <h2 class="text-xs font-bold leading-tight">{{ options.footer_product_links_section.heading|default("Products") }}</h2>
+    <ul class="grid md:has-[:nth-child(6)]:grid-cols-2 gap-x-grid-site-gutter gap-y-[3px]">
+      {% for item in options.footer_product_links_section.links %}
       <li class="text-xs w-fit leading-tight">
-        <a class="hocus:underline" href="#">
-          {{ product }}
+        <a class="hocus:underline" href="{{ item.link.url }}">
+          {{ item.link.title }}
         </a>
       </li>
       {% endfor %}
     </ul>
   </div>
+  {% endif %}
 
   <div class="col-span-full flex flex-col mt-8 md:mt-0 md:col-start-9 md:col-span-4 md:grid md:grid-cols-2 gap-y-8 md:gap-grid-site-gutter">
     {% for section in options.footer_links_section %}

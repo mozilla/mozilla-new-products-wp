@@ -2,6 +2,10 @@
 
 {% set custom_nav_classes = post.meta("navigation_theme") %}
 
+{%- block custom_body_classes -%}
+  {{ post.meta("page_theme")|default("theme-light") }}
+{%- endblock -%}
+
 {% block pageBody %}
 
 <header class="grid grid-site grid-rows-[1fr_auto_1fr] h-[80vh] overflow-y-hidden isolate">
@@ -37,7 +41,7 @@
   {% endif %}
 </header>
 
-<div class="grid grid-site gap-y-grid-site-gutter pt-grid-site-margin lg:pt-24">
+<div class="grid grid-site gap-y-grid-site-gutter mt-grid-site-margin lg:mt-24">
   {% set icons = post.meta("icons") %}
 
   {% include 'components/product-overview.twig' with {
@@ -60,5 +64,31 @@
     content: post.meta("content")
   } %}
 </div>
+
+{% set articles = post.related_articles %}
+
+{% if articles|length %}
+<section class="grid grid-site mt-24">
+  <h2 class="col-span-full sm:col-span-1/2 text-xs">{{ post.title }} News</h2>
+
+  <div class="col-span-full sm:col-start-7 sm:col-span-1/2">
+    <ol class="grid grid-cols-2 gap-x-grid-site-gutter gap-y-8">
+      {% for article in articles %}
+      <li>
+        <time class="text-xs" datetime="{{ article.date|date('Y-m-d') }}">
+          {{ article.date|date('m.d.y') }}
+        </time>
+
+        <h3 class="text-sm">
+          <a class="hocus:underline" href="{{ article.link }}">
+            {{ article.title }}
+          </a>
+        </h3>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+{% endif %}
 
 {% endblock %}
