@@ -17,24 +17,27 @@
   <section aria-label="Posts" class="mb-36">
     <h2 class="sr-only">Posts</h2>
 
-    <ul class="bg-blue-green grid px-[--grid-site-margin] grid-cols-3 gap-x-[196px]">
+    <ul class="flex flex-col gap-y-20 px-[--grid-site-margin] md:grid md:grid-cols-3 md:gap-x-48 md:gap-y-32">
       {% for post in posts %}
-        <li>
+        <li class="flex flex-col gap-y-4">
           {% if post.thumbnail %}
             {% include "components/lazy-img.twig" with {
               img: get_image(post.thumbnail)
             } %}
           {% endif %}
 
-          {% if post.category %}
-            <p>{{ post.category }}</p>
-          {% endif %}
+          <div class="flex flex-col gap-y-[1px]">
+            {% if post.category %}
+              <p class="text-secondary/60 block font-headline text-xs font-wdth-380 font-light tracking-normal">{{ post.category }}</p>
+            {% endif %}
 
-          <h3>
-            <a href="{{ post.link }}">
-              {{ post.title }}
-            </a>
-          </h3>
+            <h3 class="text-sm leading-tight">
+              <a href="{{ post.link }}">
+                {{ post.title }}
+              </a>
+            </h3>
+          </div>
+
         </li>
       {% endfor %}
     </ul>
