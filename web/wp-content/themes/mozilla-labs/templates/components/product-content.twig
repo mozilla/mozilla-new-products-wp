@@ -24,7 +24,7 @@
       </figure>
     {% elseif type == "video_embed" %}
       <figure class="flex flex-col gap-2">
-        <div class="[&>iframe]:w-full [&>iframe]:h-auto">
+        <div class="[&>iframe]:w-full [&>iframe]:h-auto [&>iframe]:aspect-video">
           {{ item.embed|raw }}
         </div>
 
