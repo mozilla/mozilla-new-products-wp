@@ -2,6 +2,10 @@
 
 {% set custom_nav_classes = post.meta("navigation_theme") %}
 
+{%- block custom_body_classes -%}
+  {{ post.meta("page_theme")|default("theme-light") }}
+{%- endblock -%}
+
 {% block pageBody %}
 
 <header class="grid grid-site grid-rows-[1fr_auto_1fr] h-[80vh] overflow-y-hidden isolate">
