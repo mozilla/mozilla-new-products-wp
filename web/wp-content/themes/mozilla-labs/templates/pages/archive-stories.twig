@@ -2,9 +2,9 @@
 
 {% block pageBody %}
 
-{% include "components/filter-topper.twig" with { title: page.title } %}
+{% include "components/filter-topper.twig" with { title: page.title, description: page.description } %}
 
-  <header class="flex gap-2">
+  {# <header class="flex gap-2">
     <h1>
       {{ page.title }}/
     </h1>
@@ -12,12 +12,12 @@
     {% if page.description %}
     <p>{{ page.description }}</p>
     {% endif %}
-  </header>
+  </header> #}
 
-  <section aria-label="Posts">
+  <section aria-label="Posts" class="mb-36">
     <h2 class="sr-only">Posts</h2>
 
-    <ul>
+    <ul class="bg-blue-green grid px-[--grid-site-margin] grid-cols-3 gap-x-[196px]">
       {% for post in posts %}
         <li>
           {% if post.thumbnail %}
