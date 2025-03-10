@@ -4,7 +4,7 @@
   {% if products|length %}
   <div class="col-span-full grid grid-cols-2 gap-grid-site-gutter md:col-span-4 md:flex md:flex-col md:gap-4">
     <h2 class="text-xs font-bold leading-tight">{{ options.footer_product_links_section.heading|default("Products") }}</h2>
-    <ul class="grid md:grid-cols-2 gap-x-grid-site-gutter gap-y-[3px]">
+    <ul class="grid md:has-[:nth-child(6)]:grid-cols-2 gap-x-grid-site-gutter gap-y-[3px]">
       {% for item in options.footer_product_links_section.links %}
       <li class="text-xs w-fit leading-tight">
         <a class="hocus:underline" href="{{ item.link.url }}">
