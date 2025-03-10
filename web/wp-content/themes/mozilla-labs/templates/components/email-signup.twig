@@ -1,0 +1,20 @@
+{% set signup = options.email_signup %}
+
+{% if options.include_email_signup %}
+<section class="grid grid-site gap-y-8 mt-32 md:mt-48">
+  <div class="col-span-full type-headline-lg text-xl leading-tight prose mx-auto max-w-2xl text-center">
+    {{ signup.prompt }}
+  </div>
+
+  {% if signup.graphic %}
+  <div class="relative isolate col-span-full md:col-start-2 md:col-end-12">
+    {% include "components/lazy-img.twig" with {
+      class: "",
+      img: get_image(signup.graphic)
+    } %}
+
+    <div class="absolute inset-0 top-1/2 bg-gradient-to-t from-main to-transparent z-10"></div>
+  </div>
+  {% endif %}
+</section>
+{% endif %}
