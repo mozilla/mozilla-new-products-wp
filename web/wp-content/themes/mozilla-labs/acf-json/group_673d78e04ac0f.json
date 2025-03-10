@@ -386,7 +386,7 @@
           "name": "subheading",
           "aria-label": "",
           "type": "wysiwyg",
-          "instructions": "A short description about Products",
+          "instructions": "A short description about Projects",
           "required": 0,
           "conditional_logic": 0,
           "wrapper": {
@@ -403,11 +403,11 @@
         },
         {
           "key": "field_673d860519678",
-          "label": "Products",
-          "name": "products",
+          "label": "Projects",
+          "name": "projects",
           "aria-label": "",
           "type": "relationship",
-          "instructions": "Choose 4 products to feature. <i>Choose none to exclude the section.</i>",
+          "instructions": "Choose 4 projects to feature. <i>Choose none to exclude the section.</i>",
           "required": 0,
           "conditional_logic": 0,
           "wrapper": {
@@ -415,7 +415,7 @@
             "class": "",
             "id": ""
           },
-          "post_type": ["product"],
+          "post_type": ["project"],
           "post_status": ["publish"],
           "taxonomy": "",
           "filters": ["search", "post_type", "taxonomy"],
@@ -460,6 +460,11 @@
         "param": "page_type",
         "operator": "==",
         "value": "front_page"
+      },
+      {
+        "param": "page",
+        "operator": "==",
+        "value": "3"
       }
     ]
   ],
@@ -477,5 +482,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1741368709
+  "modified": 1741629317
 }

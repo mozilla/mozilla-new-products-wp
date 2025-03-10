@@ -257,7 +257,7 @@
       {
         "param": "page_template",
         "operator": "==",
-        "value": "page-accelerator.php"
+        "value": "page-landing.php"
       }
     ],
     [

@@ -96,7 +96,7 @@ class ContextManager {
 			'meta_query'     => array(
 				array(
 					'key'   => '_wp_page_template',
-					'value' => 'page-accelerator.php',
+					'value' => 'page-landing.php',
 				),
 			),
 		);

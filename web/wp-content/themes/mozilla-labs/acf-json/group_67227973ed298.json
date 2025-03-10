@@ -395,128 +395,19 @@
         "acfe_flexible_modal_col": "4",
         "acfe_flexible_modal_categories": false
       }
-    },
-    {
-      "key": "field_673569dedb559",
-      "label": "FAQs",
-      "name": "faqs",
-      "aria-label": "",
-      "type": "repeater",
-      "instructions": "",
-      "required": 0,
-      "conditional_logic": 0,
-      "wrapper": {
-        "width": "",
-        "class": "",
-        "id": ""
-      },
-      "acfe_repeater_stylised_button": 0,
-      "layout": "block",
-      "pagination": 0,
-      "min": 0,
-      "max": 0,
-      "collapsed": "",
-      "button_label": "Add Section",
-      "rows_per_page": 20,
-      "sub_fields": [
-        {
-          "key": "field_673569eedb55a",
-          "label": "Heading",
-          "name": "heading",
-          "aria-label": "",
-          "type": "text",
-          "instructions": "",
-          "required": 0,
-          "conditional_logic": 0,
-          "wrapper": {
-            "width": "",
-            "class": "",
-            "id": ""
-          },
-          "default_value": "",
-          "maxlength": "",
-          "allow_in_bindings": 0,
-          "placeholder": "",
-          "prepend": "",
-          "append": "",
-          "parent_repeater": "field_673569dedb559"
-        },
-        {
-          "key": "field_67356a02db55b",
-          "label": "Questions",
-          "name": "groups",
-          "aria-label": "",
-          "type": "repeater",
-          "instructions": "",
-          "required": 0,
-          "conditional_logic": 0,
-          "wrapper": {
-            "width": "",
-            "class": "",
-            "id": ""
-          },
-          "acfe_repeater_stylised_button": 0,
-          "layout": "block",
-          "min": 0,
-          "max": 0,
-          "collapsed": "",
-          "button_label": "Add Question",
-          "rows_per_page": 20,
-          "parent_repeater": "field_673569dedb559",
-          "sub_fields": [
-            {
-              "key": "field_67356a10db55c",
-              "label": "Question",
-              "name": "question",
-              "aria-label": "",
-              "type": "text",
-              "instructions": "",
-              "required": 0,
-              "conditional_logic": 0,
-              "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-              },
-              "default_value": "",
-              "maxlength": "",
-              "allow_in_bindings": 0,
-              "placeholder": "",
-              "prepend": "",
-              "append": "",
-              "parent_repeater": "field_67356a02db55b"
-            },
-            {
-              "key": "field_67356a18db55d",
-              "label": "Answer",
-              "name": "answer",
-              "aria-label": "",
-              "type": "wysiwyg",
-              "instructions": "",
-              "required": 0,
-              "conditional_logic": 0,
-              "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-              },
-              "default_value": "",
-              "allow_in_bindings": 0,
-              "tabs": "visual",
-              "toolbar": "basic",
-              "media_upload": 0,
-              "delay": 0,
-              "parent_repeater": "field_67356a02db55b"
-            }
-          ]
-        }
-      ]
     }
   ],
   "location": [
     [
       {
         "param": "post_template",
+        "operator": "==",
+        "value": "page-landing.php"
+      }
+    ],
+    [
+      {
+        "param": "page_template",
         "operator": "==",
         "value": "page-landing.php"
       }
@@ -536,5 +427,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1741208942
+  "modified": 1741628999
 }
