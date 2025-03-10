@@ -22,6 +22,16 @@
           <figcaption class="w-fit button button-sm">{{ item.caption }}</figcaption>
         {% endif %}
       </figure>
+    {% elseif type == "video_embed" %}
+      <figure class="flex flex-col gap-2">
+        <div class="[&>iframe]:w-full [&>iframe]:h-auto">
+          {{ item.embed|raw }}
+        </div>
+
+        {% if item.caption %}
+          <figcaption class="w-fit button button-sm">{{ item.caption }}</figcaption>
+        {% endif %}
+      </figure>
     {% endif %}
   {% endfor %}
 </div>
