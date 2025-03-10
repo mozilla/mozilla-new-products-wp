@@ -145,6 +145,24 @@ class Product extends TimberPost {
 	}
 
 	/**
+	 * Get all related articles.
+	 *
+	 * @return array
+	 */
+	public function related_articles() {
+		$args = array(
+			'post_type'      => Article::HANDLE,
+			'post_status'    => 'publish',
+			'posts_per_page' => -1,
+			'orderby'        => 'date',
+			'order'          => 'DESC',
+		);
+
+		return Timber::get_posts( $args )->to_array();
+	}
+
+
+	/**
 	 * Get 3 other products to feature on the product page.
 	 *
 	 * @return array
