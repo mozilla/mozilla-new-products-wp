@@ -16,7 +16,7 @@ $_page_id = (int) $_page->ID;
 global $paged;
 
 $context['title']      = $_page->title();
-$context['subheading'] = 'Projects';
+$context['subheading'] = 'Products';
 
 // If page is password protected, render password page.
 if ( post_password_required( $_page_id ) ) {

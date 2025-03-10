@@ -1,0 +1,64 @@
+{% extends "layouts/base.twig" %}
+
+{% set custom_nav_classes = post.meta("navigation_theme") %}
+
+{% block pageBody %}
+
+<header class="grid grid-site grid-rows-[1fr_auto_1fr] h-[80vh] overflow-y-hidden isolate">
+  {% set backdrop = post.meta("backdrop_image") %}
+
+  {% if backdrop %}
+    {% include "components/lazy-img.twig" with {
+      class: "-mx-grid-site-margin col-start-1 col-end-13 row-span-full h-full w-screen",
+      imgClass: "object-cover",
+      img: get_image(backdrop)
+    } %}
+  {% endif %}
+
+  <div class="
+    col-start-1 col-span-full row-start-2 z-10 self-center justify-self-center size-fit
+    px-8 pt-9 pb-8 lg:pt-14 lg:pb-12 lg:px-16
+    bg-off-black/60 backdrop-blur-md
+  ">
+    <h1 class="text-white type-headline-2xl">{{ post.title }}</h1>
+  </div>
+
+  {% if post.categories|length %}
+  <section class="col-start-1 col-span-full row-start-3 h-fit mt-auto py-grid-site-margin z-10">
+    <h2 class="sr-only">Categories</h2>
+    <ul class="flex justify-center gap-2 flex-wrap">
+      {% for category in post.categories %}
+        <li class="button-sm font-sans text-sm leading-none bg-off-black/60 text-white backdrop-blur-md whitespace-nowrap">
+          {{ category.title }}
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+</header>
+
+<div class="grid grid-site gap-y-grid-site-gutter pt-grid-site-margin lg:pt-24">
+  {% set icons = post.meta("icons") %}
+
+  {% include 'components/product-overview.twig' with {
+    icon: icons.primary ? get_image(icons.primary) : null,
+    title: post.title,
+    tagline: post.tagline,
+  } %}
+
+  {% set information = post.meta("information") %}
+  {% set cta = post.meta("cta") %}
+
+  {% if information|length or cta %}
+    {% include 'components/product-information.twig' with {
+      information: information,
+      cta: cta,
+    } %}
+  {% endif %}
+
+  {% include 'components/product-content.twig' with {
+    content: post.meta("content")
+  } %}
+</div>
+
+{% endblock %}

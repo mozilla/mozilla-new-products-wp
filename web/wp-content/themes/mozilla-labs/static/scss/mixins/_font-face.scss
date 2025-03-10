@@ -11,3 +11,52 @@
       url($font-path + '.woff') format('woff');
   }
 }
+
+// Variable font mixin for fonts with only weight axis (MozillaText-VF, MozillaTextItalic-VF)
+@mixin variable-face($family-name, $file-name) {
+  @font-face {
+    $font-path: '../fonts/#{$file-name}';
+    font-display: swap;
+    font-family: '#{$family-name}';
+    font-style: normal;
+    font-weight: 200 700; // Full weight range
+    src: url($font-path + '.woff2') format('woff2-variations');
+  }
+}
+
+@mixin variable-face-italic($family-name, $file-name) {
+  @font-face {
+    $font-path: '../fonts/#{$file-name}';
+    font-display: swap;
+    font-family: '#{$family-name}';
+    font-style: italic;
+    font-weight: 200 700; // Full weight range
+    src: url($font-path + '.woff2') format('woff2-variations');
+  }
+}
+
+// Variable font mixin for fonts with both weight and width axes
+@mixin variable-face-width($family-name, $file-name) {
+  @font-face {
+    $font-path: '../fonts/#{$file-name}';
+    font-display: swap;
+    font-family: '#{$family-name}';
+    font-style: normal;
+    font-weight: 200 700; // Full weight range
+    font-stretch: 200% 600%; // Width range from 200 to 600
+    src: url($font-path + '.woff2') format('woff2-variations');
+  }
+}
+
+// Variable font mixin for italic versions
+@mixin variable-face-italic-width($family-name, $file-name) {
+  @font-face {
+    $font-path: '../fonts/#{$file-name}';
+    font-display: swap;
+    font-family: '#{$family-name}';
+    font-style: italic;
+    font-weight: 200 700;
+    font-stretch: 200% 600%; // Width range from 200 to 600
+    src: url($font-path + '.woff2') format('woff2-variations');
+  }
+}

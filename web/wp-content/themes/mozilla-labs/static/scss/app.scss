@@ -15,27 +15,33 @@
 @include font.face('Mozilla Sans', 'MozillaText-Italic', 400, italic);
 @include font.face('Mozilla Sans', 'MozillaText-Bold', 700, normal);
 @include font.face('Mozilla Sans', 'MozillaText-BoldItalic', 700, italic);
-// Mozilla Headline
-@include font.face('Mozilla Headline', 'MozillaHeadline-Light', 300, normal);
-@include font.face('Mozilla Headline', 'MozillaHeadline-Regular', 400, normal);
-@include font.face('Mozilla Headline', 'MozillaHeadline-SemiBold', 600, normal);
-// Mozilla Headline Condensed
-@include font.face('Mozilla Headline Condensed', 'MozillaHeadlineCondensed-Light', 300, normal);
-@include font.face('Mozilla Headline Condensed', 'MozillaHeadlineCondensed-Regular', 400, normal);
-@include font.face('Mozilla Headline Condensed', 'MozillaHeadlineCondensed-SemiBold', 600, normal);
 // Source Code Pro
 @include font.face('Source Code Pro', 'SourceCodePro-Regular', 400, normal);
 @include font.face('Source Code Pro', 'SourceCodePro-It', 400, italic);
 @include font.face('Source Code Pro', 'SourceCodePro-Bold', 700, normal);
 @include font.face('Source Code Pro', 'SourceCodePro-BoldIt', 700, italic);
 
+// Variable Fonts
+
+@include font.variable-face('Mozilla Text', 'MozillaText-VF'); // Weight axis only
+@include font.variable-face-italic('Mozilla Text', 'MozillaTextItalic-VF'); // Weight axis only
+
+@include font.variable-face-width(
+  'Mozilla NewHeadline',
+  'MozillaHeadline-VF'
+); // Weight & Width axis (200-600)
+@include font.variable-face-italic-width(
+  'Mozilla NewHeadline',
+  'MozillaHeadlineItalic-VF'
+); // Weight & Width axis (200-600)
+
 :root {
   --100vw: min(100vw, 1920px);
   @apply [--grid-site-cols:6] md:[--grid-site-cols:12];
-  @apply [--grid-site-margin:calc((12/400)*var(--100vw))] md:[--grid-site-margin:calc((24/1440)*var(--100vw))];
-  @apply [--grid-site-gutter:calc((12/400)*var(--100vw))] md:[--grid-site-gutter:calc((24/1440)*var(--100vw))];
+  @apply [--grid-site-margin:20px] md:[--grid-site-margin:20px];
+  @apply [--grid-site-gutter:calc((24/400)*var(--100vw))] md:[--grid-site-gutter:calc((40/1440)*var(--100vw))];
 
-  --color-black: #{color.rgb(#161616)};
+  --color-black: #{color.rgb(#000000)};
   --color-off-black: #{color.rgb(#3c3c3c)};
   --color-white: #{color.rgb(#fafafa)};
   --color-gray: #{color.rgb(#f0f0f0)};
@@ -65,13 +71,13 @@ html {
 
 body {
   @apply bg-main text-content;
-  @apply font-sans font-normal text-base antialiased;
+  @apply font-sans font-[480] tracking-tight text-lg leading-[1.6] antialiased;
 }
 
 @layer base {
   .theme-light {
     --color-main: var(--color-white);
-    --color-secondary: var(--color-gray);
+    --color-secondary: #{color.rgb(#1b1b1b)};
     --color-content: var(--color-black);
     --color-content-reverse: var(--color-white);
     --color-code: var(--color-black);
@@ -121,23 +127,27 @@ body {
 @layer components {
   // Type scales
   .type-headline-3xl {
-    @apply text-10xl font-headline-condensed font-semibold leading-none;
+    @apply text-10xl font-headline font-semibold leading-none;
   }
 
   .type-headline-2xl {
-    @apply text-8xl font-headline-condensed font-semibold leading-none;
+    @apply text-8xl font-headline font-semibold leading-none;
   }
 
   .type-headline-xl {
-    @apply text-6xl font-headline-condensed font-semibold leading-none;
+    @apply text-6xl font-headline font-wdth-380 font-semibold leading-headline tracking-[-0.01em];
+  }
+
+  .type-headline-40 {
+    @apply text-[32px] md:text-[40px] font-headline font-wdth-380 font-semibold leading-headline tracking-[-0.01em];
   }
 
   .type-headline-lg {
-    @apply text-2xl font-headline-condensed font-semibold leading-tight;
+    @apply text-2xl font-headline font-wdth-380 font-semibold leading-headline tracking-[-0.01em];
   }
 
   .type-headline-md {
-    @apply text-xl font-headline-condensed font-semibold leading-tight;
+    @apply text-xl font-headline font-semibold leading-tight;
   }
 
   .type-sans-3xl {
@@ -173,7 +183,7 @@ body {
   }
 
   .type-caption {
-    @apply text-sm text-content/70 leading-tight;
+    @apply text-xs text-content/70 leading-tight;
 
     strong {
       @apply text-content;
@@ -182,31 +192,41 @@ body {
 
   // Buttons
   .button {
-    @apply block cursor-pointer whitespace-nowrap;
-    @apply font-headline font-semibold bg-off-black/60 text-white backdrop-blur-md transition-colors hocus:bg-black;
+    @apply block whitespace-nowrap;
+    @apply font-headline font-semibold tracking-normal text-sm leading-none font-wdth-380 bg-off-black/60 text-white backdrop-blur-md transition-colors;
+  }
+
+  button.button,
+  a.button {
+    @apply cursor-pointer hocus:bg-black;
   }
 
   .button-sm {
-    @apply flex justify-center items-center h-9 px-3;
+    @apply flex justify-center h-fit items-center pt-[9px] pb-[8px] px-[10px];
   }
 
   .button-square {
-    @apply w-auto aspect-square px-0;
+    @apply w-auto aspect-square h-[31px] py-0 px-0;
   }
 
   .button-dark {
-    @apply bg-black/70 hocus:bg-black;
+    @apply bg-black/70;
 
     &.theme-dark,
     .theme-dark & {
-      @apply bg-off-black/70 hocus:bg-black;
+      @apply bg-off-black/70;
     }
+  }
+
+  .button.button-dark,
+  a.button-dark {
+    @apply cursor-pointer hocus:bg-black;
   }
 }
 
 @layer utilities {
   .centered-page {
-    @apply max-w-page w-full mx-auto;
+    @apply w-full mx-auto;
   }
 
   .mask-arrow-down {
@@ -222,13 +242,12 @@ body {
   }
 
   .hover-link {
-    @apply md:before:content-['\['] md:after:content-['\]'];
     @apply max-md:underline;
     @apply hocus:bg-action-focus hocus:no-underline hocus:text-action-focus-reverse;
   }
 
   // Grid utilities
-  @for $i from 1 through 24 {
+  @for $i from 1 through 12 {
     .grid-cols-#{$i} {
       @include grid.template-columns($i);
     }
@@ -292,7 +311,7 @@ body {
 
   .col-span-full {
     // TODO: Replace 12 with --column-count after fixing the grid
-    @include grid.column-span(12);
+    @apply col-span-6 md:col-span-12;
   }
 
   .col-span-screen {
@@ -319,23 +338,23 @@ body {
 
     // Headings
     > h2 {
-      @apply text-xl font-bold uppercase indent-8;
+      @apply text-xl font-bold;
     }
 
     > h3 {
-      @apply text-xl uppercase indent-8;
+      @apply text-xl;
     }
 
     > h4 {
-      @apply font-bold uppercase indent-8;
+      @apply font-bold;
     }
 
     > h5 {
-      @apply uppercase indent-8;
+      @apply font-bold;
     }
 
     > h6 {
-      @apply uppercase indent-8;
+      @apply font-bold;
 
       span {
         @apply bg-content text-main px-0.5;
@@ -344,8 +363,6 @@ body {
 
     // Paragraphs
     > p {
-      @apply indent-8;
-
       &:empty {
         @apply hidden;
       }
@@ -475,7 +492,7 @@ body {
     // Column-sizing
     > * {
       // Apply full-width size to all blocks, by default
-      @apply col-span-full col-start-center;
+      @apply col-span-6 col-start-center;
     }
 
     > h1,
@@ -489,13 +506,13 @@ body {
     > ul,
     > ol,
     hr {
-      @apply md:col-span-14 lg:col-span-12 2xl:col-span-10;
+      @apply col-span-6 lg:col-span-6 w-full md:max-w-[600px] ml-auto mr-auto 2xl:col-span-10;
     }
 
     // Paragraphs
     > p {
       &:first-child:is(.lede *) {
-        @apply type-headline-lg mb-2 md:mb-6 lg:col-span-14;
+        @apply type-headline-lg mb-2 md:mb-6 lg:col-span-7;
       }
     }
 
@@ -511,41 +528,40 @@ body {
     > [data-block],
     > .wp-block-file {
       &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
-        @apply md:col-span-14 lg:col-span-12 2xl:col-span-10;
+        @apply md:col-span-6 lg:col-span-6 md:max-w-[600px] w-full ml-auto mr-auto;
       }
 
       &.alignleft {
-        @apply md:col-start-1 md:col-span-5 lg:col-span-6 md:h-0;
+        @apply md:col-start-1 md:col-span-3 lg:col-span-3 md:h-0;
       }
 
       &.alignright {
-        @apply md:col-start-end md:col-span-5 lg:col-span-6 md:h-0;
+        @apply md:col-start-end md:col-span-3 lg:col-span-3 md:h-0;
       }
 
       &.alignwide {
-        @apply md:col-span-20;
+        @apply md:col-span-10;
       }
 
       &.alignfull:not(.wp-block-pullquote):not(.wp-block-table) {
         @apply md:col-span-screen;
 
         figcaption {
-          @apply md:px-[--grid-site-margin];
+          @apply md:px-[10px] md:mx-[--grid-site-margin];
         }
       }
     }
 
     // Figures and captions
     > figure {
-      @apply flex flex-col gap-3;
+      @apply flex flex-col gap-2 relative;
 
       figcaption {
-        @apply type-caption;
+        @apply bg-black/60 text-white backdrop-blur-md px-[10px] pt-[6.5px] pb-[5.5px] w-fit type-caption;
       }
 
       &.alignfull:not(.wp-block-pullquote):not(.wp-block-table) {
         figcaption {
-          @apply md:px-[--grid-site-margin];
         }
       }
     }
@@ -561,7 +577,7 @@ body {
       }
 
       &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
-        @apply md:col-span-14 lg:col-span-12 2xl:col-span-10;
+        @apply md:col-span-6 lg:col-span-12 2xl:col-span-10;
       }
 
       &.alignleft,
@@ -577,7 +593,7 @@ body {
       }
 
       &.alignwide {
-        @apply md:col-span-20 lg:col-span-16;
+        @apply md:col-span-10 lg:col-span-8;
 
         p {
           @apply 2xl:indent-[calc(0.125*var(--100vw))];
@@ -643,7 +659,7 @@ body {
     figure.wp-block-embed,
     div[data-block='interface-image'] figure {
       &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
-        @apply md:col-span-14 lg:col-span-12 2xl:col-span-10;
+        @apply md:col-span-6;
       }
 
       img,
@@ -672,7 +688,7 @@ body {
 
     // Buttons
     .wp-block-buttons {
-      @apply flex flex-col gap-3 md:col-span-14 lg:col-span-12 2xl:col-span-10;
+      @apply flex flex-col gap-3 w-full ml-auto mr-auto md:col-span-6 md:max-w-[600px]  lg:col-span-6 2xl:col-span-10;
     }
 
     .wp-block-button {
@@ -694,7 +710,7 @@ body {
       @apply flex flex-col;
 
       &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
-        @apply md:col-span-14 lg:col-span-12 2xl:col-span-10;
+        @apply md:col-span-6;
       }
 
       &.alignleft,
@@ -733,14 +749,14 @@ body {
     // Related Articles
     div[data-block='related-articles'] {
       &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
-        @apply md:col-span-14 lg:col-span-12 2xl:col-span-10;
+        @apply md:col-span-6 lg:col-span-12 2xl:col-span-10;
       }
     }
 
     // Header Text
     div[data-block='header-text-small'] {
       &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
-        @apply md:col-span-18 md:col-start-4 lg:col-span-16 lg:col-start-5 2xl:col-span-12 2xl:col-start-7;
+        @apply md:col-span-9 md:col-start-4 lg:col-span-8 lg:col-start-5 2xl:col-span-12 2xl:col-start-7;
       }
     }
 
@@ -753,11 +769,11 @@ body {
     // Cover
     .wp-block-cover {
       &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
-        @apply md:col-span-14 lg:col-span-12 2xl:col-span-10;
+        @apply md:col-span-7 lg:col-span-12 2xl:col-span-10;
       }
 
       &.alignwide {
-        @apply md:col-span-20 lg:col-span-16;
+        @apply md:col-span-10 lg:col-span-8;
       }
 
       &.alignfull {
@@ -802,7 +818,7 @@ body {
 
     // Details
     .wp-block-details {
-      @apply flex flex-col gap-3 md:col-span-14 lg:col-span-12 2xl:col-span-10 pl-8 relative;
+      @apply flex flex-col gap-3 w-full md:col-span-6 md:max-w-[600px] ml-auto mr-auto pl-8 relative;
       @apply prose;
 
       &::before {
@@ -811,7 +827,7 @@ body {
       }
 
       summary {
-        @apply hocus:cursor-pointer font-bold uppercase;
+        @apply hocus:cursor-pointer font-bold;
 
         &::marker,
         &::-webkit-details-marker {
@@ -837,26 +853,6 @@ body {
 
       * + * {
         @apply mt-6;
-      }
-
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6,
-      p {
-        @apply indent-8;
-      }
-    }
-  }
-
-  .article {
-    // Paragraphs
-    > p {
-      &:last-child::after {
-        content: '';
-        @apply ml-1 inline-block shrink-0 bg-current mask-critter size-[0.9em];
       }
     }
   }

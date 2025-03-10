@@ -21,7 +21,7 @@ class Cli {
 	 * @subcommand refresh-github
 	 */
 	public function refresh_github() {
-		if (!class_exists('\MozillaLabs\Models\PostType\Project')) {
+		if (!class_exists('\MozillaLabs\Models\PostType\Product')) {
 			WP_CLI::warning('This plugin only works with the Mozilla Labs theme.');
 			die;
 		}

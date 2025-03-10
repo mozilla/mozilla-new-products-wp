@@ -117,11 +117,11 @@
     },
     {
       "key": "field_672cbe3a822c4",
-      "label": "Project",
-      "name": "project_description",
+      "label": "Product",
+      "name": "product_description",
       "aria-label": "",
       "type": "wysiwyg",
-      "instructions": "A brief description of the project background.",
+      "instructions": "A brief description of the product background.",
       "required": 0,
       "conditional_logic": 0,
       "wrapper": {
@@ -159,8 +159,8 @@
     },
     {
       "key": "field_6723968aa6c30",
-      "label": "Projects",
-      "name": "projects",
+      "label": "Products",
+      "name": "products",
       "aria-label": "",
       "type": "relationship",
       "instructions": "",
@@ -171,7 +171,7 @@
         "class": "",
         "id": ""
       },
-      "post_type": ["project"],
+      "post_type": ["product"],
       "post_status": "",
       "taxonomy": "",
       "filters": ["search", "post_type", "taxonomy"],
@@ -207,5 +207,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1733240109
+  "modified": 1741368645
 }

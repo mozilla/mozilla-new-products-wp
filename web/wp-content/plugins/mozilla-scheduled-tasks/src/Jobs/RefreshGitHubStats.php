@@ -1,13 +1,13 @@
 <?php
 /**
- * Refresh the GitHub stats attached to projects.
+ * Refresh the GitHub stats attached to products.
  *
  * @package MozillaLabsScheduledTasks
  */
 
 namespace MozillaLabs\ScheduledTasks\Jobs;
 
-use MozillaLabs\Models\PostType\Project;
+use MozillaLabs\Models\PostType\Product;
 
 /** Class */
 class RefreshGitHubStats {
@@ -19,25 +19,25 @@ class RefreshGitHubStats {
 	 * Run.
 	 */
 	public static function run() {
-		if (!class_exists('\MozillaLabs\Models\PostType\Project')) {
+		if (!class_exists('\MozillaLabs\Models\PostType\Product')) {
 			error_log( 'This plugin only works with the Mozilla Labs theme.' );
 			return;
 		}
 
-		$projects = get_posts(
+		$products = get_posts(
 			array(
-				'post_type' => 'project',
+				'post_type' => 'product',
 				'posts_per_page' => -1,
 				'post_status' => 'publish'
 			)
 		);
 
-		if (empty($projects)) {
+		if (empty($products)) {
 			return;
 		}
 
-		foreach ($projects as $project ) {
-			Project::fetch_github_data( $project->ID, $project );
+		foreach ($products as $product ) {
+			Product::fetch_github_data( $product->ID, $product );
 		}
 
 		delete_transient( 'moz_warning' );
