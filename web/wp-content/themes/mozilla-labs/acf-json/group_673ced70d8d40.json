@@ -3,6 +3,93 @@
   "title": "Settings: Footer Links",
   "fields": [
     {
+      "key": "field_67cf2a0916aa6",
+      "label": "Footer Product Links Section",
+      "name": "footer_product_links_section",
+      "aria-label": "",
+      "type": "group",
+      "instructions": "Feature products in this section of the footer.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "layout": "block",
+      "acfe_seamless_style": 0,
+      "acfe_group_modal": 0,
+      "sub_fields": [
+        {
+          "key": "field_67cf2a8a16aa7",
+          "label": "Heading",
+          "name": "heading",
+          "aria-label": "",
+          "type": "text",
+          "instructions": "",
+          "required": 1,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "Products",
+          "maxlength": "",
+          "allow_in_bindings": 0,
+          "placeholder": "",
+          "prepend": "",
+          "append": ""
+        },
+        {
+          "key": "field_67cf2a9616aa8",
+          "label": "Links",
+          "name": "links",
+          "aria-label": "",
+          "type": "repeater",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "acfe_repeater_stylised_button": 0,
+          "layout": "table",
+          "pagination": 0,
+          "min": 0,
+          "max": 0,
+          "collapsed": "",
+          "button_label": "Add Row",
+          "rows_per_page": 20,
+          "sub_fields": [
+            {
+              "key": "field_67cf2aaa16aa9",
+              "label": "Link",
+              "name": "link",
+              "aria-label": "",
+              "type": "link",
+              "instructions": "",
+              "required": 1,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "return_format": "array",
+              "allow_in_bindings": 0,
+              "parent_repeater": "field_67cf2a9616aa8"
+            }
+          ]
+        }
+      ],
+      "acfe_group_modal_close": 0,
+      "acfe_group_modal_button": "",
+      "acfe_group_modal_size": "large"
+    },
+    {
       "key": "field_673ced714adaa",
       "label": "Footer Links Section",
       "name": "footer_links_section",
@@ -68,6 +155,7 @@
           "collapsed": "",
           "button_label": "Add Link",
           "rows_per_page": 20,
+          "parent_repeater": "field_673ced714adaa",
           "sub_fields": [
             {
               "key": "field_673cee104adad",
@@ -87,8 +175,7 @@
               "allow_in_bindings": 1,
               "parent_repeater": "field_673cedf74adac"
             }
-          ],
-          "parent_repeater": "field_673ced714adaa"
+          ]
         }
       ]
     }
@@ -116,5 +203,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1732655024
+  "modified": 1741630135
 }
