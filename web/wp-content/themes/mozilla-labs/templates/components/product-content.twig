@@ -1,0 +1,15 @@
+<div class="col-span-full lg:col-span-6 flex flex-col gap-16">
+  {% for item in content %}
+    {% set type = item.acf_fc_layout %}
+
+    {% if type == "introduction" %}
+      <div class="type-headline-lg text-xl leading-tight prose">
+        {{ item.text }}
+      </div>
+    {% elseif type == "text" %}
+      <div class="prose">
+        {{ item.text }}
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>

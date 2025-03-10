@@ -55,6 +55,10 @@
       cta: cta,
     } %}
   {% endif %}
+
+  {% include 'components/product-content.twig' with {
+    content: post.meta("content")
+  } %}
 </div>
 
 {% endblock %}
