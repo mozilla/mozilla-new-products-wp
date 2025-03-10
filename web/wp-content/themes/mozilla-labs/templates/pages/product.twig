@@ -37,4 +37,28 @@
   {% endif %}
 </header>
 
+<div class="grid grid-site gap-y-grid-site-gutter pt-grid-site-margin lg:pt-24">
+  {% set icons = post.meta("icons") %}
+
+  {% include 'components/product-overview.twig' with {
+    icon: icons.primary ? get_image(icons.primary) : null,
+    title: post.title,
+    tagline: post.tagline,
+  } %}
+
+  {% set information = post.meta("information") %}
+  {% set cta = post.meta("cta") %}
+
+  {% if information|length or cta %}
+    {% include 'components/product-information.twig' with {
+      information: information,
+      cta: cta,
+    } %}
+  {% endif %}
+
+  {% include 'components/product-content.twig' with {
+    content: post.meta("content")
+  } %}
+</div>
+
 {% endblock %}

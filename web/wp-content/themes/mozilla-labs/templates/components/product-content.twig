@@ -1,0 +1,27 @@
+<div class="col-span-full lg:col-span-6 max-lg:mt-24 flex flex-col gap-12 lg:gap-16">
+  {% for item in content %}
+    {% set type = item.acf_fc_layout %}
+
+    {% if type == "introduction" %}
+      <div class="type-headline-lg text-xl leading-tight prose">
+        {{ item.text }}
+      </div>
+
+    {% elseif type == "text" %}
+      <div class="sm:w-1/2 prose">
+        {{ item.text }}
+      </div>
+
+    {% elseif type == "image" %}
+      <figure class="flex flex-col gap-2">
+        {% include "components/lazy-img.twig" with {
+          img: get_image(item.image)
+        } %}
+
+        {% if item.caption %}
+          <figcaption class="w-fit button button-sm">{{ item.caption }}</figcaption>
+        {% endif %}
+      </figure>
+    {% endif %}
+  {% endfor %}
+</div>
