@@ -1,0 +1,152 @@
+{
+  "key": "group_67cf3d2edc136",
+  "title": "Settings: Email Sign-up",
+  "fields": [
+    {
+      "key": "field_67cf4644a2d37",
+      "label": "Include Email Sign-up?",
+      "name": "include_email_signup",
+      "aria-label": "",
+      "type": "true_false",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "message": "",
+      "default_value": 0,
+      "allow_in_bindings": 0,
+      "ui_on_text": "",
+      "ui_off_text": "",
+      "ui": 1
+    },
+    {
+      "key": "field_67cf45e66274f",
+      "label": "Email Sign-up",
+      "name": "email_signup",
+      "aria-label": "",
+      "type": "group",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": [
+        [
+          {
+            "field": "field_67cf4644a2d37",
+            "operator": "==",
+            "value": "1"
+          }
+        ]
+      ],
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "layout": "block",
+      "acfe_seamless_style": 0,
+      "acfe_group_modal": 0,
+      "sub_fields": [
+        {
+          "key": "field_67cf3d466274e",
+          "label": "Prompt",
+          "name": "prompt",
+          "aria-label": "",
+          "type": "wysiwyg",
+          "instructions": "",
+          "required": 1,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "allow_in_bindings": 0,
+          "tabs": "visual",
+          "toolbar": "bold_italic_link",
+          "media_upload": 0,
+          "delay": 0
+        },
+        {
+          "key": "field_67cf462362751",
+          "label": "CTA",
+          "name": "cta",
+          "aria-label": "",
+          "type": "text",
+          "instructions": "CTA for the sign-up button.",
+          "required": 1,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "Register",
+          "maxlength": "",
+          "allow_in_bindings": 0,
+          "placeholder": "",
+          "prepend": "",
+          "append": ""
+        },
+        {
+          "key": "field_67cf46a0c8e19",
+          "label": "Graphic",
+          "name": "graphic",
+          "aria-label": "",
+          "type": "image",
+          "instructions": "Include the default graphic for the sign-up. This can be overridden by each page.",
+          "required": 1,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "uploader": "",
+          "return_format": "array",
+          "library": "all",
+          "acfe_thumbnail": 0,
+          "min_width": "",
+          "min_height": "",
+          "min_size": "",
+          "max_width": "",
+          "max_height": "",
+          "max_size": "",
+          "mime_types": "",
+          "allow_in_bindings": 0,
+          "preview_size": "medium"
+        }
+      ],
+      "acfe_group_modal_close": 0,
+      "acfe_group_modal_button": "",
+      "acfe_group_modal_size": "large"
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "options_page",
+        "operator": "==",
+        "value": "site-settings"
+      }
+    ]
+  ],
+  "menu_order": 2,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "left",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0,
+  "acfe_display_title": "",
+  "acfe_autosync": ["json"],
+  "acfe_form": 0,
+  "acfe_meta": "",
+  "acfe_note": "",
+  "modified": 1741637316
+}
