@@ -142,6 +142,10 @@ body {
     @apply text-[32px] md:text-[40px] font-headline font-wdth-380 font-semibold leading-headline tracking-[-0.01em];
   }
 
+  .type-headline-20 {
+    @apply text-[20px] font-headline font-wdth-380 font-semibold leading-tight tracking-normal;
+  }
+
   .type-headline-lg {
     @apply text-2xl font-headline font-wdth-380 font-semibold leading-headline tracking-[-0.01em];
   }

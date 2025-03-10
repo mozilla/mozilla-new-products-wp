@@ -1,0 +1,45 @@
+{% extends "layouts/base.twig" %}
+
+{% block pageBody %}
+
+{% include "components/filter-topper.twig" with { title: page.title, description: page.description } %}
+
+  {# <header class="flex gap-2">
+    <h1>
+      {{ page.title }}/
+    </h1>
+
+    {% if page.description %}
+    <p>{{ page.description }}</p>
+    {% endif %}
+  </header> #}
+
+  <section aria-label="Posts" class="mb-36">
+    <h2 class="sr-only">Posts</h2>
+
+    <ul class="flex flex-col gap-y-20 px-[--grid-site-margin] md:grid md:grid-cols-3 md:gap-x-32 lg:gap-x-48 md:gap-y-32">
+      {% for post in posts %}
+        <li class="flex flex-col gap-y-4">
+          {% if post.thumbnail %}
+            {% include "components/lazy-img.twig" with {
+              img: get_image(post.thumbnail)
+            } %}
+          {% endif %}
+
+          <div class="flex flex-col gap-y-[1px]">
+            {% if post.category %}
+              <p class="text-secondary/60 block font-headline text-xs font-wdth-380 font-light tracking-normal">{{ post.category }}</p>
+            {% endif %}
+
+            <h3 class="text-sm leading-tight">
+              <a href="{{ post.link }}">
+                {{ post.title }}
+              </a>
+            </h3>
+          </div>
+
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+{% endblock %}
