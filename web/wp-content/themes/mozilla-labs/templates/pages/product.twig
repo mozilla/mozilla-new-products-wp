@@ -8,15 +8,18 @@
 
 {% block pageBody %}
 
-<header class="grid grid-site grid-rows-[1fr_auto_1fr] h-[80vh] overflow-y-hidden isolate">
+<header class="relative grid grid-site grid-rows-[1fr_auto_1fr] min-h-[600px] h-[80vh] overflow-y-hidden isolate">
   {% set backdrop = post.meta("backdrop_image") %}
 
   {% if backdrop %}
-    {% include "components/lazy-img.twig" with {
-      class: "-mx-grid-site-margin col-start-1 col-end-13 row-span-full h-full w-screen",
+  <div class="absolute top-0 bg-blue-green w-full h-full flex">
+  {% include "components/lazy-img.twig" with {
+      class: "h-full w-full",
       imgClass: "object-cover",
       img: get_image(backdrop)
     } %}
+  </div>
+
   {% endif %}
 
   <div class="
