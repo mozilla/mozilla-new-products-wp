@@ -39,12 +39,14 @@
           {% endif %}
         </div>
 
+        {% if item.cover %}
         <button class="button button-sm button-square w-fit data-[playing]:hidden" x-video-embed:play>
           <span class="sr-only">Play video</span>
           <svg class="size-3 -translate-x-[0.1rem] shrink-0 text-white" aria-hidden="true">
             <use href="#play"></use>
           </svg>
         </button>
+        {% endif %}
 
         {% if item.caption %}
           <figcaption class="w-fit button button-sm whitespace-normal">{{ item.caption }}</figcaption>
