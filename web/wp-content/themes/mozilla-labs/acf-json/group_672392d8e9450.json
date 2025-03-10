@@ -3,27 +3,6 @@
   "title": "Products",
   "fields": [
     {
-      "key": "field_672398429ba66",
-      "label": "Tagline",
-      "name": "tagline",
-      "aria-label": "",
-      "type": "text",
-      "instructions": "",
-      "required": 0,
-      "conditional_logic": 0,
-      "wrapper": {
-        "width": "",
-        "class": "",
-        "id": ""
-      },
-      "default_value": "",
-      "maxlength": "",
-      "allow_in_bindings": 0,
-      "placeholder": "",
-      "prepend": "",
-      "append": ""
-    },
-    {
       "key": "field_67cb2f625aa4e",
       "label": "Backdrop Image",
       "name": "backdrop_image",
@@ -52,12 +31,62 @@
       "preview_size": "medium"
     },
     {
+      "key": "field_672398429ba66",
+      "label": "Tagline",
+      "name": "tagline",
+      "aria-label": "",
+      "type": "text",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "allow_in_bindings": 0,
+      "placeholder": "",
+      "prepend": "",
+      "append": ""
+    },
+    {
       "key": "field_67cb384881a54",
       "label": "Navigation Theme",
       "name": "navigation_theme",
       "aria-label": "",
       "type": "select",
       "instructions": "Choose the theme for the navigation header based on the backdrop image. If the backdrop image is darker, choose \"dark\".",
+      "required": 1,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "50",
+        "class": "",
+        "id": ""
+      },
+      "choices": {
+        "theme-light": "Light",
+        "theme-dark": "Dark"
+      },
+      "default_value": "theme-light",
+      "return_format": "value",
+      "multiple": 0,
+      "allow_custom": 0,
+      "search_placeholder": "",
+      "allow_null": 0,
+      "allow_in_bindings": 0,
+      "ui": 1,
+      "ajax": 0,
+      "placeholder": ""
+    },
+    {
+      "key": "field_67cf3015459f2",
+      "label": "Page Theme",
+      "name": "page_theme",
+      "aria-label": "",
+      "type": "select",
+      "instructions": "Choose the theme for the page content.",
       "required": 1,
       "conditional_logic": 0,
       "wrapper": {
@@ -543,5 +572,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1741620852
+  "modified": 1741631589
 }
