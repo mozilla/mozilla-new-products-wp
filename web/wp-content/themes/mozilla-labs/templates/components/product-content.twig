@@ -22,10 +22,21 @@
           <figcaption class="w-fit button button-sm">{{ item.caption }}</figcaption>
         {% endif %}
       </figure>
+
     {% elseif type == "video_embed" %}
       <figure class="flex flex-col gap-2">
-        <div class="[&>iframe]:w-full [&>iframe]:h-auto [&>iframe]:aspect-video">
+        <div class="relative [&>iframe]:w-full [&>iframe]:h-auto [&>iframe]:aspect-video isolate overflow-hidden">
           {{ item.embed|raw }}
+
+          {% if item.cover %}
+            <div class="absolute inset-0 w-full h-full z-10">
+              {% include "components/lazy-img.twig" with {
+                class: "w-full h-full object-cover",
+                img: get_image(item.cover),
+                aspectRatio: false
+              } %}
+            </div>
+          {% endif %}
         </div>
 
         {% if item.caption %}
