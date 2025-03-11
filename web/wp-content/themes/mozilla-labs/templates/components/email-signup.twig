@@ -1,14 +1,13 @@
-{% set signup = options.email_signup %}
+{% set global_signup = options.email_signup %}
 
 {% if options.include_email_signup %}
 <section id="email-signup" class="grid grid-site gap-y-12 mt-32 md:mt-48 isolate">
   <h2 class="sr-only">Email Sign-up</h2>
 
   <div class="col-span-full type-headline-lg text-xl leading-tight prose mx-auto max-w-2xl text-center">
-    {{ signup.prompt }}
+    {{ override.prompt|default(global_signup.prompt) }}
   </div>
 
-  {% if signup.graphic %}
   <div class="relative col-span-full grid grid-cols-[subgrid] grid-rows-[auto_1fr]">
     <form
       id="newsletter-form"
@@ -52,7 +51,7 @@
 
           <button type="submit" class="mzp-c-button group w-fit flex gap-2 cursor-pointer" id="newsletter-submit">
             <span class="w-fit button button-sm group-hocus:bg-black">
-              {{ signup.cta }}
+              {{ override.cta|default(global_signup.cta) }}
             </span>
 
             <svg class="button button-square p-2 transition-all group-hocus:bg-black" aria-hidden="true">
@@ -87,15 +86,16 @@
       </fieldset>
     </form>
 
+    {% if (override is defined and override.graphic) or global_signup.graphic %}
     <div class="col-start-1 col-end-7 md:col-start-2 md:col-end-12 row-span-full">
       {% include "components/lazy-img.twig" with {
-        img: get_image(signup.graphic),
+        img: get_image(override.graphic|default(global_signup.graphic)),
         decorative: true
       } %}
 
       <div class="absolute inset-0 top-1/2 bg-gradient-to-t from-main to-transparent z-10"></div>
     </div>
+    {% endif %}
   </div>
-  {% endif %}
 </section>
 {% endif %}

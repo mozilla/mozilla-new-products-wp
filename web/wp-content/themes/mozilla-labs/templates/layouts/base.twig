@@ -29,7 +29,9 @@
       {% endblock %}
     </main>
 
-    {% include "components/email-signup.twig" %}
+    {% include "components/email-signup.twig" with {
+      override: email_signup_override|default(false),
+    } %}
 
     {% block footer %}
       {% include "components/footer.twig" %}
