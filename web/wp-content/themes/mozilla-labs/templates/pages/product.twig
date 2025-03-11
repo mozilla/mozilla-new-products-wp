@@ -1,6 +1,7 @@
 {% extends "layouts/base.twig" %}
 
 {% set custom_nav_classes = post.meta("navigation_theme") %}
+{% set email_signup_override = post.meta("email_signup") %}
 
 {%- block custom_body_classes -%}
   {{ post.meta("page_theme")|default("theme-light") }}

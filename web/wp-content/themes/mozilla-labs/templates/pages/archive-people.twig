@@ -4,6 +4,8 @@
   theme-dark
 {%- endblock -%}
 
+{% set email_signup_override = post.meta("email_signup") %}
+
 {% block pageBody %}
 
   {% include 'components/page-topper.twig' with { title: title } %}
