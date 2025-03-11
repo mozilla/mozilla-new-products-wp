@@ -1,45 +1,16 @@
 {
-  "key": "group_67cf3d2edc136",
-  "title": "Settings: Email Sign-up",
+  "key": "group_67d01a2c2119c",
+  "title": "Override: Email Sign-up",
   "fields": [
     {
-      "key": "field_67cf4644a2d37",
-      "label": "Include Email Sign-up?",
-      "name": "include_email_signup",
-      "aria-label": "",
-      "type": "true_false",
-      "instructions": "",
-      "required": 0,
-      "conditional_logic": 0,
-      "wrapper": {
-        "width": "",
-        "class": "",
-        "id": ""
-      },
-      "message": "",
-      "default_value": 0,
-      "allow_in_bindings": 0,
-      "ui_on_text": "",
-      "ui_off_text": "",
-      "ui": 1
-    },
-    {
-      "key": "field_67cf45e66274f",
+      "key": "field_67d01a2c55605",
       "label": "Email Sign-up",
       "name": "email_signup",
       "aria-label": "",
       "type": "group",
-      "instructions": "",
+      "instructions": "Override the global email sign-up, which can be found on the \"Site Settings\", for this page. Each field here will override the settings' corresponding field. The sign-up will only be shown if it is toggled on globally in the site settings.",
       "required": 0,
-      "conditional_logic": [
-        [
-          {
-            "field": "field_67cf4644a2d37",
-            "operator": "==",
-            "value": "1"
-          }
-        ]
-      ],
+      "conditional_logic": 0,
       "wrapper": {
         "width": "",
         "class": "",
@@ -50,13 +21,13 @@
       "acfe_group_modal": 0,
       "sub_fields": [
         {
-          "key": "field_67cf3d466274e",
+          "key": "field_67d01fea55606",
           "label": "Prompt",
           "name": "prompt",
           "aria-label": "",
           "type": "wysiwyg",
           "instructions": "",
-          "required": 1,
+          "required": 0,
           "conditional_logic": 0,
           "wrapper": {
             "width": "",
@@ -65,26 +36,26 @@
           },
           "default_value": "",
           "allow_in_bindings": 0,
-          "tabs": "visual",
-          "toolbar": "bold_italic_link",
-          "media_upload": 0,
+          "tabs": "all",
+          "toolbar": "full",
+          "media_upload": 1,
           "delay": 0
         },
         {
-          "key": "field_67cf462362751",
+          "key": "field_67d0201655607",
           "label": "CTA",
           "name": "cta",
           "aria-label": "",
           "type": "text",
           "instructions": "CTA for the sign-up button.",
-          "required": 1,
+          "required": 0,
           "conditional_logic": 0,
           "wrapper": {
             "width": "",
             "class": "",
             "id": ""
           },
-          "default_value": "Register",
+          "default_value": "",
           "maxlength": "",
           "allow_in_bindings": 0,
           "placeholder": "",
@@ -92,13 +63,13 @@
           "append": ""
         },
         {
-          "key": "field_67cf46a0c8e19",
+          "key": "field_67d0203255608",
           "label": "Graphic",
           "name": "graphic",
           "aria-label": "",
           "type": "image",
           "instructions": "Include the default graphic for the sign-up. This is a horizontal decorative image that will span the width of the screen.",
-          "required": 1,
+          "required": 0,
           "conditional_logic": 0,
           "wrapper": {
             "width": "",
@@ -128,13 +99,27 @@
   "location": [
     [
       {
-        "param": "options_page",
+        "param": "post_type",
         "operator": "==",
-        "value": "site-settings"
+        "value": "post"
+      }
+    ],
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "page"
+      }
+    ],
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "product"
       }
     ]
   ],
-  "menu_order": 2,
+  "menu_order": 100,
   "position": "normal",
   "style": "default",
   "label_placement": "left",
@@ -148,5 +133,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1741693035
+  "modified": 1741693084
 }
