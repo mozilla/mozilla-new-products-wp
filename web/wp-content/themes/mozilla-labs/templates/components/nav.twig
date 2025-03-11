@@ -1,14 +1,14 @@
 <header class="centered-page z-50 theme-light {{ class|default("") }}">
   <nav class="fixed top-0 w-full grid grid-cols-[1fr_auto_1fr] gap-x-grid-site-gutter px-grid-site-margin items-center py-[20px]" aria-label="Site">
     <div class="flex gap-1">
-      <a class="button button-sm button-dark button-square flex justify-center items-center">
+      <a class="button button-sm button-dark button-square flex justify-center items-center" href="/">
         <span class="sr-only">Home</span>
         <svg class="size-4 shrink-0 text-white" aria-hidden="true">
           <use xlink:href="#flag"></use>
         </svg>
       </a>
 
-      <a class="max-lg:hidden w-fit button button-sm button-dark" href="#become-a-tester">
+      <a class="max-lg:hidden w-fit button button-sm button-dark" href="#email-signup">
         {{ options.tester_signup_cta|default("Become a Tester") }}
       </a>
     </div>
