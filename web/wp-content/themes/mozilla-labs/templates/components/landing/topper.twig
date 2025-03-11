@@ -1,0 +1,21 @@
+<header class="relative overflow-hidden h-[80vh] md:h-[75vh]">
+  <div class="relative centered-page px-grid-site-margin h-full">
+    <div class="max-md:h-[80vh] flex flex-col">
+      <div class="pt-10 type-headline-xl md:type-headline-3xl relative z-20">
+        <h1>
+          {{ page.topper_headline }}
+        </h1>
+      </div>
+      <div class="flex-1 flex items-center justify-center">
+        <p class="text-center text-size-base">{{ page.topper_copy }}</p>
+      </div>
+      <div class="flex justify-center mt-6 mb-8">
+        {% for cta in page.topper_ctas %}
+        <a class="w-fit button button-sm button-dark mx-2" href="{{ cta.link.url }}">
+          {{ cta.link.title }}
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</header>
