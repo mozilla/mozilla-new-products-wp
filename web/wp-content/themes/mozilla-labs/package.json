@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@alpinejs/focus": "^3.14.1",
+    "@barba/core": "^2.10.3",
     "alpinejs": "^3.14.1",
     "animejs": "^3.2.2",
     "body-scroll-lock": "^3.1.3",
