@@ -8,11 +8,11 @@
 
 {% block pageBody %}
 
-<header class="relative grid grid-site grid-rows-[1fr_auto_1fr] min-h-[600px] h-[80vh] overflow-y-hidden isolate">
+<header class="relative grid grid-site grid-rows-[1fr_auto_1fr] min-h-[600px] h-[85vh] overflow-y-hidden isolate">
   {% set backdrop = post.meta("backdrop_image") %}
 
   {% if backdrop %}
-  <div class="absolute top-0 bg-blue-green w-full h-full flex">
+  <div class="absolute top-0 w-full h-full flex">
   {% include "components/lazy-img.twig" with {
       class: "h-full w-full",
       imgClass: "object-cover",
@@ -35,7 +35,7 @@
     <h2 class="sr-only">Categories</h2>
     <ul class="flex justify-center gap-2 flex-wrap">
       {% for category in post.categories %}
-        <li class="button-sm font-sans text-sm leading-none bg-off-black/60 text-white backdrop-blur-md whitespace-nowrap">
+        <li class="bg-off-black/60 text-white backdrop-blur-md whitespace-nowrap px-[10px] pt-[6.5px] pb-[5.5px] w-fit type-caption">
           {{ category.title }}
         </li>
       {% endfor %}
@@ -71,13 +71,13 @@
 {% set articles = post.related_articles %}
 
 {% if articles|length %}
-<section class="grid grid-site mt-24">
-  <h2 class="col-span-full sm:col-span-1/2 text-xs">{{ post.title }} News</h2>
+<section class="grid grid-site mt-28">
+  <h2 class="col-span-full sm:col-span-1/2 text-sm mb-14">{{ post.title }} News</h2>
 
   <div class="col-span-full sm:col-start-7 sm:col-span-1/2">
-    <ol class="grid grid-cols-2 gap-x-grid-site-gutter gap-y-8">
+    <ol class="grid grid-cols-2 gap-x-grid-site-gutter gap-y-12">
       {% for article in articles %}
-      <li>
+      <li class="flex flex-col gap-y-[5px] max-w-[154px] md:max-w-[214px]">
         <time class="text-xs" datetime="{{ article.date|date('Y-m-d') }}">
           {{ article.date|date('m.d.y') }}
         </time>

@@ -3,10 +3,10 @@
 <footer class="text-content mt-12 md:mt-24 pb-grid-site-margin grid grid-site centered-page">
   {% if products|length %}
   <div class="col-span-full grid grid-cols-2 gap-grid-site-gutter md:col-span-4 md:flex md:flex-col md:gap-4">
-    <h2 class="text-xs font-bold leading-tight">{{ options.footer_product_links_section.heading|default("Products") }}</h2>
-    <ul class="grid md:has-[:nth-child(6)]:grid-cols-2 gap-x-grid-site-gutter gap-y-[3px]">
+    <h2 class="text-sm font-bold leading-tight">{{ options.footer_product_links_section.heading|default("Products") }}</h2>
+    <ul class="grid md:has-[:nth-child(6)]:grid-cols-2 gap-x-grid-site-gutter gap-y-[5px]">
       {% for item in options.footer_product_links_section.links %}
-      <li class="text-xs w-fit leading-tight">
+      <li class="text-sm w-fit leading-tight">
         <a class="hocus:underline" href="{{ item.link.url }}">
           {{ item.link.title }}
         </a>
@@ -19,10 +19,10 @@
   <div class="col-span-full flex flex-col mt-8 md:mt-0 md:col-start-9 md:col-span-4 md:grid md:grid-cols-2 gap-y-8 md:gap-grid-site-gutter">
     {% for section in options.footer_links_section %}
     <div class="grid grid-cols-2 gap-grid-site-gutter md:flex md:flex-col md:gap-4">
-      <h2 class="text-xs font-bold leading-tight">{{ section.footer_links_section_heading }}</h2>
-      <ul class="flex flex-col gap-y-[3px]">
+      <h2 class="text-sm font-bold leading-tight">{{ section.footer_links_section_heading }}</h2>
+      <ul class="flex flex-col gap-y-[5px]">
         {% for item in section.footer_links_items %}
-          <li class="text-xs leading-tight">
+          <li class="text-sm leading-tight">
             <a class="hocus:underline" href="{{ item.footer_links_item_link.url }}">
               {{ item.footer_links_item_link.name ?: item.footer_links_item_link.title }}
             </a>

@@ -1,8 +1,8 @@
-<section class="col-span-full sm:col-span-6 lg:col-span-3 h-fit lg:sticky top-24 flex flex-col gap-y-grid-site-gutter lg:gap-8" aria-label="Information">
+<section class="col-span-full grid grid-cols-2 gap-x-grid-site-gutter gap-y-6 mt-28 lg:mt-0 sm:col-span-6 lg:col-span-3 h-fit lg:sticky top-24 md:flex flex-col md:gap-y-grid-site-gutter lg:gap-8" aria-label="Information">
   {% if information|length %}
   <dl class="contents">
     {% for item in information %}
-      <div>
+      <div class="flex flex-col gap-y-[1px]">
         <dt class="text-xs text-secondary/60">{{ item.label }}</dt>
         <dd class="text-sm prose">{{ item.text }}</dd>
       </div>
@@ -11,8 +11,8 @@
   {% endif %}
 
   {% if cta %}
-    <a class="group w-fit flex" href="{{ cta.url }}">
-      <span class="w-fit button button-sm group-hocus:bg-black">
+    <a class="group w-full mt-9 md:w-fit flex col-span-2" href="{{ cta.url }}">
+      <span class="w-full md:w-fit button button-sm justify-start md:justify-initial group-hocus:bg-black">
         {{ cta.title }}
       </span>
 
