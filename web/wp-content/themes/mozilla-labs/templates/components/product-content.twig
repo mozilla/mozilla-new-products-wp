@@ -1,14 +1,14 @@
-<div class="col-span-full lg:col-span-6 max-lg:mt-24 flex flex-col gap-12 lg:gap-16">
+<div class="col-span-full lg:col-span-6 max-lg:mt-24 flex flex-col gap-14 lg:gap-16">
   {% for item in content %}
     {% set type = item.acf_fc_layout %}
 
     {% if type == "introduction" %}
-      <div class="type-headline-lg text-xl leading-tight prose">
+      <div class="type-headline-20 leading-tight prose">
         {{ item.text }}
       </div>
 
     {% elseif type == "text" %}
-      <div class="sm:w-1/2 prose">
+      <div class="sm:w-1/2 prose text-sm leading-snug max-w-[400px]">
         {{ item.text }}
       </div>
 
@@ -19,7 +19,7 @@
         } %}
 
         {% if item.caption %}
-          <figcaption class="w-fit button button-sm whitespace-normal">{{ item.caption }}</figcaption>
+          <figcaption class="whitespace-normal bg-off-black/60 text-white backdrop-blur-md px-[10px] pt-[6.5px] pb-[5.5px] w-fit type-caption">{{ item.caption }}</figcaption>
         {% endif %}
       </figure>
 
@@ -49,7 +49,7 @@
         {% endif %}
 
         {% if item.caption %}
-          <figcaption class="w-fit button button-sm whitespace-normal">{{ item.caption }}</figcaption>
+          <figcaption class="bg-off-black/60 text-white backdrop-blur-md px-[10px] pt-[6.5px] pb-[5.5px] w-fit type-caption">{{ item.caption }}</figcaption>
         {% endif %}
       </figure>
     {% endif %}

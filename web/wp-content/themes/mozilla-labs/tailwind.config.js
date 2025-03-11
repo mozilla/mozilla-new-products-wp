@@ -208,6 +208,7 @@ module.exports = {
       const newUtilities = {
         '.font-wght-100': { 'font-variation-settings': '"wght" 100' },
         '.font-wght-350': { 'font-variation-settings': '"wght" 350' },
+        '.font-wght-480': { 'font-variation-settings': '"wght" 480' },
         '.font-wght-700': { 'font-variation-settings': '"wght" 700' },
         '.font-wdth-200': { 'font-variation-settings': '"wdth" 200' },
         '.font-wdth-380': { 'font-variation-settings': '"wdth" 380' },

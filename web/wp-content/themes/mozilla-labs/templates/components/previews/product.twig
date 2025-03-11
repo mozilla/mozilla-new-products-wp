@@ -1,5 +1,5 @@
-<div class="flex flex-col gap-6">
-  <div class="flex flex-col gap-6 relative">
+<div class="border-t border-content flex flex-col">
+  <div class="px-grid-site-margin py-6 grid grid-cols-6 md:grid-cols-12 gap-6 relative items-center">
     {% if product.thumbnail and product.show_image_on_index %}
       {% if archive %}
         <div class="w-1/2">
@@ -8,56 +8,15 @@
       {% endif %}
     {% endif %}
 
-    <div class="border-t border-content pt-2">
-      <h3 class="text-lg uppercase">
+
+
+    <div class="md:col-span-3">
+      <h3 class="type-text-20 font-wght-480">
         <a href="{{ product.link }}" class="before:absolute before:inset-0 before:z-10 hocus:text-action-focus-reverse hocus:bg-action-focus">{{ product.title }}</a>
       </h3>
     </div>
 
-    <p>{{ product.tagline }}</p>
-  </div>
-
-  <div class="flex flex-col divide-content">
-    <dl class="flex flex-col divide-content">
-      {% if product.contributors is not empty %}
-      <div class="flex justify-between gap-4 pt-1.5">
-        <dt>Contributor{{ product.contributors|length > 1 ? 's' : '' }}</dt>
-        <dd class="text-right [&_a]:font-semibold">
-          {% include "components/articles/byline_format.twig" with { bylines: product.contributors } %}
-        </dd>
-      </div>
-      {% endif %}
-
-      {% if product.platforms is not empty %}
-      <div class="flex justify-between gap-4 pt-1.5">
-        <dt>Platform{{ product.platforms|length > 1 ? 's' : '' }}</dt>
-        <dd class="text-right font-semibold">
-          {% for platform in product.platforms %}
-            <a href="{{ platform.link }}" class="hover-link">{{ platform.name }}</a>{% if not loop.last %}, {% endif %}
-          {% endfor %}
-        </dd>
-      </div>
-      {% endif %}
-
-      {% if product.categories is not empty %}
-      <div class="flex justify-between gap-4 pt-1.5">
-        <dt>{{ product.categories|length > 1 ? 'Categories' : 'Category' }}</dt>
-        <dd class="text-right font-semibold">
-          {% for category in product.categories %}
-            <a href="{{ category.link }}" class="hover-link">{{ category.name }}</a>{% if not loop.last %}, {% endif %}
-          {% endfor %}
-        </dd>
-      </div>
-      {% endif %}
-    </dl>
-
-    <div class="flex justify-between gap-4 pt-1.5">
-      <a href="{{ product.link }}" class="hover-link">Product Details</a>
-
-      {% if product.github_link %}
-        <a href="{{ product.github_link }}" class="hover-link">GitHub</a>
-      {% endif %}
-    </div>
+    <p class="md:col-span-6 type-text-20 font-wght-480">{{ product.tagline }}</p>
   </div>
 
   {% if product.thumbnail and product.show_image_on_index %}
