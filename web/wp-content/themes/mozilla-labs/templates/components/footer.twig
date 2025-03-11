@@ -34,11 +34,11 @@
   </div>
 
   <div class="col-span-full grid grid-cols-2 gap-grid-site-gutter md:flex md:items-start md:justify-between md:gap-6 mt-8 md:mt-2">
-    <p class="max-md:w-1/2 font-bold text-xs whitespace-nowrap leading-tight"><a href="https://mozilla.org/">Mozilla</a> &copy; {{ now|date('Y') }}</p>
+    <p class="max-md:w-1/2 font-bold text-sm whitespace-nowrap leading-tight"><a href="https://mozilla.org/">Mozilla</a> &copy; {{ now|date('Y') }}</p>
 
     <ul class="flex flex-wrap max-md:flex-col md:items-center justify-end md:gap-x-6 gap-y-1.5">
       {% for item in primary_footer_menu.items %}
-        <li class="leading-tight text-xs ">
+        <li class="leading-tight text-sm">
           <a href="{{ item.url }}" class="hocus:underline">{{ item.name }}</a>
         </li>
       {% endfor %}
