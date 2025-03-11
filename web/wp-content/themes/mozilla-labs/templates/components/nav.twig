@@ -8,9 +8,11 @@
         </svg>
       </a>
 
+      {% if options.include_email_signup and options.navigation_cta %}
       <a class="max-lg:hidden w-fit button button-sm button-dark" href="#email-signup">
-        {{ options.tester_signup_cta|default("Become a Tester") }}
+        {{ options.navigation_cta }}
       </a>
+      {% endif %}
     </div>
 
     <a class="mx-auto py-1 lg:h-full flex items-center w-fit" href="/">
