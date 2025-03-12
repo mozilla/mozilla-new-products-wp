@@ -36,8 +36,18 @@ async function initBarba(Alpine) {
         {
           name: 'dissolve-transition',
           leave(data) {
+            // Disable smooth scrolling temporarily by adding a class to html
+            document.documentElement.classList.add('barba-transition');
+
             // Fade out the current page
             return dissolveAnimation(data.current.container, 'out');
+          },
+          beforeEnter() {
+            // Reset scroll position to top before the new page appears
+            // This happens after the current page has faded out but before the new page starts fading in
+            window.scrollTo(0, 0);
+            document.documentElement.scrollTop = 0;
+            document.body.scrollTop = 0;
           },
           enter(data) {
             // Fade in the new page
@@ -46,6 +56,9 @@ async function initBarba(Alpine) {
           after(data) {
             // Reinitialize Alpine components on the new page
             reinitializeAlpine(Alpine, data.next.container);
+
+            // Re-enable smooth scrolling by removing the class
+            document.documentElement.classList.remove('barba-transition');
           },
         },
       ],

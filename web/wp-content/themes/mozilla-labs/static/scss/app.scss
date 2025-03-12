@@ -67,6 +67,10 @@
 
 html {
   scroll-behavior: smooth;
+
+  &.barba-transition {
+    scroll-behavior: auto !important;
+  }
 }
 
 body {
