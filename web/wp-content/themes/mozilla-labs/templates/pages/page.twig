@@ -4,8 +4,6 @@
 
 {% block pageBody %}
 
-  {% include 'components/page-topper.twig' with { title: post.title } %}
-
   <article>
     <div x-hang-punc class="pb-24 grid grid-site centered-page gutenberg {{ post.has_lede_paragraph ? 'lede' }}">
       {{ post.content }}
