@@ -19,13 +19,13 @@
     {% include "layouts/includes/grid.twig" %}
   {% endif %}
 
-  <div class="flex flex-col flex-1 min-h-screen" data-barba="container">
+  <div class="flex flex-col flex-1 min-h-screen">
 
     {% include "components/nav.twig" with {
       class: custom_nav_classes|default(""),
     } %}
 
-    <main id="content" class="flex flex-col flex-1 {% block custom_content_classes %}{% endblock %}" tabindex="-1">
+    <main id="content" data-barba="container" class="flex flex-col flex-1 {% block custom_content_classes %}{% endblock %}" tabindex="-1">
       {% block pageBody %}
       {% endblock %}
     </main>
