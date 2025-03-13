@@ -53,7 +53,7 @@
 
   {# override aspect ratio if a percentage string is used #}
   {% if aspectRatio|length > 1 %}
-    {% set padding = aspectRatio %}
+    {% set ratio = aspectRatio %}
   {% endif %}
 
   <div class="flex relative aspect-[--ratio] {{ class }}" style="--ratio: {{ ratio }}">
