@@ -73,13 +73,13 @@
 
 {% if articles|length %}
 <section class="grid grid-site mt-28">
-  <h2 class="col-span-full sm:col-span-1/2 text-sm mb-14">{{ post.title }} News</h2>
+  <h2 class="col-span-full sm:col-span-1/2 text-sm font-bold mb-14">{{ post.title }} News</h2>
 
   <div class="col-span-full sm:col-start-7 sm:col-span-1/2">
     <ol class="grid grid-cols-2 gap-x-grid-site-gutter gap-y-12">
       {% for article in articles %}
-      <li class="flex flex-col gap-y-[5px] max-w-[154px] md:max-w-[214px]">
-        <time class="text-xs" datetime="{{ article.date|date('Y-m-d') }}">
+      <li class="flex flex-col gap-y-[3px] max-w-[154px] md:max-w-[214px]">
+        <time class="type-headline-12" datetime="{{ article.date|date('Y-m-d') }}">
           {{ article.date|date('m.d.y') }}
         </time>
 
