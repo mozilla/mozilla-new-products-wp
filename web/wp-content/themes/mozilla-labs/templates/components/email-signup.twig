@@ -36,7 +36,7 @@
           </ul>
         </div>
 
-        <div class="p-2 pl-5 bg-black/60 backdrop-blur-md text-white flex justify-between items-center gap-2">
+        <div class="p-2 pl-5 bg-black/60 [.theme-dark_&]:bg-off-black/60 backdrop-blur-md text-white flex justify-between items-center gap-2">
           <label class="sr-only" for="id_email">Your email address</label>
 
           <input
@@ -50,11 +50,11 @@
           >
 
           <button type="submit" class="mzp-c-button group w-fit flex gap-1 cursor-pointer" id="newsletter-submit">
-            <span class="w-fit button button-sm group-hocus:bg-black">
+            <span class="w-fit button button-sm group-hocus:bg-black [.theme-dark_&]:group-hocus:bg-white [.theme-dark_&]:group-hocus:text-black">
               {{ override.cta|default(global_signup.cta) }}
             </span>
 
-            <svg class="button button-square p-[10.5px] transition-all group-hocus:bg-black" aria-hidden="true">
+            <svg class="button button-square p-[10.5px] transition-all group-hocus:bg-black [.theme-dark_&]:group-hocus:bg-white [.theme-dark_&]:group-hocus:text-black" aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" fill="none">
                 <path d="M9.875 5L3.91667 0V4.375H0.125V5.625H3.91667V10L9.875 5ZM5.16667 4.375V2.70833L7.91667 5L5.16667 7.29167V4.375Z" fill="currentColor"/>
               </svg>
