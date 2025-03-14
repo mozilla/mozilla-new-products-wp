@@ -7,6 +7,8 @@
 {%- endblock -%}
 
 {% block pageBody %}
+  <h1 class="sr-only">{{ page.title }}</h1>
+
   {% set topper = page.meta("topper")|first %}
 
   {% if topper.acf_fc_layout == "typewriter_headline" %}
