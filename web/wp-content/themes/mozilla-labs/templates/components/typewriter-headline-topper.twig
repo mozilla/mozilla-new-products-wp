@@ -1,3 +1,21 @@
-<header class="text-content">
-  <p>{{ topper.static_text }}</p>
+<header class="text-content grid grid-site">
+  <div class="col-span-full md:col-start-3 md:col-end-11 flex flex-col gap-4 items-center">
+    <p class="type-headline-80 text-center">
+      <span>{{ topper.static_text }}</span>
+
+      {% for item in topper.rotating_texts %}
+        <span>{{ item.text }}</span>
+      {% endfor %}
+    </p>
+
+    {% if topper.description %}
+      <div class="type-headline-20 text-center text-balance max-w-3xl">{{ topper.description }}</div>
+    {% endif %}
+
+    {% if topper.cta %}
+      <a class="w-fit button button-sm" href="{{ topper.cta.url }}">
+        {{ topper.cta.title }}
+      </a>
+    {% endif %}
+  </div>
 </header>
