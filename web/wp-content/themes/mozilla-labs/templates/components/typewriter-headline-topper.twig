@@ -1,11 +1,13 @@
 <header class="text-content grid grid-site mt-[20vh]">
   <div class="col-span-full md:col-start-3 md:col-end-11 flex flex-col gap-8 items-center">
     <p class="type-headline-80 text-center">
-      <span>{{ static_text }}</span>
+      <span class="text-balance block">{{ static_text }}</span>
 
       {% for item in rotating_texts %}
         <span>{{ item.text }}</span>
       {% endfor %}
+
+      <span class="inline-block h-14 w-2 translate-y-0.5 bg-spot animate-blink"></span>
     </p>
 
     {% if description %}
