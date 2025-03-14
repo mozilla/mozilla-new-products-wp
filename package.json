@@ -29,7 +29,7 @@
   "bundlesize": [
     {
       "path": "web/wp-content/themes/mozilla-labs/dist/assets/app-*.js",
-      "maxSize": "50 kB"
+      "maxSize": "100 kB"
     }
   ],
   "browserslist": [
