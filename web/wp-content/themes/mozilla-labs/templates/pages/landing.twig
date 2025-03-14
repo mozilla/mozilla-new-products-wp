@@ -7,7 +7,9 @@
 {%- endblock -%}
 
 {% block pageBody %}
-  {% include "components/typewriter-headline-topper.twig" with {
-    topper: page.meta("topper")[0],
-  } %}
+  {% set topper = page.meta("topper")|first %}
+
+  {% if topper.acf_fc_layout == "typewriter_headline" %}
+    {% include "components/typewriter-headline-topper.twig" with topper %}
+  {% endif %}
 {% endblock %}

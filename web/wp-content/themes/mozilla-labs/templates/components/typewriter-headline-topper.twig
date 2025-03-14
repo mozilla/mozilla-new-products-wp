@@ -1,20 +1,20 @@
 <header class="text-content grid grid-site mt-[20vh]">
   <div class="col-span-full md:col-start-3 md:col-end-11 flex flex-col gap-8 items-center">
     <p class="type-headline-80 text-center">
-      <span>{{ topper.static_text }}</span>
+      <span>{{ static_text }}</span>
 
-      {% for item in topper.rotating_texts %}
+      {% for item in rotating_texts %}
         <span>{{ item.text }}</span>
       {% endfor %}
     </p>
 
-    {% if topper.description %}
-      <div class="type-headline-20 text-center text-balance max-w-3xl">{{ topper.description }}</div>
+    {% if description %}
+      <div class="type-headline-20 text-center text-balance max-w-3xl">{{ description }}</div>
     {% endif %}
 
-    {% if topper.cta %}
-      <a class="w-fit button button-lg" href="{{ topper.cta.url }}">
-        {{ topper.cta.title }}
+    {% if cta %}
+      <a class="w-fit button button-lg" href="{{ cta.url }}">
+        {{ cta.title }}
       </a>
     {% endif %}
   </div>
