@@ -7,4 +7,7 @@
 {%- endblock -%}
 
 {% block pageBody %}
+  {% include "components/typewriter-headline-topper.twig" with {
+    topper: page.meta("topper")[0],
+  } %}
 {% endblock %}
