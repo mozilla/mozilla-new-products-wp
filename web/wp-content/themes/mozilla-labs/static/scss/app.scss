@@ -206,11 +206,15 @@ body {
   .button {
     @apply block whitespace-nowrap;
     @apply font-headline font-semibold tracking-normal text-sm leading-none font-wdth-380 bg-off-black/60 text-white backdrop-blur-md transition-colors;
-  }
 
-  button.button,
-  a.button {
-    @apply cursor-pointer hocus:bg-black;
+    &:is(button, a) {
+      @apply cursor-pointer hocus:bg-black;
+
+      &.theme-dark,
+      .theme-dark & {
+        @apply hocus:text-black hocus:bg-white;
+      }
+    }
   }
 
   .button-sm {
@@ -232,11 +236,15 @@ body {
     .theme-dark & {
       @apply bg-off-black/70;
     }
-  }
 
-  .button.button-dark,
-  a.button-dark {
-    @apply cursor-pointer hocus:bg-black;
+    &:is(button, a) {
+      @apply cursor-pointer hocus:bg-black;
+
+      &.theme-dark,
+      .theme-dark & {
+        @apply hocus:text-black hocus:bg-white;
+      }
+    }
   }
 }
 
