@@ -3,11 +3,28 @@
     <p class="group type-headline-80 text-center" x-init x-typewriter>
       <span class="text-balance block">{{ static_text }}</span>
 
-      {% for item in rotating_texts %}
-        <span x-typewriter:text="{{ item.text }}"></span>
-      {% endfor %}
+      <span class="inline-grid">
+        <span class="row-span-full col-start-1 col-end-2">
+          {% for item in rotating_texts %}
+            <span x-typewriter:text="{{ item.text }}"></span>
+          {% endfor %}
 
-      <span class="inline-block h-14 w-2 translate-y-0.5 bg-spot group-aria-busy:animate-none animate-blink"></span>
+          <span class="inline-block h-14 w-2 translate-y-0.5 bg-spot group-aria-busy:animate-none animate-blink"></span>
+        </span>
+
+        {#
+          Clone texts and hide them visually to reserve space for the visible ones.
+          This helps prevent layout shift in the topper.
+        #}
+        <span class="row-span-full col-start-1 col-end-2 inline-grid invisible" aria-hidden="true">
+          {% for item in rotating_texts %}
+            <span class="row-span-full col-start-1 col-end-2">
+              {{ item.text }}
+              <span class="inline-block h-14 w-2 invisible"></span>
+            </span>
+          {% endfor %}
+        </span>
+      </span>
     </p>
 
     {% if description %}
