@@ -14,4 +14,12 @@
   {% if topper.acf_fc_layout == "typewriter_headline" %}
     {% include "components/typewriter-headline-topper.twig" with topper %}
   {% endif %}
+
+  {% for block in page.meta("blocks") %}
+    {% if block.acf_fc_layout == "featured_product" %}
+      {% include "components/featured-product.twig" with {
+        block: block,
+      } %}
+    {% endif %}
+  {% endfor %}
 {% endblock %}

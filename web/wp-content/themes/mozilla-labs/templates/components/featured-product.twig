@@ -1,0 +1,36 @@
+{% set product = get_post(block.product) %}
+{% set icons = product.meta("icons") %}
+{% set primary_icon = get_image(icons.primary) %}
+{% set backdrop = get_image(product.meta("backdrop_image")) %}
+
+<section aria-label="{{ block.headline }}">
+  <h2>{{ block.headline }}</h2>
+
+  <p>{{ product.title }}</p>
+
+  {% if block.description %}
+    <div class="prose">{{ block.description }}</div>
+  {% endif %}
+
+  {% if primary_icon %}
+    <div>
+      {% include "components/lazy-img.twig" with {
+        img: primary_icon
+      } %}
+
+      <p>{{ product.title }}</p>
+    </div>
+  {% endif %}
+
+  {% if backdrop %}
+    <div>
+      {% include "components/lazy-img.twig" with {
+        img: backdrop
+      } %}
+
+      {% if product.tagline %}
+        <p>{{ product.tagline }}</p>
+      {% endif %}
+    </div>
+  {% endif %}
+</section>
