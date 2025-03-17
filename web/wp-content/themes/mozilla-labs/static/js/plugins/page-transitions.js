@@ -32,6 +32,7 @@ function initBarba(Alpine) {
   try {
     // Initialize Barba with the dissolve transition
     barba.init({
+      debug: true,
       transitions: [
         {
           name: 'dissolve-transition',
@@ -59,9 +60,24 @@ function initBarba(Alpine) {
             // Hide the new container initially
             gsap.set(data.next.container, { opacity: 0 });
 
+            // parse the data.next.html string to a DOM element
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(data.next.html, 'text/html');
+
             // Copy body classes from the next page to the current container
-            const nextPageBodyClasses = data.next.html.querySelector('body').className;
+            const nextPageBodyClasses = doc.querySelector('body').className;
             document.body.className = nextPageBodyClasses;
+
+            // Also copy the classe from the header element
+            const nextPageHeaderClasses = doc.querySelector('header').className;
+            document.querySelector('header').className = nextPageHeaderClasses;
+
+            // Also, copy over the content of the <nav> element
+            const nextPageNav = doc.querySelector('nav');
+            const currentPageNav = document.querySelector('nav');
+            if (nextPageNav && currentPageNav) {
+              currentPageNav.innerHTML = nextPageNav.innerHTML;
+            }
           },
 
           enter(data) {
