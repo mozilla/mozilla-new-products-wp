@@ -15,7 +15,7 @@ import { headingNav } from '@src/plugins/heading-nav';
 import { links } from '@src/plugins/links';
 import { marquee } from '@src/plugins/marquee';
 import { masonry } from '@src/plugins/masonry';
-import { pageTransitions } from '@src/plugins/page-transitions';
+import { initBarba } from '@src/plugins/barba-manager';
 import { tabs } from '@src/plugins/tabs';
 import { videoEmbed } from '@src/plugins/video-embed';
 
@@ -31,9 +31,10 @@ Alpine.plugin(headingNav);
 Alpine.plugin(links);
 Alpine.plugin(marquee);
 Alpine.plugin(masonry);
-Alpine.plugin(pageTransitions);
 Alpine.plugin(tabs);
 Alpine.plugin(videoEmbed);
 
 // Start Alpine
 Alpine.start();
+
+initBarba({ Alpine });
