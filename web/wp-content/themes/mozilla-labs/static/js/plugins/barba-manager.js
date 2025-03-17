@@ -18,7 +18,7 @@ export function initBarba(config) {
           }
           currentElement = currentElement.parentElement;
         }
-        return false; // Allow Barba to handle this link
+        return false; // Otherwise allow Barba to handle link
       },
       transitions: [
         {
@@ -70,7 +70,7 @@ export function initBarba(config) {
           },
 
           enter(data) {
-            // Initialize Alpine only for the new container's elements
+            // Re-initialize Alpine
             Alpine.start();
             return fadeAnimation(data.next.container, 'in');
           },

@@ -1,7 +1,7 @@
 {% extends "layouts/base.twig" %}
 
 {%- block custom_body_classes -%}
-  {{ post.meta("page_theme")|default("theme-light") }}
+  {{ post.meta("page_theme") }}
 {%- endblock -%}
 
 {% block pageBody %}
