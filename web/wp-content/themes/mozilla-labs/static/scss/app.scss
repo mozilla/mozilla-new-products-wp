@@ -139,7 +139,7 @@ body {
   }
 
   .type-headline-80 {
-    @apply text-[64px] md:text-[80px] font-headline font-wdth-380 font-semibold leading-headline tracking-[-0.01em];
+    @apply text-[64px] md:text-[80px] font-headline font-wdth-380 font-semibold leading-tightest tracking-[-0.01em];
   }
 
   .type-headline-40 {
