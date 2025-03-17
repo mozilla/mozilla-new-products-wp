@@ -8,10 +8,17 @@
         </svg>
       </a>
 
-      {% if options.include_email_signup and options.navigation_cta %}
-      <a class="max-lg:hidden w-fit button button-sm button-dark" href="#email-signup">
-        {{ options.navigation_cta }}
-      </a>
+      {% if nav_pages_menu.cta_type == "link" %}
+        {% set link = nav_pages_menu.cta %}
+        <a class="max-lg:hidden w-fit button button-sm button-dark" href="{{ link.url }}">
+          {{ link.title }}
+        </a>
+
+      {% elseif nav_pages_menu.cta_type == "email-signup" %}
+        <a class="max-lg:hidden w-fit button button-sm button-dark" href="#email-signup">
+          {{ nav_pages_menu.email_signup_cta }}
+        </a>
+
       {% endif %}
     </div>
 
