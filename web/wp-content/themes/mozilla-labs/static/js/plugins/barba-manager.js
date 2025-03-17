@@ -1,10 +1,8 @@
 import barba from '@barba/core';
 import gsap from 'gsap';
 
-const DURATION = 0.25; // Duration for the fade animation
-
 export function initBarba(config) {
-  const { Alpine } = config;
+  const { Alpine, duration } = config;
 
   try {
     barba.init({
@@ -27,7 +25,7 @@ export function initBarba(config) {
 
           leave(data) {
             document.documentElement.classList.add('barba-transition');
-            return fadeAnimation(data.current.container, 'out');
+            return fadeAnimation(data.current.container, 'out', duration);
           },
 
           afterLeave() {
@@ -72,7 +70,7 @@ export function initBarba(config) {
           enter(data) {
             // Re-initialize Alpine
             Alpine.start();
-            return fadeAnimation(data.next.container, 'in');
+            return fadeAnimation(data.next.container, 'in', duration);
           },
 
           after() {
@@ -86,14 +84,14 @@ export function initBarba(config) {
   }
 }
 
-function fadeAnimation(container, direction) {
+function fadeAnimation(container, direction, duration) {
   return new Promise(resolve => {
     gsap.set(container, {
       opacity: direction === 'in' ? 0 : 1,
     });
     gsap.to(container, {
       opacity: direction === 'in' ? 1 : 0,
-      duration: DURATION,
+      duration,
       ease: 'power1.inOut',
       onComplete: () => {
         if (direction === 'out') {

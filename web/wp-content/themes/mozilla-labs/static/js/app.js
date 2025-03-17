@@ -38,4 +38,7 @@ Alpine.plugin(videoEmbed);
 Alpine.start();
 
 // Initialize Barba, and pass Alpine to it for re-initialization
-initBarba({ Alpine });
+initBarba({
+  Alpine,
+  duration: 0.25,
+});
