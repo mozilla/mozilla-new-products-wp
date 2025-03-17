@@ -1,5 +1,7 @@
-<header class="centered-page z-50 theme-light group {{ class|default("") }}" x-init x-dialog>
-  <nav class="fixed top-0 w-full grid grid-cols-[1fr_auto_1fr] gap-x-grid-site-gutter px-grid-site-margin items-center py-[20px]" aria-label="Site">
+<div class="fixed inset-0 theme-light bg-main z-dialog" x-dialog:content>
+  <h2 class="sr-only" x-dialog:title>Menu</h2>
+
+  <div class="w-full grid grid-cols-[1fr_auto_1fr] gap-x-grid-site-gutter px-grid-site-margin items-center py-[20px]">
     <div class="flex gap-1">
       <a class="button button-sm button-dark button-square flex justify-center items-center" href="/">
         <span class="sr-only">Home</span>
@@ -7,19 +9,6 @@
           <use xlink:href="#flag"></use>
         </svg>
       </a>
-
-      {% if nav_pages_menu.cta_type == "link" %}
-        {% set link = nav_pages_menu.cta %}
-        <a class="max-lg:hidden w-fit button button-sm button-dark" href="{{ link.url }}">
-          {{ link.title }}
-        </a>
-
-      {% elseif nav_pages_menu.cta_type == "email-signup" %}
-        <a class="max-lg:hidden w-fit button button-sm button-dark" href="#email-signup">
-          {{ nav_pages_menu.email_signup_cta }}
-        </a>
-
-      {% endif %}
     </div>
 
     <a class="mx-auto py-1 lg:h-full flex items-center w-fit" href="/">
@@ -42,27 +31,30 @@
       </svg>
     </a>
 
-    <div class="ml-auto">
-      <ul class="max-lg:hidden flex gap-1">
-        {% for item in nav_pages_menu.items %}
-        <li>
-          <a class="button button-sm aria-current:bg-black group-[.theme-dark]:aria-current:bg-white group-[.theme-dark]:hover:bg-white group-[.theme-dark]:aria-current:text-black group-[.theme-dark]:hover:text-black" href="{{ item.url }}" {% if item.current %}aria-current="page"{% endif %}>
-            {{ item.name }}
-          </a>
-        </li>
-        {% endfor %}
-      </ul>
 
-      <button class="lg:hidden w-fit button button-sm button-square" x-dialog:trigger>
-        <span class="sr-only">Menu</span>
+    <div class="ml-auto">
+      <button class="lg:hidden w-fit button button-sm button-square" x-dialog:close>
+        <span class="sr-only">Close</span>
         <svg class="size-4" aria-hidden="true">
-          <use href="#menu"></use>
+          <use href="#x-close"></use>
         </svg>
       </button>
     </div>
-  </nav>
+  </div>
 
-  <template x-teleport="body">
-    {% include "components/menu.twig" %}
-  </template>
-</header>
+  <nav class="px-grid-site-margin" aria-label="Site">
+    <ul class="flex flex-wrap gap-2">
+      {% for item in nav_pages_menu.items %}
+      <li>
+        <a
+          class="button button-sm aria-current:bg-black group-[.theme-dark]:aria-current:bg-white group-[.theme-dark]:hover:bg-white group-[.theme-dark]:aria-current:text-black group-[.theme-dark]:hover:text-black"
+          href="{{ item.url }}"
+          {% if item.current %}aria-current="page"{% endif %}
+        >
+          {{ item.name }}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </nav>
+</div>
