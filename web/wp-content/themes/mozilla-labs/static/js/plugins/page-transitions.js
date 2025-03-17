@@ -32,7 +32,6 @@ function initBarba(Alpine) {
   try {
     // Initialize Barba with the dissolve transition
     barba.init({
-      debug: true,
       transitions: [
         {
           name: 'dissolve-transition',
