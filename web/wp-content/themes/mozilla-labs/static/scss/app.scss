@@ -40,6 +40,7 @@
   @apply [--grid-site-cols:6] md:[--grid-site-cols:12];
   @apply [--grid-site-margin:20px] md:[--grid-site-margin:20px];
   @apply [--grid-site-gutter:calc((24/400)*var(--100vw))] md:[--grid-site-gutter:calc((40/1440)*var(--100vw))];
+  transition: all 0.25s ease-in-out;
 
   --color-black: #{color.rgb(#000000)};
   --color-off-black: #{color.rgb(#3c3c3c)};

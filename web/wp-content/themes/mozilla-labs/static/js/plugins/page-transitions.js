@@ -58,6 +58,10 @@ function initBarba(Alpine) {
           beforeEnter(data) {
             // Hide the new container initially
             gsap.set(data.next.container, { opacity: 0 });
+
+            // Copy body classes from the next page to the current container
+            const nextPageBodyClasses = data.next.html.querySelector('body').className;
+            document.body.className = nextPageBodyClasses;
           },
 
           enter(data) {
@@ -97,7 +101,7 @@ function fadeAnimation(container, direction) {
     // Animate with GSAP
     gsap.to(container, {
       opacity: direction === 'in' ? 1 : 0,
-      duration: 0.25, // 250ms as requested
+      duration: 0.25,
       ease: 'power1.inOut',
       onComplete: resolve,
     });
