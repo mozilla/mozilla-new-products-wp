@@ -1,6 +1,8 @@
 import barba from '@barba/core';
 import gsap from 'gsap';
 
+const DURATION = 0.25; // Duration for the fade animation
+
 export function initBarba(config) {
   const { Alpine } = config;
 
@@ -36,19 +38,34 @@ export function initBarba(config) {
 
           beforeEnter(data) {
             gsap.set(data.next.container, { opacity: 0 });
+
+            // Parse the next page's HTML
             const parser = new DOMParser();
             const doc = parser.parseFromString(data.next.html, 'text/html');
+
+            // Copy body classes from the next page to the current container
             const nextPageBodyClasses = doc.querySelector('body').className;
             document.body.className = nextPageBodyClasses;
+
+            // Copy header classes from the next page to the current header
             const nextPageHeaderClasses = doc.querySelector('header').className;
             const headerElement = document.querySelector('header');
             if (headerElement) {
               headerElement.className = nextPageHeaderClasses;
             }
+
+            // Copy the content of the <nav> element from the next page to the current page
             const nextPageNav = doc.querySelector('nav');
             const currentPageNav = document.querySelector('nav');
             if (nextPageNav && currentPageNav) {
               currentPageNav.innerHTML = nextPageNav.innerHTML;
+            }
+
+            // Update WordPress admin bar
+            const nextPageAdminBar = doc.querySelector('#wpadminbar');
+            const currentAdminBar = document.querySelector('#wpadminbar');
+            if (nextPageAdminBar && currentAdminBar) {
+              currentAdminBar.innerHTML = nextPageAdminBar.innerHTML;
             }
           },
 
@@ -76,7 +93,7 @@ function fadeAnimation(container, direction) {
     });
     gsap.to(container, {
       opacity: direction === 'in' ? 1 : 0,
-      duration: 0.25,
+      duration: DURATION,
       ease: 'power1.inOut',
       onComplete: () => {
         if (direction === 'out') {

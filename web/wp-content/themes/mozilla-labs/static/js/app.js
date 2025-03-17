@@ -34,7 +34,8 @@ Alpine.plugin(masonry);
 Alpine.plugin(tabs);
 Alpine.plugin(videoEmbed);
 
-// Start Alpine
+// Start Alpine for initial page load
 Alpine.start();
 
+// Initialize Barba, and pass Alpine to it for re-initialization
 initBarba({ Alpine });
