@@ -126,6 +126,9 @@
       "layout": "row",
       "acfe_seamless_style": 0,
       "acfe_group_modal": 0,
+      "acfe_group_modal_close": 0,
+      "acfe_group_modal_button": "",
+      "acfe_group_modal_size": "large",
       "sub_fields": [
         {
           "key": "field_67cb4f8996150",
@@ -161,7 +164,7 @@
           "name": "grayscale",
           "aria-label": "",
           "type": "image",
-          "instructions": "The grayscale version of the icon. For best display, include a square asset.",
+          "instructions": "The grayscale version of the icon. For best display, include a square asset and include a transparent background as an SVG or PNG.",
           "required": 1,
           "conditional_logic": 0,
           "wrapper": {
@@ -183,10 +186,7 @@
           "allow_in_bindings": 0,
           "preview_size": "thumbnail"
         }
-      ],
-      "acfe_group_modal_close": 0,
-      "acfe_group_modal_button": "",
-      "acfe_group_modal_size": "large"
+      ]
     },
     {
       "key": "field_67cb65a7b67ee",
@@ -572,5 +572,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1741631589
+  "modified": 1742224917
 }
