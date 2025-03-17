@@ -24,35 +24,6 @@
       "ui": 1
     },
     {
-      "key": "field_67d0246b85bed",
-      "label": "Navigation CTA",
-      "name": "navigation_cta",
-      "aria-label": "",
-      "type": "text",
-      "instructions": "Call to action text on the header navigation for prompting users to sign up with their emails.",
-      "required": 0,
-      "conditional_logic": [
-        [
-          {
-            "field": "field_67cf4644a2d37",
-            "operator": "==",
-            "value": "1"
-          }
-        ]
-      ],
-      "wrapper": {
-        "width": "",
-        "class": "",
-        "id": ""
-      },
-      "default_value": "Become a Tester",
-      "maxlength": "",
-      "allow_in_bindings": 0,
-      "placeholder": "",
-      "prepend": "",
-      "append": ""
-    },
-    {
       "key": "field_67cf45e66274f",
       "label": "Email Sign-up",
       "name": "email_signup",
@@ -77,6 +48,9 @@
       "layout": "block",
       "acfe_seamless_style": 0,
       "acfe_group_modal": 0,
+      "acfe_group_modal_close": 0,
+      "acfe_group_modal_button": "",
+      "acfe_group_modal_size": "large",
       "sub_fields": [
         {
           "key": "field_67cf3d466274e",
@@ -148,10 +122,7 @@
           "allow_in_bindings": 0,
           "preview_size": "medium"
         }
-      ],
-      "acfe_group_modal_close": 0,
-      "acfe_group_modal_button": "",
-      "acfe_group_modal_size": "large"
+      ]
     }
   ],
   "location": [
@@ -177,5 +148,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1741694229
+  "modified": 1742220918
 }
