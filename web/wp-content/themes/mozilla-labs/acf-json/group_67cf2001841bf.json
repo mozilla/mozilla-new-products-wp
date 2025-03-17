@@ -25,7 +25,7 @@
         "acfe_bidirectional_enabled": "0"
       },
       "min": "",
-      "max": "",
+      "max": 1,
       "allow_in_bindings": 0,
       "elements": "",
       "bidirectional": 0,
@@ -55,5 +55,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1741627645
+  "modified": 1742223000
 }
