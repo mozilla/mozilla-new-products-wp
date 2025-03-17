@@ -4,26 +4,30 @@
 
 {% include "components/filter-topper.twig" with { title: page.title, description: page.description } %}
 
-  {# <header class="flex gap-2">
-    <h1>
-      {{ page.title }}/
-    </h1>
-
-    {% if page.description %}
-    <p>{{ page.description }}</p>
-    {% endif %}
-  </header> #}
-
   <section aria-label="Posts" class="mb-36">
     <h2 class="sr-only">Posts</h2>
 
-    <ul class="flex flex-col gap-y-20 px-[--grid-site-margin] md:grid md:grid-cols-3 md:gap-x-32 lg:gap-x-48 md:gap-y-32">
+    <ul class="flex flex-col gap-y-20 px-grid-site-margin md:grid md:grid-cols-3 md:gap-x-32 lg:gap-x-48 md:gap-y-32">
       {% for post in posts %}
+        {% set product = post.product %}
+
         <li class="flex flex-col gap-y-4">
           {% if post.thumbnail %}
+          <div class="relative [--icon-size:4rem] md:[--icon-size:3rem] lg:[--icon-size:4rem]">
             {% include "components/lazy-img.twig" with {
+              class: product and product.icons.grayscale ? "[clip-path:polygon(0_calc(100%-var(--icon-size)),var(--icon-size)_calc(100%-var(--icon-size)),var(--icon-size)_100%,100%_100%,100%_0,0_0)]" : null,
               img: get_image(post.thumbnail)
             } %}
+
+            {% if product and product.icons.grayscale %}
+              <div class="absolute left-0 bottom-0 w-[--icon-size] pr-1.5 pt-1.5">
+                {% include "components/lazy-img.twig" with {
+                  class: "[.theme-dark_&]:invert",
+                  img: get_image(product.icons.grayscale)
+                } %}
+              </div>
+            {% endif %}
+          </div>
           {% endif %}
 
           <div class="flex flex-col gap-y-[1px]">

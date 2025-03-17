@@ -29,6 +29,21 @@ class Article extends TimberPost {
 	}
 
 	/**
+	 * Primary product for the post.
+	 *
+	 * @return TimberPost|null
+	 */
+	public function product(): TimberPost|null {
+		$products = $this->meta( 'products' );
+		if ( empty( $products ) ) {
+			return null;
+		}
+
+		return Timber::get_post( $products[0] );
+	}
+
+
+	/**
 	 * Related articles for a post.
 	 *
 	 * @return array
