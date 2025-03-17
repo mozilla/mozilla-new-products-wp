@@ -119,7 +119,13 @@ function fadeAnimation(container, direction) {
       opacity: direction === 'in' ? 1 : 0,
       duration: 0.25,
       ease: 'power1.inOut',
-      onComplete: resolve,
+      onComplete: () => {
+        // After fade out completes, set display to none to remove from layout flow
+        if (direction === 'out') {
+          gsap.set(container, { display: 'none' });
+        }
+        resolve();
+      },
     });
   });
 }

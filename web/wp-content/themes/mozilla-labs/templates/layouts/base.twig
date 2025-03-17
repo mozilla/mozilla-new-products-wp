@@ -25,14 +25,17 @@
       class: custom_nav_classes|default(""),
     } %}
 
-    <main id="content" data-barba="container" class="barba-wrapper flex flex-col flex-1 {% block custom_content_classes %}{% endblock %}" tabindex="-1">
-      {% block pageBody %}
-      {% endblock %}
-    </main>
+    <section data-barba="container">
+      <main id="content" class="barba-wrapper flex flex-col flex-1 {% block custom_content_classes %}{% endblock %}" tabindex="-1">
+        {% block pageBody %}
+        {% endblock %}
+      </main>
+  
+      {% include "components/email-signup.twig" with {
+        override: email_signup_override|default(false),
+      } %}     
+    </section>
 
-    {% include "components/email-signup.twig" with {
-      override: email_signup_override|default(false),
-    } %}
 
     {% block footer %}
       {% include "components/footer.twig" %}
