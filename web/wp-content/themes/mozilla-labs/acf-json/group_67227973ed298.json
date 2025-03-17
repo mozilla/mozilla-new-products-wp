@@ -269,7 +269,7 @@
                 {
                   "key": "field_67d86252d71f4",
                   "label": "Product Affiliation",
-                  "name": "product_affiliation",
+                  "name": "product",
                   "aria-label": "",
                   "type": "post_object",
                   "instructions": "Include a product for optional affiliation.",
@@ -364,5 +364,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1742234367
+  "modified": 1742236532
 }

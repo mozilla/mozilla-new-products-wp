@@ -16,9 +16,14 @@
 
   <ul>
     {% for tease in block.teases %}
+      {% set product = tease.product ? get_post(tease.product) : null %}
+
       <li>
         {% if tease.image %}
-          <img src="{{ tease.image.url }}" alt="{{ tease.image.alt }}">
+          {% include "components/image-icon-watermark.twig" with {
+            image: get_image(tease.image),
+            icon: product and product.icons.grayscale ? get_image(product.icons.grayscale) : null
+          } %}
         {% endif %}
 
         <h3>{{ tease.title }}</h3>
