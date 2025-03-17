@@ -7,6 +7,17 @@ export function initBarba(config) {
   try {
     barba.init({
       debug: true,
+      prevent: ({ el }) => {
+        // Check if the clicked element or any of its parents is inside the WordPress admin bar
+        let currentElement = el;
+        while (currentElement) {
+          if (currentElement.id === 'wpadminbar' || currentElement.closest('#wpadminbar')) {
+            return true; // Prevent Barba from handling this link
+          }
+          currentElement = currentElement.parentElement;
+        }
+        return false; // Allow Barba to handle this link
+      },
       transitions: [
         {
           name: 'dissolve-transition',
