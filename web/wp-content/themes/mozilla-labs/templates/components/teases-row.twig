@@ -1,0 +1,39 @@
+{% if block.teases|length %}
+<section>
+  {% if block.headline or block.cta %}
+    <div>
+      {% if block.headline %}
+        <h2>{{ block.headline }}</h2>
+      {% endif %}
+
+      {% if block.cta %}
+        <a href="{{ block.cta.url }}">
+          {{ block.cta.title }}
+        </a>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <ul>
+    {% for tease in block.teases %}
+      <li>
+        {% if tease.image %}
+          <img src="{{ tease.image.url }}" alt="{{ tease.image.alt }}">
+        {% endif %}
+
+        <h3>{{ tease.title }}</h3>
+
+        {% if tease.description %}
+          <p>{{ tease.description }}</p>
+        {% endif %}
+
+        {% if tease.cta %}
+          <a href="{{ tease.cta.url }}">
+            {{ tease.cta.title }}
+          </a>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
