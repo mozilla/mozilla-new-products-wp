@@ -28,13 +28,13 @@
 {% endif %}
 
 <section class="mt-12 md:mt-24 grid grid-site centered-page">
-  <div class="col-span-full border border-content p-1">
-    <h2 class="uppercase text-center text-xs leading-3 tracking-wide">{{ title|default('Related stories') }}</h2>
+  <div class="col-span-full p-1">
+    <h2 class="uppercase text-center text-xs leading-3 tracking-wide">{{ block.title|default('The Latest') }} / <a href="/stories">View All</a></a></h2>
   </div>
 
-  <ul class="contents">
+  <ul class="col-span-full grid grid-cols-1 md:grid-cols-3 gap-6">
     {% for article in teases %}
-      <li class="mt-6 flex flex-col flex-1 col-span-full md:col-span-12 xl:col-span-6">
+      <li class="mt-6 flex flex-col flex-1">
         <div class="relative flex-1 flex flex-col gap-1 p-4 min-h-96">
   
           <div class="mt-6 relative w-[80%] aspect-square {{ article.thumbnail.id ? '' : 'bg-gray' }}">
@@ -48,7 +48,7 @@
           </div>
         
           <h3 class="type-headline-md text-left">
-            <a class="before:absolute before:inset-0 before:z-10 hocus:before:shadow-inner" href="{{ article.link }}">{{ article.title }}</a>
+            <a href="{{ article.link }}">{{ article.title }}</a>
           </h3>
         </div>
         
