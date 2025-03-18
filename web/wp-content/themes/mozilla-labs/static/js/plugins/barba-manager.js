@@ -23,6 +23,16 @@ export function initBarba(config) {
         const adminBar = document.getElementById('wpadminbar');
         return adminBar && (el.id === 'wpadminbar' || adminBar.contains(el));
       },
+      // Handle 404 errors with a hard redirect
+      requestError: (trigger, action, url, response) => {
+        // If it's a 404 error or any other error, perform a hard redirect
+        if (response && (response.status === 404 || response.status >= 400)) {
+          window.location.href = url.href;
+          return false; // Prevent Barba from handling the transition
+        }
+        // For other cases, let Barba handle it
+        return true;
+      },
       transitions: [
         {
           name: 'dissolve-transition',
