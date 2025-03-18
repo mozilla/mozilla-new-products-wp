@@ -3,7 +3,7 @@
     class: icon ? "[clip-path:polygon(0_calc(100%-var(--icon-size)),var(--icon-size)_calc(100%-var(--icon-size)),var(--icon-size)_100%,100%_100%,100%_0,0_0)]" : null,
     imgClass: "object-cover",
     img: image,
-    aspectRatio: "5/7"
+    aspectRatio: aspectRatio
   } %}
 
   {% if icon %}
@@ -11,7 +11,7 @@
       {% include "components/lazy-img.twig" with {
         class: "[.theme-dark_&]:invert",
         img: icon
-      } %}
+      } only %}
     </div>
   {% endif %}
 </div>
