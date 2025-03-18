@@ -6,15 +6,18 @@
 {% else %}
   {# Convert ACF post objects to Article objects #}
   {% set teases = block.posts|as_article %}
-  
-  {# append posts to teases #}
-  {% set teases = teases|merge(posts) %}
-  
+
   {# while teases is less than 3, add more posts from selected as they are not duplicates #}
   {% if teases|length < 3 %}
+    {% set teases_ids = [] %}
+    {% for tease in teases %}
+      {% set teases_ids = teases_ids|merge([tease.id ~ '']) %}
+    {% endfor %}
+
     {% for post in posts %}
-      {% if post not in teases %}
+      {% if not (post.id ~ '' in teases_ids) %}
         {% set teases = teases|merge([post]) %}
+        {% set teases_ids = teases_ids|merge([post.id ~ '']) %}
       {% endif %}
     {% endfor %}
   {% endif %}
@@ -32,7 +35,7 @@
   <ul class="contents">
     {% for article in teases %}
       <li class="mt-6 flex flex-col flex-1 col-span-full md:col-span-12 xl:col-span-6">
-        {{ dump(article) }}
+        {% include 'components/articles/previews/preview--' ~ article.topper_type|default('text_only') ~ '.twig' with { post: article } %}
       </li>
     {% endfor %}
   </ul>
