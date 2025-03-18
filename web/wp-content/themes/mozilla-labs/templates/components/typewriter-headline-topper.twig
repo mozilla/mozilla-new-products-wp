@@ -1,0 +1,53 @@
+<header class="text-content grid grid-site mt-[25vh]">
+  <div class="col-span-full md:col-start-3 md:col-end-11 flex flex-col gap-12 items-center">
+    <p class="group type-headline-80 text-center min-h-[6lh] sm:min-h-[4lh]" x-init x-typewriter>
+      <span class="text-balance block">{{ static_text }}</span>
+
+      <span class="inline-grid">
+        <span class="row-span-full col-start-1 col-end-2" aria-hidden="true">
+          {% for item in rotating_texts %}
+            <span x-typewriter:text="{{ item.text }}"></span>
+          {% endfor %}
+
+          <span class="inline-block h-[0.8lh] w-2 translate-y-[1px] bg-spot group-aria-busy:animate-none animate-blink"></span>
+        </span>
+
+        {#
+          Clone texts and hide them visually to reserve space for the visible ones.
+          This helps prevent layout shift in the topper. These texts are also
+          used for the accessible text.
+        #}
+        <span class="row-span-full col-start-1 col-end-2 inline-grid opacity-0">
+          {% for item in rotating_texts %}
+            <span class="row-span-full col-start-1 col-end-2">
+              {{ item.text }}... <span class="inline-block h-[0.8lh] translate-y-[1px] w-2 invisible"></span>
+            </span>
+          {% endfor %}
+        </span>
+      </span>
+    </p>
+
+    {% if description or cta %}
+    <div class="w-full flex flex-col gap-y-8 items-center">
+    {% if description %}
+      <div class="type-headline-20 text-center text-balance mx-auto w-5/6 md:max-w-xl ">{{ description }}</div>
+    {% endif %}
+
+    {% if cta %}
+      <a class="group w-fit flex col-span-2 gap-x-1" href="{{ cta.url }}">
+      <span class="w-fit button button-sm justify-start md:justify-initial group-hocus:bg-black group-hocus:bg-black [.theme-dark_&]:group-hocus:bg-white [.theme-dark_&]:group-hocus:text-black">
+        {{ cta.title }}
+      </span>
+
+      <div class="button button-square p-[10.5px] transition-all group-hocus:bg-black [.theme-dark_&]:group-hocus:bg-white [.theme-dark_&]:group-hocus:text-black" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" fill="none">
+          <path d="M9.875 5L3.91667 0V4.375H0.125V5.625H3.91667V10L9.875 5ZM5.16667 4.375V2.70833L7.91667 5L5.16667 7.29167V4.375Z" fill="currentColor"/>
+        </svg>
+      </div>
+    </a>
+    {% endif %}
+    </div>
+    {% endif %}
+
+  </div>
+</header>

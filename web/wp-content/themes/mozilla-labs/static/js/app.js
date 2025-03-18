@@ -17,6 +17,7 @@ import { marquee } from '@src/plugins/marquee';
 import { masonry } from '@src/plugins/masonry';
 import { tabs } from '@src/plugins/tabs';
 import { videoEmbed } from '@src/plugins/video-embed';
+import { typewriter } from '@src/plugins/typewriter';
 
 // Initialize Alpine
 window.Alpine = Alpine;
@@ -32,6 +33,7 @@ Alpine.plugin(marquee);
 Alpine.plugin(masonry);
 Alpine.plugin(tabs);
 Alpine.plugin(videoEmbed);
+Alpine.plugin(typewriter);
 
 // Start Alpine
 Alpine.start();

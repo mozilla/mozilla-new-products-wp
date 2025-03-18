@@ -1,15 +1,15 @@
 {
-  "key": "group_67227973ed298",
-  "title": "Landing: Blocks",
+  "key": "group_67d34538b5158",
+  "title": "Landing: Topper",
   "fields": [
     {
-      "key": "field_674332da21832",
-      "label": "Blocks",
-      "name": "blocks",
+      "key": "field_67d34538c6da3",
+      "label": "Topper",
+      "name": "topper",
       "aria-label": "",
       "type": "flexible_content",
       "instructions": "",
-      "required": 0,
+      "required": 1,
       "conditional_logic": 0,
       "wrapper": {
         "width": "",
@@ -18,23 +18,23 @@
       },
       "acfe_flexible_advanced": 0,
       "layouts": {
-        "layout_674339a146aa3": {
-          "key": "layout_674339a146aa3",
-          "name": "featured_product",
-          "label": "Featured Product",
+        "layout_67d3466aa517a": {
+          "key": "layout_67d3466aa517a",
+          "name": "typewriter_headline",
+          "label": "Typewriter Headline",
           "display": "block",
           "sub_fields": [
             {
-              "key": "field_67d58d057f8bf",
-              "label": "Headline",
-              "name": "headline",
+              "key": "field_67d34728c6da4",
+              "label": "Static Text",
+              "name": "static_text",
               "aria-label": "",
               "type": "text",
-              "instructions": "",
+              "instructions": "The static section of the topper headline. This text remains constant and should read legibly with each of the rotating texts.",
               "required": 1,
               "conditional_logic": 0,
               "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
               },
@@ -46,7 +46,53 @@
               "append": ""
             },
             {
-              "key": "field_67d58d477f8c1",
+              "key": "field_67d347b0c6da5",
+              "label": "Rotating Texts",
+              "name": "rotating_texts",
+              "aria-label": "",
+              "type": "repeater",
+              "instructions": "Each text item will be typed out one after another. Make sure each item reads legibly with the static text when joined together.",
+              "required": 1,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              },
+              "acfe_repeater_stylised_button": 0,
+              "layout": "table",
+              "min": 2,
+              "max": 0,
+              "collapsed": "field_67d34840c6da6",
+              "button_label": "Add Row",
+              "rows_per_page": 20,
+              "sub_fields": [
+                {
+                  "key": "field_67d34840c6da6",
+                  "label": "Text",
+                  "name": "text",
+                  "aria-label": "",
+                  "type": "text",
+                  "instructions": "",
+                  "required": 1,
+                  "conditional_logic": 0,
+                  "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                  },
+                  "default_value": "",
+                  "maxlength": "",
+                  "allow_in_bindings": 0,
+                  "placeholder": "",
+                  "prepend": "",
+                  "append": "",
+                  "parent_repeater": "field_67d347b0c6da5"
+                }
+              ]
+            },
+            {
+              "key": "field_67d34b20108cd",
               "label": "Description",
               "name": "description",
               "aria-label": "",
@@ -61,41 +107,27 @@
               },
               "default_value": "",
               "allow_in_bindings": 0,
-              "tabs": "visual",
-              "toolbar": "bold_italic_link",
-              "media_upload": 0,
+              "tabs": "all",
+              "toolbar": "full",
+              "media_upload": 1,
               "delay": 0
             },
             {
-              "key": "field_67d58d1b7f8c0",
-              "label": "Product",
-              "name": "product",
+              "key": "field_67d34b2f108ce",
+              "label": "CTA",
+              "name": "cta",
               "aria-label": "",
-              "type": "post_object",
+              "type": "link",
               "instructions": "",
-              "required": 1,
+              "required": 0,
               "conditional_logic": 0,
               "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
               },
-              "post_type": ["product"],
-              "post_status": ["publish"],
-              "taxonomy": "",
-              "return_format": "object",
-              "multiple": 0,
-              "save_custom": 0,
-              "save_post_status": "publish",
-              "acfe_bidirectional": {
-                "acfe_bidirectional_enabled": "0"
-              },
-              "allow_null": 0,
-              "allow_in_bindings": 0,
-              "bidirectional": 0,
-              "ui": 1,
-              "bidirectional_target": [],
-              "save_post_type": ""
+              "return_format": "array",
+              "allow_in_bindings": 0
             }
           ],
           "min": "",
@@ -110,9 +142,9 @@
           "acfe_flexible_category": false
         }
       },
-      "min": "",
-      "max": "",
-      "button_label": "Add Block",
+      "min": 1,
+      "max": 1,
+      "button_label": "Add Row",
       "acfe_flexible_stylised_button": false,
       "acfe_flexible_hide_empty_message": false,
       "acfe_flexible_empty_message": "",
@@ -147,12 +179,12 @@
       }
     ]
   ],
-  "menu_order": 1,
+  "menu_order": 0,
   "position": "normal",
   "style": "seamless",
   "label_placement": "top",
   "instruction_placement": "label",
-  "hide_on_screen": ["block_editor", "the_content"],
+  "hide_on_screen": "",
   "active": true,
   "description": "",
   "show_in_rest": 0,
@@ -161,5 +193,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1742081125
+  "modified": 1741924122
 }
