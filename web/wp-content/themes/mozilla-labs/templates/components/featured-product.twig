@@ -15,28 +15,34 @@
   {% endif %}
 
   {% if primary_icon %}
-    <a href="{{ product.link ?: '#' }}" class="relative flex aspect-square group">
+    <a href="{{ product.link }}" class="relative flex aspect-square group">
       {% include "components/lazy-img.twig" with {
-        class: "h-full absolute left-1/2 translate-x-[-50%]",
+        class: "h-full absolute left-1/2 -translate-x-1/2",
         img: primary_icon,
-        aspectRatio: "1/1"
+        aspectRatio: "1/1",
+        alt: "",
       } %}
 
-      <p class="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-black/60 text-white backdrop-blur-md whitespace-nowrap px-[10px] pt-[6.5px] pb-[5.5px] w-fit type-caption leading-none group-hover:bg-off-black/60 transition-all">{{ product.title }}</p>
+      <span class="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-black/60 text-white backdrop-blur-md whitespace-nowrap px-2.5 pt-2 pb-1.5 w-fit type-caption leading-none group-hocus:bg-off-black/60 transition-all">{{ product.title }}</span>
     </a>
   {% endif %}
 
   {% if backdrop %}
-    <a href="{{ product.link ?: '#' }}" class="relative flex aspect-square group">
+    <a href="{{ product.link }}" class="relative flex aspect-square group" aria-hidden="true" tabindex="-1">
       {% include "components/lazy-img.twig" with {
-        class: "h-full absolute left-1/2 translate-x-[-50%]",
+        class: "h-full absolute left-1/2 -translate-x-1/2",
         img: backdrop,
-        aspectRatio: "1/1"
+        aspectRatio: "1/1",
+        alt: "",
       } %}
 
       {% if product.tagline %}
-        <p class="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-black/60 text-white backdrop-blur-md whitespace-nowrap px-[10px] pt-[6.5px] pb-[5.5px] w-fit type-caption leading-none max-w-[80%] truncate group-hover:bg-off-black/60 transition-all">{{ product.tagline }}</p>
+        <span class="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-black/60 text-white backdrop-blur-md whitespace-nowrap px-2.5 pt-2 pb-1.5 w-fit type-caption leading-none max-w-[80%] truncate group-hocus:bg-off-black/60 transition-all">{{ product.tagline }}</span>
       {% endif %}
     </a>
+
+    {% if product.tagline %}
+      <p class="sr-only">{{ product.tagline }}</p>
+    {% endif %}
   {% endif %}
 </section>
