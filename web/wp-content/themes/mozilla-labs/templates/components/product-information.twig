@@ -2,8 +2,8 @@
   {% if information|length %}
   <dl class="contents">
     {% for item in information %}
-      <div class="flex flex-col gap-y-[1px]">
-        <dt class="text-xs text-secondary/60">{{ item.label }}</dt>
+      <div class="flex flex-col gap-y-[3px]">
+        <dt class="type-headline-12 text-secondary/60">{{ item.label }}</dt>
         <dd class="text-sm prose">{{ item.text }}</dd>
       </div>
     {% endfor %}

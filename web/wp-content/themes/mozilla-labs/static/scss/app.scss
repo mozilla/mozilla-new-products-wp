@@ -154,6 +154,14 @@ body {
     @apply text-2xl font-headline font-wdth-380 font-semibold leading-headline tracking-[-0.01em];
   }
 
+  .type-headline-14 {
+    @apply text-sm font-headline font-wdth-380 font-semibold leading-tight tracking-normal;
+  }
+
+  .type-headline-12 {
+    @apply text-xs font-headline font-wdth-380 font-light leading-tight tracking-normal;
+  }
+
   .type-headline-md {
     @apply text-xl font-headline font-semibold leading-tight;
   }
