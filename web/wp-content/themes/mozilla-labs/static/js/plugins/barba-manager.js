@@ -34,14 +34,13 @@ export function initBarba(config) {
             // Save scroll position for the current page before leaving
             const currentUrl = getUrlKey(data.current.url.href);
             scrollPositions[currentUrl] = window.scrollY;
-            // console.log(`Saved position ${window.scrollY} for ${currentUrl}`, scrollPositions);
 
             return fadeAnimation(data.current.container, 'out', duration);
           },
 
           afterLeave(data) {
             // Check if this is a back/forward navigation
-            const isBackNavigation = data.trigger === 'popstate';
+            const isBackNavigation = data.trigger === 'popstate' || data.trigger === 'back';
 
             // Only scroll to top for new navigation, not back button
             if (!isBackNavigation) {
@@ -104,11 +103,32 @@ export function initBarba(config) {
               const savedPosition = scrollPositions[currentUrl] || 0;
               // console.log(`Restoring to ${savedPosition} for ${currentUrl}`, scrollPositions);
 
-              // Use setTimeout to ensure the scroll happens after the page is fully rendered
-              // Using a slightly longer timeout for more reliability
+              // Store original scroll behavior
+              const originalScrollBehavior = document.documentElement.style.scrollBehavior;
+
+              // Disable smooth scrolling at the CSS level
+              document.documentElement.style.scrollBehavior = 'auto';
+
+              // Try to scroll immediately
+              window.scrollTo(0, savedPosition);
+              document.documentElement.scrollTop = savedPosition;
+              document.body.scrollTop = savedPosition;
+
+              // Also use setTimeout as a fallback to ensure the scroll happens after the page is fully rendered
               setTimeout(() => {
+                // Ensure smooth scrolling is still disabled
+                document.documentElement.style.scrollBehavior = 'auto';
+
+                // Force scroll with all possible methods
                 window.scrollTo(0, savedPosition);
-              }, 50);
+                document.documentElement.scrollTop = savedPosition;
+                document.body.scrollTop = savedPosition;
+
+                // Restore original scroll behavior after a delay
+                setTimeout(() => {
+                  document.documentElement.style.scrollBehavior = originalScrollBehavior;
+                }, 100);
+              }, 10);
             }
           },
         },
