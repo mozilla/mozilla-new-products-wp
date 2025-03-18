@@ -27,32 +27,39 @@
 
 {% endif %}
 
-<section class="mt-12 md:mt-24 grid grid-site centered-page">
-  <div class="col-span-full p-1">
-    <h2 class="uppercase text-center text-xs leading-3 tracking-wide">{{ block.title|default('The Latest') }} / <a href="/stories">View All</a></a></h2>
+<section class="grid grid-site my-32 md:my-52 first:mt-0 last:mb-0">
+<div class="col-span-full">
+<div class="col-span-full flex flex-row gap-x-1 justify-center type-caption font-bold mb-10">
+    <h2 class="text-white">{{ block.title|default('The Latest') }}</h2>
+    <span aria-hidden="true">/</span>
+     <a href="/stories" class="hocus:text-white">View All</a></a>
   </div>
 
-  <ul class="col-span-full grid grid-cols-1 md:grid-cols-3 gap-6">
+  <ul class="flex flex-col gap-y-20 md:grid md:grid-cols-3 md:gap-x-32 lg:gap-x-48 md:gap-y-32">
     {% for article in teases %}
-      <li class="mt-6 flex flex-col flex-1">
-        <div class="relative flex-1 flex flex-col gap-1 p-4 min-h-96">
-  
-          <div class="mt-6 relative w-[80%] aspect-square {{ article.thumbnail.id ? '' : 'bg-gray' }}">
-            {% if article.thumbnail.id %}
-              {% include 'components/lazy-img.twig' with { img: get_image(article.thumbnail.id), class: '!absolute inset-0 max-w-full max-h-full m-auto' } %}
+      <li class="flex flex-col gap-y-4">
+          {% if article.thumbnail %}
+            {% include "components/image-icon-watermark.twig" with {
+              image: article.thumbnail,
+              icon: product and product.icons.grayscale ? get_image(product.icons.grayscale) : null
+            } %}
+          {% endif %}
+
+          <div class="flex flex-col gap-y-0">
+            {% if article.category %}
+              <p class="text-secondary/60 block type-headline-14">{{ article.category }}</p>
             {% endif %}
+
+            <h3 class="type-headline-14 leading-tight">
+              <a href="{{ article.link }}">
+                {{ article.title }}
+              </a>
+            </h3>
           </div>
-        
-          <div class="relative text-sm">
-            {{ article.categories[0] }}
-          </div>
-        
-          <h3 class="type-headline-md text-left">
-            <a href="{{ article.link }}">{{ article.title }}</a>
-          </h3>
-        </div>
-        
-      </li>
+
+        </li>
     {% endfor %}
   </ul>
+</div>
+
 </section>
