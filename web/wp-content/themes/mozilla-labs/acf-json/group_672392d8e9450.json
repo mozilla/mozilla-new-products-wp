@@ -106,7 +106,7 @@
           "name": "grayscale",
           "aria-label": "",
           "type": "image",
-          "instructions": "The grayscale version of the icon. For best display, include a square asset.",
+          "instructions": "The grayscale version of the icon. For best display, include a square asset and include a transparent background as an SVG or PNG.",
           "required": 1,
           "conditional_logic": 0,
           "wrapper": {
@@ -514,5 +514,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1741788712
+  "modified": 1742224917
 }

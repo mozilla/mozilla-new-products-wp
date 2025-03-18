@@ -1,17 +1,24 @@
-<header class="centered-page z-50 theme-light {{ class|default("") }}">
+<header class="centered-page z-50 theme-light group {{ class|default("") }}">
   <nav class="fixed top-0 w-full grid grid-cols-[1fr_auto_1fr] gap-x-grid-site-gutter px-grid-site-margin items-center py-[20px]" aria-label="Site">
     <div class="flex gap-1">
       <a class="button button-sm button-dark button-square flex justify-center items-center" href="/">
         <span class="sr-only">Home</span>
-        <svg class="size-4 shrink-0 text-white" aria-hidden="true">
+        <svg class="size-4 shrink-0" aria-hidden="true">
           <use xlink:href="#flag"></use>
         </svg>
       </a>
 
-      {% if options.include_email_signup and options.navigation_cta %}
-      <a class="max-lg:hidden w-fit button button-sm button-dark" href="#email-signup">
-        {{ options.navigation_cta }}
-      </a>
+      {% if nav_pages_menu.cta_type == "link" %}
+        {% set link = nav_pages_menu.cta %}
+        <a class="max-lg:hidden w-fit button button-sm button-dark" href="{{ link.url }}">
+          {{ link.title }}
+        </a>
+
+      {% elseif nav_pages_menu.cta_type == "email-signup" %}
+        <a class="max-lg:hidden w-fit button button-sm button-dark" href="#email-signup">
+          {{ nav_pages_menu.email_signup_cta }}
+        </a>
+
       {% endif %}
     </div>
 
@@ -39,7 +46,7 @@
       <ul class="max-lg:hidden flex gap-1">
         {% for item in nav_pages_menu.items %}
         <li>
-          <a class="button button-sm aria-current:bg-black" href="{{ item.url }}" {% if item.current %}aria-current="page"{% endif %}>
+          <a class="button button-sm aria-current:bg-black group-[.theme-dark]:aria-current:bg-white group-[.theme-dark]:aria-current:text-black" href="{{ item.url }}" {% if item.current %}aria-current="page"{% endif %}>
             {{ item.name }}
           </a>
         </li>

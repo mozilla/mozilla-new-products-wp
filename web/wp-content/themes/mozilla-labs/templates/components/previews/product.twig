@@ -1,5 +1,5 @@
 <div class="border-t border-content flex flex-col">
-  <div class="px-grid-site-margin py-6 grid grid-cols-6 md:grid-cols-12 gap-6 relative items-center">
+  <a href="{{ product.link }}" class="px-grid-site-margin py-grid-site-margin grid grid-cols-6 md:grid-cols-12 gap-6 relative items-center group overflow-hidden">
     {% if product.thumbnail and product.show_image_on_index %}
       {% if archive %}
         <div class="w-1/2">
@@ -8,16 +8,17 @@
       {% endif %}
     {% endif %}
 
-
-
-    <div class="md:col-span-3">
+    <div class="md:col-span-3 flex flex-row gap-x-4 items-center z-10">
+      <img class="size-[48px]" src="{{ product.icons.grayscale.url }}">
       <h3 class="type-text-20 font-wght-480">
-        <a href="{{ product.link }}" class="before:absolute before:inset-0 before:z-10 hocus:text-action-focus-reverse hocus:bg-action-focus">{{ product.title }}</a>
+          {{ product.title }}
       </h3>
     </div>
-
-    <p class="md:col-span-6 type-text-20 font-wght-480">{{ product.tagline }}</p>
-  </div>
+    <p class="md:col-span-6 type-text-20 font-wght-480 z-10">{{ product.tagline }}</p>
+    <div class="absolute w-full h-full z-8 opacity-0 group-hocus:opacity-100">
+      {% include "components/lazy-img.twig" with { class:"absolute top-1/2 left-0 translate-y-[-50%]", img: product.thumbnail } %}
+    </div>
+  </a>
 
   {% if product.thumbnail and product.show_image_on_index %}
     {% if not archive %}
@@ -26,5 +27,7 @@
       </div>
     {% endif %}
   {% endif %}
+
+
 </div>
 

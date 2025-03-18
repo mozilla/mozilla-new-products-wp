@@ -18,6 +18,7 @@ import { masonry } from '@src/plugins/masonry';
 import { initBarba } from '@src/plugins/barba-manager';
 import { tabs } from '@src/plugins/tabs';
 import { videoEmbed } from '@src/plugins/video-embed';
+import { typewriter } from '@src/plugins/typewriter';
 
 // Initialize Alpine
 window.Alpine = Alpine;
@@ -33,6 +34,7 @@ Alpine.plugin(marquee);
 Alpine.plugin(masonry);
 Alpine.plugin(tabs);
 Alpine.plugin(videoEmbed);
+Alpine.plugin(typewriter);
 
 // Start Alpine for initial page load
 Alpine.start();
@@ -40,5 +42,5 @@ Alpine.start();
 // Initialize Barba, and pass Alpine to it for re-initialization
 initBarba({
   Alpine,
-  duration: 0.25,
+  duration: 0.125,
 });

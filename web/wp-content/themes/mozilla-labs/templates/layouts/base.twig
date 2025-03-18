@@ -26,14 +26,14 @@
     } %}
 
     <div data-barba="container">
-      <main id="content" class="barba-wrapper flex flex-col flex-1 {% block custom_content_classes %}{% endblock %}" tabindex="-1">
+      <main id="content" class="flex flex-col flex-1 {% block custom_content_classes %}{% endblock %}" tabindex="-1">
         {% block pageBody %}
         {% endblock %}
-      </main>
   
-      {% include "components/email-signup.twig" with {
-        override: email_signup_override|default(false),
-      } %}     
+        {% include "components/email-signup.twig" with {
+          override: email_signup_override|default(false),
+        } %}
+      </main>  
     </div>
 
 
