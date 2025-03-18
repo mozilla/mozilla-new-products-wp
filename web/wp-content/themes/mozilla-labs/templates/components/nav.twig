@@ -1,6 +1,6 @@
 <header class="centered-page z-50 theme-light group {{ class|default("") }}" x-init x-dialog>
   <nav class="fixed top-0 w-full grid grid-cols-[1fr_auto_1fr] gap-x-grid-site-gutter px-grid-site-margin items-center py-[20px]" aria-label="Site">
-    <div class="flex gap-1">
+    <div class="relative w-fit flex gap-1">
       <a class="button button-sm button-dark button-square flex justify-center items-center" href="/">
         <span class="sr-only">Home</span>
         <svg class="size-4 shrink-0" aria-hidden="true">
@@ -9,16 +9,21 @@
       </a>
 
       {% if nav_pages_menu.cta_type == "link" %}
-        {% set link = nav_pages_menu.cta %}
-        <a class="max-lg:hidden w-fit button button-sm button-dark" href="{{ link.url }}">
-          {{ link.title }}
-        </a>
+        {% set cta = nav_pages_menu.cta %}
 
       {% elseif nav_pages_menu.cta_type == "email-signup" %}
-        <a class="max-lg:hidden w-fit button button-sm button-dark" href="#email-signup">
-          {{ nav_pages_menu.email_signup_cta }}
-        </a>
+        {% set cta = { title: nav_pages_menu.email_signup_cta, url: "#email-signup" }%}
 
+      {% endif %}
+
+      {% if cta %}
+        <a class="peer max-lg:hidden w-fit button button-sm button-dark" href="{{ cta.url }}">
+          {{ cta.title }}
+        </a>
+      {% endif %}
+
+      {% if cta and nav_pages_menu.cta_description %}
+        <p class="invisible peer-hocus:visible hocus:visible w-full absolute top-full left-0 right-0 mt-1 p-3 max-lg:hidden text-xs font-sans leading-tight text-[#B4B4B4] pt-12 bg-black/70 [.theme-dark_&]:bg-off-black/70">{{ nav_pages_menu.cta_description }}</p>
       {% endif %}
     </div>
 
