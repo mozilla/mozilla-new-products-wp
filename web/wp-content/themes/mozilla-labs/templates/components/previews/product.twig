@@ -9,12 +9,47 @@
     {% endif %}
 
     <div class="md:col-span-3 flex flex-row gap-x-4 items-center z-10">
-      <img class="size-[48px] [clip-path:polygon(0_calc(100%-var(--icon-size)),var(--icon-size)_calc(100%-var(--icon-size)),var(--icon-size)_100%,100%_100%,100%_0,0_0)] invert" src="{{ product.icons.grayscale.url }}">
-      <h3 class="type-text-20 font-wght-480">
+      <div class="relative w-12 h-12 flex ">
+        {# Grayscale SVG #}
+        {% include "components/lazy-img.twig" with {
+        class: "size-12 invert group-hover:hidden",
+        img: get_image(product.icons.grayscale),
+        aspectRatio: aspectRatio
+        } %}
+
+        {# Colored SVG #}
+        {% include "components/lazy-img.twig" with {
+          class: "relative size-12 opacity-0 group-hover:opacity-100
+          ",
+          img: get_image(product.icons.primary),
+          aspectRatio: aspectRatio
+        } %}
+      </div>
+
+
+      <h3 class="relative type-text-20 leading-none font-wght-480 group-hover:text-[var(--foreground-color)]
+        group-hover:after:opacity-100
+        after:opacity-0
+        after:absolute after:inset-0 after:-z-10
+        after:w-[calc(100%+1.25rem)] after:h-[calc(100%+0.875rem)]
+        after:bg-[var(--background-color)] after:left-1/2 after:top-1/2
+        after:-translate-x-1/2 after:-translate-y-1/2" style="--background-color: {{ product.colors.background }}; --foreground-color: {{ product.colors.foreground }}">
           {{ product.title }}
       </h3>
     </div>
-    <p class="md:col-span-6 type-text-20 font-wght-480 z-10 whitespace-nowrap">{{ product.tagline }}</p>
+    <div class="hidden md:block md:col-span-6">
+     <p class="relative w-fit type-text-20 leading-none font-wght-480 z-10 whitespace-nowrap group-hover:text-[var(--foreground-color)]
+        group-hover:after:opacity-100
+        after:opacity-0
+        after:absolute after:inset-0 after:-z-10
+        after:w-[calc(100%+1.25rem)] after:h-[calc(100%+0.875rem)]
+        after:bg-[var(--background-color)] after:left-1/2 after:top-1/2
+        after:-translate-x-1/2 after:-translate-y-1/2
+        group-hover:text-black" style="--background-color: {{ product.colors.background }}; --foreground-color: {{ product.colors.foreground }}">
+      {{ product.tagline }}
+    </p>
+    </div>
+
     <div class="absolute w-full h-full z-8 opacity-0 group-hocus:opacity-100">
       {% include "components/lazy-img.twig" with { class:"absolute top-1/2 left-0 translate-y-[-50%]", img: product.thumbnail } %}
     </div>
