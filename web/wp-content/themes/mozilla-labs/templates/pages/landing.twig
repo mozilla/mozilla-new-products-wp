@@ -17,17 +17,12 @@
 
   <div class="relative">
     {% for block in page.meta("blocks") %}
-      {% if block.acf_fc_layout == "featured_product" %}
-        {% include "components/featured-product.twig" with {
-          block: block,
-        } %}
-
-      {% elseif block.acf_fc_layout == "teases_row" %}
-        {% include "components/teases-row.twig" with {
-          block: block,
-        } %}
-
-      {% endif %}
+      {% set template_name = block.acf_fc_layout|replace({'_': '-'}) %}
+      {% set template_path = "components/" ~ template_name ~ ".twig" %}
+      
+      {% include [template_path, "components/empty.twig"] ignore missing with {
+        block: block,
+      } %}
     {% endfor %}
   </div>
 {% endblock %}
