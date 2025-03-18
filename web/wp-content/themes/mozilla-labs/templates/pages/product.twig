@@ -34,9 +34,9 @@
   {% if post.categories|length %}
   <section class="col-start-1 col-span-full row-start-3 h-fit mt-auto py-grid-site-margin z-10">
     <h2 class="sr-only">Categories</h2>
-    <ul class="flex justify-center gap-2 flex-wrap">
+    <ul class="flex justify-center gap-1 flex-wrap">
       {% for category in post.categories %}
-        <li class="bg-off-black/60 text-white backdrop-blur-md whitespace-nowrap px-[10px] pt-[6.5px] pb-[5.5px] w-fit type-caption">
+        <li class="bg-off-black/60 text-white backdrop-blur-md whitespace-nowrap px-[10px] pt-[6.5px] pb-[5.5px] w-fit type-caption leading-none">
           {{ category.title }}
         </li>
       {% endfor %}

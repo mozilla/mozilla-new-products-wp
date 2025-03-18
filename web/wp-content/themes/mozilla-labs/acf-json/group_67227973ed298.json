@@ -18,20 +18,20 @@
       },
       "acfe_flexible_advanced": 0,
       "layouts": {
-        "layout_674332df416f6": {
-          "key": "layout_674332df416f6",
-          "name": "heading_and_text",
-          "label": "Heading and Text",
+        "layout_674339a146aa3": {
+          "key": "layout_674339a146aa3",
+          "name": "featured_product",
+          "label": "Featured Product",
           "display": "block",
           "sub_fields": [
             {
-              "key": "field_6743331921833",
-              "label": "Heading",
-              "name": "heading",
+              "key": "field_67d58d057f8bf",
+              "label": "Headline",
+              "name": "headline",
               "aria-label": "",
               "type": "text",
               "instructions": "",
-              "required": 0,
+              "required": 1,
               "conditional_logic": 0,
               "wrapper": {
                 "width": "",
@@ -46,9 +46,9 @@
               "append": ""
             },
             {
-              "key": "field_6743332121834",
-              "label": "Text",
-              "name": "text_content",
+              "key": "field_67d58d477f8c1",
+              "label": "Description",
+              "name": "description",
               "aria-label": "",
               "type": "wysiwyg",
               "instructions": "",
@@ -61,279 +61,41 @@
               },
               "default_value": "",
               "allow_in_bindings": 0,
-              "tabs": "all",
-              "toolbar": "full",
-              "media_upload": 1,
+              "tabs": "visual",
+              "toolbar": "bold_italic_link",
+              "media_upload": 0,
               "delay": 0
-            }
-          ],
-          "min": "",
-          "max": "",
-          "acfe_flexible_render_template": false,
-          "acfe_flexible_render_style": false,
-          "acfe_flexible_render_script": false,
-          "acfe_flexible_thumbnail": false,
-          "acfe_flexible_settings": false,
-          "acfe_flexible_settings_size": "medium",
-          "acfe_flexible_modal_edit_size": false,
-          "acfe_flexible_category": false
-        },
-        "layout_6743334021835": {
-          "key": "layout_6743334021835",
-          "name": "big_heading",
-          "label": "Big Heading",
-          "display": "block",
-          "sub_fields": [
-            {
-              "key": "field_6743336b21837",
-              "label": "Heading Text",
-              "name": "heading_text",
-              "aria-label": "",
-              "type": "text",
-              "instructions": "",
-              "required": 0,
-              "conditional_logic": 0,
-              "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-              },
-              "default_value": "",
-              "maxlength": "",
-              "allow_in_bindings": 0,
-              "placeholder": "",
-              "prepend": "",
-              "append": ""
-            }
-          ],
-          "min": "",
-          "max": "",
-          "acfe_flexible_render_template": false,
-          "acfe_flexible_render_style": false,
-          "acfe_flexible_render_script": false,
-          "acfe_flexible_thumbnail": false,
-          "acfe_flexible_settings": false,
-          "acfe_flexible_settings_size": "medium",
-          "acfe_flexible_modal_edit_size": false,
-          "acfe_flexible_category": false
-        },
-        "layout_6743337b21838": {
-          "key": "layout_6743337b21838",
-          "name": "timeline",
-          "label": "Key Dates",
-          "display": "block",
-          "sub_fields": [
-            {
-              "key": "field_674333a02183a",
-              "label": "Key Dates",
-              "name": "key_dates",
-              "aria-label": "",
-              "type": "repeater",
-              "instructions": "",
-              "required": 0,
-              "conditional_logic": 0,
-              "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-              },
-              "acfe_repeater_stylised_button": 0,
-              "layout": "table",
-              "min": 0,
-              "max": 0,
-              "collapsed": "",
-              "button_label": "Add Date",
-              "rows_per_page": 20,
-              "sub_fields": [
-                {
-                  "key": "field_674333ae2183b",
-                  "label": "Date",
-                  "name": "date",
-                  "aria-label": "",
-                  "type": "date_picker",
-                  "instructions": "",
-                  "required": 0,
-                  "conditional_logic": 0,
-                  "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                  },
-                  "display_format": "F j, Y",
-                  "return_format": "M j, Y",
-                  "first_day": 0,
-                  "allow_in_bindings": 0,
-                  "parent_repeater": "field_674333a02183a"
-                },
-                {
-                  "key": "field_674333e72183c",
-                  "label": "Description",
-                  "name": "description",
-                  "aria-label": "",
-                  "type": "text",
-                  "instructions": "",
-                  "required": 0,
-                  "conditional_logic": 0,
-                  "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                  },
-                  "default_value": "",
-                  "maxlength": "",
-                  "allow_in_bindings": 0,
-                  "placeholder": "",
-                  "prepend": "",
-                  "append": "",
-                  "parent_repeater": "field_674333a02183a"
-                }
-              ]
-            }
-          ],
-          "min": "",
-          "max": "",
-          "acfe_flexible_render_template": false,
-          "acfe_flexible_render_style": false,
-          "acfe_flexible_render_script": false,
-          "acfe_flexible_thumbnail": false,
-          "acfe_flexible_settings": false,
-          "acfe_flexible_settings_size": "medium",
-          "acfe_flexible_modal_edit_size": false,
-          "acfe_flexible_category": false
-        },
-        "layout_674334182183d": {
-          "key": "layout_674334182183d",
-          "name": "big_quote",
-          "label": "Big Quote",
-          "display": "block",
-          "sub_fields": [
-            {
-              "key": "field_6743341e2183f",
-              "label": "Quote",
-              "name": "quote",
-              "aria-label": "",
-              "type": "textarea",
-              "instructions": "",
-              "required": 0,
-              "conditional_logic": 0,
-              "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-              },
-              "default_value": "",
-              "acfe_textarea_code": 0,
-              "maxlength": "",
-              "allow_in_bindings": 0,
-              "rows": "",
-              "placeholder": "",
-              "new_lines": ""
             },
             {
-              "key": "field_6743343a21840",
-              "label": "Source Name",
-              "name": "source_name",
+              "key": "field_67d58d1b7f8c0",
+              "label": "Product",
+              "name": "product",
               "aria-label": "",
-              "type": "text",
+              "type": "post_object",
               "instructions": "",
-              "required": 0,
+              "required": 1,
               "conditional_logic": 0,
               "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
               },
-              "default_value": "",
-              "maxlength": "",
+              "post_type": ["product"],
+              "post_status": ["publish"],
+              "taxonomy": "",
+              "return_format": "object",
+              "multiple": 0,
+              "save_custom": 0,
+              "save_post_status": "publish",
+              "acfe_bidirectional": {
+                "acfe_bidirectional_enabled": "0"
+              },
+              "allow_null": 0,
               "allow_in_bindings": 0,
-              "placeholder": "",
-              "prepend": "",
-              "append": ""
-            },
-            {
-              "key": "field_6743344121841",
-              "label": "Source Title",
-              "name": "source_title",
-              "aria-label": "",
-              "type": "text",
-              "instructions": "",
-              "required": 0,
-              "conditional_logic": 0,
-              "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-              },
-              "default_value": "",
-              "maxlength": "",
-              "allow_in_bindings": 0,
-              "placeholder": "",
-              "prepend": "",
-              "append": ""
-            },
-            {
-              "key": "field_6743344821842",
-              "label": "Source Headshot",
-              "name": "source_headshot",
-              "aria-label": "",
-              "type": "image",
-              "instructions": "",
-              "required": 0,
-              "conditional_logic": 0,
-              "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-              },
-              "uploader": "",
-              "return_format": "array",
-              "library": "all",
-              "acfe_thumbnail": 0,
-              "min_width": "",
-              "min_height": "",
-              "min_size": "",
-              "max_width": "",
-              "max_height": "",
-              "max_size": "",
-              "mime_types": "",
-              "allow_in_bindings": 0,
-              "preview_size": "medium"
-            }
-          ],
-          "min": "",
-          "max": "",
-          "acfe_flexible_render_template": false,
-          "acfe_flexible_render_style": false,
-          "acfe_flexible_render_script": false,
-          "acfe_flexible_thumbnail": false,
-          "acfe_flexible_settings": false,
-          "acfe_flexible_settings_size": "medium",
-          "acfe_flexible_modal_edit_size": false,
-          "acfe_flexible_category": false
-        },
-        "layout_674339a146aa3": {
-          "key": "layout_674339a146aa3",
-          "name": "video",
-          "label": "Video",
-          "display": "block",
-          "sub_fields": [
-            {
-              "key": "field_674339aa46aa5",
-              "label": "Theme Video",
-              "name": "theme_video",
-              "aria-label": "",
-              "type": "oembed",
-              "instructions": "",
-              "required": 0,
-              "conditional_logic": 0,
-              "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-              },
-              "width": "",
-              "height": "",
-              "allow_in_bindings": 0
+              "bidirectional": 0,
+              "ui": 1,
+              "bidirectional_target": [],
+              "save_post_type": ""
             }
           ],
           "min": "",
@@ -350,7 +112,7 @@
       },
       "min": "",
       "max": "",
-      "button_label": "Add Section",
+      "button_label": "Add Block",
       "acfe_flexible_stylised_button": false,
       "acfe_flexible_hide_empty_message": false,
       "acfe_flexible_empty_message": "",
@@ -399,5 +161,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1741923894
+  "modified": 1742081125
 }
