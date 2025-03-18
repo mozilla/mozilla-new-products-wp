@@ -78,17 +78,23 @@
     {% endif %}
 
     {% if cta %}
-      <a class="group w-fit flex gap-x-1" href="{{ cta.url }}">
-        <span class="w-fit button button-sm justify-start md:justify-initial group-hocus:bg-black [.theme-dark_&]:group-hocus:bg-white [.theme-dark_&]:group-hocus:text-black">
-          {{ cta.title }}
-        </span>
+      <div class="flex flex-col gap-4">
+        {% if nav_pages_menu.cta_description %}
+          <p class="text-sm text-secondary/60 max-w-72">{{ nav_pages_menu.cta_description }}</p>
+        {% endif %}
 
-        <span class="button button-sm button-square p-2.5 transition-all group-hocus:bg-black [.theme-dark_&]:group-hocus:bg-white [.theme-dark_&]:group-hocus:text-black" aria-hidden="true">
-          <svg viewBox="0 0 10 10">
-            <path d="M9.875 5L3.91667 0V4.375H0.125V5.625H3.91667V10L9.875 5ZM5.16667 4.375V2.70833L7.91667 5L5.16667 7.29167V4.375Z" fill="currentColor"/>
-          </svg>
-        </span>
-      </a>
+        <a class="group w-fit flex gap-x-1" href="{{ cta.url }}">
+          <span class="w-fit button button-sm justify-start md:justify-initial group-hocus:bg-black [.theme-dark_&]:group-hocus:bg-white [.theme-dark_&]:group-hocus:text-black">
+            {{ cta.title }}
+          </span>
+
+          <span class="button button-sm button-square p-2.5 transition-all group-hocus:bg-black [.theme-dark_&]:group-hocus:bg-white [.theme-dark_&]:group-hocus:text-black" aria-hidden="true">
+            <svg viewBox="0 0 10 10">
+              <path d="M9.875 5L3.91667 0V4.375H0.125V5.625H3.91667V10L9.875 5ZM5.16667 4.375V2.70833L7.91667 5L5.16667 7.29167V4.375Z" fill="currentColor"/>
+            </svg>
+          </span>
+        </a>
+      </div>
     {% endif %}
   </nav>
 </div>

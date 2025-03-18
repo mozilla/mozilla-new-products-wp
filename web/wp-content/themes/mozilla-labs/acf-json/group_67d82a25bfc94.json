@@ -84,6 +84,34 @@
       "placeholder": "",
       "prepend": "",
       "append": ""
+    },
+    {
+      "key": "field_67d9defa05c21",
+      "label": "CTA Description",
+      "name": "cta_description",
+      "aria-label": "",
+      "type": "text",
+      "instructions": "Additional context to the CTA.",
+      "required": 0,
+      "conditional_logic": [
+        [
+          {
+            "field": "field_67d82be48922b",
+            "operator": "!=empty"
+          }
+        ]
+      ],
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "allow_in_bindings": 0,
+      "placeholder": "",
+      "prepend": "",
+      "append": ""
     }
   ],
   "location": [
@@ -109,5 +137,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1742220661
+  "modified": 1742331750
 }
