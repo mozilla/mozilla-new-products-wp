@@ -17,7 +17,7 @@ export function initBarba(config) {
 
   try {
     barba.init({
-      debug: true,
+      debug: false,
       prevent: ({ el }) => {
         // Check if the clicked element is inside the WordPress admin bar
         const adminBar = document.getElementById('wpadminbar');
