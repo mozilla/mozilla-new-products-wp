@@ -4,13 +4,16 @@ import gsap from 'gsap';
 export function initBarba(config) {
   const { Alpine, duration } = config;
 
-  // Store scroll positions keyed by URL
+  // Store scroll positions keyed by URL path (without hash)
   const scrollPositions = {};
 
-  // Store current scroll position before navigation
-  barba.hooks.before(() => {
-    scrollPositions[window.location.href] = window.scrollY;
-  });
+  // Helper function to get a consistent URL key (without hash)
+  const getUrlKey = url => {
+    // Create URL object to easily manipulate parts
+    const urlObj = new URL(url);
+    // Return origin + pathname + search (no hash)
+    return urlObj.origin + urlObj.pathname + urlObj.search;
+  };
 
   try {
     barba.init({
@@ -27,6 +30,12 @@ export function initBarba(config) {
 
           leave(data) {
             document.documentElement.classList.add('barba-transition');
+
+            // Save scroll position for the current page before leaving
+            const currentUrl = getUrlKey(data.current.url.href);
+            scrollPositions[currentUrl] = window.scrollY;
+            // console.log(`Saved position ${window.scrollY} for ${currentUrl}`, scrollPositions);
+
             return fadeAnimation(data.current.container, 'out', duration);
           },
 
@@ -88,13 +97,18 @@ export function initBarba(config) {
             const isBackNavigation = data.trigger === 'popstate' || data.trigger === 'back';
 
             if (isBackNavigation) {
+              // Get the current URL key from the data object
+              const currentUrl = getUrlKey(data.next.url.href);
+
               // Restore scroll position for back navigation
-              const savedPosition = scrollPositions[window.location.href] || 0;
-              // console.log(`restoring to ${savedPosition}`, scrollPositions);
+              const savedPosition = scrollPositions[currentUrl] || 0;
+              // console.log(`Restoring to ${savedPosition} for ${currentUrl}`, scrollPositions);
+
               // Use setTimeout to ensure the scroll happens after the page is fully rendered
+              // Using a slightly longer timeout for more reliability
               setTimeout(() => {
                 window.scrollTo(0, savedPosition);
-              }, 10);
+              }, 50);
             }
           },
         },
