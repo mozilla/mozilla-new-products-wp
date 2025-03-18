@@ -40,7 +40,8 @@ export function initBarba(config) {
 
           afterLeave(data) {
             // Check if this is a back/forward navigation
-            const isBackNavigation = data.trigger === 'popstate' || data.trigger === 'back';
+            const isBackNavigation =
+              data.trigger === 'popstate' || data.trigger === 'back' || data.trigger === 'forward';
 
             // Only scroll to top for new navigation, not back button
             if (!isBackNavigation) {
@@ -86,14 +87,10 @@ export function initBarba(config) {
           enter(data) {
             // Re-initialize Alpine
             Alpine.start();
-            return fadeAnimation(data.next.container, 'in', duration);
-          },
-
-          after(data) {
-            document.documentElement.classList.remove('barba-transition');
 
             // Check if this is a back/forward navigation
-            const isBackNavigation = data.trigger === 'popstate' || data.trigger === 'back';
+            const isBackNavigation =
+              data.trigger === 'popstate' || data.trigger === 'back' || data.trigger === 'forward';
 
             if (isBackNavigation) {
               // Get the current URL key from the data object
@@ -130,6 +127,12 @@ export function initBarba(config) {
                 }, 100);
               }, 10);
             }
+
+            return fadeAnimation(data.next.container, 'in', duration);
+          },
+
+          after() {
+            document.documentElement.classList.remove('barba-transition');
           },
         },
       ],
