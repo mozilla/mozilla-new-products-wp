@@ -15,17 +15,19 @@
     {% include "components/typewriter-headline-topper.twig" with topper %}
   {% endif %}
 
-  {% for block in page.meta("blocks") %}
-    {% if block.acf_fc_layout == "featured_product" %}
-      {% include "components/featured-product.twig" with {
-        block: block,
-      } %}
+  <div class="relative">
+    {% for block in page.meta("blocks") %}
+      {% if block.acf_fc_layout == "featured_product" %}
+        {% include "components/featured-product.twig" with {
+          block: block,
+        } %}
 
-    {% elseif block.acf_fc_layout == "teases_row" %}
-      {% include "components/teases-row.twig" with {
-        block: block,
-      } %}
+      {% elseif block.acf_fc_layout == "teases_row" %}
+        {% include "components/teases-row.twig" with {
+          block: block,
+        } %}
 
-    {% endif %}
-  {% endfor %}
+      {% endif %}
+    {% endfor %}
+  </div>
 {% endblock %}
