@@ -20,7 +20,7 @@
       {% set template_name = block.acf_fc_layout|replace({'_': '-'}) %}
       {% set template_path = "components/" ~ template_name ~ ".twig" %}
       
-      {% include [template_path, "components/empty.twig"] ignore missing with {
+      {% include [template_path] ignore missing with {
         block: block,
       } %}
     {% endfor %}

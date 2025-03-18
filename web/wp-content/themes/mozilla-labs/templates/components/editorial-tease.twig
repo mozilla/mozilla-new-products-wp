@@ -1,0 +1,39 @@
+{% set posts = posts %}
+
+{# if there are no selected block posts, set teases = the first 3 posts #}
+{% if block.posts is empty %}
+  {% set teases = posts|slice(0, 3) %}
+{% else %}
+  {# Convert ACF post objects to Article objects #}
+  {% set teases = block.posts|as_article %}
+  
+  {# append posts to teases #}
+  {% set teases = teases|merge(posts) %}
+  
+  {# while teases is less than 3, add more posts from selected as they are not duplicates #}
+  {% if teases|length < 3 %}
+    {% for post in posts %}
+      {% if post not in teases %}
+        {% set teases = teases|merge([post]) %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  {# finally truncate to 3 #}
+  {% set teases = teases|slice(0, 3) %}
+
+{% endif %}
+
+<section class="mt-12 md:mt-24 grid grid-site centered-page">
+  <div class="col-span-full border border-content p-1">
+    <h2 class="uppercase text-center text-xs leading-3 tracking-wide">{{ title|default('Related stories') }}</h2>
+  </div>
+
+  <ul class="contents">
+    {% for article in teases %}
+      <li class="mt-6 flex flex-col flex-1 col-span-full md:col-span-12 xl:col-span-6">
+        {{ dump(article) }}
+      </li>
+    {% endfor %}
+  </ul>
+</section>
