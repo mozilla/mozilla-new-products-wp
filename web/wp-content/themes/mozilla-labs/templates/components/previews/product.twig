@@ -8,7 +8,7 @@
       {% endif %}
     {% endif %}
 
-    <div class="md:col-span-3 flex flex-row gap-x-4 items-center z-10">
+    <div class="col-span-3 flex flex-row gap-x-4 items-center z-10">
       <div class="relative w-12 h-12 flex ">
         {# Grayscale SVG #}
         {% include "components/lazy-img.twig" with {
@@ -49,8 +49,20 @@
     </p>
     </div>
 
+    <div class="flex col-span-3 justify-end">
+     <p class="relative w-fit type-text-20 leading-none font-wght-480 z-10 whitespace-nowrap group-hover:text-[var(--foreground-color)]
+        group-hover:after:opacity-100
+        after:opacity-0
+        after:absolute after:inset-0 after:-z-10
+        after:w-[calc(100%+1.25rem)] after:h-[calc(100%+0.875rem)]
+        after:bg-[var(--background-color)] after:left-1/2 after:top-1/2
+        after:-translate-x-1/2 after:-translate-y-1/2" style="--background-color: {{ product.colors.background }}; --foreground-color: {{ product.colors.foreground }}">
+      View Details, Download
+    </p>
+    </div>
+
     <div class="absolute w-full h-full z-8 opacity-0 group-hocus:opacity-100">
-      {% include "components/lazy-img.twig" with { class:"absolute top-1/2 left-0 translate-y-[-50%]", img: product.thumbnail } %}
+      {% include "components/lazy-img.twig" with { class:"absolute top-1/2 left-0 -translate-y-1/2", img: product.thumbnail } %}
     </div>
   </a>
 
