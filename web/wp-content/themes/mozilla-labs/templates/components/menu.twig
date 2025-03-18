@@ -42,6 +42,18 @@
     </div>
   </div>
 
+  <div class="relative w-full flex justify-center overflow-hidden mb-4">
+    <img
+      class="lazyload opacity-0 [&.lazyloaded]:opacity-100 transition-opacity max-w-none w-[120vw]"
+      src="{{ theme.link }}/static/img/globe-green-dither.png"
+      alt=""
+      width="500"
+      height="270"
+    />
+
+    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-b from-transparent to-main h-1/2 w-full"></div>
+  </div>
+
   <nav class="px-grid-site-margin" aria-label="Site">
     <ul class="flex flex-wrap gap-2">
       {% for item in nav_pages_menu.items %}
