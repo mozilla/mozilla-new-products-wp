@@ -8,15 +8,9 @@ export function initBarba(config) {
     barba.init({
       debug: true,
       prevent: ({ el }) => {
-        // Check if the clicked element or any of its parents is inside the WordPress admin bar
-        let currentElement = el;
-        while (currentElement) {
-          if (currentElement.id === 'wpadminbar' || currentElement.closest('#wpadminbar')) {
-            return true; // Prevent Barba from handling this link
-          }
-          currentElement = currentElement.parentElement;
-        }
-        return false; // Otherwise allow Barba to handle link
+        // Check if the clicked element is inside the WordPress admin bar
+        const adminBar = document.getElementById('wpadminbar');
+        return adminBar && (el.id === 'wpadminbar' || adminBar.contains(el));
       },
       transitions: [
         {
@@ -35,7 +29,7 @@ export function initBarba(config) {
           },
 
           beforeEnter(data) {
-            gsap.set(data.next.container, { opacity: 0 });
+            // gsap.set(data.next.container, { opacity: 0 });
 
             // Parse the next page's HTML
             const parser = new DOMParser();
