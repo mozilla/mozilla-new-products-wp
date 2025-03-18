@@ -23,7 +23,8 @@
         {% if tease.image %}
           {% include "components/image-icon-watermark.twig" with {
             image: get_image(tease.image),
-            icon: product and product.icons.grayscale ? get_image(product.icons.grayscale) : null
+            icon: product and product.icons.grayscale ? get_image(product.icons.grayscale) : null,
+            aspectRatio: "5/7"
           } %}
         {% endif %}
 
