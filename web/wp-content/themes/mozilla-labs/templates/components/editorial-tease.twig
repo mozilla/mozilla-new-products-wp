@@ -37,6 +37,7 @@
 
   <ul class="flex flex-col gap-y-20 md:grid md:grid-cols-3 md:gap-x-32 lg:gap-x-48 md:gap-y-32">
     {% for article in teases %}
+      {% set product = article.product %}
       <li class="flex flex-col gap-y-4">
           {% if article.thumbnail %}
             {% include "components/image-icon-watermark.twig" with {
