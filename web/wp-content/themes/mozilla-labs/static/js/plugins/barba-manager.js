@@ -4,6 +4,14 @@ import gsap from 'gsap';
 export function initBarba(config) {
   const { Alpine, duration } = config;
 
+  // Store scroll positions keyed by URL
+  const scrollPositions = {};
+
+  // Store current scroll position before navigation
+  barba.hooks.before(() => {
+    scrollPositions[window.location.href] = window.scrollY;
+  });
+
   try {
     barba.init({
       debug: true,
@@ -22,10 +30,16 @@ export function initBarba(config) {
             return fadeAnimation(data.current.container, 'out', duration);
           },
 
-          afterLeave() {
-            window.scrollTo(0, 0);
-            document.documentElement.scrollTop = 0;
-            document.body.scrollTop = 0;
+          afterLeave(data) {
+            // Check if this is a back/forward navigation
+            const isBackNavigation = data.trigger === 'popstate';
+
+            // Only scroll to top for new navigation, not back button
+            if (!isBackNavigation) {
+              window.scrollTo(0, 0);
+              document.documentElement.scrollTop = 0;
+              document.body.scrollTop = 0;
+            }
           },
 
           beforeEnter(data) {
@@ -67,8 +81,21 @@ export function initBarba(config) {
             return fadeAnimation(data.next.container, 'in', duration);
           },
 
-          after() {
+          after(data) {
             document.documentElement.classList.remove('barba-transition');
+
+            // Check if this is a back/forward navigation
+            const isBackNavigation = data.trigger === 'popstate' || data.trigger === 'back';
+
+            if (isBackNavigation) {
+              // Restore scroll position for back navigation
+              const savedPosition = scrollPositions[window.location.href] || 0;
+              // console.log(`restoring to ${savedPosition}`, scrollPositions);
+              // Use setTimeout to ensure the scroll happens after the page is fully rendered
+              setTimeout(() => {
+                window.scrollTo(0, savedPosition);
+              }, 10);
+            }
           },
         },
       ],
