@@ -35,7 +35,24 @@
   <ul class="contents">
     {% for article in teases %}
       <li class="mt-6 flex flex-col flex-1 col-span-full md:col-span-12 xl:col-span-6">
-        {% include 'components/articles/previews/preview--' ~ article.topper_type|default('text_only') ~ '.twig' with { post: article } %}
+        <div class="relative flex-1 flex flex-col gap-1 p-4 min-h-96">
+  
+          <div class="mt-6 relative w-[80%] aspect-square {{ article.thumbnail.id ? '' : 'bg-gray' }}">
+            {% if article.thumbnail.id %}
+              {% include 'components/lazy-img.twig' with { img: get_image(article.thumbnail.id), class: '!absolute inset-0 max-w-full max-h-full m-auto' } %}
+            {% endif %}
+          </div>
+        
+          <div class="relative z-20">
+            {{ article.categories[0] }}
+          </div>
+        
+          <h3 class="mt-3 type-headline-md text-left text-balance leading-tighter">
+            <a class="before:absolute before:inset-0 before:z-10 hocus:before:shadow-inner" href="{{ article.link }}">{{ article.title }}</a>
+          </h3>
+          <p class="type-sans-sm text-center text-balance">{{ article.subtitle }}</p>
+        </div>
+        
       </li>
     {% endfor %}
   </ul>
