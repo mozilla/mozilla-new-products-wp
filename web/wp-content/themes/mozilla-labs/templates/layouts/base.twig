@@ -25,7 +25,7 @@
       class: custom_nav_classes|default(""),
     } %}
 
-    <section data-barba="container">
+    <div data-barba="container">
       <main id="content" class="barba-wrapper flex flex-col flex-1 {% block custom_content_classes %}{% endblock %}" tabindex="-1">
         {% block pageBody %}
         {% endblock %}
@@ -34,7 +34,7 @@
       {% include "components/email-signup.twig" with {
         override: email_signup_override|default(false),
       } %}     
-    </section>
+    </div>
 
 
     {% block footer %}
