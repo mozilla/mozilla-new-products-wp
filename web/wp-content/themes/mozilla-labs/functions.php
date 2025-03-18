@@ -45,6 +45,8 @@ add_action( 'after_setup_theme', array( $theme_manager, 'setup_theme' ) );
 
 /**
  * Add a Twig filter to convert WP_Post objects to Article objects
+ * This allows "Post Object" fields in ACF to be used alongside standard
+ * Timber post query results, which return Article class objects.
  */
 add_filter(
 	'timber/twig',
