@@ -1,0 +1,48 @@
+{% if block.teases|length %}
+<section class="grid grid-site my-28">
+  {% if block.headline or block.cta %}
+    <div class=" col-span-full flex flex-row gap-x-1 justify-center type-caption font-bold my-10">
+      {% if block.headline %}
+        <h2 class="text-white">{{ block.headline }}</h2>
+      {% endif %}
+
+      {% if block.cta %}
+        <span aria-hidden="true">/</span>
+        <a href="{{ block.cta.url }}" class="hocus:text-white">
+          {{ block.cta.title }}
+        </a>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <ul class="col-span-full flex flex-col gap-y-10 md:grid md:grid-cols-2 lg:flex lg:flex-row gap-x-grid-site-gutter">
+    {% for tease in block.teases %}
+      {% set product = tease.product ? get_post(tease.product) : null %}
+
+      <li class="w-full flex flex-col">
+        {% if tease.image %}
+          {% include "components/image-icon-watermark.twig" with {
+            image: get_image(tease.image),
+            icon: product and product.icons.grayscale ? get_image(product.icons.grayscale) : null,
+            aspectRatio: "5/7"
+          } %}
+        {% endif %}
+
+        <div class="flex flex-col my-8">
+          <h3 class="text-sm">{{ tease.title }}</h3>
+
+          {% if tease.description|trim is not empty %}
+            <p class="text-sm text-secondary/60">{{ tease.description|striptags('<strong><em><a>') }}</p>
+          {% endif %}
+        </div>
+
+        {% if tease.cta %}
+          <a href="{{ tease.cta.url }}" class="text-sm underline mt-auto">
+            {{ tease.cta.title }}
+          </a>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}

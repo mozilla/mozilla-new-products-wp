@@ -13,29 +13,18 @@
 
         <li class="flex flex-col gap-y-4">
           {% if post.thumbnail %}
-          <div class="relative [--icon-size:4rem] md:[--icon-size:3rem] lg:[--icon-size:4rem]">
-            {% include "components/lazy-img.twig" with {
-              class: product and product.icons.grayscale ? "[clip-path:polygon(0_calc(100%-var(--icon-size)),var(--icon-size)_calc(100%-var(--icon-size)),var(--icon-size)_100%,100%_100%,100%_0,0_0)]" : null,
-              img: get_image(post.thumbnail)
+            {% include "components/image-icon-watermark.twig" with {
+              image: post.thumbnail,
+              icon: product and product.icons.grayscale ? get_image(product.icons.grayscale) : null
             } %}
-
-            {% if product and product.icons.grayscale %}
-              <div class="absolute left-0 bottom-0 w-[--icon-size] pr-1.5 pt-1.5">
-                {% include "components/lazy-img.twig" with {
-                  class: "[.theme-dark_&]:invert",
-                  img: get_image(product.icons.grayscale)
-                } %}
-              </div>
-            {% endif %}
-          </div>
           {% endif %}
 
-          <div class="flex flex-col gap-y-[1px]">
+          <div class="flex flex-col gap-y-0">
             {% if post.category %}
-              <p class="text-secondary/60 block font-headline text-xs font-wdth-380 font-light tracking-normal">{{ post.category }}</p>
+              <p class="text-secondary/60 block type-headline-14">{{ post.category }}</p>
             {% endif %}
 
-            <h3 class="text-sm leading-tight">
+            <h3 class="type-headline-14 leading-tight">
               <a href="{{ post.link }}">
                 {{ post.title }}
               </a>

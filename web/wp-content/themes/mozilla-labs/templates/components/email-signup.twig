@@ -89,7 +89,7 @@
     </form>
 
     {% if (override is defined and override.graphic) or global_signup.graphic %}
-    <div class="col-start-1 col-end-7 md:col-start-2 md:col-end-12 -mx-grid-site-margin md:mx-0 aspect-square sm:aspect-[7/5] md:aspect-[16/9] xl:aspect-[2400/926] row-span-full overflow-hidden relative">
+    <div class="col-start-1 col-end-7 md:col-start-2 md:col-end-12 -mx-grid-site-margin md:mx-0 aspect-square sm:aspect-[7/5] md:aspect-[16/9] xl:aspect-[2400/926] row-span-full overflow-hidden pointer-events-none relative">
       {% include "components/lazy-img.twig" with {
         class: "h-full absolute left-1/2 translate-x-[-50%]",
         img: get_image(override.graphic|default(global_signup.graphic)),
@@ -97,7 +97,6 @@
         aspectRatio: "2400/926"
       } %}
 
-      {# Replace with Dithered Gradient #}
       <svg class="absolute h-[173px] w-full bottom-0 left-0 pointer-events-none" xmlns="http://www.w3.org/2000/svg" style="color: rgb(var(--color-main))">
         <defs>
           <pattern id="tilePattern" patternUnits="userSpaceOnUse" width="16" height="173">

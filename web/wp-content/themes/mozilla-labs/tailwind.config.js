@@ -110,6 +110,7 @@ module.exports = {
 
       animation: {
         marquee: 'marquee var(--marquee-time) linear infinite',
+        blink: 'blink 1.5s infinite step-end',
       },
 
       aspectRatio: {
@@ -164,6 +165,10 @@ module.exports = {
           '0%': { transform: 'translateX(0)' },
           '100%': { transform: 'translateX(calc(-1 * var(--marquee-width)))' },
         },
+        blink: {
+          '0%': { opacity: '1' },
+          '50%': { opacity: '0' },
+        },
       },
 
       letterSpacing: {
@@ -171,6 +176,7 @@ module.exports = {
       },
 
       lineHeight: {
+        tightest: '0.90',
         headline: '0.96',
         tighter: '1.05',
       },

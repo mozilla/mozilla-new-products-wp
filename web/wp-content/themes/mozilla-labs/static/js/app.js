@@ -11,7 +11,8 @@ import { accordion } from '@src/plugins/accordion';
 import { hangPunctuation } from '@src/plugins/hang-punctuation';
 import { links } from '@src/plugins/links';
 import { videoEmbed } from '@src/plugins/video-embed';
-import { dialog } from './plugins/dialog';
+import { dialog } from '@src/plugins/dialog';
+import { typewriter } from '@src/plugins/typewriter';
 
 // Initialize Alpine
 window.Alpine = Alpine;
@@ -23,6 +24,7 @@ Alpine.plugin(focus);
 Alpine.plugin(hangPunctuation);
 Alpine.plugin(links);
 Alpine.plugin(videoEmbed);
+Alpine.plugin(typewriter);
 
 // Start Alpine
 Alpine.start();
