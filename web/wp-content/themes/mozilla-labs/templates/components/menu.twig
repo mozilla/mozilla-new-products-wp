@@ -1,30 +1,14 @@
-<header class="centered-page z-50 theme-light group {{ class|default("") }}" x-init x-dialog>
-  <nav class="fixed top-0 w-full grid grid-cols-[1fr_auto_1fr] gap-x-grid-site-gutter px-grid-site-margin items-center py-[20px]" aria-label="Site">
-    <div class="relative w-fit flex gap-1">
+<div class="fixed inset-0 theme-light bg-main z-dialog flex flex-col" x-dialog:content>
+  <h2 class="sr-only" x-dialog:title>Menu</h2>
+
+  <div class="w-full grid grid-cols-[1fr_auto_1fr] gap-x-grid-site-gutter px-grid-site-margin items-center py-[20px]">
+    <div class="flex gap-1">
       <a class="button button-sm button-dark button-square flex justify-center items-center" href="/">
         <span class="sr-only">Home</span>
-        <svg class="size-4 shrink-0" aria-hidden="true">
+        <svg class="size-4 shrink-0 text-white" aria-hidden="true">
           <use xlink:href="#flag"></use>
         </svg>
       </a>
-
-      {% if nav_pages_menu.cta_type == "link" %}
-        {% set cta = nav_pages_menu.cta %}
-
-      {% elseif nav_pages_menu.cta_type == "email-signup" %}
-        {% set cta = { title: nav_pages_menu.email_signup_cta, url: "#email-signup" }%}
-
-      {% endif %}
-
-      {% if cta %}
-        <a class="peer max-lg:hidden w-fit button button-sm button-dark" href="{{ cta.url }}">
-          {{ cta.title }}
-        </a>
-      {% endif %}
-
-      {% if cta and nav_pages_menu.cta_description %}
-        <p class="invisible peer-hocus:visible hocus:visible w-full absolute top-full left-0 right-0 mt-1 p-3 max-lg:hidden text-xs font-sans leading-tight text-[#B4B4B4] pt-12 bg-black/70 [.theme-dark_&]:bg-off-black/70">{{ nav_pages_menu.cta_description }}</p>
-      {% endif %}
     </div>
 
     <a class="mx-auto py-1 lg:h-full flex items-center w-fit" href="/">
@@ -47,27 +31,70 @@
       </svg>
     </a>
 
-    <div class="ml-auto">
-      <ul class="max-lg:hidden flex gap-1">
-        {% for item in nav_pages_menu.items %}
-        <li>
-          <a class="button button-sm aria-current:bg-black group-[.theme-dark]:aria-current:bg-white group-[.theme-dark]:aria-current:text-black" href="{{ item.url }}" {% if item.current %}aria-current="page"{% endif %}>
-            {{ item.name }}
-          </a>
-        </li>
-        {% endfor %}
-      </ul>
 
-      <button class="lg:hidden w-fit button button-sm button-square" x-dialog:trigger>
-        <span class="sr-only">Menu</span>
+    <div class="ml-auto">
+      <button class="lg:hidden w-fit button button-sm button-square" x-dialog:close>
+        <span class="sr-only">Close</span>
         <svg class="size-4" aria-hidden="true">
-          <use href="#menu"></use>
+          <use href="#x-close"></use>
         </svg>
       </button>
     </div>
-  </nav>
+  </div>
 
-  <template x-teleport="body">
-    {% include "components/menu.twig" %}
-  </template>
-</header>
+  <div class="relative w-full flex justify-center overflow-hidden">
+    <img
+      class="lazyload opacity-0 [&.lazyloaded]:opacity-100 transition-opacity max-w-none w-[120vw]"
+      src="{{ theme.link }}/static/img/globe-green-dither.png"
+      alt=""
+      width="500"
+      height="270"
+    />
+
+    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-b from-transparent to-main h-1/2 w-full"></div>
+  </div>
+
+  <nav class="flex-1 p-grid-site-margin flex flex-col justify-between" aria-label="Site">
+    <ul class="flex flex-wrap gap-2">
+      {% for item in nav_pages_menu.items %}
+      <li>
+        <a
+          class="button button-sm aria-current:bg-black group-[.theme-dark]:aria-current:bg-white group-[.theme-dark]:hover:bg-white group-[.theme-dark]:aria-current:text-black group-[.theme-dark]:hover:text-black"
+          href="{{ item.url }}"
+          {% if item.current %}aria-current="page"{% endif %}
+        >
+          {{ item.name }}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+
+    {% if nav_pages_menu.cta_type == "link" %}
+      {% set cta = nav_pages_menu.cta %}
+
+    {% elseif nav_pages_menu.cta_type == "email-signup" %}
+      {% set cta = { title: nav_pages_menu.email_signup_cta, url: "#email-signup" }%}
+
+    {% endif %}
+
+    {% if cta %}
+      <div class="flex flex-col gap-4">
+        {% if nav_pages_menu.cta_description %}
+          <p class="text-sm text-secondary/60 max-w-72">{{ nav_pages_menu.cta_description }}</p>
+        {% endif %}
+
+        <a class="group w-fit flex gap-x-1" href="{{ cta.url }}">
+          <span class="w-fit button button-sm justify-start md:justify-initial group-hocus:bg-black [.theme-dark_&]:group-hocus:bg-white [.theme-dark_&]:group-hocus:text-black">
+            {{ cta.title }}
+          </span>
+
+          <span class="button button-sm button-square p-2.5 transition-all group-hocus:bg-black [.theme-dark_&]:group-hocus:bg-white [.theme-dark_&]:group-hocus:text-black" aria-hidden="true">
+            <svg viewBox="0 0 10 10">
+              <path d="M9.875 5L3.91667 0V4.375H0.125V5.625H3.91667V10L9.875 5ZM5.16667 4.375V2.70833L7.91667 5L5.16667 7.29167V4.375Z" fill="currentColor"/>
+            </svg>
+          </span>
+        </a>
+      </div>
+    {% endif %}
+  </nav>
+</div>
