@@ -27,11 +27,11 @@
     <main id="content" class="flex flex-col flex-1 {% block custom_content_classes %}{% endblock %}" tabindex="-1">
       {% block pageBody %}
       {% endblock %}
-    </main>
 
-    {% include "components/email-signup.twig" with {
-      override: email_signup_override|default(false),
-    } %}
+      {% include "components/email-signup.twig" with {
+        override: email_signup_override|default(false),
+      } %}
+    </main>
 
     {% block footer %}
       {% include "components/footer.twig" %}

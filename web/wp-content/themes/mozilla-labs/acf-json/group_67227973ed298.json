@@ -1,28 +1,7 @@
 {
   "key": "group_67227973ed298",
-  "title": "Landing Page",
+  "title": "Landing: Blocks",
   "fields": [
-    {
-      "key": "field_6743405b9240a",
-      "label": "Overview Title",
-      "name": "overview_title",
-      "aria-label": "",
-      "type": "text",
-      "instructions": "This label will appear in the navigation bar. Defaults to \"Overview\" if empty.",
-      "required": 0,
-      "conditional_logic": 0,
-      "wrapper": {
-        "width": "",
-        "class": "",
-        "id": ""
-      },
-      "default_value": "",
-      "maxlength": "",
-      "allow_in_bindings": 0,
-      "placeholder": "",
-      "prepend": "",
-      "append": ""
-    },
     {
       "key": "field_674332da21832",
       "label": "Blocks",
@@ -400,20 +379,13 @@
   "location": [
     [
       {
-        "param": "post_template",
-        "operator": "==",
-        "value": "page-landing.php"
-      }
-    ],
-    [
-      {
         "param": "page_template",
         "operator": "==",
         "value": "page-landing.php"
       }
     ]
   ],
-  "menu_order": 0,
+  "menu_order": 1,
   "position": "normal",
   "style": "seamless",
   "label_placement": "top",
@@ -427,5 +399,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1741628999
+  "modified": 1741923894
 }

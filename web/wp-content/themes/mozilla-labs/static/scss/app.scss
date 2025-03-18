@@ -138,6 +138,10 @@ body {
     @apply text-6xl font-headline font-wdth-380 font-semibold leading-headline tracking-[-0.01em];
   }
 
+  .type-headline-80 {
+    @apply text-[64px] md:text-[80px] font-headline font-wdth-380 font-semibold leading-tightest tracking-[-0.01em];
+  }
+
   .type-headline-40 {
     @apply text-[32px] md:text-[40px] font-headline font-wdth-380 font-semibold leading-headline tracking-[-0.01em];
   }
@@ -202,15 +206,23 @@ body {
   .button {
     @apply block whitespace-nowrap;
     @apply font-headline font-semibold tracking-normal text-sm leading-none font-wdth-380 bg-off-black/60 text-white backdrop-blur-md transition-colors;
-  }
 
-  button.button,
-  a.button {
-    @apply cursor-pointer hocus:bg-black;
+    &:is(button, a) {
+      @apply cursor-pointer hocus:bg-black;
+
+      &.theme-dark,
+      .theme-dark & {
+        @apply hocus:text-black hocus:bg-white;
+      }
+    }
   }
 
   .button-sm {
     @apply flex justify-center h-fit items-center pt-[9px] pb-[8px] px-[10px];
+  }
+
+  .button-lg {
+    @apply flex justify-center h-fit items-center pt-[16px] pb-[15px] px-[17px];
   }
 
   .button-square {
@@ -224,11 +236,15 @@ body {
     .theme-dark & {
       @apply bg-off-black/70;
     }
-  }
 
-  .button.button-dark,
-  a.button-dark {
-    @apply cursor-pointer hocus:bg-black;
+    &:is(button, a) {
+      @apply cursor-pointer hocus:bg-black;
+
+      &.theme-dark,
+      .theme-dark & {
+        @apply hocus:text-black hocus:bg-white;
+      }
+    }
   }
 }
 
@@ -696,7 +712,7 @@ body {
 
     // Buttons
     .wp-block-buttons {
-      @apply flex flex-col gap-3 w-full ml-auto mr-auto md:col-span-6 md:max-w-[600px]  lg:col-span-6 2xl:col-span-10;
+      @apply flex flex-col gap-3 w-full ml-auto mr-auto md:col-span-6 md:max-w-[600px] lg:col-span-6 2xl:col-span-10;
     }
 
     .wp-block-button {
