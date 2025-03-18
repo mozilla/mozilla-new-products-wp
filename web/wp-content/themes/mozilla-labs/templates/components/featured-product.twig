@@ -3,33 +3,35 @@
 {% set primary_icon = get_image(icons.primary) %}
 {% set backdrop = get_image(product.meta("backdrop_image")) %}
 
-<section aria-label="{{ block.headline }}">
-  <h2>{{ block.headline }}</h2>
+<section aria-label="{{ block.headline }}" class="grid-site flex flex-col md:grid md:grid-cols-2 md:gap-y-grid-site-margin gap-x-grid-site-gutter mt-52">
 
-  <p>{{ product.title }}</p>
+  <div class="flex flex-col">
+    <h2 class="type-headline-20">{{ block.headline }}</h2>
+    <p class="type-headline-20">{{ product.title }}</p>
+  </div>
 
   {% if block.description %}
-    <div class="prose">{{ block.description }}</div>
+    <div class="prose type-headline-20">{{ block.description }}</div>
   {% endif %}
 
   {% if primary_icon %}
-    <div>
+    <div class="relative flex aspect-square">
       {% include "components/lazy-img.twig" with {
         img: primary_icon
       } %}
 
-      <p>{{ product.title }}</p>
+      <p class="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2">{{ product.title }}</p>
     </div>
   {% endif %}
 
   {% if backdrop %}
-    <div>
+    <div class="relative flex aspect-square">
       {% include "components/lazy-img.twig" with {
         img: backdrop
       } %}
 
       {% if product.tagline %}
-        <p>{{ product.tagline }}</p>
+        <p class="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2">{{ product.tagline }}</p>
       {% endif %}
     </div>
   {% endif %}
