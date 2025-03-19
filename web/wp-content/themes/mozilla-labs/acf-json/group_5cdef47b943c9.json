@@ -1,106 +1,110 @@
-[
-  {
-    "key": "group_5cdef47b943c9",
-    "title": "Image Layout",
-    "fields": [
-      {
-        "key": "field_5cdef487a8fcc",
-        "label": "Images",
-        "name": "imageLayoutImages",
-        "aria-label": "",
-        "type": "gallery",
-        "instructions": "",
-        "required": 0,
-        "conditional_logic": 0,
-        "wrapper": {
-          "width": "",
-          "class": "",
-          "id": ""
-        },
-        "min": 2,
-        "max": 6,
-        "insert": "append",
-        "library": "all",
-        "min_width": "",
-        "min_height": "",
-        "min_size": "",
-        "max_width": "",
-        "max_height": "",
-        "max_size": "",
-        "mime_types": "",
-        "return_format": "array",
-        "preview_size": "medium"
+{
+  "key": "group_5cdef47b943c9",
+  "title": "Image Layout",
+  "fields": [
+    {
+      "key": "field_5cdef487a8fcc",
+      "label": "Images",
+      "name": "imageLayoutImages",
+      "aria-label": "",
+      "type": "gallery",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
       },
-      {
-        "key": "field_5cdef49aa8fcd",
-        "label": "Layout",
-        "name": "imageLayoutLayout",
-        "aria-label": "",
-        "type": "select",
-        "instructions": "",
-        "required": 0,
-        "conditional_logic": 0,
-        "wrapper": {
-          "width": "",
-          "class": "",
-          "id": ""
-        },
-        "choices": {
-          "symmetrical": "Symmetrical Grid (max 6 assets)",
-          "asymmetrical": "Asymmetrical Grid (max 3 assets)",
-          "row": "Row (max 4 assets)"
-        },
-        "allow_null": 0,
-        "other_choice": 0,
-        "default_value": false,
-        "layout": "horizontal",
-        "return_format": "value",
-        "save_other_choice": 0,
-        "multiple": 0,
-        "ui": 0,
-        "ajax": 0,
-        "placeholder": "",
-        "allow_custom": 0,
-        "search_placeholder": ""
+      "min": 2,
+      "max": 6,
+      "insert": "append",
+      "library": "all",
+      "min_width": "",
+      "min_height": "",
+      "min_size": "",
+      "max_width": "",
+      "max_height": "",
+      "max_size": "",
+      "mime_types": "",
+      "return_format": "array",
+      "preview_size": "medium"
+    },
+    {
+      "key": "field_5cdef49aa8fcd",
+      "label": "Layout",
+      "name": "imageLayoutLayout",
+      "aria-label": "",
+      "type": "select",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
       },
+      "choices": {
+        "symmetrical": "Symmetrical Grid (max 6 assets)",
+        "asymmetrical": "Asymmetrical Grid (max 3 assets)",
+        "row": "Row (max 4 assets)"
+      },
+      "allow_null": 0,
+      "other_choice": 0,
+      "default_value": false,
+      "layout": "horizontal",
+      "return_format": "value",
+      "save_other_choice": 0,
+      "multiple": 0,
+      "ui": 0,
+      "ajax": 0,
+      "placeholder": "",
+      "allow_custom": 0,
+      "search_placeholder": ""
+    },
+    {
+      "key": "field_5cdeffb837320",
+      "label": "Crop image to same aspect ratio?",
+      "name": "imageLayoutCrop",
+      "aria-label": "",
+      "type": "true_false",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "message": "",
+      "default_value": 0,
+      "ui": 1,
+      "ui_on_text": "",
+      "ui_off_text": ""
+    }
+  ],
+  "location": [
+    [
       {
-        "key": "field_5cdeffb837320",
-        "label": "Crop image to same aspect ratio?",
-        "name": "imageLayoutCrop",
-        "aria-label": "",
-        "type": "true_false",
-        "instructions": "",
-        "required": 0,
-        "conditional_logic": 0,
-        "wrapper": {
-          "width": "",
-          "class": "",
-          "id": ""
-        },
-        "message": "",
-        "default_value": 0,
-        "ui": 1,
-        "ui_on_text": "",
-        "ui_off_text": ""
+        "param": "block",
+        "operator": "==",
+        "value": "acf/image-layout"
       }
-    ],
-    "location": [
-      [
-        {
-          "param": "block",
-          "operator": "==",
-          "value": "acf/image-layout"
-        }
-      ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": true,
-    "description": "",
-    "show_in_rest": false
-  }
-]
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0,
+  "acfe_display_title": "",
+  "acfe_autosync": ["json"],
+  "acfe_form": 0,
+  "acfe_meta": "",
+  "acfe_note": "",
+  "modified": 1742422602
+}
