@@ -1,6 +1,6 @@
 <?php
 /**
- * Profile model.
+ * Product model.
  *
  * @package MozillaLabs
  */
