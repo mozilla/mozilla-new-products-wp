@@ -1,0 +1,48 @@
+{# If there are no selected posts, pull the latest 3 posts. #}
+{% set teases = block.posts is empty ? get_posts({ posts_per_page: 3 }) : get_posts(block.posts) %}
+
+<section class="grid grid-site my-32 md:my-52 first:mt-0 last:mb-0">
+  <div class="col-span-full">
+    {% if block.headline or block.cta %}
+      <div class="flex flex-row gap-x-1 justify-center type-caption font-bold mb-10">
+        {% if block.headline %}
+          <h2 class="text-white">{{ block.headline }}</h2>
+        {% endif %}
+
+        {% if block.headline and block.cta %}
+          <span aria-hidden="true">/</span>
+        {% endif %}
+
+        {% if block.cta %}
+          <a href="{{ block.cta.url }}" class="hocus:text-white">{{ block.cta.title }}</a>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <ul class="flex flex-col gap-y-20 md:grid md:grid-cols-3 md:gap-x-32 lg:gap-x-48 md:gap-y-32">
+      {% for article in teases %}
+        {% set product = article.product %}
+        <li class="flex flex-col gap-y-4">
+            {% if article.thumbnail %}
+              {% include "components/image-icon-watermark.twig" with {
+                image: article.thumbnail,
+                icon: product and product.icons.grayscale ? get_image(product.icons.grayscale) : null
+              } %}
+            {% endif %}
+
+            <div class="flex flex-col gap-y-0">
+              {% if article.category %}
+                <p class="text-secondary/60 block type-headline-14">{{ article.category }}</p>
+              {% endif %}
+
+              <h3 class="type-headline-14 leading-tight">
+                <a href="{{ article.link }}">
+                  {{ article.title }}
+                </a>
+              </h3>
+            </div>
+          </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
