@@ -1,0 +1,97 @@
+[
+  {
+    "key": "group_5cd5a5077e357",
+    "title": "Related Articles",
+    "fields": [
+      {
+        "key": "field_5cd5a5401a9eb",
+        "label": "Header text",
+        "name": "header_text",
+        "aria-label": "",
+        "type": "text",
+        "instructions": "",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "",
+          "class": "",
+          "id": ""
+        },
+        "default_value": "Related Articles",
+        "placeholder": "",
+        "prepend": "",
+        "append": "",
+        "maxlength": ""
+      },
+      {
+        "key": "field_5cd5a50d1a9e9",
+        "label": "Chosen articles",
+        "name": "chosen_articles",
+        "aria-label": "",
+        "type": "repeater",
+        "instructions": "",
+        "required": 1,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "",
+          "class": "",
+          "id": ""
+        },
+        "collapsed": "",
+        "min": 1,
+        "max": 4,
+        "layout": "table",
+        "button_label": "Add an article",
+        "rows_per_page": 20,
+        "acfe_repeater_stylised_button": 0,
+        "sub_fields": [
+          {
+            "key": "field_5cd5c5733d782",
+            "label": "Related Article",
+            "name": "related_article",
+            "aria-label": "",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+              "width": "",
+              "class": "",
+              "id": ""
+            },
+            "post_type": ["post"],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1,
+            "bidirectional_target": [],
+            "parent_repeater": "field_5cd5a50d1a9e9",
+            "save_custom": 0,
+            "save_post_type": "",
+            "save_post_status": ""
+          }
+        ]
+      }
+    ],
+    "location": [
+      [
+        {
+          "param": "block",
+          "operator": "==",
+          "value": "acf/related-articles"
+        }
+      ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1704404672
+  }
+]
