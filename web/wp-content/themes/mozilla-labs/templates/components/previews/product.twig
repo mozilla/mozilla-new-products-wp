@@ -1,13 +1,5 @@
 <div class="border-t border-content flex flex-col">
   <a href="{{ product.link }}" class="px-grid-site-margin py-grid-site-margin grid grid-cols-6 md:grid-cols-12 gap-6 relative items-center group overflow-hidden">
-    {% if product.thumbnail and product.show_image_on_index %}
-      {% if archive %}
-        <div class="w-1/2">
-          {% include "components/lazy-img.twig" with { img: product.thumbnail } %}
-        </div>
-      {% endif %}
-    {% endif %}
-
     <div class="col-span-3 flex flex-row gap-x-4 items-center z-10">
       <div class="relative w-12 h-12 flex ">
         {# Grayscale SVG #}
@@ -65,15 +57,5 @@
       {% include "components/lazy-img.twig" with { class:"absolute top-1/2 left-0 -translate-y-1/2", img: product.thumbnail } %}
     </div>
   </a>
-
-  {% if product.thumbnail and product.show_image_on_index %}
-    {% if not archive %}
-      <div class="w-1/2 lg:mt-6">
-        {% include "components/lazy-img.twig" with { img: product.thumbnail } %}
-      </div>
-    {% endif %}
-  {% endif %}
-
-
 </div>
 
