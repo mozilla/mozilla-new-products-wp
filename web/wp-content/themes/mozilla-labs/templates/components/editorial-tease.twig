@@ -5,7 +5,7 @@
   {% set teases = posts|slice(0, 3) %}
 {% else %}
   {# Convert ACF post objects to Article objects #}
-  {% set teases = block.posts|as_article %}
+  {% set teases = get_posts(block.posts) %}
 
   {# while teases is less than 3, add more posts from selected as they are not duplicates #}
   {% if teases|length < 3 %}
