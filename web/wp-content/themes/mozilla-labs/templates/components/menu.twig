@@ -71,9 +71,11 @@
 
     {% if nav_pages_menu.cta_type == "link" %}
       {% set cta = nav_pages_menu.cta %}
+      {% set is_anchor = false %}
 
     {% elseif nav_pages_menu.cta_type == "email-signup" %}
       {% set cta = { title: nav_pages_menu.email_signup_cta, url: "#email-signup" }%}
+      {% set is_anchor = true %}
 
     {% endif %}
 
@@ -83,7 +85,7 @@
           <p class="text-sm text-secondary/60 max-w-72">{{ nav_pages_menu.cta_description }}</p>
         {% endif %}
 
-        <a class="group w-fit flex gap-x-1" href="{{ cta.url }}">
+        <a class="group w-fit flex gap-x-1" href="{{ cta.url }}" {% if is_anchor %}x-dialog:close{% endif %}>
           <span class="w-fit button button-sm justify-start md:justify-initial group-hocus:bg-black [.theme-dark_&]:group-hocus:bg-white [.theme-dark_&]:group-hocus:text-black">
             {{ cta.title }}
           </span>
