@@ -11,8 +11,6 @@
 
   {% include 'components/filter-topper.twig' with { title: page.title, description: "Play, experiment, and help improve future AI solutions" } %}
 
-  <h2 class="sr-only">{{ subheading }}</h2>
-
   <ul class="flex flex-col mb-24 border-b border-content">
     {% for post in posts %}
       <li class="col-span-full md:col-span-1/2 lg:col-span-8 xl:col-span-6">
@@ -20,13 +18,5 @@
       </li>
     {% endfor %}
   </ul>
-
-  {% if posts.pagination.pages %}
-    <div class="mb-24">
-      {% include 'components/pagination.twig' with { pagination: posts.pagination } %}
-    </div>
-  {% endif %}
-
-  {% include 'components/big-cta-row.twig' with { ctas: page.ctas } %}
 
 {% endblock %}
