@@ -314,17 +314,55 @@
         },
         "layout_67d9e5b55dfd7": {
           "key": "layout_67d9e5b55dfd7",
-          "name": "editorial_tease",
-          "label": "Editorial Tease",
+          "name": "editorial_teases",
+          "label": "Editorial Teases",
           "display": "block",
           "sub_fields": [
+            {
+              "key": "field_67da1805922f7",
+              "label": "Headline",
+              "name": "headline",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "allow_in_bindings": 0,
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_67da1810922f8",
+              "label": "CTA",
+              "name": "cta",
+              "aria-label": "",
+              "type": "link",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "return_format": "array",
+              "allow_in_bindings": 0
+            },
             {
               "key": "field_67d9e5bc5dfde",
               "label": "Posts",
               "name": "posts",
               "aria-label": "",
-              "type": "post_object",
-              "instructions": "By default, this will show the three most recent posts. You may also select up to three posts to manually feature, with the remaining posts being padded with most recent.",
+              "type": "relationship",
+              "instructions": "When empty, this will show the three most recent posts.",
               "required": 0,
               "conditional_logic": 0,
               "wrapper": {
@@ -335,19 +373,17 @@
               "post_type": ["post"],
               "post_status": ["publish"],
               "taxonomy": "",
-              "return_format": "object",
-              "multiple": 1,
-              "save_custom": 0,
-              "save_post_status": "publish",
+              "filters": ["search", "taxonomy"],
+              "return_format": "id",
               "acfe_bidirectional": {
                 "acfe_bidirectional_enabled": "0"
               },
-              "allow_null": 0,
+              "min": "",
+              "max": "",
               "allow_in_bindings": 0,
+              "elements": "",
               "bidirectional": 0,
-              "ui": 1,
-              "bidirectional_target": [],
-              "save_post_type": ""
+              "bidirectional_target": []
             }
           ],
           "min": "",
@@ -363,18 +399,18 @@
         },
         "layout_67d9f28293df9": {
           "key": "layout_67d9f28293df9",
-          "name": "big_text_link_list",
-          "label": "Big Text Link List",
+          "name": "big_text",
+          "label": "Big Text",
           "display": "block",
           "sub_fields": [
             {
               "key": "field_67d9f28b93e00",
-              "label": "copy",
-              "name": "copy",
+              "label": "Text",
+              "name": "text",
               "aria-label": "",
               "type": "wysiwyg",
               "instructions": "",
-              "required": 0,
+              "required": 1,
               "conditional_logic": 0,
               "wrapper": {
                 "width": "",
@@ -452,5 +488,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1742336712
+  "modified": 1742346273
 }
