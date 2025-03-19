@@ -1,13 +1,23 @@
 {# If there are no selected posts, pull the latest 3 posts. #}
-{% set teases = block.posts is empty ? get_posts({ limit: 3 }) : get_posts(block.posts) %}
+{% set teases = block.posts is empty ? get_posts({ posts_per_page: 3 }) : get_posts(block.posts) %}
 
 <section class="grid grid-site my-32 md:my-52 first:mt-0 last:mb-0">
   <div class="col-span-full">
-    <div class="col-span-full flex flex-row gap-x-1 justify-center type-caption font-bold mb-10">
-      <h2 class="text-white">{{ block.title|default('The Latest') }}</h2>
-      <span aria-hidden="true">/</span>
-       <a href="/stories" class="hocus:text-white">View All</a></a>
-    </div>
+    {% if block.headline or block.cta %}
+      <div class="flex flex-row gap-x-1 justify-center type-caption font-bold mb-10">
+        {% if block.headline %}
+          <h2 class="text-white">{{ block.headline }}</h2>
+        {% endif %}
+
+        {% if block.headline and block.cta %}
+          <span aria-hidden="true">/</span>
+        {% endif %}
+
+        {% if block.cta %}
+          <a href="{{ block.cta.url }}" class="hocus:text-white">{{ block.cta.title }}</a>
+        {% endif %}
+      </div>
+    {% endif %}
 
     <ul class="flex flex-col gap-y-20 md:grid md:grid-cols-3 md:gap-x-32 lg:gap-x-48 md:gap-y-32">
       {% for article in teases %}

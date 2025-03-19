@@ -319,6 +319,44 @@
           "display": "block",
           "sub_fields": [
             {
+              "key": "field_67da1805922f7",
+              "label": "Headline",
+              "name": "headline",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "allow_in_bindings": 0,
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_67da1810922f8",
+              "label": "CTA",
+              "name": "cta",
+              "aria-label": "",
+              "type": "link",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "return_format": "array",
+              "allow_in_bindings": 0
+            },
+            {
               "key": "field_67d9e5bc5dfde",
               "label": "Posts",
               "name": "posts",
@@ -450,5 +488,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1742346043
+  "modified": 1742346273
 }
