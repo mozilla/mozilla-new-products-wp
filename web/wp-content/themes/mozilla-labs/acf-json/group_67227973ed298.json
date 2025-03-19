@@ -314,8 +314,8 @@
         },
         "layout_67d9e5b55dfd7": {
           "key": "layout_67d9e5b55dfd7",
-          "name": "editorial_tease",
-          "label": "Editorial Tease",
+          "name": "editorial_teases",
+          "label": "Editorial Teases",
           "display": "block",
           "sub_fields": [
             {
@@ -323,8 +323,8 @@
               "label": "Posts",
               "name": "posts",
               "aria-label": "",
-              "type": "post_object",
-              "instructions": "By default, this will show the three most recent posts. You may also select up to three posts to manually feature, with the remaining posts being padded with most recent.",
+              "type": "relationship",
+              "instructions": "When empty, this will show the three most recent posts.",
               "required": 0,
               "conditional_logic": 0,
               "wrapper": {
@@ -335,19 +335,17 @@
               "post_type": ["post"],
               "post_status": ["publish"],
               "taxonomy": "",
-              "return_format": "object",
-              "multiple": 1,
-              "save_custom": 0,
-              "save_post_status": "publish",
+              "filters": ["search", "taxonomy"],
+              "return_format": "id",
               "acfe_bidirectional": {
                 "acfe_bidirectional_enabled": "0"
               },
-              "allow_null": 0,
+              "min": "",
+              "max": "",
               "allow_in_bindings": 0,
+              "elements": "",
               "bidirectional": 0,
-              "ui": 1,
-              "bidirectional_target": [],
-              "save_post_type": ""
+              "bidirectional_target": []
             }
           ],
           "min": "",
@@ -452,5 +450,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1742345561
+  "modified": 1742346043
 }

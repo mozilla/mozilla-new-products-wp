@@ -6,21 +6,10 @@
  */
 
 use Timber\Timber;
-use MozillaLabs\Models\Taxonomy\Cohort;
 
 $context  = Timber::context();
 $_page    = Timber::get_post();
 $_page_id = (int) $_page->ID;
-
-// Fetch the 6 most recent posts from the 'blog' post type.
-$context['posts'] = Timber::get_posts(
-	array(
-		'post_type'      => 'post',
-		'posts_per_page' => 6,
-		'orderby'        => 'date',
-		'order'          => 'DESC',
-	)
-);
 
 // If page is password protected, render password page.
 if ( post_password_required( $_page_id ) ) {
