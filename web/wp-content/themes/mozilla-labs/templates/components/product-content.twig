@@ -19,12 +19,12 @@
         } %}
 
         {% if item.caption %}
-          <figcaption class="whitespace-normal bg-off-black/60 text-white backdrop-blur-md px-[10px] pt-[6.5px] pb-[5.5px] w-fit type-caption">{{ item.caption }}</figcaption>
+          <figcaption class="whitespace-normal bg-off-black/60 text-white h-fit backdrop-blur-md px-[10px] pt-[6.5px] pb-[5.5px] w-fit type-caption">{{ item.caption }}</figcaption>
         {% endif %}
       </figure>
 
     {% elseif type == "video_embed" %}
-      <figure class="flex flex-wrap gap-2" x-init x-video-embed>
+      <figure class="flex flex-wrap gap-y-2 gap-x-1" x-init x-video-embed>
         <div class="relative w-full [&>iframe]:w-full [&>iframe]:h-auto [&>iframe]:aspect-video isolate overflow-hidden">
           {{ item.embed|raw }}
 
@@ -40,16 +40,16 @@
         </div>
 
         {% if item.cover %}
-        <button class="button button-sm button-square w-fit data-[playing]:hidden" x-video-embed:play>
+        <button class="type-caption text-inherit h-[calc(1lh+0.75rem)] p-0 aspect-square flex justify-center items-center data-[playing]:hidden bg-off-black/60 text-white backdrop-blur-md" x-video-embed:play>
           <span class="sr-only">Play video</span>
-          <svg class="size-3 -translate-x-[0.1rem] shrink-0 text-white" aria-hidden="true">
+          <svg class="size-2.5 shrink-0" aria-hidden="true">
             <use href="#play"></use>
           </svg>
         </button>
         {% endif %}
 
         {% if item.caption %}
-          <figcaption class="bg-off-black/60 text-white backdrop-blur-md px-[10px] pt-[6.5px] pb-[5.5px] w-fit type-caption">{{ item.caption }}</figcaption>
+          <figcaption class="bg-off-black/60 text-white backdrop-blur-md h-fit px-[10px] pt-[6.5px] pb-[5.5px] w-fit type-caption">{{ item.caption }}</figcaption>
         {% endif %}
       </figure>
     {% endif %}
