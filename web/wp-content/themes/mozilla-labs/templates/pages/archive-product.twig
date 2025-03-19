@@ -5,7 +5,7 @@
   theme-dark
 {%- endblock -%}
 
-{% set email_signup_override = post.meta("email_signup") %}
+{% set email_signup_override = page.meta("email_signup") %}
 
 {% block pageBody %}
   {% include "components/filter-topper.twig" with { title: page.title, description: page.description } %}
