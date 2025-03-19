@@ -1,5 +1,7 @@
 {% extends "layouts/base.twig" %}
 
+{% set email_signup_override = page.meta("email_signup") %}
+
 {% block pageBody %}
 
 {% include "components/filter-topper.twig" with { title: page.title, description: page.description } %}

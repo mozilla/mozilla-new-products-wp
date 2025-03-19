@@ -6,6 +6,8 @@
   theme-dark
 {%- endblock -%}
 
+{% set email_signup_override = page.meta("email_signup") %}
+
 {% block pageBody %}
   <h1 class="sr-only">{{ page.title }}</h1>
 
@@ -19,7 +21,7 @@
     {% for block in page.meta("blocks") %}
       {% set template_name = block.acf_fc_layout|replace({'_': '-'}) %}
       {% set template_path = "components/" ~ template_name ~ ".twig" %}
-      
+
       {% include [template_path] ignore missing with {
         block: block,
       } %}
