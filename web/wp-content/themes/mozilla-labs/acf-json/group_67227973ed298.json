@@ -362,7 +362,7 @@
               "name": "posts",
               "aria-label": "",
               "type": "relationship",
-              "instructions": "When empty, this will show the three most recent posts.",
+              "instructions": "Include up to 3 posts to manually feature. This block will be padded with the most recent posts if less than 3 are included. When left empty, this will show the three most recent posts.",
               "required": 0,
               "conditional_logic": 0,
               "wrapper": {
@@ -379,7 +379,7 @@
                 "acfe_bidirectional_enabled": "0"
               },
               "min": "",
-              "max": "",
+              "max": 3,
               "allow_in_bindings": 0,
               "elements": "",
               "bidirectional": 0,
@@ -488,5 +488,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1742394463
+  "modified": 1742398939
 }
