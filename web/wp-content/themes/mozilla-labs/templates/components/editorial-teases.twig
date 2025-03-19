@@ -1,5 +1,20 @@
-{# If there are no selected posts, pull the latest 3 posts. #}
-{% set teases = block.posts is empty ? get_posts({ posts_per_page: 3 }) : get_posts(block.posts) %}
+{% set limit = 3 %}
+
+{# if there are no selected block posts, set teases = the first 3 posts #}
+{% if block.posts is empty %}
+  {% set teases = get_posts({ posts_per_page: limit }) %}
+{% else %}
+  {# Convert ACF post objects to Article objects #}
+  {% set teases = get_posts(block.posts)|slice(0, limit) %}
+
+  {% set postsNeeded = limit - teases|length %}
+
+  {# Pad with most recent posts if less than limit #}
+  {% if postsNeeded > 0 %}
+    {% set paddedPosts = get_posts({ posts_per_page: postsNeeded, post__not_in: block.posts }) %}
+    {% set teases = teases|merge(paddedPosts) %}
+  {% endif %}
+{% endif %}
 
 <section class="grid grid-site my-32 md:my-52 first:mt-0 last:mb-0">
   <div class="col-span-full">
