@@ -1,6 +1,6 @@
 {
   "key": "group_67cb1fcdbff07",
-  "title": "Stories Archive",
+  "title": "Archive",
   "fields": [
     {
       "key": "field_67cb1fcfe150b",
@@ -27,9 +27,16 @@
   "location": [
     [
       {
-        "param": "post_template",
+        "param": "page_template",
         "operator": "==",
         "value": "page-stories.php"
+      }
+    ],
+    [
+      {
+        "param": "page_template",
+        "operator": "==",
+        "value": "page-products.php"
       }
     ]
   ],
@@ -47,5 +54,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1741365297
+  "modified": 1742412328
 }

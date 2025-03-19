@@ -8,8 +8,7 @@
 {% set email_signup_override = post.meta("email_signup") %}
 
 {% block pageBody %}
-
-  {% include 'components/filter-topper.twig' with { title: page.title, description: "Play, experiment, and help improve future AI solutions" } %}
+  {% include "components/filter-topper.twig" with { title: page.title, description: page.description } %}
 
   <ul class="flex flex-col mb-24 border-b border-content">
     {% for post in posts %}
