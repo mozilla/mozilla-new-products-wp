@@ -1,33 +1,19 @@
+{% set limit = 3 %}
+
 {# if there are no selected block posts, set teases = the first 3 posts #}
 {% if block.posts is empty %}
-  {% set teases = get_posts({ posts_per_page: 3 }) %}
+  {% set teases = get_posts({ posts_per_page: limit }) %}
 {% else %}
   {# Convert ACF post objects to Article objects #}
-  {% set teases = get_posts(block.posts)|slice(0, 3) %}
+  {% set teases = get_posts(block.posts)|slice(0, limit) %}
 
-  {% set postsNeeded = 3 - teases|length %}
+  {% set postsNeeded = limit - teases|length %}
 
-  {# while teases is less than 3, add more posts from selected as they are not duplicates #}
-  {% if teases|length < 3 %}
-    {% set teases_ids = [] %}
-    {% for tease in teases %}
-      {% set teases_ids = teases_ids|merge([tease.id ~ '']) %}
-    {% endfor %}
-
-    {% set posts = get_posts({ posts_per_page: 3, exclude: teases_ids }) %}
-
-    {% for post in posts %}
-      {% if not (post.id ~ '' in teases_ids) %}
-        {% set teases = teases|merge([post]) %}
-        {% set teases_ids = teases_ids|merge([post.id ~ '']) %}
-      {% endif %}
-    {% endfor %}
-    
+  {# Pad with most recent posts if less than limit #}
+  {% if postsNeeded > 0 %}
+    {% set paddedPosts = get_posts({ posts_per_page: postsNeeded, post__not_in: block.posts }) %}
+    {% set teases = teases|merge(paddedPosts) %}
   {% endif %}
-
-  {# finally truncate to 3 #}
-  {% set teases = teases|slice(0, 3) %}
-
 {% endif %}
 
 <section class="grid grid-site my-32 md:my-52 first:mt-0 last:mb-0">
