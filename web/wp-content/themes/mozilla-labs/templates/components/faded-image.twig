@@ -1,0 +1,10 @@
+<figure>
+  {% include "components/lazy-img.twig" with {
+    class: "w-full",
+    img: get_image(block.image)
+  } %}
+
+  {% if block.caption %}
+    <figcaption class="w-fit button button-sm button-dark prose">{{ block.caption }}</figcaption>
+  {% endif %}
+</figure>
