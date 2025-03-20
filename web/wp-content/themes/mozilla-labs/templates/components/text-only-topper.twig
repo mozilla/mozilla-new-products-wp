@@ -1,9 +1,31 @@
 <header class="grid grid-site gap-y-grid-site-gutter pt-[20vh] pb-[20vh]">
   <h2 class="col-span-full sm:col-span-1/2 type-headline-20 font-bold">{{ headline|default(page.title) }}</h2>
 
-  {% if description %}
-    <div class="col-span-full sm:col-span-1/2 type-headline-20 prose">
-      {{ description }}
-    </div>
-  {% endif %}
+  <div class="col-span-full sm:col-span-1/2 flex flex-col">
+    {% if introduction %}
+      <div class="type-headline-20 prose">
+        {{ introduction }}
+      </div>
+    {% endif %}
+
+    {% if body %}
+      <div class="text-sm mt-12 prose">
+        {{ body }}
+      </div>
+    {% endif %}
+
+    {% if cta %}
+      <a class="mt-8 group w-fit flex gap-x-1" href="{{ cta.url }}">
+        <span class="w-fit button button-sm justify-start md:justify-initial group-hocus:bg-black [.theme-dark_&]:group-hocus:bg-white [.theme-dark_&]:group-hocus:text-black">
+          {{ cta.title }}
+        </span>
+
+        <span class="block button button-sm button-square p-2.5 transition-all group-hocus:bg-black [.theme-dark_&]:group-hocus:bg-white [.theme-dark_&]:group-hocus:text-black" aria-hidden="true">
+          <svg viewBox="0 0 10 10">
+            <path d="M9.875 5L3.91667 0V4.375H0.125V5.625H3.91667V10L9.875 5ZM5.16667 4.375V2.70833L7.91667 5L5.16667 7.29167V4.375Z" fill="currentColor"/>
+          </svg>
+        </span>
+      </a>
+    {% endif %}
+  </div>
 </header>
