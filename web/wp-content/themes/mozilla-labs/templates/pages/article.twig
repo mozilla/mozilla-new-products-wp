@@ -3,7 +3,7 @@
 {% set email_signup_override = post.meta("email_signup") %}
 
 {% block pageBody %}
-  {% include "components/articles/toppers/topper--" ~ (post.topper_type|default('text_only')) ~ ".twig" %}
+  {% include "components/articles/topper.twig" %}
 
   <article x-headings>
     <div class="md:pt-12 grid grid-site centered-page justify-center">
