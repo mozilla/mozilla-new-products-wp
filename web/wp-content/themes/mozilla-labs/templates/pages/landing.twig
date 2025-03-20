@@ -1,9 +1,16 @@
 {% extends "layouts/base.twig" %}
 
-{% set custom_nav_classes = "theme-dark" %}
+{#
+  Temporarily use theme-light for all landing pages. Use dark for typewriter_headline.
+  TODO: Allow setting on a per-page basis.
+#}
+{% set topper = page.meta("topper")|first %}
+{% set pageTheme = topper.acf_fc_layout == "typewriter_headline" ? "theme-dark" : "theme-light" %}
+
+{% set custom_nav_classes = pageTheme %}
 
 {%- block custom_body_classes -%}
-  theme-dark
+  {{ pageTheme }}
 {%- endblock -%}
 
 {% set email_signup_override = page.meta("email_signup") %}
@@ -11,11 +18,10 @@
 {% block pageBody %}
   <h1 class="sr-only">{{ page.title }}</h1>
 
-  {% set topper = page.meta("topper")|first %}
+  {% set template_name = topper.acf_fc_layout|replace({'_': '-'}) %}
+  {% set template_path = "components/" ~ template_name ~ "-topper.twig" %}
 
-  {% if topper.acf_fc_layout == "typewriter_headline" %}
-    {% include "components/typewriter-headline-topper.twig" with topper %}
-  {% endif %}
+  {% include [template_path] ignore missing with topper %}
 
   <div class="relative">
     {% for block in page.meta("blocks") %}
