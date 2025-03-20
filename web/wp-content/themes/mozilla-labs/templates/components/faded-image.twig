@@ -1,8 +1,20 @@
 <figure>
-  {% include "components/lazy-img.twig" with {
-    class: "w-full",
-    img: get_image(block.image)
-  } %}
+  <div class="relative">
+    {% include "components/lazy-img.twig" with {
+      class: "w-full",
+      img: get_image(block.image)
+    } %}
+
+    <div
+      class="
+        absolute w-full h-1/4 from-main to-transparent
+        data-[position='top']:top-0 data-[position='top']:bg-gradient-to-b
+        data-[position='bottom']:bottom-0 data-[position='bottom']:bg-gradient-to-t
+      "
+      data-position="{{ block.fade_position }}"
+    >
+    </div>
+  </div>
 
   {% if block.caption %}
     <figcaption class="w-fit button button-sm button-dark prose">{{ block.caption }}</figcaption>
