@@ -1,13 +1,13 @@
-{% if post.thumbnail.id %}
-  {% set asset = get_image(post.thumbnail.id) %}
-{% endif %}
+{% set category = post.categories[0] %}
 
-<header class="flex flex-col pt-48 gap-4 centered-page">
+<header class="flex flex-col pt-48 pb-20 gap-4 centered-page">
   <div class="w-full grid grid-site max-md:flex-col max-md:items-center md:justify-items-center">
     <div class="flex items-end col-span-full w-full md:col-span-6 md:col-start-4 md:max-w-[600px] max-md:order-2">
       <div class="flex flex-col items-start">
         <div class="flex justify-center">
-          {% include 'components/articles/overline.twig' with { overline: post.categories[0] } %}
+          <p class="text-secondary/50 type-headline-40">
+            {{ category.name }}
+          </p>
         </div>
 
         <h1 class="type-headline-40 text-balance leading-none">{{ post.title }}</h1>
@@ -18,19 +18,16 @@
     {% include "components/articles/byline.twig" %}
     </div>
 
-
-    <div class="row-start-3 mt-24 my-12 flex col-span-full md:col-span-6 md:w-full md:max-w-[600px] md:col-start-4 max-md:order-1">
+    {% if post.thumbnail %}
+    <div class="row-start-3 mt-24 flex col-span-full md:col-span-6 md:w-full md:max-w-[600px] md:col-start-4 max-md:order-1">
       <div class="w-full mx-auto">
-        {% if asset %}
-          {% include 'components/lazy-img.twig' with {
-            img: asset,
-            class: 'w-full',
-          } %}
-        {% else %}
-          <div class="flex w-full aspect-square bg-gray"></div>
-        {% endif %}
+        {% include 'components/lazy-img.twig' with {
+          img: get_image(post.thumbnail),
+          class: 'w-full',
+        } %}
       </div>
     </div>
+    {% endif %}
   </div>
 </header>
 
