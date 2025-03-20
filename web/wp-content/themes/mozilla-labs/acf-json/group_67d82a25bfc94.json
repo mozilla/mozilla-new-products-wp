@@ -1,0 +1,141 @@
+{
+  "key": "group_67d82a25bfc94",
+  "title": "Menu: CTA",
+  "fields": [
+    {
+      "key": "field_67d82be48922b",
+      "label": "CTA Type",
+      "name": "cta_type",
+      "aria-label": "",
+      "type": "select",
+      "instructions": "Use \"Link\" to link to an internal or external page. Use \"Email Signup\" to link to the email signup on the bottom of each page.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "choices": {
+        "link": "Link",
+        "email-signup": "Email Sign-up"
+      },
+      "default_value": "email-signup",
+      "return_format": "value",
+      "multiple": 0,
+      "allow_custom": 0,
+      "placeholder": "",
+      "search_placeholder": "",
+      "allow_null": 1,
+      "allow_in_bindings": 0,
+      "ui": 1,
+      "ajax": 0
+    },
+    {
+      "key": "field_67d82a258922a",
+      "label": "CTA",
+      "name": "cta",
+      "aria-label": "",
+      "type": "link",
+      "instructions": "",
+      "required": 1,
+      "conditional_logic": [
+        [
+          {
+            "field": "field_67d82be48922b",
+            "operator": "==",
+            "value": "link"
+          }
+        ]
+      ],
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "return_format": "array",
+      "allow_in_bindings": 0
+    },
+    {
+      "key": "field_67d82c668922c",
+      "label": "Email Sign-up CTA",
+      "name": "email_signup_cta",
+      "aria-label": "",
+      "type": "text",
+      "instructions": "This CTA will take users to the email sign-up at the bottom of each page, if included in Site Settings.",
+      "required": 1,
+      "conditional_logic": [
+        [
+          {
+            "field": "field_67d82be48922b",
+            "operator": "==",
+            "value": "email-signup"
+          }
+        ]
+      ],
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "Become a Tester",
+      "maxlength": "",
+      "allow_in_bindings": 0,
+      "placeholder": "",
+      "prepend": "",
+      "append": ""
+    },
+    {
+      "key": "field_67d9defa05c21",
+      "label": "CTA Description",
+      "name": "cta_description",
+      "aria-label": "",
+      "type": "text",
+      "instructions": "Additional context to the CTA.",
+      "required": 0,
+      "conditional_logic": [
+        [
+          {
+            "field": "field_67d82be48922b",
+            "operator": "!=empty"
+          }
+        ]
+      ],
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "allow_in_bindings": 0,
+      "placeholder": "",
+      "prepend": "",
+      "append": ""
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "nav_menu",
+        "operator": "==",
+        "value": "location/nav_pages_menu"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "left",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0,
+  "acfe_display_title": "",
+  "acfe_autosync": ["json"],
+  "acfe_form": 0,
+  "acfe_meta": "",
+  "acfe_note": "",
+  "modified": 1742331750
+}

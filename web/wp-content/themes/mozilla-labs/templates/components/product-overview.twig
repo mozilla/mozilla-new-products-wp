@@ -1,0 +1,18 @@
+<section class="col-span-full mt-28 lg:mt-0 sm:col-span-6 lg:col-span-3 lg:sticky top-24 grid grid-cols-3 auto-rows-auto h-fit gap-x-grid-site-gutter" aria-label="Overview">
+  {% if icon %}
+    {% include "components/lazy-img.twig" with {
+      class: "mb-8 max-w-[80px] max-h-[80px]",
+      img: icon
+    } %}
+  {% endif %}
+
+  {% if title %}
+    <p class="col-start-1 col-end-4 type-headline-20 leading-tight">
+      {{ title }}
+    </p>
+  {% endif %}
+
+  {% if tagline %}
+    <p class="col-start-1 col-end-4 type-headline-20 text-secondary/60 text-balance leading-tight md:max-w-[280px]">{{ tagline }}</p>
+  {% endif %}
+</section>

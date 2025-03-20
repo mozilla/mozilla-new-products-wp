@@ -6,6 +6,7 @@
  */
 
 use MozillaLabs\Managers;
+use MozillaLabs\Models\PostType\Article;
 use Timber\Timber;
 use Dotenv\Dotenv;
 
@@ -41,6 +42,34 @@ if ( function_exists( 'acf_add_local_field_group' ) ) {
 
 $theme_manager = new Managers\ThemeManager( $managers );
 add_action( 'after_setup_theme', array( $theme_manager, 'setup_theme' ) );
+
+/**
+ * Add a Twig filter to convert WP_Post objects to Article objects
+ * This allows "Post Object" fields in ACF to be used alongside standard
+ * Timber post query results, which return Article class objects.
+ */
+add_filter(
+	'timber/twig',
+	function ( $twig ) {
+		$twig->addFilter(
+			new \Twig\TwigFilter(
+				'as_article',
+				function ( $post ) {
+					if ( is_array( $post ) ) {
+						return array_map(
+							function ( $p ) {
+								return Timber::get_post( $p );
+							},
+							$post
+						);
+					}
+					return Timber::get_post( $post );
+				}
+			)
+		);
+		return $twig;
+	}
+);
 
 /**
  * Customize error reporting settings

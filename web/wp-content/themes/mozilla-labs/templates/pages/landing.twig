@@ -1,0 +1,30 @@
+{% extends "layouts/base.twig" %}
+
+{% set custom_nav_classes = "theme-dark" %}
+
+{%- block custom_body_classes -%}
+  theme-dark
+{%- endblock -%}
+
+{% set email_signup_override = page.meta("email_signup") %}
+
+{% block pageBody %}
+  <h1 class="sr-only">{{ page.title }}</h1>
+
+  {% set topper = page.meta("topper")|first %}
+
+  {% if topper.acf_fc_layout == "typewriter_headline" %}
+    {% include "components/typewriter-headline-topper.twig" with topper %}
+  {% endif %}
+
+  <div class="relative">
+    {% for block in page.meta("blocks") %}
+      {% set template_name = block.acf_fc_layout|replace({'_': '-'}) %}
+      {% set template_path = "components/" ~ template_name ~ ".twig" %}
+
+      {% include [template_path] ignore missing with {
+        block: block,
+      } %}
+    {% endfor %}
+  </div>
+{% endblock %}

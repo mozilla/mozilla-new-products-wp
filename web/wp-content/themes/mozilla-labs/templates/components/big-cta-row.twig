@@ -8,9 +8,9 @@
         {% if content.link_type == "post_archive" %}
           {% set label = 'Content' %}
           {% set href = archive_links.posts %}
-        {% elseif content.link_type == "project_archive" %}
-          {% set label = 'Projects' %}
-          {% set href = archive_links.projects %}
+        {% elseif content.link_type == "product_archive" %}
+          {% set label = 'Products' %}
+          {% set href = archive_links.products %}
         {% elseif content.link_type == "people_archive" %}
           {% set label = 'People' %}
           {% set href = archive_links.people %}

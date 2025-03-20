@@ -1,0 +1,28 @@
+<section class="col-span-full grid grid-cols-2 gap-x-grid-site-gutter gap-y-6 mt-28 lg:mt-0 sm:col-span-6 lg:col-span-3 h-fit lg:sticky top-24 md:flex flex-col md:gap-y-grid-site-gutter lg:gap-8" aria-label="Information">
+  {% if information|length %}
+  <dl class="contents">
+    {% for item in information %}
+      <div class="flex flex-col gap-y-[3px]">
+        <dt class="type-headline-12 text-secondary/60">{{ item.label }}</dt>
+        <dd class="text-sm prose">{{ item.text }}</dd>
+      </div>
+    {% endfor %}
+  </dl>
+  {% endif %}
+
+  {% if cta %}
+    <a class="group w-full mt-9 md:w-fit flex col-span-2" href="{{ cta.url }}">
+      <span class="w-full md:w-fit button button-sm justify-start md:justify-initial group-hocus:bg-black">
+        {{ cta.title }}
+      </span>
+
+      <span class="w-1 h-full bg-transparent transition-all group-hocus:w-2 cursor-pointer" aria-hidden="true"></span>
+
+      <div class="button button-square p-[10.5px] transition-all group-hocus:bg-black" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" fill="none">
+          <path d="M9.875 5L3.91667 0V4.375H0.125V5.625H3.91667V10L9.875 5ZM5.16667 4.375V2.70833L7.91667 5L5.16667 7.29167V4.375Z" fill="currentColor"/>
+        </svg>
+      </div>
+    </a>
+  {% endif %}
+</section>

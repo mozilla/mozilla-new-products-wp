@@ -1,12 +1,31 @@
-<footer class="mt-12 md:mt-24 pb-4 grid grid-site gap-4 centered-page">
-  <div class="col-span-full border-b border-content mb-6 lg:mb-8">
+{% set products = options.footer_product_links_section.links %}
+
+<footer class="text-content mt-12 md:mt-24 pb-grid-site-margin grid grid-site centered-page">
+  {% if products|length %}
+  <div class="col-span-full grid grid-cols-2 gap-grid-site-gutter md:col-span-4 md:flex md:flex-col md:gap-4">
+    <h2 class="text-sm font-bold leading-tight">{{ options.footer_product_links_section.heading|default("Products") }}</h2>
+    <ul class="grid md:has-[:nth-child(6)]:grid-cols-2 gap-x-grid-site-gutter gap-y-[5px]">
+      {% for item in options.footer_product_links_section.links %}
+      <li class="text-sm w-fit leading-tight">
+        <a class="hocus:underline" href="{{ item.link.url }}">
+          {{ item.link.title }}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  <div class="col-span-full flex flex-col mt-8 md:mt-0 md:col-start-7 lg:col-start-9 md:col-span-6 lg:col-span-4 md:grid md:grid-cols-2 gap-y-8 md:gap-grid-site-gutter">
     {% for section in options.footer_links_section %}
-    <div class="flex max-md:gap-x-grid-site-gutter max-md:py-2 border-t border-content py-1.5">
-      <h2 class="max-md:w-1/2 text-sm font-bold md:leading-3 uppercase whitespace-nowrap">{{ section.footer_links_section_heading }}</h2>
-      <ul class="max-md:w-1/2 flex max-md:flex-col md:justify-around md:items-center w-full">
+    <div class="grid grid-cols-2 gap-grid-site-gutter md:flex md:flex-col md:gap-4">
+      <h2 class="text-sm font-bold leading-tight">{{ section.footer_links_section_heading }}</h2>
+      <ul class="flex flex-col gap-y-[5px]">
         {% for item in section.footer_links_items %}
-          <li class="text-sm md:leading-3">
-            <a href="{{ item.footer_links_item_link.url }}" class="uppercase hocus:bg-spot hocus:text-black">{{ item.footer_links_item_link.name ?: item.footer_links_item_link.title }}</a>
+          <li class="text-sm leading-tight">
+            <a class="hocus:underline" href="{{ item.footer_links_item_link.url }}">
+              {{ item.footer_links_item_link.name ?: item.footer_links_item_link.title }}
+            </a>
           </li>
         {% endfor %}
       </ul>
@@ -14,18 +33,20 @@
     {% endfor %}
   </div>
 
-  <svg class="col-span-full aspect-mozilla-logo" aria-hidden="true">
-    <use xlink:href="#mozillalogo"></use>
-  </svg>
-  <span class="sr-only">Mozilla</span>
+  <div class="col-span-full grid grid-cols-2 gap-grid-site-gutter md:flex md:items-start md:justify-between md:gap-6 mt-8 md:mt-2">
+    <p class="max-md:w-1/2 font-bold text-sm md:text-xs whitespace-nowrap leading-tight"><a href="https://mozilla.org/">Mozilla</a> &copy; {{ now|date('Y') }}</p>
 
-  <div class="col-span-full flex items-start justify-between text-xs uppercase font-semibold gap-6">
-    <p class="max-md:w-1/2 whitespace-nowrap"><a href="https://mozilla.org/">Mozilla</a> &copy; {{ now|date('Y') }}</p>
-
-    <ul class="max-md:w-1/2 flex flex-wrap max-md:flex-col md:items-center justify-end md:gap-x-6 gap-y-1.5 text-right">
+    <ul class="flex flex-wrap max-md:flex-col md:items-center justify-end md:gap-x-6 max-md:gap-y-[5px]">
       {% for item in primary_footer_menu.items %}
-        <li class="text-xs leading-none"><a href="{{ item.url }}" class="hocus:bg-spot hocus:text-black">{{ item.name }}</a></li>
+        <li class="leading-tight text-sm md:text-xs">
+          <a href="{{ item.url }}" class="hocus:underline">{{ item.name }}</a>
+        </li>
       {% endfor %}
     </ul>
   </div>
+
+  {# Mozilla Logo #}
+  <svg class="md:row-start-2 col-span-full aspect-mozilla-logo mt-16" aria-hidden="true">
+    <use xlink:href="#mozillalogo"></use>
+  </svg>
 </footer>

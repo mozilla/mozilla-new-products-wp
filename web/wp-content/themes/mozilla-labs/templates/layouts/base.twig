@@ -20,11 +20,17 @@
 
   <div class="flex flex-col flex-1 min-h-screen">
 
-    {% include "components/nav.twig" %}
+    {% include "components/nav.twig" with {
+      class: custom_nav_classes|default(""),
+    } %}
 
     <main id="content" class="flex flex-col flex-1 {% block custom_content_classes %}{% endblock %}" tabindex="-1">
       {% block pageBody %}
       {% endblock %}
+
+      {% include "components/email-signup.twig" with {
+        override: email_signup_override|default(false),
+      } %}
     </main>
 
     {% block footer %}

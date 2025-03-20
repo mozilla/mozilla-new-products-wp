@@ -1,0 +1,17 @@
+<div class="relative [--icon-size:4rem] md:[--icon-size:3rem] lg:[--icon-size:3.5rem]">
+  {% include "components/lazy-img.twig" with {
+    class: icon ? "[clip-path:polygon(0_calc(100%-var(--icon-size)),var(--icon-size)_calc(100%-var(--icon-size)),var(--icon-size)_100%,100%_100%,100%_0,0_0)]" : null,
+    imgClass: "object-cover",
+    img: image,
+    aspectRatio: aspectRatio
+  } %}
+
+  {% if icon %}
+    <div class="absolute left-0 bottom-0 w-[--icon-size] pr-3 pt-3">
+      {% include "components/lazy-img.twig" with {
+        class: "[.theme-dark_&]:invert",
+        img: icon
+      } only %}
+    </div>
+  {% endif %}
+</div>

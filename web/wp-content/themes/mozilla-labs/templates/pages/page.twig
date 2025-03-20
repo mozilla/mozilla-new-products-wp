@@ -1,8 +1,8 @@
 {% extends "layouts/base.twig" %}
 
-{% block pageBody %}
+{% set email_signup_override = post.meta("email_signup") %}
 
-  {% include 'components/page-topper.twig' with { title: post.title } %}
+{% block pageBody %}
 
   <article>
     <div x-hang-punc class="pb-24 grid grid-site centered-page gutenberg {{ post.has_lede_paragraph ? 'lede' }}">

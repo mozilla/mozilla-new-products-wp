@@ -1,0 +1,59 @@
+{
+  "key": "group_67cf2001841bf",
+  "title": "Post Products",
+  "fields": [
+    {
+      "key": "field_67cf2001e1729",
+      "label": "Products",
+      "name": "products",
+      "aria-label": "",
+      "type": "relationship",
+      "instructions": "Select products that are relevant to this article.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "post_type": ["product"],
+      "post_status": ["publish"],
+      "taxonomy": "",
+      "filters": ["search"],
+      "return_format": "object",
+      "acfe_bidirectional": {
+        "acfe_bidirectional_enabled": "0"
+      },
+      "min": "",
+      "max": 1,
+      "allow_in_bindings": 0,
+      "elements": "",
+      "bidirectional": 0,
+      "bidirectional_target": []
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "post"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "side",
+  "style": "default",
+  "label_placement": "left",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0,
+  "acfe_display_title": "",
+  "acfe_autosync": ["json"],
+  "acfe_form": 0,
+  "acfe_meta": "",
+  "acfe_note": "",
+  "modified": 1742412304
+}

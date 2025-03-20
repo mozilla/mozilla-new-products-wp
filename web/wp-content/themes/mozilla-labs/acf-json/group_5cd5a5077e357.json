@@ -42,6 +42,7 @@
       "layout": "table",
       "button_label": "Add an article",
       "rows_per_page": 20,
+      "acfe_repeater_stylised_button": 0,
       "sub_fields": [
         {
           "key": "field_5cd5c5733d782",
@@ -64,7 +65,10 @@
           "return_format": "object",
           "ui": 1,
           "bidirectional_target": [],
-          "parent_repeater": "field_5cd5a50d1a9e9"
+          "parent_repeater": "field_5cd5a50d1a9e9",
+          "save_custom": 0,
+          "save_post_type": "",
+          "save_post_status": ""
         }
       ]
     }
@@ -87,5 +91,10 @@
   "active": true,
   "description": "",
   "show_in_rest": 0,
-  "modified": 1704404672
+  "acfe_display_title": "",
+  "acfe_autosync": ["json"],
+  "acfe_form": 0,
+  "acfe_meta": "",
+  "acfe_note": "",
+  "modified": 1742422667
 }

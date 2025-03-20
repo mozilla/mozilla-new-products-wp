@@ -9,7 +9,7 @@ namespace MozillaLabs\Managers;
 
 use Timber\Timber;
 use Timber\URLHelper;
-use MozillaLabs\Models\PostType\Project;
+use MozillaLabs\Models\PostType\Product;
 
 /** Class */
 class ContextManager {
@@ -77,18 +77,18 @@ class ContextManager {
 	 * @return array
 	 */
 	public function archive_links( $context ) {
-		$project_archive_args  = array(
+		$product_archive_args  = array(
 			'post_type'      => 'page',
 			'posts_per_page' => 1,
 			'meta_query'     => array(
 				array(
 					'key'   => '_wp_page_template',
-					'value' => 'page-projects.php',
+					'value' => 'page-products.php',
 				),
 			),
 		);
-		$project_archive_posts = Timber::get_posts( $project_archive_args )->to_array();
-		$project_archive_link  = ! empty( $project_archive_posts ) ? $project_archive_posts[0]->link() : null;
+		$product_archive_posts = Timber::get_posts( $product_archive_args )->to_array();
+		$product_archive_link  = ! empty( $product_archive_posts ) ? $product_archive_posts[0]->link() : null;
 
 		$accelerator_page_args  = array(
 			'post_type'      => 'page',
@@ -96,7 +96,7 @@ class ContextManager {
 			'meta_query'     => array(
 				array(
 					'key'   => '_wp_page_template',
-					'value' => 'page-accelerator.php',
+					'value' => 'page-landing.php',
 				),
 			),
 		);
@@ -123,7 +123,7 @@ class ContextManager {
 
 		$context['archive_links'] = array(
 			'posts'       => get_post_type_archive_link( 'post' ),
-			'projects'    => $project_archive_link,
+			'products'    => $product_archive_link,
 			'accelerator' => $accelerator_page_link,
 			'people'      => $people_page_link,
 			'discord'     => $discord_link,
