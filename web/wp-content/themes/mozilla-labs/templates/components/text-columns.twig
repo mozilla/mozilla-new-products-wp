@@ -1,5 +1,5 @@
-<section class="grid grid-site gap-y-grid-site-gutter my-32 md:my-52 first:mt-0 last:mb-0">
-  <h2 class="col-span-full sm:col-span-1/2 type-headline-20 font-bold">{{ headline|default(page.title) }}</h2>
+<section class="grid grid-site gap-y-grid-site-gutter my-32 md:my-52 first:mt-0 last:mb-0 {{ class|default("") }}">
+  <h2 class="col-span-full sm:col-span-1/2 type-headline-20 font-bold">{{ block.headline }}</h2>
 
   <div class="col-span-full sm:col-span-1/2 flex flex-col">
     {% if block.introduction %}
