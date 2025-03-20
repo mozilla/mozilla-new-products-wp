@@ -1,0 +1,9 @@
+<header class="grid grid-site pt-[20vh] pb-[20vh]">
+  <h2 class="col-span-1/2 type-headline-20 font-bold">{{ headline|default(page.title) }}</h2>
+
+  {% if description %}
+    <div class="col-span-1/2 type-headline-20 prose">
+      {{ description }}
+    </div>
+  {% endif %}
+</header>

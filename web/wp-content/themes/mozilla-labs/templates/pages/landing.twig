@@ -13,9 +13,10 @@
 
   {% set topper = page.meta("topper")|first %}
 
-  {% if topper.acf_fc_layout == "typewriter_headline" %}
-    {% include "components/typewriter-headline-topper.twig" with topper %}
-  {% endif %}
+  {% set template_name = topper.acf_fc_layout|replace({'_': '-'}) %}
+  {% set template_path = "components/" ~ template_name ~ "-topper.twig" %}
+
+  {% include [template_path] ignore missing with topper %}
 
   <div class="relative">
     {% for block in page.meta("blocks") %}
