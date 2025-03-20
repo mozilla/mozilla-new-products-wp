@@ -179,6 +179,8 @@ module.exports = {
         tightest: '0.90',
         headline: '0.96',
         tighter: '1.05',
+        tight: '1.20',
+        snug: '1.35',
       },
 
       maxWidth: {
