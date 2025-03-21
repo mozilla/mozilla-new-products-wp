@@ -1,14 +1,14 @@
 {% if block.teases|length %}
 <section class="grid grid-site my-32 md:my-52 first:mt-0 last:mb-0">
   {% if block.headline or block.cta %}
-    <div class="col-span-full flex flex-row gap-x-1 justify-center type-caption font-bold mb-10">
+    <div class="col-span-full flex flex-row gap-x-1 justify-center type-text-12 font-bold mb-10">
       {% if block.headline %}
-        <h2 class="text-white">{{ block.headline }}</h2>
+        <h2 class="text-[var(--color-content)]">{{ block.headline }}</h2>
       {% endif %}
 
       {% if block.cta %}
         <span aria-hidden="true">/</span>
-        <a href="{{ block.cta.url }}" class="hocus:text-white">
+        <a href="{{ block.cta.url }}" class="text-[var(--color-content-secondary-small)] hocus:text-[var(--color-content)]">
           {{ block.cta.title }}
         </a>
       {% endif %}
