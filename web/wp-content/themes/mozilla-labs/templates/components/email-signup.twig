@@ -89,9 +89,9 @@
     </form>
 
     {% if (override is defined and override.graphic) or global_signup.graphic %}
-    <div class="col-start-1 col-end-7 md:col-start-2 md:col-end-12 -mx-grid-site-margin md:mx-0 row-span-full overflow-hidden pointer-events-none relative">
+    <div class="col-start-1 col-end-7 md:col-start-2 md:col-end-12 xl:col-start-3 xl:col-end-11 -mx-grid-site-margin md:mx-0 row-span-full overflow-hidden pointer-events-none relative">
       {% include "components/lazy-img.twig" with {
-        class: "w-full h-auto max-md:w-[200%] max-md:-translate-x-1/4",
+        class: "w-full h-auto w-[200%] sm:w-[150%] md:w-full left-1/2 -translate-x-1/2",
         img: get_image(override.graphic|default(global_signup.graphic)),
         alt: "",
       } %}
