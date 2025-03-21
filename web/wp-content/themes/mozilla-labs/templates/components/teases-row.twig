@@ -20,27 +20,39 @@
       {% set product = tease.product ? get_post(tease.product) : null %}
 
       <li class="w-full flex flex-col">
-        {% if tease.image %}
-          {% include "components/image-icon-watermark.twig" with {
-            image: get_image(tease.image),
-            icon: product and product.icons.grayscale ? get_image(product.icons.grayscale) : null,
-            aspectRatio: "5/7"
-          } %}
-        {% endif %}
-
-        <div class="flex flex-col my-8">
-          <h3 class="text-sm">{{ tease.title }}</h3>
-
-          {% if tease.description|trim is not empty %}
-            <p class="text-sm text-secondary/60">{{ tease.description|striptags('<strong><em><a>') }}</p>
-          {% endif %}
-        </div>
-
         {% if tease.cta %}
-          <a href="{{ tease.cta.url }}" class="text-sm underline mt-auto">
-            {{ tease.cta.title }}
-          </a>
+            <a href="{{ tease.cta.url }}" class="flex flex-col gap-y-4 group h-full">
+          {% else %}
+            <div class="flex flex-col gap-y-4">
         {% endif %}
+
+          {% if tease.image %}
+            {% include "components/image-icon-watermark.twig" with {
+              image: get_image(tease.image),
+              icon: product and product.icons.grayscale ? get_image(product.icons.grayscale) : null,
+              aspectRatio: "5/7"
+            } %}
+          {% endif %}
+
+          <div class="flex flex-col my-8">
+            <h3 class="text-sm">{{ tease.title }}</h3>
+
+            {% if tease.description|trim is not empty %}
+              <p class="text-sm text-secondary/60 group-hocus:text-content">{{ tease.description|striptags('<strong><em><a>') }}</p>
+            {% endif %}
+          </div>
+
+          {% if tease.cta %}
+            <p class="text-sm underline mt-auto group-hocus:no-underline">
+              {{ tease.cta.title }}
+            </p>
+          {% endif %}
+
+          {% if tease.cta %}
+            </a>
+          {% else %}
+            </div>
+          {% endif %}
       </li>
     {% endfor %}
   </ul>
