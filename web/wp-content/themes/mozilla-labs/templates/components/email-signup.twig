@@ -89,15 +89,14 @@
     </form>
 
     {% if (override is defined and override.graphic) or global_signup.graphic %}
-    <div class="col-start-1 col-end-7 md:col-start-2 md:col-end-12 -mx-grid-site-margin md:mx-0 aspect-square sm:aspect-[7/5] md:aspect-[16/9] xl:aspect-[2400/926] row-span-full overflow-hidden pointer-events-none relative">
+    <div class="col-start-1 col-end-7 md:col-start-2 md:col-end-12 xl:col-start-3 xl:col-end-11 -mx-grid-site-margin md:mx-0 row-span-full overflow-hidden pointer-events-none relative">
       {% include "components/lazy-img.twig" with {
-        class: "h-full absolute left-1/2 translate-x-[-50%]",
+        class: "w-full h-auto w-[200%] sm:w-[150%] md:w-full left-1/2 -translate-x-1/2",
         img: get_image(override.graphic|default(global_signup.graphic)),
-        decorative: true,
-        aspectRatio: "2400/926"
+        alt: "",
       } %}
 
-      <div class="absolute h-[173px] w-full bottom-0 left-0 pointer-events-none">
+      <div class="absolute h-dither-fade w-full bottom-0 left-0 pointer-events-none">
         {% include "components/fade-to-bottom-dither.twig" %}
       </div>
 
