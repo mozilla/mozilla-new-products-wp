@@ -1,0 +1,29 @@
+<figure class="relative">
+  <div class="relative flex">
+    {% include "components/lazy-img.twig" with {
+      class: "w-full aspect-[4/5] md:aspect-[16/9]",
+      imgClass:"object-cover",
+      img: get_image(block.image),
+    } %}
+
+    <div
+      class="
+        absolute w-full h-[173px] pointer-events-none
+        data-[position='top']:top-0 data-[position='top']:scale-y-[-1]
+        data-[position='bottom']:bottom-0
+      "
+      data-position="{{ block.fade_position }}"
+    >
+    {% include "components/fade-to-bottom-dither.twig" %}
+    </div>
+  </div>
+
+  {% if block.caption %}
+    <figcaption class="absolute bottom-grid-site-margin left-grid-site-margin bg-off-black/60 text-white backdrop-blur-md size-fit px-[10px] pt-[6.5px] pb-[5.5px] type-caption">{{ block.caption }}</figcaption>
+  {% endif %}
+</figure>
+
+
+{# <div class="absolute h-[173px] w-full bottom-0 left-0 pointer-events-none">
+      {% include "components/fade-to-bottom-dither.twig" %}
+      </div> #}
