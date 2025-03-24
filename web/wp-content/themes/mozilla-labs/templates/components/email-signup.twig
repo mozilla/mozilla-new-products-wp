@@ -13,7 +13,7 @@
       id="newsletter-form"
       class="mzp-c-newsletter-form mt-[10%] md:mt-[12.5%] row-start-1 row-end-2 col-start-1 col-end-7 md:col-start-4 md:col-end-10 3xl:col-start-5 3xl:col-end-9 z-20"
       method="post"
-      {# action="https://basket.mozilla.org/news/subscribe/" #}
+      action="https://basket.mozilla.org/news/subscribe/"
     >
       <!-- The value for the source_url field below should match the URL of your page where the newsletter form appears-->
       <input type="hidden" name="source_url" value="{{ current_url }}">
@@ -63,6 +63,30 @@
         </div>
 
         <div id="newsletter-details" class="mzp-c-newsletter-details">
+          <div class="hidden">
+            <label for="id_country" class="block mt-6">Country</label>
+            <select name="country" id="id_country">
+                <option value="us" selected>United States</option>
+                <!-- <option value="de">Germany</option> -->
+                <!-- <option value="fr">France</option> -->
+                <!-- <option value="in">India</option> -->
+                <!-- <option value="jp">Japan</option> -->
+                <!-- <option value="es">Spain</option> -->
+            </select>
+          </div>
+
+          <div class="hidden">
+            <label for="id_lang" class="block mt-6">Language</label>
+            <select name="language" id="id_lang">
+                <option value="en" selected>English</option>
+                <!-- <option value="de">Deutsch</option> -->
+                <!-- <option value="es">Español</option> -->
+                <!-- <option value="fr">Français</option> -->
+                <!-- <option value="hi-IN">हिन्दी (भारत)</option> -->
+                <!-- <option value="ja">日本語</option> -->
+            </select>
+          </div>
+
           <fieldset class="mzp-u-inline hidden">
             <legend>I want information about:</legend>
             <p>
