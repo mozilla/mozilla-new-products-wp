@@ -31,4 +31,6 @@ Alpine.plugin(typewriter);
 // Start Alpine
 Alpine.start();
 
-MzpNewsletter.init();
+if (document.getElementById('email-signup')) {
+  MzpNewsletter.init();
+}
