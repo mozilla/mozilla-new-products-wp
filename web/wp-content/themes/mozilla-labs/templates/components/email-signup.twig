@@ -58,7 +58,7 @@
 
           <input
             id="id_email"
-            class="mzp-js-email-field bg-transparent flex-1 py-1 font-headline font-wdth-380 font-semibold outline-none text-sm tracking-normal placeholder:text-white"
+            class="mzp-js-email-field bg-transparent flex-1 py-1 font-headline font-wdth-380 font-semibold outline-none text-sm tracking-normal placeholder:text-white text-white disabled:text-white/60"
             type="email"
             name="email"
             required=""
@@ -66,7 +66,7 @@
             placeholder="Enter Your Email"
           >
 
-          <button type="submit" class="mzp-c-button group w-fit flex gap-1 enabled:cursor-pointer" id="newsletter-submit">
+          <button type="submit" class="mzp-c-button group w-fit flex gap-1 enabled:cursor-pointer disabled:hidden" id="newsletter-submit">
             <span class="w-fit button button-sm group-enabled:group-hocus:bg-black [.theme-dark_&]:group-enabled:group-hocus:bg-white [.theme-dark_&]:group-enabled:group-hocus:text-black">
               {{ override.cta|default(global_signup.cta) }}
             </span>
@@ -81,19 +81,11 @@
 
         <fieldset class="mzp-c-newsletter-content">
           <div class="mzp-c-form-errors hidden" id="newsletter-errors">
-            <ul class="mzp-u-list-styled text-xs button button-sm">
-              <li class="error-email-invalid hidden">
-                Please enter a valid email address
-              </li>
-              <li class="error-newsletter-checkbox hidden">
-                Please check at least one of the newsletter options.
-              </li>
-              <li class="error-privacy-policy hidden">
-                You must agree to the privacy notice
-              </li>
-              <li class="error-try-again-later hidden">
-                System error – please try again later
-              </li>
+            <ul class="mzp-u-list-styled text-xs button button-sm whitespace-break-spaces text-center">
+              <li class="error-email-invalid hidden">Please enter a valid email address</li>
+              <li class="error-newsletter-checkbox hidden">Please check at least one of the newsletter options</li>
+              <li class="error-privacy-policy hidden">You must agree to the privacy notice</li>
+              <li class="error-try-again-later hidden">System error – please try again later</li>
             </ul>
           </div>
         </fieldset>
