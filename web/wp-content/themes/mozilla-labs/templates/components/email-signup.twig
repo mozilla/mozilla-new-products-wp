@@ -8,14 +8,14 @@
     {{ override.prompt|default(global_signup.prompt) }}
   </div>
 
-  <div class="relative col-span-full grid grid-cols-[subgrid] grid-rows-[auto_1fr]">
+  <div class="relative col-span-full grid grid-cols-[subgrid] grid-rows-[auto_auto_1fr]">
     <form
       id="newsletter-form"
-      class="mzp-c-newsletter-form mt-[10%] md:mt-[12.5%] row-start-1 row-end-2 col-start-1 col-end-7 md:col-start-4 md:col-end-10 3xl:col-start-5 3xl:col-end-9 z-20 !block"
+      class="mzp-c-newsletter-form row-start-1 row-end-3 col-start-1 col-end-7 md:col-start-4 md:col-end-10 3xl:col-start-5 3xl:col-end-9 z-20 !grid grid-rows-subgrid"
       method="post"
       action="https://basket.mozilla.org/news/subscribe/"
     >
-      <div id="newsletter-details" class="mzp-c-newsletter-details">
+      <div id="newsletter-details" class="mzp-c-newsletter-details mb-8">
         <div class="hidden">
           <label for="id_country">Country</label>
           <select name="country" id="id_country">
@@ -40,70 +40,72 @@
           </p>
         </fieldset>
 
-        <p>
-          <label for="privacy" class="mzp-u-inline block leading-5 text-xs text-[var(--color-content-secondary-small)]">
-            <input class="relative aspect-square align-middle mb-0.5 mr-1 bg-transparent appearance-none size-3.5 border border-[var(--color-content-secondary-small)] checked:bg-black/10 checked:border-transparent after:hidden checked:after:block after:absolute after:top-1/3 after:left-1/4 after:border-l after:border-b after:border-b-[var(--color-content-secondary-small)] after:border-l-[var(--color-content-secondary-small)] after:h-1/4 after:w-1/2 after:-rotate-45" type="checkbox" id="privacy" name="privacy" required aria-required="true">
+        <p class="text-center">
+          <label for="privacy" class="mzp-u-inline block leading-5 text-xs text-content/60">
+            <input class="relative aspect-square align-middle mb-0.5 mr-1 bg-transparent appearance-none size-3.5 border border-content/60 checked:bg-content/10 checked:border-transparent after:hidden checked:after:block after:absolute after:top-1/3 after:left-1/4 after:border-l after:border-b after:border-b-content/60 after:border-l-content/60 after:h-1/4 after:w-1/2 after:-rotate-45" type="checkbox" id="privacy" name="privacy" required aria-required="true">
             I’m okay with Mozilla handling my info as explained in <a
               href="https://www.mozilla.org/privacy/websites/">this Privacy Notice</a>
           </label>
         </p>
       </div>
 
-      <!-- The value for the source_url field below should match the URL of your page where the newsletter form appears-->
-      <input type="hidden" name="source_url" value="{{ current_url }}">
+      <div class="mt-[10%] md:mt-[12.5%] ">
+        <!-- The value for the source_url field below should match the URL of your page where the newsletter form appears-->
+        <input type="hidden" name="source_url" value="{{ current_url }}">
 
-      <div class="p-2 pl-5 bg-black/60 [.theme-dark_&]:bg-off-black/60 backdrop-blur-md text-white flex justify-between items-center gap-2">
-        <label class="sr-only" for="id_email">Your email address</label>
+        <div class="p-2 pl-5 bg-black/60 [.theme-dark_&]:bg-off-black/60 backdrop-blur-md text-white flex justify-between items-center gap-2">
+          <label class="sr-only" for="id_email">Your email address</label>
 
-        <input
-          id="id_email"
-          class="mzp-js-email-field bg-transparent flex-1 py-1 font-headline font-wdth-380 font-semibold outline-none text-sm tracking-normal placeholder:text-white"
-          type="email"
-          name="email"
-          required=""
-          maxlength="320"
-          placeholder="Enter Your Email"
-        >
+          <input
+            id="id_email"
+            class="mzp-js-email-field bg-transparent flex-1 py-1 font-headline font-wdth-380 font-semibold outline-none text-sm tracking-normal placeholder:text-white"
+            type="email"
+            name="email"
+            required=""
+            maxlength="320"
+            placeholder="Enter Your Email"
+          >
 
-        <button type="submit" class="mzp-c-button group w-fit flex gap-1 enabled:cursor-pointer" id="newsletter-submit">
-          <span class="w-fit button button-sm group-enabled:group-hocus:bg-black [.theme-dark_&]:group-enabled:group-hocus:bg-white [.theme-dark_&]:group-enabled:group-hocus:text-black">
-            {{ override.cta|default(global_signup.cta) }}
-          </span>
+          <button type="submit" class="mzp-c-button group w-fit flex gap-1 enabled:cursor-pointer" id="newsletter-submit">
+            <span class="w-fit button button-sm group-enabled:group-hocus:bg-black [.theme-dark_&]:group-enabled:group-hocus:bg-white [.theme-dark_&]:group-enabled:group-hocus:text-black">
+              {{ override.cta|default(global_signup.cta) }}
+            </span>
 
-          <svg class="button button-square p-[10.5px] transition-all group-enabled:group-hocus:bg-black [.theme-dark_&]:group-enabled:group-hocus:bg-white [.theme-dark_&]:group-enabled:group-hocus:text-black" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" fill="none">
-              <path d="M9.875 5L3.91667 0V4.375H0.125V5.625H3.91667V10L9.875 5ZM5.16667 4.375V2.70833L7.91667 5L5.16667 7.29167V4.375Z" fill="currentColor"/>
+            <svg class="button button-square p-[10.5px] transition-all group-enabled:group-hocus:bg-black [.theme-dark_&]:group-enabled:group-hocus:bg-white [.theme-dark_&]:group-enabled:group-hocus:text-black" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" fill="none">
+                <path d="M9.875 5L3.91667 0V4.375H0.125V5.625H3.91667V10L9.875 5ZM5.16667 4.375V2.70833L7.91667 5L5.16667 7.29167V4.375Z" fill="currentColor"/>
+              </svg>
             </svg>
-          </svg>
-        </button>
-      </div>
-
-      <fieldset class="mzp-c-newsletter-content">
-        <div class="mzp-c-form-errors hidden" id="newsletter-errors">
-          <ul class="mzp-u-list-styled text-xs button button-sm">
-            <li class="error-email-invalid hidden">
-              Please enter a valid email address
-            </li>
-            <li class="error-newsletter-checkbox hidden">
-              Please check at least one of the newsletter options.
-            </li>
-            <li class="error-privacy-policy hidden">
-              You must agree to the privacy notice
-            </li>
-            <li class="error-try-again-later hidden">
-              System error – please try again later
-            </li>
-          </ul>
+          </button>
         </div>
-      </fieldset>
 
-      <div id="newsletter-thanks" class="mzp-c-newsletter-thanks hidden">
-        <p class="text-xs button button-sm">Thank you for subscribing</p>
+        <fieldset class="mzp-c-newsletter-content">
+          <div class="mzp-c-form-errors hidden" id="newsletter-errors">
+            <ul class="mzp-u-list-styled text-xs button button-sm">
+              <li class="error-email-invalid hidden">
+                Please enter a valid email address
+              </li>
+              <li class="error-newsletter-checkbox hidden">
+                Please check at least one of the newsletter options.
+              </li>
+              <li class="error-privacy-policy hidden">
+                You must agree to the privacy notice
+              </li>
+              <li class="error-try-again-later hidden">
+                System error – please try again later
+              </li>
+            </ul>
+          </div>
+        </fieldset>
+
+        <div id="newsletter-thanks" class="mzp-c-newsletter-thanks hidden">
+          <p class="text-xs button button-sm">Thank you for subscribing</p>
+        </div>
       </div>
     </form>
 
     {% if (override is defined and override.graphic) or global_signup.graphic %}
-      <div class="col-start-1 col-end-7 md:col-start-2 md:col-end-12 xl:col-start-3 xl:col-end-11 -mx-grid-site-margin md:mx-0 row-span-full overflow-hidden pointer-events-none relative">
+      <div class="row-start-2 row-end-4 col-start-1 col-end-7 md:col-start-2 md:col-end-12 xl:col-start-3 xl:col-end-11 -mx-grid-site-margin md:mx-0 row-span-full overflow-hidden pointer-events-none relative">
         {% include "components/lazy-img.twig" with {
           class: "h-auto w-[200%] sm:w-[150%] md:w-full left-1/2 -translate-x-1/2",
           img: get_image(override.graphic|default(global_signup.graphic)),
