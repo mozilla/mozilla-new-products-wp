@@ -15,8 +15,78 @@
       method="post"
       action="https://basket.mozilla.org/news/subscribe/"
     >
+      <div id="newsletter-details" class="mzp-c-newsletter-details">
+        <div class="hidden">
+          <label for="id_country">Country</label>
+          <select name="country" id="id_country">
+              <option value="us" selected>United States</option>
+              <!-- <option value="de">Germany</option> -->
+              <!-- <option value="fr">France</option> -->
+              <!-- <option value="in">India</option> -->
+              <!-- <option value="jp">Japan</option> -->
+              <!-- <option value="es">Spain</option> -->
+          </select>
+        </div>
+
+        <div class="hidden">
+          <label for="id_lang">Language</label>
+          <select name="language" id="id_lang">
+              <option value="en" selected>English</option>
+              <!-- <option value="de">Deutsch</option> -->
+              <!-- <option value="es">Español</option> -->
+              <!-- <option value="fr">Français</option> -->
+              <!-- <option value="hi-IN">हिन्दी (भारत)</option> -->
+              <!-- <option value="ja">日本語</option> -->
+          </select>
+        </div>
+
+        <fieldset class="mzp-u-inline hidden">
+          <legend>I want information about:</legend>
+          <p>
+            <label for="id_newsletters_0" class="mzp-u-inline">
+              <input type="checkbox" name="newsletters" value="test-pilot" id="id_newsletters_0" checked>
+              Mozilla Labs
+            </label>
+          </p>
+        </fieldset>
+
+        <p>
+          <label for="privacy" class="mzp-u-inline flex items-center gap-2 text-xs text-[var(--color-content-secondary-small)]">
+            <input type="checkbox" id="privacy" name="privacy" required aria-required="true">
+            I’m okay with Mozilla handling my info as explained in <a
+              href="https://www.mozilla.org/privacy/websites/">this Privacy Notice</a>
+          </label>
+        </p>
+      </div>
+
       <!-- The value for the source_url field below should match the URL of your page where the newsletter form appears-->
       <input type="hidden" name="source_url" value="{{ current_url }}">
+
+      <div class="p-2 pl-5 bg-black/60 [.theme-dark_&]:bg-off-black/60 backdrop-blur-md text-white flex justify-between items-center gap-2">
+        <label class="sr-only" for="id_email">Your email address</label>
+
+        <input
+          id="id_email"
+          class="mzp-js-email-field bg-transparent flex-1 py-1 font-headline font-wdth-380 font-semibold outline-none text-sm tracking-normal placeholder:text-white"
+          type="email"
+          name="email"
+          required=""
+          maxlength="320"
+          placeholder="Enter Your Email"
+        >
+
+        <button type="submit" class="mzp-c-button group w-fit flex gap-1 cursor-pointer" id="newsletter-submit">
+          <span class="w-fit button button-sm group-hocus:bg-black [.theme-dark_&]:group-hocus:bg-white [.theme-dark_&]:group-hocus:text-black">
+            {{ override.cta|default(global_signup.cta) }}
+          </span>
+
+          <svg class="button button-square p-[10.5px] transition-all group-hocus:bg-black [.theme-dark_&]:group-hocus:bg-white [.theme-dark_&]:group-hocus:text-black" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" fill="none">
+              <path d="M9.875 5L3.91667 0V4.375H0.125V5.625H3.91667V10L9.875 5ZM5.16667 4.375V2.70833L7.91667 5L5.16667 7.29167V4.375Z" fill="currentColor"/>
+            </svg>
+          </svg>
+        </button>
+      </div>
 
       <fieldset class="mzp-c-newsletter-content">
         <div class="mzp-c-form-errors hidden" id="newsletter-errors">
@@ -34,76 +104,6 @@
               We are sorry, but there was a problem with our system. Please try again later!
             </li>
           </ul>
-        </div>
-
-        <div class="p-2 pl-5 bg-black/60 [.theme-dark_&]:bg-off-black/60 backdrop-blur-md text-white flex justify-between items-center gap-2">
-          <label class="sr-only" for="id_email">Your email address</label>
-
-          <input
-            id="id_email"
-            class="mzp-js-email-field bg-transparent flex-1 py-1 font-headline font-wdth-380 font-semibold outline-none text-sm tracking-normal placeholder:text-white"
-            type="email"
-            name="email"
-            required=""
-            maxlength="320"
-            placeholder="Enter Your Email"
-          >
-
-          <button type="submit" class="mzp-c-button group w-fit flex gap-1 cursor-pointer" id="newsletter-submit">
-            <span class="w-fit button button-sm group-hocus:bg-black [.theme-dark_&]:group-hocus:bg-white [.theme-dark_&]:group-hocus:text-black">
-              {{ override.cta|default(global_signup.cta) }}
-            </span>
-
-            <svg class="button button-square p-[10.5px] transition-all group-hocus:bg-black [.theme-dark_&]:group-hocus:bg-white [.theme-dark_&]:group-hocus:text-black" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" fill="none">
-                <path d="M9.875 5L3.91667 0V4.375H0.125V5.625H3.91667V10L9.875 5ZM5.16667 4.375V2.70833L7.91667 5L5.16667 7.29167V4.375Z" fill="currentColor"/>
-              </svg>
-            </svg>
-          </button>
-        </div>
-
-        <div id="newsletter-details" class="mzp-c-newsletter-details">
-          <div class="hidden">
-            <label for="id_country">Country</label>
-            <select name="country" id="id_country">
-                <option value="us" selected>United States</option>
-                <!-- <option value="de">Germany</option> -->
-                <!-- <option value="fr">France</option> -->
-                <!-- <option value="in">India</option> -->
-                <!-- <option value="jp">Japan</option> -->
-                <!-- <option value="es">Spain</option> -->
-            </select>
-          </div>
-
-          <div class="hidden">
-            <label for="id_lang">Language</label>
-            <select name="language" id="id_lang">
-                <option value="en" selected>English</option>
-                <!-- <option value="de">Deutsch</option> -->
-                <!-- <option value="es">Español</option> -->
-                <!-- <option value="fr">Français</option> -->
-                <!-- <option value="hi-IN">हिन्दी (भारत)</option> -->
-                <!-- <option value="ja">日本語</option> -->
-            </select>
-          </div>
-
-          <fieldset class="mzp-u-inline hidden">
-            <legend>I want information about:</legend>
-            <p>
-              <label for="id_newsletters_0" class="mzp-u-inline">
-                <input type="checkbox" name="newsletters" value="test-pilot" id="id_newsletters_0" checked>
-                Mozilla Labs
-              </label>
-            </p>
-          </fieldset>
-
-          <p>
-            <label for="privacy" class="mzp-u-inline">
-              <input type="checkbox" id="privacy" name="privacy" required aria-required="true">
-              I’m okay with Mozilla handling my info as explained in <a
-                href="https://www.mozilla.org/privacy/websites/">this Privacy Notice</a>
-            </label>
-          </p>
         </div>
       </fieldset>
     </form>
