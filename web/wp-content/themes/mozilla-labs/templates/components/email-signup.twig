@@ -64,7 +64,7 @@
 
         <div id="newsletter-details" class="mzp-c-newsletter-details">
           <div class="hidden">
-            <label for="id_country" class="block mt-6">Country</label>
+            <label for="id_country">Country</label>
             <select name="country" id="id_country">
                 <option value="us" selected>United States</option>
                 <!-- <option value="de">Germany</option> -->
@@ -76,7 +76,7 @@
           </div>
 
           <div class="hidden">
-            <label for="id_lang" class="block mt-6">Language</label>
+            <label for="id_lang">Language</label>
             <select name="language" id="id_lang">
                 <option value="en" selected>English</option>
                 <!-- <option value="de">Deutsch</option> -->
@@ -109,25 +109,22 @@
     </form>
 
     <div id="newsletter-thanks" class="mzp-c-newsletter-thanks hidden">
-        <div class="md:grid md:grid-cols-24 gap-x-grid-site-gutter mt-6">
-            <h3 class="uppercase font-bold md:col-start-13 md:col-span-12 lg:col-start-15 lg:col-span-10">Thanks!</h3>
-            <p class="md:col-start-13 md:col-span-12 lg:col-start-15 lg:col-span-10">If you haven’t previously confirmed a subscription to a Mozilla-related newsletter you may have to do so. Please check your inbox or your spam filter for an email from us.</p>
-        </div>
+      <h3>Thanks!</h3>
+      <p>If you haven’t previously confirmed a subscription to a Mozilla-related newsletter you may have to do so. Please check your inbox or your spam filter for an email from us.</p>
     </div>
 
     {% if (override is defined and override.graphic) or global_signup.graphic %}
-    <div class="col-start-1 col-end-7 md:col-start-2 md:col-end-12 xl:col-start-3 xl:col-end-11 -mx-grid-site-margin md:mx-0 row-span-full overflow-hidden pointer-events-none relative">
-      {% include "components/lazy-img.twig" with {
-        class: "h-auto w-[200%] sm:w-[150%] md:w-full left-1/2 -translate-x-1/2",
-        img: get_image(override.graphic|default(global_signup.graphic)),
-        alt: "",
-      } %}
+      <div class="col-start-1 col-end-7 md:col-start-2 md:col-end-12 xl:col-start-3 xl:col-end-11 -mx-grid-site-margin md:mx-0 row-span-full overflow-hidden pointer-events-none relative">
+        {% include "components/lazy-img.twig" with {
+          class: "h-auto w-[200%] sm:w-[150%] md:w-full left-1/2 -translate-x-1/2",
+          img: get_image(override.graphic|default(global_signup.graphic)),
+          alt: "",
+        } %}
 
-      <div class="absolute h-dither-fade w-full bottom-0 left-0 pointer-events-none">
-        {% include "components/fade-to-bottom-dither.twig" %}
+        <div class="absolute h-dither-fade w-full bottom-0 left-0 pointer-events-none">
+          {% include "components/fade-to-bottom-dither.twig" %}
+        </div>
       </div>
-
-    </div>
     {% endif %}
   </div>
 </section>
