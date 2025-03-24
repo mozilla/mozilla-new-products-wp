@@ -79,6 +79,8 @@ body {
     --color-main: var(--color-white);
     --color-secondary: #{color.rgb(#1b1b1b)};
     --color-content: var(--color-black);
+    --color-content-secondary-small: #767676;
+    --color-content-secondary-large: #949494;
     --color-content-reverse: var(--color-white);
     --color-code: var(--color-black);
     --color-spot: var(--color-green);
@@ -103,6 +105,8 @@ body {
     --color-main: var(--color-black);
     --color-secondary: var(--color-gray);
     --color-content: var(--color-white);
+    --color-content-secondary-small: #767676;
+    --color-content-secondary-large: #666666;
     --color-content-reverse: var(--color-black);
     --color-code: var(--color-black);
     --color-spot: var(--color-green);
@@ -196,6 +200,10 @@ body {
 
   .type-sans-sm {
     @apply text-xl font-sans font-normal leading-tighter tracking-tight;
+  }
+
+  .type-text-12 {
+    @apply text-xs leading-tight;
   }
 
   .type-sans-subhead {
