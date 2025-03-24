@@ -1,5 +1,5 @@
 <div class="border-t border-content flex flex-col" style="--background-color: {{ product.colors.background }}; --foreground-color: {{ product.colors.foreground }}">
-  <a href="{{ product.link }}" class="px-grid-site-margin py-grid-site-margin grid grid-cols-6 md:grid-cols-12 gap-6 relative items-center group overflow-hidden">
+  <div class="px-grid-site-margin py-grid-site-margin grid grid-cols-6 md:grid-cols-12 gap-6 relative items-center group overflow-hidden">
     <div class="col-span-3 flex flex-row gap-x-4 items-center z-10">
       <div class="relative w-12 h-12 flex ">
         {# Grayscale SVG #}
@@ -46,15 +46,29 @@
     </div>
 
     <div class="flex col-span-3 justify-end">
-     <p class="relative w-fit type-text-20 leading-none font-wght-480 z-10 whitespace-nowrap group-hover:text-[var(--foreground-color)]
-        group-hover:after:opacity-100
-        after:opacity-0
-        after:absolute after:inset-0 after:-z-10
-        after:w-[calc(100%+1.25rem)] after:h-[calc(100%+0.875rem)]
-        after:bg-[var(--background-color)] after:left-1/2 after:top-1/2
-        after:-translate-x-1/2 after:-translate-y-1/2">
-      View More
-    </p>
+       <a
+       href="{{ product.link }}"
+       class="relative w-fit type-text-20 leading-none font-wght-480 z-10 whitespace-nowrap group-hover:text-[var(--foreground-color)]
+          group-hover:after:opacity-100
+          after:opacity-0
+          after:absolute after:inset-0 after:-z-10
+          after:w-[calc(100%+1.25rem)] after:h-[calc(100%+0.875rem)]
+          after:bg-[var(--background-color)] after:left-1/2 after:top-1/2
+          after:-translate-x-1/2 after:-translate-y-1/2"
+        aria-hidden="true"
+        tabindex="-1"
+        >
+        View More
+      </a>
+
+       <a
+         href="{{ product.link }}"
+         class="absolute inset-0 opacity-0 z-20"
+        >
+        <span class="sr-only">
+          View More
+        </span>
+      </a>
     </div>
 
     <div class="absolute w-full h-full z-8 opacity-0 group-hocus:opacity-100">
@@ -63,6 +77,6 @@
         alt: ""
       } %}
     </div>
-  </a>
+  </div>
 </div>
 
