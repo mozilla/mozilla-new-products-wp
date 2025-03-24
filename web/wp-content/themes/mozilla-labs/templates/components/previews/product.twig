@@ -4,7 +4,7 @@
       <div class="relative w-12 h-12 flex ">
         {# Grayscale SVG #}
         {% include "components/lazy-img.twig" with {
-          class: "size-12 invert group-hover:hidden",
+          class: "size-12 invert group-hocus:hidden",
           img: get_image(product.icons.grayscale),
           aspectRatio: aspectRatio,
           alt: ""
@@ -12,7 +12,7 @@
 
         {# Colored SVG #}
         {% include "components/lazy-img.twig" with {
-          class: "relative size-12 opacity-0 group-hover:opacity-100",
+          class: "relative size-12 opacity-0 group-hocus:opacity-100",
           img: get_image(product.icons.primary),
           aspectRatio: aspectRatio,
           alt: ""
@@ -20,8 +20,8 @@
       </div>
 
 
-      <h3 class="relative type-text-20 leading-none font-wght-480 group-hover:text-[var(--foreground-color)]
-        group-hover:after:opacity-100
+      <h3 class="relative type-text-20 leading-none font-wght-480 group-hocus:text-[var(--foreground-color)]
+        group-hocus:after:opacity-100
         after:opacity-0
         after:absolute after:inset-0 after:-z-10
         after:w-[calc(100%+1rem)] after:h-[calc(100%+0.875rem)]
@@ -31,13 +31,13 @@
       </h3>
     </div>
     <div class="hidden md:block md:col-span-6">
-      <div class="relative flex w-fit max-w-full group-hover:after:opacity-100
+      <div class="relative flex w-fit max-w-full group-hocus:after:opacity-100
           after:opacity-0
           after:absolute after:inset-0 after:z-10
           after:w-[calc(100%+1.25rem)] after:h-[calc(100%+0.875rem)]
           after:bg-[var(--background-color)] after:left-1/2 after:top-1/2
           after:-translate-x-1/2 after:-translate-y-1/2">
-        <p class="relative truncate w-full lg:w-fit type-text-20 leading-none font-wght-480 z-20 whitespace-nowrap group-hover:text-[var(--foreground-color)]
+        <p class="relative truncate w-full lg:w-fit type-text-20 leading-none font-wght-480 z-20 whitespace-nowrap group-hocus:text-[var(--foreground-color)]
           ">
           {{ product.tagline }}
         </p>
@@ -46,20 +46,19 @@
     </div>
 
     <div class="flex col-span-3 justify-end">
-       <a
+       <p
        href="{{ product.link }}"
-       class="relative w-fit type-text-20 leading-none font-wght-480 z-10 whitespace-nowrap group-hover:text-[var(--foreground-color)]
-          group-hover:after:opacity-100
+       class="relative w-fit type-text-20 leading-none font-wght-480 z-10 whitespace-nowrap group-hocus:text-[var(--foreground-color)]
+          group-hocus:after:opacity-100
           after:opacity-0
           after:absolute after:inset-0 after:-z-10
           after:w-[calc(100%+1.25rem)] after:h-[calc(100%+0.875rem)]
           after:bg-[var(--background-color)] after:left-1/2 after:top-1/2
           after:-translate-x-1/2 after:-translate-y-1/2"
         aria-hidden="true"
-        tabindex="-1"
         >
         View More
-      </a>
+      </p>
 
        <a
          href="{{ product.link }}"
