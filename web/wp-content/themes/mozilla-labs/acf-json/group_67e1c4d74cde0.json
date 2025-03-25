@@ -75,6 +75,13 @@
         "operator": "==",
         "value": "product"
       }
+    ],
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "post"
+      }
     ]
   ],
   "menu_order": 0,
@@ -91,5 +98,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1742906130
+  "modified": 1742922345
 }
