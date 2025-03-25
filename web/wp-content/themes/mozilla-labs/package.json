@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@alpinejs/focus": "^3.14.1",
+    "@mozilla-protocol/core": "^19.3.0",
     "alpinejs": "^3.14.1",
     "animejs": "^3.2.2",
     "body-scroll-lock": "^3.1.3",
