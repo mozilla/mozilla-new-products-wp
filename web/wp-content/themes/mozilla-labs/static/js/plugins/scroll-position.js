@@ -5,8 +5,10 @@ export function scrollPosition(Alpine) {
         el.style.setProperty('--scroll-y', window.scrollY);
       },
 
-      '@scroll.window.throttle'() {
+      '@scroll.window'() {
+        const currentScrollY = el.style.getPropertyValue('--scroll-y');
         el.style.setProperty('--scroll-y', window.scrollY);
+        el.setAttribute('data-direction', currentScrollY < window.scrollY ? 'down' : 'up');
       },
     });
   });
