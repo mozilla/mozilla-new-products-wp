@@ -1,4 +1,4 @@
-<div class="fixed inset-0 theme-light bg-main z-dialog flex flex-col" x-dialog:content>
+<div class="fixed inset-0 {{ post.meta("page_theme") == "theme-light" ? "theme-dark" : "theme-light" }} bg-main z-dialog flex flex-col" x-dialog:content>
   <h2 class="sr-only" x-dialog:title>Menu</h2>
 
   <div class="w-full grid grid-cols-[1fr_auto_1fr] gap-x-grid-site-gutter px-grid-site-margin items-center py-[20px]">
@@ -59,7 +59,7 @@
       {% for item in nav_pages_menu.items %}
       <li>
         <a
-          class="button button-sm aria-current:bg-black group-[.theme-dark]:aria-current:bg-white group-[.theme-dark]:hover:bg-white group-[.theme-dark]:aria-current:text-black group-[.theme-dark]:hover:text-black"
+          class="button button-sm aria-current:bg-content aria-current:text-main"
           href="{{ item.url }}"
           {% if item.current %}aria-current="page"{% endif %}
         >
