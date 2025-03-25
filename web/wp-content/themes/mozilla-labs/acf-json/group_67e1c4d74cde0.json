@@ -1,0 +1,95 @@
+{
+  "key": "group_67e1c4d74cde0",
+  "title": "Theme Settings",
+  "fields": [
+    {
+      "key": "field_67e1c4d79d492",
+      "label": "Page Theme",
+      "name": "page_theme",
+      "aria-label": "",
+      "type": "select",
+      "instructions": "Choose the theme for the navigation header based on the backdrop image. If the backdrop image is darker, choose \"dark\".",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "choices": {
+        "theme-light": "Light",
+        "theme-dark": "Dark"
+      },
+      "default_value": "theme-light",
+      "return_format": "value",
+      "multiple": 0,
+      "allow_custom": 0,
+      "search_placeholder": "",
+      "allow_null": 0,
+      "allow_in_bindings": 0,
+      "ui": 1,
+      "ajax": 0,
+      "placeholder": ""
+    },
+    {
+      "key": "field_67e1c5149d493",
+      "label": "Navigation Theme",
+      "name": "navigation_theme",
+      "aria-label": "",
+      "type": "select",
+      "instructions": "Choose the theme for the page content.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "choices": {
+        "theme-light": "Light",
+        "theme-dark": "Dark"
+      },
+      "default_value": "theme-light",
+      "return_format": "value",
+      "multiple": 0,
+      "allow_custom": 0,
+      "search_placeholder": "",
+      "allow_null": 0,
+      "allow_in_bindings": 0,
+      "ui": 1,
+      "ajax": 0,
+      "placeholder": ""
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "page"
+      }
+    ],
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "product"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "side",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0,
+  "acfe_display_title": "",
+  "acfe_autosync": ["json"],
+  "acfe_form": 0,
+  "acfe_meta": "",
+  "acfe_note": "",
+  "modified": 1742906130
+}

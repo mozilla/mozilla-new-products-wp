@@ -11,12 +11,10 @@
   {% endif %}
 
   {% if cta %}
-    <a class="group w-full mt-9 md:w-fit flex col-span-2" href="{{ cta.url }}">
+    <a class="group w-full mt-9 md:w-fit flex gap-1 col-span-2" href="{{ cta.url }}">
       <span class="w-full md:w-fit button button-sm justify-start md:justify-initial group-hocus:bg-black [.theme-dark_&]:group-hocus:bg-white [.theme-dark_&]:group-hocus:text-black">
         {{ cta.title }}
       </span>
-
-      <span class="w-1 h-full bg-transparent transition-all group-hocus:w-2 cursor-pointer" aria-hidden="true"></span>
 
       <div class="button button-square p-[10.5px] transition-all group-hocus:bg-black [.theme-dark_&]:group-hocus:bg-white [.theme-dark_&]:group-hocus:text-black" aria-hidden="true">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" fill="none">

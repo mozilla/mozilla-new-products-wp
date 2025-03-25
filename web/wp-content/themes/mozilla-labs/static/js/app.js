@@ -3,6 +3,8 @@ import LazySizes from 'lazysizes';
 import Unveilhooks from 'lazysizes/plugins/unveilhooks/ls.unveilhooks';
 /* eslint-enable */
 
+import MzpNewsletter from '@mozilla-protocol/core/protocol/js/newsletter';
+
 import '../scss/app.scss';
 
 import Alpine from 'alpinejs';
@@ -28,3 +30,7 @@ Alpine.plugin(typewriter);
 
 // Start Alpine
 Alpine.start();
+
+if (document.getElementById('email-signup')) {
+  MzpNewsletter.init();
+}
