@@ -52,125 +52,6 @@
       "append": ""
     },
     {
-      "key": "field_67cb384881a54",
-      "label": "Navigation Theme",
-      "name": "navigation_theme",
-      "aria-label": "",
-      "type": "select",
-      "instructions": "Choose the theme for the navigation header based on the backdrop image. If the backdrop image is darker, choose \"dark\".",
-      "required": 1,
-      "conditional_logic": 0,
-      "wrapper": {
-        "width": "50",
-        "class": "",
-        "id": ""
-      },
-      "choices": {
-        "theme-light": "Light",
-        "theme-dark": "Dark"
-      },
-      "default_value": "theme-light",
-      "return_format": "value",
-      "multiple": 0,
-      "allow_custom": 0,
-      "search_placeholder": "",
-      "allow_null": 0,
-      "allow_in_bindings": 0,
-      "ui": 1,
-      "ajax": 0,
-      "placeholder": ""
-    },
-    {
-      "key": "field_67cf3015459f2",
-      "label": "Page Theme",
-      "name": "page_theme",
-      "aria-label": "",
-      "type": "select",
-      "instructions": "Choose the theme for the page content.",
-      "required": 1,
-      "conditional_logic": 0,
-      "wrapper": {
-        "width": "50",
-        "class": "",
-        "id": ""
-      },
-      "choices": {
-        "theme-light": "Light",
-        "theme-dark": "Dark"
-      },
-      "default_value": "theme-light",
-      "return_format": "value",
-      "multiple": 0,
-      "allow_custom": 0,
-      "search_placeholder": "",
-      "allow_null": 0,
-      "allow_in_bindings": 0,
-      "ui": 1,
-      "ajax": 0,
-      "placeholder": ""
-    },
-    {
-      "key": "field_67d9ab9492f45",
-      "label": "Colors",
-      "name": "colors",
-      "aria-label": "",
-      "type": "group",
-      "instructions": "Theme colors for the product. These colors may be used wherever the product is featured.",
-      "required": 1,
-      "conditional_logic": 0,
-      "wrapper": {
-        "width": "",
-        "class": "",
-        "id": ""
-      },
-      "layout": "block",
-      "acfe_seamless_style": 0,
-      "acfe_group_modal": 0,
-      "sub_fields": [
-        {
-          "key": "field_67d9abb892f46",
-          "label": "Background",
-          "name": "background",
-          "aria-label": "",
-          "type": "color_picker",
-          "instructions": "Recommended to use the primary color of the product for this background color.",
-          "required": 1,
-          "conditional_logic": 0,
-          "wrapper": {
-            "width": "50",
-            "class": "",
-            "id": ""
-          },
-          "default_value": "",
-          "enable_opacity": 0,
-          "return_format": "string",
-          "allow_in_bindings": 0
-        },
-        {
-          "key": "field_67d9ac0092f47",
-          "label": "Foreground",
-          "name": "foreground",
-          "aria-label": "",
-          "type": "color_picker",
-          "instructions": "Make sure the foreground color has acceptable contrast with the background color.",
-          "required": 1,
-          "conditional_logic": 0,
-          "wrapper": {
-            "width": "50",
-            "class": "",
-            "id": ""
-          },
-          "default_value": "",
-          "enable_opacity": 0,
-          "return_format": "string",
-          "allow_in_bindings": 0
-        }
-      ],
-      "acfe_group_modal_close": 0,
-      "acfe_group_modal_button": "",
-      "acfe_group_modal_size": "large"
-    },
-    {
       "key": "field_67cb4dd19614f",
       "label": "Icons",
       "name": "icons",
@@ -248,6 +129,67 @@
           "preview_size": "thumbnail"
         }
       ]
+    },
+    {
+      "key": "field_67e2e54db002c",
+      "label": "Colors",
+      "name": "colors",
+      "aria-label": "",
+      "type": "group",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "layout": "block",
+      "acfe_seamless_style": 0,
+      "acfe_group_modal": 0,
+      "sub_fields": [
+        {
+          "key": "field_67e2e606b002d",
+          "label": "Background",
+          "name": "background",
+          "aria-label": "",
+          "type": "color_picker",
+          "instructions": "Recommended to use the brand color of the product for this background color.",
+          "required": 1,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "50",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "enable_opacity": 0,
+          "return_format": "string",
+          "allow_in_bindings": 0
+        },
+        {
+          "key": "field_67e2e631b002f",
+          "label": "Foreground",
+          "name": "foreground",
+          "aria-label": "",
+          "type": "color_picker",
+          "instructions": "Make sure the foreground color has acceptable contrast with the background color.",
+          "required": 1,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "50",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "enable_opacity": 0,
+          "return_format": "string",
+          "allow_in_bindings": 0
+        }
+      ],
+      "acfe_group_modal_close": 0,
+      "acfe_group_modal_button": "",
+      "acfe_group_modal_size": "large"
     },
     {
       "key": "field_67cb65a7b67ee",
@@ -633,5 +575,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1742318701
+  "modified": 1742923370
 }

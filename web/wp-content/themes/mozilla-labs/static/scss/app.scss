@@ -227,7 +227,7 @@ body {
     @apply block whitespace-nowrap;
     @apply font-headline font-semibold tracking-normal text-sm leading-none font-wdth-380 bg-off-black/60 text-white backdrop-blur-md transition-colors;
 
-    &:is(button, a) {
+    &:is(button, a):not([disabled]) {
       @apply cursor-pointer hocus:bg-black;
 
       &.theme-dark,
@@ -257,7 +257,7 @@ body {
       @apply bg-off-black/70;
     }
 
-    &:is(button, a) {
+    &:is(button, a):not([disabled]) {
       @apply cursor-pointer hocus:bg-black;
 
       &.theme-dark,
