@@ -8,7 +8,7 @@
       "name": "page_theme",
       "aria-label": "",
       "type": "select",
-      "instructions": "Choose the theme for the navigation header based on the backdrop image. If the backdrop image is darker, choose \"dark\".",
+      "instructions": "Choose the theme for the page content.",
       "required": 0,
       "conditional_logic": 0,
       "wrapper": {
@@ -37,7 +37,7 @@
       "name": "navigation_theme",
       "aria-label": "",
       "type": "select",
-      "instructions": "Choose the theme for the page content.",
+      "instructions": "Choose the theme for the navigation header. In most cases, navigation theme can follow the page theme. For pages that have backdrop images like Product, choose the theme based on the backdrop.",
       "required": 0,
       "conditional_logic": 0,
       "wrapper": {
@@ -98,5 +98,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1742922345
+  "modified": 1742922830
 }
