@@ -821,7 +821,7 @@ body {
     // Cover
     .wp-block-cover {
       &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
-        @apply md:col-span-7 lg:col-span-12 2xl:col-span-10;
+        @apply col-span-full max-w-[600px] mx-auto;
       }
 
       &.alignwide {
@@ -851,15 +851,15 @@ body {
 
         h2,
         h3 {
-          @apply uppercase type-sans-md text-balance max-w-screen-sm max-md:indent-8;
+          @apply type-headline-20 text-balance max-w-screen-sm max-md:indent-8;
         }
 
         h4 {
-          @apply uppercase type-sans-sm text-balance max-w-screen-sm max-md:indent-8;
+          @apply type-headline-20 text-balance max-w-screen-sm max-md:indent-8;
         }
 
         p {
-          @apply indent-8 lg:max-w-text-narrow;
+          @apply lg:max-w-text-narrow;
         }
 
         * + * {
