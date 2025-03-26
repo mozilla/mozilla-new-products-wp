@@ -6,16 +6,18 @@
       img: get_image(image),
     } %}
 
-    <div
-      class="
-        absolute w-full h-dither-fade pointer-events-none
-        data-[position=top]:top-0 data-[position=top]:-scale-y-100
-        data-[position=bottom]:bottom-0
-      "
-      data-position="{{ fade_position }}"
-    >
-    {% include "components/fade-to-bottom-dither.twig" %}
-    </div>
+    {% if fade_position != "none" %}
+      <div
+        class="
+          absolute w-full h-dither-fade pointer-events-none
+          data-[position=top]:top-0 data-[position=top]:-scale-y-100
+          data-[position=bottom]:bottom-0
+        "
+        data-position="{{ fade_position }}"
+      >
+        {% include "components/fade-to-bottom-dither.twig" %}
+      </div>
+    {% endif %}
   </div>
 
   {% if caption %}
