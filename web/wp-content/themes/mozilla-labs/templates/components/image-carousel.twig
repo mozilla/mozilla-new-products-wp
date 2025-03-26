@@ -18,6 +18,7 @@
     splide__arrows
     flex gap-1 justify-end p-grid-site-margin
     md:absolute md:bottom-0 md:right-0
+    {% if block.fade_position == "bottom" %}max-md:py-0{% endif %}
   ">
     <button class="splide__arrow splide__arrow--prev button button-xs">
       Previous
