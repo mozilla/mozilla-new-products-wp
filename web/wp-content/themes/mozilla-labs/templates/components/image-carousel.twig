@@ -1,8 +1,8 @@
-<section class="splide">
+<section class="splide" x-init x-image-carousel>
   <div class="splide__track">
 		<ul class="splide__list">
       {% for item in block.items %}
-			<li class="splide__slide">
+			<li class="splide__slide w-full h-auto">
         <figure class="relative">
           <div class="relative flex">
             {% include "components/lazy-img.twig" with {
