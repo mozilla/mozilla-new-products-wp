@@ -614,7 +614,7 @@ body {
       @apply flex flex-col gap-2 relative;
 
       figcaption {
-        @apply bg-blur text-white  px-[10px] pt-[6.5px] pb-[5.5px] w-fit type-caption;
+        @apply bg-blur text-white px-[10px] pt-[6.5px] pb-[5.5px] w-fit type-caption;
       }
 
       &.alignfull:not(.wp-block-pullquote):not(.wp-block-table) {
@@ -781,18 +781,14 @@ body {
       }
 
       a:not(.wp-block-file__button) {
-        @apply flex items-center justify-between gap-10 w-full p-10;
-        @apply uppercase font-semibold;
-        @apply bg-action text-action-reverse transition duration-300;
-        @apply hocus:text-action-focus-reverse hocus:bg-action-focus;
+        @apply button button-sm w-fit;
 
         &:has(+ a.wp-block-file__button) {
-          @apply md:py-8;
-
           &::after {
             content: '';
-            @apply block shrink-0 bg-current mask-arrow-down size-8 md:size-10;
-            @apply transition-transform duration-300 hocus:translate-y-1.5;
+            @apply ml-2;
+            @apply block shrink-0 bg-current mask-arrow-down size-2.5;
+            @apply transition-transform duration-300 hocus:translate-y-0.5;
           }
         }
       }
