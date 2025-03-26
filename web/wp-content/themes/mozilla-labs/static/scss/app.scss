@@ -822,10 +822,20 @@ body {
     .wp-block-cover {
       &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
         @apply col-span-full max-w-[600px] mx-auto;
+
+        img,
+        video {
+          @apply w-full h-auto;
+        }
       }
 
       &.alignwide {
         @apply md:col-span-10 lg:col-span-8;
+
+        img,
+        video {
+          @apply w-full h-auto;
+        }
       }
 
       &.alignfull {
@@ -841,7 +851,7 @@ body {
 
           h2,
           h3 {
-            @apply md:type-sans-lg;
+            @apply md:type-headline-20;
           }
         }
       }
