@@ -1,5 +1,5 @@
 <header class="centered-page z-50 theme-light group {{ class|default("") }}" x-init x-dialog>
-  <nav class="group fixed top-0 w-full grid grid-cols-[1fr_auto_1fr] gap-x-grid-site-gutter px-grid-site-margin items-center py-[20px]" aria-label="Site" x-scroll-position>
+  <nav class="group fixed top-0 w-full grid grid-cols-[1fr_auto_1fr] gap-x-grid-site-gutter px-grid-site-margin items-center py-5" aria-label="Site">
     <div class="relative w-fit flex gap-1">
       <a class="button button-sm button-dark button-square flex justify-center items-center" href="/">
         <span class="sr-only">Home</span>
@@ -27,7 +27,14 @@
       {% endif %}
     </div>
 
-    <a class="mx-auto py-1 lg:h-full flex items-center w-fit transition-transform duration-500 group-data-[direction=up]:translate-y-0 group-data-[direction=down]:-translate-y-[200%]" href="/">
+    <a
+      class="
+        mx-auto py-1 lg:h-full flex items-center w-fit transition-all duration-500
+        data-[direction=up]:translate-y-0 data-[direction=down]:-translate-y-[200%]
+      "
+      href="/"
+      x-scroll-position
+    >
       <span class="sr-only">Home</span>
       <svg class="text-content h-[17px]" viewBox="0 0 187 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <g>
