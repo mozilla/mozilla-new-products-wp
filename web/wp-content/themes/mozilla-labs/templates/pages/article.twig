@@ -15,12 +15,12 @@
         </div>
       </div>
 
-      <div x-headings:content x-hang-punc class="max-md:pt-20 col-span-full gutenberg article {{ post.has_lede_paragraph ? 'lede' }} grid grid-cols-site gap-x-grid-site-gutter centered-page">
+      <div x-headings:content x-hang-punc class="max-md:pt-20 row-start-1 row-end-1 col-start-1 col-end-[13] gutenberg article {{ post.has_lede_paragraph ? 'lede' }} grid grid-cols-[subgrid] gap-x-grid-site-gutter centered-page">
         {{ post.content }}
       </div>
 
       {# Share Tools #}
-      <div class="max-md:hidden md:col-span-4 lg:col-span-3 3xl:col-span-2 md:col-start-end md:sticky md:bottom-4 text-sm md:h-fit md:row-start-2">
+      <div class="max-md:hidden md:col-span-4 lg:col-span-3 3xl:col-span-2 md:self-end md:sticky md:bottom-4 text-sm md:h-fit md:row-start-1 md:row-end-1 md:col-start-10 md:col-end-13">
         <div class="max-md:flex max-md:gap-6 max-md:justify-between">
           <p class="text-[rgba(var(--color-secondary),0.6)] font-headline text-xs font-wdth-380 leading-tight font-light text-right tracking-normal">Share</p>
           {% include "components/articles/share-tools.twig" %}
