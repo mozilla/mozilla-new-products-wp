@@ -8,10 +8,10 @@
 
 {% block pageBody %}
 
-<header class="grid grid-site gap-y-12 h-screen grid-rows-[1fr_auto_1fr]">
+<header class="grid grid-site h-screen grid-rows-[1fr_auto_1fr]">
   <h1 class="sr-only">404 Not Found</h1>
 
-  <svg class="row-start-2 col-span-full md:col-start-3 md:col-span-2/3" viewBox="0 0 900 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <svg class="row-start-2 col-span-full lg:col-start-3 lg:col-span-2/3" viewBox="0 0 900 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <rect width="300" height="300" fill="transparent" />
     <rect x="137.5" width="37.5" height="262.5" fill="#00D230" />
     <rect x="100" y="262.5" width="37.5" height="37.5" fill="#00D230" />
@@ -52,8 +52,11 @@
     </defs>
   </svg>
 
-  <div class="row-start-3 col-span-full h-fit flex justify-center">
-    <a class="button button-sm" href="/">Take me home</a>
+  <div class="row-start-3 col-span-full h-fit flex justify-center mt-auto mb-grid-site-margin sm:my-auto">
+    <a class="group button button-sm button-dark flex gap-12 justify-between max-sm:w-full" href="/">
+      <span class="text-white/70 group-hocus:text-white transition-colors">This page does not exist</span>
+      <span>Take me home</span>
+    </a>
   </div>
 </header>
 
