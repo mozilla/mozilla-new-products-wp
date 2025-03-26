@@ -80,8 +80,8 @@
         </div>
 
         <fieldset class="mzp-c-newsletter-content">
-          <div class="mzp-c-form-errors hidden" id="newsletter-errors">
-            <ul class="mzp-u-list-styled text-xs button button-sm whitespace-break-spaces text-center">
+          <div class="mzp-c-form-errors hidden mt-2 px-5 py-2 backdrop-blur-md bg-black/70 [.theme-dark_&]:bg-off-black/70 w-full sm:w-fit sm:max-w-[60%]" id="newsletter-errors">
+            <ul class="mzp-u-list-styled text-xs font-sans text-white text-balance">
               <li class="error-email-invalid hidden">Please enter a valid email address</li>
               <li class="error-newsletter-checkbox hidden">Please check at least one of the newsletter options</li>
               <li class="error-privacy-policy hidden">You must agree to the privacy notice</li>
@@ -90,8 +90,10 @@
           </div>
         </fieldset>
 
-        <div id="newsletter-thanks" class="mzp-c-newsletter-thanks hidden">
-          <p class="text-xs button button-sm">Thank you for subscribing</p>
+        <div id="newsletter-thanks" class="mzp-c-newsletter-thanks hidden mt-2 p-5 backdrop-blur-md bg-black/70 [.theme-dark_&]:bg-off-black/70 w-full sm:max-w-[60%]">
+          <p class="text-xs font-sans text-white text-balance leading-tight">
+            <strong>Thanks!</strong><br /><br />If you haven’t previously confirmed a subscription to a Mozilla-related newsletter, you may have to do so. Please check your inbox or your spam filter for an email from us.
+          </p>
         </div>
       </div>
     </form>

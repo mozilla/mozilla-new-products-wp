@@ -1,23 +1,67 @@
 {% extends "layouts/base.twig" %}
 
+{% block prefooter %}
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+{% set nav_theme = "theme-dark" %}
+{% set page_theme = "theme-dark" %}
+
 {% block pageBody %}
 
-<div class="flex flex-col flex-1 justify-center my-6 md:my-24">
-  <div class="max-md:flex max-md:flex-col max-md:gap-4 max-md:px-grid-site-margin md:grid md:grid-site py-site centered-page">
-    {% if options.error_page_image.id %}
-    <div class="md:col-start-5 md:col-span-6 max-md:w-1/2 max-md:self-center">
-      {% include "components/lazy-img.twig" with { img: get_image(options.error_page_image.id) } %}
-    </div>
-    {% endif %}
-    <div class="md:col-start-13 md:col-span-10 md:flex md:flex-col md:justify-center">
-      <h1 class="type-sans-2xl">{{ options.error_page_title ?: '404 Not Found' }}</h1>
-      {% if options.error_page_content %}
-        <div class="prose mt-3">
-          {{ options.error_page_content }}
-        </div>
-      {% endif %}
-    </div>
+<header class="grid grid-site h-screen grid-rows-[1fr_auto_1fr]">
+  <h1 class="sr-only">404 Not Found</h1>
+
+  <svg class="row-start-2 col-span-full lg:col-start-3 lg:col-span-2/3" viewBox="0 0 900 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="300" height="300" fill="transparent" />
+    <rect x="137.5" width="37.5" height="262.5" fill="currentColor" />
+    <rect x="100" y="262.5" width="37.5" height="37.5" fill="currentColor" />
+    <rect x="49.25" y="168.75" width="214.75" height="37.5" fill="currentColor" />
+    <path d="M101.375 37.5H137.375L85.25 168.75H49.25L101.375 37.5Z" fill="currentColor" />
+    <rect x="137.5" y="168.75" width="37.5" height="37.5" fill="transparent" />
+    <g clip-path="url(#clip0_516_7833)">
+      <rect width="300" height="300" transform="translate(300)" fill="transparent" />
+      <rect x="300" width="37.5" height="37.5" fill="currentColor" />
+      <rect x="300" y="262.5" width="37.5" height="37.5" fill="currentColor" />
+      <rect x="562.5" width="37.5" height="37.5" fill="currentColor" />
+      <rect x="562.5" y="262.5" width="37.5" height="37.5" fill="currentColor" />
+      <path d="M449.98 238.5C434.314 238.5 421.23 235.333 410.73 229C400.397 222.667 392.564 213 387.23 200C382.064 186.833 379.48 170.083 379.48 149.75C379.48 129.417 382.064 112.75 387.23 99.75C392.564 86.5833 400.397 76.8333 410.73 70.5C421.23 64.1667 434.314 61 449.98 61C465.647 61 478.647 64.1667 488.98 70.5C499.48 76.8333 507.314 86.5833 512.48 99.75C517.814 112.75 520.48 129.417 520.48 149.75C520.48 170.083 517.814 186.833 512.48 200C507.314 213 499.48 222.667 488.98 229C478.647 235.333 465.647 238.5 449.98 238.5ZM449.98 214.25C462.98 214.25 472.564 210.583 478.73 203.25C484.897 195.917 487.98 184.333 487.98 168.5V131C487.98 115.167 484.897 103.583 478.73 96.25C472.564 88.9167 462.98 85.25 449.98 85.25C436.98 85.25 427.397 88.9167 421.23 96.25C415.064 103.583 411.98 115.167 411.98 131V168.5C411.98 184.333 415.064 195.917 421.23 203.25C427.397 210.583 436.98 214.25 449.98 214.25ZM473.23 84.25L494.73 85.75L426.73 215.25L405.48 213.75L473.23 84.25Z" fill="currentColor" />
+    </g>
+    <rect width="300" height="300" transform="translate(600)" fill="transparent" />
+    <rect x="625" y="175" width="12.5" height="50" fill="currentColor" />
+    <rect x="725" y="175" width="12.5" height="50" fill="currentColor" />
+    <rect x="687.5" y="75" width="25" height="50" fill="currentColor" />
+    <rect x="662.5" y="125" width="25" height="50" fill="currentColor" />
+    <rect x="712.5" width="50" height="75" fill="currentColor" />
+    <rect x="737.5" y="75" width="25" height="50" fill="currentColor" />
+    <rect x="737.5" y="125" width="25" height="50" fill="currentColor" />
+    <rect x="737.5" y="225" width="25" height="75" fill="currentColor" />
+    <rect x="650" y="175" width="12.5" height="50" fill="currentColor" />
+    <rect x="750" y="175" width="12.5" height="50" fill="currentColor" />
+    <rect x="675" y="175" width="12.5" height="50" fill="currentColor" />
+    <rect x="775" y="175" width="12.5" height="50" fill="currentColor" />
+    <rect x="600" y="175" width="12.5" height="50" fill="currentColor" />
+    <rect x="700" y="175" width="12.5" height="50" fill="currentColor" />
+    <rect x="800" y="175" width="12.5" height="50" fill="currentColor" />
+    <rect x="825" y="175" width="12.5" height="50" fill="currentColor" />
+    <rect x="850" y="175" width="12.5" height="50" fill="currentColor" />
+    <rect x="875" y="175" width="12.5" height="50" fill="currentColor" />
+    <defs>
+      <clipPath id="clip0_516_7833">
+        <rect width="300" height="300" fill="transparent" transform="translate(300)" />
+      </clipPath>
+    </defs>
+  </svg>
+
+  <div class="row-start-3 col-span-full h-fit flex justify-center mt-auto mb-grid-site-margin sm:my-auto">
+    <a class="group button button-sm button-dark flex gap-12 justify-between max-sm:w-full" href="/">
+      <span class="text-white/70 group-hocus:text-black transition-colors">This page does not exist</span>
+      <span>Take me home</span>
+    </a>
   </div>
-</div>
+</header>
+
 
 {% endblock %}
