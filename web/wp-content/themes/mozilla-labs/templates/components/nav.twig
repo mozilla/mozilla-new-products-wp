@@ -30,10 +30,9 @@
     <a
       class="
         mx-auto py-1 lg:h-full flex items-center w-fit transition-all duration-500
-        data-[scroll-direction=up]:translate-y-0 data-[scroll-direction=down]:-translate-y-[200%]
+        [[data-scroll-direction=up]_&]:translate-y-0 [[data-scroll-direction=down]_&]:-translate-y-[200%]
       "
       href="/"
-      x-scroll-position
     >
       <span class="sr-only">Home</span>
       <svg class="text-content h-[17px]" viewBox="0 0 187 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
