@@ -673,7 +673,7 @@ body {
           @apply border-t border-content text-left align-top;
 
           tr th {
-            @apply py-3 uppercase text-sm font-normal;
+            @apply py-3 text-sm font-normal;
 
             &:not(:last-child) {
               @apply pr-3;
