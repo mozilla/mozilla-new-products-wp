@@ -1,0 +1,36 @@
+<section class="splide">
+  <div class="splide__track">
+		<ul class="splide__list">
+      {% for item in block.items %}
+			<li class="splide__slide">
+        <figure class="relative">
+          <div class="relative flex">
+            {% include "components/lazy-img.twig" with {
+              class: "w-full aspect-[4/5] md:aspect-[16/9]",
+              imgClass:"object-cover",
+              img: get_image(item.image),
+            } %}
+
+            <div
+              class="
+                absolute w-full h-dither-fade pointer-events-none
+                data-[position=top]:top-0 data-[position=top]:-scale-y-100
+                data-[position=bottom]:bottom-0
+              "
+              data-position="{{ block.fade_position }}"
+            >
+            {% include "components/fade-to-bottom-dither.twig" %}
+            </div>
+          </div>
+
+          {% if item.caption %}
+            <figcaption class="absolute bottom-grid-site-margin left-grid-site-margin bg-off-black/60 text-white backdrop-blur-md size-fit px-[10px] pt-[6.5px] pb-[5.5px] type-caption">
+              {{ item.caption }}
+            </figcaption>
+          {% endif %}
+        </figure>
+      </li>
+      {% endfor %}
+		</ul>
+  </div>
+</section>
