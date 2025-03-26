@@ -28,9 +28,11 @@
       {% block pageBody %}
       {% endblock %}
 
-      {% include "components/email-signup.twig" with {
-        override: email_signup_override|default(false),
-      } %}
+      {% block prefooter %}
+        {% include "components/email-signup.twig" with {
+          override: email_signup_override|default(false),
+        } %}
+      {% endblock %}
     </main>
 
     {% block footer %}
