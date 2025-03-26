@@ -250,12 +250,7 @@ body {
   }
 
   .button-dark {
-    @apply bg-black/70;
-
-    &.theme-dark,
-    .theme-dark & {
-      @apply bg-off-black/70;
-    }
+    @apply bg-blur-dark;
 
     &:is(button, a):not([disabled]) {
       @apply cursor-pointer hocus:bg-black;
@@ -271,6 +266,11 @@ body {
 @layer utilities {
   .bg-blur {
     @apply bg-off-black/60 backdrop-blur-md;
+
+    &.theme-dark,
+    .theme-dark & {
+      @apply bg-[#3c3c3c]/60;
+    }
   }
 
   .bg-blur-dark {
@@ -278,7 +278,7 @@ body {
 
     &.theme-dark,
     .theme-dark & {
-      @apply bg-off-black/70;
+      @apply bg-[#3c3c3c]/70;
     }
   }
 
