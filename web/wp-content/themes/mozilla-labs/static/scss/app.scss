@@ -215,11 +215,7 @@ body {
   }
 
   .type-caption {
-    @apply text-xs text-content/70 leading-tight;
-
-    strong {
-      @apply text-content;
-    }
+    @apply text-xs leading-tight;
   }
 
   // Buttons
@@ -235,6 +231,10 @@ body {
         @apply hocus:text-black hocus:bg-white;
       }
     }
+  }
+
+  .button-xs {
+    @apply flex justify-center h-fit items-center px-[10px] pt-[6.5px] pb-[5.5px] type-caption;
   }
 
   .button-sm {
