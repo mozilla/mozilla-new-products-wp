@@ -42,7 +42,7 @@
   @apply [--grid-site-gutter:calc((24/400)*var(--100vw))] md:[--grid-site-gutter:calc((40/1440)*var(--100vw))];
 
   --color-black: #{color.rgb(#000000)};
-  --color-off-black: #{color.rgb(#3c3c3c)};
+  --color-off-black: #{color.rgb(#1a1a1a)};
   --color-white: #{color.rgb(#fafafa)};
   --color-gray: #{color.rgb(#f0f0f0)};
   --color-gray-dark: #{color.rgb(#6d6d6d)};
@@ -77,7 +77,7 @@ body {
 @layer base {
   .theme-light {
     --color-main: var(--color-white);
-    --color-secondary: #{color.rgb(#1b1b1b)};
+    --color-secondary: #{color.rgb(#1a1a1a)};
     --color-content: var(--color-black);
     --color-content-secondary-small: #767676;
     --color-content-secondary-large: #949494;
@@ -225,7 +225,7 @@ body {
   // Buttons
   .button {
     @apply block whitespace-nowrap;
-    @apply font-headline font-semibold tracking-normal text-sm leading-none font-wdth-380 bg-off-black/60 text-white backdrop-blur-md transition-colors;
+    @apply font-headline font-semibold tracking-normal text-sm leading-none font-wdth-380 text-white transition-colors bg-blur;
 
     &:is(button, a):not([disabled]) {
       @apply cursor-pointer hocus:bg-black;
@@ -614,7 +614,7 @@ body {
       @apply flex flex-col gap-2 relative;
 
       figcaption {
-        @apply bg-black/60 text-white backdrop-blur-md px-[10px] pt-[6.5px] pb-[5.5px] w-fit type-caption;
+        @apply bg-blur text-white  px-[10px] pt-[6.5px] pb-[5.5px] w-fit type-caption;
       }
 
       &.alignfull:not(.wp-block-pullquote):not(.wp-block-table) {
