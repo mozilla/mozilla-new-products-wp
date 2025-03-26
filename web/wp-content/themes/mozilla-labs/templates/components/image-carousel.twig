@@ -4,7 +4,7 @@
     <ul class="splide__list">
       {% for item in block.items %}
       <li class="splide__slide w-full h-auto">
-        {% include "components/faded-image.twig" with {
+        {% include "components/dither-image.twig" with {
           image: item.image,
           fade_position: block.fade_position,
           caption: item.caption,
@@ -32,7 +32,7 @@
 <section class="my-32 md:my-48 first:mt-0 last:mb-0">
   {% set item = block.items|first %}
 
-  {% include "components/faded-image.twig" with {
+  {% include "components/dither-image.twig" with {
     image: item.image,
     fade_position: block.fade_position,
     caption: item.caption,
