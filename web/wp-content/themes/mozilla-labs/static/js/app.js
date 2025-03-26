@@ -15,6 +15,7 @@ import { links } from '@src/plugins/links';
 import { videoEmbed } from '@src/plugins/video-embed';
 import { dialog } from '@src/plugins/dialog';
 import { typewriter } from '@src/plugins/typewriter';
+import { scrollPosition } from '@src/plugins/scroll-position';
 
 // Initialize Alpine
 window.Alpine = Alpine;
@@ -27,6 +28,7 @@ Alpine.plugin(hangPunctuation);
 Alpine.plugin(links);
 Alpine.plugin(videoEmbed);
 Alpine.plugin(typewriter);
+Alpine.plugin(scrollPosition);
 
 // Start Alpine
 Alpine.start();

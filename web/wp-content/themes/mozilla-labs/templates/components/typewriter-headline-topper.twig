@@ -1,5 +1,10 @@
 <header class="relative text-content grid grid-site pt-[20vh] pb-[20vh] isolate">
-  <img class="lazyload opacity-0 [&.lazyloaded]:opacity-100 transition-opacity absolute inset-0 w-full min-h-[120%] object-cover -z-10" src="{{ theme.link }}/static/img/dither-texture.png" alt="" />
+  <img class="
+    lazyload opacity-0
+    [&.lazyloaded]:opacity-[calc(1-(var(--scroll-y)/400))] translate-y-[calc(var(--scroll-y)*-0.3px)] ease-linear
+    [transition:opacity_0s,transform_0s] data-[direction=up]:[transition:opacity_2s,transform_0s]
+    absolute inset-0 w-full min-h-[120%] object-cover -z-10" src="{{ theme.link }}/static/img/dither-texture.png" alt="" x-init x-scroll-position />
+
 
   <div class="col-span-full md:col-start-3 md:col-end-11 flex flex-col gap-y-8 md:gap-y-8 items-center">
     <p class="group type-headline-64 text-center" x-init x-typewriter>
@@ -22,7 +27,7 @@
         <span class="row-span-full col-start-1 col-end-2 inline-grid opacity-0">
           {% for item in rotating_texts %}
             <span class="row-span-full col-start-1 col-end-2">
-              {{ item.text }}... <span class="inline-block h-[0.8lh] translate-y-[1px] w-2 invisible"></span>
+              {{ item.text }} <span class="inline-block h-[0.8lh] translate-y-[1px] w-2 invisible"></span>
             </span>
           {% endfor %}
         </span>
