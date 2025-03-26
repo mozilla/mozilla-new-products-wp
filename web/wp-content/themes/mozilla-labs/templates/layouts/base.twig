@@ -4,7 +4,7 @@
 {% include "layouts/includes/head.twig" %}
 
 <body x-data x-links x-scroll-position
-  class="{{ body_class }} {{ pagename ? 'page-name-' ~ pagename }} {{ post.meta("page_theme")|default("theme-light") }} {% block custom_body_classes %}{% endblock %}">
+  class="group/root-scroll {{ body_class }} {{ pagename ? 'page-name-' ~ pagename }} {{ post.meta("page_theme")|default("theme-light") }} {% block custom_body_classes %}{% endblock %}">
 
   <a href="#content" class="sr-only focus:not-sr-only !absolute inset-x-0 top-0">
     <div class="w-full flex items-center justify-center p-1.5 bg-content">
