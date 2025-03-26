@@ -628,7 +628,7 @@ body {
       &.alignright {
         &::before {
           content: '';
-          @apply md:max-2xl:type-headline-md 2xl:type-headline-lg md:top-1 xl:top-2 md:size-[0.85em];
+          @apply md:max-2xl:type-headline-md 2xl:type-headline-lg md:top-1 xl:top-0 md:size-[0.85em];
         }
 
         p {
@@ -736,17 +736,16 @@ body {
     }
 
     .wp-block-button {
-      @apply flex justify-center w-full;
+      @apply flex justify-start w-full;
     }
 
     .wp-block-button__link {
-      @apply w-full p-10 uppercase text-center text-action-reverse bg-action border border-action transition-colors;
-      @apply hocus:text-action-focus-reverse hocus:bg-action-focus hocus:border-action-focus;
+      @apply button button-sm;
     }
 
     .is-style-outline .wp-block-button__link {
       @apply bg-transparent border-none text-action transition-shadow shadow-inner shadow-action;
-      @apply hocus:shadow-inner-thick hocus:shadow-action;
+      @apply hocus:shadow-inner-thick hocus:shadow-action hocus:text-action-reverse;
     }
 
     // Files
