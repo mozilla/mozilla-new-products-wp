@@ -4,6 +4,9 @@ const ROTATION_SPEED = 3000;
 // Speed to type out the text.
 const TYPEWRITER_SPEED = 100;
 
+// Speed to instantly type out the text for reduced motion setting.
+const TYPEWRITER_INSTANT_SPEED = 600;
+
 export function typewriter(Alpine) {
   Alpine.directive('typewriter', (el, { value, expression }) => {
     if (value === 'text') {
@@ -51,9 +54,34 @@ function handleText(el, Alpine, text) {
         },
 
         type() {
+          const prefersReducedMotion = window.matchMedia(
+            '(prefers-reduced-motion: reduce)',
+          ).matches;
+
           if (this.isCurrentText(el)) {
             this.typing = true;
 
+            /**
+             * For reduced motion, instantly type out the text
+             * instead of typing it out character by character.
+             */
+            if (prefersReducedMotion) {
+              setTimeout(() => {
+                this.typing = false;
+                el.innerHTML = text;
+
+                setTimeout(() => {
+                  el.innerHTML = '';
+                  this.next();
+                }, ROTATION_SPEED);
+              }, TYPEWRITER_INSTANT_SPEED);
+
+              return;
+            }
+
+            /**
+             * Type out the text character by character.
+             */
             this.interval = setInterval(() => {
               if (this.characterIndex >= text.length) {
                 this.typing = false;
