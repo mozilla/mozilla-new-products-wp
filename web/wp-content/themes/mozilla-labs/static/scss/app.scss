@@ -269,6 +269,19 @@ body {
 }
 
 @layer utilities {
+  .bg-blur {
+    @apply bg-off-black/60 backdrop-blur-md;
+  }
+
+  .bg-blur-dark {
+    @apply bg-black/70 backdrop-blur-md;
+
+    &.theme-dark,
+    .theme-dark & {
+      @apply bg-off-black/70;
+    }
+  }
+
   .centered-page {
     @apply w-full mx-auto;
   }
