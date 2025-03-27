@@ -612,6 +612,38 @@
                   "media_upload": 0,
                   "delay": 0,
                   "parent_repeater": "field_67e42dfd1104b"
+                },
+                {
+                  "key": "field_67e583f340e7d",
+                  "label": "Product Affiliation",
+                  "name": "product",
+                  "aria-label": "",
+                  "type": "post_object",
+                  "instructions": "Include a product for optional affiliation.",
+                  "required": 0,
+                  "conditional_logic": 0,
+                  "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                  },
+                  "post_type": ["product"],
+                  "post_status": ["publish"],
+                  "taxonomy": "",
+                  "return_format": "object",
+                  "multiple": 0,
+                  "save_custom": 0,
+                  "save_post_status": "publish",
+                  "acfe_bidirectional": {
+                    "acfe_bidirectional_enabled": "0"
+                  },
+                  "allow_null": 0,
+                  "allow_in_bindings": 0,
+                  "bidirectional": 0,
+                  "ui": 1,
+                  "bidirectional_target": [],
+                  "save_post_type": "",
+                  "parent_repeater": "field_67e42dfd1104b"
                 }
               ]
             },
@@ -805,5 +837,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1743007623
+  "modified": 1743094813
 }
