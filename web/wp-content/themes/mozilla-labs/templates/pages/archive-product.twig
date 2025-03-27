@@ -5,6 +5,8 @@
 {% block pageBody %}
   {% include "components/filter-topper.twig" with { title: page.title, description: page.description } %}
 
+  <h2 class="sr-only">Products</h2>
+
   <ul class="flex flex-col mb-24 border-b border-content">
     {% for post in posts %}
       <li class="col-span-full md:col-span-1/2 lg:col-span-8 xl:col-span-6">

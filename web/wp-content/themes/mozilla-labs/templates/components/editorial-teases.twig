@@ -34,33 +34,8 @@
       </div>
     {% endif %}
 
-    <ul class="flex flex-col gap-y-20 md:grid md:grid-cols-3 md:gap-x-32 lg:gap-x-48 md:gap-y-32">
-      {% for article in teases %}
-        {% set product = article.product %}
-        <li>
-            <a href="{{ article.link }}" class="flex flex-col gap-y-4 group">
-            {% if article.thumbnail %}
-              {% include "components/image-icon-watermark.twig" with {
-                image: article.thumbnail,
-                icon: product and product.icons.grayscale ? get_image(product.icons.grayscale) : null
-              } %}
-            {% endif %}
-
-            <div class="flex flex-col gap-y-0">
-              {% if article.category %}
-                <p class="text-secondary/60 block type-headline-14 group-hover:text-content">{{ article.category }}</p>
-              {% endif %}
-
-              <h3 class="type-headline-14 leading-tight">
-                <p>
-                  {{ article.title }}
-                </p>
-              </h3>
-            </div>
-            </a>
-
-          </li>
-      {% endfor %}
-    </ul>
+    {% include "components/story-teases.twig" with {
+      posts: teases
+    } %}
   </div>
 </section>
