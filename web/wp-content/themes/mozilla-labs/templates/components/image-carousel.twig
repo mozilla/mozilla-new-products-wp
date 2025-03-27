@@ -8,6 +8,7 @@
           image: item.image,
           fade_position: block.fade_position,
           caption: item.caption,
+          product: get_post(item.product),
         } %}
       </li>
       {% endfor %}
@@ -37,6 +38,7 @@
     image: item.image,
     fade_position: block.fade_position,
     caption: item.caption,
+    product: get_post(item.product),
   } %}
 </section>
 {% endif %}
