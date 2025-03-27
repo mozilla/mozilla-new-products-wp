@@ -1,8 +1,6 @@
 export function videoEmbed(Alpine) {
   Alpine.directive('video-embed', (el, { value }) => {
-    if (value === 'cover') {
-      handleCover(el, Alpine);
-    } else if (value === 'play') {
+    if (value === 'play') {
       handlePlay(el, Alpine);
     } else {
       handleRoot(el, Alpine);
@@ -17,10 +15,7 @@ function handleRoot(el, Alpine) {
         playing: false,
       };
     },
-  });
-}
-function handleCover(el, Alpine) {
-  Alpine.bind(el, {
+
     ':data-playing'() {
       return this.playing;
     },
