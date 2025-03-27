@@ -1,7 +1,7 @@
 <header class="relative text-content grid grid-site pt-[20vh] pb-[20vh] isolate">
   <img class="
     lazyload opacity-0
-    [&.lazyloaded]:opacity-[calc(1-(var(--scroll-y)/400))] translate-y-[calc(var(--scroll-y)*-0.3px)] ease-linear
+    [&.lazyloaded]:opacity-[calc(1-(var(--scroll-y)/400))] motion-safe:translate-y-[calc(var(--scroll-y)*-0.3px)] ease-linear
     [transition:opacity_0s,transform_0s] data-[scroll-direction=up]:[transition:opacity_2s,transform_0s]
     absolute inset-0 w-full min-h-[120%] object-cover -z-10" src="{{ theme.link }}/static/img/dither-texture.png" alt="" x-init x-scroll-position />
 
