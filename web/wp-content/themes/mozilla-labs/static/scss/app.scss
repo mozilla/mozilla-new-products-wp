@@ -203,7 +203,7 @@ body {
   }
 
   .type-text-12 {
-    @apply text-xs leading-tight;
+    @apply text-xs font-sans font-wght-480 tracking-tight leading-tight;
   }
 
   .type-sans-subhead {
@@ -215,7 +215,7 @@ body {
   }
 
   .type-caption {
-    @apply text-xs leading-tight;
+    @apply type-text-12;
   }
 
   // Buttons

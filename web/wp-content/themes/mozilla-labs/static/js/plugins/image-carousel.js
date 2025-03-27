@@ -9,6 +9,7 @@ export function imageCarousel(Alpine) {
           type: 'fade',
           autoWidth: true,
           pagination: false,
+          rewind: true,
         }).mount();
       },
     });

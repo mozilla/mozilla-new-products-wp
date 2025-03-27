@@ -1,7 +1,7 @@
 <figure class="relative">
-  <div class="relative flex">
+  <div class="relative flex h-[50rem]">
     {% include "components/lazy-img.twig" with {
-      class: "w-full aspect-[4/5] md:aspect-[16/9]",
+      class: "w-full aspect-[16/9]",
       imgClass:"object-cover",
       img: get_image(image),
     } %}
@@ -21,7 +21,7 @@
   </div>
 
   {% if caption %}
-    <figcaption class="absolute bottom-grid-site-margin left-grid-site-margin max-md:right-grid-site-margin button button-xs whitespace-break-spaces">
+    <figcaption class="absolute bottom-grid-site-margin left-grid-site-margin right-grid-site-margin bg-off-black/60 text-white backdrop-blur-md size-fit px-[10px] pt-[6.5px] pb-[5.5px] type-caption">
       {{ caption }}
     </figcaption>
   {% endif %}
