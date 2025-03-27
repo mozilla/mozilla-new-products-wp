@@ -637,7 +637,7 @@
                   "acfe_bidirectional": {
                     "acfe_bidirectional_enabled": "0"
                   },
-                  "allow_null": 0,
+                  "allow_null": 1,
                   "allow_in_bindings": 0,
                   "bidirectional": 0,
                   "ui": 1,
@@ -837,5 +837,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1743094813
+  "modified": 1743102588
 }
