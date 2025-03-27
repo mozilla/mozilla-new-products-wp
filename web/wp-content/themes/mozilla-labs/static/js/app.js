@@ -16,6 +16,7 @@ import { videoEmbed } from '@src/plugins/video-embed';
 import { dialog } from '@src/plugins/dialog';
 import { typewriter } from '@src/plugins/typewriter';
 import { scrollPosition } from '@src/plugins/scroll-position';
+import { imageCarousel } from '@src/plugins/image-carousel';
 
 // Initialize Alpine
 window.Alpine = Alpine;
@@ -29,6 +30,7 @@ Alpine.plugin(links);
 Alpine.plugin(videoEmbed);
 Alpine.plugin(typewriter);
 Alpine.plugin(scrollPosition);
+Alpine.plugin(imageCarousel);
 
 // Start Alpine
 Alpine.start();
