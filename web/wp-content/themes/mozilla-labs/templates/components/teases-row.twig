@@ -20,12 +20,7 @@
       {% set product = tease.product ? get_post(tease.product) : null %}
 
       <li class="w-full flex flex-col">
-        {% if tease.cta %}
-            <a href="{{ tease.cta.url }}" class="flex flex-col gap-y-4 group h-full">
-          {% else %}
-            <div class="flex flex-col gap-y-4">
-        {% endif %}
-
+        <div class="group relative flex flex-col gap-y-4">
           {% if tease.image %}
             {% include "components/image-icon-watermark.twig" with {
               image: get_image(tease.image),
@@ -38,21 +33,16 @@
             <h3 class="text-sm">{{ tease.title }}</h3>
 
             {% if tease.description|trim is not empty %}
-              <p class="text-sm text-secondary/60 group-hocus:text-content">{{ tease.description|striptags('<strong><em><a>') }}</p>
+              <p class="text-sm text-secondary/60 group-hocus-within:text-content">{{ tease.description|striptags('<strong><em><a>') }}</p>
             {% endif %}
           </div>
 
           {% if tease.cta %}
-            <p class="text-sm underline mt-auto group-hocus:no-underline">
+            <a class="text-sm underline mt-auto group-hocus-within:no-underline before:absolute before:inset-0" href="{{ tease.cta.url }}">
               {{ tease.cta.title }}
-            </p>
-          {% endif %}
-
-          {% if tease.cta %}
             </a>
-          {% else %}
-            </div>
           {% endif %}
+        </div>
       </li>
     {% endfor %}
   </ul>

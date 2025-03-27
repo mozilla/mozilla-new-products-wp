@@ -24,12 +24,12 @@
       </figure>
 
     {% elseif type == "video_embed" %}
-      <figure class="flex flex-wrap gap-y-2 gap-x-1" x-init x-video-embed>
-        <div class="relative w-full [&>iframe]:w-full [&>iframe]:h-auto [&>iframe]:aspect-video isolate overflow-hidden">
+      <figure class="group flex flex-wrap gap-y-2 gap-x-1" x-init x-video-embed>
+        <div class="relative w-full aspect-video [&>iframe]:w-full [&>iframe]:h-auto [&>iframe]:aspect-video [&>iframe]:hidden isolate overflow-hidden group-data-[playing]:[&>iframe]:block">
           {{ item.embed|raw }}
 
           {% if item.cover %}
-            <div class="absolute inset-0 w-full h-full z-10 data-[playing]:hidden" x-video-embed:cover>
+            <div class="w-full h-full group-data-[playing]:hidden">
               {% include "components/lazy-img.twig" with {
                 class: "w-full h-full object-cover",
                 img: get_image(item.cover),
@@ -40,7 +40,7 @@
         </div>
 
         {% if item.cover %}
-        <button class="type-caption text-inherit h-[calc(1lh+0.75rem)] p-0 aspect-square flex justify-center items-center data-[playing]:hidden bg-off-black/60 text-white backdrop-blur-md" x-video-embed:play>
+        <button class="type-caption text-inherit h-[calc(1lh+0.75rem)] p-0 aspect-square flex justify-center items-center data-[playing]:hidden bg-off-black/60 text-white backdrop-blur-md hocus:bg-content transition-colors" x-video-embed:play>
           <span class="sr-only">Play video</span>
           <svg class="size-2.5 shrink-0" aria-hidden="true">
             <use href="#play"></use>
