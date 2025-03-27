@@ -21,13 +21,13 @@
   </div>
 
   {% if caption or product %}
-    <figcaption class="absolute bottom-grid-site-margin left-grid-site-margin right-grid-site-margin flex gap-1">
+    <figcaption class="absolute bottom-grid-site-margin left-grid-site-margin right-grid-site-margin flex flex-col md:flex-row gap-1 md:max-w-[75%]">
       {% if product %}
-        <a class="button button-xs font-wght-700" href="{{ product.link }}">{{ product.title }}</a>
+        <a class="button button-xs font-wght-700 w-fit" href="{{ product.link }}">{{ product.title }}</a>
       {% endif %}
 
       {% if caption %}
-        <div class="bg-off-black/60 text-white backdrop-blur-md size-fit px-[10px] pt-[6.5px] pb-[5.5px] type-caption">
+        <div class="bg-off-black/60 text-white backdrop-blur-md px-[10px] pt-[6.5px] pb-[5.5px] type-caption w-fit min-w-0 [&>p]:md:truncate [&>p]:md:whitespace-nowrap">
           {{ caption }}
         </div>
       {% endif %}

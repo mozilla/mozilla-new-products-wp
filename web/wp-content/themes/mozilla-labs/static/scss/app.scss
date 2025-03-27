@@ -234,7 +234,7 @@ body {
   }
 
   .button-xs {
-    @apply flex justify-center h-fit items-center px-[10px] pt-[6.5px] pb-[5.5px] type-caption;
+    @apply flex justify-center h-fit items-center px-[10px] pt-[6.5px] pb-[5.5px] type-text-12 leading-tight;
   }
 
   .button-sm {
