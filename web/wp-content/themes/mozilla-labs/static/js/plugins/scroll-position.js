@@ -12,6 +12,8 @@ export function scrollPosition(Alpine) {
 
         if (window.scrollY === 0) {
           el.setAttribute('data-scroll-at-top', 'true');
+        } else {
+          el.removeAttribute('data-scroll-at-top');
         }
       },
     });
