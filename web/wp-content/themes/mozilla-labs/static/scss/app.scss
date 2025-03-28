@@ -39,7 +39,7 @@
   --100vw: min(100vw, 1920px);
   @apply [--grid-site-cols:6] md:[--grid-site-cols:12];
   @apply [--grid-site-margin:20px] md:[--grid-site-margin:20px];
-  @apply [--grid-site-gutter:calc((24/400)*var(--100vw))] md:[--grid-site-gutter:calc((40/1440)*var(--100vw))];
+  @apply [--grid-site-gutter:10px] md:[--grid-site-gutter:20px];
 
   --color-black: #{color.rgb(#000000)};
   --color-off-black: #{color.rgb(#1a1a1a)};
