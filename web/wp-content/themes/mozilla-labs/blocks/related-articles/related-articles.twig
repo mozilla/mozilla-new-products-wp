@@ -7,23 +7,25 @@
   {% endif %}
 
   {% if related_articles %}
-    <ul class="contents">
+    <ul class="grid has-[li:nth-child(2)]:grid-cols-[1fr_1fr] auto-rows-auto gap-x-grid-site-gutter gap-y-10 pt-10">
       {% for post in related_articles %}
-        <li class="relative grid auto-rows-[min-content_1fr] max-md:grid-cols-6 md:grid md:grid-cols-10 gap-x-grid-site-gutter py-4 border-b border-content">
-          <a class="max-md:col-span-4 md:col-span-5 mt-2 leading-tighter before:absolute before:inset-0 before:z-10 group" href="{{ post.link }}">
-            <span class="uppercase font-bold group-hocus:bg-content group-hocus:text-main">{{ post.title }}</span>
-          </a>
-
-          <div class="max-md:col-span-2 max-md:row-start-1 max-md:row-span-2 max-md:col-start-5 md:col-span-3">
-            <div class="w-full md:aspect-square {{ post.thumbnail.id ? '' : 'bg-gray' }}">
-              {% if post.thumbnail.id %}
-                {% include "components/lazy-img.twig" with { img: get_image(post.thumbnail), class: 'max-w-full max-h-full m-auto' } %}
-              {% endif %}
-            </div>
+        <li class="relative group grid grid-rows-subgrid row-span-2 gap-y-4">
+          <div class="w-full grid-rows-1 mt-auto {{ post.thumbnail.id ? '' : 'bg-gray' }}">
+            {% if post.thumbnail.id %}
+              {% include "components/lazy-img.twig" with { img: get_image(post.thumbnail), class: 'max-w-full max-h-full m-auto' } %}
+            {% endif %}
           </div>
 
-          <div class="max-md:row-start-1 max-md:col-span-4 md:col-span-2 md:mt-3 flex md:justify-end">
-            {% include "components/articles/overline.twig" with { overline: post.categories[0], color: post.color } %}
+          <div class="flex flex-col gap-y-0 max-w-[154px] md:max-w-[214px]">
+            {% if post.category %}
+              <p class="text-secondary/60 block type-headline-14 group-hocus-within:text-content">{{ post.category }}</p>
+            {% endif %}
+
+            <h3 class="type-headline-14 leading-tight">
+              <a class="before:absolute before:inset-0 group-hocus-within:underline" href="{{ post.link }}">
+                {{ post.title }}
+              </a>
+            </h3>
           </div>
         </li>
       {% endfor %}
