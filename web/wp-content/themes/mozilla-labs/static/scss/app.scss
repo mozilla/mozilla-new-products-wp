@@ -681,6 +681,10 @@ body {
 
     // Tables
     figure.wp-block-table {
+      &.alignfull {
+        @apply md:col-span-full;
+      }
+
       table {
         thead {
           @apply border-t border-content text-left align-top;
