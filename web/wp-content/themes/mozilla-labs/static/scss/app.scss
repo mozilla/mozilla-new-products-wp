@@ -41,10 +41,10 @@ $transitionDuration: 0.125s;
   --100vw: min(100vw, 1920px);
   @apply [--grid-site-cols:6] md:[--grid-site-cols:12];
   @apply [--grid-site-margin:20px] md:[--grid-site-margin:20px];
-  @apply [--grid-site-gutter:calc((24/400)*var(--100vw))] md:[--grid-site-gutter:calc((40/1440)*var(--100vw))];
+  @apply [--grid-site-gutter:10px] md:[--grid-site-gutter:20px];
 
   --color-black: #{color.rgb(#000000)};
-  --color-off-black: #{color.rgb(#3c3c3c)};
+  --color-off-black: #{color.rgb(#1a1a1a)};
   --color-white: #{color.rgb(#fafafa)};
   --color-gray: #{color.rgb(#f0f0f0)};
   --color-gray-dark: #{color.rgb(#6d6d6d)};
@@ -68,7 +68,7 @@ $transitionDuration: 0.125s;
 }
 
 html {
-  scroll-behavior: smooth;
+  @apply motion-safe:scroll-smooth;
 
   &.barba-transition {
     scroll-behavior: auto !important;
@@ -84,8 +84,10 @@ body {
 @layer base {
   .theme-light {
     --color-main: var(--color-white);
-    --color-secondary: #{color.rgb(#1b1b1b)};
+    --color-secondary: #{color.rgb(#1a1a1a)};
     --color-content: var(--color-black);
+    --color-content-secondary-small: #767676;
+    --color-content-secondary-large: #949494;
     --color-content-reverse: var(--color-white);
     --color-code: var(--color-black);
     --color-spot: var(--color-green);
@@ -110,6 +112,8 @@ body {
     --color-main: var(--color-black);
     --color-secondary: var(--color-gray);
     --color-content: var(--color-white);
+    --color-content-secondary-small: #767676;
+    --color-content-secondary-large: #666666;
     --color-content-reverse: var(--color-black);
     --color-code: var(--color-black);
     --color-spot: var(--color-green);
@@ -146,7 +150,11 @@ body {
   }
 
   .type-headline-80 {
-    @apply text-[64px] md:text-[80px] font-headline font-wdth-380 font-semibold leading-tightest tracking-[-0.01em];
+    @apply text-[60px] md:text-[80px] font-headline font-wdth-380 font-semibold leading-tightest tracking-[-0.01em];
+  }
+
+  .type-headline-64 {
+    @apply text-[45px] md:text-[64px] font-headline font-wdth-380 font-semibold leading-tightest tracking-[-0.01em];
   }
 
   .type-headline-40 {
@@ -190,7 +198,7 @@ body {
   }
 
   .type-text-20 {
-    @apply text-[20px] font-sans font-normal leading-tighter tracking-[-0.025em];
+    @apply text-[20px] font-sans font-normal leading-tighter font-wght-480 tracking-[-0.025em];
   }
 
   .type-sans-md {
@@ -199,6 +207,10 @@ body {
 
   .type-sans-sm {
     @apply text-xl font-sans font-normal leading-tighter tracking-tight;
+  }
+
+  .type-text-12 {
+    @apply text-xs font-sans font-wght-480 tracking-tight leading-tight;
   }
 
   .type-sans-subhead {
@@ -210,19 +222,15 @@ body {
   }
 
   .type-caption {
-    @apply text-xs text-content/70 leading-tight;
-
-    strong {
-      @apply text-content;
-    }
+    @apply type-text-12;
   }
 
   // Buttons
   .button {
     @apply block whitespace-nowrap;
-    @apply font-headline font-semibold tracking-normal text-sm leading-none font-wdth-380 bg-off-black/60 text-white backdrop-blur-md transition-colors;
+    @apply font-headline font-semibold tracking-normal text-sm leading-none font-wdth-380 text-white transition-colors bg-blur;
 
-    &:is(button, a) {
+    &:is(button, a):not([disabled]) {
       @apply cursor-pointer hocus:bg-black;
 
       &.theme-dark,
@@ -230,6 +238,10 @@ body {
         @apply hocus:text-black hocus:bg-white;
       }
     }
+  }
+
+  .button-xs {
+    @apply flex justify-center h-fit items-center px-[10px] pt-[6.5px] pb-[5.5px] type-text-12 leading-tight;
   }
 
   .button-sm {
@@ -245,14 +257,9 @@ body {
   }
 
   .button-dark {
-    @apply bg-black/70;
+    @apply bg-blur-dark;
 
-    &.theme-dark,
-    .theme-dark & {
-      @apply bg-off-black/70;
-    }
-
-    &:is(button, a) {
+    &:is(button, a):not([disabled]) {
       @apply cursor-pointer hocus:bg-black;
 
       &.theme-dark,
@@ -264,6 +271,24 @@ body {
 }
 
 @layer utilities {
+  .bg-blur {
+    @apply bg-off-black/60 backdrop-blur-md;
+
+    &.theme-dark,
+    .theme-dark & {
+      @apply bg-[#3c3c3c]/60;
+    }
+  }
+
+  .bg-blur-dark {
+    @apply bg-black/70 backdrop-blur-md;
+
+    &.theme-dark,
+    .theme-dark & {
+      @apply bg-[#3c3c3c]/70;
+    }
+  }
+
   .centered-page {
     @apply w-full mx-auto;
   }
@@ -596,7 +621,7 @@ body {
       @apply flex flex-col gap-2 relative;
 
       figcaption {
-        @apply bg-black/60 text-white backdrop-blur-md px-[10px] pt-[6.5px] pb-[5.5px] w-fit type-caption;
+        @apply bg-blur text-white px-[10px] pt-[6.5px] pb-[5.5px] w-fit type-caption;
       }
 
       &.alignfull:not(.wp-block-pullquote):not(.wp-block-table) {
@@ -623,7 +648,7 @@ body {
       &.alignright {
         &::before {
           content: '';
-          @apply md:max-2xl:type-headline-md 2xl:type-headline-lg md:top-1 xl:top-2 md:size-[0.85em];
+          @apply md:max-2xl:type-headline-md 2xl:type-headline-lg md:top-1 xl:top-0 md:size-[0.85em];
         }
 
         p {
@@ -663,12 +688,16 @@ body {
 
     // Tables
     figure.wp-block-table {
+      &.alignfull {
+        @apply md:col-span-full;
+      }
+
       table {
         thead {
           @apply border-t border-content text-left align-top;
 
           tr th {
-            @apply py-3 uppercase text-sm font-normal;
+            @apply py-3 text-sm font-normal;
 
             &:not(:last-child) {
               @apply pr-3;
@@ -731,17 +760,16 @@ body {
     }
 
     .wp-block-button {
-      @apply flex justify-center w-full;
+      @apply flex justify-start w-full;
     }
 
     .wp-block-button__link {
-      @apply w-full p-10 uppercase text-center text-action-reverse bg-action border border-action transition-colors;
-      @apply hocus:text-action-focus-reverse hocus:bg-action-focus hocus:border-action-focus;
+      @apply button button-sm;
     }
 
     .is-style-outline .wp-block-button__link {
       @apply bg-transparent border-none text-action transition-shadow shadow-inner shadow-action;
-      @apply hocus:shadow-inner-thick hocus:shadow-action;
+      @apply hocus:shadow-inner-thick hocus:shadow-action hocus:text-action-reverse;
     }
 
     // Files
@@ -764,18 +792,14 @@ body {
       }
 
       a:not(.wp-block-file__button) {
-        @apply flex items-center justify-between gap-10 w-full p-10;
-        @apply uppercase font-semibold;
-        @apply bg-action text-action-reverse transition duration-300;
-        @apply hocus:text-action-focus-reverse hocus:bg-action-focus;
+        @apply button button-sm w-fit;
 
         &:has(+ a.wp-block-file__button) {
-          @apply md:py-8;
-
           &::after {
             content: '';
-            @apply block shrink-0 bg-current mask-arrow-down size-8 md:size-10;
-            @apply transition-transform duration-300 hocus:translate-y-1.5;
+            @apply ml-2;
+            @apply block shrink-0 bg-current mask-arrow-down size-2.5;
+            @apply transition-transform duration-300 hocus:translate-y-0.5;
           }
         }
       }
@@ -808,11 +832,21 @@ body {
     // Cover
     .wp-block-cover {
       &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
-        @apply md:col-span-7 lg:col-span-12 2xl:col-span-10;
+        @apply col-span-full max-w-[600px] mx-auto;
+
+        img,
+        video {
+          @apply w-full h-auto;
+        }
       }
 
       &.alignwide {
         @apply md:col-span-10 lg:col-span-8;
+
+        img,
+        video {
+          @apply w-full h-auto;
+        }
       }
 
       &.alignfull {
@@ -828,7 +862,7 @@ body {
 
           h2,
           h3 {
-            @apply md:type-sans-lg;
+            @apply md:type-headline-20;
           }
         }
       }
@@ -838,15 +872,15 @@ body {
 
         h2,
         h3 {
-          @apply uppercase type-sans-md text-balance max-w-screen-sm max-md:indent-8;
+          @apply type-headline-20 text-balance max-w-screen-sm;
         }
 
         h4 {
-          @apply uppercase type-sans-sm text-balance max-w-screen-sm max-md:indent-8;
+          @apply type-headline-20 text-balance max-w-screen-sm;
         }
 
         p {
-          @apply indent-8 lg:max-w-text-narrow;
+          @apply lg:max-w-text-narrow;
         }
 
         * + * {

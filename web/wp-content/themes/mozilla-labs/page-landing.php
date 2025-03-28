@@ -6,7 +6,6 @@
  */
 
 use Timber\Timber;
-use MozillaLabs\Models\Taxonomy\Cohort;
 
 $context  = Timber::context();
 $_page    = Timber::get_post();

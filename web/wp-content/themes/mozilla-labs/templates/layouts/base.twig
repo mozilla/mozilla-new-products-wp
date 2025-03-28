@@ -3,14 +3,14 @@
 
 {% include "layouts/includes/head.twig" %}
 
-<body x-data x-links
-  class="{{ body_class }} {{ pagename ? 'page-name-' ~ pagename }} theme-light {% block custom_body_classes %}{% endblock %}"
+<body x-data x-links x-scroll-position
+  class="group/root-scroll {{ body_class }} {{ pagename ? 'page-name-' ~ pagename }} {{ page_theme|default(post.meta("page_theme"))|default("theme-light") }} {% block custom_body_classes %}{% endblock %}"
   data-barba="wrapper">
 
-  <a href="#content" class="sr-only focus:not-sr-only !absolute inset-x-0 top-0">
-    <div class="w-full flex items-center justify-center p-1.5 bg-content">
-      <span class="text-main text-center text-sm font-semibold tracking-wide uppercase">Skip to content</span>
-    </div>
+  <a href="#content" class="sr-only focus:not-sr-only !absolute inset-x-0 top-0 z-[100]">
+    <span class="w-full flex items-center justify-center p-1.5 bg-content">
+      <span class="text-main text-center text-sm tracking-wide">Skip to content</span>
+    </span>
   </a>
 
   {% include "layouts/includes/svgs.twig" %}
@@ -22,20 +22,21 @@
   <div class="flex flex-col flex-1 min-h-screen">
 
     {% include "components/nav.twig" with {
-      class: custom_nav_classes|default(""),
+      class: nav_theme|default(post.meta("navigation_theme"))|default(""),
     } %}
 
     <div data-barba="container">
       <main id="content" class="flex flex-col flex-1 {% block custom_content_classes %}{% endblock %}" tabindex="-1">
         {% block pageBody %}
         {% endblock %}
-  
-        {% include "components/email-signup.twig" with {
-          override: email_signup_override|default(false),
-        } %}
-      </main>  
-    </div>
 
+        {% block prefooter %}
+          {% include "components/email-signup.twig" with {
+            override: email_signup_override|default(false),
+          } %}
+        {% endblock %}
+      </main>
+    </div>
 
     {% block footer %}
       {% include "components/footer.twig" %}

@@ -179,6 +179,8 @@ module.exports = {
         tightest: '0.90',
         headline: '0.96',
         tighter: '1.05',
+        tight: '1.20',
+        snug: '1.35',
       },
 
       maxWidth: {
@@ -199,7 +201,8 @@ module.exports = {
         // https://fluid-typography.netlify.app/
         site: 'clamp(1rem, 2vw + 0.25rem, 1.5rem)',
         'grid-site-margin': 'var(--grid-site-margin, 0px)',
-        'grid-site-gutter': '20px',
+        'grid-site-gutter': 'var(--grid-site-gutter, 0px)',
+        'dither-fade': '173px',
       },
 
       zIndex: {

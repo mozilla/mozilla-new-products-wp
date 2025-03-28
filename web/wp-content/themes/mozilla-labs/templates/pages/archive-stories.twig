@@ -1,38 +1,18 @@
 {% extends "layouts/base.twig" %}
 
+{% set email_signup_override = page.meta("email_signup") %}
+
 {% block pageBody %}
 
 {% include "components/filter-topper.twig" with { title: page.title, description: page.description } %}
 
-  <section aria-label="Posts" class="mb-36">
+  <section aria-label="Posts">
     <h2 class="sr-only">Posts</h2>
 
-    <ul class="flex flex-col gap-y-20 px-grid-site-margin md:grid md:grid-cols-3 md:gap-x-32 lg:gap-x-48 md:gap-y-32">
-      {% for post in posts %}
-        {% set product = post.product %}
-
-        <li class="flex flex-col gap-y-4">
-          {% if post.thumbnail %}
-            {% include "components/image-icon-watermark.twig" with {
-              image: post.thumbnail,
-              icon: product and product.icons.grayscale ? get_image(product.icons.grayscale) : null
-            } %}
-          {% endif %}
-
-          <div class="flex flex-col gap-y-0">
-            {% if post.category %}
-              <p class="text-secondary/60 block type-headline-14">{{ post.category }}</p>
-            {% endif %}
-
-            <h3 class="type-headline-14 leading-tight">
-              <a href="{{ post.link }}">
-                {{ post.title }}
-              </a>
-            </h3>
-          </div>
-
-        </li>
-      {% endfor %}
-    </ul>
+    <div class="px-grid-site-margin">
+      {% include "components/story-teases.twig" with {
+        posts: posts
+      } %}
+    </div>
   </section>
 {% endblock %}

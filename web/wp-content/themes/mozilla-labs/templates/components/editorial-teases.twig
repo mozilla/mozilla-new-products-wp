@@ -1,0 +1,41 @@
+{% set limit = 3 %}
+
+{# if there are no selected block posts, set teases = the first 3 posts #}
+{% if block.posts is empty %}
+  {% set teases = get_posts({ posts_per_page: limit }) %}
+{% else %}
+  {# Convert ACF post objects to Article objects #}
+  {% set teases = get_posts(block.posts)|slice(0, limit) %}
+
+  {% set postsNeeded = limit - teases|length %}
+
+  {# Pad with most recent posts if less than limit #}
+  {% if postsNeeded > 0 %}
+    {% set paddedPosts = get_posts({ posts_per_page: postsNeeded, post__not_in: block.posts }) %}
+    {% set teases = teases|merge(paddedPosts) %}
+  {% endif %}
+{% endif %}
+
+<section class="grid grid-site my-32 md:my-48 first:mt-0 last:mb-0">
+  <div class="col-span-full">
+    {% if block.headline or block.cta %}
+      <div class="flex flex-row gap-x-1 justify-center type-text-12 font-bold mb-10">
+        {% if block.headline %}
+          <h2 class="text-[var(--color-content)]">{{ block.headline }}</h2>
+        {% endif %}
+
+        {% if block.headline and block.cta %}
+          <span aria-hidden="true">/</span>
+        {% endif %}
+
+        {% if block.cta %}
+          <a href="{{ block.cta.url }}" class="text-[var(--color-content-secondary-small)] hocus:text-[var(--color-content)]">{{ block.cta.title }}</a>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% include "components/story-teases.twig" with {
+      posts: teases
+    } %}
+  </div>
+</section>

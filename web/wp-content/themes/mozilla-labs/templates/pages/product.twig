@@ -1,6 +1,5 @@
 {% extends "layouts/base.twig" %}
 
-{% set custom_nav_classes = post.meta("navigation_theme") %}
 {% set email_signup_override = post.meta("email_signup") %}
 
 {%- block custom_body_classes -%}
@@ -28,7 +27,7 @@
     px-8 pt-9 pb-8 lg:pt-14 lg:pb-12 lg:px-16
     bg-off-black/60 backdrop-blur-md
   ">
-    <h1 class="text-white type-headline-2xl">{{ post.title }}</h1>
+    <h1 class="text-white type-headline-2xl text-center whitespace-nowrap">{{ post.title }}</h1>
   </div>
 
   {% if post.categories|length %}

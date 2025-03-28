@@ -42,9 +42,13 @@
     data-srcset="{{ img.srcset }}"
     data-src="{{ img.src }}"
     data-sizes="auto"
-    alt="{{ img.alt }}"
     data-caption="{{ caption }}"
     data-credit="{{ credit }}"
+    {% if alt is defined %}
+    alt="{{ alt }}"
+    {% elseif img.alt %}
+    alt="{{ img.alt }}"
+    {% endif %}
   />
 {% else %}
 
@@ -62,9 +66,13 @@
       data-srcset="{{ img.srcset }}"
       data-src="{{ img.src }}"
       data-sizes="auto"
-      alt="{{ img.alt }}"
       data-caption="{{ caption }}"
       data-credit="{{ credit }}"
+      {% if alt is defined %}
+      alt="{{ alt }}"
+      {% elseif img.alt %}
+      alt="{{ img.alt }}"
+      {% endif %}
     />
   </div>
 

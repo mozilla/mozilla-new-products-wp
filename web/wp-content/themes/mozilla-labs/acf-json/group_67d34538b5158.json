@@ -108,12 +108,110 @@
               "default_value": "",
               "allow_in_bindings": 0,
               "tabs": "all",
-              "toolbar": "full",
-              "media_upload": 1,
+              "toolbar": "bold_italic_link",
+              "media_upload": 0,
               "delay": 0
             },
             {
               "key": "field_67d34b2f108ce",
+              "label": "CTA",
+              "name": "cta",
+              "aria-label": "",
+              "type": "link",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "return_format": "array",
+              "allow_in_bindings": 0
+            }
+          ],
+          "min": "",
+          "max": "",
+          "acfe_flexible_render_template": false,
+          "acfe_flexible_render_style": false,
+          "acfe_flexible_render_script": false,
+          "acfe_flexible_thumbnail": false,
+          "acfe_flexible_settings": false,
+          "acfe_flexible_settings_size": "medium",
+          "acfe_flexible_modal_edit_size": false,
+          "acfe_flexible_category": false
+        },
+        "layout_67dc6d83ca3df": {
+          "key": "layout_67dc6d83ca3df",
+          "name": "text_only",
+          "label": "Text Only",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_67dc6dccca3e1",
+              "label": "Headline",
+              "name": "headline",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "Defaults to the current page title if not provided.",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "allow_in_bindings": 0,
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_67dc6deeca3e2",
+              "label": "Introduction",
+              "name": "introduction",
+              "aria-label": "",
+              "type": "wysiwyg",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "allow_in_bindings": 0,
+              "tabs": "visual",
+              "toolbar": "bold_italic_link",
+              "media_upload": 0,
+              "delay": 0
+            },
+            {
+              "key": "field_67dc764fbb60d",
+              "label": "Body",
+              "name": "body",
+              "aria-label": "",
+              "type": "wysiwyg",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "allow_in_bindings": 0,
+              "tabs": "visual",
+              "toolbar": "bold_italic_link_lists",
+              "media_upload": 0,
+              "delay": 0
+            },
+            {
+              "key": "field_67dc7672bb60e",
               "label": "CTA",
               "name": "cta",
               "aria-label": "",
@@ -185,7 +283,7 @@
   "label_placement": "top",
   "instruction_placement": "label",
   "hide_on_screen": "",
-  "active": true,
+  "active": false,
   "description": "",
   "show_in_rest": 0,
   "acfe_display_title": "",
@@ -193,5 +291,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1741924122
+  "modified": 1742501509
 }

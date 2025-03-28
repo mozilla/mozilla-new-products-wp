@@ -8,7 +8,7 @@
       "name": "products",
       "aria-label": "",
       "type": "relationship",
-      "instructions": "Select products that are relevant to this article.",
+      "instructions": "Select products that are relevant to this article. Currently, only 1 product can be linked to an article.",
       "required": 0,
       "conditional_logic": 0,
       "wrapper": {
@@ -55,5 +55,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1742223000
+  "modified": 1742502874
 }

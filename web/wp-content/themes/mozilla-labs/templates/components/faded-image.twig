@@ -1,0 +1,32 @@
+{#
+  This is a deprecated component. Use "image-carousel" instead.
+
+  TODO: Remove this file when all references are updated.
+#}
+
+<figure class="relative my-32 md:my-48 first:mt-0 last:mb-0">
+  <div class="relative flex h-[50rem]">
+    {% include "components/lazy-img.twig" with {
+      class: "w-full aspect-[16/9]",
+      imgClass:"object-cover",
+      img: get_image(block.image),
+    } %}
+
+    <div
+      class="
+        absolute w-full h-dither-fade pointer-events-none
+        data-[position=top]:top-0 data-[position=top]:-scale-y-100
+        data-[position=bottom]:bottom-0
+      "
+      data-position="{{ block.fade_position }}"
+    >
+    {% include "components/fade-to-bottom-dither.twig" %}
+    </div>
+  </div>
+
+  {% if block.caption %}
+    <figcaption class="absolute bottom-grid-site-margin left-grid-site-margin right-grid-site-margin bg-off-black/60 text-white backdrop-blur-md size-fit px-[10px] pt-[6.5px] pb-[5.5px] type-caption">
+      {{ block.caption }}
+    </figcaption>
+  {% endif %}
+</figure>

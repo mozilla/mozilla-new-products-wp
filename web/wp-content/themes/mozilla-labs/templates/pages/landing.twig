@@ -1,33 +1,33 @@
 {% extends "layouts/base.twig" %}
 
-{% set custom_nav_classes = "theme-dark" %}
+{#
+  Temporarily use theme-light for all landing pages. Use dark for typewriter_headline.
+  TODO: Allow setting on a per-page basis.
+#}
+{% set topper = page.meta("topper")|first %}
 
 {%- block custom_body_classes -%}
-  {{ post.meta("page_theme") }}
+  {{ post.meta("page_theme")|default("theme-light") }}
 {%- endblock -%}
+
+{% set email_signup_override = page.meta("email_signup") %}
 
 {% block pageBody %}
   <h1 class="sr-only">{{ page.title }}</h1>
 
-  {% set topper = page.meta("topper")|first %}
+  {% set template_name = topper.acf_fc_layout|replace({'_': '-'}) %}
+  {% set template_path = "components/" ~ template_name ~ "-topper.twig" %}
 
-  {% if topper.acf_fc_layout == "typewriter_headline" %}
-    {% include "components/typewriter-headline-topper.twig" with topper %}
-  {% endif %}
+  {% include [template_path] ignore missing with topper %}
 
   <div class="relative">
     {% for block in page.meta("blocks") %}
-      {% if block.acf_fc_layout == "featured_product" %}
-        {% include "components/featured-product.twig" with {
-          block: block,
-        } %}
+      {% set template_name = block.acf_fc_layout|replace({'_': '-'}) %}
+      {% set template_path = "components/" ~ template_name ~ ".twig" %}
 
-      {% elseif block.acf_fc_layout == "teases_row" %}
-        {% include "components/teases-row.twig" with {
-          block: block,
-        } %}
-
-      {% endif %}
+      {% include [template_path] ignore missing with {
+        block: block,
+      } %}
     {% endfor %}
   </div>
 {% endblock %}

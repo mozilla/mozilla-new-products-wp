@@ -1,33 +1,81 @@
-<div class="border-t border-content flex flex-col">
-  <a href="{{ product.link }}" class="px-grid-site-margin py-grid-site-margin grid grid-cols-6 md:grid-cols-12 gap-6 relative items-center group overflow-hidden">
-    {% if product.thumbnail and product.show_image_on_index %}
-      {% if archive %}
-        <div class="w-1/2">
-          {% include "components/lazy-img.twig" with { img: product.thumbnail } %}
-        </div>
-      {% endif %}
-    {% endif %}
+<div class="border-t border-content flex flex-col" style="--background-color: {{ product.colors.background }}; --foreground-color: {{ product.colors.foreground }}">
+  <div class="px-grid-site-margin py-grid-site-margin grid grid-cols-6 md:grid-cols-12 gap-6 relative items-center group overflow-hidden">
+    <div class="col-span-4 md:col-span-3 flex flex-row gap-x-4 items-center z-10">
+      <div class="relative w-12 h-12 flex">
+        {# Grayscale SVG #}
+        {% include "components/lazy-img.twig" with {
+          class: "size-12 invert group-hocus:hidden",
+          img: get_image(product.icons.grayscale),
+          aspectRatio: aspectRatio,
+          alt: ""
+        } %}
 
-    <div class="md:col-span-3 flex flex-row gap-x-4 items-center z-10">
-      <img class="size-[48px]" src="{{ product.icons.grayscale.url }}">
-      <h3 class="type-text-20 font-wght-480">
-          {{ product.title }}
-      </h3>
-    </div>
-    <p class="md:col-span-6 type-text-20 font-wght-480 z-10">{{ product.tagline }}</p>
-    <div class="absolute w-full h-full z-8 opacity-0 group-hocus:opacity-100">
-      {% include "components/lazy-img.twig" with { class:"absolute top-1/2 left-0 translate-y-[-50%]", img: product.thumbnail } %}
-    </div>
-  </a>
-
-  {% if product.thumbnail and product.show_image_on_index %}
-    {% if not archive %}
-      <div class="w-1/2 lg:mt-6">
-        {% include "components/lazy-img.twig" with { img: product.thumbnail } %}
+        {# Colored SVG #}
+        {% include "components/lazy-img.twig" with {
+          class: "relative size-12 opacity-0 group-hocus:opacity-100",
+          img: get_image(product.icons.primary),
+          aspectRatio: aspectRatio,
+          alt: ""
+        } %}
       </div>
-    {% endif %}
-  {% endif %}
+      <div class="relative flex min-w-0 w-fit group-hocus:after:opacity-100
+                  after:opacity-0
+                  after:absolute after:inset-0 after:-z-10
+                  after:w-[calc(100%+1rem)] after:h-[calc(100%+0.875rem)]
+                  after:bg-[var(--background-color)] after:left-1/2 after:top-1/2
+                  after:-translate-x-1/2 after:-translate-y-1/2">
+        <h3 class="relative truncate w-full type-text-20 leading-none z-20 whitespace-nowrap group-hocus:text-[var(--foreground-color)]">
+          {{ product.title }}
+        </h3>
+      </div>
 
+    </div>
 
+    <div class="hidden md:block md:col-span-6">
+        <div class="relative flex w-fit max-w-full group-hocus:after:opacity-100
+            after:opacity-0
+            after:absolute after:inset-0 after:z-10
+            after:w-[calc(100%+1.25rem)] after:h-[calc(100%+0.875rem)]
+            after:bg-[var(--background-color)] after:left-1/2 after:top-1/2
+            after:-translate-x-1/2 after:-translate-y-1/2">
+          <p class="relative truncate w-full lg:w-fit type-text-20 leading-none z-20 whitespace-nowrap group-hocus:text-[var(--foreground-color)]
+            ">
+            {{ product.tagline }}
+          </p>
+        </div>
+    </div>
+
+    <div class="flex col-span-2 md:col-span-3 justify-end">
+       <p
+       href="{{ product.link }}"
+       class="relative w-fit type-text-20 leading-none font-wght-480 z-10 whitespace-nowrap group-hocus:text-[var(--foreground-color)]
+          group-hocus:after:opacity-100
+          after:opacity-0
+          after:absolute after:inset-0 after:-z-10
+          after:w-[calc(100%+1.25rem)] after:h-[calc(100%+0.875rem)]
+          after:bg-[var(--background-color)] after:left-1/2 after:top-1/2
+          after:-translate-x-1/2 after:-translate-y-1/2"
+        aria-hidden="true"
+        >
+        View <span class="hidden md:inline">More</span>
+      </p>
+
+       <a
+         href="{{ product.link }}"
+         class="absolute inset-0 opacity-0 z-20"
+        >
+        <span class="sr-only">
+          View More <span class="sr-only">about {{ product.title }}</span>
+        </span>
+      </a>
+    </div>
+
+    <div class="absolute w-full h-full z-8 opacity-0 group-hocus:opacity-100">
+      {% include "components/lazy-img.twig" with {
+        class:"absolute top-1/2 left-0 -translate-y-1/2", img: product.thumbnail,
+        alt: ""
+      } %}
+    </div>
+  </div>
 </div>
 

@@ -1,0 +1,36 @@
+<figure class="relative">
+  <div class="relative flex h-[50rem] xl:h-auto">
+    {% include "components/lazy-img.twig" with {
+      class: "w-full aspect-[16/9]",
+      imgClass:"object-cover",
+      img: get_image(image),
+    } %}
+
+    {% if fade_position != "none" %}
+      <div
+        class="
+          absolute w-full h-dither-fade pointer-events-none
+          data-[position=top]:top-0 data-[position=top]:-scale-y-100
+          data-[position=bottom]:bottom-0
+        "
+        data-position="{{ fade_position }}"
+      >
+        {% include "components/fade-to-bottom-dither.twig" %}
+      </div>
+    {% endif %}
+  </div>
+
+  {% if caption or product %}
+    <figcaption class="absolute bottom-grid-site-margin left-grid-site-margin right-grid-site-margin flex flex-col md:flex-row gap-1 md:max-w-[75%]">
+      {% if product %}
+        <a class="button button-xs font-wght-700 w-fit" href="{{ product.link }}">{{ product.title }}</a>
+      {% endif %}
+
+      {% if caption %}
+        <div class="bg-off-black/60 text-white backdrop-blur-md px-[10px] pt-[6.5px] pb-[5.5px] type-caption w-fit min-w-0">
+          {{ caption }}
+        </div>
+      {% endif %}
+    </figcaption>
+  {% endif %}
+</figure>

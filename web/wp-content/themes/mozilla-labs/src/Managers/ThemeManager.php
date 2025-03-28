@@ -8,13 +8,8 @@
 namespace MozillaLabs\Managers;
 
 use MozillaLabs\Models\PostType\Article;
-use MozillaLabs\Models\PostType\Cta;
-use MozillaLabs\Models\PostType\Profile;
 use MozillaLabs\Models\PostType\Product;
-use MozillaLabs\Models\Taxonomy\Cohort;
-use MozillaLabs\Models\Taxonomy\Platform;
 use MozillaLabs\Models\Taxonomy\ProductCategory;
-use MozillaLabs\Models\Taxonomy\Technology;
 use MozillaLabs\Vite;
 
 use Timber\Timber;
@@ -196,8 +191,6 @@ class ThemeManager {
 	 * @return void
 	 */
 	public function register_post_types() {
-		Cta::register();
-		Profile::register();
 		Product::register();
 	}
 
@@ -209,8 +202,6 @@ class ThemeManager {
 	public function set_post_classmap( array $classmap ): array {
 		$custom_classmap = array(
 			Article::HANDLE => Article::class,
-			Cta::HANDLE     => Cta::class,
-			Profile::HANDLE => Profile::class,
 			Product::HANDLE => Product::class,
 		);
 
@@ -224,10 +215,7 @@ class ThemeManager {
 	 */
 	public function register_taxonomies() {
 		// Register custom post types.
-		Cohort::register();
-		Platform::register();
 		ProductCategory::register();
-		Technology::register();
 	}
 
 	/**
@@ -237,10 +225,7 @@ class ThemeManager {
 	 */
 	public function set_term_classmap( array $classmap ): array {
 		$custom_classmap = array(
-			Cohort::HANDLE          => Cohort::class,
-			Platform::HANDLE        => Platform::class,
 			ProductCategory::HANDLE => ProductCategory::class,
-			Technology::HANDLE      => Technology::class,
 		);
 		return array_merge( $classmap, $custom_classmap );
 	}

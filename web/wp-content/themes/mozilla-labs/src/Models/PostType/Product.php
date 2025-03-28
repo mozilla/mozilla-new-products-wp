@@ -1,6 +1,6 @@
 <?php
 /**
- * Profile model.
+ * Product model.
  *
  * @package MozillaLabs
  */
@@ -156,6 +156,13 @@ class Product extends TimberPost {
 			'posts_per_page' => -1,
 			'orderby'        => 'date',
 			'order'          => 'DESC',
+			'meta_query'     => array(
+				array(
+					'key'     => 'products',
+					'value'   => $this->id,
+					'compare' => 'LIKE',
+				),
+			),
 		);
 
 		return Timber::get_posts( $args )->to_array();
