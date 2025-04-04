@@ -8,6 +8,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import 'splide-core.min.css';
+
 // Mozilla Sans
 @include font.face('Mozilla Sans', 'MozillaText-Light', 300, normal);
 @include font.face('Mozilla Sans', 'MozillaText-LightItalic', 300, italic);

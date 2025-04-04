@@ -1,5 +1,4 @@
 import Splide from '@splidejs/splide';
-import '@splidejs/splide/css/core';
 
 export function imageCarousel(Alpine) {
   Alpine.directive('image-carousel', el => {
