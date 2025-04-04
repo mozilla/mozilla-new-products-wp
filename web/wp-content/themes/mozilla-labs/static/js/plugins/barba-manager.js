@@ -147,6 +147,12 @@ export function initBarba(config) {
         },
       ],
     });
+
+    barba.hooks.leave(() => {
+      document.querySelectorAll('[x-data]').forEach(el => {
+        el.removeAttribute('x-data');
+      });
+    });
   } catch (error) {
     console.error('Failed to initialize Barba.js:', error);
   }

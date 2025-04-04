@@ -42,6 +42,11 @@ function handleRoot(el, Alpine) {
 }
 
 function handleText(el, Alpine, text) {
+  if (el.dataset.typewriterInitialized) {
+    return;
+  }
+  el.dataset.typewriterInitialized = 'true';
+
   Alpine.bind(el, {
     'x-data'() {
       return {
@@ -61,10 +66,6 @@ function handleText(el, Alpine, text) {
           if (this.isCurrentText(el)) {
             this.typing = true;
 
-            /**
-             * For reduced motion, instantly type out the text
-             * instead of typing it out character by character.
-             */
             if (prefersReducedMotion) {
               setTimeout(() => {
                 this.typing = false;
@@ -79,9 +80,6 @@ function handleText(el, Alpine, text) {
               return;
             }
 
-            /**
-             * Type out the text character by character.
-             */
             this.interval = setInterval(() => {
               if (this.characterIndex >= text.length) {
                 this.typing = false;
