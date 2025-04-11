@@ -12,6 +12,7 @@ import focus from '@alpinejs/focus';
 import { accordion } from '@src/plugins/accordion';
 import { hangPunctuation } from '@src/plugins/hang-punctuation';
 import { links } from '@src/plugins/links';
+import { initBarba } from '@src/plugins/barba-manager';
 import { videoEmbed } from '@src/plugins/video-embed';
 import { dialog } from '@src/plugins/dialog';
 import { typewriter } from '@src/plugins/typewriter';
@@ -32,8 +33,15 @@ Alpine.plugin(typewriter);
 Alpine.plugin(scrollPosition);
 Alpine.plugin(imageCarousel);
 
-// Start Alpine
+// Start Alpine for initial page load
 Alpine.start();
+
+Alpine.startObservingMutations();
+
+// Initialize Barba
+initBarba({
+  duration: 0.125,
+});
 
 if (document.getElementById('email-signup')) {
   MzpNewsletter.init();

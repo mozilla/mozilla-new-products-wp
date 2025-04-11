@@ -4,7 +4,8 @@
 {% include "layouts/includes/head.twig" %}
 
 <body x-data x-links x-scroll-position
-  class="group/root-scroll {{ body_class }} {{ pagename ? 'page-name-' ~ pagename }} {{ page_theme|default(post.meta("page_theme"))|default("theme-light") }} {% block custom_body_classes %}{% endblock %}">
+  class="group/root-scroll {{ body_class }} {{ pagename ? 'page-name-' ~ pagename }} {{ page_theme|default(post.meta("page_theme"))|default("theme-light") }} {% block custom_body_classes %}{% endblock %}"
+  data-barba="wrapper">
 
   <a href="#content" class="sr-only focus:not-sr-only !absolute inset-x-0 top-0 z-[100]">
     <span class="w-full flex items-center justify-center p-1.5 bg-content">
@@ -24,16 +25,18 @@
       class: nav_theme|default(post.meta("navigation_theme"))|default(""),
     } %}
 
-    <main id="content" class="flex flex-col flex-1 {% block custom_content_classes %}{% endblock %}" tabindex="-1">
-      {% block pageBody %}
-      {% endblock %}
+    <div data-barba="container">
+      <main id="content" class="flex flex-col flex-1 {% block custom_content_classes %}{% endblock %}" tabindex="-1">
+        {% block pageBody %}
+        {% endblock %}
 
-      {% block prefooter %}
-        {% include "components/email-signup.twig" with {
-          override: email_signup_override|default(false),
-        } %}
-      {% endblock %}
-    </main>
+        {% block prefooter %}
+          {% include "components/email-signup.twig" with {
+            override: email_signup_override|default(false),
+          } %}
+        {% endblock %}
+      </main>
+    </div>
 
     {% block footer %}
       {% include "components/footer.twig" %}

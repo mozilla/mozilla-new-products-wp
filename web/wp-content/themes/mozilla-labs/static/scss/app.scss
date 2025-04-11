@@ -37,6 +37,8 @@
   'MozillaHeadlineItalic-VF'
 ); // Weight & Width axis (200-600)
 
+$transitionDuration: 0.125s;
+
 :root {
   --100vw: min(100vw, 1920px);
   @apply [--grid-site-cols:6] md:[--grid-site-cols:12];
@@ -69,11 +71,16 @@
 
 html {
   @apply motion-safe:scroll-smooth;
+
+  &.barba-transition {
+    scroll-behavior: auto !important;
+  }
 }
 
 body {
   @apply bg-main text-content;
   @apply font-sans font-[480] tracking-tight text-lg leading-[1.6] antialiased;
+  transition: all $transitionDuration ease-in-out;
 }
 
 @layer base {
