@@ -36,9 +36,10 @@ Alpine.plugin(imageCarousel);
 // Start Alpine for initial page load
 Alpine.start();
 
-// Initialize Barba, and pass Alpine to it for re-initialization
+Alpine.startObservingMutations();
+
+// Initialize Barba
 initBarba({
-  Alpine,
   duration: 0.125,
 });
 

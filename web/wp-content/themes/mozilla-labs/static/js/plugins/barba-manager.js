@@ -2,7 +2,7 @@ import barba from '@barba/core';
 import gsap from 'gsap';
 
 export function initBarba(config) {
-  const { Alpine, duration } = config;
+  const { duration } = config;
 
   // Store scroll positions keyed by URL path (without hash)
   const scrollPositions = {};
@@ -95,9 +95,6 @@ export function initBarba(config) {
           },
 
           enter(data) {
-            // Re-initialize Alpine
-            Alpine.start();
-
             // Check if this is a back/forward navigation
             const isBackNavigation =
               data.trigger === 'popstate' || data.trigger === 'back' || data.trigger === 'forward';

@@ -42,11 +42,6 @@ function handleRoot(el, Alpine) {
 }
 
 function handleText(el, Alpine, text) {
-  if (el.dataset.typewriterInitialized) {
-    return;
-  }
-  el.dataset.typewriterInitialized = 'true';
-
   Alpine.bind(el, {
     'x-data'() {
       return {
