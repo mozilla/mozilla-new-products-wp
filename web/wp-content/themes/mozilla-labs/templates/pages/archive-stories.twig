@@ -6,9 +6,11 @@
 
   {% if categories and categories|length %}
     {% include "components/filter-topper.twig" with {
-      title: page.title,
+      page: page,
+      total_count: total_count,
       prefix: "Show me products on",
-      categories: categories
+      categories: categories,
+      posts: posts
     } %}
   {% else %}
     {% include "components/archive-topper.twig" with {
