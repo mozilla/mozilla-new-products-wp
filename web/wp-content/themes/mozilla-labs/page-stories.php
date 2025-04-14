@@ -28,5 +28,12 @@ if ( post_password_required( $_page_id ) ) {
 		)
 	);
 
+	$context['categories'] = Timber::get_terms(
+		array(
+			'taxonomy'   => 'category',
+			'hide_empty' => true,
+		)
+	);
+
 	Timber::render( 'pages/archive-stories.twig', $context );
 }

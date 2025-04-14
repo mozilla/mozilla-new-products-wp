@@ -4,7 +4,16 @@
 
 {% block pageBody %}
 
-{% include "components/filter-topper.twig" with { title: page.title, description: page.description } %}
+  {% if categories and categories|length %}
+    {% include "components/filter-topper.twig" with {
+      categories: categories
+    } %}
+  {% else %}
+    {% include "components/archive-topper.twig" with {
+      title: page.title,
+      description: page.description,
+    } %}
+  {% endif %}
 
   <section aria-label="Posts">
     <h2 class="sr-only">Posts</h2>
