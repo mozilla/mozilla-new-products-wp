@@ -3,14 +3,43 @@
   "title": "Archive",
   "fields": [
     {
+      "key": "field_67fd7c86489f8",
+      "label": "Show Filters?",
+      "name": "show_filters",
+      "aria-label": "",
+      "type": "true_false",
+      "instructions": "Should this archive page show category filters? Recommended to turn this on only if there are enough entries on the archive for the filters to be useful.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "message": "",
+      "default_value": 0,
+      "allow_in_bindings": 0,
+      "ui_on_text": "",
+      "ui_off_text": "",
+      "ui": 1
+    },
+    {
       "key": "field_67cb1fcfe150b",
       "label": "Description",
       "name": "description",
       "aria-label": "",
       "type": "text",
-      "instructions": "",
+      "instructions": "The description is only available if there are no filters.",
       "required": 0,
-      "conditional_logic": 0,
+      "conditional_logic": [
+        [
+          {
+            "field": "field_67fd7c86489f8",
+            "operator": "!=",
+            "value": "1"
+          }
+        ]
+      ],
       "wrapper": {
         "width": "",
         "class": "",
@@ -54,5 +83,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1742412328
+  "modified": 1744665814
 }

@@ -4,11 +4,11 @@
 
 {% block pageBody %}
 
-  {% if categories and categories|length %}
+  {% if page.show_filters and categories and categories|length %}
     {% include "components/filter-topper.twig" with {
       page: page,
       total_count: total_count,
-      prefix: "Show me products on",
+      prefix: "Show me stories on",
       categories: categories,
       posts: posts
     } %}
