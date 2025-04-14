@@ -1,11 +1,11 @@
-<header class="px-grid-site-margin flex justify-center py-52 md:py-60">
+<header class="px-grid-site-margin flex justify-center py-52 lg:py-60">
   <h1 class="sr-only">{{ title }}</h1>
 
   {% if categories|length %}
-    <nav class="flex gap-10 type-headline-20 text-secondary/60" aria-label="Categories">
+    <nav class="grid grid-cols-[1fr_1fr] gap-grid-site-gutter max-lg:w-full lg:flex lg:gap-10 type-headline-20 text-secondary/60" aria-label="Categories">
       <p>{{ prefix }}</p>
 
-      <ul class="flex flex-wrap gap-6">
+      <ul class="flex max-lg:flex-col lg:flex-wrap gap-3 lg:gap-6">
         {% for category in categories %}
           <li>
             <a class="group flex gap-1 transition-colors hocus:text-content" href="{{ category.link }}">
