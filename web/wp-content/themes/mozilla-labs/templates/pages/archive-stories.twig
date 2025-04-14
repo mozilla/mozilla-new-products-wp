@@ -6,6 +6,8 @@
 
   {% if categories and categories|length %}
     {% include "components/filter-topper.twig" with {
+      title: page.title,
+      prefix: "Show me products on",
       categories: categories
     } %}
   {% else %}

@@ -1,7 +1,23 @@
-<header class="grid grid-site py-52 md:py-60">
+<header class="px-grid-site-margin flex justify-center py-52 md:py-60">
+  <h1 class="sr-only">{{ title }}</h1>
+
   {% if categories|length %}
-    {% for category in categories %}
-      {{ category.title }}
-    {% endfor %}
+    <nav class="flex gap-10 type-headline-20 text-secondary/60" aria-label="Categories">
+      <p>{{ prefix }}</p>
+
+      <ul class="flex flex-wrap gap-6">
+        {% for category in categories %}
+          <li>
+            <a class="group flex gap-1 transition-colors hocus:text-content" href="{{ category.link }}">
+              <span>{{ category.title }}</span>
+
+              <span class="text-[9px] text-main bg-secondary/40 aspect-square w-5 h-5 pt-0.5 -mt-2 flex justify-center items-center transition-colors group-hocus:bg-content">
+                {{ '%02d'|format(category.count) }} <span class="sr-only">total</span>
+              </span>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
   {% endif %}
 </header>
