@@ -1,6 +1,6 @@
-# Mozilla Labs
+# Mozilla New Products
 
-A new WordPress theme for Mozilla Labs.
+A new WordPress theme for Mozilla New Products.
 
 ## Table of Contents
 
