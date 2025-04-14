@@ -2,7 +2,7 @@
 /**
  * Template Name: Stories Archive
  *
- * @package MozillaLabs
+ * @package MozillaNewProducts
  */
 
 use Timber\Timber;

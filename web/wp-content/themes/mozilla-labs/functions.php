@@ -2,11 +2,11 @@
 /**
  * WP Theme constants and setup functions
  *
- * @package MozillaLabs
+ * @package MozillaNewProducts
  */
 
-use MozillaLabs\Managers;
-use MozillaLabs\Models\PostType\Article;
+use MozillaNewProducts\Managers;
+use MozillaNewProducts\Models\PostType\Article;
 use Timber\Timber;
 use Dotenv\Dotenv;
 

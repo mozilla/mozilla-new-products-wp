@@ -2,15 +2,15 @@
 /**
  * Model for the Product Category taxonomy.
  *
- * @package MozillaLabs
+ * @package MozillaNewProducts
  */
 
-namespace MozillaLabs\Models\Taxonomy;
+namespace MozillaNewProducts\Models\Taxonomy;
 
 use Timber\Timber;
 use Timber\Term as TimberTerm;
 
-use MozillaLabs\Models\PostType\Product;
+use MozillaNewProducts\Models\PostType\Product;
 
 /** Class */
 class ProductCategory extends TimberTerm {

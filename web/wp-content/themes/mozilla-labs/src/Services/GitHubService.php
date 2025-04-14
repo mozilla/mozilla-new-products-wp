@@ -2,10 +2,10 @@
 /**
  * Service for getting data from the GitHub API.
  *
- * @package MozillaLabs
+ * @package MozillaNewProducts
  */
 
-namespace MozillaLabs\Services;
+namespace MozillaNewProducts\Services;
 
 /** Class */
 class GitHubService {

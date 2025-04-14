@@ -2,10 +2,10 @@
 /**
  * WordPress specific related functions
  *
- * @package MozillaLabs
+ * @package MozillaNewProducts
  */
 
-namespace MozillaLabs\Services;
+namespace MozillaNewProducts\Services;
 
 /** Class */
 class WordPressService {

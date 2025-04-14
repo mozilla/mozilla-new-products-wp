@@ -2,14 +2,14 @@
 /**
  * Add to global context.
  *
- * @package MozillaLabs
+ * @package MozillaNewProducts
  */
 
-namespace MozillaLabs\Managers;
+namespace MozillaNewProducts\Managers;
 
 use Timber\Timber;
 use Timber\URLHelper;
-use MozillaLabs\Models\PostType\Product;
+use MozillaNewProducts\Models\PostType\Product;
 
 /** Class */
 class ContextManager {

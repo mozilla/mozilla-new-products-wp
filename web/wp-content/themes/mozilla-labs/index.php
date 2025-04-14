@@ -4,10 +4,10 @@
  * page.php file. index.php is the last fallback file that is used in the hierarchy
  * and as such we should issue a 404 response if WP ever gets here.
  *
- * @package MozillaLabs
+ * @package MozillaNewProducts
  */
 
-use MozillaLabs\Services\WordPressService;
+use MozillaNewProducts\Services\WordPressService;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	die( 'Direct access forbidden.' );

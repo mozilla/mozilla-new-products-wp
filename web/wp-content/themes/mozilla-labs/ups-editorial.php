@@ -2,7 +2,7 @@
 /**
  * Configuration for the ups-editorial plugin.
  *
- * @package MozillaLabs
+ * @package MozillaNewProducts
  */
 
 return array(

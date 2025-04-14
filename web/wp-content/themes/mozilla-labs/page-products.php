@@ -2,7 +2,7 @@
 /**
  * Template Name: Products Archive
  *
- * @package MozillaLabs
+ * @package MozillaNewProducts
  */
 
 use Timber\Timber;

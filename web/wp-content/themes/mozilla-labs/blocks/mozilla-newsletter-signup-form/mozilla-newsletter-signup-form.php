@@ -2,7 +2,7 @@
 /**
  * Custom block for Mozilla Newsletter Signup Form.
  *
- * @package MozillaLabs
+ * @package MozillaNewProducts
  * @param array $block The block settings and attributes.
  */
 

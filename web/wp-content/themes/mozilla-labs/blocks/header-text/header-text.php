@@ -2,7 +2,7 @@
 /**
  * A custom block for inserting a side by side header and text.
  *
- * @package MozillaLabs
+ * @package MozillaNewProducts
  * @param array $block The block settings and attributes.
  */
 

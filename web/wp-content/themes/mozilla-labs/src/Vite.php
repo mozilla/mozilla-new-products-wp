@@ -2,10 +2,10 @@
 /**
  * Helper class to interact with Vite.
  *
- * @package MozillaLabs
+ * @package MozillaNewProducts
  */
 
-namespace MozillaLabs;
+namespace MozillaNewProducts;
 
 /** Class */
 class Vite {

@@ -2,7 +2,7 @@
 /**
  * Generic 404 page controller.
  *
- * @package MozillaLabs
+ * @package MozillaNewProducts
  */
 
 use Timber\Timber;

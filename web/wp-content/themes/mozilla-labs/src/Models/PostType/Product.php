@@ -2,16 +2,16 @@
 /**
  * Product model.
  *
- * @package MozillaLabs
+ * @package MozillaNewProducts
  */
 
-namespace MozillaLabs\Models\PostType;
+namespace MozillaNewProducts\Models\PostType;
 
-use MozillaLabs\Services\GitHubService;
+use MozillaNewProducts\Services\GitHubService;
 use Timber\Post as TimberPost;
 use Timber\Timber;
 use WP_Post;
-use MozillaLabs\Models\Taxonomy\ProductCategory;
+use MozillaNewProducts\Models\Taxonomy\ProductCategory;
 
 /** Class */
 class Product extends TimberPost {

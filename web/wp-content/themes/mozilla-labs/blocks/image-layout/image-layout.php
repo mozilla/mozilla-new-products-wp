@@ -11,7 +11,7 @@
  * - imageLayoutCrop (True / False)
  * Set this field group if the block is equal to Image Layout
  *
- * @package MozillaLabs
+ * @package MozillaNewProducts
  * @param array $block The block settings and attributes.
  */
 
