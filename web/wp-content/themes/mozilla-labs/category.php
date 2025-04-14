@@ -19,8 +19,9 @@ $context = Timber::context();
 */
 $archive_page           = Timber::get_post(
 	array(
-		'post_type'  => 'page',
-		'meta_query' => array(
+		'post_type'   => 'page',
+		'post_status' => 'publish',
+		'meta_query'  => array(
 			array(
 				'key'     => '_wp_page_template',
 				'value'   => 'page-stories.php',
@@ -45,8 +46,9 @@ $context['categories'] = Timber::get_terms(
 $context['posts'] = Timber::get_posts(
 	array(
 		'post_type'      => 'post',
+		'post_status'    => 'publish',
 		'posts_per_page' => -1,
-		'cat'            => $category->id,
+		'category__in'   => array( $category->id ),
 	)
 );
 
