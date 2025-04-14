@@ -5,6 +5,7 @@
  * @package MozillaLabs
  */
 
+use MozillaLabs\Models\PostType\Article;
 use Timber\Timber;
 
 $context  = Timber::context();
@@ -19,12 +20,20 @@ if ( post_password_required( $_page_id ) ) {
 
 	Timber::render( 'pages/password.twig', $context );
 } else {
-	$context['page'] = $_page;
+	$context['page']        = $_page;
+	$context['total_count'] = wp_count_posts( Article::HANDLE )->publish;
 
 	$context['posts'] = Timber::get_posts(
 		array(
 			'post_type'      => 'post',
 			'posts_per_page' => -1,
+		)
+	);
+
+	$context['categories'] = Timber::get_terms(
+		array(
+			'taxonomy'   => 'category',
+			'hide_empty' => true,
 		)
 	);
 
