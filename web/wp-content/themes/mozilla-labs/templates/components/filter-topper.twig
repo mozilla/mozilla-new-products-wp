@@ -2,7 +2,7 @@
   <h1 class="sr-only">{{ page.title }}</h1>
 
   {% if categories|length %}
-    <nav class="grid grid-cols-[1fr_1fr] gap-grid-site-gutter max-lg:w-full lg:flex lg:gap-10 type-headline-20 text-secondary/60" aria-label="Categories">
+    <nav class="flex flex-col gap-8 xs:grid xs:grid-cols-[1fr_1fr] xs:gap-grid-site-gutter max-lg:w-full lg:flex lg:flex-row lg:gap-10 type-headline-20 text-secondary/60" aria-label="Categories">
       <p>{{ prefix }}</p>
 
       <ul class="flex max-lg:flex-col lg:flex-wrap gap-3 lg:gap-6">
@@ -19,7 +19,7 @@
         {% for category in categories %}
           <li>
           <a class="group flex gap-1 transition-colors hocus:text-content aria-current:text-content" href="{{ category.link }}" aria-current="{{ current_url == category.link ? 'page' : 'false' }}">
-              <span>{{ category.title }}</span>
+            <span class="whitespace-nowrap">{{ category.title }}</span>
 
             <span class="text-[9px] text-main bg-secondary/40 aspect-square w-5 h-5 pt-0.5 -mt-2 flex justify-center items-center transition-colors group-hocus:bg-content group-hocus:text-main group-aria-current:bg-spot group-aria-current:text-content">
                 {{ '%02d'|format(category.count) }} <span class="sr-only">total</span>
