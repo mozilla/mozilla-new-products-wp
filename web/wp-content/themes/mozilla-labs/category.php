@@ -30,6 +30,17 @@ $archive_page           = Timber::get_post(
 		),
 	)
 );
+
+if ( ! $archive_page->meta( 'show_filters' ) ) {
+	global $wp_query;
+	$wp_query->set_404();
+	status_header( 404 );
+	nocache_headers();
+	include get_query_template( '404' );
+
+	return;
+}
+
 $category               = Timber::get_term();
 $context['total_count'] = wp_count_posts( Article::HANDLE )->publish;
 

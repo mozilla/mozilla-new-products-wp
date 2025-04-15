@@ -18,7 +18,7 @@ $context = Timber::context();
  * easy way to relate all categories to this products archive.
  * As such, we're assuming there's only one instance of this products archive.
 */
-$archive_page           = Timber::get_post(
+$archive_page = Timber::get_post(
 	array(
 		'post_type'   => 'page',
 		'post_status' => 'publish',
@@ -31,6 +31,19 @@ $archive_page           = Timber::get_post(
 		),
 	)
 );
+
+if ( ! $archive_page->meta( 'show_filters' ) ) {
+	global $wp_query;
+	$wp_query->set_404();
+	status_header( 404 );
+	nocache_headers();
+	include get_query_template( '404' );
+
+	return;
+
+
+}
+
 $category               = Timber::get_term();
 $context['total_count'] = wp_count_posts( Product::HANDLE )->publish;
 
