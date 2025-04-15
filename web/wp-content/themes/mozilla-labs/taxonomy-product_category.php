@@ -11,6 +11,8 @@ use Timber\Timber;
 
 $context = Timber::context();
 
+global $paged;
+
 /**
  * Get the related archive page.
  *
@@ -61,7 +63,9 @@ $context['posts'] = Timber::get_posts(
 	array(
 		'post_type'      => Product::HANDLE,
 		'post_status'    => 'publish',
-		'posts_per_page' => -1,
+		'orderby'        => 'date',
+		'order'          => 'DESC',
+		'posts_per_page' => 3,
 		'tax_query'      => array(
 			array(
 				'taxonomy' => ProductCategory::HANDLE,
@@ -69,6 +73,7 @@ $context['posts'] = Timber::get_posts(
 				'terms'    => $category->id,
 			),
 		),
+		'paged'          => isset( $paged ) && $paged ? $paged : 1,
 	)
 );
 
