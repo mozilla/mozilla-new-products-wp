@@ -62,7 +62,7 @@ $context['posts'] = Timber::get_posts(
 		'post_status'    => 'publish',
 		'orderby'        => 'date',
 		'order'          => 'DESC',
-		'posts_per_page' => 12,
+		'posts_per_page' => 3,
 		'category__in'   => array( $category->id ),
 		'paged'          => isset( $paged ) && $paged ? $paged : 1,
 	)
