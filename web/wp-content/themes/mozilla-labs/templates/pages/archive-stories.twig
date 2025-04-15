@@ -2,6 +2,9 @@
 
 {% set email_signup_override = page.meta("email_signup") %}
 
+{% set nav_theme = page.meta("navigation_theme") %}
+{% set page_theme = page.meta("page_theme") %}
+
 {% block pageBody %}
 
   {% if page.show_filters and categories and categories|length %}
