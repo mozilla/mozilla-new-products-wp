@@ -32,8 +32,8 @@ if ( post_password_required( $_page_id ) ) {
 	$context['posts'] = Timber::get_posts(
 		array(
 			'post_type'      => Product::HANDLE,
-			'orderby'        => 'title',
-			'order'          => 'ASC',
+			'orderby'        => 'date',
+			'order'          => 'DESC',
 			'posts_per_page' => 12,
 			'paged'          => isset( $paged ) && $paged ? $paged : 1,
 
