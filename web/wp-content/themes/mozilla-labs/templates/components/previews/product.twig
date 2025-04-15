@@ -1,4 +1,4 @@
-<div class="border-t border-content flex flex-col" style="--background-color: {{ product.colors.background }}; --foreground-color: {{ product.colors.foreground }}">
+<div class="border-t border-content flex flex-col isolate" style="--background-color: {{ product.colors.background }}; --foreground-color: {{ product.colors.foreground }}">
   <div class="px-grid-site-margin py-grid-site-margin grid grid-cols-6 md:grid-cols-12 gap-6 relative items-center group overflow-hidden">
     <div class="col-span-4 md:col-span-3 flex flex-row gap-x-4 items-center z-10">
       <div class="relative w-12 h-12 flex">
@@ -62,7 +62,7 @@
 
        <a
          href="{{ product.link }}"
-         class="absolute inset-0 opacity-0 z-20"
+         class="absolute inset-0 opacity-0 z-50"
         >
         <span class="sr-only">
           View More <span class="sr-only">about {{ product.title }}</span>
