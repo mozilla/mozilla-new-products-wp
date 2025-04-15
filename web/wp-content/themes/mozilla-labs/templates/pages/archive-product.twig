@@ -2,8 +2,25 @@
 
 {% set email_signup_override = page.meta("email_signup") %}
 
+{% set nav_theme = page.meta("navigation_theme") %}
+{% set page_theme = page.meta("page_theme") %}
+
 {% block pageBody %}
-  {% include "components/archive-topper.twig" with { title: page.title, description: page.description } %}
+
+  {% if page.show_filters and categories and categories|length %}
+    {% include "components/filter-topper.twig" with {
+      page: page,
+      total_count: total_count,
+      prefix: "Show me products on",
+      categories: categories,
+      posts: posts
+    } %}
+  {% else %}
+    {% include "components/archive-topper.twig" with {
+      title: page.title,
+      description: page.description,
+    } %}
+  {% endif %}
 
   <h2 class="sr-only">Products</h2>
 
