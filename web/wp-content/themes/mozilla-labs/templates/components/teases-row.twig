@@ -19,30 +19,28 @@
     {% for tease in block.teases %}
       {% set product = tease.product ? get_post(tease.product) : null %}
 
-      <li class="w-full flex flex-col">
-        <div class="group relative flex flex-col gap-y-4">
-          {% if tease.image %}
-            {% include "components/image-icon-watermark.twig" with {
-              image: get_image(tease.image),
-              icon: product and product.icons.grayscale ? get_image(product.icons.grayscale) : null,
-              aspectRatio: "5/7"
-            } %}
-          {% endif %}
+      <li class="group relative w-full h-full flex flex-col gap-y-4">
+        {% if tease.image %}
+          {% include "components/image-icon-watermark.twig" with {
+            image: get_image(tease.image),
+            icon: product and product.icons.grayscale ? get_image(product.icons.grayscale) : null,
+            aspectRatio: "5/7"
+          } %}
+        {% endif %}
 
-          <div class="flex flex-col my-8">
-            <h3 class="text-sm">{{ tease.title }}</h3>
+        <div class="flex flex-col md:my-8">
+          <h3 class="text-sm">{{ tease.title }}</h3>
 
-            {% if tease.description|trim is not empty %}
-              <p class="text-sm text-secondary/60 group-hocus-within:text-content">{{ tease.description|striptags('<strong><em><a>') }}</p>
-            {% endif %}
-          </div>
-
-          {% if tease.cta %}
-            <a class="text-sm underline mt-auto group-hocus-within:no-underline before:absolute before:inset-0" href="{{ tease.cta.url }}">
-              {{ tease.cta.title }}
-            </a>
+          {% if tease.description|trim is not empty %}
+            <p class="text-sm text-secondary/60 group-hocus-within:text-content">{{ tease.description|striptags('<strong><em><a>') }}</p>
           {% endif %}
         </div>
+
+        {% if tease.cta %}
+          <a class="text-sm underline mt-auto group-hocus-within:no-underline before:absolute before:inset-0" href="{{ tease.cta.url }}">
+            {{ tease.cta.title }}
+          </a>
+        {% endif %}
       </li>
     {% endfor %}
   </ul>
