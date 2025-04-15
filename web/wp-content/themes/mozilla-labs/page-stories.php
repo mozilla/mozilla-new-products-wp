@@ -28,9 +28,10 @@ if ( post_password_required( $_page_id ) ) {
 	$context['posts'] = Timber::get_posts(
 		array(
 			'post_type'      => 'post',
+			'post_status'    => 'publish',
 			'orderby'        => 'date',
 			'order'          => 'DESC',
-			'posts_per_page' => 3,
+			'posts_per_page' => 12,
 			'paged'          => isset( $paged ) && $paged ? $paged : 1,
 		)
 	);

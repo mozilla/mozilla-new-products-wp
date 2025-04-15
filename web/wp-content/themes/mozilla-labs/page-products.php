@@ -34,7 +34,7 @@ if ( post_password_required( $_page_id ) ) {
 			'post_type'      => Product::HANDLE,
 			'orderby'        => 'date',
 			'order'          => 'DESC',
-			'posts_per_page' => 2,
+			'posts_per_page' => 12,
 			'paged'          => isset( $paged ) && $paged ? $paged : 1,
 
 		)

@@ -19,7 +19,7 @@ global $paged;
  * easy way to relate all categories to this stories archive.
  * As such, we're assuming there's only one instance of this stories archive.
 */
-$archive_page           = Timber::get_post(
+$archive_page = Timber::get_post(
 	array(
 		'post_type'   => 'page',
 		'post_status' => 'publish',
@@ -62,10 +62,11 @@ $context['posts'] = Timber::get_posts(
 		'post_status'    => 'publish',
 		'orderby'        => 'date',
 		'order'          => 'DESC',
-		'posts_per_page' => 3,
+		'posts_per_page' => 12,
 		'category__in'   => array( $category->id ),
 		'paged'          => isset( $paged ) && $paged ? $paged : 1,
 	)
 );
+
 
 Timber::render( 'pages/archive-stories.twig', $context );
