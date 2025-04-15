@@ -32,4 +32,9 @@
     {% endfor %}
   </ul>
 
+  {% if posts.pagination %}
+    {% include 'components/pagination.twig' with {
+      pagination: posts.pagination,
+    } %}
+  {% endif %}
 {% endblock %}
