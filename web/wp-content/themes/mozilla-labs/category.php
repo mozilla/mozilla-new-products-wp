@@ -10,6 +10,8 @@ use Timber\Timber;
 
 $context = Timber::context();
 
+global $paged;
+
 /**
  * Get the related archive page.
  *
@@ -17,7 +19,7 @@ $context = Timber::context();
  * easy way to relate all categories to this stories archive.
  * As such, we're assuming there's only one instance of this stories archive.
 */
-$archive_page           = Timber::get_post(
+$archive_page = Timber::get_post(
 	array(
 		'post_type'   => 'page',
 		'post_status' => 'publish',
@@ -58,9 +60,13 @@ $context['posts'] = Timber::get_posts(
 	array(
 		'post_type'      => 'post',
 		'post_status'    => 'publish',
-		'posts_per_page' => -1,
+		'orderby'        => 'date',
+		'order'          => 'DESC',
+		'posts_per_page' => 3,
 		'category__in'   => array( $category->id ),
+		'paged'          => isset( $paged ) && $paged ? $paged : 1,
 	)
 );
+
 
 Timber::render( 'pages/archive-stories.twig', $context );

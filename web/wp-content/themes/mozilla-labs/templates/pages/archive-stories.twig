@@ -31,4 +31,10 @@
       } %}
     </div>
   </section>
+
+  {% if posts.pagination %}
+    {% include 'components/pagination.twig' with {
+      pagination: posts.pagination,
+    } %}
+  {% endif %}
 {% endblock %}
