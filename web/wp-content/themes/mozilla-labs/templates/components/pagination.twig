@@ -22,9 +22,17 @@ Pagination
       {% for page_link in pagination.pages %}
       <li class="text-sm">
         {% if page_link.link %}
-          <a href="{{ page_link.link }}" {% if page_link.current %}aria-current="page"{% endif %} aria-label="{{ 'Page ' ~ page_link.title }}" class="button button-sm button-square">{{ page_link.title }}</a>
+          <a href="{{ page_link.link }}" {% if page_link.current %}aria-current="page"{% endif %} aria-label="{{ 'Page ' ~ page_link.title }}" class="button button-sm button-square">
+            <span class="mt-0.5">
+              {{ page_link.title }}
+            </span>
+          </a>
         {% else %}
-          <span class="button button-sm button-square bg-black [.theme-dark_&]:bg-white [.theme-dark_&]:text-black" aria-label="{{ 'Page ' ~ page_link.title }}">{{ page_link.title }}</span>
+          <span class="button button-sm button-square bg-black [.theme-dark_&]:bg-white [.theme-dark_&]:text-black" aria-label="{{ 'Page ' ~ page_link.title }}">
+            <span class="mt-0.5">
+              {{ page_link.title }}
+            </span>
+          </span>
         {% endif %}
       </li>
       {% endfor %}
