@@ -208,6 +208,10 @@ body {
     @apply text-xs font-sans font-wght-480 tracking-tight leading-tight;
   }
 
+  .type-text-14 {
+    @apply text-sm font-sans font-wght-480 tracking-tight leading-tight;
+  }
+
   .type-sans-subhead {
     @apply text-subhead font-sans font-normal leading-tighter tracking-tighter;
   }
