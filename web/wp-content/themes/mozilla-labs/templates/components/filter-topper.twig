@@ -10,7 +10,7 @@
           <a class="group flex items-center gap-2 transition-colors hocus:text-content aria-[current=true]:text-content" href="{{ page.link }}" aria-current="{{ page.link in current_url ? 'true' : 'false' }}">
             <span>All</span>
 
-            <span class="text-sm text-main bg-content/60 aspect-square size-[1.25lh] pt-1 pb-0.5 px-1.5 flex justify-center items-center transition-colors group-hocus:bg-content group-hocus:text-main group-aria-[current=true]:bg-spot group-aria-[current=true]:text-content">
+            <span class="text-sm text-main bg-content/60 aspect-square size-[1.25lh] pt-1 pb-0.5 px-1.5 flex justify-center items-center transition-colors group-hocus:bg-content group-hocus:text-main group-aria-[current=true]:bg-cta group-aria-[current=true]:text-cta-text">
               {{ '%02d'|format(total_count) }} <span class="sr-only">total</span>
             </span>
           </a>
@@ -21,7 +21,7 @@
             <a class="group flex items-center gap-2 transition-colors hocus:text-content aria-[current=true]:text-content" href="{{ category.link }}" aria-current="{{ category.link in current_url ? 'true' : 'false' }}">
               <span class="whitespace-nowrap">{{ category.title }}</span>
 
-              <span class="text-sm text-main bg-content/60 aspect-square size-[1.25lh] pt-1 pb-0.5 px-1.5 flex justify-center items-center transition-colors group-hocus:bg-content group-hocus:text-main group-aria-[current=true]:bg-spot group-aria-[current=true]:text-content">
+              <span class="text-sm text-main bg-content/60 aspect-square size-[1.25lh] pt-1 pb-0.5 px-1.5 flex justify-center items-center transition-colors group-hocus:bg-content group-hocus:text-main group-aria-[current=true]:bg-cta group-aria-[current=true]:text-cta-text">
                 {{ '%02d'|format(category.count) }} <span class="sr-only">total</span>
               </span>
             </a>
