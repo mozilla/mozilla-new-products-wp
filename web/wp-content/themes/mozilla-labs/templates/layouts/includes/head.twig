@@ -27,5 +27,7 @@
 
   {{ function('wp_head') }}
 
-  <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=G-J33R9RJELP"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-J33R9RJELP'); </script>
+  {% if wp_env == 'production' %}
+    <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=G-J6FY426D0J"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-J6FY426D0J'); </script>
+  {% endif %}
 </head>
