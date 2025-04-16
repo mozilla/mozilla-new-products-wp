@@ -8,12 +8,12 @@
 
 {% block pageBody %}
 
-<header class="relative grid grid-site grid-rows-[1fr_auto_1fr] min-h-[600px] h-[85vh] overflow-y-hidden isolate">
+<header class="relative grid grid-site grid-rows-[1fr_auto_1fr] h-[85vh] overflow-y-hidden isolate">
   {% set backdrop = post.meta("backdrop_image") %}
 
   {% if backdrop %}
   <div class="absolute top-0 w-full h-full flex">
-  {% include "components/lazy-img.twig" with {
+    {% include "components/lazy-img.twig" with {
       class: "h-full w-full",
       imgClass: "object-cover",
       img: get_image(backdrop)
