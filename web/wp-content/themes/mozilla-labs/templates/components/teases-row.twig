@@ -8,7 +8,7 @@
 
       {% if block.cta %}
         <span aria-hidden="true">/</span>
-        <a href="{{ block.cta.url }}" class="text-[var(--color-content-secondary-small)] hocus:text-[var(--color-content)]">
+        <a href="{{ block.cta.url }}" class="text-[var(--color-content-secondary-small)] hocus:text-[var(--color-content)] underline">
           {{ block.cta.title }}
         </a>
       {% endif %}
@@ -45,7 +45,7 @@
         </div>
 
         {% if tease.cta %}
-          <a class="text-sm underline mt-auto group-hocus-within:no-underline before:absolute before:inset-0" href="{{ tease.cta.url }}">
+          <a class="text-sm font-wght-700 underline mt-auto group-hocus-within:no-underline before:absolute before:inset-0" href="{{ tease.cta.url }}">
             {{ tease.cta.title }}
           </a>
         {% endif %}
