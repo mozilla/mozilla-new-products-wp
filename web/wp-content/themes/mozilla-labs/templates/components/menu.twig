@@ -1,4 +1,4 @@
-<div class="fixed inset-0 {{ post.meta("page_theme") == "theme-light" ? "theme-dark" : "theme-light" }} bg-main z-dialog flex flex-col" x-dialog:content>
+<div class="theme-dark fixed inset-0 bg-blur-dark z-dialog flex flex-col" x-dialog:content>
   <h2 class="sr-only" x-dialog:title>Menu</h2>
 
   <div class="w-full grid grid-cols-[1fr_auto_1fr] gap-x-grid-site-gutter px-grid-site-margin items-center py-[20px]">
@@ -30,20 +30,8 @@
     </div>
   </div>
 
-  <div class="relative w-full flex justify-center overflow-hidden">
-    <img
-      class="lazyload opacity-0 [&.lazyloaded]:opacity-100 transition-opacity max-w-none w-[120vw]"
-      src="{{ theme.link }}/static/img/globe-green-dither.png"
-      alt=""
-      width="500"
-      height="270"
-    />
-
-    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-b from-transparent to-main h-1/2 w-full"></div>
-  </div>
-
   <nav class="flex-1 p-grid-site-margin flex flex-col justify-between" aria-label="Site">
-    <ul class="flex flex-wrap gap-2">
+    <ul class="flex flex-col items-center gap-4 my-auto">
       {% for item in nav_pages_menu.items %}
       <li>
         <a
@@ -68,21 +56,13 @@
     {% endif %}
 
     {% if cta %}
-      <div class="flex flex-col gap-4">
+      <div class="flex flex-col items-center text-content gap-4 mb-8">
         {% if nav_pages_menu.cta_description %}
-          <p class="text-sm text-secondary/60 max-w-72">{{ nav_pages_menu.cta_description }}</p>
+          <p class="text-sm text-center text-balance max-w-72">{{ nav_pages_menu.cta_description }}</p>
         {% endif %}
 
-        <a class="group w-fit flex gap-x-1" href="{{ cta.url }}" {% if is_anchor %}x-dialog:close{% endif %}>
-          <span class="w-fit button button-sm justify-start md:justify-initial group-hocus:bg-black [.theme-dark_&]:group-hocus:bg-white [.theme-dark_&]:group-hocus:text-black">
-            {{ cta.title }}
-          </span>
-
-          <span class="block button button-sm button-square p-2.5 transition-all group-hocus:bg-black [.theme-dark_&]:group-hocus:bg-white [.theme-dark_&]:group-hocus:text-black" aria-hidden="true">
-            <svg viewBox="0 0 10 10">
-              <path d="M9.875 5L3.91667 0V4.375H0.125V5.625H3.91667V10L9.875 5ZM5.16667 4.375V2.70833L7.91667 5L5.16667 7.29167V4.375Z" fill="currentColor"/>
-            </svg>
-          </span>
+        <a class="underline text-sm" href="{{ cta.url }}" {% if is_anchor %}x-dialog:close{% endif %}>
+          {{ cta.title }}
         </a>
       </div>
     {% endif %}
