@@ -1,10 +1,33 @@
-<header class="grid grid-site py-52 md:py-60">
-  <div class="col-span-6 md:col-span-12 flex justify-center">
-    <div class="grid grid-cols-6 md:flex md:flex-row md:gap-x-10">
-      <h1 class="col-span-2 sm:col-span-3 type-headline-20">{{ page }}<span aria-hidden="true">/</span></h1>
-      <p class="col-span-4 sm:col-span-3 type-headline-20 text-secondary/60">
-        {{ description }}
-      </p>
-    </div>
-  </div>
+<header class="px-grid-site-margin flex justify-center pt-52 pb-20 lg:py-60">
+  <h1 class="sr-only">{{ page.title }}</h1>
+
+  {% if categories|length %}
+    <nav class="flex flex-col gap-8 xs:grid xs:grid-cols-[1fr_1fr] xs:gap-grid-site-gutter max-lg:w-full lg:flex lg:flex-row lg:gap-10 type-headline-20 text-secondary/60" aria-label="Categories">
+      <p>{{ prefix }}</p>
+
+      <ul class="flex max-lg:flex-col lg:flex-wrap gap-3 lg:gap-6">
+        <li>
+          <a class="group flex items-center gap-2 transition-colors hocus:text-content aria-[current=true]:text-content" href="{{ page.link }}" aria-current="{{ page.link in current_url ? 'true' : 'false' }}">
+            <span>All</span>
+
+            <span class="text-sm text-main bg-content/60 aspect-square size-[1.25lh] pt-1 pb-0.5 px-1.5 flex justify-center items-center transition-colors group-hocus:bg-content group-hocus:text-main group-aria-[current=true]:bg-cta group-aria-[current=true]:text-cta-text">
+              {{ '%02d'|format(total_count) }} <span class="sr-only">total</span>
+            </span>
+          </a>
+        </li>
+
+        {% for category in categories %}
+          <li>
+            <a class="group flex items-center gap-2 transition-colors hocus:text-content aria-[current=true]:text-content" href="{{ category.link }}" aria-current="{{ category.link in current_url ? 'true' : 'false' }}">
+              <span class="whitespace-nowrap">{{ category.title }}</span>
+
+              <span class="text-sm text-main bg-content/60 aspect-square size-[1.25lh] pt-1 pb-0.5 px-1.5 flex justify-center items-center transition-colors group-hocus:bg-content group-hocus:text-main group-aria-[current=true]:bg-cta group-aria-[current=true]:text-cta-text">
+                {{ '%02d'|format(category.count) }} <span class="sr-only">total</span>
+              </span>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  {% endif %}
 </header>

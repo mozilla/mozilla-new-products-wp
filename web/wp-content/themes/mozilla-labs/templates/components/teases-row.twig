@@ -1,14 +1,14 @@
 {% if block.teases|length %}
 <section class="grid grid-site my-32 md:my-48 first:mt-0 last:mb-0">
   {% if block.headline or block.cta %}
-    <div class="col-span-full flex flex-row gap-x-1 justify-center type-text-12 font-bold mb-10">
+    <div class="col-span-full flex flex-row gap-x-1 justify-center type-text-14 font-wght-700 mb-10">
       {% if block.headline %}
         <h2 class="text-[var(--color-content)]">{{ block.headline }}</h2>
       {% endif %}
 
       {% if block.cta %}
         <span aria-hidden="true">/</span>
-        <a href="{{ block.cta.url }}" class="text-[var(--color-content-secondary-small)] hocus:text-[var(--color-content)]">
+        <a href="{{ block.cta.url }}" class="text-[var(--color-content-secondary-small)] hocus:text-[var(--color-content)] underline">
           {{ block.cta.title }}
         </a>
       {% endif %}
@@ -19,30 +19,36 @@
     {% for tease in block.teases %}
       {% set product = tease.product ? get_post(tease.product) : null %}
 
-      <li class="w-full flex flex-col">
-        <div class="group relative flex flex-col gap-y-4">
-          {% if tease.image %}
-            {% include "components/image-icon-watermark.twig" with {
-              image: get_image(tease.image),
-              icon: product and product.icons.grayscale ? get_image(product.icons.grayscale) : null,
-              aspectRatio: "5/7"
-            } %}
-          {% endif %}
+      <li class="group relative w-full h-full flex flex-col gap-y-4">
+        {% if tease.image %}
+          {% include "components/image-icon-watermark.twig" with {
+            class: "md:hidden",
+            image: get_image(tease.image),
+            icon: product and product.icons.grayscale ? get_image(product.icons.grayscale) : null,
+            aspectRatio: "1/1"
+          } %}
 
-          <div class="flex flex-col my-8">
-            <h3 class="text-sm">{{ tease.title }}</h3>
+          {% include "components/image-icon-watermark.twig" with {
+            class: "max-md:hidden",
+            image: get_image(tease.image),
+            icon: product and product.icons.grayscale ? get_image(product.icons.grayscale) : null,
+            aspectRatio: "5/7"
+          } %}
+        {% endif %}
 
-            {% if tease.description|trim is not empty %}
-              <p class="text-sm text-secondary/60 group-hocus-within:text-content">{{ tease.description|striptags('<strong><em><a>') }}</p>
-            {% endif %}
-          </div>
+        <div class="flex flex-col md:my-8">
+          <h3 class="text-sm">{{ tease.title }}</h3>
 
-          {% if tease.cta %}
-            <a class="text-sm underline mt-auto group-hocus-within:no-underline before:absolute before:inset-0" href="{{ tease.cta.url }}">
-              {{ tease.cta.title }}
-            </a>
+          {% if tease.description|trim is not empty %}
+            <p class="text-sm text-secondary/60 group-hocus-within:text-content">{{ tease.description|striptags('<strong><em><a>') }}</p>
           {% endif %}
         </div>
+
+        {% if tease.cta %}
+          <a class="text-sm font-wght-700 underline mt-auto group-hocus-within:no-underline before:absolute before:inset-0" href="{{ tease.cta.url }}">
+            {{ tease.cta.title }}
+          </a>
+        {% endif %}
       </li>
     {% endfor %}
   </ul>

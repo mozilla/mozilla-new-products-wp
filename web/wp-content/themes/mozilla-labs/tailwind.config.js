@@ -110,7 +110,7 @@ module.exports = {
 
       animation: {
         marquee: 'marquee var(--marquee-time) linear infinite',
-        blink: 'blink 1.5s infinite step-end',
+        blink: 'blink 0.8s infinite step-end',
       },
 
       aspectRatio: {
@@ -193,6 +193,7 @@ module.exports = {
       },
 
       screens: {
+        xs: '480px',
         '3xl': '1700px',
       },
 

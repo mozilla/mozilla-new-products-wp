@@ -5,14 +5,14 @@ Pagination
 #}
 
 {% if pagination.pages %}
-<nav class="grid grid-site centered-page" role="navigation" aria-label="Pagination Navigation">
+<nav class="grid grid-site mt-24" role="navigation" aria-label="Pagination">
   {% set prev = pagination.prev %}
   {% set next = pagination.next %}
 
-  <div class="border-t border-content pt-2 col-span-full flex justify-between gap-2.5">
+  <div class="col-span-full flex items-center justify-between gap-2.5">
     <div class="text-sm flex-1 flex justify-start">
       {% if prev %}
-      <a href="{{ prev.link }}" aria-label="Previous Page" class="uppercase hocus:bg-action-focus hocus:text-action-focus-reverse">
+      <a href="{{ prev.link }}" aria-label="Previous Page" class="button button-sm">
         Previous
       </a>
       {% endif %}
@@ -22,9 +22,17 @@ Pagination
       {% for page_link in pagination.pages %}
       <li class="text-sm">
         {% if page_link.link %}
-          <a href="{{ page_link.link }}" {% if page_link.current %}aria-current="page"{% endif %} aria-label="{{ 'Page ' ~ page_link.title }}" class="hocus:bg-action-focus hocus:text-action-focus-reverse">{{ page_link.title }}</a>
+          <a href="{{ page_link.link }}" {% if page_link.current %}aria-current="page"{% endif %} aria-label="{{ 'Page ' ~ page_link.title }}" class="button button-sm button-square">
+            <span class="mt-0.5">
+              {{ page_link.title }}
+            </span>
+          </a>
         {% else %}
-          <span class="opacity-40" aria-label="{{ 'Page ' ~ page_link.title }}">{{ page_link.title }}</span>
+          <span class="button button-sm button-square bg-black [.theme-dark_&]:bg-white [.theme-dark_&]:text-black" aria-label="{{ 'Page ' ~ page_link.title }}">
+            <span class="mt-0.5">
+              {{ page_link.title }}
+            </span>
+          </span>
         {% endif %}
       </li>
       {% endfor %}
@@ -32,7 +40,7 @@ Pagination
 
     <div class="text-sm flex-1 flex justify-end">
       {% if next %}
-      <a href="{{ next.link }}" aria-label="Next Page" class="uppercase hocus:bg-action-focus hocus:text-action-focus-reverse">
+      <a href="{{ next.link }}" aria-label="Next Page" class="button button-sm">
         Next
       </a>
       {% endif %}

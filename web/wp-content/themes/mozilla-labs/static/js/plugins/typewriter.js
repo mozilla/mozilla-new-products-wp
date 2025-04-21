@@ -1,5 +1,5 @@
 // Speed to rotate to the next text.
-const ROTATION_SPEED = 3000;
+const ROTATION_SPEED = 2000;
 
 // Speed to type out the text.
 const TYPEWRITER_SPEED = 100;
