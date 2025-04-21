@@ -267,6 +267,13 @@ body {
       }
     }
   }
+
+  .button-themed {
+    &:not(:hover):not(:focus-visible) {
+      background-color: var(--color-background) !important;
+      color: var(--color-text) !important;
+    }
+  }
 }
 
 @layer utilities {

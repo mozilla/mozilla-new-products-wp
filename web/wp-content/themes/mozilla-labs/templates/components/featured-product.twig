@@ -10,8 +10,22 @@
     <p class="type-headline-20">{{ product.title }}</p>
   </div>
 
-  {% if block.description %}
-    <div class="prose type-headline-20">{{ block.description }}</div>
+  {% if block.description or block.cta %}
+    <div class="flex flex-col gap-4">
+      {% if block.description %}
+        <div class="prose type-headline-20">{{ block.description }}</div>
+      {% endif %}
+
+      {% if block.cta %}
+        <a
+          class="button button-sm button-themed w-fit"
+          href="{{ block.cta.url }}"
+          style="--color-background: {{ product.colors.background }}; --color-text: {{ product.colors.foreground }}"
+        >
+          {{ block.cta.title }}
+        </a>
+      {% endif %}
+    </div>
   {% endif %}
 
   {% if primary_icon %}

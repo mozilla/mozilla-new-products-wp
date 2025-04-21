@@ -67,6 +67,23 @@
               "delay": 0
             },
             {
+              "key": "field_6806ba3ea9c0a",
+              "label": "CTA",
+              "name": "cta",
+              "aria-label": "",
+              "type": "link",
+              "instructions": "The color of this CTA will inherit from the featured product.",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "return_format": "array",
+              "allow_in_bindings": 0
+            },
+            {
               "key": "field_67d58d1b7f8c0",
               "label": "Product",
               "name": "product",
@@ -741,5 +758,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1745271329
+  "modified": 1745271386
 }
