@@ -274,6 +274,13 @@ body {
       color: var(--color-text) !important;
     }
   }
+
+  .button-white {
+    &:not(:hover):not(:focus-visible) {
+      background-color: var(--color-white) !important;
+      color: var(--color-black) !important;
+    }
+  }
 }
 
 @layer utilities {
