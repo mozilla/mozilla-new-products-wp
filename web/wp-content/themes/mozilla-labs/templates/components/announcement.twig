@@ -1,3 +1,5 @@
+{% set cta = block.cta %}
+
 <section class="grid grid-site" aria-label="{{ block.overline }}">
   <div class="col-span-full flex flex-col gap-8 p-8 md:p-16 bg-blur">
     {% if block.overline %}
@@ -8,9 +10,17 @@
       {{ block.headline }}
     </div>
 
-    {% if block.cta %}
-      <a class="button button-sm w-fit" href="{{ block.cta.url }}">
-        {{ block.cta.title }}
+    {% if cta %}
+      <a class="group w-fit flex col-span-2 gap-x-1" href="{{ cta.url }}">
+        <span class="w-fit button button-sm justify-start md:justify-initial group-hocus:bg-black [.theme-dark_&]:group-hocus:bg-white [.theme-dark_&]:group-hocus:text-black">
+          {{ cta.title }}
+        </span>
+
+        <span class="block button button-sm button-square p-2.5 transition-all group-hocus:bg-black [.theme-dark_&]:group-hocus:bg-white [.theme-dark_&]:group-hocus:text-black" aria-hidden="true">
+          <svg viewBox="0 0 10 10">
+            <path d="M9.875 5L3.91667 0V4.375H0.125V5.625H3.91667V10L9.875 5ZM5.16667 4.375V2.70833L7.91667 5L5.16667 7.29167V4.375Z" fill="currentColor"/>
+          </svg>
+        </span>
       </a>
     {% endif %}
   </div>
