@@ -61,7 +61,14 @@
         </svg>
       </button>
     </div>
-     <div class="absolute top-0 left-0 z-[-1] w-full h-[77px]">
+
+     <div
+       class="
+         absolute top-0 left-0 z-[-1] w-full h-[77px] motion-safe:transition-transform motion-safe:duration-500
+         group-data-[scroll-direction=up]/root-scroll:translate-y-0 group-data-[scroll-direction=down]/root-scroll:-translate-y-[200%]
+         group-data-[scroll-at-top]/root-scroll:!translate-y-0 hocus:!translate-y-0
+       "
+     >
         {% include "components/nav-fade.twig" %}
     </div>
   </nav>
