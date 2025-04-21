@@ -1,0 +1,17 @@
+<section class="grid grid-site" aria-label="{{ block.overline }}">
+  <div class="col-span-full flex flex-col gap-8 p-8 md:p-16 bg-blur">
+    {% if block.overline %}
+      <h2 class="type-headline-14">{{ block.overline }}</h2>
+    {% endif %}
+
+    <div class="prose type-headline-lg text-pretty max-w-[1200px]">
+      {{ block.headline }}
+    </div>
+
+    {% if block.cta %}
+      <a class="button button-sm w-fit" href="{{ block.cta.url }}">
+        {{ block.cta.title }}
+      </a>
+    {% endif %}
+  </div>
+</section>
