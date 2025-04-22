@@ -3,6 +3,12 @@ export function scrollPosition(Alpine) {
     Alpine.bind(el, {
       'x-init'() {
         el.style.setProperty('--scroll-y', window.scrollY);
+
+        if (window.scrollY === 0) {
+          el.setAttribute('data-scroll-at-top', 'true');
+        } else {
+          el.removeAttribute('data-scroll-at-top');
+        }
       },
 
       '@scroll.window'() {

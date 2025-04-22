@@ -3,7 +3,7 @@
 
 {% include "layouts/includes/head.twig" %}
 
-<body x-data x-links x-scroll-position
+<body x-data x-links x-scroll-position data-scroll-at-top
   class="group/root-scroll {{ body_class }} {{ pagename ? 'page-name-' ~ pagename }} {{ page_theme|default(post.meta("page_theme"))|default("theme-light") }} {% block custom_body_classes %}{% endblock %}">
 
   <a href="#content" class="sr-only focus:not-sr-only !absolute inset-x-0 top-0 z-[100]">
