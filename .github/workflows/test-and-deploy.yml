@@ -87,8 +87,8 @@ jobs:
           settings: 'sftp:auto-confirm=yes'
 
           # Mirror command options
-          localDir: './web/wp-content/themes/mozilla-labs'
-          remoteDir: '/wp-content/themes/mozilla-labs'
+          localDir: './web/wp-content/themes/mozilla-new-products'
+          remoteDir: '/wp-content/themes/mozilla-new-products'
           reverse: true
           ignoreFile: '.lftp_ignore'
           options: '--verbose --no-perms --delete'
