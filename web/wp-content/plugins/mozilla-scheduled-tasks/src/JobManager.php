@@ -2,10 +2,10 @@
 /**
  * Manages the scheduled tasks.
  *
- * @package MozillaLabsScheduledTasks
+ * @package MozillaNewProductsScheduledTasks
  */
 
-namespace MozillaLabs\ScheduledTasks;
+namespace MozillaNewProducts\ScheduledTasks;
 
 use DirectoryIterator;
 
@@ -38,7 +38,7 @@ class JobManager {
         $dir = new DirectoryIterator(__DIR__ . '/Jobs');
         foreach ($dir as $fileinfo) {
             if (!$fileinfo->isDot() && $fileinfo->isFile() && $fileinfo->getExtension() === 'php') {
-                $class_name = '\\MozillaLabs\\ScheduledTasks\\Jobs\\' . $fileinfo->getBasename('.php');
+                $class_name = '\\MozillaNewProducts\\ScheduledTasks\\Jobs\\' . $fileinfo->getBasename('.php');
                 if (class_exists($class_name)) {
                     $this->job_classes[] = $class_name;
                 }

@@ -1,0 +1,96 @@
+{% extends "layouts/base.twig" %}
+
+{% set email_signup_override = post.meta("email_signup") %}
+
+{%- block custom_body_classes -%}
+  {{ post.meta("page_theme")|default("theme-light") }}
+{%- endblock -%}
+
+{% block pageBody %}
+
+<header class="relative grid grid-site grid-rows-[1fr_auto_1fr] h-[85vh] bg-[var(--background-color)] overflow-y-hidden isolate" style="--background-color: {{ post.colors.background }};">
+  {% set backdrop = post.meta("backdrop_image") %}
+
+  {% if backdrop %}
+    <div class="absolute top-0 w-full h-full flex">
+      {% include "components/lazy-img.twig" with {
+        class: "h-full w-full",
+        imgClass: "object-cover",
+        img: get_image(backdrop)
+      } %}
+    </div>
+  {% endif %}
+
+  <div class="
+    col-start-1 col-span-full row-start-2 z-10 self-center justify-self-center size-fit
+    px-8 pt-9 pb-8 lg:pt-14 lg:pb-12 lg:px-16
+    bg-off-black/60 backdrop-blur-md
+  ">
+    <h1 class="text-white type-headline-2xl text-center">{{ post.title }}</h1>
+  </div>
+
+  {% if post.categories|length %}
+  <section class="col-start-1 col-span-full row-start-3 h-fit mt-auto py-grid-site-margin z-10">
+    <h2 class="sr-only">Categories</h2>
+    <ul class="flex justify-center gap-1 flex-wrap">
+      {% for category in post.categories %}
+        <li class="button button-xs">
+          {{ category.title }}
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+</header>
+
+<div class="grid grid-site gap-y-grid-site-gutter mt-grid-site-margin lg:mt-24">
+  {% set icons = post.meta("icons") %}
+
+  {% include 'components/product-overview.twig' with {
+    icon: icons.primary ? get_image(icons.primary) : null,
+    title: post.title,
+    tagline: post.tagline,
+  } %}
+
+  {% set information = post.meta("information") %}
+  {% set cta = post.meta("cta") %}
+
+  {% if information|length or cta %}
+    {% include 'components/product-information.twig' with {
+      information: information,
+      cta: cta,
+    } %}
+  {% endif %}
+
+  {% include 'components/product-content.twig' with {
+    content: post.meta("content")
+  } %}
+</div>
+
+{% set articles = post.related_articles %}
+
+{% if articles|length %}
+<section class="grid grid-site mt-28">
+  <h2 class="col-span-full sm:col-span-1/2 text-sm font-bold mb-14">{{ post.title }} News</h2>
+
+  <div class="col-span-full sm:col-start-7 sm:col-span-1/2">
+    <ol class="grid grid-cols-2 gap-x-grid-site-gutter gap-y-12">
+      {% for article in articles %}
+      <li class="flex flex-col gap-y-[3px] max-w-[154px] md:max-w-[214px]">
+        <time class="type-headline-12" datetime="{{ article.date|date('Y-m-d') }}">
+          {{ article.date|date('m.d.y') }}
+        </time>
+
+        <h3 class="text-sm">
+          <a class="hocus:underline" href="{{ article.link }}">
+            {{ article.title }}
+          </a>
+        </h3>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+{% endif %}
+
+{% endblock %}
