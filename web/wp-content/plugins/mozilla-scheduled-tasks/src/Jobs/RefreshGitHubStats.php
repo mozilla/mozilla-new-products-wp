@@ -2,12 +2,12 @@
 /**
  * Refresh the GitHub stats attached to products.
  *
- * @package MozillaLabsScheduledTasks
+ * @package MozillaNewProductsScheduledTasks
  */
 
-namespace MozillaLabs\ScheduledTasks\Jobs;
+namespace MozillaNewProducts\ScheduledTasks\Jobs;
 
-use MozillaLabs\Models\PostType\Product;
+use MozillaNewProducts\Models\PostType\Product;
 
 /** Class */
 class RefreshGitHubStats {
@@ -19,8 +19,8 @@ class RefreshGitHubStats {
 	 * Run.
 	 */
 	public static function run() {
-		if (!class_exists('\MozillaLabs\Models\PostType\Product')) {
-			error_log( 'This plugin only works with the Mozilla Labs theme.' );
+		if (!class_exists('\MozillaNewProducts\Models\PostType\Product')) {
+			error_log( 'This plugin only works with the Mozilla New Products theme.' );
 			return;
 		}
 

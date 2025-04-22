@@ -1,13 +1,13 @@
 {
-  "name": "@upstatement/mozilla-labs",
+  "name": "@upstatement/mozilla-new-products",
   "version": "0.6.0",
-  "description": "Theme for Mozilla Labs",
+  "description": "Theme for Mozilla New Products",
   "author": "Upstatement",
   "repository": "",
   "license": "ISC",
   "testing": {
     "urls": {
-      "local": "http://mozilla-labs.ups.dock",
+      "local": "http://mozilla-new-products.ups.dock",
       "staging": "",
       "production": ""
     },
@@ -28,7 +28,7 @@
   },
   "bundlesize": [
     {
-      "path": "web/wp-content/themes/mozilla-labs/dist/assets/app-*.js",
+      "path": "web/wp-content/themes/mozilla-new-products/dist/assets/app-*.js",
       "maxSize": "50 kB"
     }
   ],
