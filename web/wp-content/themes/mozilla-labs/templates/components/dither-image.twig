@@ -15,7 +15,10 @@
         "
         data-position="{{ fade_position }}"
       >
-        {% include "components/fade-to-bottom-dither.twig" %}
+        {% include "components/fade-to-bottom-dither.twig" with {
+          id: "dither-image",
+          class: "text-main h-full w-full"
+        } %}
       </div>
     {% endif %}
   </div>
