@@ -4,10 +4,10 @@
  *
  * This file should only be called if ACF is enabled.
  *
- * @package MozillaLabs
+ * @package MozillaNewProducts
  */
 
-namespace MozillaLabs\Managers;
+namespace MozillaNewProducts\Managers;
 
 /** Class */
 class ACFManager {

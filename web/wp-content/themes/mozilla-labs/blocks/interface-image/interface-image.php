@@ -2,7 +2,7 @@
 /**
  * A custom block for formatting images of interfaces and screenshots..
  *
- * @package MozillaLabs
+ * @package MozillaNewProducts
  * @param array $block The block settings and attributes.
  */
 

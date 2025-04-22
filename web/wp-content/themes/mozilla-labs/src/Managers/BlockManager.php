@@ -2,12 +2,12 @@
 /**
  * Initializes blocks.
  *
- * @package MozillaLabs
+ * @package MozillaNewProducts
  */
 
-namespace MozillaLabs\Managers;
+namespace MozillaNewProducts\Managers;
 
-use MozillaLabs\Blocks;
+use MozillaNewProducts\Blocks;
 
 /** Class */
 class BlockManager {

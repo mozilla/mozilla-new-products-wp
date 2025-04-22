@@ -2,11 +2,11 @@
 /**
  * Template Name: Products Archive
  *
- * @package MozillaLabs
+ * @package MozillaNewProducts
  */
 
-use MozillaLabs\Models\PostType\Product;
-use MozillaLabs\Models\Taxonomy\ProductCategory;
+use MozillaNewProducts\Models\PostType\Product;
+use MozillaNewProducts\Models\Taxonomy\ProductCategory;
 use Timber\Timber;
 
 $context  = Timber::context();

@@ -2,15 +2,15 @@
 /**
  * Bootstraps WordPress theme related functions, most importantly enqueuing javascript and styles.
  *
- * @package MozillaLabs
+ * @package MozillaNewProducts
  */
 
-namespace MozillaLabs\Managers;
+namespace MozillaNewProducts\Managers;
 
-use MozillaLabs\Models\PostType\Article;
-use MozillaLabs\Models\PostType\Product;
-use MozillaLabs\Models\Taxonomy\ProductCategory;
-use MozillaLabs\Vite;
+use MozillaNewProducts\Models\PostType\Article;
+use MozillaNewProducts\Models\PostType\Product;
+use MozillaNewProducts\Models\Taxonomy\ProductCategory;
+use MozillaNewProducts\Vite;
 
 use Timber\Timber;
 

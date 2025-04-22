@@ -2,7 +2,7 @@
 /**
  * Page.
  *
- * @package MozillaLabs
+ * @package MozillaNewProducts
  */
 
 use Timber\Timber;

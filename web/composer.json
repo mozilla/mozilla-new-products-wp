@@ -47,7 +47,7 @@
   },
   "autoload": {
     "psr-4": {
-      "MozillaLabs\\": "wp-content/themes/mozilla-new-products/src"
+      "MozillaNewProducts\\": "wp-content/themes/mozilla-new-products/src"
     }
   },
   "require": {

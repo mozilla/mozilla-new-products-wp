@@ -8,7 +8,7 @@
  *     - related_article (Post Object)
  * Set this field group if the block is equal to Related Articles
  *
- * @package MozillaLabs
+ * @package MozillaNewProducts
  * @param array $block The block settings and attributes.
  */
 

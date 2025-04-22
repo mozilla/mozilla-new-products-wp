@@ -2,7 +2,7 @@
 /**
  * Custom block for inserting code with syntax highlighting.
  *
- * @package MozillaLabs
+ * @package MozillaNewProducts
  * @param array $block The block settings and attributes.
  */
 

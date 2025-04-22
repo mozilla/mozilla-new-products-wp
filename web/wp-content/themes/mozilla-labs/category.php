@@ -2,10 +2,10 @@
 /**
  * Category
  *
- * @package MozillaLabs
+ * @package MozillaNewProducts
  */
 
-use MozillaLabs\Models\PostType\Article;
+use MozillaNewProducts\Models\PostType\Article;
 use Timber\Timber;
 
 $context = Timber::context();

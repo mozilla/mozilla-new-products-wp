@@ -2,7 +2,7 @@
 /**
  * Single post / article.
  *
- * @package MozillaLabs
+ * @package MozillaNewProducts
  */
 
 use Timber\Timber;

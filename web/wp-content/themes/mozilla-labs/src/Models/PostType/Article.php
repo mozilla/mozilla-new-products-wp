@@ -2,10 +2,10 @@
 /**
  * Additional functionality for extending the TimberPost object
  *
- * @package MozillaLabs
+ * @package MozillaNewProducts
  */
 
-namespace MozillaLabs\Models\PostType;
+namespace MozillaNewProducts\Models\PostType;
 
 use Timber\Timber;
 use Timber\Post as TimberPost;

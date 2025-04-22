@@ -2,12 +2,12 @@
 /**
  * Registers WP CLI commands.
  *
- * @package MozillaLabsScheduledTasks
+ * @package MozillaNewProductsScheduledTasks
  */
 
-namespace MozillaLabs\ScheduledTasks;
+namespace MozillaNewProducts\ScheduledTasks;
 
-use MozillaLabs\ScheduledTasks\Jobs\RefreshGitHubStats;
+use MozillaNewProducts\ScheduledTasks\Jobs\RefreshGitHubStats;
 use WP_CLI;
 
 class Cli {
@@ -21,7 +21,7 @@ class Cli {
 	 * @subcommand refresh-github
 	 */
 	public function refresh_github() {
-		if (!class_exists('\MozillaLabs\Models\PostType\Product')) {
+		if (!class_exists('\MozillaNewProducts\Models\PostType\Product')) {
 			WP_CLI::warning('This plugin only works with the Mozilla New Products theme.');
 			die;
 		}

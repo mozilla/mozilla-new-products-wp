@@ -2,10 +2,10 @@
 /**
  * Mostly involved with cleaning up default WordPress cruft.
  *
- * @package MozillaLabs
+ * @package MozillaNewProducts
  */
 
-namespace MozillaLabs\Managers;
+namespace MozillaNewProducts\Managers;
 
 /** Class */
 class WordPressManager {
