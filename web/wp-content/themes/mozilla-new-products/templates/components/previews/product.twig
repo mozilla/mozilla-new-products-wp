@@ -57,17 +57,8 @@
           after:-translate-x-1/2 after:-translate-y-1/2"
         aria-hidden="true"
         >
-        View <span class="hidden md:inline">More</span>
+        View
       </p>
-
-       <a
-         href="{{ product.link }}"
-         class="absolute inset-0 opacity-0 z-50"
-        >
-        <span class="sr-only">
-          View More <span class="sr-only">about {{ product.title }}</span>
-        </span>
-      </a>
     </div>
 
     <div class="absolute w-full h-full z-8 opacity-0 group-hocus:opacity-100">
@@ -76,6 +67,16 @@
         alt: ""
       } %}
     </div>
+
+
+     <a
+       href="{{ product.link }}"
+       class="absolute inset-0 opacity-0 z-50"
+      >
+        <span class="sr-only">
+          View More <span class="sr-only">about {{ product.title }}</span>
+        </span>
+    </a>
   </div>
 </div>
 
