@@ -22,7 +22,7 @@ class Cli {
 	 */
 	public function refresh_github() {
 		if (!class_exists('\MozillaLabs\Models\PostType\Product')) {
-			WP_CLI::warning('This plugin only works with the Mozilla Labs theme.');
+			WP_CLI::warning('This plugin only works with the Mozilla New Products theme.');
 			die;
 		}
 

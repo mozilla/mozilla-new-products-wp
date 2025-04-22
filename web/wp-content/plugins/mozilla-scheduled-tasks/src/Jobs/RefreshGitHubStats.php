@@ -20,7 +20,7 @@ class RefreshGitHubStats {
 	 */
 	public static function run() {
 		if (!class_exists('\MozillaLabs\Models\PostType\Product')) {
-			error_log( 'This plugin only works with the Mozilla Labs theme.' );
+			error_log( 'This plugin only works with the Mozilla New Products theme.' );
 			return;
 		}
 
