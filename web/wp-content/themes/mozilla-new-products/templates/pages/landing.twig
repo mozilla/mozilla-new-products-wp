@@ -1,9 +1,5 @@
 {% extends "layouts/base.twig" %}
 
-{#
-  Temporarily use theme-light for all landing pages. Use dark for typewriter_headline.
-  TODO: Allow setting on a per-page basis.
-#}
 {% set topper = page.meta("topper")|first %}
 
 {%- block custom_body_classes -%}
