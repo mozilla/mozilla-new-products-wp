@@ -2,7 +2,7 @@ import path from 'path';
 import fs from 'fs';
 import { defineConfig } from 'vite';
 
-const BASE_PATH = '/wp-content/themes/mozilla-labs';
+const BASE_PATH = '/wp-content/themes/mozilla-new-products';
 function base(mode) {
   if (mode === 'production') {
     return `${BASE_PATH}/dist`;

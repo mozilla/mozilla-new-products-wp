@@ -72,9 +72,9 @@ Note that these installation steps assume that you're using the DDEV configurati
    npm run start
    ```
 
-6. The site should be up and running with BrowserSync at <http://localhost:3000>, which proxies <https://mozilla-labs-wp.ddev.site>.
+6. The site should be up and running with BrowserSync at <http://localhost:3000>, which proxies <https://mozilla-new-products-wp.ddev.site>.
 
-7. To access WP admin, visit https://mozilla-labs-wp.ddev.site/wp-admin. The default credentials are `admin` / `password`. You may need to click on an 'Update Database' button the first time you log in; the defaults are fine here.
+7. To access WP admin, visit https://mozilla-new-products-wp.ddev.site/wp-admin. The default credentials are `admin` / `password`. You may need to click on an 'Update Database' button the first time you log in; the defaults are fine here.
 
 To shut down the container and development server, run `npm run stop`.
 
