@@ -6,7 +6,7 @@
       <p>{{ prefix }}</p>
 
       <ul class="flex max-lg:flex-col lg:flex-wrap gap-3 lg:gap-6">
-        <li>
+        <li class="w-fit">
           <a class="group flex items-center gap-2 transition-colors hocus:text-content aria-[current=true]:text-content" href="{{ page.link }}" aria-current="{{ page.link in current_url ? 'true' : 'false' }}">
             <span>All</span>
 
@@ -17,7 +17,7 @@
         </li>
 
         {% for category in categories %}
-          <li>
+          <li class="w-fit">
             <a class="group flex items-center gap-2 transition-colors hocus:text-content aria-[current=true]:text-content" href="{{ category.link }}" aria-current="{{ category.link in current_url ? 'true' : 'false' }}">
               <span class="whitespace-nowrap">{{ category.title }}</span>
 
