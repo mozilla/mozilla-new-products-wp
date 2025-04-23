@@ -1,6 +1,7 @@
 import theme from 'tailwindcss/defaultTheme';
 import utilitiesScss from './plugins/utilities-scss';
 import hocus from './plugins/hocus';
+import pointerFine from './plugins/pointer-fine';
 import path from 'path';
 
 function color(name) {
@@ -213,6 +214,7 @@ module.exports = {
   },
   plugins: [
     hocus,
+    pointerFine,
     utilitiesScss({ filename: path.resolve(__dirname, 'static/scss/app.scss') }),
     function ({ addUtilities }) {
       const newUtilities = {
