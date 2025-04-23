@@ -1,7 +1,7 @@
 <figure class="relative">
   <div class="relative flex">
     {% include "components/lazy-img.twig" with {
-      class: "w-full aspect-[16/9]",
+      class: "w-full max-md:aspect-square",
       imgClass:"object-cover",
       img: get_image(image),
     } %}
@@ -9,8 +9,8 @@
     {% if fade_position != "none" %}
       <div
         class="
-          absolute w-full h-[50%] sm:h-dither-fade pointer-events-none
-          data-[position=top]:top-0 data-[position=top]:-scale-y-100
+          absolute w-full h-dither-fade pointer-events-none
+          data-[osition=top]:top-0 data-[position=top]:-scale-y-100
           data-[position=bottom]:bottom-0
         "
         data-position="{{ fade_position }}"

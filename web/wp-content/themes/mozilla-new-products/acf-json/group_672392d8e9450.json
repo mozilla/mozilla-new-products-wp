@@ -8,7 +8,7 @@
       "name": "backdrop_image",
       "aria-label": "",
       "type": "image",
-      "instructions": "Image is used as the backdrop of the product page topper.",
+      "instructions": "Image is used as the backdrop of the product page topper. For best display, include a horizontal asset.",
       "required": 1,
       "conditional_logic": 0,
       "wrapper": {
@@ -147,6 +147,9 @@
       "layout": "block",
       "acfe_seamless_style": 0,
       "acfe_group_modal": 0,
+      "acfe_group_modal_close": 0,
+      "acfe_group_modal_button": "",
+      "acfe_group_modal_size": "large",
       "sub_fields": [
         {
           "key": "field_67e2e606b002d",
@@ -186,10 +189,7 @@
           "return_format": "string",
           "allow_in_bindings": 0
         }
-      ],
-      "acfe_group_modal_close": 0,
-      "acfe_group_modal_button": "",
-      "acfe_group_modal_size": "large"
+      ]
     },
     {
       "key": "field_67cb65a7b67ee",
@@ -575,5 +575,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1742923370
+  "modified": 1745433865
 }
