@@ -42,7 +42,7 @@
   {% endif %}
 
   {% if backdrop %}
-    <a href="{{ product.link }}" class="relative flex aspect-square group" aria-hidden="true" tabindex="-1">
+    <a href="{{ product.link }}" class="relative flex aspect-square group max-md:hidden" aria-hidden="true" tabindex="-1">
       {% include "components/lazy-img.twig" with {
         class: "h-full absolute left-1/2 -translate-x-1/2",
         img: backdrop,
