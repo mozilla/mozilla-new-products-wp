@@ -585,7 +585,7 @@
                   "name": "image",
                   "aria-label": "",
                   "type": "image",
-                  "instructions": "Image is displayed in full bleed. For best display, include a horizontal image.",
+                  "instructions": "Image is displayed in full bleed. For best display, include a horizontal image. Recommended upload size: 2400px x 1600px.",
                   "required": 1,
                   "conditional_logic": 0,
                   "wrapper": {
@@ -835,5 +835,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1746220225
+  "modified": 1746221716
 }

@@ -8,7 +8,7 @@
       "name": "backdrop_image",
       "aria-label": "",
       "type": "image",
-      "instructions": "Image is used as the backdrop of the product page topper. For best display, include a horizontal asset.",
+      "instructions": "Image is used as the backdrop of the product page topper. For best display, include a horizontal asset that also crops well in a square aspect ratio. Recommended upload size: 2400px x 1900px.",
       "required": 1,
       "conditional_logic": 0,
       "wrapper": {
@@ -78,7 +78,7 @@
           "name": "primary",
           "aria-label": "",
           "type": "image",
-          "instructions": "The primary branded icon. For best display, include a square asset.",
+          "instructions": "The primary branded icon. For best display, include a square asset. Recommended file type: SVG.",
           "required": 1,
           "conditional_logic": 0,
           "wrapper": {
@@ -383,7 +383,7 @@
               "name": "image",
               "aria-label": "",
               "type": "image",
-              "instructions": "",
+              "instructions": "Image is used in the body of a Product page. Recommended vertical aspect upload size: 1800px x 2520px. Recommended horizontal aspect upload size: 2400px x 1600px.",
               "required": 1,
               "conditional_logic": 0,
               "wrapper": {
@@ -575,5 +575,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1745433865
+  "modified": 1746221200
 }
