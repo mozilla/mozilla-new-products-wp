@@ -260,7 +260,7 @@
                   "name": "image",
                   "aria-label": "",
                   "type": "image",
-                  "instructions": "For best display, include a vertical (5:7) image. Make sure the image content is well displayed inside a vertical and square crop.",
+                  "instructions": "For best display, include a vertical (5:7) image. Make sure the image content is well displayed inside a vertical and square crop. Recommended upload size: 1800px x 2520px.",
                   "required": 0,
                   "conditional_logic": 0,
                   "wrapper": {
@@ -585,7 +585,7 @@
                   "name": "image",
                   "aria-label": "",
                   "type": "image",
-                  "instructions": "Image is displayed in full bleed. For best display, include a horizontal image.",
+                  "instructions": "Image is displayed in full bleed. For best display, include a horizontal image. Recommended upload size: 2400px x 1600px.",
                   "required": 1,
                   "conditional_logic": 0,
                   "wrapper": {
@@ -706,14 +706,14 @@
           "acfe_flexible_modal_edit_size": false,
           "acfe_flexible_category": false
         },
-        "layout_680948b9c42a8": {
-          "key": "layout_680948b9c42a8",
+        "layout_6809484ddf981": {
+          "key": "layout_6809484ddf981",
           "name": "announcement",
           "label": "Announcement",
           "display": "block",
           "sub_fields": [
             {
-              "key": "field_680948bec42af",
+              "key": "field_68094851df988",
               "label": "Overline",
               "name": "overline",
               "aria-label": "",
@@ -734,7 +734,7 @@
               "append": ""
             },
             {
-              "key": "field_680948c8c42b0",
+              "key": "field_68094861df989",
               "label": "Headline",
               "name": "headline",
               "aria-label": "",
@@ -755,7 +755,7 @@
               "delay": 0
             },
             {
-              "key": "field_680948dbc42b1",
+              "key": "field_68094876df98a",
               "label": "CTA",
               "name": "cta",
               "aria-label": "",
@@ -835,5 +835,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1745438947
+  "modified": 1746221716
 }

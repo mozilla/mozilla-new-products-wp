@@ -100,7 +100,7 @@
           "name": "graphic",
           "aria-label": "",
           "type": "image",
-          "instructions": "Include the default graphic for the sign-up. This is a horizontal decorative image that will span the width of the screen.",
+          "instructions": "Include the default graphic for the sign-up. This is a horizontal decorative image that will span the width of the screen. Recommended file type: PNG; upload size: 1860px x 926px.",
           "required": 1,
           "conditional_logic": 0,
           "wrapper": {
@@ -148,5 +148,5 @@
   "acfe_form": 0,
   "acfe_meta": "",
   "acfe_note": "",
-  "modified": 1742220918
+  "modified": 1746221338
 }
